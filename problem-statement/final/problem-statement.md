@@ -1,7 +1,7 @@
 # Braille File Formats - Problem Statement
 Document version: August 17, 2022
 
-##Context
+## Context
 
 The two approaches currently used for distributing materials to be read in Braille each have their advantages, however neither offer a complete solution to the needs of braille readers nor can take advantage of the new possibilities of multiline displays.
 
