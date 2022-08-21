@@ -1,15 +1,21 @@
 # Braille File Formats - Problem Statement
 Document version: August 17, 2022
+
 ##Context
+
 The two approaches currently used for distributing materials to be read in Braille each have their advantages, however neither offer a complete solution to the needs of braille readers nor can take advantage of the new possibilities of multiline displays.
 
 1. Text based braille formats are used to create hardcopy braille, dynamic refreshable braille, and as a medium to edit and share braille using software. Several formats are in use, including BRF, BRA, BRL, and PEF. Text based braille formats are easy to create and share, but there are important limitations, including the lack of support for integrating graphics and the very limited support for navigation. Text based braille formats are not robust enough to accommodate basic features found in current print and digital text file formats and are long overdue for an upgrade. 
 
 2. Digital text file formats can be read on a braille display or used for embossing. Several formats are in use, including DAISY, EPUB, HTML and Office Open XML (Word). Digital text-based formats offer advantages such as allowing readers to navigate quickly using links, for content to be formatted to page sizes dynamically, and support for text to speech. However, this approach relies on a screen reader to dynamically translate text to braille and cannot utilize pre-formatted, transcribed, proof-read braille. Transcribed braille is especially important for educational, science, math, and music content, and when readers are learning braille.
+
 There is currently no standardized way for tactile graphics to be encoded for reading on digital devices, in either text-based braille or digital text formats.
-Issue
+
+## Issue
+
 Digital text file formats allow readers to navigate quickly using links, for content to be formatted to page sizes dynamically, and include non-text items. These same basic features are not supported in the existing text-based braille formats. 
 Whilst text-based braille formats can reliably present transcribed braille and preserve the spatial formatting, the chief problem is that they have no markup. Many other deficiencies stem from this core problem:
+
 * The line and page size are hardcoded and cannot be easily changed after the file is created.
 * Navigation is difficult because you are limited to very basic Find functions.
 * A braille file cannot easily be edited since changes to the current line or page size will cascade through the document and potentially require more edits.
@@ -25,9 +31,13 @@ If content and presentation were separated, reading software could focus on the 
 ## Scale
 
 Whether the goal is to provide a high-quality digital file or produce embossed braille, a better-quality braille file format will support a better experience for all braille readers. We anticipate that multi-line dynamic refreshable braille displays will soon become a regular means for providing access to braille, and a new braille format is essential to support these new devices. The new file format will also benefit existing single line refreshable braille devices by providing superior navigation. However, the new braille format will also benefit the production of embossed braille by allowing for seamless embossing of text and graphics. In short, it will improve braille access whether the medium is hard copy braille or digital and allow braille readers to benefit from technological opportunities that did not exist when the BRF format was developed. 
-Importance of Resolution
+
+## Importance of Resolution
+
 In order for braille readers to benefit from advances in technology, a new braille format is required. Providing access to text and graphics through dynamic refreshable multi-line displays will support braille literacy and education internationally and move the field forward. We want to ensure that braille readers benefit from the promise of a new generation of devices and embossers, and further increase the availability of content in braille across adults and children, and especially for those in educational settings. 
+
 The new braille file format should be based as much as possible on existing specifications and if it is found that an existing file type can solve these problems, then that should become the new braille file standard. It is important that we consider the needs of braille users, producers, libraries, and hardware and software manufacturers as we examine these issues and look for a solution.
+
 If these problems can be solved, it will improve braille access for people throughout the world, whether they read embossed braille, on their current braille device or on a future multi-line refreshable display. It will mean that braille files will be more dynamic, responsive, and navigable. We will be able to include graphics and, if we can improve the ability to share braille across borders, that braille will be cheaper and more available than ever before. The time to address these problems is now. The entire field is ready for an updated braille file format.
 
 ## Principles
