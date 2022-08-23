@@ -1,5 +1,5 @@
 # Use Cases template
-As a <Reader | who will benefit from the use case> I would like to <what is the use case> so that <how I will benefit from the use case>
+As a [Reader | who will benefit from the use case] I would like to [what is the use case] so that [how I will benefit from the use case]
 
 ## References:
 
