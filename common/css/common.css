@@ -1,0 +1,102 @@
+
+/* Element definitions */
+
+dl.elemdef {
+    border-left: 0.5em solid rgb(145,200,255);
+    background-color: rgb(236,246,255);
+    padding: 0.5em 1em;
+	margin-bottom: 2em;
+}
+
+dl.elemdef ul.nomark {
+	padding-left: 1em;
+}
+
+dl.elemdef > dd > ul.nomark:first-child {
+	padding-left: 0 !important;
+}
+
+dl.elemdef > dt {
+	font-weight: normal;
+	font-style: italic;
+}
+
+dl.elemdef > dt {
+	margin-bottom: 0.5em;
+}
+
+dl.elemdef dfn {
+	font-style: normal;
+}
+
+ul.nomark,
+ol.nomark {
+    list-style-type: none;
+}
+
+
+
+/* Table zebra styling */
+
+table.zebra {
+    font-size:inherit;
+    font:90%;
+    margin:1em;
+}
+
+table.zebra td {
+    padding-left: 0.3em;
+}
+
+table.zebra th {
+    font-weight: bold;
+    text-align: center;
+    background-color: rgb(0,0,128) !important;
+    font-size: 110%;
+    background: hsl(180, 30%, 50%);
+    color: #fff;
+}
+
+table.zebra th a:link {
+  color: #fff;
+}
+
+table.zebra th a:visited {
+  color: #aaa;
+}
+
+table.zebra tr:nth-child(even) {
+    background-color: hsl(180, 30%, 93%) !important;
+}
+
+table.zebra th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table.zebra td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+
+/* css styles */
+
+pre > code.css, pre.highlight.lang-css {
+    background: #FFE;
+}
+
+pre > code.css, pre.highlight.lang-css {
+    border: solid 0.0625em;
+    color: black;
+    border-top-left-radius: 0;
+}
+
+pre > code.css::before, pre.highlight.lang-css::before {
+    font: bold 0.8rem Helvetica Nue, sans-serif;
+    padding: 0.5em;
+    position: absolute;
+    top: auto;
+    margin: -0.640em 0 0 -3.1em /* 1em/0.8 + 1.5em + 0.5em*2 */;
+    width: 1.5em;
+    background: inherit;
+    border: 0.078125em;
+    border-style: solid none solid solid;
+    border-radius: 1em 0 0 1em;
+}
+
+pre > code.css::before, pre.highlight.lang-css::before {
+    content: 'CSS';
+}
