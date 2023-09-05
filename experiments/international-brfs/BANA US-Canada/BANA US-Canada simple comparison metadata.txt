@@ -1,0 +1,16 @@
+File: BANA US-Canada International braille formatting simple starting document.brf
+Page width: 40 cells
+Page length: 25 lines
+Pages: 5
+Line spacing: single
+Encoding: USA Braille Computer Code (USA ASCII)
+Braille code: Unified English Braille uncontracted (UEB grade 1)
+
+Notes:
+1. In the US and Canada, there are three basic styles of heading: h1 (centred), h2 (cell-5) and h3 (cell-7).
+
+2. Headings referred to as "Paragraph headings" are brailled as they appear in print.
+
+3. Normally the hollow and square bullets would need to be included on a special Symbols Page or in a Transcriber's Note. No Transcriber's Note was added to this file.
+
+4. Standard paper sizes are 11.5x11 and 8.5x11. While this is an agency decision, 11.5x11 tends to be the default and was used for this transcription.  

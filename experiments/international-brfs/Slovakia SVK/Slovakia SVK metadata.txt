@@ -1,0 +1,72 @@
+,metadata for the file according to
+,slovak rules3
+- text was formatted according to
+  slovak formatting rules 8still under
+  development02
+- braille code3 the slovak braille rules
+  were used2
+- the standard formatting for braille
+  books is #dj char]line1 #be
+  lines]page2
+- ,encoding3 ,north ,american english
+- the lists do not need to be separated
+  with a blank line from the text above
+  the list1 but must be separated with a
+  blank line below the list2
+
+                                      #f
+- we have four heading levels which are
+  described below4
+- after the first page of the document1
+  just before the heading two1 there is
+  an empty line4 n standard setting1
+  this empty line would be ommitted for
+  print material1 as there is no need to
+  keep an empty line1 if the heading is
+  at the beginning of the page4
+
+
+2,explanation of headings of four
+levels3
+
+          ,this is heading #a
+       with longer text1 because
+     the formatting depends on its
+                 length
+
+  ,followed by the parragraph with
+standard indentation4 ,this is it4 ,it
+represents an example of the standard
+parragraph1 one empty line must separate
+it from the heading #a4
+                                      #g
+    ,this is heading #b
+    with longer text1 because the
+    formatting depends on its length
+    8corresponds with h#c in duxbury0
+
+  ,followed by the parragraph with
+standard indentation4 ,this is it4 ,it
+represents an example of the standard
+parragraph1 one empty line must separate
+it from the heading #b4
+
+,this is heading #c with longer text1
+because the formatting depends on its
+length
+
+  ,followed by the parragraph with
+standard indentation4 ,this is it4 ,it
+represents an example of the standard
+parragraph1 one empty line must separate
+it from the heading #c4
+
+,this is heading #c with longer text1
+because the formatting depends on its
+length3
+  ,followed by the parragraph with    #h
+standard indentation4 ,this is it4 ,it
+represents an example of the standard
+parragraph1 there is no empty line
+separating it from the heading #d4
+

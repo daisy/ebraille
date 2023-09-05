@@ -1,0 +1,34 @@
+File: RNIB UK International braille formatting simple starting document.brf
+Page width: 38 cells
+Page length: 27 lines
+Pages: 5
+Line spacing: single
+Encoding: USA Braille Computer Code (USA ASCII)
+Braille code: Unified English Braille uncontracted (UEB grade 1)
+
+Notes:
+
+1.	Headings.
+In the UK, there are three basic styles of heading (as shown in the document), but several variations may be used to allow for more levels. Not all variations are used and will be chosen as appropriate for each job.
+The full list (from most to least significant) is:
+•	Centred heading with a new page, line 3 start (ending in colons)
+•	Centred heading (ending in colons or dot 2s)
+•	Centred heading (without end markers)
+•	Cell 1-5 heading, preceded by a blank line (except where it follows a centred heading)
+•	Cell 3-1 heading, with italics/bold/underline
+•	Cell 3-1 heading, without typeform
+•	Cell 3 heading, with or without typeform, where the text continues on the same line after a full stop or a colon (for all other headings listed above, the text continues on the next line)
+
+Not all documents will contain new page, line 3 centred headings (a heading being different in character to a title, so you would generally have your title on line 3 of a simple document, but then the top level of heading might be centred with colons but without a line 3 start). A heading 1 will generally be one of the first two centred headings as given above. 
+
+2.	For the heading 2 and heading 3 (as shown), a full stop is added at the end in the absence of any other punctuation.
+
+3.	We have not replicated the indented paragraphs. If they were for example a quotation, they would be cell 7-5 paragraphs.
+
+4. We added a page header.
+
+5.	The bullet point (hollow or filled) is generally not shown unless required for a specific reason (e.g. a typesetting exercise).
+
+6. There are several available sizes of braille paper in the UK, this is the "book size" used at RNIB.
+
+7. Other agencies in the UK may differ in the formatting of some of the document elements.
