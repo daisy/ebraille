@@ -1,0 +1,4 @@
+- format: 28 cells per line / 28 lines
+- region: de-ch
+- headings: h1-h5 (different underlinings / text left-aligned or centered)
+- paragraphs are separated by indented lines as opposed to empty lines
