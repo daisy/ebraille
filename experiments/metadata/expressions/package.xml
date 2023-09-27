@@ -1,0 +1,65 @@
+
+<!-- the brl: prefix could be "predefined" to avoid declaring it in the prefix attribute -->
+<package xmlns="http://www.idpf.org/2007/opf" version="3.0" xml:lang="en" unique-identifier="uid" prefix="brl: https://www.nimac.us/">
+	<metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+		<dc:identifier id="uid">us-nls-br24682</dc:identifier>
+		<dc:title>Solimar: the sword of the Monarchs</dc:title>
+		<dc:language>en-brl</dc:language>
+		<meta property="dcterms:modified">2023-08-29T12:00:00Z</meta>
+		<dc:creator id="aut">Ryan, Pam Muñoz</dc:creator>
+		<meta refines="#aut" property="role" scheme="marc:relators" id="role">aut</meta>
+		<dc:format>BRF/UEB contracted</dc:format>
+		<dc:rights>Further reproduction or distribution in other than an accessible format is prohibited</dc:rights>
+		<dc:date>2023-08</dc:date>
+		<dc:publisher>National Library Service for the Blind and Print Disabled, Library of Congress</dc:publisher>
+		<dc:subject>Butterflies Juvenile fiction</dc:subject>
+		<dc:subject>Magic Juvenile fiction</dc:subject>
+		<dc:subject>Monarch butterfly Migration Juvenile fiction</dc:subject>
+		<dc:subject>Princesses Juvenile fiction</dc:subject>
+		<dc:subject>Sex role Juvenile fiction</dc:subject>
+		<dc:description>&quot;On the eve of her Quinceañera, Princess Solimar discovers that it will take more than
+			magic to save her kingdom and prevent the destruction of the Monarch butterfly.&quot; -- Provided by
+			publisher.&amp;#59; For grades 3-6.</dc:description>
+		<dc:source>9781368009966</dc:source>
+		<meta property="schema:accessibilitySummary">Conforms to the eBraille standard.</meta>
+		<meta property="schema:accessMode">tactile</meta>
+		<meta property="schema:accessibilityFeature">braille</meta>
+		<meta property="schema:accessibilityHazard">none</meta>
+		<meta property="brl:sourcePublisher">Los Angeles : Disney Hyperion, 2022.</meta>
+		<meta property="brl:sourceRights">2022 Disney Enterprises, Inc.</meta>
+		<meta property="brl:dewey">j813.6</meta>
+		<meta property="brl:sourceDate">2022</meta>
+		<meta property="brl:transcribingAgency">American Printing House for the Blind</meta>
+		<meta property="brl:producer">American Printing House for the Blind</meta>
+		<meta property="brl:volumes">2</meta>
+		<meta property="brl:code">ueb</meta>
+		<meta property="brl:pages">242</meta>
+		<meta property="brl:lineLength">40</meta>
+		<meta property="brl:pageLength">25</meta>
+		<meta property="brl:contractionLevel">2</meta>
+		<meta property="brl:producedDate">2023-08-23</meta>
+		<meta property="brl:revision">0</meta>
+		<meta property="brl:revisionDate">2023-08-23</meta>
+		<meta property="brl:revisionDescription">...</meta>
+		<meta property="brl:containsMusic">false</meta>
+		<meta property="brl:containsMath">false</meta>
+		<meta property="brl:mathCode">...</meta>
+		<meta property="brl:tactileGraphics">false</meta>
+		<meta property="brl:nonfiction">false</meta>
+		<meta property="brl:series">Summer Reading Program 2023</meta>
+		<meta property="brl:seriesSequence">...</meta>
+		<meta property="brl:tactileGraphicsPages">0</meta>
+	</metadata>
+
+	<manifest>
+		<item id="bopf" href="24682.bopf" media-type="text/xml"/>
+		<item id="brf01" href="24682v01.brf" media-type="text/plain"/>
+		<item id="brf02" href="24682v02.brf" media-type="text/plain"/>
+		<item id="nav" href="nav.html" properties="nav" media-type="application/xhtml+xml"/>
+	</manifest>
+
+	<spine>
+		<itemref idref="brf01"/>
+		<itemref idref="brf02"/>
+	</spine>
+</package>
