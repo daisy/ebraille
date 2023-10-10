@@ -1,0 +1,21 @@
+File: SPAIN International braille formatting simple comparison.brf
+Page width: 40 cells
+Page length: 29 lines
+Pages: 11
+Line spacing: single
+Encoding: USA Braille Computer Code (USA ASCII)
+Braille code: Spanish Braille uncontracted (grade 1)
+
+Notes:
+
+1. In Spain, in this document, there are three basic styles of heading: h1 (centred and braille underlined with three blank lines above and two lines below), h2 (centred with two blank lines above and two lines below) and h3 (aligned to the left and with a hanging indent, and two blank lines above and one line below).
+
+2. Headings referred to as "Paragraph headings" are brailled as they appear in print.
+
+3. One of the nested lists contains two subitems, but only one has a hollow bullet. Since consecutive subitems at the same level would typically have the same bullet, the hollow bullet was used for the second subitem as well as the first.
+
+4. Normally the hollow bullet would need to be included on a special Symbols Page or in a Transcriber's Note. No Transcriber's Note was added to this file.
+
+5. Standard paper used for embossers is continuous (tractor/Z fold/fanfold) braille paper. Braille printing paper measurements are 12 inchs from top to bottom, and 13 inchs wide (aprox.). This size of braille printing paper allows it to be cut and leaves enough space for a binding. After being printed and cut, the paper has enough surface area to contain 40 characters (40 cells), 29 lines (6-dot braille cell), and a binding space.
+
+6. Usually, in the production of books in Spain, a braille cover and an index are added.
