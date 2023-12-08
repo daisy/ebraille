@@ -13,7 +13,7 @@
 				edDraftURI: null,
 				editors: [
 					{
-						name: 'William Freeman',
+						name: 'Willow Free',
 						company: 'American Printing House for the Blind',
 						url: 'https://www.aph.org/'
 					}
@@ -72,21 +72,96 @@
 						<p>[^div^]</p>
 					</dd>
 
-					<dt>Supported <code>class</code> values:</dt>
+					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li>TBD</li>
+							<li><code>box</code>, <code>nemeth</code>, various strings</li>
+<!--Need to know what classes to use for boxes with text, such as color or other indicators. Now sure how to define.-->
+						</ul>
+					</dd>
+				
+					<dt>How to use <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li><code>box</code> is used to signify a standard box.</li>
+							<aside class="example" title="A standard box">
+					<pre><code class="html">&lt;div class="box">
+	&lt;p>⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑&lt;/p>
+&lt;/div></code></pre>
+							</aside>
+							<li>Put <code>box</code> inside <code>box</code> when a box contains a box.</li>
+							<aside class="example" title="A box inside another box">
+					<pre><code class="html">&lt;div class="box">
+   &lt;div class="box">
+      &lt;p>⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑&lt;/p>
+   &lt;/div>
+&lt;/div></code></pre>
+				</aside>
+							<li><code>nemeth</code> is used for a box that has begin and end Nemeth symbols in its box lines.</li>
+							<aside class="example" title="A Nemeth box">
+					<pre><code class="html">&lt;div class="box" class="nemeth">
+   &lt;p>⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑&lt;/p>
+&lt;/div></code></pre>
+				</aside>
+							<li>Various strings can be used for boxes with specific text needs. Examples could include boxes with color. There is no way to define all possible strings that could be used in such a scenario. The writing software will need to define the limitations and allow the user to input the string, which is then used as the class to allow the CSS to input that string into the box line.</li>
+						<aside class="example" title="A box with the color blue">
+					<pre><code class="html">&lt;div class="box" class="blue">
+   &lt;p>⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑&lt;/p>
+&lt;/div></code></pre>
+				</aside>
+				</ul>
+					</dd>
+				</dl>
+
+</section>
+			<section id="Braille grade">
+				<h4>Braille grade</h4>
+
+				<dl id="elemdef-p" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p>[^span^]</p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li><code>grade-0</code>, <code>grade-1</code>, <code>grade-2</code></li>
+						</ul>
+						<p>Note that terms for braille grade vary throughout the world and that grade-related class values do not directly correlate to how a local region may understand the terms. Hence, in a region where uncontracted braille is called Grade 1, <code>grade-0</code> is preferred for the class name so that these terms may be better understood internationally. Basically, one should use the least value class for the least contracted grade of braille and move up in value from there.<br><br>
+						Additionally, braille grade should only be specified when it changes within the document. Otherwise, metadata is sufficient.</p>
+					</dd>
+				</dl>
+
+				<aside class="example" title="A caption following an image.">
+					<pre><code class="html">&ltspan class="grade-0">⠠⠞⠓⠊⠎⠀⠃⠗⠁⠊⠇⠇⠑⠀⠊⠎⠀⠥⠝⠉⠕⠝⠞⠗⠁⠉⠞⠑⠙⠲&lt/span></code></pre></aside>
+			</section>
+			<section id="caption">
+				<h4>Captions</h4>
+
+				<dl id="elemdef-p" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p>[^figcaption^]</p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li>None</li>
 						</ul>
 					</dd>
 				</dl>
 
-				<aside class="example" title="A box with a single border">
-					<pre><code class="html">&lt;div class="boxsingle">
-   &lt;p>⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑&lt;/p>
-&lt;/div></code></pre>
-				</aside>
+				<aside class="example" title="A caption following an image.">
+					<pre><code class="html">&ltfigure>
+   &lt;img width="54"
+     height="27"
+     src="..\images\diagram187.jpg"
+     alt="⠠⠙⠊⠁⠛⠗⠁⠍ ⠕⠋ ⠞⠺⠕ ⠊⠝⠞⠑⠗⠎⠑⠉⠞⠊⠝⠛ ⠉⠊⠗⠉⠇⠑⠎"/>
+   &lt;figcaption>"⠠⠋⠊⠛⠥⠗⠑⠀⠼⠁⠒⠀⠠⠞⠓⠑⠎⠑⠀⠉⠊⠗⠉⠇⠑⠎⠀⠁⠗⠑⠀⠧⠑⠗⠽⠀⠊⠝⠞⠑⠗⠑⠎⠞⠊⠝⠛⠲"&lt;/figcaption>
+&lt/figure></code></pre></aside>
 			</section>
-
 			<section id="em">
 				<h4>Emphasis</h4>
 
@@ -94,28 +169,29 @@
 					<dt>Element(s):</dt>
 					<dd>
 						<p>[^em^], [^strong^]</p>
+						<p>Note that [^b^], [^i^], [^mark^], and [^u^] are not recommended and that [^em^] with a class should be used for emphasis other than italics and bold.</p>
 					</dd>
 
-					<dt>Supported <code>class</code> values:</dt>
+					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li>TBD</li>
+							<li><code>script</code>, <code>underline</code>, <code>custom-1</code>, <code>custom-2</code>, <code>custom-2</code>, <code>custom-3</code>, <code>custom-4</code>, <code>custom-5</code></li>
 						</ul>
 					</dd>
 				</dl>
 
-				<aside class="example" title="A single word in bold">
-					<pre><code class="html">&lt;p>⠠⠏⠗⠑⠎⠎ ⠞⠓⠑ &lt;strong>⠘⠂⠎⠟⠥⠁⠗⠑&lt;/strong> ⠃⠥⠞⠞⠕⠝⠲&lt;/p></code></pre>
+				<aside class="example" title="A single word in italics">
+					<pre><code class="html">&lt;p>⠠⠏⠗⠑⠎⠎ ⠞⠓⠑ &lt;em>⠘⠂⠎⠟⠥⠁⠗⠑&lt;/em> ⠃⠥⠞⠞⠕⠝⠲&lt;/p></code></pre>
 				</aside>
 
-				<aside class="example" title="Identifying the braille characters used for the bold">
-					<pre><code class="html">&lt;p>⠠⠏⠗⠑⠎⠎ ⠞⠓⠑ &lt;strong>&lt;span class="boldind">⠘⠂&lt;/span>⠎⠟⠥⠁⠗⠑&lt;/strong> ⠃⠥⠞⠞⠕⠝⠲&lt;/p></code></pre>
+				<aside class="example" title="Use <em> with a class value for emphasis other than bold and italics.">
+					<pre><code class="html">&lt;p>⠠⠏⠗⠑⠎⠎ ⠞⠓⠑ &lt;em class="custom-1">⠘⠂⠎⠟⠥⠁⠗⠑&lt;/em> ⠃⠥⠞⠞⠕⠝⠲&lt;/p></code></pre>
+					
 				</aside>
-
-				<aside class="example" title="A custom emphasis mark">
-					<pre><code class="html">&lt;p>⠲⠲⠲ ⠎⠁⠊⠙ ⠓⠑ &lt;span class="colorblue">&lt;span class="brlind">⠸⠼⠶&lt;/span>⠑⠝⠄⠞ ⠛⠕⠄ ⠝⠕ ⠍⠕⠗⠑ ⠙⠕⠥⠛⠓&lt;span class="brlind">⠸⠼⠄&lt;/span>&lt;/span>
-⠐⠣⠓⠁⠙⠝⠄⠞ ⠁⠝⠽ ⠍⠕⠗⠑ ⠍⠕⠝⠑⠽⠐⠜⠲&lt;/p></code></pre>
-				</aside>
+<p class="ednote" title="Use markup for braille-only indicators">
+  An earlier draft identified the braille-only indicators that are used for things like emphasis. This idea was not discussed with the group and has been left out. If we decide to include it, we could use spans.
+  Questions include, should we identify each kind of indicator in a unique way (bold character, bold passage, but also underline character, underline passage, etc.)-WF
+</p>
 			</section>
 
 			<section id="figures">
@@ -127,17 +203,22 @@
 						<p>[^figure^]</p>
 					</dd>
 
-					<dt>Supported <code>class</code> values:</dt>
+					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li>TBD</li>
+							<li>None</li>
 						</ul>
 					</dd>
 				</dl>
 
-				<aside class="example" title="...">
-					<pre><code class="html"></code></pre>
-				</aside>
+<aside class="example" title="A caption following an image.">
+					<pre><code class="html">&ltfigure>
+   &lt;img width="54"
+     height="27"
+     src="..\images\diagram187.jpg"
+     alt="⠠⠙⠊⠁⠛⠗⠁⠍ ⠕⠋ ⠞⠺⠕ ⠊⠝⠞⠑⠗⠎⠑⠉⠞⠊⠝⠛ ⠉⠊⠗⠉⠇⠑⠎"/>
+   &lt;figcaption>"⠠⠋⠊⠛⠥⠗⠑⠀⠼⠁⠒⠀⠠⠞⠓⠑⠎⠑⠀⠉⠊⠗⠉⠇⠑⠎⠀⠁⠗⠑⠀⠧⠑⠗⠽⠀⠊⠝⠞⠑⠗⠑⠎⠞⠊⠝⠛⠲"&lt;/figcaption>
+&lt/figure></code></pre></aside>
 			</section>
 
 			<section id="notes">
@@ -153,17 +234,17 @@
 					<dd>
 						<ul class="nomark">
 							<li><code>doc-noteref</code></li>
-							<li><code>doc-foonote</code></li>
+							<li><code>doc-footnote</code></li>
 							<li><code>doc-endnotes</code></li>
 						</ul>
 					</dd>
 				</dl>
 
-				<aside class="example" title="A note reference and footnote">
+				<aside class="example" title="A note reference and footnote or endnote must share a unique ID to be linked.">
 					<pre><code class="html">&lt;p>⠲⠲⠲ ⠎⠞⠁⠞⠑⠎ ⠞⠓⠊⠎ ⠊⠝ ⠠⠞⠓⠕⠍⠏⠎⠕⠝⠲
-&lt;a href="#footnote_28" role="doc-noteref">⠰⠔⠼⠃⠓&lt;/a>&lt;/p>
+&lt;a href="#footnote-28" role="doc-noteref">⠰⠔⠼⠃⠓&lt;/a>&lt;/p>
 
-&lt;p id="footnote_28" role="doc-footnote">⠰⠔⠼⠃⠓ ⠠⠞⠓⠕⠍⠏⠎⠕⠝⠂ ⠠⠞⠲⠒ ⠠⠏⠥⠃⠇⠊⠉ ⠠⠎⠏⠑⠁⠅⠊⠝⠛ ⠠⠙⠑⠍⠽⠎⠞⠊⠋⠊⠑⠙ ⠲⠲⠲&lt;/p></code></pre>
+&lt;p id="footnote-28" role="doc-footnote">⠰⠔⠼⠃⠓ ⠠⠞⠓⠕⠍⠏⠎⠕⠝⠂ ⠠⠞⠲⠒ ⠠⠏⠥⠃⠇⠊⠉ ⠠⠎⠏⠑⠁⠅⠊⠝⠛ ⠠⠙⠑⠍⠽⠎⠞⠊⠋⠊⠑⠙ ⠲⠲⠲&lt;/p></code></pre>
 				</aside>
 			</section>
 
@@ -173,13 +254,13 @@
 				<dl id="elemdef-h1-h6" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
-						<p>[^h1^] - [^h6^]</p>
+						<p data-cite="html">[^h1^] - [^h6^], [^title^], [^header^]</p>
 					</dd>
 
-					<dt>Supported <code>class</code> values:</dt>
+					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li>TBD</li>
+							<li>Additional general formatting instructions</li>
 						</ul>
 					</dd>
 				</dl>
@@ -192,6 +273,12 @@
 					<pre><code class="html">&lt;h1>⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠛&lt;br/>
 ⠠⠞⠓⠑ ⠠⠗⠑⠍⠁⠗⠅⠁⠃⠇⠑ ⠠⠞⠗⠥⠞⠓&lt;br/>
 ⠁⠃⠕⠥⠞ ⠠⠚⠕⠓⠝ ⠠⠎⠍⠊⠞⠓&lt;/h1></code></pre>
+				</aside>
+				<aside class="example" title="Running header, also called a running head or running heading when used for the title of the work being transcribed">
+					<pre><code class="html">&lt;title>⠠⠁⠀⠠⠞⠁⠇⠑⠀⠷⠀⠠⠞⠺⠕⠀⠠⠉⠊⠞⠊⠑⠎&lt;/title></code></pre>
+				</aside>
+				<aside class="example" title="Running header when used for a chapter heading and not the title of the entire work.">
+					<pre><code class="html">&lt;header>⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠠⠊⠊⠊⠲⠀⠠⠞⠓⠑⠀⠠⠝⠊⠛⠓⠞⠀⠠⠄⠎⠓⠁⠙⠕⠚⠎⠀&lt;/header></code></pre>
 				</aside>
 
 				<aside class="example" title="Headings with additional formatting instructions">
@@ -206,10 +293,11 @@
 				<dl id="elemdef-img" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
-						<p>[^img^]</p>
+						<p data-cite="html">[^img^], [^a^]</p>
+						<p>Note that <code>img</code> is used for jpg, png, and svg, while <code>a</code> is used for pdf.
 					</dd>
 
-					<dt>Supported <code>class</code> values:</dt>
+					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
 							<li>TBD</li>
@@ -220,8 +308,11 @@
 				<aside class="example" title="A diagram with alternative text">
 					<pre><code class="html">&lt;img width="54"
      height="27"
-     src="..\graphics\diagram187.jpg"
+     src="..\images\diagram187.jpg"
      alt="⠠⠙⠊⠁⠛⠗⠁⠍ ⠕⠋ ⠞⠺⠕ ⠊⠝⠞⠑⠗⠎⠑⠉⠞⠊⠝⠛ ⠉⠊⠗⠉⠇⠑⠎"/></code></pre>
+				</aside>
+				<aside class="example" title="Use a download link for graphics that use a file type that is not a traditional image">
+					<pre><code class="html">&lta href="/images/butterfly.pdf" download>Graphic of a butterfly&lt/a></code></pre>
 				</aside>
 			</section>
 
@@ -231,19 +322,20 @@
 				<dl id="elemdef-linenum" class="elemdef">
 					<dt>Element Name:</dt>
 					<dd>
-						<p data-cite="html"> [^span^]</p>
+						<p data-cite="html"> [^span^], [^div^]</p>
+						<p>Note that <code>span</code> is used to denote the specific line number, with an ID, class, and aria-label, while <code>div</code> is used to denote the section that contains line numbers.
 					</dd>
 
-					<dt>Supported <code>class</code> values:</dt>
+					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li>TBD</li>
+							<li><code>id</code>, <code>linenum</code>, <code>prose</code>, <code>poetry</code></li>
 						</ul>
 					</dd>
 				</dl>
 
 				<aside class="example" title="A paragraph with line numbers">
-					<pre><code class="html">&lt;div class="linenumbers">
+					<pre><code class="html">&lt;div class="linenumbers" class="prose">
   &#8230;
   &lt;p>⠲⠲⠲ ⠺⠁⠝⠙⠑⠗⠑⠙ ⠥⠏ ⠞⠓⠑ ⠎⠞⠕⠝⠽ ⠏⠁⠞⠓⠲ 
     &lt;span id="line135" class="linenum" aria-label="⠼⠁⠉⠑"/>
@@ -299,11 +391,12 @@
 						<p>[^ol^], [^ul^], [^dl^]</p>
 					</dd>
 
-					<dt>Supported <code>class</code> values:</dt>
+					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li>TBD</li>
+							<li><code>exercise</code>, <code>glossary</code>, <code>index</code>, <code>toc</code>, <code>poetry</code>, <code>generic</code></li>
 						</ul>
+							<p>Note that <code>ol</code> is preferred for <code>exercise</code>, <code>poetry</code>, and <code>generic</code>, while <code>dl</code> is preferred for <code>glossary</code>, <code>index</code>, and <code>toc</code>. <code>ul</code> can be used for basic lists.</p>
 					</dd>
 				</dl>
 
@@ -318,20 +411,26 @@
 				</aside>
 
 				<aside class="example" title="A multiple-choice exercise">
-					<pre><code class="html">&lt;ol class="nonumber">
+					<pre><code class="html">&lt;ol class="exercise">
   &lt;li>⠼⠁⠲ ⠠⠺⠓⠊⠉⠓ ⠏⠇⠁⠝⠑⠞ ⠊⠎ ⠉⠇⠕⠑⠎⠞ ⠞⠕ ⠞⠓⠑ ⠎⠥⠝⠦&lt;/li>
-  &lt;ol class="nonumber">
+  &lt;ol class="exercise">
     &lt;li>⠁⠲ ⠠⠧⠑⠝⠥⠎&lt;/li>
     &lt;li>⠃⠲ ⠠⠍⠑⠗⠉⠥⠗⠽&lt;/li>
     &lt;li>⠉⠲ ⠠⠍⠁⠗⠎&lt;/li>
   &lt;/ol>
   &lt;li>⠼⠃⠲ ⠠⠓⠕⠺ ⠍⠁⠝⠽ ⠍⠕⠕⠝⠎ ⠙⠕⠑⠎ ⠠⠍⠁⠗⠎ ⠓⠁⠧⠑⠦&lt;/li>
-  &lt;ol class="nonumber">
+  &lt;ol class="exercise">
     &lt;li>⠁⠲ ⠼⠚&lt;/li>
     &lt;li>⠃⠲ ⠼⠁&lt;/li>
     &lt;li>⠉⠲ ⠼⠃&lt;/li>
   &lt;/ol>
   &#8230;
+&lt;/ol></code></pre>
+				</aside>
+				<aside class="example" title="A table of contents with links">
+					<pre><code class="html">&lt;h1>⠠⠞⠁⠃⠇⠑⠀⠕⠋⠀⠠⠉⠕⠝⠞⠑⠝⠞⠎&lt;/h1>
+&lt;ol class="toc">
+  &lt;li>⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠑ &lt;a href="#33">⠼⠉⠉&lt;/a>&lt;/li>
 &lt;/ol></code></pre>
 				</aside>
 			</section>
@@ -343,9 +442,12 @@
 					<dt>Element(s):</dt>
 					<dd>
 						<p>[^div^], [^span^]</p>
+<p class="ednote" title="Use [span] for all page numbers?">
+  It's possible to treat a span as a div (and vice versa), so it may be simpler to treat all page numbers as either span or div regardless of whether they interrupt another element.-WF
+</p>
 					</dd>
 
-					<dt>Supported <code>class</code> values:</dt>
+					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
 							<li><code>doc-pagebreak</code></li>
@@ -360,8 +462,8 @@
 				</aside>
 
 				<aside class="example" title="Page break before a new section heading">
-					<pre><code class="html">&lt;div class="keeptgr">
-   &lt;div class="keepwithnext" id="pagexvii" role="doc-pagebreak" aria-label="⠠⠠⠭⠧⠊⠊"/>
+					<pre><code class="html">&lt;div class="doc-pagebreak">
+   &lt;div id="pagexvii" role="doc-pagebreak" aria-label="⠠⠠⠭⠧⠊⠊"&lt;/>
    &lt;h2>⠠⠋⠕⠗⠑⠺⠕⠗⠙&lt;/h2>
 &lt;/div>
 &lt;p>⠠⠞⠓⠊⠎ ⠃⠕⠕⠅ ⠊⠎ ⠁⠊⠍⠑⠙ ⠁⠞ ⠲⠲⠲&lt;/p></code></pre>
@@ -377,10 +479,10 @@
 						<p>[^p^]</p>
 					</dd>
 
-					<dt>Supported <code>class</code> values:</dt>
+					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li>TBD</li>
+							<li><code>blocked</code>, <code>displayed</code>, <code>directions</code>, <code>generic</code></li>
 						</ul>
 					</dd>
 				</dl>
@@ -389,8 +491,8 @@
 					<pre><code class="html">&lt;p>⠠⠞⠓⠑ ⠟⠥⠊⠉⠅ ⠃⠗⠕⠺⠝ ⠋⠕⠭ ⠚⠥⠍⠏⠎ ⠕⠧⠑⠗ ⠞⠓⠑ ⠇⠁⠵⠽ ⠙⠕⠛⠲&lt;/p></code></pre>
 				</aside>
 
-				<aside class="example" title="A paragraph of text with modified margins">
-					<pre><code class="html">&lt;p class="display-57">⠠⠞⠓⠊⠎ ⠊⠎ ⠊⠝⠙⠑⠝⠞⠑⠙ ⠲⠲⠲&lt;/p></code></pre>
+				<aside class="example" title="A blocked paragraph that is flush with the left margin">
+					<pre><code class="html">&lt;p class="blocked">⠠⠞⠓⠊⠎⠀⠊⠎⠀⠝⠕⠞⠀⠊⠝⠙⠑⠝⠞⠑⠙ ⠲⠲⠲&lt;/p></code></pre>
 				</aside>
 			</section>
 
@@ -401,43 +503,21 @@
 					<dt>Element(s):</dt>
 					<dd>
 						<p>[^pre^]</p>
+						<p>Note that <code>pre</code> should be avoided unless otherwise necessary. When <code>pre</code> is used, the formatting will be hardcoded and not reflowable for different page sizes. In future revisions, additional terms will be defined to reduce instances where <code>pre</code> is needed.</p>
 					</dd>
 
-					<dt>Supported <code>class</code> values:</dt>
+					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li>TBD</li>
+							<li>None</li>
 						</ul>
 					</dd>
 				</dl>
 
 				<aside class="example" title="Preformatted text">
-					<pre><code class="html">&lt;pre class="keeptgr">⠁ ⠨⠜⠨⠝⠫⠳   ⠺⠄⠽⠉⠵⠹⠧  ⠨⠎⠳⠰⠹
+					<pre><code class="html">&lt;pre>⠁ ⠨⠜⠨⠝⠫⠳   ⠺⠄⠽⠉⠵⠹⠧  ⠨⠎⠳⠰⠹
   ⠸⠜⠐⠙⠓⠋⠓⠶ ⠑⠓⠛⠓⠙⠓⠋⠓ ⠙⠐⠊⠛⠊⠐⠙⠓⠋⠓
 &lt;/pre></code></pre>
-				</aside>
-			</section>
-
-			<section id="running-hd">
-				<h4>Running headers</h4>
-
-				<dl id="elemdef-running-hd" class="elemdef">
-					<dt>Element(s):</dt>
-					<dd>
-						<p>[^header^]</p>
-					</dd>
-
-					<dt>Supported <code>class</code> values:</dt>
-					<dd>
-						<ul class="nomark">
-							<li>TBD</li>
-						</ul>
-					</dd>
-				</dl>
-
-				<aside class="example" title="A running header for a chapter">
-					<pre><code class="html">&lt;h1 id="ch-17">⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠁⠛&lt;/h1>
-&lt;header>⠠⠙⠗⠲ ⠠⠞⠓⠕⠗⠝⠑⠲ ⠼⠁⠛&lt;/header></code></pre>
 				</aside>
 			</section>
 
@@ -447,14 +527,15 @@
 				<dl id="elemdef-table" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
-						<p>[^table^]</p>
+						<p>[^table^], [^tr^], [^th^], [^td^], [^thead^], [^tbody^], [^tfoot^]</p>
 					</dd>
 
-					<dt>Supported <code>class</code> values:</dt>
+					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li>TBD</li>
+							<li><code>listed</code>, <code>linear</code>, <code>stairstep</code></li>
 						</ul>
+						<p>Note that <code>listed</code>, <code>linear</code>, and <code>stairstep</code> are table types that are specific to North American braille formatting. Additional table types can be added. The use of these classes signifies the file creator's recommendation that a specific type of braille table formatting be used but the user or reading system may ignore this recommendation.
 					</dd>
 				</dl>
 
@@ -478,7 +559,27 @@
   &lt;/tr>
 &lt;/table></code></pre>
 				</aside>
-
+				
+				<aside class="example" title="A table with a recommended table type">
+					<pre><code class="html">&lt;table class="listed">
+  &lt;tr>
+    &lt;th>⠠⠝⠁⠍⠑&lt;/th>
+    &lt;th>⠠⠎⠉⠕⠗⠑&lt;/th>
+  &lt;/tr>
+  &lt;tr>
+    &lt;td>⠠⠚⠕⠓⠝&lt;/td>
+    &lt;td>⠼⠃⠑&lt;/td>
+  &lt;/tr>
+  &lt;tr>
+    &lt;td>⠠⠍⠁⠭&lt;/td>
+    &lt;td>⠼⠃⠃&lt;/td>
+  &lt;/tr>
+  &lt;tr>
+    &lt;td>⠠⠞⠁⠗⠁&lt;/td>
+    &lt;td>⠼⠃⠓&lt;/td>
+  &lt;/tr>
+&lt;/table></code></pre>
+				</aside>
 				<aside class="example" title="A table with header and body">
 					<pre><code class="html">&lt;table>
   &lt;thead>
@@ -500,6 +601,34 @@
   &lt;/tbody>
 &lt;/table></code></pre>
 				</aside>
+			</section>
+						<section id="Transcriber's Notes">
+				<h4>Transcriber's Notes</h4>
+
+				<dl id="elemdef-p" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p>[^span^], [^div^]</p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li><code>tn</code>
+						</ul>
+					</dd>
+				</dl>
+
+				<aside class="example" title="A short transcriber's note">
+					<pre><code class="html">&ltspan class="tn">⠈⠨⠣⠙⠑⠋⠊⠝⠊⠞⠊⠕⠝⠈⠨⠜&lt/span></code></pre></aside>
+				<aside class="example" title="A transcriber's note that contains multiple blocks">
+					<pre><code class="html">&ltdiv class="tn">
+	&lth2>⠈⠨⠣⠠⠎⠽⠍⠃⠕⠇⠎⠀⠥⠎⠑⠙&lt/h2>
+		&lt;ul>
+			&lt;li>⠨⠿⠒⠀⠊⠎⠀⠞⠕&lt;/li>
+			&lt;li>⠨⠿⠒⠒⠀⠵⠈⠨⠜&lt;/li>
+		&lt;/ul>
+&lt/div></code></pre></aside>
 			</section>
 		</section>
 		<div data-include="../../common/acknowledgements.html" data-include-replace="true"></div>
