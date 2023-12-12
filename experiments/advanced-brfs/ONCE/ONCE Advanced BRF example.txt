@@ -1,0 +1,65 @@
+File: SPAIN Advanced BRF example.brf
+Page width: 40 cells
+Page length: 29 lines
+Pages: 30
+Line spacing: single
+Encoding: USA Braille Computer Code (USA ASCII)
+Braille code: Spanish Braille uncontracted (grade 1)
+Printing: double sided
+
+Notes:
+
+0. The text has been prepared to be printed in braille on double-sided pages. The first line of each page contains the braille page numbering on the right margin of the first line of the page, and the ink page a little further to the left. The last line of text on odd-numbered pages is reserved for a "footprint" to identify the document and differentiate it from others.
+
+1. This sample file contains 13 characters that can't be save in 6-dot braille cell (Section "Computer Code") in a brf file. Usually, Spain uses 8-dot braille cell to generate this kind of files with another extension ("example.ban" = Braille ANsi file), and then page length is 23 lines. 8-dot braille cell is available in the Spanish ANSI table for computerized braille approved by the Spanish Braille Commission (CBE), in order to be used by the different typhlotechnical devices with output to braille support in the Windows environment. This table has been prepared based on the ANSI table standard included in the ISO-8859-1 standard. This version includes the corresponding Unicode codes and the way to present all codes using the ONCE CBE 8-dots braille font (https://www.once.es/servicios-sociales/braille/comision-braille-espanola/documentos-tecnicos/documentos-tecnicos-relacionados-con-otras-materias/documentos/v1-tabla-ansi-espanola-para-braille-computarizado-v2.pdf/download).
+
+2. Usually, in the production of books in Spain, a braille cover and an index ("Contents") are added.
+
+3. This document contains a "Table of Contents" with references to the ink pages on which they appear. In Spain, this content "Table of Contents" is transcribed where it appears, and a specific braille index ("Contents") is added at the end of the document, which contains the same sections as the "Table of Contents" and sections used as relevant titles in formatting tasks.
+
+4. First level titles (heading level 1) are highlighted with braille-specific underlining using the "c" braille character (dots 14) and are center ligned texts. Heading level 2 are center ligned texts. Heading level 3, 4, 5... are left aligned texts, are left-aligned text, and text beyond the end of the line appears indented by two characters. 
+
+4. Due to its length, it is not possible to make this table as a simple table as in the previous example, and the text must be transcribed in its entirety for each country.
+
+5. The sidebar contains text. Sidebar is indicated using four characters ":" (dots 25) at the begining with the "name" of the sidebar, the text of sidebar, and four characters "=" (dots 2356) for closing it. The text of sidebar is typed between both typographic resources.
+
+6. Footnote appears next line after using 12 characters ":" (dots 25) that indicate that text is a footnote. Footnote appears in the same page where the number for footnote is used.
+
+7. Normally special symbols would need to be included on a special Symbols Page or in a Transcriber's Note. Transcriber's Note was added to this file using a braille cell wiht dots 345 for opening and dots 126 explaining that there is an icon. 
+
+8. Complex equation: The equation is divided by an operation sign that is repeated on the next line, which is also more indented, to indicate that it is not a new expression. In general, the expressions will be divided by signs of relational operators and then by arithmetic operators. The sign will be repeated at the beginning of the next line. 
+
+9. Inline Math: When a mathematical expression appears within a text, two spaces must be left before and two after. If the end of the mathematical expression coincides with the end of the line, it will not be necessary to leave any space at the beginning of the next line.
+
+10. Standard paper used for embossers is continuous (tractor/Z fold/fanfold) braille paper. Braille printing paper measurements are 12 inchs from top to bottom, and 13 inchs wide (aprox.). This size of braille printing paper allows it to be cut and leaves enough space for a binding. After being printed and cut, the paper has enough surface area to contain 40 characters (40 cells), 29 lines for 6-dot braille cells (23 lines for 8-dot braille cells), and a binding space.
+
+11. Computer Code section contains 13 characters that can't be save in 6-dot braille cell (see Note No. 1). Text that overflows a line appears in the next indented 4 spaces. An attempt is made to reproduce the structure it has (blank spaces and lines).
+
+12. Different resources are used for highlighted texts.
+
+- Yellow highlighted text appears between 35 signs (one at the beginning and one at the end).
+
+- Strikethrough text appears between signs 5-2 (one braille cell with dot 5 ant the other braille cell with dot 2, one double sign at the beginning and one double sign at the end).
+
+- Bold text appears between double signs 35-35 (one at the beginning and one at the end).
+
+- Blue text appears between signs 35-35 (one at the beginning and one at the end).
+
+- Green text appears between signs 56-35 (one at the beginning and one at the end). 
+
+- Text with a very different font appears between the signs 35-35-35 (one at the beginning and one at the end).
+
+13. The ennote is indicated on the page on which it appears, but the transcription of the text it contains is carried at the end of the entire text, in a new section called "Notes", where a header line informs the section/s of the text in which it is found (hierarchy titles 1 and 2). This section is before the braille index added ("Contents") to the braille output.
+
+14. The quote appears between blank lines, like normal text but indented two characters from the left margin of all the lines it occupies.
+
+15. French text has been respected (vocabulary, accents, numbers) in accordance with the document "Code braille français uniformisé pour la transcription des textes imprimés (CBFU)" [PDF], second edition of 2008, published by the CEBF (Commission Évolution du Braille Français - Commission for the Evolution of French Braille). This complete document can be found updated on the Valentin Haüy Association website: https://www.avh.asso.fr/fr/tout-savoir-sur-le-braille/lecriture-braille/code-braillefrancais-uniformise. But it is also common, for technical reasons, use to write numbers in Braille the prefix formed by the dots 3456 is used before the first ten letters of the alphabet.
+
+16. For "a bunch of headings", it is used blank lines for separating them from the preceding and following text.  
+
+17. For "diacritics", see "Notes to the braille edition" diacritical marks and phonetic symbols.
+
+18. "Index": The hierarchy shown by the indented text is respected for its location through the use of touch.
+
+18. Usually, in the production of books in Spain, a braille cover and an index ("Contents") are added.
+

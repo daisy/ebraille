@@ -1,0 +1,31 @@
+File: SVK-Advanced BRF Example.brf
+Page width: 40 cells
+Page length: 25 lines
+Pages: 18
+Line spacing: single
+Encoding: USA Braille Computer Code (USA ASCII)
+Braille code: Slovak
+
+Notes:
+
+Headings.
+In Slovakia, the headings available (from most to least significant) are:
+1. H1: Centred heading with all the lines of the heading centered, if possible lower line of heading longer than first. One empty line above and one below. 
+2. H2: Centred heading with all the lines of heading starting on the same cell. One empty line above and one below. 
+3. H3: Starting at the first cell on the left. One empty line above and one below. 
+4. h4: Starting at the first cell on the left. One empty line above, no empty line below. 
+All following headings, lower than 4, are transcribed as level 4. 
+
+Like James, I changed headings of The Raven, Letter 1, and Tables too. They were Heading 2s in the word document, I have treated them as Heading 1s for consistency. Similarly, I have treated Simple table and Complex table as Heading 2s rather than Heading 3s.
+
+I have included print page numbers, in slovakia in the right upper corner of braille page and then at the place of real ink-print pagebreak. 
+
+I have used staircase table for the complex table in the documen .
+
+Footnote: 
+As there is only 1 footnote, I have inserted it below the text for the purpose of explanation, how it would be transcribed in this case might it be several footnotes at the end of chapter. Might it be a book and many footnotes, the list of footnotes would be at the end of the volume.
+
+
+Diacritics: 
+We do not have rules for phonetical transcribtion yet in Slovakia. We though will try to adopt IPA. I used our standard way of diacritic letter handling.
+

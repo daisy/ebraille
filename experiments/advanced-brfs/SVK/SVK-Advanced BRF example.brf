@@ -1,0 +1,526 @@
+                                      #a
+        ,advanced ,,brf ,sample
+
+  ,this sample file is intended to
+include multiple kinds of advanced
+formatting tasks so that we can better
+understand the international needs of
+braille formatting4 ,where are the
+differences5 ,the similarities5
+,remember to keep notes along with your
+transcription so that your decisions can
+be better understood by the other folks
+in the working group4
+
+           ,table of contents
+       ,advanced ,,brf ,sample #a
+
+,the ,raven  ,by ,edgar ,a4 ,poe '''' #c
+,letter #a ,to ,mrs4 ,saville1
+    ,england4 ''''''''''''''''''''''' #d
+,tables ''''''''''''''''''''''''''''' #e
+  ,simple table with additional
+    text for longer heading ''''''''' #e
+  ,complex table with additional
+    text for longer heading '''' #e   #a
+,footnotes ''''''''''''''''''''''''' #aj
+,math ,samples ''''''''''''''''''''' #aa
+  ,complex equation   '''''''''''''' #aa
+  ,simpler ,example '''''''''''''''' #aa
+  ,number ,line '''''''''''''''''''' #ab
+  ,vertical ,addition ,problems '''' #ac
+  ,inline ,math '''''''''''''''''''' #ac
+,kitchen ,sink ,section '''''''''''' #ad
+  ,computer ,code   '''''''''''''''' #ad
+  ,different language   '''''''''''' #af
+  ,here are a bunch of headings '''' #ag
+  ,finally1 some diacritics '''''''' #ah
+,index ''''''''''''''''''''''''''''' #ai
+
+
+
+
+
+
+
+
+
+
+
+                                      #b
+                                      #c
+              ,the ,raven
+          ,by ,edgar ,a4 ,poe
+
+,once upon a midnight dreary1 while
+  ,i pondered1 weak and weary1
+,over many a quaint and curious volume
+  of forgotten lore--
+,while ,i nodded1 nearly napping1
+  suddenly there came a tapping1
+,as of some one gently rapping1 rapping
+  at my chamber door4
+7',tis some visiter17 ,i muttered1
+  7tapping at my chamber door--
+,only this and nothing more47
+,ah1 distinctly ,i remember it was in
+  the bleak ,december2
+,and each separate dying ember wrought
+  its ghost upon the floor4
+,eagerly ,i wished the morrow2--vainly
+  ,i had sought to borrow
+
+
+
+                                      #c
+                                    #c-d
+,from my books surcease of
+  sorrow--sorrow for the lost ,lenore--
+,for the rare and radiant maid
+  whom the angels name ,lenore--
+,nameless here for evermore4
+
+  ,this text is not a part of the line
+numbered poetry and is just a paragraph
+on the same print page4 ,how does that
+affect your transcription5
+
+                                     #d
+               ,letter #a
+     ,to ,mrs4 ,saville1 ,england4
+
+  ,st4 ,petersburgh1 ,dec4 #aath1 #agcc4
+  ,you will rejoice to hear that no
+disaster has accompanied the
+commencement of an enterprise which you
+have regarded with such evil
+forebodings4 ,i arrived here yesterday1
+and my first task is to assure my dear
+sister of my welfare and increasing
+confidence in the success of my       #d
+undertaking4                        #d-e
+
+  ,this text is not a part of the line
+numbered prose4 ,it's just a regular
+paragraph on the same page1 does that
+have any effect on the transcription
+process5
+
+                                      #e
+                ,tables
+
+        ,simple table with additional
+        text for longer heading
+
+@.<table@.>
+,animal   ,meat ""  ,dairy
+,cow """  ,beef ""  ,milk
+,chicken  ,poultry  ,egg
+
+       ,complex table with additional
+        text for longer heading
+
+  ,note that this table example will not
+fit on a printed page1 so to view the
+entire table1                         #e
+please use ,word's ,web ,layout       #e
+view4 ,in your notes section1 please
+explain the different
+
+@.<,the original table had
+#ac columns and #e rows4 ,it was changed
+to staircase table with columns-lines
+swap4@.>
+'''
+  ,,eu accession
+    ,capital
+      ,official language8s0
+        ,population
+,germany
+  #aieg
+    ,berlin
+      ,german
+        #ha1gii1fjj
+,belgium
+  #aieg
+    ,brussels
+      ,dutch1 ,french1 ,german
+        #aa1jjg1jbj
+
+                                      #f
+
+                                      #e
+,france
+  #aieg
+    ,paris
+      ,french
+        #fe1hba1hhe
+,italy
+  #aieg
+    ,rome
+      ,italian
+        #fj1fdb1cjh
+,luxembourg
+  #aieg
+    ,luxembourg
+      ,luxembourgish1 ,french1 ,german
+        #eaa1hdj
+,netherlands
+  #aieg
+    ,amsterdam
+      ,dutch
+        #af1fhe1bjj
+
+
+                                      #g
+
+                                      #e
+,denmark
+  #aigc
+    ,copenhagen
+      ,danish
+        #e1edg1jhh
+,ireland
+  #aigc
+    ,dublin
+      ,irish1 ,english
+        #d1dfg1hed
+,united ,kingdom
+  #aigc
+    ,london
+      ,english
+        #fb1jda1gjh
+,greece
+  #aiha
+    ,athens
+      ,greek
+        #aa1abe1agi
+
+
+                                      #h
+
+                                    #e-f
+,spain
+  #aihf
+    ,madrid
+      ,spanish1 ,galician1
+      ,catalan],valencian1 ,basque
+        #dg1aej1hai
+,portugal
+  #aihf
+    ,lisbon
+      ,portuguese
+        #aa1cag1aib
+
+
+
+
+                                      #f
+,history of ,canada ,sidebar 8h#d0
+  ,the history of ,canada begins with
+the arrival of the ,paleo-,indians to
+,north ,america thousands of years ago
+to the present day4 ,the lands
+encompassing present-day ,canada have
+been inhabited for millennia by       #i
+,indigenous peoples1 with             #f
+distinct trade networks1 spiritual
+beliefs1 and styles of social
+organization4
+
+  ,this open book
+@.<,graphic symbol3 ,a black and white
+icon of an open book@.>
+indicates anytime that you should
+probably read a book rather than relying
+on ,wikipedia when making a sidebar
+about ,canada<#4#a>4
+
+               ,footnotes
+
+#a ,this footnote is to make clear that
+  the history of ,canada is rich and
+  detailed and really deserves a lot
+  more space than this formatting
+  document is giving it4
+
+
+
+
+                                     #aj
+                                      #g
+             ,math ,samples
+
+           ,complex equation
+
+  ,this is an example that is
+nonsensical but is really1 really long
+so we can see what happens when an
+equation is longer than the available
+braille line4
+@.<equation@.>
+a8b 6c 6d 6e 6f 6g 6h 6j0 7"
+7ab 6ac 6ad 6ae 6af 6ag 6ah 6aj
+  ,and now here is some more text so we
+can see how regular text interacts with
+a displayed equation4
+
+           ,simpler ,example
+
+,this simple example is the equation for
+finding the radius of a circle4
+,a 7^pr/#b:
+  ,and some more text for good measure4
+
+                                     #aa
+                                      #g
+             ,number ,line
+
+,figure #a3
+-#f -#e -#d -#c -#b -#a #j  #a #b #c"
+#d #e #f
+@.<,a number line that starts at
+negative six and proceeds by #a until
+reaching positive six4 ,note that it
+includes zero4 ,the arrows are closed
+and there is one on each side4@.>
+  ,even though this number line is a
+picture1 please braille it as though it
+is a number line and not a picture4
+,we'll do an example of a picture in a
+moment4 ,please also braille this
+caption though1 even this part4
+
+
+
+
+
+
+
+                                     #ab
+                                      #g
+     ,vertical ,addition ,problems
+
+@.<,four vertical math equations4 ,first
+is #hd plus #ha1 then #bd plus #ia1 then
+#c plus #da1 and finally #he plus #b4@.>
+#hd   #bd    #c   #he
+ ha    ia    da     b
+333   333   333   333
+
+             ,inline ,math
+
+  ,making this advanced document is a
+lot more difficult than ,i anticipated4
+,really went beyond my knowledge of how
+to use ,word4 ,please forgive the
+shortcuts that ,i took to make it
+happen6 ,here's an inline math equation3
+#b 6#b 7#d4 ,really stretches the
+definition of the word 7equation7 but
+should meet our purposes4
+
+
+
+                                     #ac
+                                      #h
+        ,kitchen ,sink ,section
+
+            ,computer ,code
+
+    ,with font and indents
+
+import mysql4connector
+  mydb 7 mysql4connector4connect8
+  host77localhost71
+  user77myusername71
+  password77mypassword71
+  database77mydatabase7
+  0
+
+  mycursor 7 mydb4cursor80
+
+  sql 7 7,,select 9 ,,from customers
+  ,,where address ,like ' #pway #p'7
+
+  mycursor4execute8sql0
+  myresult 7 mycursor4fetchall80
+
+  for x in myresult3
+   print8x0                          #ad
+                                    #h-i
+           ,end ,notes1 type forms1
+           and a block quote
+
+@.<,in the following paragraph
+italics have been used to represent
+yellow highlighting1 bold to represent
+blue highlighting1 and underlining to
+represent green highlighting4 
+,crossed-out and hand-written
+passages are indicated by appropriate
+indicators4@.>
+  ,this example is to show off some
+different kinds of type forms4 <9,this
+text1 for example1 is highlighted
+yellow4<9> ,and the text after the colon
+has a strikethrough3 <@:why would you
+put text in just to strike through
+it5<@:> <2,and for good measure1 here is
+                                      #i
+some text with blue highlighting4<2>
+<-,and here is some green
+highlighting4<-> <',and this text is a
+very different font and sort of looks
+like handwriting4<'> ,and finally1   #ae
+                                      #i
+note that this text has an
+endnote4<#4#a>
+
+  ,here is a quote4 ,it is so profound
+  that it must be indented slightly and
+  that makes it a blockquote4
+
+  ,here is some regular text to get us
+back on track after that blockquote4
+
+,footnote
+
+#a ,i'm sorry for the contrast issues
+that may have come up with all those
+highlighting examples4 ,i hope that the
+text made it easy enough to know what
+was going on4
+
+          ,different language
+
+  ,here is some text that is in ,french4
+,it is from ,le ,monde and is about ,bob
+,dylan4 ,note that it is displayed4
+                                     #af
+                                      #i
+"fr" ,travers>e par la ,route #ff1 la
+ville de ,tulsa1 dans l',oklahoma1 est
+devenue1 le #aj mai #bjbb1 le ,louvre
+des fans de ,bob ,dylan4 ,ce jour-l"(1
+le ,bob ,dylan ,center a ouvert ses
+portes1 troisi"$me >tape d>sormais d'un
+p"$lerinage qui passe par ,hibbing1 dans
+le ,minnesota - localit> de l'enfance de
+celui qui est n> en #aida sous le nom de
+,robert ,zimmerman -1 et ,greenwich
+,village1 le quartier boh"$me
+new-yorkais d'o"+ il se mit en route
+pour la gloire4""
+,here is some non-displayed text that is
+,english to make a clear division
+between the ,french text and the rest of
+the ,english text4
+
+     ,here are a bunch of headings
+
+,this is a heading #c
+
+,this is a heading #d
+,this is a heading #e                #ag
+                                   #i-aj
+,this is a heading #f
+  ,in your notes about your
+transcription1 tell us which of those
+six headings mattered to your braille
+rules4 ,how do your braille rules manage
+different headings5
+
+       ,finally1 some diacritics
+
+  braille noun 8br"1l0 a system of
+writing for the blind that uses
+characters made up of raised dots
+                                     #aj
+  ,,html noun 8h*-t>-em-el0 a markup
+language that is used to create
+documents on the ,world ,wide ,web
+incorporating text1 graphics1 sound1
+video1 and hyperlinks
+
+
+
+
+
+                                     #ah
+                                     #aa
+                 ,index
+
+,a
+   abbreviations
+   above sentences1 #ah-d
+   above]below sentences
+   optional format for1 #ah-e
+   endnotes1 #af-ac
+   exercises1 #aj-ag
+   font attributes omitted1 #e-d
+   parts of speech1 #e-d
+   postal code in affiliation1 #b-i
+   punctuation1 #af-ac
+   tables1 #aa-ac1 #aa-ae
+   acronyms1 #aa-ac
+   headings1 #aa-ab
+   transcriber's notes1 #c-c
+   academic degrees1 #b-d1 #b-ab
+   acknowledgements
+   cartoons1 #ad-i
+   format for1 #b-ae
+  advertising copy in magazines
+   omitted1 #b-ad
+  affiliations                       #ai
+   authors1 #b-ab
+                                     #ab
+   transcriber]transcription segment1
+     #b-i
+   agency decisions1 #a-b
+   endnote sections1 #af-ad
+   expendable materials1 #aj-a
+   repeated headings in1 #aj-a
+
+,b
+   back matter
+   definition of1 #a-g
+   ,,bana4 ,see ,braille ,authority of
+      ,north ,america
+   bibliographies1 #bb-a
+   annotated1 #bb-c
+   font attributes1 #bb-b
+   foreign language
+   format for1 #bb-b
+   format for1 #bb-a
+   long dash1 #bb-b
+   punctuation in1 #bb-b
+  blank cells
+   analogies1 #ah-d
+   box lines1 #g-b                   #bj
+   braille guide words1 #ba-f
+   centered headings1 #d-f
+   columns1 #aa-d
+                                     #ac
+   displayed materials1 #i-c1 #i-d
+   end-of-volume statement1 #a-h
+   entry word segment1 #ba-aj
+   entry words1 #bj-g
+   insertions1 #ah-e1 #ah-g
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                     #ba
+

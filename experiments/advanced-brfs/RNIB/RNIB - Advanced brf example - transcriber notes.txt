@@ -1,0 +1,77 @@
+File: Advanced BRF Example.brf
+Page width: 38 cells
+Page length: 27 lines
+Pages: 16
+Line spacing: single
+Encoding: USA Braille Computer Code (USA ASCII)
+Braille code: Unified English Braille uncontracted (UEB grade 1)
+
+Notes:
+
+1. Headings.
+In the UK, the headings available (from most to least significant) are:
+a. Centred heading with a new page, line 3 start (ending in colons)
+b. Centred heading (ending in colons or dot 2s)
+c. Centred heading (without end markers)
+d. Cell 1-5 heading, preceded by a blank line (except where it follows a centred heading)
+e. Cell 3-1 heading, with italics
+f. Cell 3-1 heading, with a different typeform such as bold, or no typeform
+g. Cell 3 heading, with or without typeform, where the text continues on the same line after a full stop or a colon (for all other headings listed above, the text continues on the next line)
+
+Note that full stops are added to the end of side headings if there is no other punctuation there.
+
+The actual headings selected will vary depending on the document. Eg. In a book, type a, b, and c might be used. In a short leaflet, type b, d and e might be used. 
+
+In this document, I have used the following headings:
+     Heading 1: centred heading ending with colons
+     Heading 2: centred headings without end markers
+     Heading 3: cell 1-5 side headings 
+     Heading 4: cell 3-1 italicised side heading 
+     Heading 5: cell 3-1 bold side heading.
+     Heading 6: cell 3-1 side heading, no typeform.
+
+As it’s a short document, I haven’t started any sections on a new page. If it were a longer document, such as a book, then the contents, start of main text, index and End notes would start on a new page on line 3.
+
+Although The Raven, Letter 1, and Tables are Heading 2’s in the word document, I have treated them as Heading 1’s for consistency. Similarly, I have treated Simple table and Complex table as Heading 2’s rather than Heading 3’s.
+
+2. I have included print page numbers. The beginning of a new numbered print page is shown by the print page indicator: dot 5, colon, number of new page. This is centred on a line alone. The print page number is also shown at the top left of the page (line 1) and all following pages until a page showing a new print indicator is reached.
+
+3. A header has been inserted on line 1 for each heading 1 (centred heading ending with colons).
+
+4. Contents: 
+a. I have removed the first 2 entries which appeared in the supplied word doc (Advanced BRF Sample 1 and Table of Contents, as these relate to the title and Contents heading.) Print page numbers have been replaced with braille page numbers. Main entries start in cell 1, sub-entries in cell 3, sub-sub-entries in cell 5 etc. Runovers are 2 cells further in than the deepest entry. The last 5 cells of the line are left clear for the braille page numbers.
+b. I have added an entry for the Index and End Note sections. 
+
+5. Line numbering: line numbers are written in cell 1 without numeric indicators, and at least 2 blank cells are needed between the line number and the start of the text on the line. Line numbers for the Raven have a maximum of 2 digits so the text margin has been indented by 4 cells. Line numbers for the letter only have 1 digit so the margin has been indented by 3 cells. I have followed print in numbering every 5th line for the poetry, and every line for the letter. Note that it is the print lines which are numbered, not the braille. For prose the line number appears at the beginning of the braille line in which the start of the relevant print line occurs. The point at which each print line ends is usually left unmarked.
+
+6. Poetry: normally we would indent the first line of each stanza by 2 cells rather than inserting blank lines between them as print does. However, in this case, the blank line in print is included in the line numbering, so I have used blank lines instead. So in this instance, because of the indented margin, all lines begin in 5, with runovers starting in cell 9. A dot 2’s endmarker has been used to mark the end of the piece.
+
+7. Letter: the address/date at the beginning starts at the left margin, with any runover indented by at least 2 cells. I have indented the runover by 4 cells here, so that it doesn’t start in the same cell as the following paragraph. Also, due to the indented margin, I have split the heading “To Mrs. Saville, England” over 2 lines (although it will fit on 1), to make it clearer that it is centred. 
+
+8. Simple table: this has been taken over onto a new braille page to avoid it being split by a page turn. Leadlines of consisting of dot 5 are inserted between entries where there is a gap of 4 or more cells, but not between column headings. Columns are aligned on the left, with a minimum of 2 blank cells between then. Dot 2’s are generally used to end tables. 
+
+9. Complex Table: as this is too big to transcribe as a tabulated table, I have converted it to paragraph form, with a note at the beginning explaining the layout. I have also inverted the table, so that the row headings are now column headings. This way there are less column headings to remember. The note at the beginning and the first row need to be on the same page, otherwise the table can be split over pages. Dot 2’s generally end paragraph form tables.
+
+10. The side bar has been enclosed within box markers (Braillists Manual 13.6), and positioned between paragraphs at the most appropriate point.
+
+11. Footnote: As there is only 1 footnote, I have inserted the text of the note, within square brackets, at the point of reference. (Braillists’ Manual, 21.2.1). However, if there were a lot of footnotes, then the point of reference would be marked with, e.g. an asterisked number, *1, and the notes themselves would be collected together at the end of the document in a section headed Footnotes. An entry Footnotes would then be added to the contents list. 
+
+12. Maths expressions set out on separate lines in print are usually brailled in cell 5 with runovers in cell 7.
+
+13. Number line: As this is too wide to treat as in GTM 4.4.1, I have described it instead. The caption has been inserted within square brackets, followed by the description in transcriber note indicators.
+
+14. Vertical Addition Problems: I have followed GTM 4.1.7 here and used numeric passage indicators around the whole group of sums. 
+
+15. Computer Code: I have followed print regarding the layout. Runover lines have been indented by 4 cells (mainly because that’s what we used to do with computer code in SEB, and we still tend to follow that layout). I have inserted a blank line before the start of the computer code text, to separate it from the preceding text, and ended it with dot 2’s.
+
+16. Type forms – rather than using one of the transcriber-defined typeform indicators for highlighting, we would try and use bold, italics, or underlining instead and explain this in a transcriber note or Note to Braille Edition. E.g. if bold wasn’t used elsewhere in the document, we might use that for highlighting. I have done similar here and just used the first transcriber defined typeform indicator for the crossed-out text. I have inserted a transcriber’s note after the heading “End Notes, Type forms …” to explain this. However, if these features had appeared elsewhere as well, I would have used a Note to Braille Edition at the beginning of the file instead.
+
+17. End note: I have used a superscript for the point of reference. The text of the note has been inserted at the end of the document, in a section [End Note], as this is what we would normally do with end or book notes.
+
+18.  Blockquote – these are normally indented so that paragraphs start in cell 7 with runovers in cell 5.
+
+19. French: this is also indented to cell 7-5, as in print. I have used French code signs for the accented letters, as per Method 2 in the UKAAF document Transcribing Foreign Language Material in UEB.
+
+20. Diacritics: I have used the UEB primary and secondary stress signs here and explained this in a transcriber’s note.
+
+21. Index: main entries start in cell 1, sub-entries in cell 3, sub-sub-entries in cell 5 and so on. Runovers are 2 cells further in than the deepest entry. The header for an index is of the form “Index. a”, “Index. b” etc.

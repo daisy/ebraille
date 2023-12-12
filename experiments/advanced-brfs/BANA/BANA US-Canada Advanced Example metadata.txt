@@ -1,0 +1,29 @@
+File: BANA US-Canada Advanced BRF Example.brf 
+Page width: 40 cells
+Page length: 25 lines
+Braille Pages:
+Contracted 18
+Uncontracted 19
+Line spacing: single
+Encoding: USA ASCII
+Braille code: Unified English Braille contracted (UEB grade 2)
+
+I originally transcribed this in contracted braille because that is how a document like this would typically be done. 
+I've also provided an uncontracted version since all of the other files have been submitted in uncontracted braille (I obviously missed or forgot something!) 
+
+Notes:
+1. This file was transcribed according to The Rules of Unified English Braille 2nd Edition 2013, Guidelines for Technical Material 2014 and Braille Formats: Principles of Print-To-Braille Transcription 2016.
+ 
+2. In the US and Canada, there are three basic styles of heading: h1 (centred), h2 (cell-5) and h3 (cell-7).
+An h4 can be shown as a lead-in to a paragraph, and heading levels can be adjusted as needed.
+In the "Here are a bunch of headings" section on print page 9 I adjusted the heading levels: I made the section heading an h1 the h3 an h2, etc. To  show an h4 I left the italics and treated it as a lead-in to a paragraph. I did the same to show an h5, which has no typeform. I used it as the lead-in to the paragraph that followed.
+
+3. A complex document would normally have a Special Symbols page to advise the reader of technical symbols with which they may be unfamiliar. In this sample I inserted Transcriber's Notes at the beginning of sections where lesser-known symbols occurred.
+I used transcriber-defined symbols for the highlighted text on print page 8. 
+The TN preceding the letter was not  required in the uncontracted version because none of the print numbered lines began partway through a braille line.
+ 
+4. Major sections of text (such as the Index) would often begin a new braille page, but I did not do so in this file because it is only a few pages long.
+
+5. Although Word treated the endnote reference as a Roman numeral i, Duxbury treated it as Arabic 1 and this is how I left it.
+
+6. Standard paper sizes are 11.5x11 and 8.5x11. While this is an agency decision, 11.5x11 tends to be the default and this is why it was used for this transcription.  
