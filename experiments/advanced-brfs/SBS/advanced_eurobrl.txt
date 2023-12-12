@@ -1,0 +1,784 @@
+
+advanced >brf sample
+====================
+
+this sample file is intended
+to include multiple kinds of
+advanced formatting tasks so
+that we can better under-
+stand the international
+needs of braille formatting.
+where are the differences?
+the similarities? remember
+to keep notes along with
+your transcription so that
+your decisions can be better
+understood by the other
+folks in the working group.
+
+     table of contents
+     -----------------
+
+advanced >brf sample   #,a
+  the raven .......... #:c
+  letter #a to mrs.
+    saville, england.  #/e
+  tables ............. #?f
+    simple table ..... #?f
+#a   table of contents   #a
+    complex table .... #?f
+math samples ......... #=ad
+  complex equation ... #=ad
+  simpler example .... #=ae
+  number line ........ #=ae
+  vertical addition
+    problems ......... #=af
+  inline math ........ #=af
+kitchen sink section   #(ah
+  computer code ...... #(ah
+    with font and in-
+      dents .......... #(ah
+  end notes, type
+    forms, and a block
+    quote ............ #(ai
+  different language   #*ba
+  here are a bunch of
+    headings ......... #*bb
+    this is a head-
+      ing #c ......... #*bb
+  finally, some dia-
+    critics .......... #*bc
+index ................ #,,bd
+  >a ................. #,,bd
+  >b ................. #,,be
+
+
+#a:  table of contents   #b
+
+the raven
+---------
+
+by edgar a. poe
+
+    once upon a midnight
+      dreary, while i pon-
+      dered, weak and weary,
+    over many a quaint and
+      curious volume of for-
+      gotten lore'-
+    while i nodded, nearly
+      napping, suddenly
+      there came a tapping,
+    as of some one gently
+      rapping, rapping at my
+      chamber door.
+ e  ('tis some visiter,) i
+      muttered, (tapping at
+      my chamber door'-
+    only this and nothing
+      more.)
+
+    ah, distinctly i remem-
+      ber it was in the
+      bleak december;
+#c       the raven       #c
+    and each separate dying
+      ember wrought its
+      ghost upon the floor.
+aj  eagerly i wished the
+      morrow;'- vainly i had
+      sought to borrow
+    from my books surcease
+      of sorrow'- sorrow for
+      the lost lenore'-
+    for the rare and radiant
+      maiden whom the angels
+      name lenore'-
+    nameless here for ever-
+      more.
+
+  this text is not a part of
+the line numbered poetry and
+is just a paragraph on the
+same print page. how does
+that affect your transcrip-
+tion?
+
+
+
+
+
+
+#c       the raven       #d
+
+letter #a
+to mrs. saville, england.
+-------------------------
+
+ a  st. petersburgh,
+    dec.#aath, #ag'-.
+ b    you will rejoice to
+    hear that no disaster
+    has accompanied the com-
+    mencement of
+ c  an enterprise which you
+    have regarded with such
+    evil forebodings. i ar-
+    rived here
+ d  yesterday, and my first
+    task is to assure my
+    dear sister of my wel-
+    fare and
+ e  increasing confidence in
+    the success of my under-
+    taking.
+
+  this text is not a part of
+the line numbered prose.
+it's just a regular para-
+graph on the same page, does
+#d       letter #a       #e
+that have any effect on the
+transcription process?
+
+
+tables
+------
+
+simple table
+::::::::::::
+
+animal   meat     dairy
+:::::::  :::::::  :::::
+cow ...  beef ..  milk
+chicken  poultry  egg
+
+complex table
+:::::::::::::
+  note that this table exam-
+ple will not fit on a print-
+ed page, so to view the en-
+tire table, please use
+word's web layout view. in
+your notes section, please
+explain the different
+
+
+
+#d?        tables        #f
+var.#a
+
+'<=country'<= :: >eu
+  accession :: capital ::
+  official language'=s= ::
+  population
+::::::::::::::::::::::::::::
+germany :: #aieg :: berlin
+  :: german :: #ha,gii,fjj
+belgium :: #aieg :: brussels
+  :: dutch, french, german
+  :: #aa,jjg,jbj
+france :: #aieg :: paris ::
+  french :: #fe,hba,hhe
+italy :: #aieg :: rome ::
+  italian :: #fj,fdb,cjh
+luxembourg :: #aieg :: lux-
+  embourg :: luxembourgish,
+  french, german :: #eaa,hdj
+netherlands :: #aieg ::
+  amsterdam :: dutch ::
+  #af,fhe,bjj
+denmark :: #aigc :: copen-
+  hagen :: danish ::
+  #e,edg,jhh
+ireland :: #aigc :: dublin
+  :: irish, english ::
+#e        tables         #g
+  #d,dfg,hed
+united kingdom :: #aigc ::
+  london :: english ::
+  #fb,jda,gjh
+greece :: #aiha :: athens ::
+  greek :: #aa,abe,agi
+spain :: #aihf :: madrid ::
+  spanish, galician, cata-
+  lan!,valencian, basque ::
+  #dg,aej,hai
+portugal :: #aihf :: lisbon
+  :: portuguese ::
+  #aa,cag,aib
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#e        tables         #h
+var.#b
+
+germany
+  >eu accession: #aieg
+  capital: berlin
+  official language'=s=:
+    german
+  population: #ha,gii,fjj
+belgium
+  >eu accession: #aieg
+  capital: brussels
+  official language'=s=:
+    dutch, french, german
+  population: #aa,jjg,jbj
+france
+  >eu accession: #aieg
+  capital: paris
+  official language'=s=:
+    french
+  population: #fe,hba,hhe
+italy
+  >eu accession: #aieg
+  capital: rome
+  official language'=s=:
+    italian
+  population: #fj,fdb,cjh
+
+#e        tables         #i
+luxembourg
+  >eu accession: #aieg
+  capital: luxembourg
+  official language'=s=:
+    luxembourgish, french,
+    german
+  population: #eaa,hdj
+netherlands
+  >eu accession: #aieg
+  capital: amsterdam
+  official language'=s=:
+    dutch
+  population: #af,fhe,bjj
+denmark
+  >eu accession: #aigc
+  capital: copenhagen
+  official language'=s=:
+    danish
+  population: #e,edg,jhh
+ireland
+  >eu accession: #aigc
+  capital: dublin
+  official language'=s=:
+    irish, english
+  population: #d,dfg,hed
+
+
+#e        tables        #aj
+united kingdom
+  >eu accession: #aigc
+  capital: london
+  official language'=s=:
+    english
+  population: #fb,jda,gjh
+greece
+  >eu accession: #aiha
+  capital: athens
+  official language'=s=:
+    greek
+  population: #aa,abe,agi
+spain
+  >eu accession: #aihf
+  capital: madrid
+  official language'=s=:
+    spanish, galician, cata-
+    lan!,valencian, basque
+  population: #dg,aej,hai
+portugal
+  >eu accession: #aihf
+  capital: lisbon
+  official language'=s=:
+    portuguese
+  population: #aa,cag,aib
+
+
+#e        tables        #aa
+  this open book graphic
+'<=symbol'<= indicates any-
+time that you should prob-
+ably read a book rather than
+relying on wikipedia when
+making a sidebar about cana-
+da.'*#a
+
+
+
+
+
+
+
+
+
+
+
+
+::::::::::::::::::::::::::::
+'*#a this footnote is to
+  make clear that the histo-
+  ry of canada is rich and
+  detailed and really de-
+  serves a lot more space
+  than this formatting docu-
+  ment is giving it.
+#f        tables        #ab
++::::::::::::::::::::::::::/
+l history of canada        
+l sidebar                  
+l   the history of canada  
+l begins with the arrival  
+l of the paleo-indians to  
+l north america thousands  
+l of years ago to the      
+l present day. the lands   
+l encompassing present-day 
+l canada have been inhab-  
+l ited for millennia by    
+l indigenous peoples, with 
+l distinct trade networks, 
+l spiritual beliefs, and   
+l styles of social organi- 
+l zation.                  
+l   for more information,  
+l you'll need more space   
+l than this sidebar al-    
+l lows. '<=symbol'<= this  
+l sidebar is in a box that 
+l is blue.                 
+h::::::::::::::::::::::::::j
+
+
+
+#f        tables        #ac
+
+math samples
+============
+
+
+complex equation
+----------------
+
+  this is an example that is
+nonsensical but is really,
+really long so we can see
+what happens when an equa-
+tion is longer than the
+available braille line.
+
+   a2b +c +d +e +f +g +h'
+     +j` =ab +ac +ad +ae'
+     +af +ag +ah +aj
+
+  and now here is some more
+text so we can see how regu-
+lar text interacts with a
+displayed equation.
+
+
+
+
+#g   complex equation   #ad
+
+simpler example
+---------------
+
+  this simple example is the
+equation for finding the
+radius of a circle.
+   >a =<p'r|;
+  and some more text for
+good measure.
+
+
+number line
+-----------
+
+9:::w:::w:::%:::w:::w:::w::o
+   -#d -#b  #j  #b  #d  #f
+
+figure #a': even though this
+  number line is a picture,
+  please braille it as
+  though it is a number line
+  and not a picture. we'll
+  do an example of a picture
+  in a moment. please also
+  braille this caption
+  though, even this part.
+#g     number line      #ae
+
+vertical addition problems
+--------------------------
+
+var.#a':
+
+#hd "+#ha "=...
+#bd "+#ia "=...
+#c "+#da "=...
+#he "+#b "=...
+
+var.#b':
+
+ #hd   #bd   # c   #he
++#ha  +#ia  +#da  +# b
+::::  ::::  ::::  ::::
+ ...   ...   ...   ...
+
+
+inline math
+-----------
+
+  making this advanced docu-
+ment is a lot more difficult
+than i anticipated. really
+went beyond my knowledge of
+how to use word. please for-
+#g     inline math      #af
+give the shortcuts that i
+took to make it happen+
+here's an inline math equa-
+tion: #b "+#b "=#d. really
+stretches the definition of
+the word (equation) but
+should meet our purposes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#g     inline math      #ag
+
+kitchen sink section
+====================
+
+
+computer code
+-------------
+
+with font and indents
+:::::::::::::::::::::
+
+var.#a':
+
+$$import mysql.connector
+
+mydb = mysql.connector."
+  connect(
+  host=""localhost"",
+  user=""myusername"",
+  password=""mypassword"",
+  database=""mydatabase""
+)
+
+mycursor = mydb.cursor()
+
+sql = """s"e"l"e"c"t *
+  "f"r"o"m customers
+#h    computer code     #ah
+  "w"h"e"r"e address "like
+  ''%way%''""
+
+mycursor.execute(sql)
+
+myresult = mycursor.fetch"
+  all()
+
+for x in myresult:
+  print(x)'.
+
+var.#b': '<=in #h-dot
+  braille code, if supported
+  by the embosser'<=
+
+
+end notes, type forms,
+and a block quote
+----------------------
+
+'<=yellow: ...'.
+  strikethrough: !=...!=
+  blue: !!...!.
+  green: *...*
+  handwriting: $...$'<=
+
+
+#h    end notes, ...    #ai
+  this example is to show
+off some different kinds of
+type forms. this text, for
+example, is highlighted yel-
+low.'. and the text after
+the colon has a strike-
+through: !=why would you put
+text in just to strike
+through it?!= !!and for
+good measure, here is some
+text with blue highlight-
+ing.!. *and here is some
+green highlighting.* $and
+this text is a very differ-
+ent font and sort of looks
+like handwriting.$ and fi-
+nally, note that this text
+has an endnote.'=i'=
+
+    here is a quote. it is
+  so profound that it must
+  be indented slightly and
+  that makes it a block-
+  quote.
+
+  here is some regular text
+to get us back on track af-
+#h*   end notes, ...    #bj
+ter that blockquote.
+
+
+different language
+------------------
+
+  here is some text that is
+in french. it is from le
+monde and is about bob dy-
+lan. note that it is dis-
+played.
+
+    <<$travers%e par la
+  $route '66, la ville de
+  $tulsa, dans l.$oklahoma,
+  est devenue, le '1# mai
+  '2#22, le $louvre des fans
+  de $bob $dylan/ $ce jour-
+  l{, le $bob $dylan $center
+  a ouvert ses portes, troi-
+  si~me %tape d%sormais d.un
+  p~lerinage qui passe par
+  $hibbing, dans le $minne-
+  sota -- localit% de l.en-
+  fance de celui qui est n%
+  en '1941 sous le nom de
+  $robert $zimmerman --, et
+#i   different lang.    #ba
+  $greenwich $village, le
+  quartier boh~me new-yor-
+  kais d.o} il se mit en
+  route pour la gloire/'.
+
+  here is some non-displayed
+text that is english to make
+a clear division between the
+french text and the rest of
+the english text.
+
+
+here are a bunch
+of headings
+----------------
+
+this is a heading #c
+::::::::::::::::::::
+
+this is a heading #d
+,,,,,,,,,,,,,,,,,,,,
+
+this is a heading #e
+
+this is a heading #f
+  in your notes about your
+transcription, tell us which
+#i       headings       #bb
+of those six headings mat-
+tered to your braille rules.
+how do your braille rules
+manage different headings?
+
+
+finally, some diacritics
+------------------------
+
+  braille noun >{'br"al>} a
+system of writing for the
+blind that uses characters
+made up of raised dots
+  >html noun >{'"ach-='=t"e-
+='=em-'el>} a markup lan-
+guage that is used to create
+documents on the world wide
+web incorporating text, gra-
+phics, sound, video, and
+hyperlinks
+
+
+
+
+
+
+
+#i,)     diacritics     #bc
+
+index
+=====
+
+
+>a
+abbreviations
+'- above sentences, #ah-#d
+'- above!,below sentences
+  optional format for,
+    #ah-#e
+'- endnotes, #af-#ac
+'- exercises, #aj-#ag
+'- font attributes omitted,
+  #e-#d
+'- parts of speech, #e-#d
+'- postal code in affilia-
+  tion, #b-#i
+'- punctuation, #af-#ac
+'- tables, #aa-#ac, #aa-#ae
+  acronyms, #aa-#ac
+  headings, #aa-#ab
+'- transcriber's notes,
+  #c-#c
+'- academic degrees, #b-#d,
+  #b-#ab
+
+#aa      index >a       #bd
+'- acknowledgements
+  cartoons, #ad-#i
+  format for, #b-#ae
+advertising copy in maga-
+  zines
+'- omitted, #b-#ad
+affiliations
+'- authors, #b-#ab
+'- transcriber!,transcrip-
+  tion segment, #b-#i
+agency decisions, #a-#b
+'- endnote sections, #af-#ad
+'- expendable materials,
+  #aj-#a
+  repeated headings in,
+    #aj-#a
+
+
+>b
+back matter
+'- definition of, #a-#g
+>bana. see braille authority
+  of north america
+bibliographies, #bb-#a
+'- annotated, #bb-#c
+'- font attributes, #bb-#b
+
+#aa      index >b       #be
+'- foreign language
+  format for, #bb-#b
+'- format for, #bb-#a
+'- long dash, #bb-#b
+'- punctuation in, #bb-#b
+blank cells
+'- analogies, #ah-#d
+'- box lines, #g-#b
+'- braille guide words,
+  #ba-#f
+'- centered headings, #d-#f
+'- columns, #aa-#d
+'- displayed materials,
+  #i-#c, #i-#d
+'- end-of-volume statement,
+  #a-#h
+'- entry word segment,
+  #ba-#aj
+'- entry words, #bj-#g
+'- insertions, #ah-#e,
+  #ah-#g
+
+
+
+
+
+
+#aa      index >b       #bf
+
+endnotes
+::::::::
+'=i'= i'm sorry for the con-
+  trast issues that may have
+  come up with all those
+  highlighting examples. i
+  hope that the text made it
+  easy enough to know what
+  was going on.
+
+
+        ::::::::::::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#aa      index >b       #bg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
