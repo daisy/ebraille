@@ -61,8 +61,17 @@
 				<p>This section only identifies elements for which specific braille formatting requirements are defined
 					by this specification. Authors may use any other [[html]] elements in their eBraille
 					publications.</p>
+				<p>The recommendations in this specification are included to help facilitate a number of desired features, including:</p>
+				<ul>
+					<li>To define an object which doesn't have an [[html]] tag, e.g. a line number, transcriber note.</li>
+					<li>If needed for navigation to such items, e.g. navigate directly to a transcriber note</li>
+					<li>To show/hide such items - e.g. show/hide print page indicators.</li>
+					<li>To enhance interoperability across different braille regions, so a different stylesheet can be swapped in to reformat a document according to local braille rules.</li>
+					<li>To better facilitate consistency amongst authoring and reading tools.</li>
+				</ul>  
 			</div>
 
+		
 			<section id="boxes">
 				<h4>Boxed text</h4>
 
@@ -99,13 +108,13 @@
 				</aside>
 							<li><code>nemeth</code> is used for a box that has begin and end Nemeth symbols in its box lines.</li>
 							<aside class="example" title="A Nemeth box">
-					<pre><code class="html">&lt;div class="box" class="nemeth">
+					<pre><code class="html">&lt;div class="box nemeth">
    &lt;p>⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑&lt;/p>
 &lt;/div></code></pre>
 				</aside>
 							<li>Various strings can be used for boxes with specific text needs. Examples could include boxes with color. There is no way to define all possible strings that could be used in such a scenario. The writing software will need to define the limitations and allow the user to input the string, which is then used as the class to allow the CSS to input that string into the box line.</li>
 						<aside class="example" title="A box with the color blue">
-					<pre><code class="html">&lt;div class="box" class="blue">
+					<pre><code class="html">&lt;div class="box blue">
    &lt;p>⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑&lt;/p>
 &lt;/div></code></pre>
 				</aside>
@@ -175,17 +184,17 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>script</code>, <code>underline</code>, <code>custom-1</code>, <code>custom-2</code>, <code>custom-2</code>, <code>custom-3</code>, <code>custom-4</code>, <code>custom-5</code></li>
+							<li><code>script</code>, <code>underline</code>, <code>custom-1</code>, <code>custom-2</code>, <code>custom-3</code>, <code>custom-4</code>, <code>custom-5</code></li>
 						</ul>
 					</dd>
 				</dl>
 
 				<aside class="example" title="A single word in italics">
-					<pre><code class="html">&lt;p>⠠⠏⠗⠑⠎⠎ ⠞⠓⠑ &lt;em>⠘⠂⠎⠟⠥⠁⠗⠑&lt;/em> ⠃⠥⠞⠞⠕⠝⠲&lt;/p></code></pre>
+					<pre><code class="html">&lt;p>⠠⠏⠗⠑⠎⠎ ⠞⠓⠑ &lt;em>⠨⠂⠎⠟⠥⠁⠗⠑&lt;/em> ⠃⠥⠞⠞⠕⠝⠲&lt;/p></code></pre>
 				</aside>
 
 				<aside class="example" title="Use <em> with a class value for emphasis other than bold and italics.">
-					<pre><code class="html">&lt;p>⠠⠏⠗⠑⠎⠎ ⠞⠓⠑ &lt;em class="custom-1">⠘⠂⠎⠟⠥⠁⠗⠑&lt;/em> ⠃⠥⠞⠞⠕⠝⠲&lt;/p></code></pre>
+					<pre><code class="html">&lt;p>⠠⠏⠗⠑⠎⠎ ⠞⠓⠑ &lt;em class="custom-1">⠈⠼⠂⠎⠟⠥⠁⠗⠑&lt;/em> ⠃⠥⠞⠞⠕⠝⠲&lt;/p></code></pre>
 					
 				</aside>
 <p class="ednote" title="Use markup for braille-only indicators">
@@ -335,7 +344,7 @@
 				</dl>
 
 				<aside class="example" title="A paragraph with line numbers">
-					<pre><code class="html">&lt;div class="linenumbers" class="prose">
+					<pre><code class="html">&lt;div class="linenum prose">
   &#8230;
   &lt;p>⠲⠲⠲ ⠺⠁⠝⠙⠑⠗⠑⠙ ⠥⠏ ⠞⠓⠑ ⠎⠞⠕⠝⠽ ⠏⠁⠞⠓⠲ 
     &lt;span id="line135" class="linenum" aria-label="⠼⠁⠉⠑"/>
@@ -388,7 +397,7 @@
 				<dl id="elemdef-lists" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
-						<p>[^ol^], [^ul^], [^dl^]</p>
+						<p>[^ol^], [^ul^], [^dl^], [^li^]</p>
 					</dd>
 
 					<dt>Reserved <code>class</code> values:</dt>
@@ -614,15 +623,15 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>tn</code>
+							<li><code>transcriber-note</code>
 						</ul>
 					</dd>
 				</dl>
 
 				<aside class="example" title="A short transcriber's note">
-					<pre><code class="html">&ltspan class="tn">⠈⠨⠣⠙⠑⠋⠊⠝⠊⠞⠊⠕⠝⠈⠨⠜&lt/span></code></pre></aside>
+					<pre><code class="html">&ltspan class="transcriber-note">⠈⠨⠣⠙⠑⠋⠊⠝⠊⠞⠊⠕⠝⠈⠨⠜&lt/span></code></pre></aside>
 				<aside class="example" title="A transcriber's note that contains multiple blocks">
-					<pre><code class="html">&ltdiv class="tn">
+					<pre><code class="html">&ltdiv class="transcriber-note">
 	&lth2>⠈⠨⠣⠠⠎⠽⠍⠃⠕⠇⠎⠀⠥⠎⠑⠙&lt/h2>
 		&lt;ul>
 			&lt;li>⠨⠿⠒⠀⠊⠎⠀⠞⠕&lt;/li>
