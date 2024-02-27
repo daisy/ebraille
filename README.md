@@ -7,3 +7,9 @@ The main objectives for the next phase of the project are:
 * Identify the most important use cases and determine the scope.
 * Analyze if these use cases can be addressed by an existing standard or by extending an existing standard, or do we need to develop a completely new standard.
 
+## Documents
+
+- [eBraille specification](https://daisy.github.io/ebraille/)
+- [eBraille Tagging Best Practices](https://daisy.github.io/ebraille/best-practices/tagging/)
+- eBraille CSS Best Practices (in development)
+
