@@ -4,11 +4,13 @@
 		<meta charset="utf-8" />
 		<title>eBraille Tagging Best Practices</title>
 		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
+		<script src="../../common/js/status.js" class="remove"></script>
 		<script class="remove">
 			//<![CDATA[
 			var respecConfig = {
 				shortName: 'ebraille-tag',
 				specStatus: 'base',
+				daisyStatus: 'ED',
 				latestVersion: 'https://daisy.github.io/ebraille/best-practices/tagging',
 				edDraftURI: null,
 				editors: [
@@ -27,7 +29,8 @@
 						url: 'https://daisy.org'
 					}
 				],
-				github: 'daisy/ebraille'
+				github: 'daisy/ebraille',
+				postProcess: [addDAISYStatus]
 			};
 			// ]]>
 		</script>
