@@ -18,6 +18,18 @@
 						name: 'Willow Free',
 						company: 'American Printing House for the Blind',
 						url: 'https://www.aph.org/'
+					},
+					{
+						name: 'Matt Garrish',
+						company: 'DAISY Consortium',
+						url: 'https://daisy.org/'
+					}
+				],
+				authors: [
+					{
+						name: 'James Bowden',
+						company: 'Royal National Institute of Blind People',
+						url: 'https://www.rnib.org.uk/'
 					}
 				],
 				logos: [
@@ -77,9 +89,9 @@
 		
 			<section id="boxes">
 				<h4>Boxed text</h4>
-
+				<p>Boxes would be used any time that text needs to be enclosed in a full lines and/or columns of braille characters. The specific braille characters and where they appear will be determined by CSS. As an example, you might have text that is preceded and followed by a full line of the same braille character but you could also have variations or full columns of braille characters flanking the text on either side.</p>
 				<dl id="elemdef-box" class="elemdef">
-					<dt>Element(s):</dt>
+										<dt>Element(s):</dt>
 					<dd>
 						<p>[^div^]</p>
 					</dd>
@@ -88,7 +100,6 @@
 					<dd>
 						<ul class="nomark">
 							<li><code>box</code>, <code>nemeth</code>, various strings</li>
-<!--Need to know what classes to use for boxes with text, such as color or other indicators. Now sure how to define.-->
 						</ul>
 					</dd>
 				
@@ -128,7 +139,7 @@
 </section>
 			<section id="Braille grade">
 				<h4>Braille grade</h4>
-
+				<p>Braille grade refers to whether contractions are used in the braille transcription. In the United States, for example, grade 1 braille uses no contractions, while grade 2 uses any applicable contractions. Documents can be in one grade but with sections that appear in a different grade.</p>
 				<dl id="elemdef-p" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
@@ -150,7 +161,7 @@
 			</section>
 			<section id="caption">
 				<h4>Captions</h4>
-
+				<p>Captions refer to any text in print that is associated with an image. The text is not added by the transcriber, like a description or alt text, but instead is transcribed from the print.</p>
 				<dl id="elemdef-p" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
@@ -176,7 +187,7 @@
 			</section>
 			<section id="em">
 				<h4>Emphasis</h4>
-
+				<p>Emphasis works differently in braille than it does in print in that the emphasized characters do not themselves change but instead additional characters are added that precede, and sometimes follow, the emphasized text. The following elements will not add the braille characters themselves but will instead just track where emphasis is placed so that reading systems can potentially offer features that utilize this information.</p>
 				<dl id="elemdef-em-strong" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
@@ -188,6 +199,11 @@
 					<dd>
 						<ul class="nomark">
 							<li><code>script</code>, <code>underline</code>, <code>custom-1</code>, <code>custom-2</code>, <code>custom-3</code>, <code>custom-4</code>, <code>custom-5</code></li>
+							<ul class="nomark">
+								<li><code>script</code> is used to denote text that is meant to mimic handwriting.</li>
+								<li><code>underline</code> is used to denote text that is underlined.</li>
+								<li><code>custom-#</code> is used in UEB to denote text that is emphasized in a way not covered by a planned type of emphasis. For example, you could use it for green highlighting since UEB has no means to denote that kind of emphasis. It could similarly be applied to other braille codes that have emphasis types not covered by the types available.</li>
+							</ul>
 						</ul>
 					</dd>
 				</dl>
@@ -200,15 +216,11 @@
 					<pre><code class="html">&lt;p>⠠⠏⠗⠑⠎⠎ ⠞⠓⠑ &lt;em class="custom-1">⠈⠼⠂⠎⠟⠥⠁⠗⠑&lt;/em> ⠃⠥⠞⠞⠕⠝⠲&lt;/p></code></pre>
 					
 				</aside>
-<p class="ednote" title="Use markup for braille-only indicators">
-  An earlier draft identified the braille-only indicators that are used for things like emphasis. This idea was not discussed with the group and has been left out. If we decide to include it, we could use spans.
-  Questions include, should we identify each kind of indicator in a unique way (bold character, bold passage, but also underline character, underline passage, etc.)-WF
-</p>
 			</section>
 
 			<section id="figures">
 				<h4>Figures</h4>
-
+				<p>[^figure^] is used to denote images. It must also include [^figcaption^] if that image is accompanied by a caption.</p>
 				<dl id="elemdef-figure" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
@@ -245,9 +257,9 @@
 					<dt>Supported <code>role</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>doc-noteref</code></li>
-							<li><code>doc-footnote</code></li>
-							<li><code>doc-endnotes</code></li>
+							<li><code>doc-noteref</code>- used to identify the actual symbol of the footnote or endnote. This symbol will typically appear as a superscripted number or symbol in the main body of text.</li>
+							<li><code>doc-footnote</code>- used to identify the entirity of a single footnote, so symbol and text.</li>
+							<li><code>doc-endnotes</code>- used to identify the entirity of a single endnote, so symbol and text.</li>
 						</ul>
 					</dd>
 				</dl>
@@ -272,7 +284,7 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li>Additional general formatting instructions</li>
+							<li>Additional general formatting instructions- these would be used when the transcriber has requirements for the heading that cannot otherwise be accounted for by the CSS.</li>
 						</ul>
 					</dd>
 				</dl>
@@ -342,6 +354,12 @@
 					<dd>
 						<ul class="nomark">
 							<li><code>id</code>, <code>linenum</code>, <code>prose</code>, <code>poetry</code></li>
+								<ul class = "nomark">
+									<li><code>id</code>- used to denote the actual line number in print to assist software with utilizing the information without the need for backtranslation.</li>
+									<li><code>linenum</code>- applied to the div and span to identify each as involving line numbers.</li>
+									<li><code>prose</code>- applied to the div to identify the section as involving prose text with line numbers (some braille regions have different rules for prose line numbers vs poetry line numbers).</li>
+									<li><code>poetry</code>- applied to the div to identify the section as involving poetic text with line numbers.</li>
+								</ul>
 						</ul>
 					</dd>
 				</dl>
@@ -364,14 +382,15 @@
 					<dt>Element Name:</dt>
 					<dd>
 						<p data-cite="html"> [^a^]</p>
+						<p>Note that links can be either external or internal.</p>
 					</dd>
 
 					<dt>Supported <code>role</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>doc-backlink</code></li>
-							<li><code>doc-biblioref</code></li>
-							<li><code>doc-glossref</code></li>
+							<li><code>doc-backlink</code>- A link that allows the user to return to a related location in the content.</li>
+							<li><code>doc-biblioref</code>- A link referencing a bibliographic entry.</li>
+							<li><code>doc-glossref</code>- A link to a glossary definition.</li>
 						</ul>
 					</dd>
 				</dl>
@@ -401,14 +420,26 @@
 					<dt>Element(s):</dt>
 					<dd>
 						<p>[^ol^], [^ul^], [^dl^], [^li^]</p>
+
+						<p>Note that <code>ol</code> is preferred for <code>exercise</code>, <code>poetry</code>, and <code>generic</code>, while <code>dl</code> is preferred for <code>glossary</code>, <code>index</code>, and <code>toc</code>. <code>ul</code> can be used for basic lists.</p>
 					</dd>
 
 					<dt>Reserved <code>class</code> values:</dt>
+						<p>The reserved class values in this section are only applied to [^ol^], [^ul^], and [^dl^].</p>
 					<dd>
 						<ul class="nomark">
-							<li><code>exercise</code>, <code>glossary</code>, <code>index</code>, <code>toc</code>, <code>poetry</code>, <code>generic</code></li>
+							<li><code>nomark</code>, <code>exercise</code>, <code>glossary</code>, <code>index</code>, <code>toc</code>, <code>poetry</code>, <code>generic</code></li>
+								<ul class="nomark">
+									<li><code>nomark</code>- used to prevent the automatic inclusion of list prefixes, like bullets or numbers.</li>
+									<li><code>exercise</code>- used to denote an exercise question, typically one in a list format like a multiple-choice question.</li>
+									<li><code>glossary</code>- used to denote a glossary entry.</li>
+									<li><code>index</code>- used to denote an indices entry.</li>
+									<li><code>toc</code>- used to denote a table of contents entry.</li>
+									<li><code>poetry</code>- used to denote a line in a work of poetry that is meant to formatted in stanzas or a way that is similar to a list.</li>
+									<li><code>generic</code>- used to denote very specific numeric values and recommended to be used sparingly as it will hardcode those cell positions. Examples of accompanying cell positions would be <code>1-3</code>, <code>5-7</code>, etc. with the first number representing which cell the item should start in and the second number representing which cell the second line and all subsequent lines should start in.</li>
+								</ul>
 						</ul>
-							<p>Note that <code>ol</code> is preferred for <code>exercise</code>, <code>poetry</code>, and <code>generic</code>, while <code>dl</code> is preferred for <code>glossary</code>, <code>index</code>, and <code>toc</code>. <code>ul</code> can be used for basic lists.</p>
+					
 					</dd>
 				</dl>
 
@@ -462,7 +493,7 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>doc-pagebreak</code></li>
+							<li><code>doc-pagebreak</code>- A separator denoting the position before which a break occurs between two contiguous pages in a statically paginated version of the content.</li>
 						</ul>
 					</dd>
 				</dl>
@@ -495,6 +526,12 @@
 					<dd>
 						<ul class="nomark">
 							<li><code>blocked</code>, <code>displayed</code>, <code>directions</code>, <code>generic</code></li>
+								<ul class="nomark">
+									<li><code>blocked</code>- used to denote a paragraph that should be left justified.</li>
+									<li><code>displayed</code>- used to denote a paragraph that is offset from the surrounding text, like a quote or supporting evidence for the main text.</li>
+									<li><code>directions</code>- used to denote directions that will typically accompany tests, quizzes, or multiple choice questions.</li>
+									<li><code>generic</code>- used to denote very specific numeric values and recommended to be used sparingly as it will hardcode those cell positions. Examples of accompanying cell positions would be <code>1-3</code>, <code>5-7</code>, etc. with the first number representing which cell the item should start in and the second number representing which cell the second line and all subsequent lines should start in.</li>
+							</ul>
 						</ul>
 					</dd>
 				</dl>
@@ -543,11 +580,12 @@
 					</dd>
 
 					<dt>Reserved <code>class</code> values:</dt>
+						<p>The reserved class values in this section are only applied to [^table^].</p>
 					<dd>
 						<ul class="nomark">
 							<li><code>listed</code>, <code>linear</code>, <code>stairstep</code></li>
 						</ul>
-						<p>Note that <code>listed</code>, <code>linear</code>, and <code>stairstep</code> are table types that are specific to North American braille formatting. Additional table types can be added. The use of these classes signifies the file creator's recommendation that a specific type of braille table formatting be used but the user or reading system may ignore this recommendation.
+						<p>Note that <code>listed</code>, <code>linear</code>, and <code>stairstep</code> are table types that are specific to North American braille formatting. Each is a different variation on a listed table format and is used when a table is too large to fit in the spatial layout found in print. Additional table types can be added. The use of these classes signifies the file creator's recommendation that a specific type of braille table formatting be used but the user or reading system may ignore this recommendation. For more information about each type, please refer to <a href="https://www.brailleauthority.org/formats/2016manual-web/frontmatter.html">Braille Formats: Principles of Print-to-Braille Transcription, 2016</a>.</p>
 					</dd>
 				</dl>
 
@@ -626,7 +664,7 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>transcriber-note</code>
+							<li><code>transcriber-note</code>- used to identify a [^span^] or [^div^] as a transcriber's note.</li>
 						</ul>
 					</dd>
 				</dl>
