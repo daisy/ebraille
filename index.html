@@ -9,6 +9,7 @@
 			//<![CDATA[
 			var respecConfig = {
 				shortName: 'ebraille',
+				daisyWG: 'eBraille Working Group',
 				specStatus: 'base',
 				daisyStatus: 'ED',
 				latestVersion: 'https://daisy.github.io/ebraille/',
@@ -55,7 +56,15 @@
 					}
 				],
 				github: 'daisy/ebraille',
-				postProcess: [addDAISYStatus]
+				postProcess: [addDAISYStatus],
+				xref: ["epub-33"],
+				localBiblio: {
+					"dpub-aria" : {
+						"title": "Digital Publishing WAI-ARIA Module",
+						"href": "https://www.w3.org/TR/dpub-aria/",
+						"publisher": "W3C"
+					}
+				}
 			};
 			// ]]>
 		</script>
@@ -67,8 +76,15 @@
 			<p>The specification defines eBraille, a digital reading format for braille publications. Unlike braille
 				formats that focus on interchanging embosser-ready braille, eBraille focuses on adapting braille for
 				reading in refreshable braille displays with different line lengths.</p>
-			<p>The eBraille format uses HTML for structuring braille content, adds requirements for including metadata
-				about a publication, and defines how to package the resulting file sets for distribution.</p>
+			<p>The eBraille format is built on an EPUB file set. It uses the EPUB package document to define the
+				metadata, resources, and reading order of a publication, and XHTML content documents to structure
+				braille content.</p>
+		</section>
+		<section id="sotd">
+			<div data-include="common/status.html" data-include-replace="true"></div>
+			<p>The eBraille Working Group is seeking input on all aspects of this document. It is particularly
+				interested in implementation experience both creating eBraille publication and creating reading systems
+				in which to read them.</p>
 		</section>
 		<section id="intro">
 			<h2>Introduction</h2>
@@ -90,7 +106,14 @@
 						<p data-cite="html">eBraille content documents contain all or part of the content of a braille
 							publication. They use a restrictive set of [[html]] tags and define processing requirements
 							through the use of [^global/class^] and [^/role^] attributes.</p>
-						<p>For more information, refer to <a href="#ebraille-content-docs"></a>.</p>
+						<p>For more information, refer to <a href="#ebrl-content-docs"></a>.</p>
+					</dd>
+
+					<dt><dfn>eBraille file set</dfn></dt>
+					<dd>
+						<p>The set of files that comprise an [=eBraille publication=]. The eBraille file set is
+							contained within the [=publication root=].</p>
+						<p>For more information, refer to <a href="#fileset-structure"></a>.</p>
 					</dd>
 
 					<dt><dfn>eBraille publication</dfn></dt>
@@ -106,21 +129,189 @@
 						<p>A system that processes [=eBraille publications=] for presentation to a user in a manner
 							conformant with this specification.</p>
 					</dd>
+
+					<dt><dfn>primary entry page</dfn></dt>
+					<dd>
+						<p>The default XHTML document that users reading an [=eBraille publication=] in a browser are
+							expected to encounter. It is located in the [=publication root=] and specially named to open
+							by default when users browse to a folder containing an eBraille publication.</p>
+						<p>The primary entry page is an implementation of the [=EPUB navigation document=] [[epub-33]].
+							It contains the table of contents for the publication.</p>
+						<p>For more information, refer to <a href="#ebrl-nav"></a></p>
+					</dd>
+
+					<dt><dfn>publication root</dfn></dt>
+					<dd>The root directory is the base of the [=eBraille file set=]. All the resources of an eBraille
+						publication are located at or below this directory.</dd>
 				</dl>
 			</section>
+
+			<section id="relationship-epub3" class="informative">
+				<h3>Relationship to EPUB 3</h3>
+
+				<p>[=eBraille publications=] introduce some additional requirements beyond those defined in EPUB 3, but
+					an eBraille publication is always a valid [=EPUB publication=] [[epub-33]]. The eBraille format only
+					differs from EPUB 3 in that it does not require eBraille publications to be packaged in an [=EPUB
+					container=] [[epub-33]].</p>
+			</section>
 		</section>
-		<section id="entry-page">
-			<h2>Primary entry page</h2>
+		<section id="ebrl-resources">
+			<h2>Publication resources</h2>
+
+			<section id="res-intro" class="informative">
+				<h3>Introduction</h3>
+
+				<p>An [=eBraille publication=] is typically composed of many resources &#8212; XHTML documents, CSS
+					files, tactile graphics, audio, video, etc.</p>
+
+				<p>As an eBraille publication is also a conforming [=EPUB publication=], the requirements for
+					publication resources are inherited from EPUB, specifically as defined in <a
+						data-cite="epub-33#sec-publication-resources"></a> [[epub-33]].</p>
+
+				<p>This section represents a subsetting of the EPUB requirements, as certain features, such as manifest
+					fallbacks, are disallowed in eBraille publications.</p>
+			</section>
+
+			<section id="fallbacks">
+				<h3>Resource fallbacks</h3>
+
+				<p>[=eBraille publications=] only support [=XHTML content documents=] in the [=spine=] [[epub-33]].
+					Consequently, the use of <a data-cite="epub-33#sec-manifest-fallbacks">manifest fallbacks</a>
+					[[epub-33]] is not supported.</p>
+
+				<p>The intrinsic fallback methods provided by [[html]] elements are supported.</p>
+			</section>
+
+			<section id="res-location">
+				<h3>Resource location</h3>
+
+				<p>[=eBraille publications=] do not support [=remote resources=] [[epub-33]]. All publication resources
+					MUST be located in or below the [=root directory=], as defined in <a href="#fileset-structure"
+					></a>.</p>
+			</section>
+		</section>
+		<section id="ebrl-fileset">
+			<h2>eBraille file set</h2>
+
+			<section id="fileset-intro" class="informative">
+				<h3>Introduction</h3>
+
+				<p>The [=eBraille file set=] is a physical manifestation of the <a
+						data-cite="epub-33#sec-container-abstract">OCF abstract container</a> [[epub-33]]. EPUB 3 only
+					defines its file set in the abstract because those files are expected to be zipped in the [=EPUB
+					container=] [[epub-33]]; the standard is not concerned with the physical files before they are
+					zipped or after they are unzipped. As a ZIP file does not have a true file system within it, the
+					rules for file naming and placement can only be defined virtually.</p>
+
+				<p>eBraille moves the rules for the OCF abstract container to the physical file set that exists before
+					and after packaging in the EPUB container. This allows an [=eBraille publication=] to be independent
+					of packaging, making it a format that can flexibly move between web deployment and end-user
+					distribution.</p>
+
+				<p>eBraille defines additional rules on the file structure in order to make it easier to read an
+					eBraille publication on the web or from a local file system. In particular, it requires the [=EPUB
+					navigation document=] [[epub-33]] be in the root of the file set and named <code>index.html</code>.
+					These requirements do not conflict with being able to package an eBraille publication as a valid
+					[=EPUB publication=] [[epub-33]], however.</p>
+			</section>
+
+			<section id="fileset-structure">
+				<h3>File and directory structure</h3>
+
+				<p>The [=eBraille file set=] MUST have a single common root directory &#8212; the [=publication root=]
+					&#8212; for all the contents of the [=eBraille publication=].</p>
+
+				<p>Unlike EPUB 3, the eBraille file set MUST NOT reference resources outside the publication root (i.e.,
+					[=remote resources=] [[epub-33]] are not supported).</p>
+
+				<p>The eBraille file set MUST contain the following files for compatibility with EPUB 3:</p>
+
+				<ul>
+					<li>The <a data-cite="epub-33#sec-zip-container-mime"><code>mimetype</code> file</a> [[epub-33]] in
+						the publication root.</li>
+					<li>The <a data-cite="epub-33#sec-container-metainf-container.xml"><code>container.xml</code>
+							file</a> under the <a data-cite="epub-33#sec-container-metainf"><code>META-INF</code>
+							directory</a> [[epub-33]].</li>
+				</ul>
+
+				<p>In addition, it MUST contain the following files in the publication root:</p>
+
+				<ul>
+					<li>The <a data-cite="epub-33#sec-nav">EPUB navigation document</a> [[epub-33]]. This file MUST be
+						named <code>index.html</code></li>
+					<li>The <a data-cite="epub-33#sec-package-doc">EPUB package document</a> [[epub-33]]. This file MUST
+						be named <code>package.opf</code></li>
+				</ul>
+
+				<p>There are no restrictions on where the rest of the eBraille publication content goes beyond the
+					requirement in EPUB 3 that <a data-cite="epub-33#sec-container-file-and-dir-structure">publication
+						resources are not allowed in the <code>META-INF</code> directory</a> [[epub-33]].</p>
+
+				<div class="note">
+					<p>For simplicity of unzipping and accessing a publication on a user's local file system, eBraille
+						creators are encouraged to place the rest of the publication in a subfolder (e.g., named
+							"<code>ebraille</code>"). This will make the navigation document the first HTML file users
+						encounter.</p>
+				</div>
+			</section>
+
+			<section id="fileset-naming">
+				<h3>File paths and file names</h3>
+
+				<p>eBraille file paths and file names MUST adhere to the file naming restrictions specified in <a
+						data-cite="epub-33#sec-container-filenames">section 4.2.3</a> of [[epub-33]].</p>
+			</section>
+
+			<section id="fileset-urls">
+				<h3>URLs in the file set</h3>
+
+				<p>Although the [=publication root=] establishes a common directory for all files in an [=eBraille
+					publication=], depending on how the eBraille publication is deployed it could allow references to
+					resolve outside of the publication root. For example, if an eBraille publication is deployed on the
+					web, unless it assigned its own domain, a [=path-absolute-URL string=] [[url]] (i.e., a path that
+					begins with a slash) could allow the publication to reach other resources on the server.</p>
+
+				<p>For this reason, the eBraille file set MUST NOT include file references that use path-absolute-URL
+					strings.</p>
+
+				<p>Similarly, [=eBraille reading systems=] MUST NOT resolve path-absolute-URL strings.</p>
+			</section>
+		</section>
+		<section id="ebrl-package-doc">
+			<h2>Package Document</h2>
+
+			<section id="package-doc-intro" class="informative">
+				<h3>Introduction</h3>
+
+				<p>eBraille uses the EPUB 3 <a data-cite="epub-33#sec-package-doc">package document</a> [[epub-33]] to
+					express information about an [=eBraille publication=].</p>
+
+				<p>The package document contains three primary sections:</p>
+
+				<ul>
+					<li>Metadata &#8212; the <a href="#metadata"><code>metadata</code> element</a> contains
+						bibliographic and rendering information about an eBraille publication.</li>
+					<li>Manifest &#8212; the <a href="#manifest"><code>manifest</code> element</a> contains a list of
+						all the publication resources.</li>
+					<li>Spine &#8212; the <a href="#spine"><code>spine</code></a> element contains the default ordering
+						of eBraille content documents.</li>
+				</ul>
+
+				<p>The primary difference of the eBraille package document is only in the metadata that is required and
+					recommended. The eBraille implementation of the package document is also more limited in the
+					features it allows &#8212; manifest fallbacks and legacy element are not allowed, for example.</p>
+			</section>
 
 			<section id="metadata">
 				<h3>Metadata</h3>
 
-				<div class="ednote">
-					<p>The exact method for expressing metadata in ebraille publications will be added in a future
-						update.</p>
-				</div>
+				<p>The eBraille package document metadata MUST meet all the requirements for [[epub-33]] <a
+						data-cite="epub-33#sec-pkg-metadata">metadata</a>.</p>
 
-				<p>An eBraille publication MUST contain the following metadata:</p>
+				<p>In particular, EPUB requires that all eBraille publications include a unique identifier, the title of
+					the publication, the language of the content, and the last modification date.</p>
+
+				<p>[=eBraille publications=] additionally MUST include the following metadata:</p>
 
 				<ul>
 					<li>braille code</li>
@@ -129,78 +320,121 @@
 					<li>title</li>
 				</ul>
 
-				<p>An eBraille publication SHOULD contain the following metadata:</p>
+				<p>eBraille publications SHOULD include the following metadata:</p>
 
 				<ul>
 					<li>author</li>
 					<li>braille producer</li>
 				</ul>
-			</section>
 
-			<section id="resources">
-				<h3>Resource list</h3>
-
-				<div class="ednote">
-					<p>The exact method for expressing the resource list will be added in a future update.</p>
+				<div class="ed-note">
+					<p>How to specify required and recommended metadata will be provided in a future update to this
+						document.</p>
 				</div>
+
+				<aside class="example" title="eBraille required metadata">
+					<pre><code>&lt;package &#8230; 
+          xmlns:dc="http://purl.org/dc/elements/1.1/"
+          unique-identifier="uid">
+   &lt;metadata>
+      &lt;dc:identifier id="uid">41f1328c-0571-4e71-8be8-e65bc148281a&lt;/dc:identifier>
+      &lt;dc:title>World Cultures and Geography&lt;/dc:title>
+      &lt;dc:language>en&lt;dc:language>
+      &lt;meta property="dcterms:modified">2024-03-20T12:34:56Z&lt;/meta>
+      &#8230;
+   &lt;/metadata>
+   &#8230;
+&lt;/package></code></pre>
+				</aside>
 			</section>
 
-			<section id="reading-order">
-				<h3>Reading order</h3>
+			<section id="manifest">
+				<h3>Manifest</h3>
 
-				<div class="ednote">
-					<p>The exact method for expressing the reading order will be added in a future update.</p>
-				</div>
+				<p>The eBraille package document manifest MUST meet all the requirements for an [[epub-33]] <a
+						data-cite="epub-33#sec-pkg-manifest">manifest</a>.</p>
+
+				<aside class="example" title="Manifest entry for an XHTML content document">
+					<pre><code>&lt;package &#8230;>
+   &#8230;
+   &lt;manifest>
+      &lt;item id="c01"
+            href="eBraille/chapter01.xhtml"
+            media-type="application/xhtml+xml"/>
+      &#8230;
+   &lt;/manifest>
+   &#8230;
+&lt;/package></code></pre>
+				</aside>
 			</section>
 
-			<section id="navigation">
-				<h3>Navigation</h3>
+			<section id="spine">
+				<h3>Spine</h3>
 
-				<section id="toc">
-					<h4>Table of contents</h4>
+				<p>The eBraille package document spine MUST meet all the requirements for an [[epub-33]] <a
+						data-cite="epub-33#sec-pkg-spine">spine</a>.</p>
 
-					<div class="ednote">
-						<p>The exact method for expressing the table of contents will be added in a future update.</p>
-					</div>
-				</section>
+				<aside class="example" title="Spine item reference to an XHTML content document">
+					<pre><code>&lt;package &#8230;>
+   &#8230;
+   &lt;manifest>
+      &lt;item id="c01"
+            href="eBraille/chapter01.xhtml"
+            media-type="application/xhtml+xml"/>
+      &#8230;
+   &lt;/manifest>
+   &lt;spine>
+      &lt;itemref idref="c01"/>
+      &#8230;
+   &lt;/spine>
+&lt;/package></code></pre>
+				</aside>
+			</section>
 
-				<section id="page-list">
-					<h4>Page list</h4>
+			<section id="package-unsupported">
+				<h3>Unsupported features</h3>
 
-					<div class="ednote">
-						<p>The exact method for expressing a page list will be added in a future update.</p>
-					</div>
-				</section>
+				<p>The following features of the EPUB 3 package document are not supported in eBraille so MUST NOT be
+					used:</p>
+
+				<ul>
+					<li>all features marked as <a data-cite="epub-33#deprecated">deprecated</a> [[epub-33]]</li>
+					<li><a href="#fallbacks">manifest fallbacks</a></li>
+					<li><a data-cite="epub-33#sec-pkg-collections">collections</a> [[epub-33]]</li>
+					<li><a data-cite="epub-33#sec-pkg-legacy">legacy features</a> [[epub-33]]</li>
+				</ul>
 			</section>
 		</section>
-		<section id="ebraille-content-docs">
+		<section id="ebrl-content-docs">
 			<h2>eBraille content documents</h2>
 
 			<section id="ecd-intro" class="informative">
 				<h3>Introduction</h3>
 
-				<p><a>eBraille content documents</a> support a restrictive version of [[html]] for authoring the content
-					of <a>eBraille publications</a>. Authors may include any valid HTML elements and attributes in their
-					eBraille content documents, except as restricted in <a href="#html-no-support"></a>.</p>
+				<p>eBraille only supports [=XHTML content documents=] [[epub-33]] for authoring the content of an
+						<a>eBraille publication</a> &#8212; [=SVG content documents=] are not supported in the [=spine=]
+					but can be embedded in XHTML content documents.</p>
 
-				<p>eBraille content documents rely primarily on the [[html]] [^global/class^] and [^/role^] attributes
-					to identify formatting requirements.</p>
+				<p>This document imposes further restrictions on XHTML content documents as specified in <a
+						href="#html-no-support"></a>.</p>
+
+				<div class="note">
+					<p>eBraille content documents rely primarily on the [[html]] [^global/class^] and [^/role^]
+						attributes to identify formatting requirements.</p>
+					<p>For more information, refer to <a href="best-practices/tagging/">eBraille Tagging Best
+							Practices</a></p>
+				</div>
 			</section>
 
 			<section id="html-req">
-				<h3>HTML requirements</h3>
+				<h3>Requirements</h3>
 
-				<p>An <a>eBraille content document</a>:</p>
+				<p>An [=eBraille content document=]:</p>
 
 				<ul>
-					<li>MUST be an [[html]] document.</li>
-					<li>MAY conform to the XML syntax.</li>
-					<li>MUST conform to the conformance criteria for all document constructs defined by [[html]].</li>
+					<li>MUST be an <a data-cite="epub-33#sec-xhtml">XHTML content document</a> [[epub-33]].</li>
 					<li>MUST NOT contain features specified in <a href="#html-no-support"></a>.</li>
 				</ul>
-
-				<p>Unless specified otherwise in this specification, eBraille content documents inherit all definitions
-					of semantics, structure, and processing behaviors from the [[html]] specification.</p>
 
 				<section id="html-no-support">
 					<h3>Unsupported features</h3>
@@ -209,14 +443,14 @@
 						NOT include [[html]] [^script^] elements or the [^form^] element's [^form/action^] attribute in
 							<a>eBraille content documents</a>.</p>
 
-					<p><a>Reading systems</a> MUST NOT process [^script^] elements or allow the submission of [^form^]
+					<p>[=Reading systems=] MUST NOT process [^script^] elements or allow the submission of [^form^]
 						elements.</p>
 
 					<div class="note">
 						<p>The lack of support for scripting means that html elements that depend on scripting (e.g.,
 							the [^canvas^] element and <a data-cite="html#custom-elements">custom elements</a>) will not
-							work in eBraille publications. It is strongly recommended not to include these elements, as
-							well.</p>
+							work in [=eBraille publications=]. It is strongly recommended not to include these elements,
+							as well.</p>
 					</div>
 				</section>
 			</section>
@@ -230,11 +464,74 @@
 				</div>
 			</section>
 		</section>
-		<section id="packaging">
+		<section id="ebrl-nav">
+			<h2>Primary entry page</h2>
+
+			<section id="navdoc-intro" class="informative">
+				<h3>Introduction</h3>
+
+				<p>To make it easier to deploy [=eBraille publications=] on the web, the [=EPUB navigation document=] is
+					used as the primary entry point for publications. The required file naming (<code>index.html</code>)
+					and location of this file mean it will be the first document loaded when users browse to a folder
+					containing an eBraille publication.</p>
+
+				<p>By requiring the [=primary entry page=] be located in the [=publication root=], it is also easier for
+					users to unzip an eBraille publication and read it locally, if they so choose. If all the other
+					resources in the publication are placed in a subfolder, for example, the primary entry page will be
+					the first HTML document users encounter in the unzipped folder.</p>
+			</section>
+
+			<section id="nav-req">
+				<h3>General requirements</h3>
+
+				<p>The primary entry page MUST be named <code>index.html</code>. This file has to be located in the
+					[=publication root=], as defined in <a href="#fileset-structure"></a>.</p>
+
+				<p>The primary entry page MUST be a conforming <a data-cite="epub-33#sec-nav">EPUB navigation
+						document</a> [[epub-33]].</p>
+
+				<p>As the primary entry page is meant to help browser users navigate the publication, it SHOULD NOT be
+					included in the <a href="#spine">spine</a>. If the publication needs a table of contents in the
+					spine, it is better to create a separate document with publication-specific formatting.</p>
+			</section>
+
+			<section id="navigation">
+				<h3>Navigation</h3>
+
+				<section id="nav-toc">
+					<h4>Table of contents</h4>
+
+					<p>For compatibility with web-based rendering, the table of contents MUST also be identified by the
+						[^/role^] attribute [[html]] value <a data-cite="dpub-aria#doc-toc"><code>doc-toc</code></a>
+						[[dpub-aria]]</p>
+
+					<aside class="example" title="Table of contents identified by the epub:type and role attributes">
+						<pre><code>&lt;nav epub:type="toc" role="doc-toc">
+   &#8230;
+&lt;/nav></code></pre>
+					</aside>
+				</section>
+
+				<section id="page-list">
+					<h4>Page list</h4>
+
+					<p>For compatibility with web-based rendering, a page list MUST also be identified by the [^/role^]
+						attribute [[html]] value <a data-cite="dpub-aria#doc-pagelist"><code>doc-pagelist</code></a>
+						[[dpub-aria]]</p>
+
+					<aside class="example" title="Page list identified by the epub:type and role attributes">
+						<pre><code>&lt;nav epub:type="page-list" role="doc-pagelist">
+   &#8230;
+&lt;/nav></code></pre>
+					</aside>
+				</section>
+			</section>
+		</section>
+		<section id="ebrl-packaging">
 			<h2>Packaging</h2>
 
 			<div class="ednote">
-				<p>Packaging requirements for ebraille files will be added in a future update.</p>
+				<p>Packaging requirements for eBraille publications will be added in a future update.</p>
 			</div>
 		</section>
 		<div data-include="common/acknowledgements.html" data-include-replace="true"></div>
