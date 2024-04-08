@@ -46,6 +46,18 @@
 						title: "eBraille Tagging Best Practices",
 						authors: ["Willow Free"],
 						status: "DAISY Editor's Draft"
+					},
+					"CSS3TEXT": {
+						aliasOf: "css3-text-20230903" // "css3-text"
+					},
+					"CSS4SELECT": {
+						aliasOf: "selectors-4-20221111" // "selectors-4"
+					},
+					"CSS3BORDER": {
+						aliasOf: "css-backgrounds-3-20240311" // "css-backgrounds-3"
+					},
+					"CSS2": {
+						aliasOf: "CSS22-20160412" // "CSS22"
 					}
 				}
 			};
@@ -127,6 +139,294 @@
 		<section id="best-practices">
 			<h2>eBraille styling</h2>
 
+			<div class="note">
+				<p>All examples in this section assume that the following default CSS style sheet is
+				applied and that the same monospaced font is used for all text:</p>
+				<pre><code class="css">* {
+   font-size: 20px;
+   font-weight: normal;
+   line-height: 0.9em;
+   letter-spacing: 0;
+   margin: 0;
+   padding: 0;
+   border: none;
+   list-style: none;
+   color: black;
+   background-color: white;
+   text-decoration: none;
+}</code></pre>
+			</div>
+
+			<section id="misc">
+				<h3>Miscellaneous</h3>
+
+				<aside class="example" title="Simple list">
+					<a class="tagging-link" href="../tagging/index.html#example-a-simple-list"></a>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠎⠓⠕⠏⠏⠊⠝⠛⠀⠇⠊⠎⠞⠒⠀⠀⠀
+⠠⠉⠁⠗⠗⠕⠞⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠉⠓⠑⠑⠎⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠞⠕⠍⠁⠞⠕⠑⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="20">p {
+   text-indent: 2ch;
+}
+li {
+   text-indent: -2ch;
+   margin-left: 2ch;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a href="https://www.w3.org/TR/2023/CRD-css-text-3-20230903/#text-indent-property">First
+						Line Indentation: the ‘text-indent’ property</a> [[CSS3TEXT]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="Nested list">
+					<a class="tagging-link" href="../tagging/index.html#example-a-multiple-choice-exercise"></a>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠼⠁⠲⠀⠠⠺⠓⠊⠉⠓⠀⠏⠇⠁⠝⠑⠞⠀⠊⠎
+⠀⠀⠀⠀⠉⠇⠕⠑⠎⠞⠀⠞⠕⠀⠞⠓⠑⠀⠀⠀
+⠀⠀⠀⠀⠎⠥⠝⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠠⠧⠑⠝⠥⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠠⠍⠑⠗⠉⠥⠗⠽⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠠⠍⠁⠗⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠃⠲⠀⠠⠓⠕⠺⠀⠍⠁⠝⠽⠀⠍⠕⠕⠝⠎⠀
+⠀⠀⠀⠀⠙⠕⠑⠎⠀⠠⠍⠁⠗⠎⠀⠓⠁⠧⠑⠦
+⠀⠼⠚⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="20">li {
+   text-indent: -2ch;
+   margin-left: 2ch;
+}
+ol:has(ol) > li {
+   text-indent: -4ch;
+   margin-left: 4ch;
+}
+ol ol li {
+   text-indent: -2ch;
+   margin-left: 0;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a href="https://www.w3.org/TR/2023/CRD-css-text-3-20230903/#text-indent-property">First
+						Line Indentation: the ‘text-indent’ property</a> [[CSS3TEXT]]</li>
+						<li><a href="https://www.w3.org/TR/2022/WD-selectors-4-20221111/#relational">The Relational Pseudo-class: ‘:has()’</a> [[CSS4SELECT]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="Border">
+					<a class="tagging-link" href="../tagging/index.html#example-a-box-inside-another-box"></a>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀
+⡇⡏⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⢹⢸
+⡇⡇⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⢸⢸
+⡇⣇⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣸⢸
+⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="35">.box {
+   border-style: solid;
+   border-width: .2em .3ch;
+   margin: .6em .2ch .7em .2ch;
+   padding: .1em .5ch 0 .5ch;
+}
+.box .box {
+   margin: 0 0 .1em 0;
+   padding: .7em .7ch .6em .7ch;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a
+						href="https://www.w3.org/TR/2024/CRD-css-backgrounds-3-20240311/#border-style">Line
+						Patterns: the ‘border-style’ properties</a> [[CSS3BORDER]]</li>
+						<li><a
+						href="https://www.w3.org/TR/2024/CRD-css-backgrounds-3-20240311/#border-width">Line
+						Thickness: the ‘border-width’ properties</a> [[CSS3BORDER]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="Border image">
+					<a class="tagging-link" href="../tagging/index.html#example-a-standard-box"></a>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐
+⠐⠀⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⠀⠐
+⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="35">.box {
+   border-style: solid;
+   border-width: .9em 1ch;
+   border-image-slice: 37 20 37 20;
+   border-image-repeat: round round;
+   border-image-source: url("./border-image/⠐⠐⠐⠐⠐⠐⠐⠐.png");
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a
+						href="https://www.w3.org/TR/2024/CRD-css-backgrounds-3-20240311/#border-images">Border
+						Images</a> [[CSS3BORDER]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="Guide dots">
+					<p class="ednote">
+						The “<a href="../tagging/index.html#example-a-table-of-contents-with-links">A table of contents with links</a>” example from [[TAGGING]] needs a slight modification.
+					</p>
+					<pre><code class="html">&lt;h1&gt;⠠⠞⠁⠃⠇⠑⠀⠕⠋⠀⠠⠉⠕⠝⠞⠑⠝⠞⠎&lt;/h1&gt;
+&lt;ol class="toc"&gt;
+   &lt;li&gt;
+      &lt;span&gt;⠠⠉⠓⠁⠏⠞⠑⠗&lt;/span&gt;
+      &lt;span&gt;⠼⠑ &lt;a href="#33"&gt;⠼⠉⠉&lt;/a&gt;&lt;/span&gt;
+   &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠠⠞⠁⠃⠇⠑⠀⠕⠋⠀⠠⠉⠕⠝⠞⠑⠝⠞⠎⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠉⠓⠁⠏⠞⠑⠗⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠑⠀⠼⠉⠉</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<p class="ednote">
+						This solution does not deal with runovers correctly.
+					</p>
+					<p class="ednote">
+						To properly center the <code>h1</code>, the right margin may or may not need to be
+						increased with <code>1ch</code>, depending on the content.
+					</p>
+					<pre><code class="css" page-width="30">ol.toc {
+   max-width: 30ch;
+   overflow-x: hidden;
+   overflow-y: hidden;
+}
+ol.toc li::before {
+   float: left;
+   width: 0;
+   white-space: nowrap;
+   content: "⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐";
+}
+ol.toc span {
+   padding-right: 1ch;
+   background-color: white;
+}
+ol.toc span + span {
+   float: right;
+   padding-right: 0;
+   padding-left: 1ch;
+   background-color: white;
+}
+h1 {
+   text-align: center;
+   margin: 0 4ch .9em 3ch;
+}
+a {
+   text-decoration: initial;
+   color: initial;
+}</code></pre>
+				</aside>
+
+				<aside class="example" title="Table">
+					<p class="ednote">
+						The “<a href="../tagging/index.html#example-a-table-with-header-and-body">A table with header and body</a>” example from [[TAGGING]] needs a slight modification.
+					</p>
+					<pre><code class="html">&lt;table>
+  &lt;colgroup&gt;
+    &lt;col/&gt;
+    &lt;col/&gt;
+    &lt;col/&gt;
+    &lt;col/&gt;
+  &lt;/colgroup&gt;
+  &lt;thead>
+    &lt;tr>
+      &lt;th>⠠⠙⠁⠞⠑&lt;/th>
+      &lt;th>⠠⠙⠑⠎⠉⠗⠊⠏⠞⠊⠕⠝&lt;/th>
+      &lt;th>⠠⠉⠗⠑⠙⠊⠞&lt;/th>
+      &lt;th>⠠⠙⠑⠃⠊⠞&lt;/th>
+    &lt;/tr>
+  &lt;/thead>
+  &lt;tbody>
+    &lt;tr>
+      &lt;td>⠼⠛ ⠠⠚⠥⠝&lt;/td>
+      &lt;td>⠠⠉⠁⠎⠓ ⠺⠊⠞⠓⠙⠗⠁⠺⠁⠇&lt;/td>
+      &lt;td>&lt;/td>
+      &lt;td>⠈⠎⠼⠁⠚⠚⠲⠚⠚&lt;/td>
+    &lt;/tr>
+  &lt;/tbody>
+&lt;/table></code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
+⠠⠙⠁⠞⠑⠀⠀⠀⠠⠙⠑⠎⠉⠗⠊⠏⠞⠊⠕⠝⠀⠀⠠⠉⠗⠑⠙⠊⠞⠀⠀⠠⠙⠑⠃⠊⠞⠀⠀⠀
+⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤
+⠼⠛⠀⠀⠀⠀⠀⠀⠠⠉⠁⠎⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠎⠼⠁⠚⠚⠲⠚⠚
+⠠⠚⠥⠝⠀⠀⠀⠀⠺⠊⠞⠓⠙⠗⠁⠺⠁⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<p class="ednote">
+						In order to ensure columns are aligned to the grid, the column widths must
+						be set explicitly. Experience shows that setting column widths can be
+						tricky, and even if it works flawlessly, it is not very practical.
+					</p>
+					<pre><code class="css" page-width="40">table {
+   display: table;
+   table-layout: fixed;
+   border-collapse: separate;
+   border-spacing: 0;
+   border-width: .4em 0;
+   border-style: solid;
+   border-color: black;
+   margin: .2em 0 .3em 0;
+}
+thead tr th {
+   text-align: left;
+   padding-top: .3em;
+   padding-bottom: .4em;
+   border-bottom: .1em solid black;
+}
+tbody tr td {
+   padding-top: .4em;
+}
+tbody tr + tr td {
+   padding-top: 0;
+   padding-bottom: .2em;
+}
+tbody tr + tr:has(+ tr) td {
+   padding-bottom: 0;
+}
+col {
+   width: 70px;
+}
+col + col {
+   width: 140px;
+}
+col + col + col {
+   width: 90px;
+}
+col + col + col + col {
+   width: 100px;
+}
+th, td {
+   padding-left: 0;
+   padding-right: 0;
+   vertical-align: top;
+}
+th:has(+ th), td:has(+ td) {
+   padding-right: 1ch;
+}
+th + th, td + td {
+   padding-left: 1ch;
+}
+</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a href="https://drafts.csswg.org/css2/#tables">Tables</a> [[CSS2]]</li>
+					</ul>
+				</aside>
+
+			</section>
 		</section>
 		<div data-include="../../common/acknowledgements.html" data-include-replace="true"></div>
 	</body>
