@@ -6,6 +6,8 @@
 		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
 		<script src="../../common/js/status.js" class="remove"></script>
 		<script type="text/javascript" src="replaceTaggingLinks.js"></script>
+		<script type="text/javascript" src="js-renderer-prototype/index.js"></script>
+		<script type="text/javascript" src="validateExamples.js"></script>
 		<script class="remove">
 			//<![CDATA[
 			var respecConfig = {
@@ -37,7 +39,7 @@
 				],
 				github: 'daisy/ebraille',
 				preProcess: [replaceTaggingLinks],
-				postProcess: [addDAISYStatus],
+				postProcess: [addDAISYStatus, validateExamples],
 				localBiblio: {
 					"TAGGING": {
 						href: "https://daisy.github.io/ebraille/best-practices/tagging/",
@@ -66,6 +68,42 @@
 				font-size: 20px;
 				line-height: .9em;
 				letter-spacing: 0;
+			}
+			.formatted-braille button {
+				visibility: hidden;
+			}
+			.formatted-braille:hover button {
+				visibility: visible;
+			}
+			#popup-holder {
+				display: block;
+				position: fixed;
+				left: 40px;
+				right: 0;
+				bottom: 0;
+				z-index: 2;
+			}
+			.popup {
+				display: inline-block;
+				background: white;
+				border: 1px solid black;
+				margin: 5px;
+				padding: 5px;
+				position: relative;
+			}
+			.popup::before {
+				display: block;
+				content: attr(title) ":";
+				text-decoration: underline;
+				margin-bottom: 5px;
+			}
+			.popup > button {
+				position: absolute;
+				top: 5px;
+				right: 5px;
+			}
+			.popup iframe {
+				border: 0;
 			}
 			/*]]>*/
 		</style>

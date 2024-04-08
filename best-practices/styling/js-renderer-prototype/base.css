@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'odt2braille8';
+    src: url('odt2braille8.ttf') format('truetype');
+}
+* {
+    font-family: 'odt2braille8', monospace;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 0.9em;
+    letter-spacing: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    list-style: none;
+    color: black;
+    background-color: white;
+    text-decoration: none;
+}
+#wrapper {
+    all: revert;
+}
