@@ -89,7 +89,7 @@
 		
 			<section id="boxes">
 				<h4>Boxed text</h4>
-				<p>Boxes would be used any time that text needs to be enclosed in a full lines and/or columns of braille characters. The specific braille characters and where they appear will be determined by CSS. As an example, you might have text that is preceded and followed by a full line of the same braille character but you could also have variations or full columns of braille characters flanking the text on either side.</p>
+				<p>Boxes may be created by lines of braille characters, above, below, to the left or right of a block of text. The characters used, the size and which sides to show, are controlled by CSS.</p>
 				<dl id="elemdef-box" class="elemdef">
 										<dt>Element(s):</dt>
 					<dd>
@@ -139,7 +139,7 @@
 </section>
 			<section id="Braille grade">
 				<h4>Braille grade</h4>
-				<p>Braille grade refers to whether contractions are used in the braille transcription. In the United States, for example, grade 1 braille uses no contractions, while grade 2 uses any applicable contractions. Documents can be in one grade but with sections that appear in a different grade.</p>
+				<p>Braille grade refers to whether contractions are used in the braille transcription. In Unified English Braille, for example, grade 1 braille uses no contractions, while grade 2 uses any applicable contractions. Documents can be in one grade but with sections that appear in a different grade.</p>
 				<dl id="elemdef-p" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
@@ -156,12 +156,12 @@
 					</dd>
 				</dl>
 
-				<aside class="example" title="A caption following an image.">
+				<aside class="example" title="A snippet of uncontracted text in an otherwise contracted document.">
 					<pre><code class="html">&ltspan class="grade-0">⠠⠞⠓⠊⠎⠀⠃⠗⠁⠊⠇⠇⠑⠀⠊⠎⠀⠥⠝⠉⠕⠝⠞⠗⠁⠉⠞⠑⠙⠲&lt/span></code></pre></aside>
 			</section>
 			<section id="caption">
 				<h4>Captions</h4>
-				<p>Captions refer to any text in print that is associated with an image. The text is not added by the transcriber, like a description or alt text, but instead is transcribed from the print.</p>
+				<p>Captions refer to any text in print that is associated with an image, table, or chart. The text is not added by the transcriber, like a description or alt text, but instead is transcribed from the print.</p>
 				<dl id="elemdef-p" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
@@ -187,7 +187,7 @@
 			</section>
 			<section id="em">
 				<h4>Emphasis</h4>
-				<p>Emphasis works differently in braille than it does in print in that the emphasized characters do not themselves change but instead additional characters are added that precede, and sometimes follow, the emphasized text. The following elements will not add the braille characters themselves but will instead just track where emphasis is placed so that reading systems can potentially offer features that utilize this information.</p>
+				<p>In contrast to print, braille uses characters placed before or sometimes after text to indicate various types of text emphasis. The following elements will not add the braille characters themselves but will instead just track where emphasis is placed so that reading systems can potentially offer features that utilize this information.</p>
 				<dl id="elemdef-em-strong" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
@@ -202,7 +202,7 @@
 							<ul class="nomark">
 								<li><code>script</code> is used to denote text that is meant to mimic handwriting.</li>
 								<li><code>underline</code> is used to denote text that is underlined.</li>
-								<li><code>custom-#</code> is used in UEB to denote text that is emphasized in a way not covered by a planned type of emphasis. For example, you could use it for green highlighting since UEB has no means to denote that kind of emphasis. It could similarly be applied to other braille codes that have emphasis types not covered by the types available.</li>
+								<li><code>custom-#</code> is used in UEB to denote text that is emphasized in a way not covered by a planned type of emphasis. For example, you could use it for green highlighting since UEB has no means to denote that kind of emphasis. Other kinds of emphasis that could be represented are text with a different color or a significant font change. It could similarly be applied to other braille codes that have emphasis types not covered by the types available.</li>
 							</ul>
 						</ul>
 					</dd>
@@ -220,7 +220,7 @@
 
 			<section id="figures">
 				<h4>Figures</h4>
-				<p>[^figure^] is used to denote images. It must also include [^figcaption^] if that image is accompanied by a caption.</p>
+				<p>[^figure^] specifies self-contained content, like illustrations, diagrams, photos, code listings, etc.</p>
 				<dl id="elemdef-figure" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
@@ -258,8 +258,8 @@
 					<dd>
 						<ul class="nomark">
 							<li><code>doc-noteref</code>- used to identify the actual symbol of the footnote or endnote. This symbol will typically appear as a superscripted number or symbol in the main body of text.</li>
-							<li><code>doc-footnote</code>- used to identify the entirity of a single footnote, so symbol and text.</li>
-							<li><code>doc-endnotes</code>- used to identify the entirity of a single endnote, so symbol and text.</li>
+							<li><code>doc-footnote</code>- used to identify the entirety of a single footnote, so symbol and text.</li>
+							<li><code>doc-endnotes</code>- used to identify the entirety of a single endnote, so symbol and text.</li>
 						</ul>
 					</dd>
 				</dl>
