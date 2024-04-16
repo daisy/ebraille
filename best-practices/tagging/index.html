@@ -284,7 +284,7 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li>Additional general formatting instructions- these would be used when the transcriber has requirements for the heading that cannot otherwise be accounted for by the CSS.</li>
+							<li>None</li>
 						</ul>
 					</dd>
 				</dl>
@@ -303,11 +303,6 @@
 				</aside>
 				<aside class="example" title="Running header when used for a chapter heading and not the title of the entire work.">
 					<pre><code class="html">&lt;header>⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠠⠊⠊⠊⠲⠀⠠⠞⠓⠑⠀⠠⠝⠊⠛⠓⠞⠀⠠⠄⠎⠓⠁⠙⠕⠚⠎⠀&lt;/header></code></pre>
-				</aside>
-
-				<aside class="example" title="Headings with additional formatting instructions">
-					<pre><code class="html">&lt;h1 class="newpage">⠠⠃⠁⠎⠊⠉ ⠠⠕⠏⠑⠗⠁⠞⠊⠕⠝&lt;/h1>
-&lt;h2 class="sidenoblankline">⠠⠍⠁⠊⠝ ⠠⠙⠊⠎⠏⠇⠁⠽&lt;/h2></code></pre>
 				</aside>
 			</section>
 
@@ -336,7 +331,7 @@
      alt="⠠⠙⠊⠁⠛⠗⠁⠍ ⠕⠋ ⠞⠺⠕ ⠊⠝⠞⠑⠗⠎⠑⠉⠞⠊⠝⠛ ⠉⠊⠗⠉⠇⠑⠎"/></code></pre>
 				</aside>
 				<aside class="example" title="Use a download link for graphics that use a file type that is not a traditional image">
-					<pre><code class="html">&lta href="/images/butterfly.pdf" download>Graphic of a butterfly&lt/a></code></pre>
+					<pre><code class="html">&lta href="/images/butterfly.pdf" download>⠠⠛⠗⠁⠏⠓⠊⠉⠀⠷⠀⠁⠀⠃⠥⠞⠞⠻⠋⠇⠽&lt/a></code></pre>
 				</aside>
 			</section>
 
@@ -353,9 +348,8 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>id</code>, <code>linenum</code>, <code>prose</code>, <code>poetry</code></li>
+							<li><code>linenum</code>, <code>prose</code>, <code>poetry</code></li>
 								<ul class = "nomark">
-									<li><code>id</code>- used to denote the actual line number in print to assist software with utilizing the information without the need for backtranslation.</li>
 									<li><code>linenum</code>- applied to the div and span to identify each as involving line numbers.</li>
 									<li><code>prose</code>- applied to the div to identify the section as involving prose text with line numbers (some braille regions have different rules for prose line numbers vs poetry line numbers).</li>
 									<li><code>poetry</code>- applied to the div to identify the section as involving poetic text with line numbers.</li>
@@ -382,7 +376,7 @@
 					<dt>Element Name:</dt>
 					<dd>
 						<p data-cite="html"> [^a^]</p>
-						<p>Note that links can be either external or internal.</p>
+						<p>Note that links can be either external or internal. An internal link could point to a location within the same xHTML file or to a different file within the same package. An external link points to a location outside of the package, such as a webpage.</p>
 					</dd>
 
 					<dt>Supported <code>role</code> values:</dt>
@@ -421,14 +415,14 @@
 					<dd>
 						<p>[^ol^], [^ul^], [^dl^], [^li^]</p>
 
-						<p>Note that <code>ol</code> is preferred for <code>exercise</code>, <code>poetry</code>, and <code>generic</code>, while <code>dl</code> is preferred for <code>glossary</code>, <code>index</code>, and <code>toc</code>. <code>ul</code> can be used for basic lists.</p>
+						<p>Note that <code>dl</code> is preferred for <code>glossary</code>, <code>index</code>, and <code>toc</code>.</p>
 					</dd>
 
 					<dt>Reserved <code>class</code> values:</dt>
 						<p>The reserved class values in this section are only applied to [^ol^], [^ul^], and [^dl^].</p>
 					<dd>
 						<ul class="nomark">
-							<li><code>nomark</code>, <code>exercise</code>, <code>glossary</code>, <code>index</code>, <code>toc</code>, <code>poetry</code>, <code>generic</code></li>
+							<li><code>nomark</code>, <code>exercise</code>, <code>glossary</code>, <code>index</code>, <code>toc</code>, <code>poetry</code>, <code>specify-number</code></li>
 								<ul class="nomark">
 									<li><code>nomark</code>- used to prevent the automatic inclusion of list prefixes, like bullets or numbers.</li>
 									<li><code>exercise</code>- used to denote an exercise question, typically one in a list format like a multiple-choice question.</li>
@@ -436,7 +430,7 @@
 									<li><code>index</code>- used to denote an indices entry.</li>
 									<li><code>toc</code>- used to denote a table of contents entry.</li>
 									<li><code>poetry</code>- used to denote a line in a work of poetry that is meant to formatted in stanzas or a way that is similar to a list.</li>
-									<li><code>generic</code>- used to denote very specific numeric values and recommended to be used sparingly as it will hardcode those cell positions. Examples of accompanying cell positions would be <code>1-3</code>, <code>5-7</code>, etc. with the first number representing which cell the item should start in and the second number representing which cell the second line and all subsequent lines should start in.</li>
+									<li><code>specify-number</code>- used to denote very specific numeric values and recommended to be used sparingly as it will hardcode those cell positions. Examples of accompanying cell positions would be <code>1-3</code>, <code>5-7</code>, etc. with the first number representing which cell the item should start in and the second number representing which cell the second line and all subsequent lines should start in.</li>
 								</ul>
 						</ul>
 					
@@ -525,12 +519,12 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>blocked</code>, <code>displayed</code>, <code>directions</code>, <code>generic</code></li>
+							<li><code>left-aligned</code>, <code>directions</code>, <code>hanging</code><code>specific-number</code></li>
 								<ul class="nomark">
-									<li><code>blocked</code>- used to denote a paragraph that should be left justified.</li>
-									<li><code>displayed</code>- used to denote a paragraph that is offset from the surrounding text, like a quote or supporting evidence for the main text.</li>
+									<li><code>left-aligned</code>- used to denote a paragraph that should be left justified.</li>
 									<li><code>directions</code>- used to denote directions that will typically accompany tests, quizzes, or multiple choice questions.</li>
-									<li><code>generic</code>- used to denote very specific numeric values and recommended to be used sparingly as it will hardcode those cell positions. Examples of accompanying cell positions would be <code>1-3</code>, <code>5-7</code>, etc. with the first number representing which cell the item should start in and the second number representing which cell the second line and all subsequent lines should start in.</li>
+									<li><code>hanging</code>- used to denote a paragraph in which the first line is set to the left margin, but all subsequent lines are indented.</li>
+									<li><code>specific-number</code>- used to denote very specific numeric values and recommended to be used sparingly as it will hardcode those cell positions. Examples of accompanying cell positions would be <code>1-3</code>, <code>5-7</code>, etc. with the first number representing which cell the item should start in and the second number representing which cell the second line and all subsequent lines should start in.</li>
 							</ul>
 						</ul>
 					</dd>
@@ -584,8 +578,11 @@
 					<dd>
 						<ul class="nomark">
 							<li><code>listed</code>, <code>linear</code>, <code>stairstep</code></li>
-						</ul>
-						<p>Note that <code>listed</code>, <code>linear</code>, and <code>stairstep</code> are table types that are specific to North American braille formatting. Each is a different variation on a listed table format and is used when a table is too large to fit in the spatial layout found in print. Additional table types can be added. The use of these classes signifies the file creator's recommendation that a specific type of braille table formatting be used but the user or reading system may ignore this recommendation. For more information about each type, please refer to <a href="https://www.brailleauthority.org/formats/2016manual-web/frontmatter.html">Braille Formats: Principles of Print-to-Braille Transcription, 2016</a>.</p>
+								<ul class="nomark">
+									<li><code>listed</code>- presents the same information as the original table but in a listed format that repeats column headings for each entry.</li>
+									<li><code>linear</code>- presents the same information as the original table but in a listed format that rearranges the row entries according to their column headings. Column headings are not repeated but are presented in a transcriber's note that precedes the table and informs the reader of the layout of each row's entries.</li>
+									<li><code>stairstep</code>- presents the same information as the original table but in a specialized format that puts each row in its own section with each column entry in a list format where each column of that row begins two-cells to the right of the previous column. So the first column is in 1-1, the second in 3-3, and so on. The column headings appear in a transcriber's note and are used to inform the reader of the layout of the table.</li>
+							</ul>
 					</dd>
 				</dl>
 
@@ -664,7 +661,7 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>transcriber-note</code>- used to identify a [^span^] or [^div^] as a transcriber's note.</li>
+							<li><code>transcriber-note</code>- used to identify a [^span^] or [^div^] as a transcriber's note, which is text that is added by a transcriber and not part of the original text.</li>
 						</ul>
 					</dd>
 				</dl>
