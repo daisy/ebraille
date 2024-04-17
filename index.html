@@ -76,9 +76,9 @@
 			<p>The specification defines eBraille, a digital reading format for braille publications. Unlike braille
 				formats that focus on interchanging embosser-ready braille, eBraille focuses on adapting braille for
 				reading in refreshable braille displays with different line lengths.</p>
-			<p>The eBraille format is built on an EPUB file set. It uses the EPUB package document to define the
-				metadata, resources, and reading order of a publication, and XHTML content documents to structure
-				braille content.</p>
+			<p>The eBraille format is built on an EPUB 3-compatible file set. Unlike EPUB 3, however, it is designed to
+				be flexible for deployment. An eBraille publication is easy to deploy on the web, unzip on a user's
+				local file system, or distribute in EPUB 3-compatible packaging.</p>
 		</section>
 		<section id="sotd">
 			<div data-include="common/status.html" data-include-replace="true"></div>
@@ -132,9 +132,10 @@
 
 					<dt><dfn>primary entry page</dfn></dt>
 					<dd>
-						<p>The default XHTML document that users reading an [=eBraille publication=] in a browser are
-							expected to encounter. It is located in the [=publication root=] and specially named to open
-							by default when users browse to a folder containing an eBraille publication.</p>
+						<p>The default [=eBraille content document=] that users reading an [=eBraille publication=] in a
+							browser are expected to encounter. It is located in the [=publication root=] and specially
+							named to open by default when users browse to a folder containing an eBraille
+							publication.</p>
 						<p>The primary entry page is an implementation of the [=EPUB navigation document=] [[epub-33]].
 							It contains the table of contents for the publication.</p>
 						<p>For more information, refer to <a href="#ebrl-nav"></a></p>
@@ -149,10 +150,16 @@
 			<section id="relationship-epub3" class="informative">
 				<h3>Relationship to EPUB 3</h3>
 
-				<p>[=eBraille publications=] introduce some additional requirements beyond those defined in EPUB 3, but
-					an eBraille publication is always a valid [=EPUB publication=] [[epub-33]]. The eBraille format only
-					differs from EPUB 3 in that it does not require eBraille publications to be packaged in an [=EPUB
-					container=] [[epub-33]].</p>
+				<p>The [=eBraille file set=] is designed to be compatible with EPUB 3 [[epub-33]] and adapt to changes
+					to that standard. Distribution and consumption on mainstream [=EPUB reading systems=], however, is
+					not a primary goal of this format. This specification introduces some additional requirements and
+					features beyond those defined in EPUB 3, and it is not expect that mainstream reading systems will
+					adapt to these modifications. Consequently, an eBraille publication may not render exactly as
+					intended outside of eBraille reading systems.</p>
+
+				<p>The primary difference between the eBraille format and EPUB 3 is eBraille publications do not have to
+					be packaged and distributed in an [=EPUB container=] [[epub-33]]. An [=eBraille publication=] will
+					be easy to package in an EPUB container if desired, however.</p>
 			</section>
 		</section>
 		<section id="ebrl-resources">
@@ -164,8 +171,8 @@
 				<p>An [=eBraille publication=] is typically composed of many resources &#8212; XHTML documents, CSS
 					files, tactile graphics, audio, video, etc.</p>
 
-				<p>As an eBraille publication is also a conforming [=EPUB publication=], the requirements for
-					publication resources are inherited from EPUB, specifically as defined in <a
+				<p>As an eBraille publication is intended to be easily packaged as a conforming [=EPUB publication=],
+					the requirements for publication resources are inherited from EPUB, specifically as defined in <a
 						data-cite="epub-33#sec-publication-resources"></a> [[epub-33]].</p>
 
 				<p>This section represents a subsetting of the EPUB requirements, as certain features, such as manifest
@@ -196,7 +203,7 @@
 			<section id="fileset-intro" class="informative">
 				<h3>Introduction</h3>
 
-				<p>The [=eBraille file set=] is a physical manifestation of the <a
+				<p>The [=eBraille file set=] is like a physical manifestation of the <a
 						data-cite="epub-33#sec-container-abstract">OCF abstract container</a> [[epub-33]]. EPUB 3 only
 					defines its file set in the abstract because those files are expected to be zipped in the [=EPUB
 					container=] [[epub-33]]; the standard is not concerned with the physical files before they are
@@ -224,17 +231,7 @@
 				<p>Unlike EPUB 3, the eBraille file set MUST NOT reference resources outside the publication root (i.e.,
 					[=remote resources=] [[epub-33]] are not supported).</p>
 
-				<p>The eBraille file set MUST contain the following files for compatibility with EPUB 3:</p>
-
-				<ul>
-					<li>The <a data-cite="epub-33#sec-zip-container-mime"><code>mimetype</code> file</a> [[epub-33]] in
-						the publication root.</li>
-					<li>The <a data-cite="epub-33#sec-container-metainf-container.xml"><code>container.xml</code>
-							file</a> under the <a data-cite="epub-33#sec-container-metainf"><code>META-INF</code>
-							directory</a> [[epub-33]].</li>
-				</ul>
-
-				<p>In addition, it MUST contain the following files in the publication root:</p>
+				<p>The eBraille file set MUST contain the following files in the publication root:</p>
 
 				<ul>
 					<li>The <a data-cite="epub-33#sec-nav">EPUB navigation document</a> [[epub-33]]. This file MUST be
@@ -245,7 +242,7 @@
 
 				<p>There are no restrictions on where the rest of the eBraille publication content goes beyond the
 					requirement in EPUB 3 that <a data-cite="epub-33#sec-container-file-and-dir-structure">publication
-						resources are not allowed in the <code>META-INF</code> directory</a> [[epub-33]].</p>
+						resources are not allowed in a <code>META-INF</code> directory</a> [[epub-33]].</p>
 
 				<div class="note">
 					<p>For simplicity of unzipping and accessing a publication on a user's local file system, eBraille
@@ -411,11 +408,10 @@
 			<section id="ecd-intro" class="informative">
 				<h3>Introduction</h3>
 
-				<p>eBraille only supports [=XHTML content documents=] [[epub-33]] for authoring the content of an
-						<a>eBraille publication</a> &#8212; [=SVG content documents=] are not supported in the [=spine=]
-					but can be embedded in XHTML content documents.</p>
+				<p>eBraille only supports XHTML for authoring the content of an <a>eBraille publication</a>. Unlike EPUB
+					3, SVG is not supported in the [=spine=] but can be embedded in XHTML documents.</p>
 
-				<p>This document imposes further restrictions on XHTML content documents as specified in <a
+				<p>This document imposes further restrictions on XHTML documents as specified in <a
 						href="#html-no-support"></a>.</p>
 
 				<div class="note">
@@ -479,6 +475,11 @@
 					users to unzip an eBraille publication and read it locally, if they so choose. If all the other
 					resources in the publication are placed in a subfolder, for example, the primary entry page will be
 					the first HTML document users encounter in the unzipped folder.</p>
+
+				<p>The primary entry page does not have to be the first document in the <a href="#spine">spine</a>,
+					however. As the page is meant as an entryway for web reading, it may not be helpful to include it in
+					the spine at all. Reading systems will still be able to extract the table of contents and other
+					information from the document even if it is not in the spine.</p>
 			</section>
 
 			<section id="nav-req">
