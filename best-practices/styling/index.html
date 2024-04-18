@@ -54,6 +54,9 @@
 					"CSS4SELECT": {
 						aliasOf: "selectors-4-20221111" // "selectors-4"
 					},
+					"CSS4PSEUDO": {
+						aliasOf: "css-pseudo-4-20221230" // "css-pseudo-4"
+					},
 					"CSS3BORDER": {
 						aliasOf: "css-backgrounds-3-20240311" // "css-backgrounds-3"
 					},
@@ -218,64 +221,6 @@ ol ol li {
 					</ul>
 				</aside>
 
-				<aside class="example" title="Border">
-					<a class="tagging-link" href="../tagging/index.html#example-a-box-inside-another-box"></a>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀
-⡇⡏⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⢹⢸
-⡇⡇⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⢸⢸
-⡇⣇⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣸⢸
-⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" page-width="35">.box {
-   border-style: solid;
-   border-width: .2em .3ch;
-   margin: .6em .2ch .7em .2ch;
-   padding: .1em .5ch 0 .5ch;
-}
-.box .box {
-   margin: 0 0 .1em 0;
-   padding: .7em .7ch .6em .7ch;
-}
-p {
-   text-indent: 2ch;
-}</code></pre>
-					<p>CSS specifications:</p>
-					<ul class="specification-links">
-						<li><a
-						href="https://www.w3.org/TR/2024/CRD-css-backgrounds-3-20240311/#border-style">Line
-						Patterns: the ‘border-style’ properties</a> [[CSS3BORDER]]</li>
-						<li><a
-						href="https://www.w3.org/TR/2024/CRD-css-backgrounds-3-20240311/#border-width">Line
-						Thickness: the ‘border-width’ properties</a> [[CSS3BORDER]]</li>
-					</ul>
-				</aside>
-
-				<aside class="example" title="Border image">
-					<a class="tagging-link" href="../tagging/index.html#example-a-standard-box"></a>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐
-⠐⠀⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⠀⠐
-⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" page-width="35">.box {
-   border-style: solid;
-   border-width: .9em 1ch;
-   border-image-slice: 37 20 37 20;
-   border-image-repeat: round round;
-   border-image-source: url("./border-image/⠐⠐⠐⠐⠐⠐⠐⠐.png");
-}
-p {
-   text-indent: 2ch;
-}</code></pre>
-					<p>CSS specifications:</p>
-					<ul class="specification-links">
-						<li><a
-						href="https://www.w3.org/TR/2024/CRD-css-backgrounds-3-20240311/#border-images">Border
-						Images</a> [[CSS3BORDER]]</li>
-					</ul>
-				</aside>
-
 				<aside class="example" title="Guide dots">
 					<p class="ednote">
 						The “<a href="../tagging/index.html#example-a-table-of-contents-with-links">A table of contents with links</a>” example from [[TAGGING]] needs a slight modification.
@@ -431,37 +376,292 @@ th + th, td + td {
 
 				<aside class="example" title="Nemeth box with blank lines">
 					<p class="ednote">
-						Missing HTML input for Nemeth box with blank lines.
+						The “<a href="../tagging/index.html##example-a-nemeth-box">A Nemeth box</a>”
+						example from [[TAGGING]] was adapted to contain a multi-line formula, and
+						to have text before and after the box.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.1/Nemeth%20box%20with%20blank%20lines.brf"></a>
+					<pre><code class="html">&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠑⠎ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+&lt;div class="box nemeth"&gt;⠼⠒⠈⠡⠢
+⠼⠆⠈⠡⠒⠈⠡⠲
+⠼⠲⠈⠡⠶
+⠼⠢⠈⠡⠖⠴ ⠨⠅ ⠼⠒⠴⠴&lt;/div&gt;
+&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠑⠎⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠸⠩⠀⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
+⠼⠒⠈⠡⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠆⠈⠡⠒⠈⠡⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠲⠈⠡⠶⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠢⠈⠡⠖⠴⠀⠨⠅⠀⠼⠒⠴⠴⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠀⠸⠱
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">.nemeth {
+   white-space: pre;
+}
+.box.nemeth {
+   margin: .9em 0;
+}
+.box.nemeth::before {
+   display: flex;
+   justify-content: flex-start;
+   overflow: hidden;
+   white-space: nowrap;
+   content: '⠸⠩ ⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶';
+}
+.box.nemeth::after {
+   display: flex;
+   justify-content: flex-end;
+   overflow: hidden;
+   white-space: nowrap;
+   content: '⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶ ⠸⠱';
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a
+						href="https://www.w3.org/TR/2023/CRD-css-text-3-20230903/#white-space-property">White
+						Space and Wrapping: the ‘white-space’ property</a> [[CSS3TEXT]]</li>
+						<li><a
+						href="https://www.w3.org/TR/2022/WD-css-pseudo-4-20221230/#generated-content">Generated
+						Content Pseudo-elements: ‘::before’ and ‘::after’</a> [[CSS4PSEUDO]]</li>
+						<li><a
+						href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#flex-containers">Flex
+						Containers: the ‘flex’ and ‘inline-flex’ display values</a>
+						[[CSSFLEXBOX]]</li>
+						<li><a
+						href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#justify-content-property">Axis
+						Alignment: the ‘justify-content’ property</a> [[CSSFLEXBOX]]</li>
+						<li><a
+						href="https://www.w3.org/TR/2023/WD-css-overflow-3-20230329/#overflow-control">Managing
+						Overflow: the ‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a>
+						[[CSS3OVERFLOW]]</li>
+					</ul>
 				</aside>
 
 				<aside class="example" title="Simple box inside a full box with blank lines">
 					<p class="ednote">
-						Missing HTML input for Simple box inside a full box with blank lines.
+						The “<a href="../tagging/index.html#example-a-box-inside-another-box">A box
+						inside another box</a>” example from [[TAGGING]] was adapted to have text
+						before and after the outer box.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.1/Simple%20box%20inside%20a%20full%20box%20with%20blank%20lines.brf"></a>
+					<pre><code class="html">&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠑⠎ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+&lt;div class="box"&gt;
+   &lt;div class="box"&gt;
+      &lt;p&gt;⠠⠹ ⠊⠎ ⠁ ⠃⠕⠭ ⠔⠎⠊⠙⠑ ⠁ ⠃⠕⠭⠲&lt;/p&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠑⠎⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
+⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
+⠀⠀⠠⠹⠀⠊⠎⠀⠁⠀⠃⠕⠭⠀⠔⠎⠊⠙⠑⠀⠁⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛
+⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">.box {
+   border-style: solid;
+   border-width: .6em 0;
+   margin: .9em 0 1.2em 0;
+   padding: .3em 0 0 0;
+}
+.box .box {
+   border-width: .4em 0;
+   margin: .2em 0 0.5em 0;
+   padding: .3em 0 0 0;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a
+						href="https://www.w3.org/TR/2024/CRD-css-backgrounds-3-20240311/#border-style">Line
+						Patterns: the ‘border-style’ properties</a> [[CSS3BORDER]]</li>
+						<li><a
+						href="https://www.w3.org/TR/2024/CRD-css-backgrounds-3-20240311/#border-width">Line
+						Thickness: the ‘border-width’ properties</a> [[CSS3BORDER]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="A box inside another box">
+					<p class="ednote">
+						This is another example of a box inside another box, but with a layout that
+						does not come from BANA or any other standard.
+					</p>
+					<a class="tagging-link" href="../tagging/index.html#example-a-box-inside-another-box"></a>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀
+⡇⡏⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⢹⢸
+⡇⡇⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⢸⢸
+⡇⣇⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣸⢸
+⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="35">.box {
+   border-style: solid;
+   border-width: .2em .3ch;
+   margin: .6em .2ch .7em .2ch;
+   padding: .1em .5ch 0 .5ch;
+}
+.box .box {
+   margin: 0 0 .1em 0;
+   padding: .7em .7ch .6em .7ch;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
 				</aside>
 
 				<aside class="example" title="Simple box with blank lines">
 					<p class="ednote">
-						Missing HTML input for Simple box with blank lines.
+						The “<a href="../tagging/index.html##example-a-standard">A standard box</a>”
+						example from [[TAGGING]] was adapted to have text before and after the box.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.1/Simple%20box%20with%20blank%20lines.brf"></a>
+					<p class="ednote">
+						The example contains mixed contracted and uncontracted braille.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠑⠎ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+&lt;div class="box"&gt;
+   &lt;p&gt;⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠑⠎⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
+⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">.box {
+   border-style: solid;
+   border-width: .4em 0;
+   margin: 1.1em 0 1.4em 0;
+   padding: .3em 0 0 0;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
 				</aside>
 
 				<aside class="example" title="Simple box with centered heading">
 					<p class="ednote">
-						Missing HTML input for Simple box with centered heading.
+						Missing an example in [[TAGGING]] of Simple box with centered heading.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.1/Simple%20box%20with%20centered%20heading.brf"></a>
+					<pre><code class="html">&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠑⠎ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+&lt;h1&gt;⠠⠹ ⠓⠂⠙⠬ ⠊⠎ ⠁⠎⠎⠕⠉⠊⠁⠞⠫ ⠾ ⠮ ⠃⠕⠭&lt;/h1&gt;
+&lt;div class="box"&gt;
+   &lt;p&gt;⠠⠹ ⠊⠎ ⠁ ⠃⠕⠭ ⠾ ⠁ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠑⠎⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠠⠹⠀⠓⠂⠙⠬⠀⠊⠎⠀⠁⠎⠎⠕⠉⠊⠁⠞⠫⠀⠾⠀⠮⠀⠃⠕⠭⠀⠀⠀⠀⠀⠀
+⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
+⠀⠀⠠⠹⠀⠊⠎⠀⠁⠀⠃⠕⠭⠀⠾⠀⠁⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">.box {
+   border-style: solid;
+   border-width: .4em 0;
+   margin: 0.2em 0 1.4em 0;
+   padding: .3em 0 0 0;
+}
+h1 {
+   text-align: center;
+   margin: .9em 3ch 0 3ch;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a href="https://www.w3.org/TR/2023/CRD-css-text-3-20230903/#text-align-property">Text
+						Alignment: the ‘text-align’ shorthand</a> [[CSS3TEXT]]</li>
+					</ul>
 				</aside>
 
 				<aside class="example" title="Simple box with color">
 					<p class="ednote">
-						Missing HTML input for Simple box with color.
+						The “<a href="../tagging/index.html##example-a-box-with-the-color-blue">A
+						box with the color blue</a>” example from [[TAGGING]] was adapted to have
+						text before and after the box.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.1/Simple%20box%20with%20color.brf"></a>
+					<pre><code class="html">&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠑⠎ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+&lt;div class="box yellow"&gt;
+   &lt;p&gt;⠠⠹ ⠃⠕⠭ ⠓⠁⠎ ⠁ ⠉⠕⠇⠕⠗ ⠁⠎⠎⠕⠉⠊⠁⠞⠫ ⠾ ⠭⠲&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠑⠎⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠈⠨⠣⠽⠑⠇⠇⠪⠈⠨⠜⠀⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
+⠀⠀⠠⠹⠀⠃⠕⠭⠀⠓⠁⠎⠀⠁⠀⠉⠕⠇⠕⠗⠀⠁⠎⠎⠕⠉⠊⠁⠞⠫⠀⠾⠀⠭⠲⠀⠀⠀⠀⠀
+⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">.box.yellow {
+   border-style: solid;
+   border-width: 0 0 .6em 0;
+   margin: .9em 0 1.2em 0;
+}
+.box.yellow::before {
+   display: flex;
+   justify-content: flex-start;
+   overflow: hidden;
+   white-space: nowrap;
+   content: '⠈⠨⠣⠽⠑⠇⠇⠪⠈⠨⠜ ⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿';
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+				</aside>
+
+				<aside class="example" title="Border image">
+					<p class="ednote">
+						This example was added to demonstrate an alternative way to draw borders,
+						namely using border images.
+					</p>
+					<a class="tagging-link" href="../tagging/index.html#example-a-standard-box"></a>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐
+⠐⠀⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⠀⠐
+⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="35">.box {
+   border-style: solid;
+   border-width: .9em 1ch;
+   border-image-slice: 37 20 37 20;
+   border-image-repeat: round round;
+   border-image-source: url("./border-image/⠐⠐⠐⠐⠐⠐⠐⠐.png");
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a
+						href="https://www.w3.org/TR/2024/CRD-css-backgrounds-3-20240311/#border-images">Border
+						Images</a> [[CSS3BORDER]]</li>
+					</ul>
 				</aside>
 
 				<aside class="example" title="A multiple-choice exercise">
