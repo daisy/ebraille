@@ -1,4 +1,4 @@
-let DEVELOPER_MODE = (new URLSearchParams(window.location.search).get("developer-mode") == "true");
+var DEVELOPER_MODE = (new URLSearchParams(window.location.search).get("developer-mode") == "true");
 
 let getPopupHolder = (function() {
 	let popupHolder = null;
@@ -41,9 +41,24 @@ function createButton(text, onclick) {
 
 async function validateExamples() {
 	if (DEVELOPER_MODE) {
-		let examples = document.getElementsByClassName("example");
-		for (let k = 0; k < examples.length; k++) {
-			let example = examples.item(k);
+		let top; {
+			for (let k = 0; k < arguments.length; k++)
+				if (typeof arguments[k].getElementsByClassName !== "undefined") {
+					top = arguments[k];
+					break;
+				}
+			top = top || document;
+		}
+		let focus = top.getElementsByClassName("focus");
+		if (focus.length > 0) {
+			for (let k = 0; k < focus.length; k++)
+				await validateExamples(focus.item(k));
+			return;
+		}
+		let examples = !(top instanceof HTMLDocument) && top.classList.contains("example")
+			? [top]
+			: Array.from(top.getElementsByClassName("example"));
+		examples.forEach(example => {
 			let content = example.getElementsByClassName("html");
 			let style = example.getElementsByClassName("css");
 			let result = example.getElementsByClassName("formatted-braille");
@@ -116,6 +131,6 @@ async function validateExamples() {
 				let buttonsDiv = result.firstChild.lastChild;
 				buttons.forEach(button => buttonsDiv.appendChild(button));
 			}
-		}
+		});
 	}
 }

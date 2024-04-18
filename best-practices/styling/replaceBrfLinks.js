@@ -1,5 +1,23 @@
+var DEVELOPER_MODE = (new URLSearchParams(window.location.search).get("developer-mode") == "true");
+
 async function replaceBrfLinks() {
-	let links = document.getElementsByClassName("brf-link");
+	let top; {
+		for (let k = 0; k < arguments.length; k++)
+			if (typeof arguments[k].getElementsByClassName !== "undefined") {
+				top = arguments[k];
+				break;
+			}
+		top = top || document;
+	}
+	if (DEVELOPER_MODE) {
+		let focus = top.getElementsByClassName("focus");
+		if (focus.length > 0) {
+			for (let k = 0; k < focus.length; k++)
+				await replaceBrfLinks(focus.item(k));
+			return;
+		}
+	}
+	let links = top.getElementsByClassName("brf-link");
 	for (let k = links.length - 1; k >= 0; k--) {
 		let link = links.item(k);
 		let href = new URL(link.href, document.baseURI);

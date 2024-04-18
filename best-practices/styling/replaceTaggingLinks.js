@@ -1,5 +1,23 @@
+var DEVELOPER_MODE = (new URLSearchParams(window.location.search).get("developer-mode") == "true");
+
 async function replaceTaggingLinks() {
-	let links = document.getElementsByClassName("tagging-link");
+	let top; {
+		for (let k = 0; k < arguments.length; k++)
+			if (typeof arguments[k].getElementsByClassName !== "undefined") {
+				top = arguments[k];
+				break;
+			}
+		top = top || document;
+	}
+	if (DEVELOPER_MODE) {
+		let focus = top.getElementsByClassName("focus");
+		if (focus.length > 0) {
+			for (let k = 0; k < focus.length; k++)
+				await replaceTaggingLinks(focus.item(k));
+			return;
+		}
+	}
+	let links = top.getElementsByClassName("tagging-link");
 	for (let k = 0; k < links.length; k++) {
 		let link = links.item(k);
 		let href = new URL(link.href, document.baseURI);
