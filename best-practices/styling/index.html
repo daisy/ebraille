@@ -48,6 +48,9 @@
 						authors: ["Willow Free"],
 						status: "DAISY Editor's Draft"
 					},
+					"CSS3BOX": {
+						aliasOf: "css-box-3-20240411" // "css-box-3"
+					},
 					"CSS3TEXT": {
 						aliasOf: "css3-text-20230903" // "css3-text"
 					},
@@ -156,124 +159,12 @@
    border: none;
    list-style: none;
    color: black;
-   background-color: white;
    text-decoration: none;
 }</code></pre>
 			</div>
 
 			<section id="misc">
 				<h3>Miscellaneous</h3>
-
-				<aside class="example" title="Simple list">
-					<a class="tagging-link" href="../tagging/index.html#example-a-simple-list"></a>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠀⠀⠠⠎⠓⠕⠏⠏⠊⠝⠛⠀⠇⠊⠎⠞⠒⠀⠀⠀
-⠠⠉⠁⠗⠗⠕⠞⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠠⠉⠓⠑⠑⠎⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠠⠞⠕⠍⠁⠞⠕⠑⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" page-width="20">p {
-   text-indent: 2ch;
-}
-li {
-   text-indent: -2ch;
-   margin-left: 2ch;
-}</code></pre>
-					<p>CSS specifications:</p>
-					<ul class="specification-links">
-						<li><a href="https://www.w3.org/TR/2023/CRD-css-text-3-20230903/#text-indent-property">First
-						Line Indentation: the ‘text-indent’ property</a> [[CSS3TEXT]]</li>
-					</ul>
-				</aside>
-
-				<aside class="example" title="Nested list">
-					<a class="tagging-link" href="../tagging/index.html#example-a-multiple-choice-exercise"></a>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠼⠁⠲⠀⠠⠺⠓⠊⠉⠓⠀⠏⠇⠁⠝⠑⠞⠀⠊⠎
-⠀⠀⠀⠀⠉⠇⠕⠑⠎⠞⠀⠞⠕⠀⠞⠓⠑⠀⠀⠀
-⠀⠀⠀⠀⠎⠥⠝⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠠⠧⠑⠝⠥⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠠⠍⠑⠗⠉⠥⠗⠽⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠠⠍⠁⠗⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠼⠃⠲⠀⠠⠓⠕⠺⠀⠍⠁⠝⠽⠀⠍⠕⠕⠝⠎⠀
-⠀⠀⠀⠀⠙⠕⠑⠎⠀⠠⠍⠁⠗⠎⠀⠓⠁⠧⠑⠦
-⠀⠼⠚⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" page-width="20">li {
-   text-indent: -2ch;
-   margin-left: 2ch;
-}
-ol:has(ol) > li {
-   text-indent: -4ch;
-   margin-left: 4ch;
-}
-ol ol li {
-   text-indent: -2ch;
-   margin-left: 0;
-}</code></pre>
-					<p>CSS specifications:</p>
-					<ul class="specification-links">
-						<li><a href="https://www.w3.org/TR/2023/CRD-css-text-3-20230903/#text-indent-property">First
-						Line Indentation: the ‘text-indent’ property</a> [[CSS3TEXT]]</li>
-						<li><a href="https://www.w3.org/TR/2022/WD-selectors-4-20221111/#relational">The Relational Pseudo-class: ‘:has()’</a> [[CSS4SELECT]]</li>
-					</ul>
-				</aside>
-
-				<aside class="example" title="Guide dots">
-					<p class="ednote">
-						The “<a href="../tagging/index.html#example-a-table-of-contents-with-links">A table of contents with links</a>” example from [[TAGGING]] needs a slight modification.
-					</p>
-					<pre><code class="html">&lt;h1&gt;⠠⠞⠁⠃⠇⠑⠀⠕⠋⠀⠠⠉⠕⠝⠞⠑⠝⠞⠎&lt;/h1&gt;
-&lt;ol class="toc"&gt;
-   &lt;li&gt;
-      &lt;span&gt;⠠⠉⠓⠁⠏⠞⠑⠗&lt;/span&gt;
-      &lt;span&gt;⠼⠑ &lt;a href="#33"&gt;⠼⠉⠉&lt;/a&gt;&lt;/span&gt;
-   &lt;/li&gt;
-&lt;/ol&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠠⠞⠁⠃⠇⠑⠀⠕⠋⠀⠠⠉⠕⠝⠞⠑⠝⠞⠎⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠠⠉⠓⠁⠏⠞⠑⠗⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠑⠀⠼⠉⠉</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<p class="ednote">
-						This solution does not deal with runovers correctly.
-					</p>
-					<p class="ednote">
-						To properly center the <code>h1</code>, the right margin may or may not need to be
-						increased with <code>1ch</code>, depending on the content.
-					</p>
-					<pre><code class="css" page-width="30">ol.toc {
-   max-width: 30ch;
-   overflow-x: hidden;
-   overflow-y: hidden;
-}
-ol.toc li::before {
-   float: left;
-   width: 0;
-   white-space: nowrap;
-   content: "⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐";
-}
-ol.toc span {
-   padding-right: 1ch;
-   background-color: white;
-}
-ol.toc span + span {
-   float: right;
-   padding-right: 0;
-   padding-left: 1ch;
-   background-color: white;
-}
-h1 {
-   text-align: center;
-   margin: 0 4ch .9em 3ch;
-}
-a {
-   text-decoration: initial;
-   color: initial;
-}</code></pre>
-				</aside>
 
 				<aside class="example" title="Table">
 					<p class="ednote">
@@ -577,6 +468,10 @@ p {
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
 					<p>the following CSS style sheet may be applied:</p>
+					<p class="ednote">
+						To properly center the <code>h1</code>, the right margin may or may not need to be
+						increased with <code>1ch</code>, depending on the content.
+					</p>
 					<pre><code class="css" page-width="40">.box {
    border-style: solid;
    border-width: .4em 0;
@@ -664,25 +559,232 @@ p {
 					</ul>
 				</aside>
 
-				<aside class="example" title="A multiple-choice exercise">
-					<p class="ednote">
-						Missing HTML input for A multiple-choice exercise.
-					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.11/A%20multiple-choice%20exercise.brf"></a>
-				</aside>
-
 				<aside class="example" title="A simple list">
 					<p class="ednote">
-						Missing HTML input for A simple list.
+						The “<a href="../tagging/index.html#example-a-simple-list">A simple
+						list</a>” example from [[TAGGING]] was adapted to contain contracted
+						braille.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.11/A%20simple%20list.brf"></a>
+					<pre><code class="html">&lt;p&gt;⠠⠩⠕⠏⠏⠬ ⠇⠊⠌&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;⠉⠜⠗⠕⠞⠎&lt;/li&gt;
+  &lt;li&gt;⠡⠑⠑⠎⠑&lt;/li&gt;
+  &lt;li&gt;⠞⠕⠍⠁⠞⠕⠑⠎&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠩⠕⠏⠏⠬⠀⠇⠊⠌⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠉⠜⠗⠕⠞⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠡⠑⠑⠎⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠞⠕⠍⠁⠞⠕⠑⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">p {
+   text-indent: 2ch;
+}
+ul {
+   margin-top: .9em;
+}
+li {
+   text-indent: -2ch;
+   margin-left: 2ch;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a
+						href="https://www.w3.org/TR/2024/REC-css-box-3-20240411//#margin-physical">Page-relative
+						(Physical) Margin Properties: the ‘margin-top’, ‘margin-right’,
+						‘margin-bottom’, and ‘margin-left’ properties</a> [[CSS3BOX]]</li>
+						<li><a href="https://www.w3.org/TR/2023/CRD-css-text-3-20230903/#text-indent-property">First
+						Line Indentation: the ‘text-indent’ property</a> [[CSS3TEXT]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="A multiple-choice exercise">
+					<p class="ednote">
+						The “<a href="../tagging/index.html#example-a-multiple-choice-exercise">A
+						multiple-choice exercise</a>” example from [[TAGGING]] was adapted to
+						contain contracted braille, the <code>class="exercise"</code> was removed
+						from the inner <code>ol</code> elements, and the HTML structure was fixed
+						(<code>ol</code> should have <code>li</code> children only).
+					</p>
+					<pre><code class="html">&lt;ol class="exercise"&gt;
+  &lt;li&gt;⠼⠁⠲ ⠠⠱ ⠏⠇⠁⠝⠑⠞ ⠊⠎ ⠉⠇⠕⠎⠑⠌ ⠞⠕ ⠮ ⠎⠥⠝⠦
+    &lt;ol&gt;
+      &lt;li&gt;⠁⠲ ⠠⠧⠢⠥⠎&lt;/li&gt;
+      &lt;li&gt;⠰⠃⠲ ⠠⠍⠻⠉⠥⠗⠽&lt;/li&gt;
+      &lt;li&gt;⠰⠉⠲ ⠠⠍⠜⠎&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;⠼⠃⠲ ⠠⠓⠪ ⠸⠍ ⠍⠕⠕⠝⠎ ⠙⠕⠑⠎ ⠠⠍⠜⠎ ⠓⠦
+    &lt;ol&gt;
+      &lt;li&gt;⠁⠲ ⠼⠚&lt;/li&gt;
+      &lt;li&gt;⠰⠃⠲ ⠼⠁&lt;/li&gt;
+      &lt;li&gt;⠰⠉⠲ ⠼⠃&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠼⠁⠲⠀⠠⠱⠀⠏⠇⠁⠝⠑⠞⠀⠊⠎⠀⠉⠇⠕⠎⠑⠌⠀⠞⠕⠀⠮⠀⠎⠥⠝⠦⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠁⠲⠀⠠⠧⠢⠥⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠰⠃⠲⠀⠠⠍⠻⠉⠥⠗⠽⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠰⠉⠲⠀⠠⠍⠜⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠃⠲⠀⠠⠓⠪⠀⠸⠍⠀⠍⠕⠕⠝⠎⠀⠙⠕⠑⠎⠀⠠⠍⠜⠎⠀⠓⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠁⠲⠀⠼⠚⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠰⠃⠲⠀⠼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠰⠉⠲⠀⠼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">li {
+   text-indent: -2ch;
+   margin-left: 2ch;
+}
+</code></pre>
+				</aside>
+
+				<aside class="example" title="A multiple-choice exercise (variation)">
+					<p class="ednote">
+						This is a variation of the multiple-choice exercise example above, with a
+						reduced page width, to show the indentation of runovers.
+					</p>
+					<pre><code class="html">&lt;ol class="exercise"&gt;
+  &lt;li&gt;⠼⠁⠲ ⠠⠺⠓⠊⠉⠓ ⠏⠇⠁⠝⠑⠞ ⠊⠎ ⠉⠇⠕⠑⠎⠞ ⠞⠕ ⠞⠓⠑ ⠎⠥⠝⠦
+    &lt;ol&gt;
+      &lt;li&gt;⠁⠲ ⠠⠧⠑⠝⠥⠎&lt;/li&gt;
+      &lt;li&gt;⠃⠲ ⠠⠍⠑⠗⠉⠥⠗⠽&lt;/li&gt;
+      &lt;li&gt;⠉⠲ ⠠⠍⠁⠗⠎&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;⠼⠃⠲ ⠠⠓⠕⠺ ⠍⠁⠝⠽ ⠍⠕⠕⠝⠎ ⠙⠕⠑⠎ ⠠⠍⠁⠗⠎ ⠓⠁⠧⠑⠦
+    &lt;ol&gt;
+      &lt;li&gt;⠁⠲ ⠼⠚&lt;/li&gt;
+      &lt;li&gt;⠃⠲ ⠼⠁&lt;/li&gt;
+      &lt;li&gt;⠉⠲ ⠼⠃&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠼⠁⠲⠀⠠⠺⠓⠊⠉⠓⠀⠏⠇⠁⠝⠑⠞⠀⠊⠎
+⠀⠀⠀⠀⠉⠇⠕⠑⠎⠞⠀⠞⠕⠀⠞⠓⠑⠀⠀⠀
+⠀⠀⠀⠀⠎⠥⠝⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠁⠲⠀⠠⠧⠑⠝⠥⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠃⠲⠀⠠⠍⠑⠗⠉⠥⠗⠽⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠉⠲⠀⠠⠍⠁⠗⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠃⠲⠀⠠⠓⠕⠺⠀⠍⠁⠝⠽⠀⠍⠕⠕⠝⠎⠀
+⠀⠀⠀⠀⠙⠕⠑⠎⠀⠠⠍⠁⠗⠎⠀⠓⠁⠧⠑⠦
+⠀⠀⠁⠲⠀⠼⠚⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠃⠲⠀⠼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠉⠲⠀⠼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="20">li {
+   text-indent: -2ch;
+   margin-left: 2ch;
+}
+ol:has(ol) > li {
+   text-indent: -4ch;
+   margin-left: 4ch;
+}
+ol ol li {
+   text-indent: -2ch;
+   margin-left: 0;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a href="https://www.w3.org/TR/2022/WD-selectors-4-20221111/#relational">The
+						Relational Pseudo-class: ‘:has()’</a> [[CSS4SELECT]]</li>
+					</ul>
 				</aside>
 
 				<aside class="example" title="Table of Contents">
 					<p class="ednote">
-						Missing HTML input for Table of Contents.
+						Using the flexible box layout module [[CSSFLEXBOX]], tables of contents can be
+						correctly formatted, including runovers. It however comes at the price of a
+						slightly increased complexity of the markup. Notice the wrapping of items in
+						<code>span</code> tags, and compare this with the simpler markup of the “<a
+						href="../tagging/index.html#example-a-table-of-contents-with-links">A table
+						of contents with links</a>” example from [[TAGGING]]. A possible solution
+						is to insert the <code>span</code> tags through scripting.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.11/Table%20of%20Contents.brf"></a>
+					<pre><code class="html">&lt;ol class="toc"&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠔⠞⠗⠕⠙⠥⠉⠰⠝&lt;/span&gt; &lt;a href="#page-5"&gt;⠼⠑&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠏⠗⠑⠤⠠⠋⠇⠊⠣⠞&lt;/span&gt; &lt;a href="#page-6"&gt;⠼⠋&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠋⠗⠁⠝⠅⠢⠌⠑⠔&lt;/span&gt; &lt;a href="#page-7"&gt;⠼⠛&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠔⠞⠗⠕⠙⠥⠉⠰⠝&lt;/span&gt; &lt;a href="#page-8"&gt;⠼⠓&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠏⠗⠑⠋⠁⠉⠑&lt;/span&gt; &lt;a href="#page-14"&gt;⠼⠁⠙&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠗ ⠠⠊&lt;/span&gt; &lt;a href="#page-17"&gt;⠼⠁⠛&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠗ ⠠⠠⠊⠊&lt;/span&gt; &lt;a href="#page-20"&gt;⠼⠃⠚&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠗ ⠠⠠⠊⠊⠊&lt;/span&gt; &lt;a href="#page-24"&gt;⠼⠃⠙&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠗ ⠠⠠⠊⠧&lt;/span&gt; &lt;a href="#page-25"&gt;⠼⠃⠑&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠡⠁⠏⠞⠻ ⠠⠊&lt;/span&gt; &lt;a href="#page-32"&gt;⠼⠉⠃&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠡⠁⠏⠞⠻ ⠠⠠⠊⠊&lt;/span&gt; &lt;a href="#page-38"&gt;⠼⠉⠓&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠠⠔⠞⠗⠕⠙⠥⠉⠰⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠑
+⠠⠏⠗⠑⠤⠠⠋⠇⠊⠣⠞⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠋
+⠠⠋⠗⠁⠝⠅⠢⠌⠑⠔⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛
+⠠⠠⠔⠞⠗⠕⠙⠥⠉⠰⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠓
+⠠⠠⠏⠗⠑⠋⠁⠉⠑⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠁⠙
+⠠⠠⠇⠗⠀⠠⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠁⠛
+⠠⠠⠇⠗⠀⠠⠠⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠚
+⠠⠠⠇⠗⠀⠠⠠⠊⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠙
+⠠⠠⠇⠗⠀⠠⠠⠊⠧⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠑
+⠠⠠⠡⠁⠏⠞⠻⠀⠠⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠉⠃
+⠠⠠⠡⠁⠏⠞⠻⠀⠠⠠⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠉⠓</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">ol.toc {
+   overflow: hidden;
+}
+ol.toc li:has(span) {
+   display: flex;
+   flex-wrap: nowrap;
+}
+ol.toc li span {
+   padding-right: 1ch;
+   background-color: white;
+   overflow: hidden;
+}
+ol.toc li span::after {
+   display: inline-block;
+   width: 0;
+   white-space: nowrap;
+   content: "\A0⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐";
+}
+ol.toc li:has(span)::before {
+   order: 2;
+   flex-grow: 1;
+   align-self: flex-end;
+   width: 2ch;
+   display: inline-flex;
+   justify-content: flex-end;
+   white-space: nowrap;
+   z-index: -1;
+   content: "⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐\A0";
+}
+ol.toc li span + a {
+   order: 3;
+   flex-shrink: 0;
+   align-self: flex-end;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a
+						href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#flex-wrap-property">
+						Flex Line Wrapping: the ‘flex-wrap’ property</a> [[CSSFLEXBOX]]</li>
+						<li><a
+						href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#flex-grow-property">
+						The ‘flex-grow’ property</a> [[CSSFLEXBOX]]</li>
+						<li><a
+						href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#flex-shrink-property">
+						The ‘flex-shrink’ property</a> [[CSSFLEXBOX]]</li>
+						<li><a
+						href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#align-items-property">
+						Cross-axis Alignment: the ‘align-items’ and ‘align-self’ properties</a>
+						[[CSSFLEXBOX]]</li>
+						<li><a
+						href="https://www.w3.org/TR/2018/CR-css-flexbox-1-20181119/#order-property">
+						Display Order: the ‘order’ property</a> [[CSSFLEXBOX]]</li>
+						<li><a href="https://drafts.csswg.org/css2/#z-index">Specifying the stack
+						level: the ‘z-index’ property</a> [[CSS2]]</li>
+					</ul>
 				</aside>
 
 				<aside class="example" title="Print page inidicator separating two pieces of text">
