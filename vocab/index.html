@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<title>eBraille Metadata Vocabulary</title>
+		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
+		<script src="../common/js/status.js" class="remove"></script>
+		<script class="remove">
+			//<![CDATA[
+			var respecConfig = {
+				shortName: 'ebraille',
+				daisyWG: 'eBraille Working Group',
+				specStatus: 'base',
+				daisyStatus: 'ED',
+				latestVersion: 'https://daisy.github.io/ebraille/',
+				edDraftURI: null,
+				editors: [
+					{
+						name: 'Willow Free',
+						company: 'American Printing House for the Blind',
+						url: 'https://www.aph.org/'
+					},
+					{
+						name: 'Matt Garrish',
+						company: 'DAISY Consortium',
+						url: 'https://daisy.org/'
+					}
+				],
+				logos: [
+					{
+						src: 'common/images/daisy_high.jpg',
+						width: 112,
+						height: 100,
+						alt: 'DAISY Consortium logo',
+						url: 'https://daisy.org'
+					}
+				],
+				github: 'daisy/ebraille',
+				postProcess: [addDAISYStatus],
+				xref: ["epub-33"],
+				localBiblio: {
+					"ebraille": {
+						"title": "eBraille",
+						"href": "https://daisy.github.io/ebraille",
+						"editors": [
+							"Willow Free"
+						]
+					},
+				}
+			};
+			// ]]>
+		</script>
+		<link rel="stylesheet" href="../common/css/common.css" />
+		<style>
+			.conf-pattern {
+				margin-left: 3rem;
+				font-style: italic;
+			}
+			.varlist {
+				margin-left: 3rem;
+			}
+			pre {
+				white-space: break-spaces !important;
+			}
+			
+			table.tabledef {
+				border-spacing: 0px;
+				border: none;
+				font-size: 1em;
+				width: 100%
+			}
+			
+			table.tabledef td,
+			table.tabledef th {
+				border: none;
+				background-color: rgb(236, 246, 255);
+				color: rgb(0, 0, 0);
+				padding: 0.3em;
+				vertical-align: top;
+			}
+			
+			table.tabledef th {
+				text-align: left;
+				vertical-align: top;
+				width: 8em;
+				padding-left: 1em;
+			}
+			
+			table.tabledef th {
+				border-left: 5px solid rgb(145, 200, 255);
+			}
+			
+			table.tabledef td {
+				padding: 3px 3px 3px 10px;
+			}
+			
+			table.tabledef td > p:first-child {
+				padding: 0em;
+				margin: 0em
+			}
+			
+			table.tabledef th {
+				font-weight: normal;
+				font-style: italic;
+			}</style>
+	</head>
+	<body>
+		<section id="abstract">
+			<p>This vocabulary defines properties for describing braille works.</p>
+		</section>
+		<section id="sotd">
+			<div data-include="../common/status.html" data-include-replace="true"></div>
+		</section>
+		<section id="app-vocab-overview">
+			<h2>Introduction</h2>
+
+			<section id="app-vocab-about">
+				<h3>About this vocabulary</h3>
+
+				<p>This vocabulary defines braille-specific properties for describing <a
+						href="https://daisy.github.io/ebraille/">eBraille publications</a> [[ebraille]].</p>
+			</section>
+			<section id="app-vocab-ref">
+				<h3>Referencing</h3>
+
+				<p>The base URL for referencing this vocabulary is <code>https://www.daisy.org/tbd</code></p>
+
+				<p>For compatibility with the EPUB 3 <a href="https://www.w3.org/TR/epub/#dfn-package-document">package
+						document</a>, this specification reserves the prefix "<code>brl:</code>" for use with properties
+					in this vocabulary.</p>
+
+				<p>Until such time as the prefix is formally registered as an EPUB 3 reserved prefix, it MUST be
+					declared in the package document.</p>
+			</section>
+			<section id="conformance"></section>
+		</section>
+		<section id="vocab-bibliographic">
+			<h2>Bibliographic properties</h2>
+
+			<section id="certifiedBy">
+				<h3>abc</h3>
+
+				<table class="tabledef">
+					<caption>Definition of the <code>abc</code> property</caption>
+					<tr>
+						<th>Name:</th>
+						<td>
+							<code>abc</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Description:</th>
+						<td>Identifies ...</td>
+					</tr>
+					<tr>
+						<th>Allowed value(s):</th>
+						<td>
+							<code>xsd:string</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Cardinality:</th>
+						<td>One or more</td>
+					</tr>
+					<tr>
+						<th>Example:</th>
+						<td>
+							<pre>&lt;meta
+    property="brl:abc">
+   ...
+&lt;/meta></pre>
+						</td>
+					</tr>
+				</table>
+			</section>
+		</section>
+		<section id="vocab-rendering">
+			<h2>Rendering properties</h2>
+
+			<section id="xyz">
+				<h3>xyz</h3>
+
+				<table class="tabledef">
+					<caption>Definition of the <code>xyz</code> property</caption>
+					<tr>
+						<th>Name:</th>
+						<td>
+							<code>xyz</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Description:</th>
+						<td>Identifies ...</td>
+					</tr>
+					<tr>
+						<th>Allowed value(s):</th>
+						<td>
+							<code>xsd:string</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Cardinality:</th>
+						<td>One or more</td>
+					</tr>
+					<tr>
+						<th>Example:</th>
+						<td>
+							<pre>&lt;meta
+    property="brl:xyz">
+   ...
+&lt;/meta></pre>
+						</td>
+					</tr>
+				</table>
+			</section>
+		</section>
+	</body>
+</html>
