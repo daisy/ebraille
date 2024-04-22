@@ -18,6 +18,18 @@
 						name: 'Willow Free',
 						company: 'American Printing House for the Blind',
 						url: 'https://www.aph.org/'
+					},
+					{
+						name: 'Matt Garrish',
+						company: 'DAISY Consortium',
+						url: 'https://daisy.org/'
+					}
+				],
+				authors: [
+					{
+						name: 'James Bowden',
+						company: 'Royal National Institute of Blind People',
+						url: 'https://www.rnib.org.uk/'
 					}
 				],
 				logos: [
@@ -77,9 +89,9 @@
 		
 			<section id="boxes">
 				<h4>Boxed text</h4>
-
+				<p>Boxes may be created by lines of braille characters, above, below, to the left or right of a block of text. The characters used, the size and which sides to show, are controlled by CSS.</p>
 				<dl id="elemdef-box" class="elemdef">
-					<dt>Element(s):</dt>
+										<dt>Element(s):</dt>
 					<dd>
 						<p>[^div^]</p>
 					</dd>
@@ -88,7 +100,6 @@
 					<dd>
 						<ul class="nomark">
 							<li><code>box</code>, <code>nemeth</code>, various strings</li>
-<!--Need to know what classes to use for boxes with text, such as color or other indicators. Now sure how to define.-->
 						</ul>
 					</dd>
 				
@@ -128,7 +139,7 @@
 </section>
 			<section id="Braille grade">
 				<h4>Braille grade</h4>
-
+				<p>Braille grade refers to whether contractions are used in the braille transcription. In Unified English Braille, for example, grade 1 braille uses no contractions, while grade 2 uses any applicable contractions. Documents can be in one grade but with sections that appear in a different grade.</p>
 				<dl id="elemdef-p" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
@@ -145,12 +156,12 @@
 					</dd>
 				</dl>
 
-				<aside class="example" title="A caption following an image.">
+				<aside class="example" title="A snippet of uncontracted text in an otherwise contracted document.">
 					<pre><code class="html">&ltspan class="grade-0">⠠⠞⠓⠊⠎⠀⠃⠗⠁⠊⠇⠇⠑⠀⠊⠎⠀⠥⠝⠉⠕⠝⠞⠗⠁⠉⠞⠑⠙⠲&lt/span></code></pre></aside>
 			</section>
 			<section id="caption">
 				<h4>Captions</h4>
-
+				<p>Captions refer to any text in print that is associated with an image, table, or chart. The text is not added by the transcriber, like a description or alt text, but instead is transcribed from the print.</p>
 				<dl id="elemdef-p" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
@@ -176,7 +187,7 @@
 			</section>
 			<section id="em">
 				<h4>Emphasis</h4>
-
+				<p>In contrast to print, braille uses characters placed before or sometimes after text to indicate various types of text emphasis. The following elements will not add the braille characters themselves but will instead just track where emphasis is placed so that reading systems can potentially offer features that utilize this information.</p>
 				<dl id="elemdef-em-strong" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
@@ -188,6 +199,11 @@
 					<dd>
 						<ul class="nomark">
 							<li><code>script</code>, <code>underline</code>, <code>custom-1</code>, <code>custom-2</code>, <code>custom-3</code>, <code>custom-4</code>, <code>custom-5</code></li>
+							<ul class="nomark">
+								<li><code>script</code>&#8212; used to denote text that is meant to mimic handwriting.</li>
+								<li><code>underline</code>&#8212; used to denote text that is underlined.</li>
+								<li><code>custom-#</code>&#8212; used in UEB to denote text that is emphasized in a way not covered by a planned type of emphasis. For example, you could use it for green highlighting since UEB has no means to denote that kind of emphasis. Other kinds of emphasis that could be represented are text with a different color or a significant font change. It could similarly be applied to other braille codes that have emphasis types not covered by the types available.</li>
+							</ul>
 						</ul>
 					</dd>
 				</dl>
@@ -200,15 +216,11 @@
 					<pre><code class="html">&lt;p>⠠⠏⠗⠑⠎⠎ ⠞⠓⠑ &lt;em class="custom-1">⠈⠼⠂⠎⠟⠥⠁⠗⠑&lt;/em> ⠃⠥⠞⠞⠕⠝⠲&lt;/p></code></pre>
 					
 				</aside>
-<p class="ednote" title="Use markup for braille-only indicators">
-  An earlier draft identified the braille-only indicators that are used for things like emphasis. This idea was not discussed with the group and has been left out. If we decide to include it, we could use spans.
-  Questions include, should we identify each kind of indicator in a unique way (bold character, bold passage, but also underline character, underline passage, etc.)-WF
-</p>
 			</section>
 
 			<section id="figures">
 				<h4>Figures</h4>
-
+				<p>[^figure^] specifies self-contained content, like illustrations, diagrams, photos, code listings, etc.</p>
 				<dl id="elemdef-figure" class="elemdef">
 					<dt>Element(s):</dt>
 					<dd>
@@ -245,9 +257,9 @@
 					<dt>Supported <code>role</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>doc-noteref</code></li>
-							<li><code>doc-footnote</code></li>
-							<li><code>doc-endnotes</code></li>
+							<li><code>doc-noteref</code>&#8212; used to identify the actual symbol of the footnote or endnote. This symbol will typically appear as a superscripted number or symbol in the main body of text.</li>
+							<li><code>doc-footnote</code>&#8212; used to identify the entirety of a single footnote, so symbol and text.</li>
+							<li><code>doc-endnotes</code>&#8212; used to identify the entirety of a single endnote, so symbol and text.</li>
 						</ul>
 					</dd>
 				</dl>
@@ -272,7 +284,7 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li>Additional general formatting instructions</li>
+							<li>None</li>
 						</ul>
 					</dd>
 				</dl>
@@ -291,11 +303,6 @@
 				</aside>
 				<aside class="example" title="Running header when used for a chapter heading and not the title of the entire work.">
 					<pre><code class="html">&lt;header>⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠠⠊⠊⠊⠲⠀⠠⠞⠓⠑⠀⠠⠝⠊⠛⠓⠞⠀⠠⠄⠎⠓⠁⠙⠕⠚⠎⠀&lt;/header></code></pre>
-				</aside>
-
-				<aside class="example" title="Headings with additional formatting instructions">
-					<pre><code class="html">&lt;h1 class="newpage">⠠⠃⠁⠎⠊⠉ ⠠⠕⠏⠑⠗⠁⠞⠊⠕⠝&lt;/h1>
-&lt;h2 class="sidenoblankline">⠠⠍⠁⠊⠝ ⠠⠙⠊⠎⠏⠇⠁⠽&lt;/h2></code></pre>
 				</aside>
 			</section>
 
@@ -324,7 +331,7 @@
      alt="⠠⠙⠊⠁⠛⠗⠁⠍ ⠕⠋ ⠞⠺⠕ ⠊⠝⠞⠑⠗⠎⠑⠉⠞⠊⠝⠛ ⠉⠊⠗⠉⠇⠑⠎"/></code></pre>
 				</aside>
 				<aside class="example" title="Use a download link for graphics that use a file type that is not a traditional image">
-					<pre><code class="html">&lta href="/images/butterfly.pdf" download>Graphic of a butterfly&lt/a></code></pre>
+					<pre><code class="html">&lta href="/images/butterfly.pdf" download>⠠⠛⠗⠁⠏⠓⠊⠉⠀⠷⠀⠁⠀⠃⠥⠞⠞⠻⠋⠇⠽&lt/a></code></pre>
 				</aside>
 			</section>
 
@@ -341,7 +348,12 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>id</code>, <code>linenum</code>, <code>prose</code>, <code>poetry</code></li>
+							<li><code>linenum</code>, <code>prose</code>, <code>poetry</code></li>
+								<ul class = "nomark">
+									<li><code>linenum</code>&#8212; applied to the div and span to identify each as involving line numbers.</li>
+									<li><code>prose</code>&#8212; applied to the div to identify the section as involving prose text with line numbers (some braille regions have different rules for prose line numbers vs poetry line numbers).</li>
+									<li><code>poetry</code>&#8212; applied to the div to identify the section as involving poetic text with line numbers.</li>
+								</ul>
 						</ul>
 					</dd>
 				</dl>
@@ -364,14 +376,15 @@
 					<dt>Element Name:</dt>
 					<dd>
 						<p data-cite="html"> [^a^]</p>
+						<p>Note that links can be either external or internal. An internal link could point to a location within the same xHTML file or to a different file within the same package. An external link points to a location outside of the package, such as a webpage.</p>
 					</dd>
 
 					<dt>Supported <code>role</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>doc-backlink</code></li>
-							<li><code>doc-biblioref</code></li>
-							<li><code>doc-glossref</code></li>
+							<li><code>doc-backlink</code>&#8212; A link that allows the user to return to a related location in the content.</li>
+							<li><code>doc-biblioref</code>&#8212; A link referencing a bibliographic entry.</li>
+							<li><code>doc-glossref</code>&#8212; A link to a glossary definition.</li>
 						</ul>
 					</dd>
 				</dl>
@@ -401,14 +414,26 @@
 					<dt>Element(s):</dt>
 					<dd>
 						<p>[^ol^], [^ul^], [^dl^], [^li^]</p>
+
+						<p>Note that <code>dl</code> is preferred for <code>glossary</code> and <code>index</code>.</p>
 					</dd>
 
 					<dt>Reserved <code>class</code> values:</dt>
+						<p>The reserved class values in this section are only applied to [^ol^], [^ul^], and [^dl^].</p>
 					<dd>
 						<ul class="nomark">
-							<li><code>exercise</code>, <code>glossary</code>, <code>index</code>, <code>toc</code>, <code>poetry</code>, <code>generic</code></li>
+							<li><code>nomark</code>, <code>exercise</code>, <code>glossary</code>, <code>index</code>, <code>toc</code>, <code>poetry</code>, <code>specify-number</code></li>
+								<ul class="nomark">
+									<li><code>nomark</code>&#8212; used to prevent the automatic inclusion of list prefixes, like bullets or numbers.</li>
+									<li><code>exercise</code>&#8212; used to denote an exercise question, typically one in a list format like a multiple-choice question.</li>
+									<li><code>glossary</code>&#8212; used to denote a glossary entry.</li>
+									<li><code>index</code>&#8212; used to denote an indices entry.</li>
+									<li><code>toc</code>&#8212; used to denote a table of contents entry.</li>
+									<li><code>poetry</code>&#8212; used to denote a line in a work of poetry that is meant to formatted in stanzas or a way that is similar to a list.</li>
+									<li><code>specify-number</code>&#8212; used to denote very specific numeric values and recommended to be used sparingly as it will hardcode those cell positions. Examples of accompanying cell positions would be <code>1-3</code>, <code>5-7</code>, etc. with the first number representing which cell the item should start in and the second number representing which cell the second line and all subsequent lines should start in.</li>
+								</ul>
 						</ul>
-							<p>Note that <code>ol</code> is preferred for <code>exercise</code>, <code>poetry</code>, and <code>generic</code>, while <code>dl</code> is preferred for <code>glossary</code>, <code>index</code>, and <code>toc</code>. <code>ul</code> can be used for basic lists.</p>
+					
 					</dd>
 				</dl>
 
@@ -462,7 +487,7 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>doc-pagebreak</code></li>
+							<li><code>doc-pagebreak</code>&#8212; A separator denoting the position before which a break occurs between two contiguous pages in a statically paginated version of the content.</li>
 						</ul>
 					</dd>
 				</dl>
@@ -494,7 +519,13 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>blocked</code>, <code>displayed</code>, <code>directions</code>, <code>generic</code></li>
+							<li><code>left-aligned</code>, <code>directions</code>, <code>hanging</code><code>specific-number</code></li>
+								<ul class="nomark">
+									<li><code>left-aligned</code>&#8212; used to denote a paragraph that should be left justified.</li>
+									<li><code>directions</code>&#8212; used to denote directions that will typically accompany tests, quizzes, or multiple choice questions.</li>
+									<li><code>hanging</code>&#8212; used to denote a paragraph in which the first line is set to the left margin, but all subsequent lines are indented.</li>
+									<li><code>specific-number</code>&#8212; used to denote very specific numeric values and recommended to be used sparingly as it will hardcode those cell positions. Examples of accompanying cell positions would be <code>1-3</code>, <code>5-7</code>, etc. with the first number representing which cell the item should start in and the second number representing which cell the second line and all subsequent lines should start in.</li>
+							</ul>
 						</ul>
 					</dd>
 				</dl>
@@ -543,11 +574,15 @@
 					</dd>
 
 					<dt>Reserved <code>class</code> values:</dt>
+						<p>The reserved class values in this section are only applied to [^table^].</p>
 					<dd>
 						<ul class="nomark">
 							<li><code>listed</code>, <code>linear</code>, <code>stairstep</code></li>
-						</ul>
-						<p>Note that <code>listed</code>, <code>linear</code>, and <code>stairstep</code> are table types that are specific to North American braille formatting. Additional table types can be added. The use of these classes signifies the file creator's recommendation that a specific type of braille table formatting be used but the user or reading system may ignore this recommendation.
+								<ul class="nomark">
+									<li><code>listed</code>&#8212; presents the same information as the original table but in a listed format that repeats column headings for each entry.</li>
+									<li><code>linear</code>&#8212; presents the same information as the original table but in a listed format that rearranges the row entries according to their column headings. Column headings are not repeated but are presented in a transcriber's note that precedes the table and informs the reader of the layout of each row's entries.</li>
+									<li><code>stairstep</code>&#8212; presents the same information as the original table but in a specialized format that puts each row in its own section with each column entry in a list format where each column of that row begins two-cells to the right of the previous column. So the first column is in 1-1, the second in 3-3, and so on. The column headings appear in a transcriber's note and are used to inform the reader of the layout of the table.</li>
+							</ul>
 					</dd>
 				</dl>
 
@@ -626,7 +661,7 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>transcriber-note</code>
+							<li><code>transcriber-note</code>&#8212; used to identify a [^span^] or [^div^] as a transcriber's note, which is text that is added by a transcriber and not part of the original text.</li>
 						</ul>
 					</dd>
 				</dl>
