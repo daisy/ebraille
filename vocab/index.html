@@ -120,37 +120,107 @@
 				<p>This vocabulary defines braille-specific properties for describing <a
 						href="https://daisy.github.io/ebraille/">eBraille publications</a> [[ebraille]].</p>
 			</section>
-			<section id="app-vocab-ref">
-				<h3>Referencing</h3>
-
-				<p>The base URL for referencing this vocabulary is <code>https://www.daisy.org/tbd</code></p>
-
-				<p>For compatibility with the EPUB 3 <a href="https://www.w3.org/TR/epub/#dfn-package-document">package
-						document</a>, this specification reserves the prefix "<code>brl:</code>" for use with properties
-					in this vocabulary.</p>
-
-				<p>Until such time as the prefix is formally registered as an EPUB 3 reserved prefix, it MUST be
-					declared in the package document.</p>
-			</section>
 			<section id="conformance"></section>
+		</section>
+		<section id="app-vocab-ref">
+			<h2>Referencing</h2>
+
+			<p>The base URL for referencing this vocabulary is <code>https://www.daisy.org/tbd</code></p>
+
+			<p>For compatibility with the EPUB 3 <a href="https://www.w3.org/TR/epub/#dfn-package-document">package
+					document</a>, this specification reserves the prefix "<code>brl:</code>" for use with properties in
+				this vocabulary.</p>
+
+			<p>Until such time as the prefix is formally registered as an EPUB 3 reserved prefix, it MUST be declared in
+				the eBraille package document.</p>
+		</section>
+		<section>
+			<h2>Property field definitions</h2>
+
+			<p>The fields in the vocabulary definition tables have the following implicit requirements:</p>
+
+			<dl>
+				<dt>Allowed Values</dt>
+				<dd>
+					<p>Specifies the REQUIRED type of value using [[xmlschema-2]] datatypes.</p>
+				</dd>
+
+				<dt>Cardinality</dt>
+				<dd>
+					<p>Specifies the number of times eBraille creators MAY specify the property.</p>
+					<p>Properties with a minimum cardinality of one MUST be specified.</p>
+				</dd>
+
+				<dt>Description</dt>
+				<dd>
+					<p>Describes the purpose of the property and specifies any additional usage requirements that EPUB
+						creators must follow.</p>
+				</dd>
+
+				<dt>Example</dt>
+				<dd>
+					<p>Provides non-normative usage examples.</p>
+				</dd>
+
+				<dt>Name</dt>
+				<dd>
+					<p>Specifies the name of the property as it MUST appear in the metadata.</p>
+				</dd>
+			</dl>
 		</section>
 		<section id="vocab-bibliographic">
 			<h2>Bibliographic properties</h2>
 
 			<section id="certifiedBy">
-				<h3>abc</h3>
+				<h3>completeTranscription</h3>
 
 				<table class="tabledef">
-					<caption>Definition of the <code>abc</code> property</caption>
+					<caption>Definition of the <code>completeTranscription</code> property</caption>
 					<tr>
 						<th>Name:</th>
 						<td>
-							<code>abc</code>
+							<code>completeTranscription</code>
 						</td>
 					</tr>
 					<tr>
 						<th>Description:</th>
-						<td>Identifies ...</td>
+						<td>Identifies whether the original work being transcribed is fully represented in the braille
+							rendition, minus any minor omissions such as illustrations without captions or other
+							material that is not ordinarily transcribed</td>
+					</tr>
+					<tr>
+						<th>Allowed value(s):</th>
+						<td>
+							<code>true</code> | <code>false</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Cardinality:</th>
+						<td>Exactly one</td>
+					</tr>
+					<tr>
+						<th>Example:</th>
+						<td>
+							<pre>&lt;meta property="brl:completeTranscription">true&lt;/meta></pre>
+						</td>
+					</tr>
+				</table>
+			</section>
+
+			<section id="producer">
+				<h3>producer</h3>
+
+				<table class="tabledef">
+					<caption>Definition of the <code>producer</code> property</caption>
+					<tr>
+						<th>Name:</th>
+						<td>
+							<code>producer</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Description:</th>
+						<td>Identifies the name of the organization(s) that produced the braille publication.</td>
 					</tr>
 					<tr>
 						<th>Allowed value(s):</th>
@@ -160,42 +230,111 @@
 					</tr>
 					<tr>
 						<th>Cardinality:</th>
-						<td>One or more</td>
+						<td>Zero or more</td>
 					</tr>
 					<tr>
 						<th>Example:</th>
 						<td>
-							<pre>&lt;meta
-    property="brl:abc">
-   ...
-&lt;/meta></pre>
+							<pre>&lt;meta property="brl:producer">APH&lt;/meta></pre>
+						</td>
+					</tr>
+				</table>
+			</section>
+
+			<section id="volumes">
+				<h3>volumes</h3>
+
+				<table class="tabledef">
+					<caption>Definition of the <code>volumes</code> property</caption>
+					<tr>
+						<th>Name:</th>
+						<td>
+							<code>volumes</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Description:</th>
+						<td>Identifies the total number of volumes within the eBraille publication. The number typically
+							corresponds to the number of XHTML content documents in the publication.</td>
+					</tr>
+					<tr>
+						<th>Allowed value(s):</th>
+						<td>
+							<code>xsd:unsignedInt</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Cardinality:</th>
+						<td>Zero or one</td>
+					</tr>
+					<tr>
+						<th>Example:</th>
+						<td>
+							<pre>&lt;meta property="brl:volumes">3&lt;/meta></pre>
 						</td>
 					</tr>
 				</table>
 			</section>
 		</section>
-		<section id="vocab-rendering">
-			<h2>Rendering properties</h2>
+		<section id="vocab-content">
+			<h2>Content properties</h2>
 
-			<section id="xyz">
-				<h3>xyz</h3>
+			<section id="dotNumber">
+				<h3>dotNumber</h3>
 
 				<table class="tabledef">
-					<caption>Definition of the <code>xyz</code> property</caption>
+					<caption>Definition of the <code>dotNumber</code> property</caption>
 					<tr>
 						<th>Name:</th>
 						<td>
-							<code>xyz</code>
+							<code>dotNumber</code>
 						</td>
 					</tr>
 					<tr>
 						<th>Description:</th>
-						<td>Identifies ...</td>
+						<td>Identifies whether 6 or 8 dot braille cell characters are used in the text.</td>
 					</tr>
 					<tr>
 						<th>Allowed value(s):</th>
 						<td>
-							<code>xsd:string</code>
+							<code>6</code> | <code>8</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Cardinality:</th>
+						<td>Exactly one</td>
+					</tr>
+					<tr>
+						<th>Example:</th>
+						<td>
+							<pre>&lt;meta property="brl:dotNumber">6&lt;/meta></pre>
+						</td>
+					</tr>
+				</table>
+			</section>
+
+			<section id="graphicType">
+				<h3>graphicType</h3>
+
+				<table class="tabledef">
+					<caption>Definition of the <code>graphicType</code> property</caption>
+					<tr>
+						<th>Name:</th>
+						<td>
+							<code>graphicType</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Description:</th>
+						<td>
+							<p>Identifies the format(s) of any tactile graphics included in the work.</p>
+							<p>Repeat the property for each different format.</p>
+						</td>
+					</tr>
+					<tr>
+						<th>Allowed value(s):</th>
+						<td>
+							<code>JPG</code> | <code>PDF</code> | <code>PNG</code> | <code>SVG</code>
 						</td>
 					</tr>
 					<tr>
@@ -205,10 +344,121 @@
 					<tr>
 						<th>Example:</th>
 						<td>
-							<pre>&lt;meta
-    property="brl:xyz">
-   ...
-&lt;/meta></pre>
+							<pre>&lt;meta property="brl:graphicType">SVG&lt;/meta></pre>
+						</td>
+					</tr>
+				</table>
+			</section>
+
+			<section id="minimumCells">
+				<h3>minimumCells</h3>
+
+				<table class="tabledef">
+					<caption>Definition of the <code>minimumCells</code> property</caption>
+					<tr>
+						<th>Name:</th>
+						<td>
+							<code>minimumCells</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Description:</th>
+						<td>
+							<p>Identifies the minimum number of cells per line required to accurately display the
+								material within the transcription.</p>
+							<p>For example, if a single graphic in the file requires at least 10 cells of space and so
+								the minimum for this file would be 10 cells.</p>
+							<p>Reading systems should attempt to display the content regardless of the value of this
+								property.</p>
+						</td>
+					</tr>
+					<tr>
+						<th>Allowed value(s):</th>
+						<td>
+							<code>xsd:unsignedInt</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Cardinality:</th>
+						<td>Exactly one</td>
+					</tr>
+					<tr>
+						<th>Example:</th>
+						<td>
+							<pre>&lt;meta property="brl:minimumCells">10&lt;/meta></pre>
+						</td>
+					</tr>
+				</table>
+			</section>
+
+			<section id="minimumLines">
+				<h3>minimumLines</h3>
+
+				<table class="tabledef">
+					<caption>Definition of the <code>minimumLines</code> property</caption>
+					<tr>
+						<th>Name:</th>
+						<td>
+							<code>minimumLines</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Description:</th>
+						<td>
+							<p>Identifies the minimum number of lines per page required to accurately display the
+								material within the transcription.</p>
+							<p>For single- and multi-line braille displays, the concept of a page refers to the total
+								number of lines that the hardware can accommodate without refreshing.</p>
+						</td>
+					</tr>
+					<tr>
+						<th>Allowed value(s):</th>
+						<td>
+							<code>xsd:unsignedInt</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Cardinality:</th>
+						<td>Exactly one</td>
+					</tr>
+					<tr>
+						<th>Example:</th>
+						<td>
+							<pre>&lt;meta property="brl:minimumLines">5&lt;/meta></pre>
+						</td>
+					</tr>
+				</table>
+			</section>
+
+			<section id="tactileGraphics">
+				<h3>tactileGraphics</h3>
+
+				<table class="tabledef">
+					<caption>Definition of the <code>tactileGraphics</code> property</caption>
+					<tr>
+						<th>Name:</th>
+						<td>
+							<code>tactileGraphics</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Description:</th>
+						<td>Identifies whether tactile graphics are present in the work.</td>
+					</tr>
+					<tr>
+						<th>Allowed value(s):</th>
+						<td>
+							<code>true</code> | <code>false</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Cardinality:</th>
+						<td>Exactly one</td>
+					</tr>
+					<tr>
+						<th>Example:</th>
+						<td>
+							<pre>&lt;meta property="brl:tactileGraphics">true&lt;/meta></pre>
 						</td>
 					</tr>
 				</table>
