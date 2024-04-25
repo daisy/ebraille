@@ -1,4 +1,4 @@
-# ebraille
+# eBraille
 Repository for developing use cases and possibly a standard  for digital braille
 
 The main objectives for the next phase of the project are:
