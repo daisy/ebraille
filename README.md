@@ -9,7 +9,11 @@ The main objectives for the next phase of the project are:
 
 ## Documents
 
+### Specifications
 - [eBraille specification](https://daisy.github.io/ebraille/)
+- [eBraille Metadata Vocabulary](https://daisy.github.io/ebraille/vocab/)
+
+### Best Practices
 - [eBraille Tagging Best Practices](https://daisy.github.io/ebraille/best-practices/tagging/)
 - eBraille CSS Best Practices (in development)
 
