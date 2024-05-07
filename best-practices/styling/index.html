@@ -930,30 +930,138 @@ h1 {
 
 				<aside class="example" title="A blocked paragraph preceding an indented one">
 					<p class="ednote">
-						Missing HTML input for A blocked paragraph preceding an indented one.
+						The “<a href="../tagging/index.html#example-a-basic-paragraph-of-text">A
+						basic paragraph of text</a>” and “<a
+						href="../tagging/index.html#example-a-blocked-paragraph-that-is-flush-with-the-left-margin">A
+						blocked paragraph that is flush with the left margin</a>” examples from
+						[[TAGGING]] were combined.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.13/A%20blocked%20paragraph%20preceding%20an%20indented%20one.brf"></a>
+					<pre><code class="html">&lt;p class="blocked"&gt;⠠⠘⠥ ⠓⠑⠜⠬ ⠹ ⠓⠑ ⠁⠏⠏⠑⠜⠫ ⠎⠁⠞⠊⠎⠋⠊⠫
+⠯ ⠒⠎⠢⠞⠫ ⠞⠕ ⠉⠕⠍⠑ ⠕⠝ ⠃⠕⠜⠙⠲ ⠠⠛⠙ ⠠⠛⠕⠙⠖ ⠠⠍⠜⠛⠜⠑⠞⠂ ⠊⠋ ⠽ ⠸⠓ ⠎⠑⠢
+⠮ ⠍⠁⠝ ⠱⠕ ⠹⠥⠎ ⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫ ⠿ ⠦ ⠎⠁⠋⠑⠞⠽⠂ ⠽⠗ ⠎⠥⠗⠏⠗⠊⠎⠑ ⠺⠙ ⠓
+⠃⠑⠢ ⠃⠨⠙⠨⠎⠲&lt;/p&gt;
+&lt;p&gt;⠠⠞⠺⠕ ⠐⠙⠎ ⠏⠁⠎⠎⠫ ⠔ ⠹ ⠍⠁⠝⠝⠻ ⠆⠋ ⠓⠑ ⠴ ⠁⠃⠇⠑ ⠞⠕ ⠎⠏⠂⠅⠂
+⠯ ⠠⠊ ⠷⠞⠢ ⠋⠑⠜⠫ ⠞ ⠦ ⠎⠥⠖⠻⠬⠎ ⠸⠓ ⠙⠑⠏⠗⠊⠧⠫ ⠓⠍ ⠷ ⠐⠥⠌⠯⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠠⠘⠥⠀⠓⠑⠜⠬⠀⠹⠀⠓⠑⠀⠁⠏⠏⠑⠜⠫⠀⠎⠁⠞⠊⠎⠋⠊⠫⠀⠯⠀⠒⠎⠢⠞⠫⠀⠞⠕
+⠉⠕⠍⠑⠀⠕⠝⠀⠃⠕⠜⠙⠲⠀⠠⠛⠙⠀⠠⠛⠕⠙⠖⠀⠠⠍⠜⠛⠜⠑⠞⠂⠀⠊⠋⠀⠽⠀⠸⠓
+⠎⠑⠢⠀⠮⠀⠍⠁⠝⠀⠱⠕⠀⠹⠥⠎⠀⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫⠀⠿⠀⠦⠀⠎⠁⠋⠑⠞⠽⠂⠀
+⠽⠗⠀⠎⠥⠗⠏⠗⠊⠎⠑⠀⠺⠙⠀⠓⠀⠃⠑⠢⠀⠃⠨⠙⠨⠎⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠞⠺⠕⠀⠐⠙⠎⠀⠏⠁⠎⠎⠫⠀⠔⠀⠹⠀⠍⠁⠝⠝⠻⠀⠆⠋⠀⠓⠑⠀⠴⠀⠁⠃⠇⠑⠀
+⠞⠕⠀⠎⠏⠂⠅⠂⠀⠯⠀⠠⠊⠀⠷⠞⠢⠀⠋⠑⠜⠫⠀⠞⠀⠦⠀⠎⠥⠖⠻⠬⠎⠀⠸⠓⠀⠀⠀⠀
+⠙⠑⠏⠗⠊⠧⠫⠀⠓⠍⠀⠷⠀⠐⠥⠌⠯⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">p {
+   text-indent: 2ch;
+}
+p.blocked {
+   text-indent: 0;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a href="https://www.w3.org/TR/2023/CRD-css-text-3-20230903/#text-indent-property">First
+						Line Indentation: the ‘text-indent’ property</a> [[CSS3TEXT]]</li>
+					</ul>
 				</aside>
 
 				<aside class="example" title="An indented paragraph preceding a blocked one">
 					<p class="ednote">
-						Missing HTML input for An indented paragraph preceding a blocked one.
+						The “<a href="../tagging/index.html#example-a-basic-paragraph-of-text">A
+						basic paragraph of text</a>” and “<a
+						href="../tagging/index.html#example-a-blocked-paragraph-that-is-flush-with-the-left-margin">A
+						blocked paragraph that is flush with the left margin</a>” examples from
+						[[TAGGING]] were combined.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.13/An%20indented%20paragraph%20preceding%20a%20blocked%20one.brf"></a>
+					<pre><code class="html"><pre><code class="html">&lt;p&gt;⠠⠘⠥ ⠓⠑⠜⠬ ⠹ ⠓⠑ ⠁⠏⠏⠑⠜⠫ ⠎⠁⠞⠊⠎⠋⠊⠫ ⠯ ⠒⠎⠢⠞⠫ ⠞⠕ ⠉⠕⠍⠑
+⠕⠝ ⠃⠕⠜⠙⠲ ⠠⠛⠙ ⠠⠛⠕⠙⠖ ⠠⠍⠜⠛⠜⠑⠞⠂ ⠊⠋ ⠽ ⠸⠓ ⠎⠑⠢ ⠮ ⠍⠁⠝ ⠱⠕ ⠹⠥⠎
+⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫ ⠿ ⠦ ⠎⠁⠋⠑⠞⠽⠂ ⠽⠗ ⠎⠥⠗⠏⠗⠊⠎⠑ ⠺⠙ ⠓ ⠃⠑⠢ ⠃⠨⠙⠨⠎⠲&lt;/p&gt;
+&lt;p class="blocked"&gt;⠠⠞⠺⠕ ⠐⠙⠎ ⠏⠁⠎⠎⠫ ⠔ ⠹ ⠍⠁⠝⠝⠻ ⠆⠋ ⠓⠑
+⠴ ⠁⠃⠇⠑ ⠞⠕ ⠎⠏⠂⠅⠂ ⠯ ⠠⠊ ⠷⠞⠢ ⠋⠑⠜⠫ ⠞ ⠦ ⠎⠥⠖⠻⠬⠎ ⠸⠓ ⠙⠑⠏⠗⠊⠧⠫ ⠓⠍
+⠷ ⠐⠥⠌⠯⠬⠲&lt;/p&gt;</code></pre></code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠘⠥⠀⠓⠑⠜⠬⠀⠹⠀⠓⠑⠀⠁⠏⠏⠑⠜⠫⠀⠎⠁⠞⠊⠎⠋⠊⠫⠀⠯⠀⠒⠎⠢⠞⠫⠀
+⠞⠕⠀⠉⠕⠍⠑⠀⠕⠝⠀⠃⠕⠜⠙⠲⠀⠠⠛⠙⠀⠠⠛⠕⠙⠖⠀⠠⠍⠜⠛⠜⠑⠞⠂⠀⠊⠋⠀⠽
+⠸⠓⠀⠎⠑⠢⠀⠮⠀⠍⠁⠝⠀⠱⠕⠀⠹⠥⠎⠀⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫⠀⠿⠀⠦⠀⠀⠀⠀⠀⠀
+⠎⠁⠋⠑⠞⠽⠂⠀⠽⠗⠀⠎⠥⠗⠏⠗⠊⠎⠑⠀⠺⠙⠀⠓⠀⠃⠑⠢⠀⠃⠨⠙⠨⠎⠲⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠞⠺⠕⠀⠐⠙⠎⠀⠏⠁⠎⠎⠫⠀⠔⠀⠹⠀⠍⠁⠝⠝⠻⠀⠆⠋⠀⠓⠑⠀⠴⠀⠁⠃⠇⠑⠀⠞⠕
+⠎⠏⠂⠅⠂⠀⠯⠀⠠⠊⠀⠷⠞⠢⠀⠋⠑⠜⠫⠀⠞⠀⠦⠀⠎⠥⠖⠻⠬⠎⠀⠸⠓⠀⠀⠀⠀⠀⠀⠀
+⠙⠑⠏⠗⠊⠧⠫⠀⠓⠍⠀⠷⠀⠐⠥⠌⠯⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">p {
+   text-indent: 2ch;
+}
+p.blocked {
+   text-indent: 0;
+}
+p + p.blocked {
+   margin-top: .9em;
+}
+</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a
+						href="https://www.w3.org/TR/2022/WD-selectors-4-20221111/#adjacent-sibling-combinators">Next-sibling
+						combinator (+)</a> [[CSS4SELECT]]</li>
+						<li><a
+						href="https://www.w3.org/TR/2024/REC-css-box-3-20240411//#margin-physical">Page-relative
+						(Physical) Margin Properties: the ‘margin-top’, ‘margin-right’,
+						‘margin-bottom’, and ‘margin-left’ properties</a> [[CSS3BOX]]</li>
+					</ul>
 				</aside>
 
 				<aside class="example" title="Two blocked paragraphs with a blank in between">
 					<p class="ednote">
-						Missing HTML input for Two blocked paragraphs with a blank in between.
+						The “<a
+						href="../tagging/index.html#example-a-blocked-paragraph-that-is-flush-with-the-left-margin">A
+						blocked paragraph that is flush with the left margin</a>” example from
+						[[TAGGING] was adapted to have two paragraphs after each other.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.13/Two%20blocked%20paragraphs%20with%20a%20blank%20in%20between.brf"></a>
+					<pre><code class="html">&lt;p class="blocked"&gt;⠠⠘⠥ ⠓⠑⠜⠬ ⠹ ⠓⠑ ⠁⠏⠏⠑⠜⠫ ⠎⠁⠞⠊⠎⠋⠊⠫
+⠯ ⠒⠎⠢⠞⠫ ⠞⠕ ⠉⠕⠍⠑ ⠕⠝ ⠃⠕⠜⠙⠲ ⠠⠛⠙ ⠠⠛⠕⠙⠖ ⠠⠍⠜⠛⠜⠑⠞⠂ ⠊⠋ ⠽ ⠸⠓ ⠎⠑⠢
+⠮ ⠍⠁⠝ ⠱⠕ ⠹⠥⠎ ⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫ ⠿ ⠦ ⠎⠁⠋⠑⠞⠽⠂ ⠽⠗ ⠎⠥⠗⠏⠗⠊⠎⠑ ⠺⠙ ⠓
+⠃⠑⠢ ⠃⠨⠙⠨⠎⠲&lt;/p&gt;
+&lt;p class="blocked"&gt;⠠⠞⠺⠕ ⠐⠙⠎ ⠏⠁⠎⠎⠫ ⠔ ⠹ ⠍⠁⠝⠝⠻ ⠆⠋ ⠓⠑
+⠴ ⠁⠃⠇⠑ ⠞⠕ ⠎⠏⠂⠅⠂ ⠯ ⠠⠊ ⠷⠞⠢ ⠋⠑⠜⠫ ⠞ ⠦ ⠎⠥⠖⠻⠬⠎ ⠸⠓ ⠙⠑⠏⠗⠊⠧⠫ ⠓⠍
+⠷ ⠐⠥⠌⠯⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠠⠘⠥⠀⠓⠑⠜⠬⠀⠹⠀⠓⠑⠀⠁⠏⠏⠑⠜⠫⠀⠎⠁⠞⠊⠎⠋⠊⠫⠀⠯⠀⠒⠎⠢⠞⠫⠀⠞⠕
+⠉⠕⠍⠑⠀⠕⠝⠀⠃⠕⠜⠙⠲⠀⠠⠛⠙⠀⠠⠛⠕⠙⠖⠀⠠⠍⠜⠛⠜⠑⠞⠂⠀⠊⠋⠀⠽⠀⠸⠓
+⠎⠑⠢⠀⠮⠀⠍⠁⠝⠀⠱⠕⠀⠹⠥⠎⠀⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫⠀⠿⠀⠦⠀⠎⠁⠋⠑⠞⠽⠂⠀
+⠽⠗⠀⠎⠥⠗⠏⠗⠊⠎⠑⠀⠺⠙⠀⠓⠀⠃⠑⠢⠀⠃⠨⠙⠨⠎⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠞⠺⠕⠀⠐⠙⠎⠀⠏⠁⠎⠎⠫⠀⠔⠀⠹⠀⠍⠁⠝⠝⠻⠀⠆⠋⠀⠓⠑⠀⠴⠀⠁⠃⠇⠑⠀⠞⠕
+⠎⠏⠂⠅⠂⠀⠯⠀⠠⠊⠀⠷⠞⠢⠀⠋⠑⠜⠫⠀⠞⠀⠦⠀⠎⠥⠖⠻⠬⠎⠀⠸⠓⠀⠀⠀⠀⠀⠀⠀
+⠙⠑⠏⠗⠊⠧⠫⠀⠓⠍⠀⠷⠀⠐⠥⠌⠯⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">p + p.blocked {
+   margin-top: .9em;
+}</code></pre>
 				</aside>
 
 				<aside class="example" title="Two indented paragraphs with no blank in between">
 					<p class="ednote">
-						Missing HTML input for Two indented paragraphs with no blank in between.
+						The “<a href="../tagging/index.html#example-a-basic-paragraph-of-text">A
+						basic paragraph of text</a>” example from [[TAGGING] was adapted to have two
+						paragraphs after each other.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.13/Two%20indented%20paragraphs%20with%20no%20blank%20in%20between.brf"></a>
+					<pre><code class="html">&lt;p&gt;⠠⠘⠥ ⠓⠑⠜⠬ ⠹ ⠓⠑ ⠁⠏⠏⠑⠜⠫ ⠎⠁⠞⠊⠎⠋⠊⠫ ⠯ ⠒⠎⠢⠞⠫ ⠞⠕ ⠉⠕⠍⠑
+⠕⠝ ⠃⠕⠜⠙⠲ ⠠⠛⠙ ⠠⠛⠕⠙⠖ ⠠⠍⠜⠛⠜⠑⠞⠂ ⠊⠋ ⠽ ⠸⠓ ⠎⠑⠢ ⠮ ⠍⠁⠝ ⠱⠕ ⠹⠥⠎
+⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫ ⠿ ⠦ ⠎⠁⠋⠑⠞⠽⠂ ⠽⠗ ⠎⠥⠗⠏⠗⠊⠎⠑ ⠺⠙ ⠓ ⠃⠑⠢ ⠃⠨⠙⠨⠎⠲&lt;/p&gt;
+&lt;p&gt;⠠⠞⠺⠕ ⠐⠙⠎ ⠏⠁⠎⠎⠫ ⠔ ⠹ ⠍⠁⠝⠝⠻ ⠆⠋ ⠓⠑ ⠴ ⠁⠃⠇⠑ ⠞⠕ ⠎⠏⠂⠅⠂
+⠯ ⠠⠊ ⠷⠞⠢ ⠋⠑⠜⠫ ⠞ ⠦ ⠎⠥⠖⠻⠬⠎ ⠸⠓ ⠙⠑⠏⠗⠊⠧⠫ ⠓⠍ ⠷ ⠐⠥⠌⠯⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠘⠥⠀⠓⠑⠜⠬⠀⠹⠀⠓⠑⠀⠁⠏⠏⠑⠜⠫⠀⠎⠁⠞⠊⠎⠋⠊⠫⠀⠯⠀⠒⠎⠢⠞⠫⠀
+⠞⠕⠀⠉⠕⠍⠑⠀⠕⠝⠀⠃⠕⠜⠙⠲⠀⠠⠛⠙⠀⠠⠛⠕⠙⠖⠀⠠⠍⠜⠛⠜⠑⠞⠂⠀⠊⠋⠀⠽
+⠸⠓⠀⠎⠑⠢⠀⠮⠀⠍⠁⠝⠀⠱⠕⠀⠹⠥⠎⠀⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫⠀⠿⠀⠦⠀⠀⠀⠀⠀⠀
+⠎⠁⠋⠑⠞⠽⠂⠀⠽⠗⠀⠎⠥⠗⠏⠗⠊⠎⠑⠀⠺⠙⠀⠓⠀⠃⠑⠢⠀⠃⠨⠙⠨⠎⠲⠀⠀⠀⠀⠀
+⠀⠀⠠⠞⠺⠕⠀⠐⠙⠎⠀⠏⠁⠎⠎⠫⠀⠔⠀⠹⠀⠍⠁⠝⠝⠻⠀⠆⠋⠀⠓⠑⠀⠴⠀⠁⠃⠇⠑⠀
+⠞⠕⠀⠎⠏⠂⠅⠂⠀⠯⠀⠠⠊⠀⠷⠞⠢⠀⠋⠑⠜⠫⠀⠞⠀⠦⠀⠎⠥⠖⠻⠬⠎⠀⠸⠓⠀⠀⠀⠀
+⠙⠑⠏⠗⠊⠧⠫⠀⠓⠍⠀⠷⠀⠐⠥⠌⠯⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">p {
+   text-indent: 2ch;
+}</code></pre>
 				</aside>
 
 				<aside class="example" title="Number line">
