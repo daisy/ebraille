@@ -1066,16 +1066,48 @@ p + p.blocked {
 
 				<aside class="example" title="Number line">
 					<p class="ednote">
-						Missing HTML input for Number line.
+						Missing an example in [[TAGGING]] of a number line. Is this to be handled
+						with a <code>pre</code> element?
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.14/Number%20line%20example.brf"></a>
+					<pre><code class="html">&lt;pre&gt;⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠒⠒
+⠳⠪⠐⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠳⠕
+⠀⠀⠀⠐⠤⠼⠃⠀⠀⠀⠼⠚⠀⠀⠀⠼⠃⠀⠀⠀⠼⠙&lt;/pre&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠳⠪⠐⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠳⠕⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠐⠤⠼⠃⠀⠀⠀⠼⠚⠀⠀⠀⠼⠃⠀⠀⠀⠼⠙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">pre {
+    white-space: pre;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a
+						href="https://www.w3.org/TR/2023/CRD-css-text-3-20230903/#white-space-property">White
+						Space and Wrapping: the ‘white-space’ property</a> [[CSS3TEXT]]</li>
+						<li><a href="https://drafts.csswg.org/css-values-5/#attr-notation">Attribute
+						References: the ‘attr()’ function</a> [[CSS5VALUES]]</li>
+					</ul>
 				</aside>
 
 				<aside class="example" title="Spatial math">
 					<p class="ednote">
-						Missing HTML input for Spatial math.
+						Missing an example in [[TAGGING]] of spatial math. Is this to be handled
+						with a <code>pre</code> element?
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.14/Spatial%20math%20example.brf"></a>
+					<pre><code class="html">&lt;pre&gt;⠼⠁⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠲
+⠀⠀⠀⠀⠀⠀⠼⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠚⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠓⠑
+⠀⠀⠀⠀⠐⠖⠼⠀⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠀⠃⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠃⠚
+⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒&lt;/pre&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠼⠁⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠼⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠚⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠓⠑⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠐⠖⠼⠀⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠀⠃⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠃⠚⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">pre {
+    white-space: pre;
+}</code></pre>
 				</aside>
 
 				<aside class="example" title="Simple spatial table">
