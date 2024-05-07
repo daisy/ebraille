@@ -54,6 +54,9 @@
 					"CSS3TEXT": {
 						aliasOf: "css3-text-20230903" // "css3-text"
 					},
+					"CSS4TEXT": {
+						aliasOf: "css-text-4-20240219" // "css-text-4"
+					},
 					"CSS4SELECT": {
 						aliasOf: "selectors-4-20221111" // "selectors-4"
 					},
@@ -478,8 +481,9 @@ p {
 ⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
 					<p>the following CSS style sheet may be applied:</p>
 					<p class="ednote">
-						To properly center the <code>h1</code>, the right margin may or may not need to be
-						increased with <code>1ch</code>, depending on the content.
+						To properly center the <code>h1</code>, the right margin may or may not need
+						to be increased with <code>1ch</code>, depending on the content. (In this
+						case, it doesn't.)
 					</p>
 					<pre><code class="css" page-width="40">.box {
    border-style: solid;
@@ -1145,51 +1149,235 @@ p + p.blocked {
 					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.15/Table%20presented%20as%20stairstep%20with%20transcriber's%20note.brf"></a>
 				</aside>
 
-				<aside class="example" title="A cell-5 heading followed by a cell-7 heading">
+				<aside class="example" title="Centered heading with blank before and after">
 					<p class="ednote">
-						Missing HTML input for A cell-5 heading followed by a cell-7 heading.
+						Missing an example in [[TAGGING]] of a centered heading with blank before and after.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.7/A%20cell-5%20heading%20followed%20by%20a%20cell-7%20heading.brf"></a>
-				</aside>
-
-				<aside class="example" title="A cell-7 heading">
+					<pre><code class="html">&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠬ ⠁ ⠉⠢⠞⠻⠫ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;h1&gt;⠠⠁ ⠉⠢⠞⠻⠫ ⠓⠂⠙⠬&lt;/h1&gt;
+&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠪⠬ ⠁ ⠉⠢⠞⠻⠫ ⠓⠂⠙⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠬⠀⠁⠀⠉⠢⠞⠻⠫⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠢⠞⠻⠫⠀⠓⠂⠙⠬⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠪⠬⠀⠁⠀⠉⠢⠞⠻⠫⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
 					<p class="ednote">
-						Missing HTML input for A cell-7 heading.
+						To properly center the <code>h1</code>, the right margin may or may not need to be
+						increased with <code>1ch</code>, depending on the content. (In this case, it does.)
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.7/A%20cell-7%20heading.brf"></a>
-				</aside>
-
-				<aside class="example" title="Centered heading followed by a cell-5 heading">
-					<p class="ednote">
-						Missing HTML input for Centered heading followed by a cell-5 heading.
-					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.7/Centered%20heading%20followed%20by%20a%20cell-5%20heading.brf"></a>
+					<pre><code class="css" page-width="40">p {
+   text-indent: 2ch;
+}
+h1 {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 4ch;
+   margin-top: .9em;
+   margin-bottom: .9em;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a href="https://www.w3.org/TR/2023/CRD-css-text-3-20230903/#text-align-property">Text
+						Alignment: the ‘text-align’ shorthand</a> [[CSS3TEXT]]</li>
+						<li><a
+						href="https://www.w3.org/TR/2024/REC-css-box-3-20240411//#margin-physical">Page-relative
+						(Physical) Margin Properties: the ‘margin-top’, ‘margin-right’,
+						‘margin-bottom’, and ‘margin-left’ properties</a> [[CSS3BOX]]</li>
+					</ul>
 				</aside>
 
 				<aside class="example" title="Centered heading split onto multiple lines">
 					<p class="ednote">
-						Missing HTML input for Centered heading split onto multiple lines.
+						BANA stipulates that centered headings should be balanced and divided at a
+						logical location when longer than one line (rule 4.4.3). The “<a
+						href="../tagging/index.html#example-multiline-heading">Multiline
+						heading</a>” example in [[TAGGING] suggests using <code>br</code> elements
+						to manually divide the heading into lines. However the balancing can also be
+						achieved automatically using <a
+						href="https://www.w3.org/TR/2024/WD-css-text-4-20240219/#text-wrap-style"><code>text-wrap:
+						balance</code></a> [[CSS4TEXT], as this example shows.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.7/Centered%20heading%20split%20onto%20multiple%20lines.brf"></a>
+					<pre><code class="html">&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;h1&gt;⠠⠁ ⠉⠢⠞⠻⠫ ⠓⠂⠙⠬ ⠎⠏⠇⠊⠞ ⠕⠝ ⠍⠥⠇⠞⠊⠏⠇⠑ ⠇⠔⠑⠎ ⠾ ⠮ ⠙⠊⠧⠊⠨⠝⠎ ⠓⠁⠏⠏⠢⠬ ⠁⠞ ⠇⠕⠛⠊⠉⠁⠇ ⠏⠕⠔⠞⠎&lt;/h1&gt;
+&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠪⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠢⠞⠻⠫⠀⠓⠂⠙⠬⠀⠎⠏⠇⠊⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠕⠝⠀⠍⠥⠇⠞⠊⠏⠇⠑⠀⠇⠔⠑⠎⠀⠾⠀⠮⠀⠙⠊⠧⠊⠨⠝⠎⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠓⠁⠏⠏⠢⠬⠀⠁⠞⠀⠇⠕⠛⠊⠉⠁⠇⠀⠏⠕⠔⠞⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠪⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠛⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<p class="ednote">
+						It is not possible to properly center the <code>h1</code> in all
+						situations. In this case the first line is aligned to the grid, but the
+						second and third aren't. By increasing the right margin with
+						<code>1ch</code>, the second and third lines become aligned with the grid,
+						but the first becomes misaligned.
+					</p>
+					<p class="ednote">
+						The actual layout does not exactly match the desired layout. The automatic
+						text balancing seems more optimal.
+					</p>
+					<pre><code class="css" page-width="40">p {
+   text-indent: 2ch;
+}
+h1 {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 3ch;
+   margin-top: .9em;
+   margin-bottom: .9em;
+   text-wrap: balance;
+}
+</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a
+						href="https://www.w3.org/TR/2024/WD-css-text-4-20240219/#text-wrap-style">
+						Selecting How to Wrap: the ‘text-wrap-style’ property</a> [[CSS4TEXT]]</li>
+					</ul>
 				</aside>
 
 				<aside class="example" title="Centered heading with a title and subtitle on different lines">
 					<p class="ednote">
-						Missing HTML input for Centered heading with a title and subtitle on different lines.
+						Missing an example in [[TAGGING]] of a centered heading with a title and subtitle on different lines.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.7/Centered%20heading%20with%20a%20title%20and%20subtitle%20on%20different%20lines.brf"></a>
+					<pre><code class="html">&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;header&gt;
+  &lt;h1&gt;⠠⠞⠊⠞⠇⠑⠒&lt;/h1&gt;
+  &lt;p&gt;⠎⠥⠃⠞⠊⠞⠇⠑&lt;/p&gt;
+&lt;/header&gt;
+&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠪⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠞⠊⠞⠇⠑⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠎⠥⠃⠞⠊⠞⠇⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠪⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠛⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<p class="ednote">
+						It is not possible to properly center the <code>header</code> in all
+						situations. In this case the first line is not aligned to the grid, but the
+						second is. By increasing the right margin with <code>1ch</code>, the first
+						line becomes aligned with the grid, but the second becomes misaligned.
+					</p>
+					<pre><code class="css" page-width="40">p {
+   text-indent: 2ch;
+}
+header:has(> h1) {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 3ch;
+   margin-top: .9em;
+   margin-bottom: .9em;
+}
+header > h1,
+header > p {
+  margin: 0;
+  text-indent: inherit;
+  text-align: inherit;
+}</code></pre>
 				</aside>
 
-				<aside class="example" title="Centered heading with blank before and after">
+				<aside class="example" title="Centered heading followed by a cell-5 heading">
 					<p class="ednote">
-						Missing HTML input for Centered heading with blank before and after.
+						Missing an example in [[TAGGING]] of a centered heading followed by a cell-5 heading.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.7/Centered%20heading%20with%20blank%20before%20and%20after.brf"></a>
+					<pre><code class="html">&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠬ ⠁ ⠉⠢⠞⠻⠫ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;h1&gt;⠠⠁ ⠉⠢⠞⠻⠫ ⠓⠂⠙⠬&lt;/h1&gt;
+&lt;h2&gt;⠠⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬&lt;/h2&gt;
+&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠪⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠬⠀⠁⠀⠉⠢⠞⠻⠫⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠢⠞⠻⠫⠀⠓⠂⠙⠬⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠠⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠪⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<p class="ednote">
+						To properly center the <code>h1</code>, the right margin may or may not need to be
+						increased with <code>1ch</code>, depending on the content. (In this case, it does.)
+					</p>
+					<pre><code class="css" page-width="40">p {
+   text-indent: 2ch;
+}
+h1 {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 4ch;
+   margin-bottom: .9em;
+}
+h2 {
+   margin-left: 4ch;
+}
+h1, h2 {
+   margin-top: .9em;
+}</code></pre>
+				</aside>
+
+				<aside class="example" title="A cell-7 heading">
+					<p class="ednote">
+						Missing an example in [[TAGGING]] of a cell-7 heading.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;h3&gt;⠠⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬ ⠐⠣⠓⠼⠉⠐⠜&lt;/h3&gt;
+&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠪⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠑⠇⠇⠤⠼⠛⠀⠓⠂⠙⠬⠀⠐⠣⠓⠼⠉⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠪⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠛⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">p {
+   text-indent: 2ch;
+}
+h3 {
+   margin-left: 6ch;
+   margin-top: .9em;
+}</code></pre>
+				</aside>
+
+				<aside class="example" title="A cell-5 heading followed by a cell-7 heading">
+					<p class="ednote">
+						Missing an example in [[TAGGING]] of a cell-5 heading followed by a cell-7 heading.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;h2&gt;⠠⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬ ⠐⠣⠓⠼⠃⠐⠜&lt;/h2&gt;
+&lt;h3&gt;⠠⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬ ⠐⠣⠓⠼⠉⠐⠜&lt;/h3&gt;
+&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠪⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠠⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠀⠐⠣⠓⠼⠃⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠑⠇⠇⠤⠼⠛⠀⠓⠂⠙⠬⠀⠐⠣⠓⠼⠉⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠪⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠛⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" page-width="40">p {
+   text-indent: 2ch;
+}
+h2 {
+   margin-left: 4ch;
+}
+h3 {
+   margin-left: 6ch;
+}
+h2, h3 {
+   margin-top: .9em;
+}
+h2 + * {
+   margin-top: 0;
+}</code></pre>
 				</aside>
 
 				<aside class="example" title="Running head">
 					<p class="ednote">
-						Missing HTML input for Running head.
+						Missing an example in [[TAGGING]] of a running head.
 					</p>
 					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.7/Running%20head%20example.brf"></a>
 				</aside>
