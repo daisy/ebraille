@@ -71,10 +71,31 @@ async function validateExamples() {
 					style = style.item(0);
 					let columns = parseInt(style.dataset.pageWidth);
 					style = style.textContent;
+					let script = example.getElementsByClassName("javascript");
+					script = script.length > 0 ? script.item(0).textContent : null;
+					if (script != null)
+						buttons.push(
+							createButton("Validate without JS", async function() {
+								this.onclick = null;
+								let formatted = await formatBraille(content, columns, style, null, {
+									debugIframe: iframe => createPopup("iframe").appendChild(iframe),
+									debugCanvas: canvas => createPopup("canvas").appendChild(canvas),
+									debugMatch: canvas => createPopup("match").appendChild(canvas)
+								});
+								formatted = decodeHTML(formatted).replace(/\s+$/, "");
+								let expected = unicodeBraille.replace(/\s+$/, "");
+								if (formatted == expected) {
+									result.style.border = "2px solid green";
+								} else {
+									result.style.border = "2px solid red";
+								}
+								this.parentNode.removeChild(this);
+							})
+						);
 					buttons.push(
-						createButton("Validate", async function() {
+						createButton(script != null ? "Validate with JS" : "Validate", async function() {
 							this.onclick = null;
-							let formatted = await formatBraille(content, columns, style, {
+							let formatted = await formatBraille(content, columns, style, script, {
 								debugIframe: iframe => createPopup("iframe").appendChild(iframe),
 								debugCanvas: canvas => createPopup("canvas").appendChild(canvas),
 								debugMatch: canvas => createPopup("match").appendChild(canvas)

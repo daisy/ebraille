@@ -33,6 +33,7 @@
         iframe.contentWindow.document.open();
         iframe.contentWindow.document.write(html);
         iframe.contentWindow.document.close();
+	await new Promise(resolve => iframe.onload = resolve);
         let canvas = await html2canvas(iframe.contentWindow.document.body, options);
         if (iframeContainer == null) {
             iframe.style.width = canvas.style.width;
@@ -59,12 +60,14 @@
 
     let fontSize = 40.0 / window.devicePixelRatio;
 
-    async function braille2canvas(braille, columns, css, options) {
+    async function braille2canvas(braille, columns, css, script, options) {
         let html = "<html><head>";
         html += "<link rel='stylesheet' type='text/css' href='" + baseCSS + "'></link>";
         if (css == null) css = "";
         css += "* { font-size: " + fontSize + "px; }";
         html += ("<style type='text/css'>" + css + "</style>");
+        if (script != null)
+            html += ("<script type='text/javascript'>" + script + "</script>");
         html += "</head>";
         html += ("<body><div id='wrapper' style='width: " + columns + "ch'>" + braille + "</div></body>");
         html += "</html>";
@@ -106,9 +109,9 @@
 
     let patterns = null;
 
-    global.formatBraille = async function(braille, columns, css, options) {
+    global.formatBraille = async function(braille, columns, css, script, options) {
         if (patterns == null) patterns = (await getPatternsImageData());
-        let canvas = await braille2canvas(braille, columns, css, options);
+        let canvas = await braille2canvas(braille, columns, css, script, options);
         if (options != null && typeof options.debugCanvas === 'function')
             options.debugCanvas(canvas);
         let rows = Math.floor(canvas.height / cellHeight); // yields somewhat higher value so we take the floor
