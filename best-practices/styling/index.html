@@ -1382,11 +1382,149 @@ h2 + * {
 					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.7/Running%20head%20example.brf"></a>
 				</aside>
 
-				<aside class="example" title="line numbered prose">
+				<aside class="example" title="Line numbered prose">
 					<p class="ednote">
-						Missing HTML input for line numbered prose.
+						The “<a href="../tagging/index.html#example-a-paragraph-with-line-numbers">A
+						paragraph with line numbers</a>” example from [[TAGGING]] was adapted to have
+						more text and line numbers.
 					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.9/line%20numbered%20prose.brf"></a>
+					<pre><code class="html">&lt;div class="prose"&gt;
+  &lt;p&gt;
+    &lt;span id="line-3" class="linenum" aria-label="⠼⠉"&gt;&lt;/span&gt;
+    ⠠⠽ ⠺ ⠗⠚⠉ ⠞⠕ ⠓⠑⠜ ⠞ ⠝⠕ ⠲⠁⠌⠻ ⠓⠁⠎ ⠁⠒⠕⠍⠏⠁⠝⠊⠫ ⠮
+    &lt;span id="line-4" class="linenum" aria-label="⠼⠙"&gt;&lt;/span&gt;
+    ⠉⠕⠍⠍⠰⠑⠰⠞ ⠷ ⠁⠝ ⠢⠞⠻⠏⠗⠊⠎⠑ ⠱ ⠽ ⠓ ⠗⠑⠛⠜⠙⠫ ⠾
+    &lt;span id="line-5" class="linenum" aria-label="⠼⠑"&gt;&lt;/span&gt;
+    ⠎⠡⠀⠑⠧⠊⠇⠲ ⠿⠑⠃⠕⠙⠬⠎⠲ ⠠⠊ ⠜⠗⠊⠧⠫ ⠐⠓ ⠽⠑⠌⠻⠐⠙⠂ ⠯ ⠍⠽ ⠋⠌ ⠞⠁⠎⠅
+    &lt;span id="line-6" class="linenum" aria-label="⠼⠋"&gt;&lt;/span&gt;
+    ⠊⠎ ⠞⠕ ⠁⠎⠎⠥⠗⠑ ⠍⠽ ⠙⠑⠜ ⠎⠊⠌⠻ ⠷ ⠍⠽ ⠺⠑⠇⠋⠜⠑ ⠯ ⠔⠉⠗⠂⠎⠬ ⠒⠋⠊⠙⠰⠑
+    &lt;span id="line-7" class="linenum" aria-label="⠼⠛"&gt;&lt;/span&gt;
+    ⠔ ⠮ ⠎⠥⠒⠑⠎⠎ ⠷ ⠍⠽ ⠐⠥⠞⠁⠅⠬⠲
+  &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p class="ednote">
+						The desired layout does not seem entirely consistent with the standard. The
+						word at the beginning of the third line could also fit at the end of the
+						second line.
+					</p>
+					<pre><code class="formatted-braille">⠠⠽⠀⠺⠀⠗⠚⠉⠀⠞⠕⠀⠓⠑⠜⠀⠞⠀⠝⠕⠀⠲⠁⠌⠻⠀⠓⠁⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉
+⠁⠒⠕⠍⠏⠁⠝⠊⠫⠀⠮⠀⠀⠀⠉⠕⠍⠍⠰⠑⠰⠞⠀⠷⠀⠁⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠙
+⠢⠞⠻⠏⠗⠊⠎⠑⠀⠱⠀⠽⠀⠓⠀⠗⠑⠛⠜⠙⠫⠀⠾⠀⠀⠀⠎⠡⠀⠑⠧⠊⠇⠲⠀⠀⠀⠀⠼⠑
+⠿⠑⠃⠕⠙⠬⠎⠲⠀⠠⠊⠀⠜⠗⠊⠧⠫⠀⠐⠓⠀⠽⠑⠌⠻⠐⠙⠂⠀⠯⠀⠍⠽⠀⠋⠌⠀⠀⠀⠀
+⠞⠁⠎⠅⠀⠀⠀⠊⠎⠀⠞⠕⠀⠁⠎⠎⠥⠗⠑⠀⠍⠽⠀⠙⠑⠜⠀⠎⠊⠌⠻⠀⠷⠀⠀⠀⠀⠀⠼⠋
+⠍⠽⠀⠺⠑⠇⠋⠜⠑⠀⠯⠀⠔⠉⠗⠂⠎⠬⠀⠒⠋⠊⠙⠰⠑⠀⠀⠀⠔⠀⠮⠀⠀⠀⠀⠀⠀⠀⠼⠛
+⠎⠥⠒⠑⠎⠎⠀⠷⠀⠍⠽⠀⠐⠥⠞⠁⠅⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<p class="ednote">
+						We make use of the non-standard CSS pseudo-class <a
+						href="https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-first-node"><code>:-moz-first-node</code
+						></a> in order to be able to style a <code>.linenum</code> without preceding
+						text differently (because there must not be a gap of three blank cells when
+						the first print line begins a new braille line).
+					</p>
+					<pre><code class="css" data-page-width="40">@property --widest-linenum {
+   syntax: &lt;length&gt;;
+}
+.prose {
+   /* By default, i.e. without scripting, line numbers are assumed to only be two
+      characters wide, and a column of four characters is preserved for the
+      numbers. The actual value of --widest-linenum can be determined and set from
+      JavaScript. Note that, regardless of the width of the column, each line
+      number is separated from the text by at least two blanks. */
+   --widest-linenum: 2ch;
+   padding-right: calc(var(--widest-linenum) + 2ch);
+}
+.prose .linenum:not(:-moz-first-node)::before {
+   /* The pseudo element should not take up space when at the end of the line. If
+      we use a no-break space (" \A0 "), it does take up space and as a result
+      might be moved to the next line. If we use a normal space with
+      `white-space: pre-wrap', it does not take up space, however then we can't
+      specify that the spaces at the beginning and end should be collapsible. This
+      can be fixed with scripting. When scripting is disabled, we choose a
+      possible gap at the beginning of the line over a possibly too wide gap. Note
+      that we can get a dispositioned line number in either case. */
+   content: " \A0 ";
+}
+.prose .linenum::after {
+   content: attr(aria-label);
+   float: right;
+   clear: right;
+   margin-left: 2ch;
+   margin-right: -4ch;
+}
+
+/**
+ * CSS rules belonging to the JavaScript code below
+ */
+.prose .linenum-anchor::before {
+   content: " ";
+}
+.prose .linenum-anchor::after {
+   content: " ";
+   white-space: pre-wrap;
+   letter-spacing: 1ch;
+}
+.prose .linenum-anchor + .linenum::before,
+.prose .linenum-anchor + .linenum:not(:-moz-first-node)::before,
+.prose .linenum-anchor + br + .linenum::before,
+.prose .linenum-anchor + br + .linenum:not(:-moz-first-node)::before {
+   content: "​\A0";
+   margin-right: -1ch;
+}</code></pre>
+					<p>and the following JavaScript may be applied to enhance the styling:</p>
+					<pre><code class="javascript">window.onload = function() {
+  document.querySelectorAll(".prose").forEach(prose => {
+    let linenums = Array.from(prose.querySelectorAll(".linenum"));
+    // find widest line number and set width of right margin
+    let maxWidth = linenums.reduce(
+      (max, linenum) => Math.max(max, linenum.getAttribute("aria-label").length),
+      0);
+    prose.style.setProperty("--widest-linenum", maxWidth + "ch");
+    let prevPosition = -1000;
+    linenums.forEach(linenum => {
+      // insert an extra span before the .linenum to have more control over line
+      // breaking and positioning of number and gap
+      let precedingSibling = linenum.previousSibling;
+      while (precedingSibling) {
+        if (precedingSibling.nodeType === 8); // comment
+        else if (precedingSibling.nodeType !== 3  // not text
+                 || precedingSibling.nodeValue.trim() !== '') {
+          let anchor = linenum.parentNode.insertBefore(document.createElement("span"), linenum);
+          anchor.className = "linenum-anchor";
+          break;
+        }
+        precedingSibling = precedingSibling.previousSibling;
+      }
+      // trim white space after to make .linenum::before stick to following word,
+      // and to make sure gaps are always exactly 3 cells wide
+      let followingSibling = linenum.nextSibling;
+      while (followingSibling) {
+        if (followingSibling.nodeType === 8); // comment
+        else if (followingSibling.nodeType === 3) { // text
+          let trimmed = followingSibling.nodeValue.replace(/^\s+/, "");
+          followingSibling.nodeValue = trimmed;
+          if (trimmed !== '')
+            break;
+        } else
+          break;
+        followingSibling = followingSibling.nextSibling;
+      }
+      // if the following text is on the same braille line as the braille line on
+      // which the previous print line started, insert a &lt;br/&gt;
+      if (followingSibling.nodeType === 3) {
+        let range = document.createRange();
+        range.selectNode(followingSibling);
+        let pos = range.getBoundingClientRect().top;
+        range.detach();
+        if (pos &lt;= prevPosition)
+          linenum.parentNode.insertBefore(document.createElement("br"), linenum);
+        prevPosition = pos;
+      }
+    });
+  });
+};
+</code></pre>
 				</aside>
 
 			</section>
