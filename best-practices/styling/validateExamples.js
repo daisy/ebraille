@@ -69,7 +69,7 @@ async function validateExamples() {
 				if (content.length > 0 && style.length > 0) {
 					content = content.item(0).textContent;
 					style = style.item(0);
-					let columns = parseInt(style.getAttribute("page-width"));
+					let columns = parseInt(style.dataset.pageWidth);
 					style = style.textContent;
 					buttons.push(
 						createButton("Validate", async function() {
