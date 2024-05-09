@@ -19,6 +19,11 @@
 						company: 'American Printing House for the Blind',
 						url: 'https://www.aph.org/'
 					},
+					{
+						name: 'Matt Garrish',
+						company: 'DAISY Consortium',
+						url: 'https://daisy.org/'
+					}
 				],
 				logos: [
 					{
@@ -53,7 +58,7 @@
 			<section id="conformance"></section>
 		</section>
 		<section id="best-practices">
-			<h3>eBraille required metadata</h3>
+			<h3>eBraille metadata</h3>
 
 			<div class="ednote">
 				<p>The examples in this section are provided only for early illustrative purposes. The exact metadata terminology to use is still under development.</p>
@@ -82,7 +87,7 @@
 	&lt;/brl:code>
 	...
 &lt;/metadata></code></pre>
-				</aside>
+							</aside>
 							<li>If only some contractions are used, specify the code twice- both as contracted and uncontracted. Put whichever code is most common first.</li>
 							<aside class="example" title="Use of a contracted and uncontracted braille code">
 					<pre><code class="html">&lt;metadata ...>
@@ -91,7 +96,7 @@
 	&lt;/brl:code>
 	...
 &lt;/metadata></code></pre>
-										</aside>
+							</aside>
 						</ul>
 					</dd>
 				</dl>
@@ -128,7 +133,7 @@
 	&lt;/brl:completeTranscription>
 	...
 &lt;/metadata></code></pre>
-										</aside>
+							</aside>
 						</ul>
 					</dd>
 				</dl>
@@ -163,7 +168,7 @@
 	&lt;/brl:created>
 	...
 &lt;/metadata></code></pre>
-										</aside>
+							</aside>
 						</ul>
 					</dd>
 				</dl>
@@ -198,7 +203,7 @@
 	&lt;/brl:dotNumber>
 	...
 &lt;/metadata></code></pre>
-										</aside>
+							</aside>
 						</ul>
 					</dd>
 				</dl>
@@ -281,6 +286,33 @@
 					</dd>
 				</dl>
 			</section>
+			<section id="brl:producer">
+				<h4>brl:producer</h4>
+				<p>The content of brl:producer shall be the name of the organization that produced the braille publication. The brl:producer and dc:publisher may be the same organization but they do not have to be. The producer is literally responsible for creating the eBraille file, while the publisher may have only commissioned the work from a producer. Brl:producer could be the name of an organization or an individual.</p>
+				<dl id="elemdef-box" class="elemdef">
+						
+					<dt>Allowed values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li>Any string</li>
+						</ul>
+					</dd>
+				
+					<dt>Examples</dt>
+					<dd>
+						<ul class="nomark">
+							<aside class="example" title="The name of the braille producer of a file">
+					<pre><code class="html">&lt;metadata ...>
+	&lt;brl:producer>
+		American Printing House for the Blind
+	&lt;/brl:producer>
+	...
+&lt;/metadata></code></pre>
+							</aside>
+						</ul>
+					</dd>
+				</dl>
+			</section>
 			<section id="brl:tactileGraphics">
 				<h4>brl:tactileGraphics</h4>
 				<p>Value is “true” if any tactile graphics are present in the eBraille package and "false" if they are not present.</p>
@@ -310,21 +342,21 @@
 			</section>				
 			<section id="dc:creator">
 				<h4>dc:creator</h4>
-				<p>The content of dc:creator shall be the name(s) of the primary author, editor, etc. (when appropriate). Names shall be formatted: last name, first name. Note: For multiple creators, this element shall be repeated as needed.
+				<p>The content of dc:creator shall be the name(s) of the primary author, editor, etc. (when appropriate). Follow regional conventions for name layout. Note: For multiple creators, this element shall be repeated as needed.
 					</p>
 				<dl id="elemdef-box" class="elemdef">
 						
 					<dt>Allowed values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li>Last name, first name</li>
+							<li>Any string</li>
 						</ul>
 					</dd>
 				
 					<dt>Examples</dt>
 					<dd>
 						<ul class="nomark">
-							<aside class="example" title="A single author">
+							<aside class="example" title="A single author with an English name arraigned with the last name appearing first and then followed by a comma and then the first name">
 					<pre><code class="html">&lt;metadata ...>
 	&lt;dc:creator>
 		Twain, Mark
@@ -332,7 +364,15 @@
 	...
 &lt;/metadata></code></pre>
 							</aside>
-							<aside class="example" title="Multiple authors">
+							<aside class="example" title="A single author with a Japanese name arraigned with first name appearing first and then followed by last name with no comma">
+					<pre><code class="html">&lt;metadata ...>
+	&lt;dc:creator>
+		Akiko Akazome
+	&lt;/dc:creator>
+	...
+&lt;/metadata></code></pre>
+							</aside>
+							<aside class="example" title="Multiple authors with English names">
 					<pre><code class="html">&lt;metadata ...>
 	&lt;dc:creator>
 		Brontë, Charlotte
@@ -346,34 +386,7 @@
 						</ul>
 					</dd>
 				</dl>
-			</section>
-			<section id="dc:dateCopyrighted">
-				<h4>dc:dateCopyrighted</h4>
-				<p>Used for the copyright date of the work being transcribed. Value should be expressed as a year according to ISO 8601-1.</p>
-				<dl id="elemdef-box" class="elemdef">
-						
-					<dt>Allowed values:</dt>
-					<dd>
-						<ul class="nomark">
-							<li>The date formatted as YYYY-MM-DD, YYYY-MM, or YYYY</li>
-						</ul>
-					</dd>
-				
-					<dt>Examples</dt>
-					<dd>
-						<ul class="nomark">
-							<aside class="example" title="Date copyrighted where only the year is known">
-					<pre><code class="html">&lt;metadata ...>
-	&lt;dc:dateCopyrighted>
-		2014
-	&lt;/dc:dateCopyrighted>
-	...
-&lt;/metadata></code></pre>
-							</aside>
-						</ul>
-					</dd>
-				</dl>
-			</section>
+			</section>			
 			<section id="dc:format">
 				<h4>dc:format</h4>
 				<p>Used for the eBraille standard of the file, including version number</p>
@@ -454,7 +467,7 @@
 			</section>
 			<section id="dc:language">
 				<h4>dc:language</h4>
-				<p>The content of dc:language shall be the RFC 1766 and ISO 639-2 compliant language code and optional country code sub-tag and shall refer to the language of the work being transcribed. If multiple languages are used, list languages in the order of most prevalent to least and separate with a comma</p>
+				<p>The content of dc:language shall be the BCP 47 compliant language code and optional country code sub-tag and shall refer to the language of the work being transcribed. If multiple languages are used, repeat the tag for multiple languages</p>
 				<dl id="elemdef-box" class="elemdef">
 						
 					<dt>Allowed values:</dt>
@@ -470,7 +483,7 @@
 							<aside class="example" title="American English as only language of work">
 					<pre><code class="html">&lt;metadata ...>
 	&lt;dc:language>
-		eng-US
+		en-US
 	&lt;/dc:language>
 	...
 &lt;/metadata></code></pre>
@@ -478,7 +491,7 @@
 							<aside class="example" title="A French textbook that teaches German">
 								<pre><code class="html">&lt;metadata ...>
 	&lt;dc:language>
-		fre-FR, ger-DE
+		fr-FR, de-DE
 	&lt;/dc:language>
 	...
 &lt;/metadata></code></pre>
@@ -486,34 +499,7 @@
 						</ul>
 					</dd>
 				</dl>
-			</section>
-			<section id="dc:modified">
-				<h4>dc:modified</h4>
-				<p>Required by EPUB 3.3. Indicates the date on which the eBraille file was modified. Value should express the date according to ISO 8601-1.</p>
-				<dl id="elemdef-box" class="elemdef">
-						
-					<dt>Allowed values:</dt>
-					<dd>
-						<ul class="nomark">
-							<li>The date formatted as YYYY-MM-DD, YYYY-MM, or YYYY</li>
-						</ul>
-					</dd>
-				
-					<dt>Examples</dt>
-					<dd>
-						<ul class="nomark">
-							<aside class="example" title="Indicates the last date the eBraille file was modified">
-					<pre><code class="html">&lt;metadata ...>
-	&lt;dc:modified>
-		2014-10-18
-	&lt;/dc:modified>
-	...
-&lt;/metadata></code></pre>
-							</aside>
-						</ul>
-					</dd>
-				</dl>
-			</section>
+			</section>			
 			<section id="dc:publisher">
 				<h4>dc:publisher</h4>
 				<p>The content of dc:publisher shall be the name of the organization that published the eBraille file.</p>
@@ -567,37 +553,7 @@
 						</ul>
 					</dd>
 				</dl>
-			</section>
-			</section>
-			<section>
-		<h3>eBraille recommended metadata</h3>
-			<section id="brl:producer">
-				<h4>brl:producer</h4>
-				<p>The content of brl:producer shall be the name of the organization that produced the braille publication. The brl:producer and brl:publisher may be the same organization but they do not have to be. The producer is literally responsible for creating the eBraille file, while the publisher may have only commissioned the work from a producer. Brl:producer could be the name of an organization or an individual.</p>
-				<dl id="elemdef-box" class="elemdef">
-						
-					<dt>Allowed values:</dt>
-					<dd>
-						<ul class="nomark">
-							<li>Any string</li>
-						</ul>
-					</dd>
-				
-					<dt>Examples</dt>
-					<dd>
-						<ul class="nomark">
-							<aside class="example" title="The name of the braille producer of a file">
-					<pre><code class="html">&lt;metadata ...>
-	&lt;brl:producer>
-		American Printing House for the Blind
-	&lt;/brl:producer>
-	...
-&lt;/metadata></code></pre>
-							</aside>
-						</ul>
-					</dd>
-				</dl>
-			</section>
+			</section>			
 			<section id="dc:description">
 				<h4>dc:description</h4>
 				<p>The content of dc:description may include an abstract, a table of contents, or a free-text account of the resource.</p>
@@ -624,34 +580,7 @@
 						</ul>
 					</dd>
 				</dl>
-			</section>
-			<section id="dc:educationLevel">
-				<h4>dc:educationLevel</h4>
-				<p>A class of agents, defined in terms of progression through an educational or training context, for which the eBraille package is intended.</p>
-				<dl id="elemdef-box" class="elemdef">
-						
-					<dt>Allowed values:</dt>
-					<dd>
-						<ul class="nomark">
-							<li>Any string</li>
-						</ul>
-					</dd>
-				
-					<dt>Examples</dt>
-					<dd>
-						<ul class="nomark">
-							<aside class="example" title="Education level in the United States education system">
-					<pre><code class="html">&lt;metadata ...>
-	&lt;dc:educationLevel>
-		3rd grade
-	&lt;/dc:educationLevel>
-	...
-&lt;/metadata></code></pre>
-							</aside>
-						</ul>
-					</dd>
-				</dl>
-			</section>
+			</section>			
 			<section id="dc:rights">
 				<h4>dc:rights</h4>
 				<p>Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights. Recommended practice is to refer to a rights statement with a URI. If this is not possible or feasible, a literal value (name, label, or short text) may be provided.</p>
@@ -699,6 +628,87 @@
 	&lt;dc:subject>
 		Geography
 	&lt;/dc:subject>
+	...
+&lt;/metadata></code></pre>
+							</aside>
+						</ul>
+					</dd>
+				</dl>
+			</section>
+			<section id="dcterms:dateCopyrighted">
+				<h4>dcterms:dateCopyrighted</h4>
+				<p>Used for the copyright date of the work being transcribed. Value should be expressed as a year according to ISO 8601-1.</p>
+				<dl id="elemdef-box" class="elemdef">
+						
+					<dt>Allowed values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li>The date formatted as YYYY-MM-DD, YYYY-MM, or YYYY</li>
+						</ul>
+					</dd>
+				
+					<dt>Examples</dt>
+					<dd>
+						<ul class="nomark">
+							<aside class="example" title="Date copyrighted where only the year is known">
+					<pre><code class="html">&lt;metadata ...>
+	&lt;dcterms:dateCopyrighted>
+		2014
+	&lt;/dcterms:dateCopyrighted>
+	...
+&lt;/metadata></code></pre>
+							</aside>
+						</ul>
+					</dd>
+				</dl>
+			</section>
+			<section id="dcterms:educationLevel">
+				<h4>dcterms:educationLevel</h4>
+				<p>A class of agents, defined in terms of progression through an educational or training context, for which the eBraille package is intended.</p>
+				<dl id="elemdef-box" class="elemdef">
+						
+					<dt>Allowed values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li>Any string</li>
+						</ul>
+					</dd>
+				
+					<dt>Examples</dt>
+					<dd>
+						<ul class="nomark">
+							<aside class="example" title="Education level in the United States education system">
+					<pre><code class="html">&lt;metadata ...>
+	&lt;dcterms:educationLevel>
+		3rd grade
+	&lt;/dcterms:educationLevel>
+	...
+&lt;/metadata></code></pre>
+							</aside>
+						</ul>
+					</dd>
+				</dl>
+			</section>
+			<section id="dcterms:modified">
+				<h4>dcterms:modified</h4>
+				<p>Required by EPUB 3.3. Indicates the date on which the eBraille file was modified. Value should express the date according to ISO 8601-1. Requires the full date plus time in UTC.</p>
+				<dl id="elemdef-box" class="elemdef">
+						
+					<dt>Allowed values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li>The date formatted as YYYY-MM-DDThh:mm:ssTZD where YYYY represents the year, MM the month, DD the day, T is a separator indicating te start of the time section, hh the hour, mm the minutes, ss the seconds, and TZD represents the time zone designator (e.g. "Z" for UTC or an offset such as "+hh:mm")</li>
+						</ul>
+					</dd>
+				
+					<dt>Examples</dt>
+					<dd>
+						<ul class="nomark">
+							<aside class="example" title="Indicates the last date the eBraille file was modified">
+					<pre><code class="html">&lt;metadata ...>
+	&lt;dcterms:modified>
+		2014-10-14T18:45:00Z
+	&lt;/dcterms:modified>
 	...
 &lt;/metadata></code></pre>
 							</aside>
