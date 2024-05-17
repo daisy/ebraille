@@ -449,18 +449,16 @@
 			<section id="ecd-intro" class="informative">
 				<h3>Introduction</h3>
 
-				<p>eBraille only supports XHTML for authoring the content of an <a>eBraille publication</a>. Unlike EPUB
-					3, SVG is not supported in the [=spine=] but can be embedded in XHTML documents.</p>
+				<p>[=eBraille content documents=] define the markup and presentation of the content of an [=eBraille
+					publication=]. An eBraille content document is encoded using <a data-cite="html#">XML syntax</a> of
+					[[html]], also commonly known as XHTML, and is styled using CSS [[css]].</p>
 
-				<p>This document imposes further restrictions on XHTML documents as specified in <a
-						href="#html-no-support"></a>.</p>
+				<p>eBraille content documents are not only formatted text. For example, they may include tactile
+					graphics, audio, and video. The primary difference between the features of an eBraille content
+					document and a typical web page is that scripting and forms are not supported.</p>
 
-				<div class="note">
-					<p>eBraille content documents rely primarily on the [[html]] [^global/class^] and [^/role^]
-						attributes to identify formatting requirements.</p>
-					<p>For more information, refer to <a href="best-practices/tagging/">eBraille Tagging Best
-							Practices</a></p>
-				</div>
+				<p>Note that unlike EPUB 3, eBraille only supports XHTML in the [=spine=] of an eBraille publication.
+					SVG images are not supported in the [=spine=] but can be embedded in XHTML documents.</p>
 			</section>
 
 			<section id="html-req">
@@ -499,6 +497,35 @@
 					<p>CSS properties that authors may use and reading systems must support will be added in a future
 						update.</p>
 				</div>
+			</section>
+
+			<section id="authoring-bp" class="informative">
+				<h3>Authoring best practices</h3>
+
+				<p>As this is a technical specification for the eBraille format, its focus is on the technologies for
+					creating [=eBraille content documents=]. It does not specify a specific manner in which the content
+					must be created, as regional differences in braille codes will influence how any given publication
+					is formatted.</p>
+
+				<p>A goal of the eBraille format, however, is, as much as possible, to promote common markup practices
+					across regions so that organizations and individuals can interchange files without needing to
+					completely reformat them. Using common markup practices will allow [=eBraille reading systems=] to
+					apply regional CSS rules, improving the readability for users expecting different braille formatting
+					conventions.</p>
+
+				<p>To this end, eBraille content documents rely primarily on the [[html]] [^global/class^] and [^/role^]
+					attributes to identify formatting requirements. Augmenting core HTML elements with a common set of
+					classes and roles will make eBraille publications more predictable for reformatting.</p>
+
+				<p>The eBraille working group is working on a set of best practices to help facilitate this model. These
+					include:</p>
+
+				<ul>
+					<li><a href="best-practices/tagging/">eBraille Tagging Best Practices</a> &#8212; This document
+						defines the core HTML elements and attributes to structure braille content.</li>
+					<li><a href="best-practices/styling/">eBraille Styling Best Practices</a> &#8212; This document
+						defines CSS styling conventions to use to render braille content.</li>
+				</ul>
 			</section>
 		</section>
 		<section id="ebrl-nav">
@@ -568,6 +595,25 @@
 					</aside>
 				</section>
 			</section>
+		</section>
+		<section id="ebrl-a11y">
+			<h2>Accessibility</h2>
+
+			<p>[=eBraille publications=] fall under the category of <a data-cite="epub-a11y-11#sec-optimized-pubs"
+					>optimized publications</a> as defined by the <a data-cite="epub-a11y#">EPUB Accessibility
+					specification</a> [[epub-a11y-11]]. eBraille publications are only meant for braille users, so it is
+				not expected that [=eBraille creators=] can produce them to fully meet the requirements of W3C's <a>Web
+					Content Accessibility Guidelines</a> [[wcag2]]. There is not always a benefit to braille users in
+				meeting all of that standards requirements.</p>
+
+			<p>At the same time, it is possible to create eBraille publications that fail to meet the needs of users if
+				care is not taken to optimize the content. Not properly identifying headings, for example, will limit
+				users' ability to navigate a publication quickly. Similarly, failing to mark up tables properly can make
+				them difficult to navigate and understand.</p>
+
+			<p>So although fully meeting WCAG conformance may not be possible, eBraille SHOULD meet all success criteria
+				applicable to eBraille reading and include all relevant <a data-cite="epub-a11y-11#sec-discovery"
+					>accessibility metadata</a> [[epub-a11y-11]] in the package document.</p>
 		</section>
 		<section id="ebrl-packaging">
 			<h2>Packaging</h2>
