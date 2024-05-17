@@ -215,6 +215,23 @@
 					MUST be located in or below the [=root directory=], as defined in <a href="#fileset-structure"
 					></a>.</p>
 			</section>
+
+			<section id="res-exemptions" class="informative">
+				<h3>Exempt resources</h3>
+
+				<p>Note that it is possible to include additional resources in an [=eBraille publication=] that are not
+					part of the rendering of the content. EPUB 3 defines resources that are not used in the [=spine=] or
+					embedded in [=xhtml content documents=] as exempt from the normal [=core media type=]
+					restrictions.</p>
+
+				<p>This means, for example, that [=eBraille creators=] can embed pre-formatted braille in their
+					publication in a format such as PDF or BRF. The resource would still be listed in the [=manifest=],
+					but it would not be flagged as needing a fallback.</p>
+
+				<p>It would not be possible to link to these resources from the eBraille publication, but the
+					publication could note the presence of the resources and include instructions on how to access them
+					(e.g., to open the publication with a ZIP tool and navigate to a specific directory).</p>
+			</section>
 		</section>
 		<section id="ebrl-fileset">
 			<h2>eBraille file set</h2>
