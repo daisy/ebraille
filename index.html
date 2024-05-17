@@ -479,6 +479,21 @@
 				</div>
 			</section>
 		</section>
+		<section id="ebrl-rendering-control">
+			<h2>Layout rendering control</h2>
+
+			<p>eBraille does not support <a data-cite="epub-33#sec-fixed-layouts">fixed layouts</a> as defined in
+				[[epub-33]]. Consequently, [=eBraille publications=]:</p>
+
+			<ul>
+				<li>MUST NOT specify the <a data-cite="epub-33#layout"><code>rendition:layout</code> property</a> with
+					the value <code>pre-paginated</code> in the package document metadata or specify its override
+					property <code>rendition:layout-pre-paginated</code> on <a href="#spine">spine</a> items
+					[[epub-33]].</li>
+				<li>MUST NOT specify any other properties or spine overrides defined in <a
+						data-cite="epub-33#sec-fxl-package">Fixed-layout package settings</a> [[epub-33]].</li>
+			</ul>
+		</section>
 		<section id="ebrl-nav">
 			<h2>Primary entry page</h2>
 
