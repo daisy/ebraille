@@ -569,6 +569,81 @@
 				</section>
 			</section>
 		</section>
+		<section id="ebrl-mo">
+			<h2>Media overlays</h2>
+
+			<p>eBraille publications support <a data-cite="epub-33##sec-media-overlays">media overlays</a> as defined in
+				[[epub-33]]. Media overlays allow prerecorded audio playback to be synchronized with the content of
+				[=eBraille content documents=], allowing users to switch between reading braille and listening to
+				auditory playback.</p>
+
+			<p>A media overlay document MAY be associated with an [=eBraille content document=] by adding a
+					<code>media-overlays</code> attribute to its package document manifest entry.</p>
+
+			<aside class="example" title="An eBraille content document with media overlay">
+				<p>The following package document manifest markup shows the media overlay for the eBraille content
+					document is identified by its ID.</p>
+				<pre><code>&lt;package &#8230;>
+   &#8230;
+   &lt;manifest>
+      &#8230;
+      &lt;item id="c01"
+            href="braille/content/ch01.xhtml"
+            media-type="application/xhtml+xml"
+            media-overlays="c01-overlay"/>
+            
+      &lt;item id="c01-overlay"
+            href="braille/overlays/ch01.smil"
+            media-type="application/smil+xml"/>
+      &#8230;
+   &lt;/manifest>
+   &#8230;
+&lt;/package></code></pre>
+			</aside>
+
+			<p>The body of a media overlay document consists of [^par^] and [^seq^] elements [[epub-33]]. The
+					<code>par</code> element defines the audio content to associate with the specified content, while
+					<code>seq</code> elements are used to group <code>seq</code> elements into logical structures such
+				as figures and tables.</p>
+
+			<aside class="example" title="A media overlay document">
+				<p>The following media overlay document shows the markup for a table. <code>seq</code> elements are used
+					to define the table and rows, while <code>par</code> elements define the text and audio
+					synchronization for cell content.</p>
+				<pre><code>&lt;smil &#8230;>
+   &#8230;
+   &lt;body>
+      &#8230;
+      &lt;seq epub:type="table">
+         &lt;seq epub:type="table-row">
+            &lt;par epub:type="table-cell">
+               &lt;text src="braille/content/ch01.xhtml#t1r1c1"/>
+               &lt;audio src="braille/audio/ch01.mp3" clipBegin="24:22.67" clipEnd="24:44.98"/>
+            &lt;/par>
+            
+            &lt;par epub:type="table-cell">
+               &lt;text src="braille/content/ch01.xhtml#t1r1c2"/>
+               &lt;audio src="braille/audio/ch01.mp3" clipBegin="24:44.98" clipEnd="25:03.36"/>
+            &lt;/par>
+            &#8230;
+         &lt;/seq>
+         &#8230;
+      &lt;/seq>
+      &#8230;
+   &lt;/body>
+&lt;/smil></code></pre>
+			</aside>
+
+			<p>Although it is possible to <a data-cite="epub-33#sec-docs-assoc-style">associate styling information</a>
+				[[epub-33]] with the audio playback, eBraille reading systems are not expected to use this information.
+				It would only be used if the [=eBraille publication=] were visually rendered, such as if the publication
+				were opened in a mainstream EPUB 3 reading system.</p>
+
+			<div class="note">
+				<p>For more information about creating media overlay documents, refer to the <a
+						data-cite="epub-33#sec-media-overlays">Media overlays</a> section of [[epub-33]].</p>
+			</div>
+		</section>
 		<section id="ebrl-packaging">
 			<h2>Packaging</h2>
 
