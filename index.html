@@ -554,6 +554,85 @@
 				<p>Packaging requirements for eBraille publications will be added in a future update.</p>
 			</div>
 		</section>
+		<section id="ebrl-reading-systems">
+			<h2>eBraille Reading Systems</h2>
+
+			<section id="rs-intro" class="informative">
+				<h3>Introduction</h3>
+
+				<p>As an [=eBraille publication=] represents a subset of an <a data-cite="epub-33#sec-epub-conf">EPUB 3
+						publication</a> [[epub-33]], an eBraille reading system similarly consists of a subset of
+					features of a full <a data-cite="epub-rs-33#sec-rs-conformance">EPUB 3 reading system</a>
+					[[epub-rs-33]].</p>
+
+				<p>Similar to EPUB 3, eBraille does not define a uniform set of requirements that all reading systems
+					must meet. Support is instead based on the capabilities of the device. A reading system might not
+					support <a href="#ebrl-mo">media overlays</a>, for example, if it does not support audio
+					playback.</p>
+
+				<p>As eBraille publications can be deployed unpackaged on the web, users may not even always require a
+					dedicated eBraille reading system to read them. A very basic reading experience will be possible
+					directly from a standard web browser, and browser-based reading systems can provide a richer reading
+					experience for reading on the web.</p>
+			</section>
+
+			<section id="rs-req">
+				<h3>Reading system requirements</h3>
+
+				<p>An [=eBraille reading system=] MUST meet the <a data-cite="epub-rs-33#sec-rs-conformance"
+						>requirements for EPUB reading systems</a> [[epub-rs-33]], with the following differences:</p>
+
+				<ul>
+					<li>If it supports web access, the reading system SHOULD allow users to download unpackaged
+						[=eBraille publications=] hosted on the web by specifying the path to the package document.</li>
+					<li>It MUST support PDF for tactile graphics.</li>
+					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-epub-rs-conf-remote-res">remote resources</a>
+						[[epub-rs-33]].</li>
+					<li>As remote resources, forms, and scripting are not supported, it MUST NOT allow eBraille
+						publications to have <a data-cite="epub-rs-33#sec-epub-rs-network-access">network access</a>
+						[[epub-rs-33]]. (Note that barring network access should not prevent users from following <a
+							data-cite="epub-rs-33#sec-epub-rs-external-links">external hyperlinks</a> [[epub-rs-33]] in
+						a publication.)</li>
+					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-pkg-doc-manifest">manifest fallbacks</a>
+						[[epub-rs-33]].</li>
+					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-xhtml-forms">form submission</a>
+						[[epub-rs-33]].</li>
+					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-svg">SVG content documents</a>. (Note that this
+						does not affect <a data-cite="epub-rs-33#sec-xhtml-svg">embedded SVG</a> [[epub-rs-33]].)</li>
+					<li>It MUST NOT support EPUB 3's <a data-cite="epub-33#sec-css-prefixed">prefixed CSS properties</a>
+						[[epub-33]].</li>
+					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-scripted-content">scripting</a>
+						[[epub-rs-33]].</li>
+					<li>It is not required that eBraille publications be <a data-cite="epub-rs-33#sec-container-iri"
+							>assigned a unique URL</a> [[epub-rs-33]], as scripting is not supported, but it is still
+						recommended to domain isolate publications in case scripting is introduced in a future
+						version.</li>
+					<li>It MUST NOT support <a data-cite="epub-rs-33#epub-rs-33/#sec-rendering-control">fixed
+							layouts</a> [[epub-rs-33]].</li>
+					<li>It does not have to support <a data-cite="epub-rs-33#sec-epub-rs-conf-backward">backward
+							compatibility</a> or <a data-cite="epub-rs-33#sec-epub-rs-conf-forward">forward
+							compatibility</a> with other EPUB versions [[epub-rs-33]].</li>
+				</ul>
+			</section>
+
+			<section id="rs-browser">
+				<h3>Web-hosted eBraille publications</h3>
+
+				<p>[=eBraille publications=] made available over the web in unpackaged form are expected to provide
+					minimal functionality in web browsers without the need for a dedicated [=eBraille reading
+					system=].</p>
+
+				<p>If a browser-based reading system is created for reading unpackaged eBraille publications (e.g.,
+					through a web app), it SHOULD provide the same functionality as a <a href="#rs-req">dedicated
+						eBraille reading system</a>.</p>
+
+				<p>Browser-based reading systems will be inherently less secure than dedicated eBraille reading systems,
+					as it will not likely be possible to disable features such as scripting, forms, and remote resources
+					access. Consequently, a browser-based reading system SHOULD follow all the <a
+						data-cite="epub-rs-33#sec-security-privacy">recommendations for securing publications</a>
+					defined in [[epub-rs-33]].</p>
+			</section>
+		</section>
 		<div data-include="common/acknowledgements.html" data-include-replace="true"></div>
 	</body>
 </html>
