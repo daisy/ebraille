@@ -128,6 +128,11 @@
 						<p>For more information, refer to <a href="#ebrl-content-docs"></a>.</p>
 					</dd>
 
+					<dt><dfn>eBraille creator</dfn></dt>
+					<dd>
+						<p>An individual, organization, or process that produces an [=eBraille publication=].</p>
+					</dd>
+
 					<dt><dfn>eBraille file set</dfn></dt>
 					<dd>
 						<p>The set of files that comprise an [=eBraille publication=]. The eBraille file set is
@@ -237,6 +242,23 @@
 					MUST be located in or below the [=root directory=], as defined in <a href="#fileset-structure"
 					></a>.</p>
 			</section>
+
+			<section id="res-exemptions" class="informative">
+				<h3>Exempt resources</h3>
+
+				<p>Note that it is possible to include additional resources in an [=eBraille publication=] that are not
+					part of the rendering of the content. EPUB 3 defines resources that are not used in the [=spine=] or
+					embedded in [=xhtml content documents=] as exempt from the normal [=core media type resource=]
+					restrictions [[epub-33]].</p>
+
+				<p>This means, for example, that [=eBraille creators=] can embed pre-formatted braille in their
+					publication in a format such as PDF or BRF. The resource would still be listed in the [=manifest=],
+					but it would not be flagged as needing a fallback.</p>
+
+				<p>It would not be possible to link to these resources from the eBraille publication, but the
+					publication could note the presence of the resources and include instructions on how to access them
+					(e.g., to open the publication with a ZIP tool and navigate to a specific directory).</p>
+			</section>
 		</section>
 		<section id="ebrl-fileset">
 			<h2>eBraille file set</h2>
@@ -286,8 +308,8 @@
 						resources are not allowed in a <code>META-INF</code> directory</a> [[epub-33]].</p>
 
 				<div class="note">
-					<p>For simplicity of unzipping and accessing a publication on a user's local file system, eBraille
-						creators are encouraged to place the rest of the publication in a subfolder (e.g., named
+					<p>For simplicity of unzipping and accessing a publication on a user's local file system, [=eBraille
+						creators=] are encouraged to place the rest of the publication in a subfolder (e.g., named
 							"<code>ebraille</code>"). This will make the navigation document the first HTML file users
 						encounter.</p>
 				</div>
@@ -449,18 +471,16 @@
 			<section id="ecd-intro" class="informative">
 				<h3>Introduction</h3>
 
-				<p>eBraille only supports XHTML for authoring the content of an <a>eBraille publication</a>. Unlike EPUB
-					3, SVG is not supported in the [=spine=] but can be embedded in XHTML documents.</p>
+				<p>[=eBraille content documents=] define the markup and presentation of the content of an [=eBraille
+					publication=]. An eBraille content document is encoded using <a data-cite="html#">XML syntax</a> of
+					[[html]], also commonly known as XHTML, and is styled using CSS [[css]].</p>
 
-				<p>This document imposes further restrictions on XHTML documents as specified in <a
-						href="#html-no-support"></a>.</p>
+				<p>eBraille content documents are not only formatted text. For example, they may include tactile
+					graphics, audio, and video. The primary difference between the features of an eBraille content
+					document and a typical web page is that scripting and forms are not supported.</p>
 
-				<div class="note">
-					<p>eBraille content documents rely primarily on the [[html]] [^global/class^] and [^/role^]
-						attributes to identify formatting requirements.</p>
-					<p>For more information, refer to <a href="best-practices/tagging/">eBraille Tagging Best
-							Practices</a></p>
-				</div>
+				<p>Note that unlike EPUB 3, eBraille only supports XHTML in the [=spine=] of an eBraille publication.
+					SVG images are not supported in the [=spine=] but can be embedded in XHTML documents.</p>
 			</section>
 
 			<section id="html-req">
@@ -500,6 +520,50 @@
 						update.</p>
 				</div>
 			</section>
+
+			<section id="authoring-bp" class="informative">
+				<h3>Authoring best practices</h3>
+
+				<p>As this is a technical specification for the eBraille format, its focus is on the technologies for
+					creating [=eBraille content documents=]. It does not specify a specific manner in which the content
+					must be created, as regional differences in braille codes will influence how any given publication
+					is formatted.</p>
+
+				<p>A goal of the eBraille format, however, is, as much as possible, to promote common markup practices
+					across regions so that organizations and individuals can interchange files without needing to
+					completely reformat them. Using common markup practices will allow [=eBraille reading systems=] to
+					apply regional CSS rules, improving the readability for users expecting different braille formatting
+					conventions.</p>
+
+				<p>To this end, eBraille content documents rely primarily on the [[html]] [^global/class^] and [^/role^]
+					attributes to identify formatting requirements. Augmenting core HTML elements with a common set of
+					classes and roles will make eBraille publications more predictable for reformatting.</p>
+
+				<p>The eBraille working group is working on a set of best practices to help facilitate this model. These
+					include:</p>
+
+				<ul>
+					<li><a href="best-practices/tagging/">eBraille Tagging Best Practices</a> &#8212; This document
+						defines the core HTML elements and attributes to structure braille content.</li>
+					<li><a href="best-practices/styling/">eBraille Styling Best Practices</a> &#8212; This document
+						defines CSS styling conventions to use to render braille content.</li>
+				</ul>
+			</section>
+		</section>
+		<section id="ebrl-rendering-control">
+			<h2>Layout rendering control</h2>
+
+			<p>eBraille does not support <a data-cite="epub-33#sec-fixed-layouts">fixed layouts</a> as defined in
+				[[epub-33]]. Consequently, [=eBraille publications=]:</p>
+
+			<ul>
+				<li>MUST NOT specify the <a data-cite="epub-33#layout"><code>rendition:layout</code> property</a> with
+					the value <code>pre-paginated</code> in the package document metadata or specify its override
+					property <code>rendition:layout-pre-paginated</code> on <a href="#spine">spine</a> items
+					[[epub-33]].</li>
+				<li>MUST NOT specify any other properties or spine overrides defined in <a
+						data-cite="epub-33#sec-fxl-package">Fixed-layout package settings</a> [[epub-33]].</li>
+			</ul>
 		</section>
 		<section id="ebrl-nav">
 			<h2>Primary entry page</h2>
@@ -643,6 +707,25 @@
 				<p>For more information about creating media overlay documents, refer to the <a
 						data-cite="epub-33#sec-media-overlays">Media overlays</a> section of [[epub-33]].</p>
 			</div>
+		</section>
+		<section id="ebrl-a11y">
+			<h2>Accessibility</h2>
+
+			<p>[=eBraille publications=] fall under the category of <a data-cite="epub-a11y-11#sec-optimized-pubs"
+					>optimized publications</a> as defined by the <a data-cite="epub-a11y#">EPUB Accessibility
+					specification</a> [[epub-a11y-11]]. eBraille publications are only meant for braille users, so it is
+				not expected that [=eBraille creators=] can produce them to fully meet the requirements of W3C's <a>Web
+					Content Accessibility Guidelines</a> [[wcag2]]. There is not always a benefit to braille users in
+				meeting all of that standards requirements.</p>
+
+			<p>At the same time, it is possible to create eBraille publications that fail to meet the needs of users if
+				care is not taken to optimize the content. Not properly identifying headings, for example, will limit
+				users' ability to navigate a publication quickly. Similarly, failing to mark up tables properly can make
+				them difficult to navigate and understand.</p>
+
+			<p>So although fully meeting WCAG conformance may not be possible, eBraille SHOULD meet all success criteria
+				applicable to eBraille reading and include all relevant <a data-cite="epub-a11y-11#sec-discovery"
+					>accessibility metadata</a> [[epub-a11y-11]] in the package document.</p>
 		</section>
 		<section id="ebrl-packaging">
 			<h2>Packaging</h2>
