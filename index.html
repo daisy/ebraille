@@ -128,6 +128,11 @@
 						<p>For more information, refer to <a href="#ebrl-content-docs"></a>.</p>
 					</dd>
 
+					<dt><dfn>eBraille creator</dfn></dt>
+					<dd>
+						<p>An individual, organization, or process that produces an [=eBraille publication=].</p>
+					</dd>
+
 					<dt><dfn>eBraille file set</dfn></dt>
 					<dd>
 						<p>The set of files that comprise an [=eBraille publication=]. The eBraille file set is
@@ -237,6 +242,23 @@
 					MUST be located in or below the [=root directory=], as defined in <a href="#fileset-structure"
 					></a>.</p>
 			</section>
+
+			<section id="res-exemptions" class="informative">
+				<h3>Exempt resources</h3>
+
+				<p>Note that it is possible to include additional resources in an [=eBraille publication=] that are not
+					part of the rendering of the content. EPUB 3 defines resources that are not used in the [=spine=] or
+					embedded in [=xhtml content documents=] as exempt from the normal [=core media type resource=]
+					restrictions [[epub-33]].</p>
+
+				<p>This means, for example, that [=eBraille creators=] can embed pre-formatted braille in their
+					publication in a format such as PDF or BRF. The resource would still be listed in the [=manifest=],
+					but it would not be flagged as needing a fallback.</p>
+
+				<p>It would not be possible to link to these resources from the eBraille publication, but the
+					publication could note the presence of the resources and include instructions on how to access them
+					(e.g., to open the publication with a ZIP tool and navigate to a specific directory).</p>
+			</section>
 		</section>
 		<section id="ebrl-fileset">
 			<h2>eBraille file set</h2>
@@ -286,8 +308,8 @@
 						resources are not allowed in a <code>META-INF</code> directory</a> [[epub-33]].</p>
 
 				<div class="note">
-					<p>For simplicity of unzipping and accessing a publication on a user's local file system, eBraille
-						creators are encouraged to place the rest of the publication in a subfolder (e.g., named
+					<p>For simplicity of unzipping and accessing a publication on a user's local file system, [=eBraille
+						creators=] are encouraged to place the rest of the publication in a subfolder (e.g., named
 							"<code>ebraille</code>"). This will make the navigation document the first HTML file users
 						encounter.</p>
 				</div>
