@@ -763,18 +763,18 @@
 						>requirements for EPUB reading systems</a> [[epub-rs-33]], with the following differences:</p>
 
 				<ul>
-					<li>If it supports web access, the reading system SHOULD allow users to download unpackaged
-						[=eBraille publications=] hosted on the web by specifying the path to the package document.</li>
-					<li>It MUST support PDF for tactile graphics.</li>
 					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-epub-rs-conf-remote-res">remote resources</a>
 						[[epub-rs-33]].</li>
-					<li>As remote resources, forms, and scripting are not supported, it MUST NOT allow eBraille
-						publications to have <a data-cite="epub-rs-33#sec-epub-rs-network-access">network access</a>
+					<li>As remote resources, forms, and scripting are not supported, it MUST NOT allow [=eBraille
+						publications=] to have <a data-cite="epub-rs-33#sec-epub-rs-network-access">network access</a>
 						[[epub-rs-33]]. (Note that barring network access should not prevent users from following <a
 							data-cite="epub-rs-33#sec-epub-rs-external-links">external hyperlinks</a> [[epub-rs-33]] in
 						a publication.)</li>
 					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-pkg-doc-manifest">manifest fallbacks</a>
 						[[epub-rs-33]].</li>
+					<li>It MUST only support [=eBraille content documents=] in the <code>spine</code>. The reading
+						system MAY reject eBraille publications with other formats in the spine or ignore their entries
+						when rendering the publication.</li>
 					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-xhtml-forms">form submission</a>
 						[[epub-rs-33]].</li>
 					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-svg">SVG content documents</a>. (Note that this
@@ -789,10 +789,18 @@
 						version.</li>
 					<li>It MUST NOT support <a data-cite="epub-rs-33#epub-rs-33/#sec-rendering-control">fixed
 							layouts</a> [[epub-rs-33]].</li>
-					<li>It does not have to support <a data-cite="epub-rs-33#sec-epub-rs-conf-backward">backward
+					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-epub-rs-conf-backward">backward
 							compatibility</a> or <a data-cite="epub-rs-33#sec-epub-rs-conf-forward">forward
 							compatibility</a> with other EPUB versions [[epub-rs-33]].</li>
 				</ul>
+
+				<p>In addition, eBraille reading systems MUST support PDF for tactile graphics. If an eBraille reading
+					system is not capable of rendering PDFs embedded in [=eBraille content documents=], it MUST provide
+					a mechanism that allows the user to open the graphics in an application that supports PDF
+					rendering.</p>
+
+				<p>If an eBraille reading system supports web access, it SHOULD allow users to download unpackaged
+					eBraille publications hosted on the web by specifying the path to the package document.</p>
 			</section>
 
 			<section id="rs-browser">
@@ -807,7 +815,7 @@
 						eBraille reading system</a>.</p>
 
 				<p>Browser-based reading systems will be inherently less secure than dedicated eBraille reading systems,
-					as it will not likely be possible to disable features such as scripting, forms, and remote resources
+					as it will not likely be possible to disable features such as scripting, forms, and remote resource
 					access. Consequently, a browser-based reading system SHOULD follow all the <a
 						data-cite="epub-rs-33#sec-security-privacy">recommendations for securing publications</a>
 					defined in [[epub-rs-33]].</p>
