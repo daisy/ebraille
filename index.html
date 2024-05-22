@@ -333,8 +333,6 @@
 
 				<p>For this reason, the eBraille file set MUST NOT include file references that use path-absolute-URL
 					strings.</p>
-
-				<p>Similarly, [=eBraille reading systems=] MUST NOT resolve path-absolute-URL strings.</p>
 			</section>
 		</section>
 		<section id="ebrl-package-doc">
@@ -499,9 +497,6 @@
 					<p>eBraille does not support scripted interactivity or form submissions. Consequently, authors MUST
 						NOT include [[html]] [^script^] elements or the [^form^] element's [^form/action^] attribute in
 							<a>eBraille content documents</a>.</p>
-
-					<p>[=Reading systems=] MUST NOT process [^script^] elements or allow the submission of [^form^]
-						elements.</p>
 
 					<div class="note">
 						<p>The lack of support for scripting means that html elements that depend on scripting (e.g.,
@@ -765,6 +760,7 @@
 				<ul>
 					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-epub-rs-conf-remote-res">remote resources</a>
 						[[epub-rs-33]].</li>
+					<li>It MUST NOT resolve [=path-absolute-URL strings=] [[url]].</li>
 					<li>As remote resources, forms, and scripting are not supported, it MUST NOT allow [=eBraille
 						publications=] to have <a data-cite="epub-rs-33#sec-epub-rs-network-access">network access</a>
 						[[epub-rs-33]]. (Note that barring network access should not prevent users from following <a
