@@ -2,11 +2,14 @@
     font-family: 'odt2braille8';
     src: url('odt2braille8.ttf') format('truetype');
 }
+:root {
+    font-size: 18px; /* this value is overridden in index.js */
+}
 * {
     font-family: 'odt2braille8', monospace;
-    font-size: 20px;
+    font-size: 1.11111rem;
     font-weight: normal;
-    line-height: 0.9em;
+    line-height: 1rem;
     letter-spacing: 0;
     margin: 0;
     padding: 0;

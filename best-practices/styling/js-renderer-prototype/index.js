@@ -58,13 +58,13 @@
         return result;
     }
 
-    let fontSize = 40.0 / window.devicePixelRatio;
+    let fontSize = 36.0 / window.devicePixelRatio;
 
     async function braille2canvas(braille, columns, css, script, options) {
         let html = "<html><head>";
         html += "<link rel='stylesheet' type='text/css' href='" + baseCSS + "'></link>";
         if (css == null) css = "";
-        css += "* { font-size: " + fontSize + "px; }";
+        css += ":root { font-size: " + fontSize + "px; }";
         html += ("<style type='text/css'>" + css + "</style>");
         if (script != null)
             html += ("<script type='text/javascript'>" + script + "</script>");
@@ -72,12 +72,13 @@
         html += ("<body><div id='wrapper' style='width: " + columns + "ch'>" + braille + "</div></body>");
         html += "</html>";
         return await html2iframe2canvas(html, merge(options, {
-            width: columns * fontSize / 2.0 // value corresponds with used font and font-size
+            width: columns * fontSize * 1.11111 / 2.0 // value corresponds with used font and font-size
         }));
     }
 
-    let cellWidth = window.devicePixelRatio * fontSize / 2.0; // value corresponds with used font and font-size
-    let cellHeight = window.devicePixelRatio * fontSize * .9; // value corresponds with used font, font-size and line-height
+    // values correspond with used font, font-size and line-height (see base.css)
+    let cellWidth = window.devicePixelRatio * fontSize * 1.11111 / 2.0;
+    let cellHeight = window.devicePixelRatio * fontSize;
 
     async function getPatternsImageData() {
         let columns = 16;
@@ -114,7 +115,7 @@
         let canvas = await braille2canvas(braille, columns, css, script, options);
         if (options != null && typeof options.debugCanvas === 'function')
             options.debugCanvas(canvas);
-        let rows = Math.floor(canvas.height / cellHeight); // yields somewhat higher value so we take the floor
+        let rows = Math.ceil(canvas.height / cellHeight);
         canvas = canvas.getContext("2d", {willReadFrequently: true});
         let formattedBraille = "";
         let diffCanvas, diff = null; {

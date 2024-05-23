@@ -82,8 +82,8 @@ async function validateExamples() {
 									debugCanvas: canvas => createPopup("canvas").appendChild(canvas),
 									debugMatch: canvas => createPopup("match").appendChild(canvas)
 								});
-								formatted = decodeHTML(formatted).replace(/\s+$/, "");
-								let expected = unicodeBraille.replace(/\s+$/, "");
+								formatted = decodeHTML(formatted).replace(/[\u2800\n]+$/, "").replace(/\s+$/, "");
+								let expected = unicodeBraille.replace(/[\u2800\n]+$/, "").replace(/\s+$/, "");
 								if (formatted == expected) {
 									result.style.border = "2px solid green";
 								} else {
@@ -100,8 +100,8 @@ async function validateExamples() {
 								debugCanvas: canvas => createPopup("canvas").appendChild(canvas),
 								debugMatch: canvas => createPopup("match").appendChild(canvas)
 							});
-							formatted = decodeHTML(formatted).replace(/\s+$/, "");
-							let expected = unicodeBraille.replace(/\s+$/, "");
+							formatted = decodeHTML(formatted).replace(/[\u2800\n]+$/, "").replace(/\s+$/, "");
+							let expected = unicodeBraille.replace(/[\u2800\n]+$/, "").replace(/\s+$/, "");
 							if (formatted == expected) {
 								result.style.border = "2px solid green";
 							} else {

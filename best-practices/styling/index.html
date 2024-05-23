@@ -160,11 +160,10 @@
 
 			<div class="note">
 				<p>All examples in this section assume that the following default CSS style sheet is
-				applied and that the same monospaced font is used for all text:</p>
+				applied and that the same monospaced font and font size is used for all text:</p>
 				<pre><code class="css">* {
-   font-size: 20px;
    font-weight: normal;
-   line-height: .9em;
+   line-height: 1rem;
    letter-spacing: 0;
    margin: 0;
    padding: 0;
@@ -179,9 +178,7 @@
 				It might be better to omit the note above. Maybe it will only relevant in the context of a
 				browser, because in that case the browser's default styles must be accounted for. I would
 				expect dedicated reading systems to have other default styles that don't need to be
-				overridden. The ".9" might also cause confusion. The reason for choosing a line height of .9em
-				instead of 1em, is to make the interline distance better match the reality. This has to do
-				with the font I chose to render the braille.
+				overridden.
 			</p>
 
 			<section id="misc">
@@ -216,7 +213,7 @@
    white-space: pre;
 }
 .box.nemeth {
-   margin: .9em 0;
+   margin: 1rem 0;
 }
 .box.nemeth::before {
    display: flex;
@@ -284,14 +281,14 @@ p {
 					<p>the following CSS style sheet may be applied:</p>
 					<pre><code class="css" data-page-width="40">.box {
    border-style: solid;
-   border-width: .6em 0;
-   margin: .9em 0 1.2em 0;
-   padding: .3em 0 0 0;
+   border-width: .67rem 0;
+   margin: 1rem 0 1.33rem 0;
+   padding: .33rem 0 0 0;
 }
 .box .box {
-   border-width: .4em 0;
-   margin: .2em 0 0.5em 0;
-   padding: .3em 0 0 0;
+   border-width: .45rem 0;
+   margin: .22rem 0 0.55rem 0;
+   padding: .33rem 0 0 0;
 }
 p {
    text-indent: 2ch;
@@ -322,13 +319,13 @@ p {
 					<p>the following CSS style sheet may be applied:</p>
 					<pre><code class="css" data-page-width="35">.box {
    border-style: solid;
-   border-width: .2em .3ch;
-   margin: .6em .2ch .7em .2ch;
-   padding: .1em .5ch 0 .5ch;
+   border-width: .23rem .3ch;
+   margin: .66rem .2ch .77rem .2ch;
+   padding: .11rem .6ch 0 .55ch;
 }
 .box .box {
-   margin: 0 0 .1em 0;
-   padding: .7em .7ch .6em .7ch;
+   margin: 0 0 .11rem 0;
+   padding: .77rem .6ch .66rem .65ch;
 }
 p {
    text-indent: 2ch;
@@ -360,9 +357,9 @@ p {
 					<p>the following CSS style sheet may be applied:</p>
 					<pre><code class="css" data-page-width="40">.box {
    border-style: solid;
-   border-width: .4em 0;
-   margin: 1.1em 0 1.4em 0;
-   padding: .3em 0 0 0;
+   border-width: .45rem 0;
+   margin: 1.22rem 0 1.55rem 0;
+   padding: .33rem 0 0 0;
 }
 p {
    text-indent: 2ch;
@@ -397,13 +394,13 @@ p {
 					</p>
 					<pre><code class="css" data-page-width="40">.box {
    border-style: solid;
-   border-width: .4em 0;
-   margin: 0.2em 0 1.4em 0;
-   padding: .3em 0 0 0;
+   border-width: .45rem 0;
+   margin: 0.22rem 0 1.55rem 0;
+   padding: .33rem 0 0 0;
 }
 h1 {
    text-align: center;
-   margin: .9em 3ch 0 3ch;
+   margin: 1rem 3ch 0 3ch;
 }
 p {
    text-indent: 2ch;
@@ -438,8 +435,8 @@ p {
 					<p>the following CSS style sheet may be applied:</p>
 					<pre><code class="css" data-page-width="40">.box.yellow {
    border-style: solid;
-   border-width: 0 0 .6em 0;
-   margin: .9em 0 1.2em 0;
+   border-width: 0 0 .65rem 0;
+   margin: 1rem 0 1.353rem 0;
 }
 .box.yellow::before {
    display: flex;
@@ -466,7 +463,7 @@ p {
 					<p>the following CSS style sheet may be applied:</p>
 					<pre><code class="css" data-page-width="35">.box {
    border-style: solid;
-   border-width: .9em 1ch;
+   border-width: 1rem 1ch;
    border-image-slice: 37 20 37 20;
    border-image-repeat: round round;
    border-image-source: url("./border-image/⠐⠐⠐⠐⠐⠐⠐⠐.png");
@@ -505,7 +502,7 @@ p {
    text-indent: 2ch;
 }
 ul {
-   margin-top: .9em;
+   margin-top: 1rem;
 }
 li {
    text-indent: -2ch;
@@ -758,7 +755,7 @@ ol.toc li span + a {
 }
 h1 {
    text-align: center;
-   margin: .9em 3ch;
+   margin: 1rem 3ch;
 }
 [role~=doc-pagebreak] {
    width: 100%;
@@ -910,7 +907,7 @@ p.blocked {
    text-indent: 0;
 }
 p + p.blocked {
-   margin-top: .9em;
+   margin-top: 1rem;
 }
 </code></pre>
 					<p>CSS specifications:</p>
@@ -950,7 +947,7 @@ p + p.blocked {
 ⠙⠑⠏⠗⠊⠧⠫⠀⠓⠍⠀⠷⠀⠐⠥⠌⠯⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
 					<p>the following CSS style sheet may be applied:</p>
 					<pre><code class="css" data-page-width="40">p + p.blocked {
-   margin-top: .9em;
+   margin-top: 1rem;
 }</code></pre>
 				</aside>
 
@@ -1050,8 +1047,8 @@ h1 {
    text-align: center;
    margin-left: 3ch;
    margin-right: 4ch;
-   margin-top: .9em;
-   margin-bottom: .9em;
+   margin-top: 1rem;
+   margin-bottom: 1rem;
 }</code></pre>
 					<p>CSS specifications:</p>
 					<ul class="specification-links">
@@ -1105,8 +1102,8 @@ h1 {
    text-align: center;
    margin-left: 3ch;
    margin-right: 3ch;
-   margin-top: .9em;
-   margin-bottom: .9em;
+   margin-top: 1rem;
+   margin-bottom: 1rem;
    text-wrap: balance;
 }
 </code></pre>
@@ -1149,8 +1146,8 @@ header:has(> h1) {
    text-align: center;
    margin-left: 3ch;
    margin-right: 3ch;
-   margin-top: .9em;
-   margin-bottom: .9em;
+   margin-top: 1rem;
+   margin-bottom: 1rem;
 }
 header > h1,
 header > p {
@@ -1187,13 +1184,13 @@ h1 {
    text-align: center;
    margin-left: 3ch;
    margin-right: 4ch;
-   margin-bottom: .9em;
+   margin-bottom: 1rem;
 }
 h2 {
    margin-left: 4ch;
 }
 h1, h2 {
-   margin-top: .9em;
+   margin-top: 1rem;
 }</code></pre>
 				</aside>
 
@@ -1215,7 +1212,7 @@ h1, h2 {
 }
 h3 {
    margin-left: 6ch;
-   margin-top: .9em;
+   margin-top: 1rem;
 }</code></pre>
 				</aside>
 
@@ -1244,7 +1241,7 @@ h3 {
    margin-left: 6ch;
 }
 h2, h3 {
-   margin-top: .9em;
+   margin-top: 1rem;
 }
 h2 + * {
    margin-top: 0;
