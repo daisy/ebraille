@@ -164,7 +164,7 @@
 				<pre><code class="css">* {
    font-size: 20px;
    font-weight: normal;
-   line-height: 0.9em;
+   line-height: .9em;
    letter-spacing: 0;
    margin: 0;
    padding: 0;
@@ -175,107 +175,17 @@
 }</code></pre>
 			</div>
 
+			<p class="ednote">
+				It might be better to omit the note above. Maybe it will only relevant in the context of a
+				browser, because in that case the browser's default styles must be accounted for. I would
+				expect dedicated reading systems to have other default styles that don't need to be
+				overridden. The ".9" might also cause confusion. The reason for choosing a line height of .9em
+				instead of 1em, is to make the interline distance better match the reality. This has to do
+				with the font I chose to render the braille.
+			</p>
+
 			<section id="misc">
 				<h3>Miscellaneous</h3>
-
-				<aside class="example" title="Table">
-					<p class="ednote">
-						The “<a href="../tagging/index.html#example-a-table-with-header-and-body">A table with header and body</a>” example from [[TAGGING]] needs a slight modification.
-					</p>
-					<pre><code class="html">&lt;table>
-  &lt;colgroup&gt;
-    &lt;col/&gt;
-    &lt;col/&gt;
-    &lt;col/&gt;
-    &lt;col/&gt;
-  &lt;/colgroup&gt;
-  &lt;thead>
-    &lt;tr>
-      &lt;th>⠠⠙⠁⠞⠑&lt;/th>
-      &lt;th>⠠⠙⠑⠎⠉⠗⠊⠏⠞⠊⠕⠝&lt;/th>
-      &lt;th>⠠⠉⠗⠑⠙⠊⠞&lt;/th>
-      &lt;th>⠠⠙⠑⠃⠊⠞&lt;/th>
-    &lt;/tr>
-  &lt;/thead>
-  &lt;tbody>
-    &lt;tr>
-      &lt;td>⠼⠛ ⠠⠚⠥⠝&lt;/td>
-      &lt;td>⠠⠉⠁⠎⠓ ⠺⠊⠞⠓⠙⠗⠁⠺⠁⠇&lt;/td>
-      &lt;td>&lt;/td>
-      &lt;td>⠈⠎⠼⠁⠚⠚⠲⠚⠚&lt;/td>
-    &lt;/tr>
-  &lt;/tbody>
-&lt;/table></code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
-⠠⠙⠁⠞⠑⠀⠀⠀⠠⠙⠑⠎⠉⠗⠊⠏⠞⠊⠕⠝⠀⠀⠠⠉⠗⠑⠙⠊⠞⠀⠀⠠⠙⠑⠃⠊⠞⠀⠀⠀
-⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤
-⠼⠛⠀⠀⠀⠀⠀⠀⠠⠉⠁⠎⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠎⠼⠁⠚⠚⠲⠚⠚
-⠠⠚⠥⠝⠀⠀⠀⠀⠺⠊⠞⠓⠙⠗⠁⠺⠁⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<p class="ednote">
-						In order to ensure columns are aligned to the grid, the column widths must
-						be set explicitly. Experience shows that setting column widths can be
-						tricky, and even if it works flawlessly, it is not very practical.
-					</p>
-					<pre><code class="css" data-page-width="40">table {
-   display: table;
-   table-layout: fixed;
-   border-collapse: separate;
-   border-spacing: 0;
-   border-width: .4em 0;
-   border-style: solid;
-   border-color: black;
-   margin: .2em 0 .3em 0;
-}
-thead tr th {
-   text-align: left;
-   padding-top: .3em;
-   padding-bottom: .4em;
-   border-bottom: .1em solid black;
-}
-tbody tr td {
-   padding-top: .4em;
-}
-tbody tr + tr td {
-   padding-top: 0;
-   padding-bottom: .2em;
-}
-tbody tr + tr:has(+ tr) td {
-   padding-bottom: 0;
-}
-col {
-   width: 70px;
-}
-col + col {
-   width: 140px;
-}
-col + col + col {
-   width: 90px;
-}
-col + col + col + col {
-   width: 100px;
-}
-th, td {
-   padding-left: 0;
-   padding-right: 0;
-   vertical-align: top;
-}
-th:has(+ th), td:has(+ td) {
-   padding-right: 1ch;
-}
-th + th, td + td {
-   padding-left: 1ch;
-}
-</code></pre>
-					<p>CSS specifications:</p>
-					<ul class="specification-links">
-						<li><a href="https://drafts.csswg.org/css2/#tables">Tables</a> [[CSS2]]</li>
-					</ul>
-				</aside>
-
-				<hr/>
 
 				<aside class="example" title="Nemeth box with blank lines">
 					<p class="ednote">
@@ -714,7 +624,8 @@ ol ol li {
 						<code>span</code> tags, and compare this with the simpler markup of the “<a
 						href="../tagging/index.html#example-a-table-of-contents-with-links">A table
 						of contents with links</a>” example from [[TAGGING]]. A possible solution
-						is to insert the <code>span</code> tags through scripting.
+						would be to insert the <code>span</code> tags through scripting, if scripting
+						would be allowed.
 					</p>
 					<pre><code class="html">&lt;ol class="toc"&gt;
   &lt;li&gt;&lt;span&gt;⠠⠔⠞⠗⠕⠙⠥⠉⠰⠝&lt;/span&gt; &lt;a href="#page-5"&gt;⠼⠑&lt;/a&gt;&lt;/li&gt;
@@ -1114,41 +1025,6 @@ p + p.blocked {
 }</code></pre>
 				</aside>
 
-				<aside class="example" title="Simple spatial table">
-					<p class="ednote">
-						Missing HTML input for Simple spatial table.
-					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.15/Simple%20spatial%20table.brf"></a>
-				</aside>
-
-				<aside class="example" title="Spatial table with guide dots">
-					<p class="ednote">
-						Missing HTML input for Spatial table with guide dots.
-					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.15/Spatial%20table%20with%20guide%20dots.brf"></a>
-				</aside>
-
-				<aside class="example" title="Table presented as linear with a transcriber's note">
-					<p class="ednote">
-						Missing HTML input for Table presented as linear with a transcriber's note.
-					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.15/Table%20presented%20as%20linear%20with%20a%20transcriber's%20note.brf"></a>
-				</aside>
-
-				<aside class="example" title="Table presented as listed with a transcriber's note">
-					<p class="ednote">
-						Missing HTML input for Table presented as listed with a transcriber's note.
-					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.15/Table%20presented%20as%20listed%20with%20a%20transcriber's%20note.brf"></a>
-				</aside>
-
-				<aside class="example" title="Table presented as stairstep with transcriber's note">
-					<p class="ednote">
-						Missing HTML input for Table presented as stairstep with transcriber's note.
-					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.15/Table%20presented%20as%20stairstep%20with%20transcriber's%20note.brf"></a>
-				</aside>
-
 				<aside class="example" title="Centered heading with blank before and after">
 					<p class="ednote">
 						Missing an example in [[TAGGING]] of a centered heading with blank before and after.
@@ -1375,13 +1251,6 @@ h2 + * {
 }</code></pre>
 				</aside>
 
-				<aside class="example" title="Running head">
-					<p class="ednote">
-						Missing an example in [[TAGGING]] of a running head.
-					</p>
-					<a class="brf-link" href="CSS%20Best%20Practice%20Examples/Section%202.7/Running%20head%20example.brf"></a>
-				</aside>
-
 				<aside class="example" title="Line numbered prose">
 					<p class="ednote">
 						The “<a href="../tagging/index.html#example-a-paragraph-with-line-numbers">A
@@ -1473,6 +1342,12 @@ h2 + * {
    margin-right: -1ch;
 }</code></pre>
 					<p>and the following JavaScript may be applied to enhance the styling:</p>
+					<p class="ednote">
+						This example shows possible use cases for allowing scripting in the
+						future. Because scripting is currenly forbidden, we obviously shouldn't
+						include it in the best practices. Still it seems useful to have it included
+						somewhere, to show the limitations of CSS.
+					</p>
 					<pre><code class="javascript">window.onload = function() {
   document.querySelectorAll(".prose").forEach(prose => {
     let linenums = Array.from(prose.querySelectorAll(".linenum"));
