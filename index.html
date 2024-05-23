@@ -437,11 +437,16 @@
 						>navigation document</a> and when SVG tactile graphics are embedded in the resource.</p>
 
 				<aside class="example" title="Manifest entry for an eBraille content document with embedded SVG">
+					<p>In this example, the <code>chapter02.html</code> file contains one or more SVG images. These
+						images could be embedded directly in the HTML document using the <code>svg</code> element or
+						they could be separate resources referenced from <code>img</code> or <code>object</code>
+						elements (in which case the images would also be listed in the manifest).</p>
 					<pre><code>&lt;package &#8230;>
    &#8230;
    &lt;manifest>
+      &#8230;
       &lt;item id="c02"
-            href="eBraille/chapter02.xhtml"
+            href="eBraille/chapter02.html"
             media-type="application/xhtml+xml"
             properties="svg"
       &#8230;
@@ -485,13 +490,14 @@
 &lt;/package></code></pre>
 				</aside>
 
-				<p>The <code>linear</code> attribute is used to indicate if a resource referenced from the spine contains
-					content that must be read sequentially or not. Linear content typically consists of eBraille content
-					documents that contain content in the primary reading order while non-linear content contains
-					supplementary material such as notes and descriptions that can be accessed out of sequence (e.g., an
-					[=eBraille reading system=] might opt to not render them until after all the linear content has been
-					read). If the <code>linear</code> attribute is not specified, the spine item defaults to being
-					linear content (i.e., the attribute is only required to specify non-linear content).</p>
+				<p>The <code>linear</code> attribute is used to indicate if a resource referenced from the spine
+					contains content that must be read sequentially or not. Linear content typically consists of
+					eBraille content documents that contain content in the primary reading order while non-linear
+					content contains supplementary material such as notes and descriptions that can be accessed out of
+					sequence (e.g., an [=eBraille reading system=] might opt to not render them until after all the
+					linear content has been read). If the <code>linear</code> attribute is not specified, the spine item
+					defaults to being linear content (i.e., the attribute is only required to specify non-linear
+					content).</p>
 
 				<aside class="example" title="Linear and non-linear spine item reference">
 					<p>In the following example, the answer key for chapter 5 of a publication is marked as
