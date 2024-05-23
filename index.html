@@ -411,30 +411,67 @@
 			<section id="manifest">
 				<h3>Manifest</h3>
 
-				<p>The eBraille package document manifest MUST meet all the requirements for an [[epub-33]] <a
-						data-cite="epub-33#sec-pkg-manifest">manifest</a>.</p>
+				<p>The package document <code>manifest</code> element contains a list all of the resources in the
+					[=eBraille publication=]. Each <code>item</code> element child defines one resource, minimally
+					providing the following information:</p>
 
-				<aside class="example" title="Manifest entry for an XHTML content document">
+				<ul>
+					<li>an identifier for the resource in its <code>id</code> attribute;</li>
+					<li>the location of the resource in its <code>href</code> attribute; and</li>
+					<li>the media type of the resource in its <code>media-type</code> attribute.</li>
+				</ul>
+
+				<aside class="example" title="Manifest entry for an eBraille content document">
 					<pre><code>&lt;package &#8230;>
    &#8230;
    &lt;manifest>
       &lt;item id="c01"
             href="eBraille/chapter01.xhtml"
-            media-type="application/xhtml+xml"/>
+            media-type="application/xhtml+xml"
       &#8230;
    &lt;/manifest>
    &#8230;
 &lt;/package></code></pre>
 				</aside>
+
+				<p>Manifest entries may also identify specific properties of the resource in the <code>properties</code>
+					attribute. For eBraille, this attribute will typically only be used for the <a href="#ebrl-nav"
+						>navigation document</a> and when SVG tactile graphics are embedded in the resource.</p>
+
+				<aside class="example" title="Manifest entry for an eBraille content document with embedded SVG">
+					<pre><code>&lt;package &#8230;>
+   &#8230;
+   &lt;manifest>
+      &lt;item id="c02"
+            href="eBraille/chapter02.xhtml"
+            media-type="application/xhtml+xml"
+            properties="svg"
+      &#8230;
+   &lt;/manifest>
+   &#8230;
+&lt;/package></code></pre>
+				</aside>
+
+				<p>The manifest entries for [=eBraille content documents=] may also indicate if a <a href="#ebrl-mo"
+						>media overlay document</a> is available in the <code>media-overlays</code> attribute.</p>
+
+				<p>For the complete set of requirements for the manifest, refer to the <a
+						data-cite="epub-33#sec-pkg-manifest">The <code>manifest</code> element</a> in [[epub-33]].</p>
+
+				<div class="note">
+					<p>As eBraille does not support <a href="#fallbacks">manifest fallbacks</a>, the
+							<code>fallback</code> attribute is not supported.</p>
+				</div>
 			</section>
 
 			<section id="spine">
 				<h3>Spine</h3>
 
-				<p>The eBraille package document spine MUST meet all the requirements for an [[epub-33]] <a
-						data-cite="epub-33#sec-pkg-spine">spine</a>.</p>
+				<p>The package document <code>spine</code> element defines the default reading order for an [=eBraille
+					publication=]. Each <code>itemref</code> child of the <code>spine</code> references the manifest
+					entry for an [=eBraille content document=] in its required <code>idref</code> attribute.</p>
 
-				<aside class="example" title="Spine item reference to an XHTML content document">
+				<aside class="example" title="Spine item reference to an eBraille content document">
 					<pre><code>&lt;package &#8230;>
    &#8230;
    &lt;manifest>
@@ -449,6 +486,32 @@
    &lt;/spine>
 &lt;/package></code></pre>
 				</aside>
+
+				<p>The <code>linear</code> attribute is used to indicate if a resource referenced from the spine contains
+					content that must be read sequentially or not. Linear content typically consists of eBraille content
+					documents that contain content in the primary reading order while non-linear content contains
+					supplementary material such as notes and descriptions that can be accessed out of sequence (e.g., an
+					[=eBraille reading system=] might opt to not render them until after all the linear content has been
+					read). If the <code>linear</code> attribute is not specified, the spine item defaults to being
+					linear content (i.e., the attribute is only required to specify non-linear content).</p>
+
+				<aside class="example" title="Linear and non-linear spine item reference">
+					<p>In the following example, the answer key for chapter 5 of a publication is marked as
+						non-linear.</p>
+					<pre><code>&lt;package &#8230;>
+   &#8230;
+   &lt;spine>
+      &#8230;
+      &lt;itemref idref="c05"/>
+      &lt;itemref idref="c05-answers" linear="no"/>
+      &lt;itemref idref="c06"/>
+      &#8230;
+   &lt;/spine>
+&lt;/package></code></pre>
+				</aside>
+
+				<p>For the complete set of requirements for the spine, refer to the <a data-cite="epub-33#sec-pkg-spine"
+						>The <code>spine</code> element</a> in [[epub-33]].</p>
 			</section>
 
 			<section id="package-unsupported">
