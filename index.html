@@ -259,6 +259,35 @@
 					publication could note the presence of the resources and include instructions on how to access them
 					(e.g., to open the publication with a ZIP tool and navigate to a specific directory).</p>
 			</section>
+
+			<section id="res-extensions" class="informative">
+				<h3>File extensions</h3>
+
+				<p>Reading systems typically do not rely on file extensions for rendering, so, with a couple of notable
+					exceptions for the <a href="#ebrl-package-doc">package document</a> and <a href="#ebrl-nav">primary
+						entry page</a>, eBraille does not require specific extensions for the resources in an [=eBraille
+					publication=]. The media type declared in the manifest is used as a hint to the nature of each
+					resource, but even that declaration is not reliable. Instead, reading systems typically leave
+					inspection of resources and their rendering to their underlying browser core.</p>
+
+				<p>The use of standard file extensions for resources should still be considered a best practice,
+					however, as it avoids authoring confusion over the nature of resources.</p>
+
+				<p>Some formats have more than one common extension. For example, XHTML documents can use either the
+					extension <code>.html</code> or <code>.xhtml</code> and JPEG images can use either <code>.jpg</code>
+					or <code>.jpeg</code>. In these cases, either extension is acceptable.</p>
+
+				<div class="note">
+					<p>This specification uses the <code>.html</code> extension in examples for [=eBraille content
+						documents=] as it is more widely used and recognized than <code>.xhtml</code>, particularly for
+						opening the primary entry page.</p>
+
+					<p>The <code>.xhtml</code> extension may be useful if eBraille content documents are opened in a
+						browser on a local file system (e.g., for testing), as this triggers some browers to render the
+						content using the correct XML parser. It has no effect on documents served over the web,
+						however.</p>
+				</div>
+			</section>
 		</section>
 		<section id="ebrl-fileset">
 			<h2>eBraille file set</h2>
@@ -725,9 +754,20 @@
 		<section id="ebrl-packaging">
 			<h2>Packaging</h2>
 
-			<div class="ednote">
-				<p>Packaging requirements for eBraille publications will be added in a future update.</p>
-			</div>
+			<p>A packaged eBraille file set MUST use the extension <code>.ebrl</code>.</p>
+		</section>
+		<section id="ebrl-web-deploy">
+			<h2>Web deployment</h2>
+
+			<p>When making an [=eBraille publication=] available for reading over the web, [=eBraille creators=] MUST
+				ensure that resources are served with the correct MIME media type [[rfc2046]] in their <a
+					href="https://www.rfc-editor.org/rfc/rfc9110#field.content-type">Content-Type headers</a>
+				[[rfc9110]]. File extensions cannot be relied on, as XHTML documents, for example, are only properly
+				processed as XML when the correct media type is set.</p>
+
+			<p>eBraille creators MUST also ensure that each directory containing an eBraille publication is configured
+				to serve the <a href="#ebrl-nav">primary entry page</a> (<code>index.html</code>) by default for users
+				that access the publications from a web browser.</p>
 		</section>
 		<section id="ebrl-reading-systems">
 			<h2>eBraille Reading Systems</h2>
