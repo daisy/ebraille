@@ -731,7 +731,11 @@
       &#8230;>
    &#8230;
    &lt;body>
-      &lt;nav epub:type="toc" role="doc-toc">
+      &lt;nav
+           epub:type="toc"
+           role="doc-toc"
+           aria-labelled-by="toc-hd">
+         &lt;h2 id="toc-hd">Table of Contents&lt;/h2>
          &#8230;
       &lt;/nav>
    &lt;/body>
@@ -745,7 +749,12 @@
 						are not common outside of publications that omit content).</p>
 
 					<aside class="example" title="Table of contents for a novel with only chapter headings">
-						<pre><code>&lt;nav epub:type="toc" role="doc-toc">
+						<pre><code>      &lt;nav
+       epub:type="toc"
+       role="doc-toc"
+       aria-labelled-by="toc-hd">
+   &lt;h2 id="toc-hd">Table of Contents&lt;/h2>
+
    &lt;ol>
       &lt;li>
          &lt;a href="chap01.html#c01">
@@ -771,24 +780,19 @@
 						after the link to the heading.</p>
 
 					<aside class="example" title="Table of contents for a textbook with parts and sections">
-						<pre><code>&lt;nav epub:type="toc" role="doc-toc">
+						<pre><code>&lt;li>
+   &lt;a href="part01.html#p01">
+      Part 1
+   &lt;/a>
    &lt;ol>
       &lt;li>
-         &lt;a href="part01.html#p01">
-            Part 1
+         &lt;a href="sec01.html#s01">
+            Section 1
          &lt;/a>
-         &lt;ol>
-            &lt;li>
-               &lt;a href="sec01.html#s01">
-                  Section 1
-               &lt;/a>
-            &lt;/li>
-            &#8230;
-         &lt;/ol>
       &lt;/li>
       &#8230;
    &lt;/ol>
-&lt;/nav></code></pre>
+&lt;/li></code></pre>
 					</aside>
 
 					<p>The minimalist rules on the structure of the table of contents are to ensure that [=eBraille
@@ -825,7 +829,11 @@
    &#8230;
    &lt;body>
       &#8230;
-      &lt;nav epub:type="page-list" role="doc-pagelist">
+      &lt;nav
+           epub:type="page-list"
+           role="doc-pagelist"
+           aria-labelledby="pl-hd">
+         &lt;h2 id="pl-hd">Page List&lt;/h2>
          &#8230;
       &lt;/nav>
    &lt;/body>
@@ -838,7 +846,11 @@
 						links to its location.</p>
 
 					<aside class="example" title="Page list with front and body matter">
-						<pre><code>&lt;nav epub:type="page-list" role="doc-pagelist">
+						<pre><code>&lt;nav
+     epub:type="page-list"
+     role="doc-pagelist"
+     aria-labelledby="pl-hd">
+   &lt;h2 id="pl-hd">Page List&lt;/h2>
    &lt;ol>
       &lt;li>
          &lt;a href="intro.html#pi">
@@ -906,7 +918,10 @@
    &#8230;
    &lt;body>
       &#8230;
-      &lt;nav epub:type="landmarks">
+      &lt;nav
+           epub:type="landmarks"
+           aria-labelledby="lm-hd">
+         &lt;h2 id="lm-hd">Landmarks&lt;/h2>
          &#8230;
       &lt;/nav>
    &lt;/body>
@@ -928,7 +943,10 @@
 							Structural Semantics Vocabulary</a> [[epub-ssv-11]].</p>
 
 					<aside class="example" title="Landmarks for body matter and glossary">
-						<pre><code>&lt;nav epub:type="landmarks">
+						<pre><code>&lt;nav
+     epub:type="landmarks"
+     aria-labelledby="lm-hd">
+   &lt;h2 id="lm-hd">Landmarks&lt;/h2>
    &lt;ol>
       &lt;li>
          &lt;a href="chap01.html" epub:type="bodymatter">
