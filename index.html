@@ -949,6 +949,63 @@
 
 			<p>A packaged eBraille file set MUST use the extension <code>.ebrl</code>.</p>
 		</section>
+		<section id="ebrl-security-privacy">
+			<h2>Security and privacy</h2>
+
+			<section id="threat-model" class="informative">
+				<h3>Threat model</h3>
+
+				<p>Although eBraille shares a common file set with EPUB 3, many of the <a
+						data-cite="epub-33#sec-security-privacy">privacy and security threats</a> [[epub-33]] that arise
+					with EPUB 3 publications do not apply to [=eBraille publications=]. The reason is that the primary
+					threat vectors in EPUB 3 come from its allowance of scripting and network access. Users do not face
+					the same risks from third party scripts, from attempts by publishers to monitor their activities or
+					profile them through scripting, or from malicious code being brought in by remote resource calls,
+					among other threats outlined in EPUB 3.</p>
+
+				<p>It does not mean that there are no security or privacy risks with eBraille publications. [=eBraille
+					creators=] still need to ensure they maintain the security and privacy rights of users when creating
+					their publications. The possible areas of concern for eBraille publications include:</p>
+
+				<dl>
+					<dt>Linking to external resources</dt>
+					<dd>
+						<p>Linking out to resources on the web can expose users to potential malicious content.
+							Broken-link hijacking is one example where a malicious actor may buy the expired domain of a
+							site and redirect users to content the eBraille creator never intended. Links to a
+							publishers web site could allow them to profile users if they include tracking
+							information.</p>
+					</dd>
+
+					<dt>Including malicious content</dt>
+					<dd>
+						<p>Although eBraille does not allow eBraille creators to embed remote resources in publications,
+							using third-party resources, such as tactile graphics, can expose users to exploits.</p>
+					</dd>
+
+					<dt>Falsified publication information</dt>
+					<dd>
+						<p>Malicious actors could include false metadata &#8212; such as the title, author, and
+							publisher &#8212; in an eBraille publication to trick unsuspecting users into believing they
+							are reading material from a trustworthy source. This could lead users to be more trusting of
+							external links than they otherwise would be.</p>
+					</dd>
+				</dl>
+			</section>
+
+			<section id="risk-mitigation">
+				<h3>Risk mitigation</h3>
+
+				<p>The following <a data-cite="epub-33#security-privacy-recommendations">recommendations from EPUB 3</a>
+					[[epub-33]] apply equally to [=eBraille publications=]:</p>
+
+				<ul>
+					<li>Avoid links to untrustworthy web sites (e.g., that browsers do not recognize as safe).</li>
+					<li>Use secure connections to external sites and resources (i.e., using the HTTPS protocol).</li>
+					<li>Avoid embedding content not provided by reputable organizations or individuals.</li>
+				</ul>
+			</section>
+		</section>
 		<section id="ebrl-web-deploy">
 			<h2>Web deployment</h2>
 
