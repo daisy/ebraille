@@ -177,7 +177,7 @@
 				<p>The [=eBraille file set=] is designed to be compatible with EPUB 3 [[epub-33]] and adapt to changes
 					to that standard. Distribution and consumption on mainstream [=EPUB reading systems=], however, is
 					not a primary goal of this format. This specification introduces some additional requirements and
-					features beyond those defined in EPUB 3, and it is not expect that mainstream reading systems will
+					features beyond those defined in EPUB 3, and it is not expected that mainstream reading systems will
 					adapt to these modifications. Consequently, an eBraille publication may not render exactly as
 					intended outside of eBraille reading systems.</p>
 
@@ -208,6 +208,31 @@
 				</ul>
 			</section>
 		</section>
+		<section id="ebrl-pub">
+			<h2>eBraille publication conformance</h2>
+
+			<p>A conforming [=eBraille publication=]:</p>
+
+			<ul>
+				<li>
+					<p>MUST define at least one rendering of its content as follows:</p>
+					<ul>
+						<li>It MUST contain a package document that conforms to <a href="#ebrl-package-doc"></a> and
+							meet all publication resource requirements for the package document.</li>
+						<li>It MUST contain a primary entry page that conforms to <a href="#ebrl-nav"></a>.</li>
+					</ul>
+				</li>
+				<li>SHOULD conform to the accessibility requirements defined in <a href="#ebrl-a11y"></a>.</li>
+			</ul>
+
+			<p>In addition, all publication resources MUST adhere to the requirements in <a href="#ebrl-resources"
+				></a>.</p>
+
+			<p>If an eBraille publication is packaged for distribution, it MUST adhere to the packaging requirements in
+					<a href="#ebrl-packaging"></a>.</p>
+
+			<p>The rest of this specification covers specific conformance details.</p>
+		</section>
 		<section id="ebrl-resources">
 			<h2>Publication resources</h2>
 
@@ -223,6 +248,69 @@
 
 				<p>This section represents a subsetting of the EPUB requirements, as certain features, such as manifest
 					fallbacks, are disallowed in eBraille publications.</p>
+			</section>
+
+			<section id="cmt">
+				<h3>Core media types</h3>
+
+				<p>To ensure that [=eBraille reading systems=] are capable of rendering the content of [=eBraille
+					publications=], only certain widely supported resource types are allowed to be included without
+					fallbacks. These are called core media types and are designated by their MIME media type [[rfc2046]]
+					(e.g., XHTML documents have the MIME media type <code>application/xhtml+xml</code>.</p>
+
+				<p>Being designated a core media type does not mean that all reading systems are required to support the
+					type of resource, however. A reading system without audio capabilities will not be able to render
+					audio core media types, for example.</p>
+
+				<p>The list of core media types allowed in eBraille publications is the same as those designated for
+					EPUB 3. Some of the key core media types for eBraille include:</p>
+
+				<ul>
+					<li><code>application/xhtml+xml</code> &#8212; HTML documents that use the XML syntax [[html]].</li>
+					<li><code>text/css</code> &#8212; CSS Style Sheets [[css2]].</li>
+					<li><code>image/jpeg</code> &#8212; JPEG Images [[jpeg]]</li>
+					<li><code>image/png</code> &#8212; PNG Images [[png]]</li>
+					<li><code>image/svg+xml</code> &#8212; SVG images [[svg]]</li>
+				</ul>
+
+				<p>The complete list is available in the <a data-cite="epub-33#sec-core-media-types">core media types
+						section</a> of [[epub-33]].</p>
+
+				<p>All other media types are considered <a href="foreign-res">foreign resources</a>.</p>
+			</section>
+
+			<section id="foreign-res">
+				<h3>Foreign resources</h3>
+
+				<p>Foreign resources, unlike <a href="#cmt">core media types</a>, have no guarantee of support in
+					reading systems.</p>
+
+				<p>To avoid users not being able to access the content of the [=eBraille publication=], foreign
+					resources can only be used if a fallback to a core media type is provided. Fallbacks are provided
+					using <a data-cite="epub-33#sec-intrinsic-fallbacks">intrinsic fallback methods</a> [[epub-33]].</p>
+
+				<div class="note">
+					<p><a href="#fallbacks">Manifest fallbacks</a> are not supported in eBraille, so foreign resources
+						cannot be used in the <a href="#spine">spine</a>. Similarly, foreign image formats have to
+						include fallbacks using the [[html]] [^img^] and [^picture^] elements' intrinsic fallback
+						capabilities.</p>
+				</div>
+
+				<p>It is generally best to avoid foreign resources unless absolutely necessary. PDF tactile graphics are
+					an example of a foreign resource that may not be avoidable for some EPUB creators, but using the
+					[[html]] [^object^] element's intrinsic fallback capabilities can avoid having to duplicate the
+					image in a core media type format.</p>
+
+				<aside class="example" title="PDF tactile image with fallback">
+					<pre><code>&lt;object
+     data="ebraille/images/clouds.pdf"
+     type="application/pdf"
+     height="250"
+     width="100"
+     aria-labelledby="alt">
+   &lt;p id="alt">&lt;!-- alternative text -->&lt;/p>
+&lt;/object></code></pre>
+				</aside>
 			</section>
 
 			<section id="fallbacks">
@@ -241,6 +329,14 @@
 				<p>[=eBraille publications=] do not support [=remote resources=] [[epub-33]]. All publication resources
 					MUST be located in or below the [=root directory=], as defined in <a href="#fileset-structure"
 					></a>.</p>
+
+				<p>eBraille does not support the <code>file:</code> URL scheme [[rfc8089]] for referencing resources in
+					an eBraille publication. Accessing files on the user's local file system presents too great a
+					security risk.</p>
+
+				<p>The <code>data:</code> URL scheme MAY be used to embed resources within [=eBraille content
+					documents=] per the restrictions outlined in <a data-cite="epub-33#sec-data-urls">Data URLs</a>
+					[[epub-33]].</p>
 			</section>
 
 			<section id="res-exemptions" class="informative">
@@ -283,10 +379,21 @@
 						opening the primary entry page.</p>
 
 					<p>The <code>.xhtml</code> extension may be useful if eBraille content documents are opened in a
-						browser on a local file system (e.g., for testing), as this triggers some browers to render the
+						browser on a local file system (e.g., for testing), as this triggers some browsers to render the
 						content using the correct XML parser. It has no effect on documents served over the web,
 						however.</p>
 				</div>
+			</section>
+
+			<section id="xml-conformance">
+				<h3>XML conformance</h3>
+
+				<p>The requirements for XML-based media types [[rfc2046]] defined in <a
+						data-cite="epub-33#sec-xml-constraints">XML conformance</a> [[epub-33]] also apply to [=eBraille
+					publications=].</p>
+
+				<p>The only difference is that eBraille publications only support UTF-8 [[unicode]]. UTF-16 MUST NOT be
+					used to encode XML resources.</p>
 			</section>
 		</section>
 		<section id="ebrl-fileset">
