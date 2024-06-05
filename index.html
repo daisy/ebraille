@@ -470,6 +470,28 @@
 				<p>For this reason, the eBraille file set MUST NOT include file references that use path-absolute-URL
 					strings.</p>
 			</section>
+
+			<section id="multiple-renditions">
+				<h3>Multiple renditions</h3>
+
+				<p>An [=eBraille publication=] MAY contain multiple renditions of the content. The specifics of how this
+					is done are defined in EPUB 3 Multiple-Rendition Publications 1.1 [[epub-multi-rend-11]].</p>
+
+				<p>When including multiple renditions, only the <a data-cite="epub-multi-rend-11##container">default
+						rendition</a> [[epub-multi-rend-11]] (i.e., one listed first in the <a
+						data-cite="epub-33#sec-container-metainf-container.xml"><code>container.xml</code> file</a>
+					[[epub-33]]) is subject to the <a href="#fileset-structure">file naming and location
+						requirements</a> for the package document and primary entry page.</p>
+
+				<p>The default rendition MUST be a braille rendition (i.e., identified by a <a
+						data-cite="epub-multi-rend-11#accessMode-attr"><code>rendition:accessMode</code> attribute</a>
+					with the value "<code>tactile</code>" [[epub-multi-rend-11]]).</p>
+
+				<div class="note">
+					<p>[[epub-multi-rend-11]] is only a W3C Working Group Note. The technology is not currently
+						considered stable and should be used with appropriate caution.</p>
+				</div>
+			</section>
 		</section>
 		<section id="ebrl-package-doc">
 			<h2>Package Document</h2>
