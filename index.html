@@ -709,6 +709,12 @@
 							work in [=eBraille publications=]. It is strongly recommended not to include these elements,
 							as well.</p>
 					</div>
+
+					<div class="note">
+						<p>An exemption is made to the scripting requirement for the <a href="#ebrl-nav">primary entry
+								page</a> so long as it is not listed in the spine. The exemption is to allow publishers
+							to add a user interface for web deployment.</p>
+					</div>
 				</section>
 			</section>
 
@@ -799,6 +805,17 @@
 				<p>As the primary entry page is meant to help browser users navigate the publication, it SHOULD NOT be
 					included in the <a href="#spine">spine</a>. If the publication needs a table of contents in the
 					spine, it is better to create a separate document with publication-specific formatting.</p>
+
+				<p>The primary entry page MAY include [[html]] [^script^] elements only if the document is not included
+					in the spine. This exception is to allow publishers to include a user interface to better enable
+					reading of their publication in browsers. It is not meant for general scripting of the content.</p>
+
+				<div class="note">
+					<p>A scripted primary entry page is not allowed in the spine as an extra measure to ensure that the
+						scripting does not interfere with rendering in [=eBraille reading systems=]. Reading systems are
+						expected to disable the scripting in the primary entry page regardless of the document's
+						placement in the spine.</p>
+				</div>
 			</section>
 
 			<section id="navigation">
