@@ -743,9 +743,19 @@
 			<section id="html-css">
 				<h3>CSS support</h3>
 
-				<div class="ednote">
-					<p>CSS properties that authors may use and reading systems must support will be added in a future
-						update.</p>
+				<p>The requirements for using CSS to style [=eBraille content documents=] are defined in <a
+						data-cite="epub-33#sec-css-req">CSS requirements</a> [[epub-33]] but with the following
+					differences:</p>
+
+				<ul>
+					<li>[=eBraille creators=] MUST NOT use <a data-cite="epub-33#css-prefixes"><code>-epub-</code>
+							prefixed properties</a> [[epub-33]].</li>
+					<li>CSS style sheets MUST be UTF-8 encoded [[unicode]].</li>
+				</ul>
+
+				<div class="note">
+					<p>More specific guidance on how to use CSS properties in eBraille content documents is provided in
+						the <a href="best-practices/styling/">eBraille Styling Best Practices</a>.</p>
 				</div>
 			</section>
 
