@@ -107,18 +107,68 @@
 					packaging. And as web-compatible file sets, they are adaptable to future changes to publishing
 					formats.</p>
 			</section>
-
-			<section id="conformance"></section>
-
+			
+			<section id="relationship-epub3" class="informative">
+				<h3>Relationship to EPUB 3</h3>
+				
+				<p>The [=eBraille file set=] is designed to be compatible with EPUB 3 [[epub-33]] and adapt to changes
+					to that standard. Distribution and consumption on mainstream [=EPUB reading systems=], however, is
+					not a primary goal of this format. This specification introduces some additional requirements and
+					features beyond those defined in EPUB 3, and it is not expected that mainstream reading systems will
+					adapt to these modifications. Consequently, an eBraille publication may not render exactly as
+					intended outside of eBraille reading systems.</p>
+				
+				<p>The primary difference between the eBraille format and EPUB 3 is eBraille publications do not have to
+					be packaged and distributed in an [=EPUB container=] [[epub-33]]. An [=eBraille publication=] will
+					be easy to package in an EPUB container when needed, however.</p>
+				
+				<p>Compatibility with EPUB 3 also means that eBraille relies on the same <a
+					data-cite="epub-33#sec-intro-relations">underlying technologies</a> [[epub-33]]. Many of these
+					technologies, like [[html]], are referred to as "evergreen" or "living" standards as they are
+					updated often and they do not have version numbers. Others, like [[svg]], are referred to without a
+					specific version number so that the latest recommendation is always the recommended one to use.</p>
+				
+				<p>The practical effect of this approach is predominantly beneficial for [=eBraille creators=]. New
+					features become available for use as soon as they are standardized, without having to wait for the
+					eBraille standard to catch up. It does come with some drawbacks, however. eBraille creators also
+					have to keep themselves apprised of changes to the underlying technologies, and use their best
+					judgement in some cases as to whether a new feature is supported well enough in [=eBraille reading
+					systems=] to begin deploying. In some rare cases, it may also mean that content that was previously
+					valid may no longer be, but breaking changes like this usually only happen when features are
+					unsupported or are found to have serious security or privacy flaws.</p>
+			</section>
+			
+			<section id="future-dir" class="informative">
+				<h3>Future directions</h3>
+				
+				<p>The first version of the eBraille format is focused on creating a reading experience that is
+					minimally feature complete for the majority of braille publications. It is not expected that this
+					version will handle every unique formatting requirement of every publication type, but future drafts
+					and versions of this specification will focus on making the format more feature complete.</p>
+				
+				<p>In particular, the working group expects to review the current support decisions for the following
+					features:</p>
+				
+				<ul>
+					<li>scripting &#8212; the use of JavaScript in [=eBraille content documents=] is currently
+						prohibited. The working group is seeking further input on the need for dynamic braille before
+						allowing scripting as the ability to script documents increases the security and privacy risks
+						of the format.</li>
+					<li>CSS extensions &#8212; the first version of eBraille uses standard CSS properties to format
+						braille content. There may be a need to extend CSS in the future to handle more complex
+						formatting cases, which will also require defining reading system implementations.</li>
+				</ul>
+			</section>
+			
 			<section id="terminology">
 				<h3>Terminology</h3>
-
+				
 				<p>This specification defines the following terms specific to eBraille.</p>
-
+				
 				<div class="note">
 					<p>Only the first instance of a term in a section links to its definition.</p>
 				</div>
-
+				
 				<dl>
 					<dt><dfn>eBraille content document</dfn></dt>
 					<dd>
@@ -127,33 +177,33 @@
 							through the use of [^global/class^] and [^/role^] attributes.</p>
 						<p>For more information, refer to <a href="#ebrl-content-docs"></a>.</p>
 					</dd>
-
+					
 					<dt><dfn>eBraille creator</dfn></dt>
 					<dd>
 						<p>An individual, organization, or process that produces an [=eBraille publication=].</p>
 					</dd>
-
+					
 					<dt><dfn>eBraille file set</dfn></dt>
 					<dd>
 						<p>The set of files that comprise an [=eBraille publication=]. The eBraille file set is
 							contained within the [=publication root=].</p>
 						<p>For more information, refer to <a href="#fileset-structure"></a>.</p>
 					</dd>
-
+					
 					<dt><dfn>eBraille publication</dfn></dt>
 					<dd>
 						<p>A logical document entity consisting of a set of interrelated resources.</p>
 						<p>An eBraille publication typically represents a single intellectual or artistic work, but this
 							specification does not restrict the nature of the content.</p>
 					</dd>
-
+					
 					<dt><dfn data-lt="reading system|reading systems">eBraille reading system</dfn> (or reading
 						system)</dt>
 					<dd>
 						<p>A system that processes [=eBraille publications=] for presentation to a user in a manner
 							conformant with this specification.</p>
 					</dd>
-
+					
 					<dt><dfn>primary entry page</dfn></dt>
 					<dd>
 						<p>The default [=eBraille content document=] that users reading an [=eBraille publication=] in a
@@ -164,48 +214,28 @@
 							It contains the table of contents for the publication.</p>
 						<p>For more information, refer to <a href="#ebrl-nav"></a></p>
 					</dd>
-
+					
 					<dt><dfn>publication root</dfn></dt>
 					<dd>The root directory is the base of the [=eBraille file set=]. All the resources of an eBraille
 						publication are located at or below this directory.</dd>
 				</dl>
 			</section>
+			
+			<section id="conformance"></section>
 
-			<section id="relationship-epub3" class="informative">
-				<h3>Relationship to EPUB 3</h3>
+			<section id="auth-shorthands" class="informative">
+				<h3>Authoring shorthands</h3>
 
-				<p>The [=eBraille file set=] is designed to be compatible with EPUB 3 [[epub-33]] and adapt to changes
-					to that standard. Distribution and consumption on mainstream [=EPUB reading systems=], however, is
-					not a primary goal of this format. This specification introduces some additional requirements and
-					features beyond those defined in EPUB 3, and it is not expected that mainstream reading systems will
-					adapt to these modifications. Consequently, an eBraille publication may not render exactly as
-					intended outside of eBraille reading systems.</p>
+				<p>In <a href="#metadata">package document metadata</a> examples, <a
+						data-cite="epub-33#sec-metadata-reserved-prefixes">reserved prefixes</a> [[epub-33]] are used
+					without declaration.</p>
 
-				<p>The primary difference between the eBraille format and EPUB 3 is eBraille publications do not have to
-					be packaged and distributed in an [=EPUB container=] [[epub-33]]. An [=eBraille publication=] will
-					be easy to package in an EPUB container when needed, however.</p>
-			</section>
+				<p>References to Dublin Core elements [[dcterms]] use the <code>dc:</code> prefix. This prefix must be
+					declared in the package document for their use to be valid
+						(<code>xmlns:dc="http://purl.org/dc/elements/1.1/"</code>)</p>
 
-			<section id="future-dir" class="informative">
-				<h3>Future directions</h3>
-
-				<p>The first version of the eBraille format is focused on creating a reading experience that is
-					minimally feature complete for the majority of braille publications. It is not expected that this
-					version will handle every unique formatting requirement of every publication type, but future drafts
-					and versions of this specification will focus on making the format more feature complete.</p>
-
-				<p>In particular, the working group expects to review the current support decisions for the following
-					features:</p>
-
-				<ul>
-					<li>scripting &#8212; the use of JavaScript in [=eBraille content documents=] is currently
-						prohibited. The working group is seeking further input on the need for dynamic braille before
-						allowing scripting as the ability to script documents increases the security and privacy risks
-						of the format.</li>
-					<li>CSS extensions &#8212; the first version of eBraille uses standard CSS properties to format
-						braille content. There may be a need to extend CSS in the future to handle more complex
-						formatting cases, which will also require defining reading system implementations.</li>
-				</ul>
+				<p>The <code>epub</code> namespace prefix [[xml-names]] is also used on elements and attributes without
+					always having an explicit declaration (<code>xmlns:epub="http://www.idpf.org/2007/ops"</code>).</p>
 			</section>
 		</section>
 		<section id="ebrl-pub">
