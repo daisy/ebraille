@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<title>eBraille Styling Best Practices</title>
+		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
+		<script src="../../common/js/status.js" class="remove"></script>
+		<script type="text/javascript" src="replaceTaggingLinks.js"></script>
+		<script type="text/javascript" src="replaceBrfLinks.js"></script>
+		<script type="text/javascript" src="js-renderer-prototype/index.js"></script>
+		<script type="text/javascript" src="validateExamples.js"></script>
+		<script class="remove">
+			//<![CDATA[
+			var respecConfig = {
+				shortName: 'ebraille-style',
+				specStatus: 'base',
+				daisyStatus: 'ED',
+				latestVersion: 'https://daisy.github.io/ebraille/best-practices/styling',
+				edDraftURI: null,
+				editors: [
+					{
+						name: 'Bert Frees',
+						company: 'DAISY Consortium',
+						url: 'https://daisy.org'
+					},
+					{
+						name: 'Willow Free',
+						company: 'American Printing House for the Blind',
+						url: 'https://www.aph.org/'
+					}
+				],
+				logos: [
+					{
+						src: '../../common/images/daisy_high.jpg',
+						width: 112,
+						height: 100,
+						alt: 'DAISY Consortium logo',
+						url: 'https://daisy.org'
+					}
+				],
+				github: 'daisy/ebraille',
+				preProcess: [replaceTaggingLinks, replaceBrfLinks],
+				postProcess: [addDAISYStatus, validateExamples],
+				localBiblio: {
+					"TAGGING": {
+						href: new URL("../tagging/", document.baseURI).href,
+						title: "eBraille Tagging Best Practices",
+						authors: ["Willow Free"],
+						status: "DAISY Editor's Draft"
+					},
+					"CSS3BOX": {
+						aliasOf: "css-box-3-20240411" // "css-box-3"
+					},
+					"CSS3TEXT": {
+						aliasOf: "css3-text-20230903" // "css3-text"
+					},
+					"CSS4TEXT": {
+						aliasOf: "css-text-4-20240219" // "css-text-4"
+					},
+					"CSS4SELECT": {
+						aliasOf: "selectors-4-20221111" // "selectors-4"
+					},
+					"CSS4PSEUDO": {
+						aliasOf: "css-pseudo-4-20221230" // "css-pseudo-4"
+					},
+					"CSS3BORDER": {
+						aliasOf: "css-backgrounds-3-20240311" // "css-backgrounds-3"
+					},
+					"CSSFLEXBOX": {
+						aliasOf: "css-flexbox-1-20181119" // "css-flexbox-1"
+					},
+					"CSS3OVERFLOW": {
+						aliasOf: "css-overflow-3-20230329" // "css-overflow-3"
+					},
+					"CSS5VALUES": {
+						aliasOf: "CSS-VALUES-5"
+					},
+					"CSS2": {
+						aliasOf: "CSS22-20160412" // "CSS22"
+					}
+				}
+			};
+			// ]]>
+		</script>
+		<link rel="stylesheet" href="../../common/css/common.css" />
+		<style type="text/css">
+			/*<![CDATA[*/
+			@font-face {
+				font-family: 'odt2braille8';
+				src: url('js-renderer-prototype/odt2braille8.ttf') format('truetype');
+			}
+			.css {
+				margin-left: 35px;
+			}
+			.formatted-braille {
+				border: 1px solid black;
+				display: inline-block !important;
+				font-family: 'odt2braille8', monospace;
+				font-size: 20px;
+				line-height: .9em;
+				letter-spacing: 0;
+			}
+			.formatted-braille button {
+				visibility: hidden;
+			}
+			.formatted-braille:hover button {
+				visibility: visible;
+			}
+			#popup-holder {
+				display: block;
+				position: fixed;
+				left: 40px;
+				right: 0;
+				bottom: 0;
+				z-index: 2;
+			}
+			.popup {
+				display: inline-block;
+				background: white;
+				border: 1px solid black;
+				margin: 5px;
+				padding: 5px;
+				position: relative;
+			}
+			.popup::before {
+				display: block;
+				content: attr(title) ":";
+				text-decoration: underline;
+				margin-bottom: 5px;
+			}
+			.popup > button {
+				position: absolute;
+				top: 5px;
+				right: 5px;
+			}
+			.popup iframe {
+				border: 0;
+			}
+			/*]]>*/
+		</style>
+	</head>
+	<body>
+		<p class="copyright">Copyright &#169; DAISY Consortium 2024</p>
+		<section id="abstract">
+			<p>&#8230;</p>
+		</section>
+		<section id="intro">
+			<h2>Introduction</h2>
+
+			<section id="overview">
+				<h3>Overview</h3>
+
+				<p>&#8230;</p>
+			</section>
+
+			<section id="conformance"></section>
+		</section>
+		<section id="best-practices">
+			<h2>eBraille styling</h2>
+
+			<div class="note">
+				<p>All examples in this section assume that the following default CSS style sheet is
+				applied and that the same monospaced font and font size is used for all text:</p>
+				<pre><code class="css">* {
+   font-weight: normal;
+   line-height: 1rem;
+   letter-spacing: 0;
+   margin: 0;
+   padding: 0;
+   border: none;
+   list-style: none;
+   color: black;
+   text-decoration: none;
+}</code></pre>
+			</div>
+
+			<p class="ednote">
+				It might be better to omit the note above. Maybe it will only relevant in the context of a
+				browser, because in that case the browser's default styles must be accounted for. I would
+				expect dedicated reading systems to have other default styles that don't need to be
+				overridden.
+			</p>
+
+			<section id="misc">
+				<h3>Miscellaneous</h3>
+
+				<aside class="example" title="Nemeth box with blank lines">
+					<p class="ednote">
+						The “<a href="../tagging/index.html##example-a-nemeth-box">A Nemeth box</a>”
+						example from [[TAGGING]] was adapted to contain a multi-line formula, and
+						to have text before and after the box.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠑⠎ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+&lt;div class="box nemeth"&gt;⠼⠒⠈⠡⠢
+⠼⠆⠈⠡⠒⠈⠡⠲
+⠼⠲⠈⠡⠶
+⠼⠢⠈⠡⠖⠴ ⠨⠅ ⠼⠒⠴⠴&lt;/div&gt;
+&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠑⠎⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠸⠩⠀⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
+⠼⠒⠈⠡⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠆⠈⠡⠒⠈⠡⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠲⠈⠡⠶⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠢⠈⠡⠖⠴⠀⠨⠅⠀⠼⠒⠴⠴⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠀⠸⠱
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">.nemeth {
+   white-space: pre;
+}
+.box.nemeth {
+   margin: 1rem 0;
+}
+.box.nemeth::before {
+   display: flex;
+   justify-content: flex-start;
+   overflow: hidden;
+   white-space: nowrap;
+   content: '⠸⠩ ⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶';
+}
+.box.nemeth::after {
+   display: flex;
+   justify-content: flex-end;
+   overflow: hidden;
+   white-space: nowrap;
+   content: '⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶ ⠸⠱';
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a data-cite="CSS3TEXT#white-space-property">White Space and Wrapping:
+						the ‘white-space’ property</a> [[CSS3TEXT]]</li>
+						<li><a data-cite="CSS4PSEUDO#generated-content">Generated Content
+						Pseudo-elements: ‘::before’ and ‘::after’</a> [[CSS4PSEUDO]]</li>
+						<li><a data-cite="CSSFLEXBOX#flex-containers">Flex Containers: the ‘flex’ and
+						‘inline-flex’ display values</a> [[CSSFLEXBOX]]</li>
+						<li><a data-cite="CSSFLEXBOX#justify-content-property">Axis Alignment: the
+						‘justify-content’ property</a> [[CSSFLEXBOX]]</li>
+						<li><a data-cite="CSS3OVERFLOW#overflow-control">Managing Overflow: the
+						‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a>
+						[[CSS3OVERFLOW]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="Simple box inside a full box with blank lines">
+					<p class="ednote">
+						The “<a href="../tagging/index.html#example-a-box-inside-another-box">A box
+						inside another box</a>” example from [[TAGGING]] was adapted to have text
+						before and after the outer box.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠑⠎ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+&lt;div class="box"&gt;
+   &lt;div class="box"&gt;
+      &lt;p&gt;⠠⠹ ⠊⠎ ⠁ ⠃⠕⠭ ⠔⠎⠊⠙⠑ ⠁ ⠃⠕⠭⠲&lt;/p&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠑⠎⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
+⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
+⠀⠀⠠⠹⠀⠊⠎⠀⠁⠀⠃⠕⠭⠀⠔⠎⠊⠙⠑⠀⠁⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛
+⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">.box {
+   border-style: solid;
+   border-width: .67rem 0;
+   margin: 1rem 0 1.33rem 0;
+   padding: .33rem 0 0 0;
+}
+.box .box {
+   border-width: .45rem 0;
+   margin: .22rem 0 0.55rem 0;
+   padding: .33rem 0 0 0;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a data-cite="CSS3BORDER#border-style">Line Patterns: the ‘border-style’
+						properties</a> [[CSS3BORDER]]</li>
+						<li><a data-cite="CSS3BORDER#border-width">Line Thickness: the ‘border-width’
+						properties</a> [[CSS3BORDER]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="A box inside another box">
+					<p class="ednote">
+						This is another example of a box inside another box, but with a layout that
+						does not come from BANA or any other standard.
+					</p>
+					<a class="tagging-link" href="../tagging/index.html#example-a-box-inside-another-box"></a>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀
+⡇⡏⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⢹⢸
+⡇⡇⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⢸⢸
+⡇⣇⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣸⢸
+⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="35">.box {
+   border-style: solid;
+   border-width: .23rem .3ch;
+   margin: .66rem .2ch .77rem .2ch;
+   padding: .11rem .6ch 0 .55ch;
+}
+.box .box {
+   margin: 0 0 .11rem 0;
+   padding: .77rem .6ch .66rem .65ch;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+				</aside>
+
+				<aside class="example" title="Simple box with blank lines">
+					<p class="ednote">
+						The “<a href="../tagging/index.html##example-a-standard">A standard box</a>”
+						example from [[TAGGING]] was adapted to have text before and after the box.
+					</p>
+					<p class="ednote">
+						The example contains mixed contracted and uncontracted braille.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠑⠎ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+&lt;div class="box"&gt;
+   &lt;p&gt;⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠑⠎⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
+⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">.box {
+   border-style: solid;
+   border-width: .45rem 0;
+   margin: 1.22rem 0 1.55rem 0;
+   padding: .33rem 0 0 0;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+				</aside>
+
+				<aside class="example" title="Simple box with centered heading">
+					<p class="ednote">
+						Missing an example in [[TAGGING]] of Simple box with centered heading.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠑⠎ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+&lt;h1&gt;⠠⠹ ⠓⠂⠙⠬ ⠊⠎ ⠁⠎⠎⠕⠉⠊⠁⠞⠫ ⠾ ⠮ ⠃⠕⠭&lt;/h1&gt;
+&lt;div class="box"&gt;
+   &lt;p&gt;⠠⠹ ⠊⠎ ⠁ ⠃⠕⠭ ⠾ ⠁ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠑⠎⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠠⠹⠀⠓⠂⠙⠬⠀⠊⠎⠀⠁⠎⠎⠕⠉⠊⠁⠞⠫⠀⠾⠀⠮⠀⠃⠕⠭⠀⠀⠀⠀⠀⠀
+⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
+⠀⠀⠠⠹⠀⠊⠎⠀⠁⠀⠃⠕⠭⠀⠾⠀⠁⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<p class="ednote">
+						To properly center the <code>h1</code>, the right margin may or may not need
+						to be increased with <code>1ch</code>, depending on the content. (In this
+						case, it doesn't.)
+					</p>
+					<pre><code class="css" data-page-width="40">.box {
+   border-style: solid;
+   border-width: .45rem 0;
+   margin: 0.22rem 0 1.55rem 0;
+   padding: .33rem 0 0 0;
+}
+h1 {
+   text-align: center;
+   margin: 1rem 3ch 0 3ch;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a data-cite="CSS3TEXT#text-align-property">Text Alignment: the
+						‘text-align’ shorthand</a> [[CSS3TEXT]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="Simple box with color">
+					<p class="ednote">
+						The “<a href="../tagging/index.html##example-a-box-with-the-color-blue">A
+						box with the color blue</a>” example from [[TAGGING]] was adapted to have
+						text before and after the box.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠑⠎ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+&lt;div class="box yellow"&gt;
+   &lt;p&gt;⠠⠹ ⠃⠕⠭ ⠓⠁⠎ ⠁ ⠉⠕⠇⠕⠗ ⠁⠎⠎⠕⠉⠊⠁⠞⠫ ⠾ ⠭⠲&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠑⠎⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠈⠨⠣⠽⠑⠇⠇⠪⠈⠨⠜⠀⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
+⠀⠀⠠⠹⠀⠃⠕⠭⠀⠓⠁⠎⠀⠁⠀⠉⠕⠇⠕⠗⠀⠁⠎⠎⠕⠉⠊⠁⠞⠫⠀⠾⠀⠭⠲⠀⠀⠀⠀⠀
+⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">.box.yellow {
+   border-style: solid;
+   border-width: 0 0 .65rem 0;
+   margin: 1rem 0 1.353rem 0;
+}
+.box.yellow::before {
+   display: flex;
+   justify-content: flex-start;
+   overflow: hidden;
+   white-space: nowrap;
+   content: '⠈⠨⠣⠽⠑⠇⠇⠪⠈⠨⠜ ⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿';
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+				</aside>
+
+				<aside class="example" title="Border image">
+					<p class="ednote">
+						This example was added to demonstrate an alternative way to draw borders,
+						namely using border images.
+					</p>
+					<a class="tagging-link" href="../tagging/index.html#example-a-standard-box"></a>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐
+⠐⠀⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⠀⠐
+⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="35">.box {
+   border-style: solid;
+   border-width: 1rem 1ch;
+   border-image-slice: 37 20 37 20;
+   border-image-repeat: round round;
+   border-image-source: url("./border-image/⠐⠐⠐⠐⠐⠐⠐⠐.png");
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a data-cite="CSS3BORDER#border-images">Border Images</a>
+						[[CSS3BORDER]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="A simple list">
+					<p class="ednote">
+						The “<a href="../tagging/index.html#example-a-simple-list">A simple
+						list</a>” example from [[TAGGING]] was adapted to contain contracted
+						braille.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠩⠕⠏⠏⠬ ⠇⠊⠌&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;⠉⠜⠗⠕⠞⠎&lt;/li&gt;
+  &lt;li&gt;⠡⠑⠑⠎⠑&lt;/li&gt;
+  &lt;li&gt;⠞⠕⠍⠁⠞⠕⠑⠎&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠩⠕⠏⠏⠬⠀⠇⠊⠌⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠉⠜⠗⠕⠞⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠡⠑⠑⠎⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠞⠕⠍⠁⠞⠕⠑⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">p {
+   text-indent: 2ch;
+}
+ul {
+   margin-top: 1rem;
+}
+li {
+   text-indent: -2ch;
+   margin-left: 2ch;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a data-cite="CSS3BOX#margin-physical">Page-relative (Physical) Margin
+						Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+						‘margin-left’ properties</a> [[CSS3BOX]]</li>
+						<li><a data-cite="CSS3TEXT#text-indent-property">First Line Indentation: the
+						‘text-indent’ property</a> [[CSS3TEXT]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="A multiple-choice exercise">
+					<p class="ednote">
+						The “<a href="../tagging/index.html#example-a-multiple-choice-exercise">A
+						multiple-choice exercise</a>” example from [[TAGGING]] was adapted to
+						contain contracted braille, the <code>class="exercise"</code> was removed
+						from the inner <code>ol</code> elements, and the HTML structure was fixed
+						(<code>ol</code> should have <code>li</code> children only).
+					</p>
+					<pre><code class="html">&lt;ol class="exercise"&gt;
+  &lt;li&gt;⠼⠁⠲ ⠠⠱ ⠏⠇⠁⠝⠑⠞ ⠊⠎ ⠉⠇⠕⠎⠑⠌ ⠞⠕ ⠮ ⠎⠥⠝⠦
+    &lt;ol&gt;
+      &lt;li&gt;⠁⠲ ⠠⠧⠢⠥⠎&lt;/li&gt;
+      &lt;li&gt;⠰⠃⠲ ⠠⠍⠻⠉⠥⠗⠽&lt;/li&gt;
+      &lt;li&gt;⠰⠉⠲ ⠠⠍⠜⠎&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;⠼⠃⠲ ⠠⠓⠪ ⠸⠍ ⠍⠕⠕⠝⠎ ⠙⠕⠑⠎ ⠠⠍⠜⠎ ⠓⠦
+    &lt;ol&gt;
+      &lt;li&gt;⠁⠲ ⠼⠚&lt;/li&gt;
+      &lt;li&gt;⠰⠃⠲ ⠼⠁&lt;/li&gt;
+      &lt;li&gt;⠰⠉⠲ ⠼⠃&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠼⠁⠲⠀⠠⠱⠀⠏⠇⠁⠝⠑⠞⠀⠊⠎⠀⠉⠇⠕⠎⠑⠌⠀⠞⠕⠀⠮⠀⠎⠥⠝⠦⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠁⠲⠀⠠⠧⠢⠥⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠰⠃⠲⠀⠠⠍⠻⠉⠥⠗⠽⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠰⠉⠲⠀⠠⠍⠜⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠃⠲⠀⠠⠓⠪⠀⠸⠍⠀⠍⠕⠕⠝⠎⠀⠙⠕⠑⠎⠀⠠⠍⠜⠎⠀⠓⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠁⠲⠀⠼⠚⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠰⠃⠲⠀⠼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠰⠉⠲⠀⠼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">li {
+   text-indent: -2ch;
+   margin-left: 2ch;
+}
+</code></pre>
+				</aside>
+
+				<aside class="example" title="A multiple-choice exercise (variation)">
+					<p class="ednote">
+						This is a variation of the multiple-choice exercise example above, with a
+						reduced page width, to show the indentation of runovers.
+					</p>
+					<pre><code class="html">&lt;ol class="exercise"&gt;
+  &lt;li&gt;⠼⠁⠲ ⠠⠺⠓⠊⠉⠓ ⠏⠇⠁⠝⠑⠞ ⠊⠎ ⠉⠇⠕⠑⠎⠞ ⠞⠕ ⠞⠓⠑ ⠎⠥⠝⠦
+    &lt;ol&gt;
+      &lt;li&gt;⠁⠲ ⠠⠧⠑⠝⠥⠎&lt;/li&gt;
+      &lt;li&gt;⠃⠲ ⠠⠍⠑⠗⠉⠥⠗⠽&lt;/li&gt;
+      &lt;li&gt;⠉⠲ ⠠⠍⠁⠗⠎&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;⠼⠃⠲ ⠠⠓⠕⠺ ⠍⠁⠝⠽ ⠍⠕⠕⠝⠎ ⠙⠕⠑⠎ ⠠⠍⠁⠗⠎ ⠓⠁⠧⠑⠦
+    &lt;ol&gt;
+      &lt;li&gt;⠁⠲ ⠼⠚&lt;/li&gt;
+      &lt;li&gt;⠃⠲ ⠼⠁&lt;/li&gt;
+      &lt;li&gt;⠉⠲ ⠼⠃&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠼⠁⠲⠀⠠⠺⠓⠊⠉⠓⠀⠏⠇⠁⠝⠑⠞⠀⠊⠎
+⠀⠀⠀⠀⠉⠇⠕⠑⠎⠞⠀⠞⠕⠀⠞⠓⠑⠀⠀⠀
+⠀⠀⠀⠀⠎⠥⠝⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠁⠲⠀⠠⠧⠑⠝⠥⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠃⠲⠀⠠⠍⠑⠗⠉⠥⠗⠽⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠉⠲⠀⠠⠍⠁⠗⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠃⠲⠀⠠⠓⠕⠺⠀⠍⠁⠝⠽⠀⠍⠕⠕⠝⠎⠀
+⠀⠀⠀⠀⠙⠕⠑⠎⠀⠠⠍⠁⠗⠎⠀⠓⠁⠧⠑⠦
+⠀⠀⠁⠲⠀⠼⠚⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠃⠲⠀⠼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠉⠲⠀⠼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="20">li {
+   text-indent: -2ch;
+   margin-left: 2ch;
+}
+ol:has(ol) > li {
+   text-indent: -4ch;
+   margin-left: 4ch;
+}
+ol ol li {
+   text-indent: -2ch;
+   margin-left: 0;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a data-cite="CSS4SELECT#relational">The Relational Pseudo-class:
+						‘:has()’</a> [[CSS4SELECT]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="Table of Contents">
+					<p class="ednote">
+						Using the flexible box layout module [[CSSFLEXBOX]], tables of contents can be
+						correctly formatted, including runovers. It however comes at the price of a
+						slightly increased complexity of the markup. Notice the wrapping of items in
+						<code>span</code> tags, and compare this with the simpler markup of the “<a
+						href="../tagging/index.html#example-a-table-of-contents-with-links">A table
+						of contents with links</a>” example from [[TAGGING]]. A possible solution
+						would be to insert the <code>span</code> tags through scripting, if scripting
+						would be allowed.
+					</p>
+					<pre><code class="html">&lt;ol class="toc"&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠔⠞⠗⠕⠙⠥⠉⠰⠝&lt;/span&gt; &lt;a href="#page-5"&gt;⠼⠑&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠏⠗⠑⠤⠠⠋⠇⠊⠣⠞&lt;/span&gt; &lt;a href="#page-6"&gt;⠼⠋&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠋⠗⠁⠝⠅⠢⠌⠑⠔&lt;/span&gt; &lt;a href="#page-7"&gt;⠼⠛&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠔⠞⠗⠕⠙⠥⠉⠰⠝&lt;/span&gt; &lt;a href="#page-8"&gt;⠼⠓&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠏⠗⠑⠋⠁⠉⠑&lt;/span&gt; &lt;a href="#page-14"&gt;⠼⠁⠙&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠗ ⠠⠊&lt;/span&gt; &lt;a href="#page-17"&gt;⠼⠁⠛&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠗ ⠠⠠⠊⠊&lt;/span&gt; &lt;a href="#page-20"&gt;⠼⠃⠚&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠗ ⠠⠠⠊⠊⠊&lt;/span&gt; &lt;a href="#page-24"&gt;⠼⠃⠙&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠗ ⠠⠠⠊⠧&lt;/span&gt; &lt;a href="#page-25"&gt;⠼⠃⠑&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠡⠁⠏⠞⠻ ⠠⠊&lt;/span&gt; &lt;a href="#page-32"&gt;⠼⠉⠃&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;span&gt;⠠⠠⠡⠁⠏⠞⠻ ⠠⠠⠊⠊&lt;/span&gt; &lt;a href="#page-38"&gt;⠼⠉⠓&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠠⠔⠞⠗⠕⠙⠥⠉⠰⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠑
+⠠⠏⠗⠑⠤⠠⠋⠇⠊⠣⠞⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠋
+⠠⠋⠗⠁⠝⠅⠢⠌⠑⠔⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛
+⠠⠠⠔⠞⠗⠕⠙⠥⠉⠰⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠓
+⠠⠠⠏⠗⠑⠋⠁⠉⠑⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠁⠙
+⠠⠠⠇⠗⠀⠠⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠁⠛
+⠠⠠⠇⠗⠀⠠⠠⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠚
+⠠⠠⠇⠗⠀⠠⠠⠊⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠙
+⠠⠠⠇⠗⠀⠠⠠⠊⠧⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠑
+⠠⠠⠡⠁⠏⠞⠻⠀⠠⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠉⠃
+⠠⠠⠡⠁⠏⠞⠻⠀⠠⠠⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠉⠓</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">ol.toc {
+   overflow: hidden;
+}
+ol.toc li:has(span) {
+   display: flex;
+   flex-wrap: nowrap;
+}
+ol.toc li span {
+   padding-right: 1ch;
+   background-color: white;
+   overflow: hidden;
+}
+ol.toc li span::after {
+   display: inline-block;
+   width: 0;
+   white-space: nowrap;
+   content: "\A0⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐";
+}
+ol.toc li:has(span)::before {
+   order: 2;
+   flex-grow: 1;
+   align-self: flex-end;
+   width: 2ch;
+   display: inline-flex;
+   justify-content: flex-end;
+   white-space: nowrap;
+   z-index: -1;
+   content: "⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐\A0";
+}
+ol.toc li span + a {
+   order: 3;
+   flex-shrink: 0;
+   align-self: flex-end;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a data-cite="CSSFLEXBOX#flex-wrap-property"> Flex Line Wrapping: the
+						‘flex-wrap’ property</a> [[CSSFLEXBOX]]</li>
+						<li><a data-cite="CSSFLEXBOX#flex-grow-property"> The ‘flex-grow’
+						property</a> [[CSSFLEXBOX]]</li>
+						<li><a data-cite="CSSFLEXBOX#flex-shrink-property"> The ‘flex-shrink’
+						property</a> [[CSSFLEXBOX]]</li>
+						<li><a data-cite="CSSFLEXBOX#align-items-property"> Cross-axis Alignment: the
+						‘align-items’ and ‘align-self’ properties</a> [[CSSFLEXBOX]]</li>
+						<li><a data-cite="CSSFLEXBOX#order-property"> Display Order: the ‘order’
+						property</a> [[CSSFLEXBOX]]</li>
+						<li><a href="https://drafts.csswg.org/css2/#z-index">Specifying the stack
+						level: the ‘z-index’ property</a> [[CSS2]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="Print page indicator separating two pieces of text">
+					<p class="ednote">
+						The “<a
+						href="../tagging/index.html#example-page-break-before-a-new-section-heading">Page
+						break before a new section heading</a>” example from [[TAGGING]] was
+						adapted to have more text before and after the print page indicator.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠋⠜⠑⠺⠑⠇⠇⠂ ⠍⠽ ⠙⠑⠜⠂ ⠑⠭⠉⠑⠇⠇⠢⠞ ⠠⠍⠜⠛⠜⠑⠞⠲ ⠠⠓⠂⠧⠢ ⠩⠪⠻ ⠙⠪⠝ ⠃⠨⠎⠬⠎
+  ⠕⠝ ⠽⠂ ⠯ ⠎⠁⠧⠑ ⠍⠑⠂ ⠞ ⠠⠊ ⠍⠁⠽ ⠁⠛ ⠯ ⠁⠛ ⠞⠑⠌⠊⠋⠽ ⠍⠽ ⠛⠗⠁⠞⠊⠞⠥⠙⠑ ⠿
+  ⠁⠇⠇ ⠽⠗ ⠇⠕⠧⠑ ⠯ ⠅⠔⠙⠰⠎⠲&lt;/p&gt;
+&lt;p&gt;⠠⠽⠗ ⠁⠖⠑⠉⠰⠝⠁⠞⠑ ⠃⠗⠕⠮⠗⠰⠂⠠⠗⠲ ⠠⠺⠁⠇⠞⠕⠝&lt;/p&gt;
+&lt;div&gt;
+  &lt;div id="page-10" role="doc-pagebreak" aria-label="⠼⠁⠚"&gt;&lt;/div&gt;
+  &lt;h1&gt;⠠⠇⠗ ⠼⠃&lt;/h1&gt;
+&lt;/div&gt;
+&lt;p&gt;⠠⠞⠕ ⠠⠍⠗⠎⠲ ⠠⠎⠁⠧⠊⠇⠇⠑⠂ ⠠⠢⠛⠇⠯⠲&lt;/p&gt;
+&lt;p&gt;⠠⠜⠡⠁⠝⠛⠑⠇⠂ ⠼⠃⠓⠞⠓ ⠠⠍⠜⠡⠂ ⠼⠁⠛⠠⠤⠲&lt;/p&gt;
+&lt;p&gt;⠠⠓⠪ ⠎⠇⠪⠇⠽ ⠮ ⠐⠞ ⠏⠁⠎⠎⠑⠎ ⠐⠓⠂ ⠢⠉⠕⠍⠏⠁⠎⠎⠫ ⠵ ⠠⠊ ⠁⠍ ⠃⠽ ⠋⠗⠕⠌
+  ⠯ ⠎⠝⠪⠖ ⠠⠽⠑⠞ ⠁ ⠎⠑⠉⠕⠝⠙ ⠌⠑⠏ ⠊⠎ ⠞⠁⠅⠢ ⠞⠪⠜⠙⠎ ⠍⠽ ⠢⠞⠻⠏⠗⠊⠎⠑⠲ ⠠⠊ ⠓
+  ⠓⠊⠗⠫ ⠁ ⠧⠑⠎⠎⠑⠇ ⠯ ⠁⠍ ⠕⠒⠥⠏⠊⠫ ⠔ ⠉⠕⠇⠇⠑⠉⠞⠬ ⠍⠽ ⠎⠁⠊⠇⠕⠗⠎⠆ ⠘⠹ ⠱⠕⠍
+  ⠠⠊ ⠓ ⠁⠇⠗ ⠢⠛⠁⠛⠫ ⠁⠏⠏⠑⠜ ⠞⠕ ⠆ ⠍⠢ ⠕⠝ ⠱⠕⠍ ⠠⠊ ⠉ ⠙⠑⠏⠢⠙ ⠯ ⠜⠑
+  ⠉⠻⠞⠁⠔⠇⠽ ⠏⠕⠎⠎⠑⠎⠎⠫ ⠷ ⠙⠁⠥⠝⠞⠨⠎ ⠉⠳⠗⠁⠛⠑⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠋⠜⠑⠺⠑⠇⠇⠂⠀⠍⠽⠀⠙⠑⠜⠂⠀⠑⠭⠉⠑⠇⠇⠢⠞⠀⠠⠍⠜⠛⠜⠑⠞⠲⠀⠀⠀
+⠠⠓⠂⠧⠢⠀⠩⠪⠻⠀⠙⠪⠝⠀⠃⠨⠎⠬⠎⠀⠕⠝⠀⠽⠂⠀⠯⠀⠎⠁⠧⠑⠀⠍⠑⠂⠀⠞⠀⠀
+⠠⠊⠀⠍⠁⠽⠀⠁⠛⠀⠯⠀⠁⠛⠀⠞⠑⠌⠊⠋⠽⠀⠍⠽⠀⠛⠗⠁⠞⠊⠞⠥⠙⠑⠀⠿⠀⠁⠇⠇
+⠽⠗⠀⠇⠕⠧⠑⠀⠯⠀⠅⠔⠙⠰⠎⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠽⠗⠀⠁⠖⠑⠉⠰⠝⠁⠞⠑⠀⠃⠗⠕⠮⠗⠰⠂⠠⠗⠲⠀⠠⠺⠁⠇⠞⠕⠝⠀⠀⠀⠀⠀⠀
+⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠼⠁⠚
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠇⠗⠀⠼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠞⠕⠀⠠⠍⠗⠎⠲⠀⠠⠎⠁⠧⠊⠇⠇⠑⠂⠀⠠⠢⠛⠇⠯⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠜⠡⠁⠝⠛⠑⠇⠂⠀⠼⠃⠓⠞⠓⠀⠠⠍⠜⠡⠂⠀⠼⠁⠛⠠⠤⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠓⠪⠀⠎⠇⠪⠇⠽⠀⠮⠀⠐⠞⠀⠏⠁⠎⠎⠑⠎⠀⠐⠓⠂⠀⠢⠉⠕⠍⠏⠁⠎⠎⠫⠀⠵⠀
+⠠⠊⠀⠁⠍⠀⠃⠽⠀⠋⠗⠕⠌⠀⠯⠀⠎⠝⠪⠖⠀⠠⠽⠑⠞⠀⠁⠀⠎⠑⠉⠕⠝⠙⠀⠌⠑⠏⠀⠀
+⠊⠎⠀⠞⠁⠅⠢⠀⠞⠪⠜⠙⠎⠀⠍⠽⠀⠢⠞⠻⠏⠗⠊⠎⠑⠲⠀⠠⠊⠀⠓⠀⠓⠊⠗⠫⠀⠁⠀⠀
+⠧⠑⠎⠎⠑⠇⠀⠯⠀⠁⠍⠀⠕⠒⠥⠏⠊⠫⠀⠔⠀⠉⠕⠇⠇⠑⠉⠞⠬⠀⠍⠽⠀⠀⠀⠀⠀⠀⠀⠀
+⠎⠁⠊⠇⠕⠗⠎⠆⠀⠘⠹⠀⠱⠕⠍⠀⠠⠊⠀⠓⠀⠁⠇⠗⠀⠢⠛⠁⠛⠫⠀⠁⠏⠏⠑⠜⠀⠞⠕⠀
+⠆⠀⠍⠢⠀⠕⠝⠀⠱⠕⠍⠀⠠⠊⠀⠉⠀⠙⠑⠏⠢⠙⠀⠯⠀⠜⠑⠀⠉⠻⠞⠁⠔⠇⠽⠀⠀⠀⠀⠀
+⠏⠕⠎⠎⠑⠎⠎⠫⠀⠷⠀⠙⠁⠥⠝⠞⠨⠎⠀⠉⠳⠗⠁⠛⠑⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">p {
+   text-indent: 2ch;
+}
+h1 {
+   text-align: center;
+   margin: 1rem 3ch;
+}
+[role~=doc-pagebreak] {
+   width: 100%;
+   display: flex;
+   justify-content: flex-end;
+   overflow: hidden;
+   flex-wrap: nowrap;
+}
+[role~=doc-pagebreak]::before {
+   content: '⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤';
+}
+[role~=doc-pagebreak]::after {
+   content: attr(aria-label);
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a href="https://drafts.csswg.org/css-values-5/#attr-notation">Attribute
+						References: the ‘attr()’ function</a> [[CSS5VALUES]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="Print page number interrupting text">
+					<p class="ednote">
+						The “<a
+						href="../tagging/index.html#example-page-break-within-a-run-of-text">Page
+						break within a run of text</a>” example from [[TAGGING]] was adapted to
+						have more text before and after the print page indicator.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠘⠮ ⠗⠑⠋⠇⠑⠉⠰⠝⠎ ⠓ ⠲⠏⠑⠇⠇⠫ ⠮ ⠁⠛⠊⠞⠁⠰⠝ ⠾ ⠱ ⠠⠊ ⠆⠛⠁⠝ ⠍⠽ ⠇⠗⠂
+⠯ ⠠⠊ ⠋⠑⠑⠇ ⠍⠽ ⠓⠑⠜⠞ ⠛⠇⠪ ⠾ ⠁⠝ ⠢⠹⠥⠎⠊⠁⠎⠍ ⠱ ⠑⠇⠑⠧⠁⠞⠑⠎ ⠍⠑ ⠞⠕
+⠓⠂⠧⠢⠂ ⠿ ⠝⠕⠹⠬ ⠒⠞⠗⠊⠃⠥⠞⠑⠎ ⠎ ⠍⠡ ⠞⠕ ⠞⠗⠁⠝⠟⠥⠊⠇⠇⠊⠎⠑ ⠮ ⠍⠔⠙ ⠵ ⠁
+⠌⠂⠙⠽ ⠏⠥⠗⠏⠕⠎⠑⠠⠤⠁ ⠏⠕⠔⠞ ⠕⠝ ⠱ ⠮ ⠎⠳⠇ ⠍⠁⠽ ⠋⠊⠭ ⠭⠎ ⠔⠞⠑⠇⠇⠑⠉⠞⠥⠁⠇
+⠑⠽⠑⠲ ⠠⠹ ⠑⠭⠏⠫⠊⠰⠝ ⠓⠁⠎ ⠃⠑⠢ ⠮ ⠋⠁⠧⠳⠗⠊⠞⠑
+&lt;span id="page-4" role="doc-pagebreak"&gt;⠼⠙&lt;/span&gt;
+⠙⠗⠂⠍ ⠷ ⠍⠽ ⠑⠜⠇⠽ ⠽⠑⠜⠎⠲ ⠠⠊ ⠓ ⠗⠂⠙ ⠾ ⠜⠙⠳⠗ ⠮ ⠁⠒⠨⠞⠎ ⠷ ⠮ ⠧⠜⠊⠳⠎
+⠧⠕⠽⠁⠛⠑⠎ ⠱ ⠓ ⠃⠑⠢ ⠍⠁⠙⠑ ⠔ ⠮ ⠏⠗⠕⠎⠏⠑⠉⠞ ⠷ ⠜⠗⠊⠧⠬ ⠁⠞ ⠮ ⠠⠝⠕⠗⠹
+⠠⠏⠁⠉⠊⠋⠊⠉ ⠠⠕⠉⠂⠝ ⠐⠹ ⠮ ⠎⠂⠎ ⠱ ⠎⠥⠗⠗⠨⠙ ⠮ ⠏⠕⠇⠑⠲ ⠠⠽ ⠍⠁⠽
+⠗⠑⠍⠑⠍⠃⠻ ⠞ ⠁ ⠓⠊⠌⠕⠗⠽ ⠷ ⠁⠇⠇ ⠮ ⠧⠕⠽⠁⠛⠑⠎ ⠍⠁⠙⠑ ⠿ ⠏⠥⠗⠏⠕⠎⠑⠎ ⠷
+⠲⠉⠕⠧⠻⠽ ⠉⠕⠍⠏⠕⠎⠫ ⠮ ⠱⠕⠇⠑ ⠷ ⠳⠗ ⠛⠙ ⠠⠥⠝⠉⠇⠑ ⠠⠹⠕⠍⠁⠎⠄ ⠇⠊⠃⠗⠜⠽⠲
+⠠⠍⠽ ⠫⠥⠉⠁⠰⠝ ⠴ ⠝⠑⠛⠇⠑⠉⠞⠫⠂ ⠽⠑⠞ ⠠⠊ ⠴ ⠏⠁⠎⠨⠝⠁⠞⠑⠇⠽ ⠋⠕⠝⠙ ⠷
+⠗⠂⠙⠬⠲ ⠠⠘⠮ ⠧⠕⠇⠥⠍⠑⠎ ⠶ ⠍⠽ ⠌⠥⠙⠽ ⠐⠙ ⠯ ⠝⠊⠣⠞⠂ ⠯ ⠍⠽ ⠋⠁⠍⠊⠇⠊⠜⠰⠽
+⠾ ⠮⠍ ⠔⠉⠗⠂⠎⠫ ⠞ ⠗⠑⠛⠗⠑⠞ ⠱ ⠠⠊ ⠸⠓ ⠋⠑⠇⠞⠂ ⠵ ⠁ ⠡⠂ ⠕⠝ ⠇⠑⠜⠝⠬ ⠞
+⠍⠽ ⠐⠋⠄⠎ ⠙⠽⠬ ⠔⠚⠥⠝⠉⠰⠝ ⠸⠓ ⠿⠃⠊⠙⠙⠢ ⠍⠽ ⠥⠝⠉⠇⠑ ⠞⠕ ⠁⠇⠇⠪ ⠍⠑ ⠞⠕
+⠑⠍⠃⠜⠅ ⠔ ⠁ ⠎⠂⠋⠜⠬ ⠇⠊⠋⠑⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠘⠮⠀⠗⠑⠋⠇⠑⠉⠰⠝⠎⠀⠓⠀⠲⠏⠑⠇⠇⠫⠀⠮⠀⠁⠛⠊⠞⠁⠰⠝⠀⠾⠀⠱⠀⠀
+⠠⠊⠀⠆⠛⠁⠝⠀⠍⠽⠀⠇⠗⠂⠀⠯⠀⠠⠊⠀⠋⠑⠑⠇⠀⠍⠽⠀⠓⠑⠜⠞⠀⠛⠇⠪⠀⠾⠀⠀
+⠁⠝⠀⠢⠹⠥⠎⠊⠁⠎⠍⠀⠱⠀⠑⠇⠑⠧⠁⠞⠑⠎⠀⠍⠑⠀⠞⠕⠀⠓⠂⠧⠢⠂⠀⠿⠀⠀⠀⠀
+⠝⠕⠹⠬⠀⠒⠞⠗⠊⠃⠥⠞⠑⠎⠀⠎⠀⠍⠡⠀⠞⠕⠀⠞⠗⠁⠝⠟⠥⠊⠇⠇⠊⠎⠑⠀⠮⠀⠀⠀
+⠍⠔⠙⠀⠵⠀⠁⠀⠌⠂⠙⠽⠀⠏⠥⠗⠏⠕⠎⠑⠠⠤⠁⠀⠏⠕⠔⠞⠀⠕⠝⠀⠱⠀⠮⠀⠎⠳⠇⠀
+⠍⠁⠽⠀⠋⠊⠭⠀⠭⠎⠀⠔⠞⠑⠇⠇⠑⠉⠞⠥⠁⠇⠀⠑⠽⠑⠲⠀⠠⠹⠀⠑⠭⠏⠫⠊⠰⠝⠀⠀
+⠓⠁⠎⠀⠃⠑⠢⠀⠮⠀⠋⠁⠧⠳⠗⠊⠞⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠼⠙
+⠙⠗⠂⠍⠀⠷⠀⠍⠽⠀⠑⠜⠇⠽⠀⠽⠑⠜⠎⠲⠀⠠⠊⠀⠓⠀⠗⠂⠙⠀⠾⠀⠜⠙⠳⠗⠀⠮⠀⠀
+⠁⠒⠨⠞⠎⠀⠷⠀⠮⠀⠧⠜⠊⠳⠎⠀⠧⠕⠽⠁⠛⠑⠎⠀⠱⠀⠓⠀⠃⠑⠢⠀⠍⠁⠙⠑⠀⠔⠀⠮
+⠏⠗⠕⠎⠏⠑⠉⠞⠀⠷⠀⠜⠗⠊⠧⠬⠀⠁⠞⠀⠮⠀⠠⠝⠕⠗⠹⠀⠠⠏⠁⠉⠊⠋⠊⠉⠀⠀⠀⠀
+⠠⠕⠉⠂⠝⠀⠐⠹⠀⠮⠀⠎⠂⠎⠀⠱⠀⠎⠥⠗⠗⠨⠙⠀⠮⠀⠏⠕⠇⠑⠲⠀⠠⠽⠀⠍⠁⠽⠀⠀
+⠗⠑⠍⠑⠍⠃⠻⠀⠞⠀⠁⠀⠓⠊⠌⠕⠗⠽⠀⠷⠀⠁⠇⠇⠀⠮⠀⠧⠕⠽⠁⠛⠑⠎⠀⠍⠁⠙⠑⠀
+⠿⠀⠏⠥⠗⠏⠕⠎⠑⠎⠀⠷⠀⠲⠉⠕⠧⠻⠽⠀⠉⠕⠍⠏⠕⠎⠫⠀⠮⠀⠱⠕⠇⠑⠀⠷⠀⠳⠗⠀
+⠛⠙⠀⠠⠥⠝⠉⠇⠑⠀⠠⠹⠕⠍⠁⠎⠄⠀⠇⠊⠃⠗⠜⠽⠲⠀⠠⠍⠽⠀⠫⠥⠉⠁⠰⠝⠀⠴⠀⠀
+⠝⠑⠛⠇⠑⠉⠞⠫⠂⠀⠽⠑⠞⠀⠠⠊⠀⠴⠀⠏⠁⠎⠨⠝⠁⠞⠑⠇⠽⠀⠋⠕⠝⠙⠀⠷⠀⠀⠀⠀
+⠗⠂⠙⠬⠲⠀⠠⠘⠮⠀⠧⠕⠇⠥⠍⠑⠎⠀⠶⠀⠍⠽⠀⠌⠥⠙⠽⠀⠐⠙⠀⠯⠀⠝⠊⠣⠞⠂⠀⠯
+⠍⠽⠀⠋⠁⠍⠊⠇⠊⠜⠰⠽⠀⠾⠀⠮⠍⠀⠔⠉⠗⠂⠎⠫⠀⠞⠀⠗⠑⠛⠗⠑⠞⠀⠱⠀⠠⠊⠀⠀
+⠸⠓⠀⠋⠑⠇⠞⠂⠀⠵⠀⠁⠀⠡⠂⠀⠕⠝⠀⠇⠑⠜⠝⠬⠀⠞⠀⠍⠽⠀⠐⠋⠄⠎⠀⠙⠽⠬⠀⠀
+⠔⠚⠥⠝⠉⠰⠝⠀⠸⠓⠀⠿⠃⠊⠙⠙⠢⠀⠍⠽⠀⠥⠝⠉⠇⠑⠀⠞⠕⠀⠁⠇⠇⠪⠀⠍⠑⠀⠞⠕
+⠑⠍⠃⠜⠅⠀⠔⠀⠁⠀⠎⠂⠋⠜⠬⠀⠇⠊⠋⠑⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">p {
+   text-indent: 2ch;
+}
+[role~=doc-pagebreak] {
+   width: 100%;
+   display: flex;
+   text-indent: 0;
+   justify-content: flex-end;
+   overflow: hidden;
+   white-space: nowrap;
+}
+[role~=doc-pagebreak]::before {
+   content: '⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤';
+}
+</code></pre>
+				</aside>
+
+				<aside class="example" title="A blocked paragraph preceding an indented one">
+					<p class="ednote">
+						The “<a href="../tagging/index.html#example-a-basic-paragraph-of-text">A
+						basic paragraph of text</a>” and “<a
+						href="../tagging/index.html#example-a-blocked-paragraph-that-is-flush-with-the-left-margin">A
+						blocked paragraph that is flush with the left margin</a>” examples from
+						[[TAGGING]] were combined.
+					</p>
+					<pre><code class="html">&lt;p class="blocked"&gt;⠠⠘⠥ ⠓⠑⠜⠬ ⠹ ⠓⠑ ⠁⠏⠏⠑⠜⠫ ⠎⠁⠞⠊⠎⠋⠊⠫
+⠯ ⠒⠎⠢⠞⠫ ⠞⠕ ⠉⠕⠍⠑ ⠕⠝ ⠃⠕⠜⠙⠲ ⠠⠛⠙ ⠠⠛⠕⠙⠖ ⠠⠍⠜⠛⠜⠑⠞⠂ ⠊⠋ ⠽ ⠸⠓ ⠎⠑⠢
+⠮ ⠍⠁⠝ ⠱⠕ ⠹⠥⠎ ⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫ ⠿ ⠦ ⠎⠁⠋⠑⠞⠽⠂ ⠽⠗ ⠎⠥⠗⠏⠗⠊⠎⠑ ⠺⠙ ⠓
+⠃⠑⠢ ⠃⠨⠙⠨⠎⠲&lt;/p&gt;
+&lt;p&gt;⠠⠞⠺⠕ ⠐⠙⠎ ⠏⠁⠎⠎⠫ ⠔ ⠹ ⠍⠁⠝⠝⠻ ⠆⠋ ⠓⠑ ⠴ ⠁⠃⠇⠑ ⠞⠕ ⠎⠏⠂⠅⠂
+⠯ ⠠⠊ ⠷⠞⠢ ⠋⠑⠜⠫ ⠞ ⠦ ⠎⠥⠖⠻⠬⠎ ⠸⠓ ⠙⠑⠏⠗⠊⠧⠫ ⠓⠍ ⠷ ⠐⠥⠌⠯⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠠⠘⠥⠀⠓⠑⠜⠬⠀⠹⠀⠓⠑⠀⠁⠏⠏⠑⠜⠫⠀⠎⠁⠞⠊⠎⠋⠊⠫⠀⠯⠀⠒⠎⠢⠞⠫⠀⠞⠕
+⠉⠕⠍⠑⠀⠕⠝⠀⠃⠕⠜⠙⠲⠀⠠⠛⠙⠀⠠⠛⠕⠙⠖⠀⠠⠍⠜⠛⠜⠑⠞⠂⠀⠊⠋⠀⠽⠀⠸⠓
+⠎⠑⠢⠀⠮⠀⠍⠁⠝⠀⠱⠕⠀⠹⠥⠎⠀⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫⠀⠿⠀⠦⠀⠎⠁⠋⠑⠞⠽⠂⠀
+⠽⠗⠀⠎⠥⠗⠏⠗⠊⠎⠑⠀⠺⠙⠀⠓⠀⠃⠑⠢⠀⠃⠨⠙⠨⠎⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠞⠺⠕⠀⠐⠙⠎⠀⠏⠁⠎⠎⠫⠀⠔⠀⠹⠀⠍⠁⠝⠝⠻⠀⠆⠋⠀⠓⠑⠀⠴⠀⠁⠃⠇⠑⠀
+⠞⠕⠀⠎⠏⠂⠅⠂⠀⠯⠀⠠⠊⠀⠷⠞⠢⠀⠋⠑⠜⠫⠀⠞⠀⠦⠀⠎⠥⠖⠻⠬⠎⠀⠸⠓⠀⠀⠀⠀
+⠙⠑⠏⠗⠊⠧⠫⠀⠓⠍⠀⠷⠀⠐⠥⠌⠯⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">p {
+   text-indent: 2ch;
+}
+p.blocked {
+   text-indent: 0;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a data-cite="CSS3TEXT#text-indent-property">First Line Indentation: the
+						‘text-indent’ property</a> [[CSS3TEXT]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="An indented paragraph preceding a blocked one">
+					<p class="ednote">
+						The “<a href="../tagging/index.html#example-a-basic-paragraph-of-text">A
+						basic paragraph of text</a>” and “<a
+						href="../tagging/index.html#example-a-blocked-paragraph-that-is-flush-with-the-left-margin">A
+						blocked paragraph that is flush with the left margin</a>” examples from
+						[[TAGGING]] were combined.
+					</p>
+					<pre><code class="html"><pre><code class="html">&lt;p&gt;⠠⠘⠥ ⠓⠑⠜⠬ ⠹ ⠓⠑ ⠁⠏⠏⠑⠜⠫ ⠎⠁⠞⠊⠎⠋⠊⠫ ⠯ ⠒⠎⠢⠞⠫ ⠞⠕ ⠉⠕⠍⠑
+⠕⠝ ⠃⠕⠜⠙⠲ ⠠⠛⠙ ⠠⠛⠕⠙⠖ ⠠⠍⠜⠛⠜⠑⠞⠂ ⠊⠋ ⠽ ⠸⠓ ⠎⠑⠢ ⠮ ⠍⠁⠝ ⠱⠕ ⠹⠥⠎
+⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫ ⠿ ⠦ ⠎⠁⠋⠑⠞⠽⠂ ⠽⠗ ⠎⠥⠗⠏⠗⠊⠎⠑ ⠺⠙ ⠓ ⠃⠑⠢ ⠃⠨⠙⠨⠎⠲&lt;/p&gt;
+&lt;p class="blocked"&gt;⠠⠞⠺⠕ ⠐⠙⠎ ⠏⠁⠎⠎⠫ ⠔ ⠹ ⠍⠁⠝⠝⠻ ⠆⠋ ⠓⠑
+⠴ ⠁⠃⠇⠑ ⠞⠕ ⠎⠏⠂⠅⠂ ⠯ ⠠⠊ ⠷⠞⠢ ⠋⠑⠜⠫ ⠞ ⠦ ⠎⠥⠖⠻⠬⠎ ⠸⠓ ⠙⠑⠏⠗⠊⠧⠫ ⠓⠍
+⠷ ⠐⠥⠌⠯⠬⠲&lt;/p&gt;</code></pre></code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠘⠥⠀⠓⠑⠜⠬⠀⠹⠀⠓⠑⠀⠁⠏⠏⠑⠜⠫⠀⠎⠁⠞⠊⠎⠋⠊⠫⠀⠯⠀⠒⠎⠢⠞⠫⠀
+⠞⠕⠀⠉⠕⠍⠑⠀⠕⠝⠀⠃⠕⠜⠙⠲⠀⠠⠛⠙⠀⠠⠛⠕⠙⠖⠀⠠⠍⠜⠛⠜⠑⠞⠂⠀⠊⠋⠀⠽
+⠸⠓⠀⠎⠑⠢⠀⠮⠀⠍⠁⠝⠀⠱⠕⠀⠹⠥⠎⠀⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫⠀⠿⠀⠦⠀⠀⠀⠀⠀⠀
+⠎⠁⠋⠑⠞⠽⠂⠀⠽⠗⠀⠎⠥⠗⠏⠗⠊⠎⠑⠀⠺⠙⠀⠓⠀⠃⠑⠢⠀⠃⠨⠙⠨⠎⠲⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠞⠺⠕⠀⠐⠙⠎⠀⠏⠁⠎⠎⠫⠀⠔⠀⠹⠀⠍⠁⠝⠝⠻⠀⠆⠋⠀⠓⠑⠀⠴⠀⠁⠃⠇⠑⠀⠞⠕
+⠎⠏⠂⠅⠂⠀⠯⠀⠠⠊⠀⠷⠞⠢⠀⠋⠑⠜⠫⠀⠞⠀⠦⠀⠎⠥⠖⠻⠬⠎⠀⠸⠓⠀⠀⠀⠀⠀⠀⠀
+⠙⠑⠏⠗⠊⠧⠫⠀⠓⠍⠀⠷⠀⠐⠥⠌⠯⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">p {
+   text-indent: 2ch;
+}
+p.blocked {
+   text-indent: 0;
+}
+p + p.blocked {
+   margin-top: 1rem;
+}
+</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a data-cite="CSS4SELECT#adjacent-sibling-combinators">Next-sibling
+						combinator (+)</a> [[CSS4SELECT]]</li>
+						<li><a data-cite="CSS3BOX#margin-physical">Page-relative (Physical) Margin
+						Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+						‘margin-left’ properties</a> [[CSS3BOX]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="Two blocked paragraphs with a blank in between">
+					<p class="ednote">
+						The “<a
+						href="../tagging/index.html#example-a-blocked-paragraph-that-is-flush-with-the-left-margin">A
+						blocked paragraph that is flush with the left margin</a>” example from
+						[[TAGGING] was adapted to have two paragraphs after each other.
+					</p>
+					<pre><code class="html">&lt;p class="blocked"&gt;⠠⠘⠥ ⠓⠑⠜⠬ ⠹ ⠓⠑ ⠁⠏⠏⠑⠜⠫ ⠎⠁⠞⠊⠎⠋⠊⠫
+⠯ ⠒⠎⠢⠞⠫ ⠞⠕ ⠉⠕⠍⠑ ⠕⠝ ⠃⠕⠜⠙⠲ ⠠⠛⠙ ⠠⠛⠕⠙⠖ ⠠⠍⠜⠛⠜⠑⠞⠂ ⠊⠋ ⠽ ⠸⠓ ⠎⠑⠢
+⠮ ⠍⠁⠝ ⠱⠕ ⠹⠥⠎ ⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫ ⠿ ⠦ ⠎⠁⠋⠑⠞⠽⠂ ⠽⠗ ⠎⠥⠗⠏⠗⠊⠎⠑ ⠺⠙ ⠓
+⠃⠑⠢ ⠃⠨⠙⠨⠎⠲&lt;/p&gt;
+&lt;p class="blocked"&gt;⠠⠞⠺⠕ ⠐⠙⠎ ⠏⠁⠎⠎⠫ ⠔ ⠹ ⠍⠁⠝⠝⠻ ⠆⠋ ⠓⠑
+⠴ ⠁⠃⠇⠑ ⠞⠕ ⠎⠏⠂⠅⠂ ⠯ ⠠⠊ ⠷⠞⠢ ⠋⠑⠜⠫ ⠞ ⠦ ⠎⠥⠖⠻⠬⠎ ⠸⠓ ⠙⠑⠏⠗⠊⠧⠫ ⠓⠍
+⠷ ⠐⠥⠌⠯⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠠⠘⠥⠀⠓⠑⠜⠬⠀⠹⠀⠓⠑⠀⠁⠏⠏⠑⠜⠫⠀⠎⠁⠞⠊⠎⠋⠊⠫⠀⠯⠀⠒⠎⠢⠞⠫⠀⠞⠕
+⠉⠕⠍⠑⠀⠕⠝⠀⠃⠕⠜⠙⠲⠀⠠⠛⠙⠀⠠⠛⠕⠙⠖⠀⠠⠍⠜⠛⠜⠑⠞⠂⠀⠊⠋⠀⠽⠀⠸⠓
+⠎⠑⠢⠀⠮⠀⠍⠁⠝⠀⠱⠕⠀⠹⠥⠎⠀⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫⠀⠿⠀⠦⠀⠎⠁⠋⠑⠞⠽⠂⠀
+⠽⠗⠀⠎⠥⠗⠏⠗⠊⠎⠑⠀⠺⠙⠀⠓⠀⠃⠑⠢⠀⠃⠨⠙⠨⠎⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠞⠺⠕⠀⠐⠙⠎⠀⠏⠁⠎⠎⠫⠀⠔⠀⠹⠀⠍⠁⠝⠝⠻⠀⠆⠋⠀⠓⠑⠀⠴⠀⠁⠃⠇⠑⠀⠞⠕
+⠎⠏⠂⠅⠂⠀⠯⠀⠠⠊⠀⠷⠞⠢⠀⠋⠑⠜⠫⠀⠞⠀⠦⠀⠎⠥⠖⠻⠬⠎⠀⠸⠓⠀⠀⠀⠀⠀⠀⠀
+⠙⠑⠏⠗⠊⠧⠫⠀⠓⠍⠀⠷⠀⠐⠥⠌⠯⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">p + p.blocked {
+   margin-top: 1rem;
+}</code></pre>
+				</aside>
+
+				<aside class="example" title="Two indented paragraphs with no blank in between">
+					<p class="ednote">
+						The “<a href="../tagging/index.html#example-a-basic-paragraph-of-text">A
+						basic paragraph of text</a>” example from [[TAGGING] was adapted to have two
+						paragraphs after each other.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠘⠥ ⠓⠑⠜⠬ ⠹ ⠓⠑ ⠁⠏⠏⠑⠜⠫ ⠎⠁⠞⠊⠎⠋⠊⠫ ⠯ ⠒⠎⠢⠞⠫ ⠞⠕ ⠉⠕⠍⠑
+⠕⠝ ⠃⠕⠜⠙⠲ ⠠⠛⠙ ⠠⠛⠕⠙⠖ ⠠⠍⠜⠛⠜⠑⠞⠂ ⠊⠋ ⠽ ⠸⠓ ⠎⠑⠢ ⠮ ⠍⠁⠝ ⠱⠕ ⠹⠥⠎
+⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫ ⠿ ⠦ ⠎⠁⠋⠑⠞⠽⠂ ⠽⠗ ⠎⠥⠗⠏⠗⠊⠎⠑ ⠺⠙ ⠓ ⠃⠑⠢ ⠃⠨⠙⠨⠎⠲&lt;/p&gt;
+&lt;p&gt;⠠⠞⠺⠕ ⠐⠙⠎ ⠏⠁⠎⠎⠫ ⠔ ⠹ ⠍⠁⠝⠝⠻ ⠆⠋ ⠓⠑ ⠴ ⠁⠃⠇⠑ ⠞⠕ ⠎⠏⠂⠅⠂
+⠯ ⠠⠊ ⠷⠞⠢ ⠋⠑⠜⠫ ⠞ ⠦ ⠎⠥⠖⠻⠬⠎ ⠸⠓ ⠙⠑⠏⠗⠊⠧⠫ ⠓⠍ ⠷ ⠐⠥⠌⠯⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠘⠥⠀⠓⠑⠜⠬⠀⠹⠀⠓⠑⠀⠁⠏⠏⠑⠜⠫⠀⠎⠁⠞⠊⠎⠋⠊⠫⠀⠯⠀⠒⠎⠢⠞⠫⠀
+⠞⠕⠀⠉⠕⠍⠑⠀⠕⠝⠀⠃⠕⠜⠙⠲⠀⠠⠛⠙⠀⠠⠛⠕⠙⠖⠀⠠⠍⠜⠛⠜⠑⠞⠂⠀⠊⠋⠀⠽
+⠸⠓⠀⠎⠑⠢⠀⠮⠀⠍⠁⠝⠀⠱⠕⠀⠹⠥⠎⠀⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫⠀⠿⠀⠦⠀⠀⠀⠀⠀⠀
+⠎⠁⠋⠑⠞⠽⠂⠀⠽⠗⠀⠎⠥⠗⠏⠗⠊⠎⠑⠀⠺⠙⠀⠓⠀⠃⠑⠢⠀⠃⠨⠙⠨⠎⠲⠀⠀⠀⠀⠀
+⠀⠀⠠⠞⠺⠕⠀⠐⠙⠎⠀⠏⠁⠎⠎⠫⠀⠔⠀⠹⠀⠍⠁⠝⠝⠻⠀⠆⠋⠀⠓⠑⠀⠴⠀⠁⠃⠇⠑⠀
+⠞⠕⠀⠎⠏⠂⠅⠂⠀⠯⠀⠠⠊⠀⠷⠞⠢⠀⠋⠑⠜⠫⠀⠞⠀⠦⠀⠎⠥⠖⠻⠬⠎⠀⠸⠓⠀⠀⠀⠀
+⠙⠑⠏⠗⠊⠧⠫⠀⠓⠍⠀⠷⠀⠐⠥⠌⠯⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">p {
+   text-indent: 2ch;
+}</code></pre>
+				</aside>
+
+				<aside class="example" title="Number line">
+					<p class="ednote">
+						Missing an example in [[TAGGING]] of a number line. Is this to be handled
+						with a <code>pre</code> element?
+					</p>
+					<pre><code class="html">&lt;pre&gt;⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠒⠒
+⠳⠪⠐⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠳⠕
+⠀⠀⠀⠐⠤⠼⠃⠀⠀⠀⠼⠚⠀⠀⠀⠼⠃⠀⠀⠀⠼⠙&lt;/pre&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠳⠪⠐⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠳⠕⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠐⠤⠼⠃⠀⠀⠀⠼⠚⠀⠀⠀⠼⠃⠀⠀⠀⠼⠙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">pre {
+    white-space: pre;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a data-cite="CSS3TEXT#white-space-property">White Space and Wrapping:
+						the ‘white-space’ property</a> [[CSS3TEXT]]</li>
+						<li><a href="https://drafts.csswg.org/css-values-5/#attr-notation">Attribute
+						References: the ‘attr()’ function</a> [[CSS5VALUES]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="Spatial math">
+					<p class="ednote">
+						Missing an example in [[TAGGING]] of spatial math. Is this to be handled
+						with a <code>pre</code> element?
+					</p>
+					<pre><code class="html">&lt;pre&gt;⠼⠁⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠲
+⠀⠀⠀⠀⠀⠀⠼⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠚⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠓⠑
+⠀⠀⠀⠀⠐⠖⠼⠀⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠀⠃⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠃⠚
+⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒&lt;/pre&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠼⠁⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠼⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠚⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠓⠑⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠐⠖⠼⠀⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠀⠃⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠃⠚⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">pre {
+    white-space: pre;
+}</code></pre>
+				</aside>
+
+				<aside class="example" title="Centered heading with blank before and after">
+					<p class="ednote">
+						Missing an example in [[TAGGING]] of a centered heading with blank before and after.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠬ ⠁ ⠉⠢⠞⠻⠫ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;h1&gt;⠠⠁ ⠉⠢⠞⠻⠫ ⠓⠂⠙⠬&lt;/h1&gt;
+&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠪⠬ ⠁ ⠉⠢⠞⠻⠫ ⠓⠂⠙⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠬⠀⠁⠀⠉⠢⠞⠻⠫⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠢⠞⠻⠫⠀⠓⠂⠙⠬⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠪⠬⠀⠁⠀⠉⠢⠞⠻⠫⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<p class="ednote">
+						To properly center the <code>h1</code>, the right margin may or may not need to be
+						increased with <code>1ch</code>, depending on the content. (In this case, it does.)
+					</p>
+					<pre><code class="css" data-page-width="40">p {
+   text-indent: 2ch;
+}
+h1 {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 4ch;
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+}</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a data-cite="CSS3TEXT#text-align-property">Text Alignment: the
+						‘text-align’ shorthand</a> [[CSS3TEXT]]</li>
+						<li><a data-cite="CSS3BOX#margin-physical">Page-relative (Physical) Margin
+						Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+						‘margin-left’ properties</a> [[CSS3BOX]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="Centered heading split onto multiple lines">
+					<p class="ednote">
+						BANA stipulates that centered headings should be balanced and divided at a
+						logical location when longer than one line (rule 4.4.3). The “<a
+						href="../tagging/index.html#example-multiline-heading">Multiline
+						heading</a>” example in [[TAGGING] suggests using <code>br</code> elements
+						to manually divide the heading into lines. However the balancing can also be
+						achieved automatically using <a data-cite="CSS4TEXT#text-wrap-style"><code
+						>text-wrap: balance</code></a> [[CSS4TEXT], as this example shows.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;h1&gt;⠠⠁ ⠉⠢⠞⠻⠫ ⠓⠂⠙⠬ ⠎⠏⠇⠊⠞ ⠕⠝ ⠍⠥⠇⠞⠊⠏⠇⠑ ⠇⠔⠑⠎ ⠾ ⠮ ⠙⠊⠧⠊⠨⠝⠎ ⠓⠁⠏⠏⠢⠬ ⠁⠞ ⠇⠕⠛⠊⠉⠁⠇ ⠏⠕⠔⠞⠎&lt;/h1&gt;
+&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠪⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠢⠞⠻⠫⠀⠓⠂⠙⠬⠀⠎⠏⠇⠊⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠕⠝⠀⠍⠥⠇⠞⠊⠏⠇⠑⠀⠇⠔⠑⠎⠀⠾⠀⠮⠀⠙⠊⠧⠊⠨⠝⠎⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠓⠁⠏⠏⠢⠬⠀⠁⠞⠀⠇⠕⠛⠊⠉⠁⠇⠀⠏⠕⠔⠞⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠪⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠛⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<p class="ednote">
+						It is not possible to properly center the <code>h1</code> in all
+						situations. In this case the first line is aligned to the grid, but the
+						second and third aren't. By increasing the right margin with
+						<code>1ch</code>, the second and third lines become aligned with the grid,
+						but the first becomes misaligned.
+					</p>
+					<p class="ednote">
+						The actual layout does not exactly match the desired layout. The automatic
+						text balancing seems more optimal.
+					</p>
+					<pre><code class="css" data-page-width="40">p {
+   text-indent: 2ch;
+}
+h1 {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 3ch;
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+   text-wrap: balance;
+}
+</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a data-cite="CSS4TEXT#text-wrap-style"> Selecting How to Wrap: the
+						‘text-wrap-style’ property</a> [[CSS4TEXT]]</li>
+					</ul>
+				</aside>
+
+				<aside class="example" title="Centered heading with a title and subtitle on different lines">
+					<p class="ednote">
+						Missing an example in [[TAGGING]] of a centered heading with a title and subtitle on different lines.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;header&gt;
+  &lt;h1&gt;⠠⠞⠊⠞⠇⠑⠒&lt;/h1&gt;
+  &lt;p&gt;⠎⠥⠃⠞⠊⠞⠇⠑&lt;/p&gt;
+&lt;/header&gt;
+&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠪⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠞⠊⠞⠇⠑⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠎⠥⠃⠞⠊⠞⠇⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠪⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠛⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<p class="ednote">
+						It is not possible to properly center the <code>header</code> in all
+						situations. In this case the first line is not aligned to the grid, but the
+						second is. By increasing the right margin with <code>1ch</code>, the first
+						line becomes aligned with the grid, but the second becomes misaligned.
+					</p>
+					<pre><code class="css" data-page-width="40">p {
+   text-indent: 2ch;
+}
+header:has(> h1) {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 3ch;
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+}
+header > h1,
+header > p {
+  margin: 0;
+  text-indent: inherit;
+  text-align: inherit;
+}</code></pre>
+				</aside>
+
+				<aside class="example" title="Centered heading followed by a cell-5 heading">
+					<p class="ednote">
+						Missing an example in [[TAGGING]] of a centered heading followed by a cell-5 heading.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠬ ⠁ ⠉⠢⠞⠻⠫ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;h1&gt;⠠⠁ ⠉⠢⠞⠻⠫ ⠓⠂⠙⠬&lt;/h1&gt;
+&lt;h2&gt;⠠⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬&lt;/h2&gt;
+&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠪⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠬⠀⠁⠀⠉⠢⠞⠻⠫⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠢⠞⠻⠫⠀⠓⠂⠙⠬⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠠⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠪⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<p class="ednote">
+						To properly center the <code>h1</code>, the right margin may or may not need to be
+						increased with <code>1ch</code>, depending on the content. (In this case, it does.)
+					</p>
+					<pre><code class="css" data-page-width="40">p {
+   text-indent: 2ch;
+}
+h1 {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 4ch;
+   margin-bottom: 1rem;
+}
+h2 {
+   margin-left: 4ch;
+}
+h1, h2 {
+   margin-top: 1rem;
+}</code></pre>
+				</aside>
+
+				<aside class="example" title="A cell-7 heading">
+					<p class="ednote">
+						Missing an example in [[TAGGING]] of a cell-7 heading.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;h3&gt;⠠⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬ ⠐⠣⠓⠼⠉⠐⠜&lt;/h3&gt;
+&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠪⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠑⠇⠇⠤⠼⠛⠀⠓⠂⠙⠬⠀⠐⠣⠓⠼⠉⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠪⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠛⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">p {
+   text-indent: 2ch;
+}
+h3 {
+   margin-left: 6ch;
+   margin-top: 1rem;
+}</code></pre>
+				</aside>
+
+				<aside class="example" title="A cell-5 heading followed by a cell-7 heading">
+					<p class="ednote">
+						Missing an example in [[TAGGING]] of a cell-5 heading followed by a cell-7 heading.
+					</p>
+					<pre><code class="html">&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;h2&gt;⠠⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬ ⠐⠣⠓⠼⠃⠐⠜&lt;/h2&gt;
+&lt;h3&gt;⠠⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬ ⠐⠣⠓⠼⠉⠐⠜&lt;/h3&gt;
+&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠪⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠠⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠀⠐⠣⠓⠼⠃⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠑⠇⠇⠤⠼⠛⠀⠓⠂⠙⠬⠀⠐⠣⠓⠼⠉⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠪⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠛⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">p {
+   text-indent: 2ch;
+}
+h2 {
+   margin-left: 4ch;
+}
+h3 {
+   margin-left: 6ch;
+}
+h2, h3 {
+   margin-top: 1rem;
+}
+h2 + * {
+   margin-top: 0;
+}</code></pre>
+				</aside>
+
+				<aside class="example" title="Line numbered prose">
+					<p class="ednote">
+						The “<a href="../tagging/index.html#example-a-paragraph-with-line-numbers">A
+						paragraph with line numbers</a>” example from [[TAGGING]] was adapted to have
+						more text and line numbers.
+					</p>
+					<pre><code class="html">&lt;div class="prose"&gt;
+  &lt;p&gt;
+    &lt;span id="line-3" class="linenum" aria-label="⠼⠉"&gt;&lt;/span&gt;
+    ⠠⠽ ⠺ ⠗⠚⠉ ⠞⠕ ⠓⠑⠜ ⠞ ⠝⠕ ⠲⠁⠌⠻ ⠓⠁⠎ ⠁⠒⠕⠍⠏⠁⠝⠊⠫ ⠮
+    &lt;span id="line-4" class="linenum" aria-label="⠼⠙"&gt;&lt;/span&gt;
+    ⠉⠕⠍⠍⠰⠑⠰⠞ ⠷ ⠁⠝ ⠢⠞⠻⠏⠗⠊⠎⠑ ⠱ ⠽ ⠓ ⠗⠑⠛⠜⠙⠫ ⠾
+    &lt;span id="line-5" class="linenum" aria-label="⠼⠑"&gt;&lt;/span&gt;
+    ⠎⠡⠀⠑⠧⠊⠇⠲ ⠿⠑⠃⠕⠙⠬⠎⠲ ⠠⠊ ⠜⠗⠊⠧⠫ ⠐⠓ ⠽⠑⠌⠻⠐⠙⠂ ⠯ ⠍⠽ ⠋⠌ ⠞⠁⠎⠅
+    &lt;span id="line-6" class="linenum" aria-label="⠼⠋"&gt;&lt;/span&gt;
+    ⠊⠎ ⠞⠕ ⠁⠎⠎⠥⠗⠑ ⠍⠽ ⠙⠑⠜ ⠎⠊⠌⠻ ⠷ ⠍⠽ ⠺⠑⠇⠋⠜⠑ ⠯ ⠔⠉⠗⠂⠎⠬ ⠒⠋⠊⠙⠰⠑
+    &lt;span id="line-7" class="linenum" aria-label="⠼⠛"&gt;&lt;/span&gt;
+    ⠔ ⠮ ⠎⠥⠒⠑⠎⠎ ⠷ ⠍⠽ ⠐⠥⠞⠁⠅⠬⠲
+  &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p class="ednote">
+						The desired layout does not seem entirely consistent with the standard. The
+						word at the beginning of the third line could also fit at the end of the
+						second line.
+					</p>
+					<pre><code class="formatted-braille">⠠⠽⠀⠺⠀⠗⠚⠉⠀⠞⠕⠀⠓⠑⠜⠀⠞⠀⠝⠕⠀⠲⠁⠌⠻⠀⠓⠁⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉
+⠁⠒⠕⠍⠏⠁⠝⠊⠫⠀⠮⠀⠀⠀⠉⠕⠍⠍⠰⠑⠰⠞⠀⠷⠀⠁⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠙
+⠢⠞⠻⠏⠗⠊⠎⠑⠀⠱⠀⠽⠀⠓⠀⠗⠑⠛⠜⠙⠫⠀⠾⠀⠀⠀⠎⠡⠀⠑⠧⠊⠇⠲⠀⠀⠀⠀⠼⠑
+⠿⠑⠃⠕⠙⠬⠎⠲⠀⠠⠊⠀⠜⠗⠊⠧⠫⠀⠐⠓⠀⠽⠑⠌⠻⠐⠙⠂⠀⠯⠀⠍⠽⠀⠋⠌⠀⠀⠀⠀
+⠞⠁⠎⠅⠀⠀⠀⠊⠎⠀⠞⠕⠀⠁⠎⠎⠥⠗⠑⠀⠍⠽⠀⠙⠑⠜⠀⠎⠊⠌⠻⠀⠷⠀⠀⠀⠀⠀⠼⠋
+⠍⠽⠀⠺⠑⠇⠋⠜⠑⠀⠯⠀⠔⠉⠗⠂⠎⠬⠀⠒⠋⠊⠙⠰⠑⠀⠀⠀⠔⠀⠮⠀⠀⠀⠀⠀⠀⠀⠼⠛
+⠎⠥⠒⠑⠎⠎⠀⠷⠀⠍⠽⠀⠐⠥⠞⠁⠅⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<p class="ednote">
+						We make use of the non-standard CSS pseudo-class <a
+						href="https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-first-node"><code>:-moz-first-node</code
+						></a> in order to be able to style a <code>.linenum</code> without preceding
+						text differently (because there must not be a gap of three blank cells when
+						the first print line begins a new braille line).
+					</p>
+					<pre><code class="css" data-page-width="40">@property --widest-linenum {
+   syntax: &lt;length&gt;;
+}
+.prose {
+   /* By default, i.e. without scripting, line numbers are assumed to only be two
+      characters wide, and a column of four characters is preserved for the
+      numbers. The actual value of --widest-linenum can be determined and set from
+      JavaScript. Note that, regardless of the width of the column, each line
+      number is separated from the text by at least two blanks. */
+   --widest-linenum: 2ch;
+   padding-right: calc(var(--widest-linenum) + 2ch);
+}
+.prose .linenum:not(:-moz-first-node)::before {
+   /* The pseudo element should not take up space when at the end of the line. If
+      we use a no-break space (" \A0 "), it does take up space and as a result
+      might be moved to the next line. If we use a normal space with
+      `white-space: pre-wrap', it does not take up space, however then we can't
+      specify that the spaces at the beginning and end should be collapsible. This
+      can be fixed with scripting. When scripting is disabled, we choose a
+      possible gap at the beginning of the line over a possibly too wide gap. Note
+      that we can get a dispositioned line number in either case. */
+   content: " \A0 ";
+}
+.prose .linenum::after {
+   content: attr(aria-label);
+   float: right;
+   clear: right;
+   margin-left: 2ch;
+   margin-right: -4ch;
+}
+
+/**
+ * CSS rules belonging to the JavaScript code below
+ */
+.prose .linenum-anchor::before {
+   content: " ";
+}
+.prose .linenum-anchor::after {
+   content: " ";
+   white-space: pre-wrap;
+   letter-spacing: 1ch;
+}
+.prose .linenum-anchor + .linenum::before,
+.prose .linenum-anchor + .linenum:not(:-moz-first-node)::before,
+.prose .linenum-anchor + br + .linenum::before,
+.prose .linenum-anchor + br + .linenum:not(:-moz-first-node)::before {
+   content: "​\A0";
+   margin-right: -1ch;
+}</code></pre>
+					<p>and the following JavaScript may be applied to enhance the styling:</p>
+					<p class="ednote">
+						This example shows possible use cases for allowing scripting in the
+						future. Because scripting is currenly forbidden, we obviously shouldn't
+						include it in the best practices. Still it seems useful to have it included
+						somewhere, to show the limitations of CSS.
+					</p>
+					<pre><code class="javascript">window.onload = function() {
+  document.querySelectorAll(".prose").forEach(prose => {
+    let linenums = Array.from(prose.querySelectorAll(".linenum"));
+    // find widest line number and set width of right margin
+    let maxWidth = linenums.reduce(
+      (max, linenum) => Math.max(max, linenum.getAttribute("aria-label").length),
+      0);
+    prose.style.setProperty("--widest-linenum", maxWidth + "ch");
+    let prevPosition = -1000;
+    linenums.forEach(linenum => {
+      // insert an extra span before the .linenum to have more control over line
+      // breaking and positioning of number and gap
+      let precedingSibling = linenum.previousSibling;
+      while (precedingSibling) {
+        if (precedingSibling.nodeType === 8); // comment
+        else if (precedingSibling.nodeType !== 3  // not text
+                 || precedingSibling.nodeValue.trim() !== '') {
+          let anchor = linenum.parentNode.insertBefore(document.createElement("span"), linenum);
+          anchor.className = "linenum-anchor";
+          break;
+        }
+        precedingSibling = precedingSibling.previousSibling;
+      }
+      // trim white space after to make .linenum::before stick to following word,
+      // and to make sure gaps are always exactly 3 cells wide
+      let followingSibling = linenum.nextSibling;
+      while (followingSibling) {
+        if (followingSibling.nodeType === 8); // comment
+        else if (followingSibling.nodeType === 3) { // text
+          let trimmed = followingSibling.nodeValue.replace(/^\s+/, "");
+          followingSibling.nodeValue = trimmed;
+          if (trimmed !== '')
+            break;
+        } else
+          break;
+        followingSibling = followingSibling.nextSibling;
+      }
+      // if the following text is on the same braille line as the braille line on
+      // which the previous print line started, insert a &lt;br/&gt;
+      if (followingSibling.nodeType === 3) {
+        let range = document.createRange();
+        range.selectNode(followingSibling);
+        let pos = range.getBoundingClientRect().top;
+        range.detach();
+        if (pos &lt;= prevPosition)
+          linenum.parentNode.insertBefore(document.createElement("br"), linenum);
+        prevPosition = pos;
+      }
+    });
+  });
+};
+</code></pre>
+				</aside>
+
+			</section>
+		</section>
+		<div data-include="../../common/acknowledgements.html" data-include-replace="true"></div>
+	</body>
+</html>
