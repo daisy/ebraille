@@ -731,11 +731,10 @@
       &#8230;>
    &#8230;
    &lt;body>
-      &lt;nav
-           epub:type="toc"
+      &lt;nav epub:type="toc"
            role="doc-toc"
-           aria-labelled-by="toc-hd">
-         &lt;h2 id="toc-hd">Table of Contents&lt;/h2>
+           aria-label="Table of contents">
+         &lt;h2>⠠⠞⠁⠃⠇⠑⠀⠕⠋⠀⠠⠉⠕⠝⠞⠑⠝⠞⠎&lt;/h2>
          &#8230;
       &lt;/nav>
    &lt;/body>
@@ -749,26 +748,25 @@
 						are not common outside of publications that omit content).</p>
 
 					<aside class="example" title="Table of contents for a novel with only chapter headings">
-						<pre><code>      &lt;nav
-       epub:type="toc"
-       role="doc-toc"
-       aria-labelled-by="toc-hd">
-   &lt;h2 id="toc-hd">Table of Contents&lt;/h2>
+						<pre><code>&lt;nav epub:type="toc"
+     role="doc-toc"
+     aria-label="Table of contents">
+   &lt;h2>⠠⠞⠁⠃⠇⠑⠀⠕⠋⠀⠠⠉⠕⠝⠞⠑⠝⠞⠎&lt;/h2>
 
    &lt;ol>
       &lt;li>
          &lt;a href="chap01.html#c01">
-            Chapter 1
+            ⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠁
          &lt;/a>
       &lt;/li>
       &lt;li>
-         &lt;a href="chap01.html#c01">
-            Chapter 2
+         &lt;a href="chap02.html#c02">
+            ⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃
          &lt;/a>
       &lt;/li>
       &lt;li>
-         &lt;a href="chap01.html#c01">
-            Chapter 3
+         &lt;a href="chap03.html#c03">
+            ⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠉
          &lt;/a>
       &lt;/li>
       &#8230;
@@ -782,12 +780,12 @@
 					<aside class="example" title="Table of contents for a textbook with parts and sections">
 						<pre><code>&lt;li>
    &lt;a href="part01.html#p01">
-      Part 1
+      ⠠⠏⠁⠗⠞ ⠼⠁
    &lt;/a>
    &lt;ol>
       &lt;li>
          &lt;a href="sec01.html#s01">
-            Section 1
+            ⠠⠎⠑⠉⠞⠊⠕⠝ ⠼⠁
          &lt;/a>
       &lt;/li>
       &#8230;
@@ -829,11 +827,10 @@
    &#8230;
    &lt;body>
       &#8230;
-      &lt;nav
-           epub:type="page-list"
+      &lt;nav epub:type="page-list"
            role="doc-pagelist"
-           aria-labelledby="pl-hd">
-         &lt;h2 id="pl-hd">Page List&lt;/h2>
+           aria-label="Page List">
+         &lt;h2>⠠⠏⠁⠛⠑ ⠠⠇⠊⠎⠞&lt;/h2>
          &#8230;
       &lt;/nav>
    &lt;/body>
@@ -845,32 +842,40 @@
 						in the publication, with the page number wrapped inside an [[html]] anchor tag ([^a^]) that
 						links to its location.</p>
 
+					<p>Each entry in the page list MUST include the print page number equivalent in a [^title^]
+						attribute [[html]]. Providing both encodings allows reading systems to match the page number
+						regardless of whether the device accepts braille input or not and avoids any mistranlation of
+						the page numbers if only one encoding is provided.</p>
+
 					<aside class="example" title="Page list with front and body matter">
-						<pre><code>&lt;nav
-     epub:type="page-list"
+						<pre><code>&lt;nav epub:type="page-list"
      role="doc-pagelist"
-     aria-labelledby="pl-hd">
-   &lt;h2 id="pl-hd">Page List&lt;/h2>
+     aria-label="Page List">
+   &lt;h2>⠠⠏⠁⠛⠑ ⠠⠇⠊⠎⠞&lt;/h2>
    &lt;ol>
       &lt;li>
-         &lt;a href="intro.html#pi">
-            i
+         &lt;a href="intro.html#pi"
+            title="i">
+            ⠊
          &lt;/a>
       &lt;/li>
       &lt;li>
-         &lt;a href="intro.html#pii">
-            ii
+         &lt;a href="intro.html#pii"
+            title="ii">
+            ⠊⠊
          &lt;/a>
       &lt;/li>
       &#8230;
       &lt;li>
-         &lt;a href="chap01.html#p001">
-            1
+         &lt;a href="chap01.html#p001"
+            title="1">
+            ⠼⠁
          &lt;/a>
       &lt;/li>
       &lt;li>
-         &lt;a href="chap01.html#p002">
-            2
+         &lt;a href="chap01.html#p002"
+            title="2">
+            ⠼⠃
          &lt;/a>
       &lt;/li>
       &#8230;
@@ -920,8 +925,8 @@
       &#8230;
       &lt;nav
            epub:type="landmarks"
-           aria-labelledby="lm-hd">
-         &lt;h2 id="lm-hd">Landmarks&lt;/h2>
+           aria-label="Landmarks">
+         &lt;h2>⠠⠇⠁⠝⠙⠍⠁⠗⠅⠎&lt;/h2>
          &#8230;
       &lt;/nav>
    &lt;/body>
@@ -945,17 +950,17 @@
 					<aside class="example" title="Landmarks for body matter and glossary">
 						<pre><code>&lt;nav
      epub:type="landmarks"
-     aria-labelledby="lm-hd">
-   &lt;h2 id="lm-hd">Landmarks&lt;/h2>
+     aria-label="Landmarks">
+   &lt;h2 id="lm-hd">⠠⠇⠁⠝⠙⠍⠁⠗⠅⠎&lt;/h2>
    &lt;ol>
       &lt;li>
          &lt;a href="chap01.html" epub:type="bodymatter">
-            Start of body matter
+            ⠠⠎⠞⠁⠗⠞ ⠕⠋ ⠃⠕⠙⠽ ⠍⠁⠞⠞⠑⠗
          &lt;/a>
       &lt;/li>
       &lt;li>
          &lt;a href="glossary.html" epub:type="glossary">
-            Glossary
+            ⠠⠛⠇⠕⠎⠎⠁⠗⠽
          &lt;/a>
       &lt;/li>
    &lt;/ol>
