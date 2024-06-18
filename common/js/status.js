@@ -15,7 +15,9 @@ function addDAISYStatus() {
 		'wd': 'Working Draft',
 		'cr': 'Candidate Recommendation',
 		'pr': 'Proposed Recommendation',
-		'rec': 'Recommendation'
+		'rec': 'Recommendation',
+		'draft-note': 'Draft Working Group Note',
+		'wg-note': 'Working Group Note'
 	};
 	
 	var daisyStatus = respecConfig.daisyStatus.toLowerCase();

@@ -10,7 +10,8 @@
 			var respecConfig = {
 				shortName: 'ebraille-tag',
 				specStatus: 'base',
-				daisyStatus: 'ED',
+				daisyWG: 'eBraille Working Group',
+				daisyStatus: 'DRAFT-NOTE',
 				latestVersion: 'https://daisy.github.io/ebraille/best-practices/tagging',
 				edDraftURI: null,
 				editors: [
@@ -52,6 +53,12 @@
 		<p class="copyright">Copyright &#169; DAISY Consortium 2023</p>
 		<section id="abstract">
 			<p>&#8230;</p>
+		</section>
+		<section id="sotd">
+			<div data-include="../../common/status.html" data-include-replace="true"></div>
+			<p>The eBraille Working Group is seeking input on all aspects of this document. It is particularly
+				interested in implementation experience both creating eBraille publication and creating reading systems
+				in which to read them.</p>
 		</section>
 		<section id="intro">
 			<h2>Introduction</h2>
@@ -107,13 +114,13 @@
 					<dd>
 						<ul class="nomark">
 							<li><code>box</code> is used to signify a standard box.</li>
-							<aside class="example" title="A standard box">
+							<aside class="example" title="A standard box" id="example-a-standard-box">
 					<pre><code class="html">&lt;div class="box">
 	&lt;p>⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑&lt;/p>
 &lt;/div></code></pre>
 							</aside>
 							<li>Put <code>box</code> inside <code>box</code> when a box contains a box.</li>
-							<aside class="example" title="A box inside another box">
+							<aside class="example" title="A box inside another box" id="example-a-box-inside-another-box">
 					<pre><code class="html">&lt;div class="box">
    &lt;div class="box">
       &lt;p>⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑&lt;/p>
@@ -437,7 +444,7 @@
 					</dd>
 				</dl>
 
-				<aside class="example" title="A simple list">
+				<aside class="example" title="A simple list" id="example-a-simple-list">
 					<pre><code class="html">&lt;p>⠠⠎⠓⠕⠏⠏⠊⠝⠛ ⠇⠊⠎⠞⠒&lt;/p>
 &lt;ul>
   &lt;li>⠠⠉⠁⠗⠗⠕⠞⠎&lt;/li>
@@ -447,7 +454,7 @@
 &lt;/ul></code></pre>
 				</aside>
 
-				<aside class="example" title="A multiple-choice exercise">
+				<aside class="example" title="A multiple-choice exercise" id="example-a-multiple-choice-exercise">
 					<pre><code class="html">&lt;ol class="exercise">
   &lt;li>⠼⠁⠲ ⠠⠺⠓⠊⠉⠓ ⠏⠇⠁⠝⠑⠞ ⠊⠎ ⠉⠇⠕⠑⠎⠞ ⠞⠕ ⠞⠓⠑ ⠎⠥⠝⠦&lt;/li>
   &lt;ol class="exercise">
