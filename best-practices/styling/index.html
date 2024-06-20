@@ -43,6 +43,15 @@
 				preProcess: [replaceTaggingLinks, replaceBrfLinks],
 				postProcess: [addDAISYStatus, validateExamples],
 				localBiblio: {
+					"EBRAILLE": {
+						href: new URL("../../", document.baseURI).href,
+						title: "eBraille 1.0",
+						publisher: "DAISY Consortium",
+						authors: [
+							"Willow Free",
+							"et al."
+						]
+					},
 					"TAGGING": {
 						href: new URL("../tagging/", document.baseURI).href,
 						title: "eBraille Tagging Best Practices",
@@ -166,8 +175,11 @@
 			<h2>eBraille styling</h2>
 
 			<div class="note">
-				<p>All examples in this section assume that the following default CSS style sheet is
-				applied and that the same monospaced font and font size is used for all text:</p>
+				<p>The examples in this section assume
+				that <a data-cite="EBRAILLE#dfn-reading-system">eBraille reading systems</a> do not
+				use the same default style sheets that web browsers do. To try these examples in a
+				browser, make sure the following style sheet is applied and the same monospaced font
+				and font size is used for all text:</p>
 				<pre><code class="css">* {
    font-weight: normal;
    line-height: 1rem;
@@ -180,13 +192,6 @@
    text-decoration: none;
 }</code></pre>
 			</div>
-
-			<p class="ednote">
-				It might be better to omit the note above. Maybe it will only relevant in the context of a
-				browser, because in that case the browser's default styles must be accounted for. I would
-				expect dedicated reading systems to have other default styles that don't need to be
-				overridden.
-			</p>
 
 			<section id="misc">
 				<h3>Miscellaneous</h3>
