@@ -66,6 +66,18 @@
 					},
 					"css-page": {
 						"aliasOf": "css-page-3-20230914"
+					},
+					"css-fonts": {
+						"aliasOf": "css-fonts-3-20180920"
+					},
+					"css-color": {
+						"aliasOf": "css-color-3-20220118"
+					},
+					"css-text-decor": {
+						"aliasOf": "css-text-decor-3-20220505"
+					},
+					"css-values": {
+						"aliasOf": "css-values-3-20240322"
 					}
 				}
 			};
@@ -814,6 +826,48 @@
 						<li>[=eBraille creators=] MUST NOT use <a data-cite="epub-33#css-prefixes"><code>-epub-</code>
 							prefixed properties</a> [[epub-33]].</li>
 						<li>CSS style sheets MUST be UTF-8 encoded [[unicode]].</li>
+					</ul>
+
+					<p>In addition, the following are strongly RECOMMENDED:</p>
+
+					<ul>
+						<li>
+							<p>eBraille creators SHOULD NOT use properties that affect the text's font (e.g., which font
+								gets applied, its size, whether it's bold, italic, etc.). Creators should assume that
+								reading devices determine the shape and size of the braille symbols (e.g. for technical
+								reasons, or to ensure a good reading experience).</p>
+							<p>The font-related properties include, but are not be limited to:</p>
+							<ul>
+								<li><a data-cite="css-fonts#font-family-prop"><code>font-family</code></a>,</li>
+								<li><a data-cite="css-fonts#font-size-prop"><code>font-size</code></a>,</li>
+								<li><a data-cite="css-fonts#font-style-prop"><code>font-style</code></a>,</li>
+								<li><a data-cite="css-fonts#font-weight-prop"><code>font-weight</code></a> and</li>
+								<li><a data-cite="css-fonts#font-variant-prop"><code>font-variant</code></a><!--,</li>
+								<li><a data-cite="css-fonts#font-kerning-prop"><code>font-kerning</code></a>,</li>
+								<li><a data-cite="css-fonts#font-feature-settings-prop"><code>font-feature-settings</code></a>,</li>
+								<li><a data-cite="css-fonts#font-variant-caps-prop"><code>font-variant-caps</code></a>,</li>
+								<li><a data-cite="css-fonts#font-variant-east-asian-prop"><code>font-variant-east-asian</code></a>,</li>
+								<li><a data-cite="css-fonts#font-variant-ligatures-prop"><code>font-variant-ligatures</code></a>,</li>
+								<li><a data-cite="css-fonts#font-variant-numeric-prop"><code>font-variant-numeric</code></a>,</li>
+								<li><a data-cite="css-fonts#font-variant-position-prop"><code>font-variant-position</code></a>,</li>
+								<li><a data-cite="css-fonts#font-size-adjust-prop"><code>font-size-adjust</code></a> and</li>
+								<li><a data-cite="css-fonts#font-stretch-prop"><code>font-stretch</code></a>--> [[css-fonts]],</li>
+								<li><a data-cite="css-color#foreground"><code>color</code></a> [[css-color]],</li>
+								<li><a data-cite="css-text-decor#text-decoration-property"><code>text-decoration</code></a>,</li>
+								<li><a data-cite="css-text-decor#text-shadow-property"><code>text-shadow</code></a> and</li>
+								<li><a data-cite="css-text-decor#text-underline-position-property"><code>text-underline-position</a></code> [[css-text-decor]]</li>
+							</ul>
+						</li>
+						<li>
+							<p>eBraille creators SHOULD
+								use <a data-cite="css-values#font-relative-lengths">font-relative
+								lengths</a> <!-- `em' is already defined in css2/syndata.html#length-units, but ch'
+								`isn't --> [[css-values]] only. Because it should be assumed that creators have no
+								control over the font used by the reading device, using absolute lengths is regarded
+								unreliable. Using font-relative lengths in style sheets is also needed in order to be
+								able to reliably use relative widths and heights in <a href="#media-queries">media
+								queries</a>.</p>
+						</li>
 					</ul>
 
 					<div class="note">
