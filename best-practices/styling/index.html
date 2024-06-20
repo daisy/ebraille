@@ -58,6 +58,12 @@
 						authors: ["Willow Free"],
 						status: "DAISY Editor's Draft"
 					},
+					"MEDIAQUERIES4": {
+						"aliasOf": "mediaqueries-4-20211225"
+					},
+					"CSS3CONDITIONAL": {
+						"aliasOf": "css-conditional-3-20220113"
+					},
 					"CSS3BOX": {
 						aliasOf: "css-box-3-20240411" // "css-box-3"
 					},
@@ -193,12 +199,89 @@
 }</code></pre>
 			</div>
 
+			<section id="media-queries">
+				<h3>Media queries</h3>
+
+				<p>Through <a data-cite="EBRAILLE#media-queries">media queries</a>, styles may be
+					applied conditionally depending on the type and characteristics of the
+					device. For instance:</p>
+
+				<ul>
+					<li>A certain way of rendering tables requires a viewport with a minimal
+						width.</li>
+					<li>It may also depend on whether the device supports horizontal scrolling or
+						not.</li>
+					<li>On a braille display with fewer than a certain number of rows, it may be
+						desired to omit blank lines.</li>
+					<li>A device that breaks up the content into discrete pages allows for different
+						styling than a device that lets the user scroll through the content.</li>
+					<li>A document may need a different layout when printed on paper.</li>
+				</ul>
+
+				<p>The following example shows how style sheets for different media may be linked
+				from a XHTML content document. As per the recommendation, no media queries that
+				discriminate between a braille display and a screen are used.</p>
+
+				<aside class="example" title="Including style sheets for different media">
+					<pre><code class="html">&lt;head&gt;
+   ...
+   &lt;link rel="stylesheet" type="text/css" media="all" href="common.css"/&gt;
+   &lt;link rel="stylesheet" type="text/css" media="(update)" href="display.css"/&gt;
+   &lt;link rel="stylesheet" type="text/css" media="(overflow-block: paged)" href="paged.css"/&gt;
+   &lt;link rel="stylesheet" type="text/css" media="not (update)" href="embosser.css"/&gt;
+   ...
+&lt;/head&gt;</code></pre>
+				</aside>
+
+				<p>The following example shows how the number of columns in a column layout may be
+					adapted according to the width of the viewport:</p>
+
+				<aside class="example" title="Column layout adapting to device width">
+					<pre><code class="html">&lt;div class="columned"&gt;
+   ⠂⠂⠂⠂ ⠂⠂⠂⠂ ⠂⠂⠂⠂ ⠂⠂⠂⠂ ⠂⠂⠂⠂ ⠂⠂⠂⠂ ⠂⠂⠂⠂ ⠂⠂⠂⠂
+   ⠂⠂⠂⠂ ⠂⠂⠂⠂ ⠂⠂⠂⠂ ⠂⠂⠂⠂ ⠂⠂⠂⠂ ⠂⠂⠂⠂ ⠂⠂⠂⠂ ⠂⠂⠂⠂
+   ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛
+   ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛
+&lt;/div&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code only
+						for devices that are wider than 30 cells,</p>
+					<pre><code class="formatted-braille">⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠀⠀⠀⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠀
+⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠀⠀⠀⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠀
+⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠀⠀⠀⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠀
+⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠀⠀⠀⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠀
+⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠀⠀⠀⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠀⠀⠀⠀⠀⠀
+⠂⠂⠂⠂⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="35">@media (width > 30ch) {
+   div.columned {
+      column-count: 2;
+      column-gap: 3ch;
+   }
+}
+</code></pre>
+					<p>For a viewport with a smaller width, the resulting layout is as follows:</p>
+					<pre><code class="formatted-braille">⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂
+⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂
+⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛
+⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛
+⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛
+⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>CSS specifications:</p>
+					<ul class="specification-links">
+						<li><a data-cite="CSS3CONDITIONAL#at-media">Media-specific style sheets: the
+						‘<code>@media</code>’ rule</a> [[CSS3CONDITIONAL]]</li>
+						<li><a data-cite="MEDIAQUERIES4#width">Width: the ‘<code>width</code>’
+						feature</a> [[MEDIAQUERIES4]]</li>
+					</ul>
+				</aside>
+			</section>
+
 			<section id="misc">
-				<h3>Miscellaneous</h3>
+				<h3>Miscellaneous examples</h3>
 
 				<aside class="example" title="Nemeth box with blank lines">
 					<p class="ednote">
-						The “<a href="../tagging/index.html##example-a-nemeth-box">A Nemeth box</a>”
+						The “<a href="../tagging/index.html#example-a-nemeth-box">A Nemeth box</a>”
 						example from [[TAGGING]] was adapted to contain a multi-line formula, and
 						to have text before and after the box.
 					</p>
