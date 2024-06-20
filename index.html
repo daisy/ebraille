@@ -78,6 +78,15 @@
 					},
 					"css-values": {
 						"aliasOf": "css-values-3-20240322"
+					},
+					"mediaqueries": {
+						"aliasOf": "mediaqueries-4-20211225"
+					},
+					"css-conditional": {
+						"aliasOf": "css-conditional-3-20220113"
+					},
+					"css-cascade": {
+						"aliasOf": "css-cascade-5-20220113"
 					}
 				}
 			};
@@ -876,6 +885,55 @@
 					</div>
 				</section>
 
+				<section id="media-queries">
+					<h4>Media queries</h4>
+
+					<p>eBraille allows the use of media queries [[mediaqueries]] to support styling and content that is
+						conditional on the type and characteristics of the device.</p>
+
+					<p>The restrictions and recommendations in this section apply to CSS
+						(e.g. <a data-cite="css-conditional#at-media"><code>@media</code></a> [[css-conditional]]
+						and <a data-cite="css-cascade#conditional-import"><code>@import</code></a> [[css-cascade]]
+						rules), as well as where <a data-cite="html#mq">media queries are used as a microsyntax in</a>
+						[[html]] (such as in the <a data-cite="html#the-link-element"><code>link</code></a>
+						and <a data-cite="html#the-style-element"><code>style</code></a> elements), and in
+						<a data-cite="xml-stylesheet#"><code>xml-stylesheet</code></a> processing instructions
+						[[xml-stylesheet]].</p>
+
+					<ul>
+						<li>
+							<p>[=eBraille creators=] SHOULD NOT use media queries that discriminate between a
+								braille display and a screen when the target medium is a braille display.</p>
+
+							<div class="note">
+								<p>The logical consequence of this is that it will be impossible to discriminate between
+									visual and tactile access modes, in other words it forces rendering on a screen and
+									on a braille display that are otherwise comparable, to be the same, and the CSS to
+									have the same requirements.</p>
+								<p>Note that we do not recommend
+									using <a data-cite="mediaqueries#valdef-media-braille"><code>braille</code></a>,
+									nor <a data-cite="mediaqueries#grid"><code>(grid)</code></a>, because there are
+									currently no known CSS implementations that match these, so requiring [=eBraille
+									reading systems=] to match them could be problematic. <!-- Another reason to not
+									recommend <code>braille</code> is because it is expected to become
+									deprecated.--></p>
+								<p>We don't recommend
+									using <a data-cite="mediaqueries#valdef-media-screen"><code>screen</code></a>
+									because we want to be forward-compatible with a possible future version of the
+									standard that supports differences in styling for screens vs. braille displays,
+									might that become a requirement.</p>
+							</div>
+						</li>
+						<li>
+							<p>To adapt the styling based on the dimensions of the viewport, eBraille creators SHOULD
+								use <a data-cite="css-values#font-relative-lengths">font-relative lengths</a>.</p>
+						</li>
+					</ul>
+					<div class="note">
+						<p>More specific guidance on how to use media queries in eBraille content documents is provided
+							in the <a href="best-practices/styling/">eBraille Styling Best Practices</a>.</p>
+					</div>
+				</section>
 			</section>
 
 			<section id="authoring-bp" class="informative">
