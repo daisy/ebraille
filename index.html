@@ -63,6 +63,9 @@
 						"title": "Digital Publishing WAI-ARIA Module",
 						"href": "https://www.w3.org/TR/dpub-aria/",
 						"publisher": "W3C"
+					},
+					"css-page": {
+						"aliasOf": "css-page-3-20230914"
 					}
 				}
 			};
@@ -173,7 +176,7 @@
 				</div>
 
 				<dl>
-					<dt><dfn>eBraille content document</dfn></dt>
+					<dt><dfn data-lt="content document|content documents">eBraille content document</dfn></dt>
 					<dd>
 						<p data-cite="html">eBraille content documents contain all or part of the content of a braille
 							publication. They use a restrictive set of [[html]] tags and define processing requirements
@@ -181,7 +184,7 @@
 						<p>For more information, refer to <a href="#ebrl-content-docs"></a>.</p>
 					</dd>
 
-					<dt><dfn>eBraille creator</dfn></dt>
+					<dt><dfn data-lt="eBraille author|eBraille authors|author|authors">eBraille creator</dfn></dt>
 					<dd>
 						<p>An individual, organization, or process that produces an [=eBraille publication=].</p>
 					</dd>
@@ -774,22 +777,51 @@
 			</section>
 
 			<section id="html-css">
-				<h3>CSS support</h3>
+				<h3>Cascading Style Sheets (CSS)</h3>
 
-				<p>The requirements for using CSS to style [=eBraille content documents=] are defined in <a
-						data-cite="epub-33#sec-css-req">CSS requirements</a> [[epub-33]] but with the following
-					differences:</p>
+				<section id="css-intro" class="informative">
+					<h4>Introduction</h4>
 
-				<ul>
-					<li>[=eBraille creators=] MUST NOT use <a data-cite="epub-33#css-prefixes"><code>-epub-</code>
+					<p><a>eBraille authors</a> may use CSS [[css2]] to style and layout <a>content documents</a>. With
+						the few exceptions defined in this section, eBraille defers to EPUB and the <abbr title="World
+						Wide Web Consortium">W3C</abbr> to define CSS.</p>
+
+					<div class="note">
+						<p>Keep in mind that some <a>reading systems</a> will not support all desired features of
+							CSS. The following are identified as potentially problematic, depending on the technology
+							choices of reading system implementations, and should therefore be treaten with care:</p>
+						<ul>
+							<li>The "<a data-cite="css-page#">CSS Paged Media Module Level 3</a>" working draft
+								[[css-page]], which builds on the "<a data-cite="css2/page.html#the-page">Paged
+								media</a>" section of [[css2]], is not well supported in web browsers.</li>
+						</ul>
+					</div>
+
+					<p>Note that the presentation of content is not determined by author style sheets only. <a>Reading
+						systems</a> are expected to apply default styles that make sense for the current locale, in case
+						author styles are missing or incomplete. This may be done through CSS or through other means.
+						Reading systems may also perform specific styling according to user preferences.</p>
+				</section>
+
+				<section id="css-req">
+					<h4>CSS requirements</h4>
+
+					<p>The requirements for using CSS to style [=eBraille content documents=] are defined
+						in <a data-cite="epub-33#sec-css-req">CSS requirements</a> [[epub-33]] but with the following
+						differences:</p>
+
+					<ul>
+						<li>[=eBraille creators=] MUST NOT use <a data-cite="epub-33#css-prefixes"><code>-epub-</code>
 							prefixed properties</a> [[epub-33]].</li>
-					<li>CSS style sheets MUST be UTF-8 encoded [[unicode]].</li>
-				</ul>
+						<li>CSS style sheets MUST be UTF-8 encoded [[unicode]].</li>
+					</ul>
 
-				<div class="note">
-					<p>More specific guidance on how to use CSS properties in eBraille content documents is provided in
-						the <a href="best-practices/styling/">eBraille Styling Best Practices</a>.</p>
-				</div>
+					<div class="note">
+						<p>More specific guidance on how to use CSS properties in eBraille content documents is provided
+						in the <a href="best-practices/styling/">eBraille Styling Best Practices</a>.</p>
+					</div>
+				</section>
+
 			</section>
 
 			<section id="authoring-bp" class="informative">
