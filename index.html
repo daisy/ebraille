@@ -108,7 +108,57 @@
 					formats.</p>
 			</section>
 
-			<section id="conformance"></section>
+			<section id="relationship-epub3" class="informative">
+				<h3>Relationship to EPUB 3</h3>
+
+				<p>The [=eBraille file set=] is designed to be compatible with EPUB 3 [[epub-33]] and adapt to changes
+					to that standard. Distribution and consumption on mainstream [=EPUB reading systems=], however, is
+					not a primary goal of this format. This specification introduces some additional requirements and
+					features beyond those defined in EPUB 3, and it is not expected that mainstream reading systems will
+					adapt to these modifications. Consequently, an eBraille publication may not render exactly as
+					intended outside of eBraille reading systems.</p>
+
+				<p>The primary difference between the eBraille format and EPUB 3 is eBraille publications do not have to
+					be packaged and distributed in an [=EPUB container=] [[epub-33]]. An [=eBraille publication=] will
+					be easy to package in an EPUB container when needed, however.</p>
+
+				<p>Compatibility with EPUB 3 also means that eBraille relies on the same <a
+						data-cite="epub-33#sec-intro-relations">underlying technologies</a> [[epub-33]]. Many of these
+					technologies, like [[html]], are referred to as "evergreen" or "living" standards as they are
+					updated often and they do not have version numbers. Others, like [[svg]], are referred to without a
+					specific version number so that the latest recommendation is always the recommended one to use.</p>
+
+				<p>The practical effect of this approach is predominantly beneficial for [=eBraille creators=]. New
+					features become available for use as soon as they are standardized, without having to wait for the
+					eBraille standard to catch up. It does come with some drawbacks, however. eBraille creators also
+					have to keep themselves apprised of changes to the underlying technologies, and use their best
+					judgement in some cases as to whether a new feature is supported well enough in [=eBraille reading
+					systems=] to begin deploying. In some rare cases, it may also mean that content that was previously
+					valid may no longer be, but breaking changes like this usually only happen when features are
+					unsupported or are found to have serious security or privacy flaws.</p>
+			</section>
+
+			<section id="future-dir" class="informative">
+				<h3>Future directions</h3>
+
+				<p>The first version of the eBraille format is focused on creating a reading experience that is
+					minimally feature complete for the majority of braille publications. It is not expected that this
+					version will handle every unique formatting requirement of every publication type, but future drafts
+					and versions of this specification will focus on making the format more feature complete.</p>
+
+				<p>In particular, the working group expects to review the current support decisions for the following
+					features:</p>
+
+				<ul>
+					<li>scripting &#8212; the use of JavaScript in [=eBraille content documents=] is currently
+						prohibited. The working group is seeking further input on the need for dynamic braille before
+						allowing scripting as the ability to script documents increases the security and privacy risks
+						of the format.</li>
+					<li>CSS extensions &#8212; the first version of eBraille uses standard CSS properties to format
+						braille content. There may be a need to extend CSS in the future to handle more complex
+						formatting cases, which will also require defining reading system implementations.</li>
+				</ul>
+			</section>
 
 			<section id="terminology">
 				<h3>Terminology</h3>
@@ -171,42 +221,47 @@
 				</dl>
 			</section>
 
-			<section id="relationship-epub3" class="informative">
-				<h3>Relationship to EPUB 3</h3>
+			<section id="conformance"></section>
 
-				<p>The [=eBraille file set=] is designed to be compatible with EPUB 3 [[epub-33]] and adapt to changes
-					to that standard. Distribution and consumption on mainstream [=EPUB reading systems=], however, is
-					not a primary goal of this format. This specification introduces some additional requirements and
-					features beyond those defined in EPUB 3, and it is not expect that mainstream reading systems will
-					adapt to these modifications. Consequently, an eBraille publication may not render exactly as
-					intended outside of eBraille reading systems.</p>
+			<section id="auth-shorthands" class="informative">
+				<h3>Authoring shorthands</h3>
 
-				<p>The primary difference between the eBraille format and EPUB 3 is eBraille publications do not have to
-					be packaged and distributed in an [=EPUB container=] [[epub-33]]. An [=eBraille publication=] will
-					be easy to package in an EPUB container when needed, however.</p>
+				<p>In <a href="#metadata">package document metadata</a> examples, <a
+						data-cite="epub-33#sec-metadata-reserved-prefixes">reserved prefixes</a> [[epub-33]] are used
+					without declaration.</p>
+
+				<p>References to Dublin Core elements [[dcterms]] use the <code>dc:</code> prefix. This prefix must be
+					declared in the package document for their use to be valid
+						(<code>xmlns:dc="http://purl.org/dc/elements/1.1/"</code>)</p>
+
+				<p>The <code>epub</code> namespace prefix [[xml-names]] is also used on elements and attributes without
+					always having an explicit declaration (<code>xmlns:epub="http://www.idpf.org/2007/ops"</code>).</p>
 			</section>
+		</section>
+		<section id="ebrl-pub">
+			<h2>eBraille publication conformance</h2>
 
-			<section id="future-dir" class="informative">
-				<h3>Future directions</h3>
+			<p>A conforming [=eBraille publication=]:</p>
 
-				<p>The first version of the eBraille format is focused on creating a reading experience that is
-					minimally feature complete for the majority of braille publications. It is not expected that this
-					version will handle every unique formatting requirement of every publication type, but future drafts
-					and versions of this specification will focus on making the format more feature complete.</p>
+			<ul>
+				<li>
+					<p>MUST define at least one rendering of its content as follows:</p>
+					<ul>
+						<li>It MUST contain a package document that conforms to <a href="#ebrl-package-doc"></a> and
+							meet all publication resource requirements for the package document.</li>
+						<li>It MUST contain a primary entry page that conforms to <a href="#ebrl-nav"></a>.</li>
+					</ul>
+				</li>
+				<li>SHOULD conform to the accessibility requirements defined in <a href="#ebrl-a11y"></a>.</li>
+			</ul>
 
-				<p>In particular, the working group expects to review the current support decisions for the following
-					features:</p>
+			<p>In addition, all publication resources MUST adhere to the requirements in <a href="#ebrl-resources"
+				></a>.</p>
 
-				<ul>
-					<li>scripting &#8212; the use of JavaScript in [=eBraille content documents=] is currently
-						prohibited. The working group is seeking further input on the need for dynamic braille before
-						allowing scripting as the ability to script documents increases the security and privacy risks
-						of the format.</li>
-					<li>CSS extensions &#8212; the first version of eBraille uses standard CSS properties to format
-						braille content. There may be a need to extend CSS in the future to handle more complex
-						formatting cases, which will also require defining reading system implementations.</li>
-				</ul>
-			</section>
+			<p>If an eBraille publication is packaged for distribution, it MUST adhere to the packaging requirements in
+					<a href="#ebrl-packaging"></a>.</p>
+
+			<p>The rest of this specification covers specific conformance details.</p>
 		</section>
 		<section id="ebrl-resources">
 			<h2>Publication resources</h2>
@@ -225,6 +280,69 @@
 					fallbacks, are disallowed in eBraille publications.</p>
 			</section>
 
+			<section id="cmt">
+				<h3>Core media types</h3>
+
+				<p>To ensure that [=eBraille reading systems=] are capable of rendering the content of [=eBraille
+					publications=], only certain widely supported resource types are allowed to be included without
+					fallbacks. These are called core media types and are designated by their MIME media type [[rfc2046]]
+					(e.g., XHTML documents have the MIME media type <code>application/xhtml+xml</code>.</p>
+
+				<p>Being designated a core media type does not mean that all reading systems are required to support the
+					type of resource, however. A reading system without audio capabilities will not be able to render
+					audio core media types, for example.</p>
+
+				<p>The list of core media types allowed in eBraille publications is the same as those designated for
+					EPUB 3. Some of the key core media types for eBraille include:</p>
+
+				<ul>
+					<li><code>application/xhtml+xml</code> &#8212; HTML documents that use the XML syntax [[html]].</li>
+					<li><code>text/css</code> &#8212; CSS Style Sheets [[css2]].</li>
+					<li><code>image/jpeg</code> &#8212; JPEG Images [[jpeg]]</li>
+					<li><code>image/png</code> &#8212; PNG Images [[png]]</li>
+					<li><code>image/svg+xml</code> &#8212; SVG images [[svg]]</li>
+				</ul>
+
+				<p>The complete list is available in the <a data-cite="epub-33#sec-core-media-types">core media types
+						section</a> of [[epub-33]].</p>
+
+				<p>All other media types are considered <a href="foreign-res">foreign resources</a>.</p>
+			</section>
+
+			<section id="foreign-res">
+				<h3>Foreign resources</h3>
+
+				<p>Foreign resources, unlike <a href="#cmt">core media types</a>, have no guarantee of support in
+					reading systems.</p>
+
+				<p>To avoid users not being able to access the content of the [=eBraille publication=], foreign
+					resources can only be used if a fallback to a core media type is provided. Fallbacks are provided
+					using <a data-cite="epub-33#sec-intrinsic-fallbacks">intrinsic fallback methods</a> [[epub-33]].</p>
+
+				<div class="note">
+					<p><a href="#fallbacks">Manifest fallbacks</a> are not supported in eBraille, so foreign resources
+						cannot be used in the <a href="#spine">spine</a>. Similarly, foreign image formats have to
+						include fallbacks using the [[html]] [^img^] and [^picture^] elements' intrinsic fallback
+						capabilities.</p>
+				</div>
+
+				<p>It is generally best to avoid foreign resources unless absolutely necessary. PDF tactile graphics are
+					an example of a foreign resource that may not be avoidable for some EPUB creators, but using the
+					[[html]] [^object^] element's intrinsic fallback capabilities can avoid having to duplicate the
+					image in a core media type format.</p>
+
+				<aside class="example" title="PDF tactile image with fallback">
+					<pre><code>&lt;object
+     data="ebraille/images/clouds.pdf"
+     type="application/pdf"
+     height="250"
+     width="100"
+     aria-labelledby="alt">
+   &lt;p id="alt">&lt;!-- alternative text -->&lt;/p>
+&lt;/object></code></pre>
+				</aside>
+			</section>
+
 			<section id="fallbacks">
 				<h3>Resource fallbacks</h3>
 
@@ -241,6 +359,14 @@
 				<p>[=eBraille publications=] do not support [=remote resources=] [[epub-33]]. All publication resources
 					MUST be located in or below the [=root directory=], as defined in <a href="#fileset-structure"
 					></a>.</p>
+
+				<p>eBraille does not support the <code>file:</code> URL scheme [[rfc8089]] for referencing resources in
+					an eBraille publication. Accessing files on the user's local file system presents too great a
+					security risk.</p>
+
+				<p>The <code>data:</code> URL scheme MAY be used to embed resources within [=eBraille content
+					documents=] per the restrictions outlined in <a data-cite="epub-33#sec-data-urls">Data URLs</a>
+					[[epub-33]].</p>
 			</section>
 
 			<section id="res-exemptions" class="informative">
@@ -283,10 +409,21 @@
 						opening the primary entry page.</p>
 
 					<p>The <code>.xhtml</code> extension may be useful if eBraille content documents are opened in a
-						browser on a local file system (e.g., for testing), as this triggers some browers to render the
+						browser on a local file system (e.g., for testing), as this triggers some browsers to render the
 						content using the correct XML parser. It has no effect on documents served over the web,
 						however.</p>
 				</div>
+			</section>
+
+			<section id="xml-conformance">
+				<h3>XML conformance</h3>
+
+				<p>The requirements for XML-based media types [[rfc2046]] defined in <a
+						data-cite="epub-33#sec-xml-constraints">XML conformance</a> [[epub-33]] also apply to [=eBraille
+					publications=].</p>
+
+				<p>The only difference is that eBraille publications only support UTF-8 [[unicode]]. UTF-16 MUST NOT be
+					used to encode XML resources.</p>
 			</section>
 		</section>
 		<section id="ebrl-fileset">
@@ -362,6 +499,28 @@
 
 				<p>For this reason, the eBraille file set MUST NOT include file references that use path-absolute-URL
 					strings.</p>
+			</section>
+
+			<section id="multiple-renditions">
+				<h3>Multiple renditions</h3>
+
+				<p>An [=eBraille publication=] MAY contain multiple renditions of the content. The specifics of how this
+					is done are defined in EPUB 3 Multiple-Rendition Publications 1.1 [[epub-multi-rend-11]].</p>
+
+				<p>When including multiple renditions, only the <a data-cite="epub-multi-rend-11##container">default
+						rendition</a> [[epub-multi-rend-11]] (i.e., one listed first in the <a
+						data-cite="epub-33#sec-container-metainf-container.xml"><code>container.xml</code> file</a>
+					[[epub-33]]) is subject to the <a href="#fileset-structure">file naming and location
+						requirements</a> for the package document and primary entry page.</p>
+
+				<p>The default rendition MUST be a braille rendition (i.e., identified by a <a
+						data-cite="epub-multi-rend-11#accessMode-attr"><code>rendition:accessMode</code> attribute</a>
+					with the value "<code>tactile</code>" [[epub-multi-rend-11]]).</p>
+
+				<div class="note">
+					<p>[[epub-multi-rend-11]] is only a W3C Working Group Note. The technology is not currently
+						considered stable and should be used with appropriate caution.</p>
+				</div>
 			</section>
 		</section>
 		<section id="ebrl-package-doc">
@@ -602,15 +761,31 @@
 							work in [=eBraille publications=]. It is strongly recommended not to include these elements,
 							as well.</p>
 					</div>
+
+					<div class="note">
+						<p>An exemption is made to the scripting requirement for the <a href="#ebrl-nav">primary entry
+								page</a> so long as it is not listed in the spine. The exemption is to allow publishers
+							to add a user interface for web deployment.</p>
+					</div>
 				</section>
 			</section>
 
 			<section id="html-css">
 				<h3>CSS support</h3>
 
-				<div class="ednote">
-					<p>CSS properties that authors may use and reading systems must support will be added in a future
-						update.</p>
+				<p>The requirements for using CSS to style [=eBraille content documents=] are defined in <a
+						data-cite="epub-33#sec-css-req">CSS requirements</a> [[epub-33]] but with the following
+					differences:</p>
+
+				<ul>
+					<li>[=eBraille creators=] MUST NOT use <a data-cite="epub-33#css-prefixes"><code>-epub-</code>
+							prefixed properties</a> [[epub-33]].</li>
+					<li>CSS style sheets MUST be UTF-8 encoded [[unicode]].</li>
+				</ul>
+
+				<div class="note">
+					<p>More specific guidance on how to use CSS properties in eBraille content documents is provided in
+						the <a href="best-practices/styling/">eBraille Styling Best Practices</a>.</p>
 				</div>
 			</section>
 
@@ -707,6 +882,17 @@
    &#8230;
 &lt;/package></code></pre>
 				</aside>
+
+        <p>The primary entry page MAY include [[html]] [^script^] elements only if the document is not included
+					in the spine. This exception is to allow publishers to include a user interface to better enable
+					reading of their publication in browsers. It is not meant for general scripting of the content.</p>
+
+				<div class="note">
+					<p>A scripted primary entry page is not allowed in the spine as an extra measure to ensure that the
+						scripting does not interfere with rendering in [=eBraille reading systems=]. Reading systems are
+						expected to disable the scripting in the primary entry page regardless of the document's
+						placement in the spine.</p>
+				</div>
 			</section>
 
 			<section id="navigation">
@@ -1073,6 +1259,63 @@
 
 			<p>A packaged eBraille file set MUST use the extension <code>.ebrl</code>.</p>
 		</section>
+		<section id="ebrl-security-privacy">
+			<h2>Security and privacy</h2>
+
+			<section id="threat-model" class="informative">
+				<h3>Threat model</h3>
+
+				<p>Although eBraille shares a common file set with EPUB 3, many of the <a
+						data-cite="epub-33#sec-security-privacy">privacy and security threats</a> [[epub-33]] that arise
+					with EPUB 3 publications do not apply to [=eBraille publications=]. The reason is that the primary
+					threat vectors in EPUB 3 come from its allowance of scripting and network access. Users do not face
+					the same risks from third party scripts, from attempts by publishers to monitor their activities or
+					profile them through scripting, or from malicious code being brought in by remote resource calls,
+					among other threats outlined in EPUB 3.</p>
+
+				<p>It does not mean that there are no security or privacy risks with eBraille publications. [=eBraille
+					creators=] still need to ensure they maintain the security and privacy rights of users when creating
+					their publications. The possible areas of concern for eBraille publications include:</p>
+
+				<dl>
+					<dt>Linking to external resources</dt>
+					<dd>
+						<p>Linking out to resources on the web can expose users to potential malicious content.
+							Broken-link hijacking is one example where a malicious actor may buy the expired domain of a
+							site and redirect users to content the eBraille creator never intended. Links to a
+							publishers web site could allow them to profile users if they include tracking
+							information.</p>
+					</dd>
+
+					<dt>Including malicious content</dt>
+					<dd>
+						<p>Although eBraille does not allow eBraille creators to embed remote resources in publications,
+							using third-party resources, such as tactile graphics, can expose users to exploits.</p>
+					</dd>
+
+					<dt>Falsified publication information</dt>
+					<dd>
+						<p>Malicious actors could include false metadata &#8212; such as the title, author, and
+							publisher &#8212; in an eBraille publication to trick unsuspecting users into believing they
+							are reading material from a trustworthy source. This could lead users to be more trusting of
+							external links than they otherwise would be.</p>
+					</dd>
+				</dl>
+			</section>
+
+			<section id="risk-mitigation">
+				<h3>Risk mitigation</h3>
+
+				<p>The following <a data-cite="epub-33#security-privacy-recommendations">recommendations from EPUB 3</a>
+					[[epub-33]] apply equally to [=eBraille publications=]:</p>
+
+				<ul>
+					<li>Avoid links to untrustworthy web sites (e.g., that browsers do not recognize as safe).</li>
+					<li>Use secure connections to external sites and resources (i.e., using the HTTPS protocol).</li>
+					<li>Avoid embedding content not provided by reputable organizations or individuals.</li>
+				</ul>
+			</section>
+		</section>
 		<section id="ebrl-web-deploy">
 			<h2>Web deployment</h2>
 
@@ -1172,6 +1415,365 @@
 					access. Consequently, a browser-based reading system SHOULD follow all the <a
 						data-cite="epub-rs-33#sec-security-privacy">recommendations for securing publications</a>
 					defined in [[epub-rs-33]].</p>
+			</section>
+		</section>
+		<section id="ebrl-meta-vocab" class="appendix">
+			<h2>eBraille Metadata Vocabulary</h2>
+
+			<section id="app-vocab-about">
+				<h3>About this vocabulary</h3>
+
+				<p>This vocabulary defines braille-specific properties for describing [=eBraille publications=].</p>
+			</section>
+
+			<section id="app-vocab-ref">
+				<h3>Referencing</h3>
+
+				<p>The base URL for referencing this vocabulary is <code>https://www.daisy.org/tbd</code></p>
+
+				<p>For compatibility with the EPUB 3 <a href="https://www.w3.org/TR/epub/#dfn-package-document">package
+						document</a>, this specification reserves the prefix "<code>brl:</code>" for use with properties
+					in this vocabulary.</p>
+
+				<p>Until such time as the prefix is formally registered as an EPUB 3 reserved prefix, it MUST be
+					declared in the eBraille package document.</p>
+			</section>
+			
+			<section>
+				<h3>Property field definitions</h3>
+
+				<p>The fields in the vocabulary definition tables have the following implicit requirements:</p>
+
+				<dl>
+					<dt>Allowed Values</dt>
+					<dd>
+						<p>Specifies the REQUIRED type of value using [[xmlschema-2]] datatypes.</p>
+					</dd>
+
+					<dt>Cardinality</dt>
+					<dd>
+						<p>Specifies the number of times eBraille creators MAY specify the property.</p>
+						<p>Properties with a minimum cardinality of one MUST be specified.</p>
+					</dd>
+
+					<dt>Description</dt>
+					<dd>
+						<p>Describes the purpose of the property and specifies any additional usage requirements that
+							eBraille creators must follow.</p>
+					</dd>
+
+					<dt>Example</dt>
+					<dd>
+						<p>Provides non-normative usage examples.</p>
+					</dd>
+
+					<dt>Name</dt>
+					<dd>
+						<p>Specifies the name of the property as it MUST appear in the metadata.</p>
+					</dd>
+				</dl>
+			</section>
+			
+			<section id="vocab-bibliographic">
+				<h3>Bibliographic properties</h3>
+
+				<section id="certifiedBy">
+					<h4>completeTranscription</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>completeTranscription</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>completeTranscription</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>Identifies whether the original work being transcribed is fully represented in the
+								braille rendition, minus any minor omissions such as illustrations without captions or
+								other material that is not ordinarily transcribed.</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>true</code> | <code>false</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Cardinality:</th>
+							<td>Exactly one</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="brl:completeTranscription">true&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<section id="producer">
+					<h4>producer</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>producer</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>producer</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>Identifies the name of the organization(s) that produced the braille publication.</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>xsd:string</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Cardinality:</th>
+							<td>Zero or more</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="brl:producer">APH&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<!--
+			<section id="volumes">
+				<h3>volumes</h3>
+
+				<table class="tabledef">
+					<caption>Definition of the <code>volumes</code> property</caption>
+					<tr>
+						<th>Name:</th>
+						<td>
+							<code>volumes</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Description:</th>
+						<td>Identifies the total number of volumes within the eBraille publication. The number typically
+							corresponds to the number of XHTML content documents in the publication.</td>
+					</tr>
+					<tr>
+						<th>Allowed value(s):</th>
+						<td>
+							<code>xsd:unsignedInt</code>
+						</td>
+					</tr>
+					<tr>
+						<th>Cardinality:</th>
+						<td>Zero or one</td>
+					</tr>
+					<tr>
+						<th>Example:</th>
+						<td>
+							<pre>&lt;meta property="brl:volumes">3&lt;/meta></pre>
+						</td>
+					</tr>
+				</table>
+			</section>
+-->
+			</section>
+			
+			<section id="vocab-content">
+				<h3>Content properties</h3>
+
+				<section id="dotNumber">
+					<h4>dotNumber</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>dotNumber</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>dotNumber</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>Identifies whether 6 or 8 dot braille cell characters are used in the text.</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>6</code> | <code>8</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Cardinality:</th>
+							<td>Exactly one</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="brl:dotNumber">6&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<section id="graphicType">
+					<h4>graphicType</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>graphicType</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>graphicType</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>
+								<p>Identifies the format(s) of any tactile graphics included in the work.</p>
+								<p>Required if <a href="#tactileGraphics"><code>tactileGraphics</code></a> has the value
+										"<code>true</code>".</p>
+								<p>Repeat the property for each different format.</p>
+							</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>JPG</code> | <code>PDF</code> | <code>PNG</code> | <code>SVG</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Cardinality:</th>
+							<td>One or more when required.</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="brl:graphicType">SVG&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<section id="minimumCells">
+					<h4>minimumCells</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>minimumCells</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>minimumCells</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>
+								<p>Identifies the minimum number of cells per line required to accurately display the
+									material within the transcription.</p>
+								<p>For example, if a single graphic in the file requires at least 10 cells of space and
+									so the minimum for this file would be 10 cells.</p>
+								<p>Reading systems should attempt to display the content regardless of the value of this
+									property.</p>
+							</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>xsd:unsignedInt</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Cardinality:</th>
+							<td>Exactly one</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="brl:minimumCells">10&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<section id="minimumLines">
+					<h4>minimumLines</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>minimumLines</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>minimumLines</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>
+								<p>Identifies the minimum number of lines per page required to accurately display the
+									material within the transcription.</p>
+								<p>For single- and multi-line braille displays, the concept of a page refers to the
+									total number of lines that the hardware can accommodate without refreshing.</p>
+							</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>xsd:unsignedInt</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Cardinality:</th>
+							<td>Exactly one</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="brl:minimumLines">5&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<section id="tactileGraphics">
+					<h4>tactileGraphics</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>tactileGraphics</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>tactileGraphics</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>Identifies whether tactile graphics are present in the work.</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>true</code> | <code>false</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Cardinality:</th>
+							<td>Exactly one</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="brl:tactileGraphics">true&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
 			</section>
 		</section>
 		<div data-include="common/acknowledgements.html" data-include-replace="true"></div>
