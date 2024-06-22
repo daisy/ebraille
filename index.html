@@ -868,7 +868,22 @@
 					included in the <a href="#spine">spine</a>. If the publication needs a table of contents in the
 					spine, it is better to create a separate document with publication-specific formatting.</p>
 
-				<p>The primary entry page MAY include [[html]] [^script^] elements only if the document is not included
+				<p>As per the requirements of EPUB 3, the <a href="#manifest">manifest entry</a> for the primary entry
+					page has to have a <code>properties</code> attribute with the value "<code>nav</code>"
+					[[epub-33]].</p>
+
+				<aside class="example" title="Manifest entry for the primary entry page">
+					<pre><code>&lt;package &#8230;>
+   &#8230;
+   &lt;manifest>
+      &lt;item id="nav" href="index.html" type="application/xhtml+xml" properties="nav"/>
+      &#8230;
+   &lt;/manifest>
+   &#8230;
+&lt;/package></code></pre>
+				</aside>
+
+        <p>The primary entry page MAY include [[html]] [^script^] elements only if the document is not included
 					in the spine. This exception is to allow publishers to include a user interface to better enable
 					reading of their publication in browsers. It is not meant for general scripting of the content.</p>
 
@@ -886,29 +901,262 @@
 				<section id="nav-toc">
 					<h4>Table of contents</h4>
 
+					<p>The table of contents provides users access to the major sections of the publications.</p>
+
+					<p>The EPUB 3 specification requires that the table of contents be defined in an [[html]] [^nav^]
+						element whose <a data-cite="epub-33#dfn-epub-type"><code>epub:type</code> attribute</a>
+						specifies the value "<a data-cite="epub-33#sec-nav-toc"><code>toc</code></a>" [[epub-33]].</p>
+
 					<p>For compatibility with web-based rendering, the table of contents MUST also be identified by the
-						[^/role^] attribute [[html]] value <a data-cite="dpub-aria#doc-toc"><code>doc-toc</code></a>
-						[[dpub-aria]]</p>
+						[^/role^] attribute [[html]] value "<a data-cite="dpub-aria#doc-toc"><code>doc-toc</code></a>"
+						[[dpub-aria]].</p>
 
 					<aside class="example" title="Table of contents identified by the epub:type and role attributes">
-						<pre><code>&lt;nav epub:type="toc" role="doc-toc">
+						<pre><code>&lt;html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:epub="http://www.idpf.org/2007/ops"
+      &#8230;>
    &#8230;
+   &lt;body>
+      &lt;nav epub:type="toc"
+           role="doc-toc"
+           aria-label="Table of Contents">
+         &lt;h2>⠠⠞⠁⠃⠇⠑⠀⠕⠋⠀⠠⠉⠕⠝⠞⠑⠝⠞⠎&lt;/h2>
+         &#8230;
+      &lt;/nav>
+   &lt;/body>
+&lt;/html></code></pre>
+					</aside>
+
+					<p>The table of contents is defined by a single [[html]] ordered list ([^ol^]) in the root of the
+							<code>nav</code> element. Each [[html]] list item ([^li^]) represents one of the top-level
+						sections of the publication. If the section can be linked to, wrap its heading inside an
+						[[html]] anchor tag ([^a^]), otherwise wrap the heading in a [^span^] element (unlinked headings
+						are not common outside of publications that omit content).</p>
+
+					<aside class="example" title="Table of contents for a novel with only chapter headings">
+						<pre><code>&lt;nav epub:type="toc"
+     role="doc-toc"
+     aria-label="Table of Contents">
+   &lt;h2>⠠⠞⠁⠃⠇⠑⠀⠕⠋⠀⠠⠉⠕⠝⠞⠑⠝⠞⠎&lt;/h2>
+
+   &lt;ol>
+      &lt;li>
+         &lt;a href="chap01.html#c01">
+            ⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠁
+         &lt;/a>
+      &lt;/li>
+      &lt;li>
+         &lt;a href="chap02.html#c02">
+            ⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃
+         &lt;/a>
+      &lt;/li>
+      &lt;li>
+         &lt;a href="chap03.html#c03">
+            ⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠉
+         &lt;/a>
+      &lt;/li>
+      &#8230;
+   &lt;/ol>
 &lt;/nav></code></pre>
 					</aside>
+
+					<p>If a section contains additional subsections, list those headings in an <code>ol</code> element
+						after the link to the heading.</p>
+
+					<aside class="example" title="Table of contents for a textbook with parts and sections">
+						<pre><code>&lt;li>
+   &lt;a href="part01.html#p01">
+      ⠠⠏⠁⠗⠞ ⠼⠁
+   &lt;/a>
+   &lt;ol>
+      &lt;li>
+         &lt;a href="sec01.html#s01">
+            ⠠⠎⠑⠉⠞⠊⠕⠝ ⠼⠁
+         &lt;/a>
+      &lt;/li>
+      &#8230;
+   &lt;/ol>
+&lt;/li></code></pre>
+					</aside>
+
+					<p>The minimalist rules on the structure of the table of contents are to ensure that [=eBraille
+						reading systems=] can reliably process the information and present it to users in a specialized
+						interface. The table of contents is not normally included in the <a href="#spine">spine</a> for
+						reading; it is typically only presented directly to users if they load the primary entry page in
+						a browser.</p>
+
+					<div class="note">
+						<p>For more information, refer to <a data-cite="epub-33#sec-nav-toc">The <code>toc nav</code>
+								element</a> in [[epub-33]].</p>
+					</div>
 				</section>
 
 				<section id="page-list">
 					<h4>Page list</h4>
 
-					<p>For compatibility with web-based rendering, a page list MUST also be identified by the [^/role^]
-						attribute [[html]] value <a data-cite="dpub-aria#doc-pagelist"><code>doc-pagelist</code></a>
-						[[dpub-aria]]</p>
+					<p>The page list provides users to access to static page break locations in an [=eBraille
+						publication=]. These static page breaks typically correspond to the page breaks in the source
+						publication.</p>
+
+					<p>The EPUB 3 specification requires that the page list be defined in an [[html]] [^nav^] element
+						whose <a data-cite="epub-33#dfn-epub-type"><code>epub:type</code> attribute</a> specifies the
+						value "<a data-cite="epub-33#sec-nav-pagelist"><code>page-list</code></a>" [[epub-33]].</p>
+
+					<p>For compatibility with web-based rendering, the page list MUST also be identified by the
+						[^/role^] attribute [[html]] value "<a data-cite="dpub-aria#doc-pagelist"
+								><code>doc-pagelist</code></a>" [[dpub-aria]]</p>
 
 					<aside class="example" title="Page list identified by the epub:type and role attributes">
-						<pre><code>&lt;nav epub:type="page-list" role="doc-pagelist">
+						<pre><code>&lt;html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:epub="http://www.idpf.org/2007/ops"
+      &#8230;>
    &#8230;
+   &lt;body>
+      &#8230;
+      &lt;nav epub:type="page-list"
+           role="doc-pagelist"
+           aria-label="Page List">
+         &lt;h2>⠠⠏⠁⠛⠑ ⠠⠇⠊⠎⠞&lt;/h2>
+         &#8230;
+      &lt;/nav>
+   &lt;/body>
+&lt;/html></code></pre>
+					</aside>
+
+					<p>The page list is defined by a single [[html]] ordered list ([^ol^]) in the root of the
+							<code>nav</code> element. Each [[html]] list item ([^li^]) represents one static page break
+						in the publication, with the page number wrapped inside an [[html]] anchor tag ([^a^]) that
+						links to its location.</p>
+
+					<p>Each entry in the page list MUST include the print page number equivalent in a [^title^]
+						attribute [[html]]. Providing both encodings allows reading systems to match the page number
+						regardless of whether the device accepts braille input or not and avoids any mistranlation of
+						the page numbers if only one encoding is provided.</p>
+
+					<aside class="example" title="Page list with front and body matter">
+						<pre><code>&lt;nav epub:type="page-list"
+     role="doc-pagelist"
+     aria-label="Page List">
+   &lt;h2>⠠⠏⠁⠛⠑ ⠠⠇⠊⠎⠞&lt;/h2>
+   &lt;ol>
+      &lt;li>
+         &lt;a href="intro.html#pi"
+            title="i">
+            ⠊
+         &lt;/a>
+      &lt;/li>
+      &lt;li>
+         &lt;a href="intro.html#pii"
+            title="ii">
+            ⠊⠊
+         &lt;/a>
+      &lt;/li>
+      &#8230;
+      &lt;li>
+         &lt;a href="chap01.html#p001"
+            title="1">
+            ⠼⠁
+         &lt;/a>
+      &lt;/li>
+      &lt;li>
+         &lt;a href="chap01.html#p002"
+            title="2">
+            ⠼⠃
+         &lt;/a>
+      &lt;/li>
+      &#8230;
+   &lt;/ol>
 &lt;/nav></code></pre>
 					</aside>
+
+					<p>Only include the page number in the <code>a</code> tag. Adding words such as "page" may break the
+						ability of users to jump to the page break (i.e., [=reading systems=] will typically try to find
+						an exact match for the page number a user enters).</p>
+
+					<p>Unlike the <a href="#nav-toc">table of contents</a>, the page list cannot include nested lists.
+						It is not possible to group pages together by the section they belong to, for example.</p>
+
+					<div class="note">
+						<p>For more information, refer to <a data-cite="epub-33#sec-nav-pagelist">The <code>page-list
+									nav</code> element</a> in [[epub-33]].</p>
+					</div>
+				</section>
+
+				<section id="landmarks">
+					<h4>Landmarks</h4>
+
+					<p>Landmarks identify key structures of an [=eBraille publication=] that users may want a quick way
+						to access. Landmarks are not a repetition of the <a href="#nav-toc">table of contents</a>, but a
+						more select list of locations that users may want to refer to while reading.</p>
+
+					<p>The most common landmark in EPUB 3, for example, is the location where the body matter begins.
+						Providing this location allows reading systems to skip the front matter and load the first page
+						when users open a publication. Other key landmarks include glossaries and indexes, as users
+						often need to access these reference sections for more information while reading.</p>
+
+					<div class="ednote">
+						<p>A future update may recommend specific landmarks to include.</p>
+					</div>
+
+					<p>The EPUB 3 specification requires that the landmarks be defined in an [[html]] [^nav^] element
+						whose <a data-cite="epub-33#dfn-epub-type"><code>epub:type</code> attribute</a> specifies the
+						value "<a data-cite="epub-33#sec-nav-pagelist"><code>landmarks</code></a>" [[epub-33]].</p>
+
+					<aside class="example" title="Landmarks navigation element">
+						<pre><code>&lt;html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:epub="http://www.idpf.org/2007/ops"
+      &#8230;>
+   &#8230;
+   &lt;body>
+      &#8230;
+      &lt;nav
+           epub:type="landmarks"
+           aria-label="Landmarks">
+         &lt;h2>⠠⠇⠁⠝⠙⠍⠁⠗⠅⠎&lt;/h2>
+         &#8230;
+      &lt;/nav>
+   &lt;/body>
+&lt;/html></code></pre>
+					</aside>
+
+					<div class="note">
+						<p>Due to the conflicting naming with ARIA landmarks [[wai-aria-1.2]], the DPUB-ARIA vocabulary
+							[[dpub-aria]] does not include a role for a landmarks navigation element.</p>
+					</div>
+
+					<p>Landmarks are defined by a single [[html]] ordered list ([^ol^]) in the root of the
+							<code>nav</code> element. Each [[html]] list item ([^li^]) represents one landmark in the
+						publication.</p>
+
+					<p>The name of the landmarked is wrapped inside an [[html]] anchor tag ([^a^]) that provides a
+						machine-readable semantic that identifies the type of landmark in its <code>epub:type</code>
+						attribute. These semantics are drawn from the <a href="https://www.w3.org/TR/epub-ssv-11">EPUB
+							Structural Semantics Vocabulary</a> [[epub-ssv-11]].</p>
+
+					<aside class="example" title="Landmarks for body matter and glossary">
+						<pre><code>&lt;nav
+     epub:type="landmarks"
+     aria-label="Landmarks">
+   &lt;h2 id="lm-hd">⠠⠇⠁⠝⠙⠍⠁⠗⠅⠎&lt;/h2>
+   &lt;ol>
+      &lt;li>
+         &lt;a href="chap01.html" epub:type="bodymatter">
+            ⠠⠎⠞⠁⠗⠞ ⠕⠋ ⠃⠕⠙⠽ ⠍⠁⠞⠞⠑⠗
+         &lt;/a>
+      &lt;/li>
+      &lt;li>
+         &lt;a href="glossary.html" epub:type="glossary">
+            ⠠⠛⠇⠕⠎⠎⠁⠗⠽
+         &lt;/a>
+      &lt;/li>
+   &lt;/ol>
+&lt;/nav></code></pre>
+					</aside>
+
+					<div class="note">
+						<p>For more information, refer to <a data-cite="epub-33#sec-nav-landmarks">The <code>landmarks
+									nav</code> element</a> in [[epub-33]].</p>
+					</div>
 				</section>
 			</section>
 		</section>

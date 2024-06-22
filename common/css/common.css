@@ -101,6 +101,11 @@ pre > code.css::before, pre.highlight.lang-css::before {
     content: 'CSS';
 }
 
+/* example wrapping */
+
+pre {
+	white-space: break-spaces !important;
+}
 
 /* vocabulary styles */
 
