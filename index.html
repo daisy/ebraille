@@ -511,7 +511,9 @@
 						rendition</a> [[epub-multi-rend-11]] (i.e., one listed first in the <a
 						data-cite="epub-33#sec-container-metainf-container.xml"><code>container.xml</code> file</a>
 					[[epub-33]]) is subject to the <a href="#fileset-structure">file naming and location
-						requirements</a> for the package document and primary entry page.</p>
+						requirements</a> for the package document and primary entry page. The <a
+						href="#xhtml-char-encoding">recommendation to use only 6- and 8-dot Unicode characters</a> also
+					only applies to the default rendition.</p>
 
 				<p>The default rendition MUST be a braille rendition (i.e., identified by a <a
 						data-cite="epub-multi-rend-11#accessMode-attr"><code>rendition:accessMode</code> attribute</a>
@@ -738,18 +740,39 @@
 					SVG images are not supported in the [=spine=] but can be embedded in XHTML documents.</p>
 			</section>
 
-			<section id="html-req">
-				<h3>Requirements</h3>
+			<section id="xhtml">
+				<h3>XHTML</h3>
 
-				<p>An [=eBraille content document=]:</p>
+				<p>An [=eBraille content document=] MUST be an <a data-cite="epub-33#sec-xhtml">XHTML content
+						document</a> as defined [[epub-33]] with additional constraints as defined in the following
+					subsections.</p>
 
-				<ul>
-					<li>MUST be an <a data-cite="epub-33#sec-xhtml">XHTML content document</a> [[epub-33]].</li>
-					<li>MUST NOT contain features specified in <a href="#html-no-support"></a>.</li>
-				</ul>
+				<section id="xhtml-char-encoding">
+					<h4>Character encoding</h4>
 
-				<section id="html-no-support">
-					<h3>Unsupported features</h3>
+					<p>[=eBraille content documents=] are required to provide their text content in 6- or 8-dot braille
+						characters. eBraille is not meant as a delivery format for ASCII braille or similar braille
+						encodings that require a translation to 6- or 8-dot braille characters.</p>
+
+					<p>For this reason, the text content of [=eBraille content documents=] SHOULD consist only of
+						characters in the <a href="https://www.unicode.org/charts/nameslist/c_2800.html">Braille
+							Patterns</a> [[unicode]] as well as [=ASCII whitespace=] [[infra]].</p>
+
+					<div class="note">
+						<p>This restriction only applies to the renderable text of an XHTML document as well as any
+							attributes that could be rendered depending on the display capabilities of the user's device
+							(e.g., the [^img/alt^] attribute [[html]] for images that cannot be displayed).</p>
+
+						<p>For some technologies, such as [[mathml]], it will not be possible to restrict the text to
+							braille characters.</p>
+
+						<p>The restriction does not apply to attributes that carry meta information (e.g., the
+							[^global/class^] and [^a/href^] attributes [[html]]).</p>
+					</div>
+				</section>
+
+				<section id="xhtml-no-support">
+					<h4>Unsupported features</h4>
 
 					<p>eBraille does not support scripted interactivity or form submissions. Consequently, authors MUST
 						NOT include [[html]] [^script^] elements or the [^form^] element's [^form/action^] attribute in
@@ -883,7 +906,7 @@
 &lt;/package></code></pre>
 				</aside>
 
-        <p>The primary entry page MAY include [[html]] [^script^] elements only if the document is not included
+				<p>The primary entry page MAY include [[html]] [^script^] elements only if the document is not included
 					in the spine. This exception is to allow publishers to include a user interface to better enable
 					reading of their publication in browsers. It is not meant for general scripting of the content.</p>
 
@@ -1438,7 +1461,7 @@
 				<p>Until such time as the prefix is formally registered as an EPUB 3 reserved prefix, it MUST be
 					declared in the eBraille package document.</p>
 			</section>
-			
+
 			<section>
 				<h3>Property field definitions</h3>
 
@@ -1473,7 +1496,7 @@
 					</dd>
 				</dl>
 			</section>
-			
+
 			<section id="vocab-bibliographic">
 				<h3>Bibliographic properties</h3>
 
@@ -1584,7 +1607,7 @@
 			</section>
 -->
 			</section>
-			
+
 			<section id="vocab-content">
 				<h3>Content properties</h3>
 
