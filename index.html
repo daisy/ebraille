@@ -183,7 +183,7 @@
 						formatting cases, which will also require defining reading system implementations.</li>
 					<li>embossing &#8212; this version of eBraille is focused on consuming [=eBraille publications=] on
 						electronic reading systems, more specifically refreshable braille displays. It is expected that
-						a revision is needed to better account for the use case of embossing publications on paper.
+						a revision is needed to better account for the use case of embossing publications on paper.</li>
 				</ul>
 			</section>
 
@@ -808,32 +808,32 @@
 						Wide Web Consortium">W3C</abbr> to define CSS.</p>
 
 					<div class="note">
-						<p>Keep in mind that some <a>reading systems</a> will not support all desired features of
-							CSS. The following are identified as potentially problematic, depending on the technology
-							choices of reading system implementations, and should therefore be treaten with care:</p>
+						<p>Keep in mind that some <a>reading systems</a> will not support all desired features of CSS.
+							The following are identified as potentially problematic, depending on the technology choices
+							of reading system implementations, and should therefore be treaten with care:</p>
 						<ul>
 							<li>The "<a data-cite="css-page#">CSS Paged Media Module Level 3</a>" working draft
 								[[css-page]], which builds on the "<a data-cite="css2/page.html#the-page">Paged
-								media</a>" section of [[css2]], is not well supported in web browsers.</li>
+									media</a>" section of [[css2]], is not well supported in web browsers.</li>
 						</ul>
 					</div>
 
 					<p>Note that the presentation of content is not determined by author style sheets only. <a>Reading
-						systems</a> are expected to apply default styles that make sense for the current locale, in case
-						author styles are missing or incomplete. This may be done through CSS or through other means.
-						Reading systems may also perform specific styling according to user preferences.</p>
+							systems</a> are expected to apply default styles that make sense for the current locale, in
+						case author styles are missing or incomplete. This may be done through CSS or through other
+						means. Reading systems may also perform specific styling according to user preferences.</p>
 				</section>
 
 				<section id="css-req">
 					<h4>CSS requirements</h4>
 
-					<p>The requirements for using CSS to style [=eBraille content documents=] are defined
-						in <a data-cite="epub-33#sec-css-req">CSS requirements</a> [[epub-33]] but with the following
+					<p>The requirements for using CSS to style [=eBraille content documents=] are defined in <a
+							data-cite="epub-33#sec-css-req">CSS requirements</a> [[epub-33]] but with the following
 						differences:</p>
 
 					<ul>
 						<li>[=eBraille creators=] MUST NOT use <a data-cite="epub-33#css-prefixes"><code>-epub-</code>
-							prefixed properties</a> [[epub-33]].</li>
+								prefixed properties</a> [[epub-33]].</li>
 						<li>CSS style sheets MUST be UTF-8 encoded [[unicode]].</li>
 					</ul>
 
@@ -860,33 +860,36 @@
 								<li><a data-cite="css-fonts#font-variant-numeric-prop"><code>font-variant-numeric</code></a>,</li>
 								<li><a data-cite="css-fonts#font-variant-position-prop"><code>font-variant-position</code></a>,</li>
 								<li><a data-cite="css-fonts#font-size-adjust-prop"><code>font-size-adjust</code></a> and</li>
-								<li><a data-cite="css-fonts#font-stretch-prop"><code>font-stretch</code></a>--> [[css-fonts]],</li>
+								<li><a data-cite="css-fonts#font-stretch-prop"><code>font-stretch</code></a>-->
+									[[css-fonts]],</li>
 								<li><a data-cite="css-color#foreground"><code>color</code></a> [[css-color]],</li>
-								<li><a data-cite="css-text-decor#text-decoration-property"><code>text-decoration</code></a>,</li>
-								<li><a data-cite="css-text-decor#text-shadow-property"><code>text-shadow</code></a> and</li>
-								<li><a data-cite="css-text-decor#text-underline-position-property"><code>text-underline-position</a></code> [[css-text-decor]]</li>
+								<li><a data-cite="css-text-decor#text-decoration-property"
+										><code>text-decoration</code></a>,</li>
+								<li><a data-cite="css-text-decor#text-shadow-property"><code>text-shadow</code></a>
+									and</li>
+								<li><a data-cite="css-text-decor#text-underline-position-property"
+											><code>text-underline-position</code></a> [[css-text-decor]]</li>
 							</ul>
 						</li>
 						<li>
-							<p>eBraille creators SHOULD
-								use <a data-cite="css-values#font-relative-lengths">font-relative lengths</a> <!-- `em'
-								is already defined in css2/syndata.html#length-units, but ch' `isn't --> [[css-values]]
-								only. Because it should be assumed that creators have no control over the font used by
-								the reading device, using absolute lengths is regarded as unreliable. Using
+							<p>eBraille creators SHOULD use <a data-cite="css-values#font-relative-lengths"
+									>font-relative lengths</a>
+								<!-- `em'
+								is already defined in css2/syndata.html#length-units, but ch' `isn't -->
+								[[css-values]] only. Because it should be assumed that creators have no control over the
+								font used by the reading device, using absolute lengths is regarded as unreliable. Using
 								font-relative lengths in style sheets is also needed in order to reliably use relative
 								widths and heights in <a href="#media-queries">media queries</a>.</p>
-
 							<p>Reading devices MUST guarantee that <code>1ch</code> corresponds with the cell-to-cell
 								distance (i.e. the distance from center to center of corresponding dots in adjacent
-								cells), while <code>1em</code> should correspond with the line-to-line distance
-								(i.e. the distance from center to center of corresponding dots from one line to the
-								next).</p>
+								cells), while <code>1em</code> should correspond with the line-to-line distance (i.e.
+								the distance from center to center of corresponding dots from one line to the next).</p>
 						</li>
 					</ul>
 
 					<div class="note">
 						<p>More specific guidance on how to use CSS properties in eBraille content documents is provided
-						in the <a href="best-practices/styling/">eBraille Styling Best Practices</a>.</p>
+							in the <a href="best-practices/styling/">eBraille Styling Best Practices</a>.</p>
 					</div>
 				</section>
 
@@ -896,50 +899,45 @@
 					<p>eBraille allows the use of media queries [[mediaqueries]] to support styling and content that is
 						conditional on the type and characteristics of the device.</p>
 
-					<p>The restrictions and recommendations in this section apply to CSS
-						(e.g. <a data-cite="css-conditional#at-media"><code>@media</code></a> [[css-conditional]]
-						and <a data-cite="css-cascade#conditional-import"><code>@import</code></a> [[css-cascade]]
-						rules), as well as where <a data-cite="html#mq">media queries are used as a microsyntax in</a>
-						[[html]] (such as in the <a data-cite="html#the-link-element"><code>link</code></a>
-						and <a data-cite="html#the-style-element"><code>style</code></a> elements), and in
-						<a data-cite="xml-stylesheet#"><code>xml-stylesheet</code></a> processing instructions
+					<p>The restrictions and recommendations in this section apply to CSS (e.g. <a
+							data-cite="css-conditional#at-media"><code>@media</code></a> [[css-conditional]] and <a
+							data-cite="css-cascade#conditional-import"><code>@import</code></a> [[css-cascade]] rules),
+						as well as where <a data-cite="html#mq">media queries are used as a microsyntax in</a> [[html]]
+						(such as in the <a data-cite="html#the-link-element"><code>link</code></a> and <a
+							data-cite="html#the-style-element"><code>style</code></a> elements), and in <a
+							data-cite="xml-stylesheet#"><code>xml-stylesheet</code></a> processing instructions
 						[[xml-stylesheet]].</p>
 
 					<ul>
 						<li>
-							<p>[=eBraille creators=] SHOULD NOT use media queries that discriminate between a
-								braille display and a screen when the target medium is a braille display.</p>
-
+							<p>[=eBraille creators=] SHOULD NOT use media queries that discriminate between a braille
+								display and a screen when the target medium is a braille display.</p>
 							<div class="note">
 								<p>The logical consequence of this is that it will be impossible to discriminate between
 									visual and tactile access modes, in other words it forces rendering on a screen and
 									on a braille display that are otherwise comparable, to be the same, and the CSS to
 									have the same requirements.</p>
-								<p>Note that we do not recommend
-									using <a data-cite="mediaqueries#valdef-media-braille"><code>braille</code></a>,
-									nor <a data-cite="mediaqueries#grid"><code>(grid)</code></a>, because there are
-									currently no known CSS implementations that match these, so requiring [=eBraille
-									reading systems=] to match them could be problematic. <!-- Another reason to not
+								<p>Note that we do not recommend using <a data-cite="mediaqueries#valdef-media-braille"
+											><code>braille</code></a>, nor <a data-cite="mediaqueries#grid"
+											><code>(grid)</code></a>, because there are currently no known CSS
+									implementations that match these, so requiring [=eBraille reading systems=] to match
+									them could be problematic. <!-- Another reason to not
 									recommend <code>braille</code> is because it is expected to become
 									deprecated.--></p>
-								<p>We don't recommend
-									using <a data-cite="mediaqueries#valdef-media-screen"><code>screen</code></a>
-									because we want to be forward-compatible with a possible future version of the
-									standard that supports differences in styling for screens vs. braille displays,
-									might that become a requirement.</p>
+								<p>We don't recommend using <a data-cite="mediaqueries#valdef-media-screen"
+											><code>screen</code></a> because we want to be forward-compatible with a
+									possible future version of the standard that supports differences in styling for
+									screens vs. braille displays, might that become a requirement.</p>
 							</div>
-
-							<p>[=eBraille reading systems=] of type braille display MUST match
-								either <code>braille</code> or <code>screen</code>, and SHOULD ideally match both. They
+							<p>[=eBraille reading systems=] of type braille display MUST match either
+									<code>braille</code> or <code>screen</code>, and SHOULD ideally match both. They
 								SHOULD ideally match both <code>(grid)</code> and <code>not (grid)</code>.</p>
-
 							<div class="ednote">
-								<p>[[mediaqueries]]
-								deprecates <a data-cite="mediaqueries#valdef-media-braille"><code>braille</code></a> and
-								requires that user agents recognize the media type as valid, but make it match
-								nothing. So maybe we should replace “<em>MUST match either <code>braille</code>
-								or <code>screen</code>, and SHOULD ideally match both</em>” with “<em>SHOULD match
-								<code>screen</code></em>”.</p>
+								<p>[[mediaqueries]] deprecates <a data-cite="mediaqueries#valdef-media-braille"
+											><code>braille</code></a> and requires that user agents recognize the media
+									type as valid, but make it match nothing. So maybe we should replace “<em>MUST match
+										either <code>braille</code> or <code>screen</code>, and SHOULD ideally match
+										both</em>” with “<em>SHOULD match <code>screen</code></em>”.</p>
 							</div>
 						</li>
 						<li>
@@ -1049,7 +1047,7 @@
 &lt;/package></code></pre>
 				</aside>
 
-        <p>The primary entry page MAY include [[html]] [^script^] elements only if the document is not included
+				<p>The primary entry page MAY include [[html]] [^script^] elements only if the document is not included
 					in the spine. This exception is to allow publishers to include a user interface to better enable
 					reading of their publication in browsers. It is not meant for general scripting of the content.</p>
 
@@ -1604,7 +1602,7 @@
 				<p>Until such time as the prefix is formally registered as an EPUB 3 reserved prefix, it MUST be
 					declared in the eBraille package document.</p>
 			</section>
-			
+
 			<section>
 				<h3>Property field definitions</h3>
 
@@ -1639,7 +1637,7 @@
 					</dd>
 				</dl>
 			</section>
-			
+
 			<section id="vocab-bibliographic">
 				<h3>Bibliographic properties</h3>
 
@@ -1750,7 +1748,7 @@
 			</section>
 -->
 			</section>
-			
+
 			<section id="vocab-content">
 				<h3>Content properties</h3>
 
