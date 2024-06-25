@@ -751,23 +751,42 @@
 					<h4>Character encoding</h4>
 
 					<p>[=eBraille content documents=] are required to provide their text content in 6- or 8-dot braille
-						characters. eBraille is not meant as a delivery format for ASCII braille or similar braille
-						encodings that require a translation to 6- or 8-dot braille characters.</p>
+						characters. eBraille is not meant as a delivery format for ASCII braille or similar mappings to
+						braille cells.</p>
 
-					<p>For this reason, the text content of [=eBraille content documents=] SHOULD consist only of
-						characters in the <a href="https://www.unicode.org/charts/nameslist/c_2800.html">Braille
-							Patterns</a> [[unicode]] as well as [=ASCII whitespace=] [[infra]].</p>
+					<p>For this reason, the text content of [=eBraille content documents=] SHOULD consist only of the
+						following characters:</p>
+
+					<ul>
+						<li><a href="https://www.unicode.org/charts/nameslist/c_2800.html">Braille Patterns</a>
+							[[unicode]];</li>
+						<li>[=ASCII whitespace=] [[infra]]</li>
+						<li>NO-BREAK SPACE (U+00A0)</li>
+						<li>SOFT HYPHEN (U+00AD)</li>
+					</ul>
 
 					<div class="note">
-						<p>This restriction only applies to the renderable text of an XHTML document as well as any
-							attributes that could be rendered depending on the display capabilities of the user's device
-							(e.g., the [^img/alt^] attribute [[html]] for images that cannot be displayed).</p>
+						<p>The zero width space character is not included in this list as eBraille creators are advised
+							to use the [^wbr^] element [[html]] to indicate break opportunities within words.</p>
+					</div>
 
+					<p>This restriction only applies to the renderable text of an XHTML document as well as the
+						attributes that could be rendered depending on the display capabilities of a device or user
+						configuration settings, for example:</p>
+
+					<ul>
+						<li>the [^img/alt^] attribute [[html]] for images and image maps that cannot be displayed;</li>
+						<li>the [^th/abbr^] attribute [[html]] for alternative table headings;</li>
+						<li>the [^abbr/title^] attribute [[html]] for expansions of abbreviations.</li>
+					</ul>
+
+					<div class="note">
 						<p>For some technologies, such as [[mathml]], it will not be possible to restrict the text to
 							braille characters.</p>
 
 						<p>The restriction does not apply to attributes that carry meta information (e.g., the
-							[^global/class^] and [^a/href^] attributes [[html]]).</p>
+							[^global/class^] and [^a/href^] attributes [[html]], as well as the [^html-global/title^]
+							attribute in <a href="#page-list">the page list</a>).</p>
 					</div>
 				</section>
 
