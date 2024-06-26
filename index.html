@@ -1426,8 +1426,14 @@
 				the <code>mimetype</code> file are defined in <a data-cite="epub-33#sec-zip-container-mime">OCF ZIP
 					container media type identification</a>.</p>
 
-			<p>Unlike EPUB, which does not require a file extension, a packaged eBraille file set MUST use the extension
-					<code>.ebrl</code>.</p>
+			<p>A packaged eBraille file set MUST use the extension <code>.ebrl</code>.</p>
+
+			<div class="note">
+				<p>If an eBraille file is packaged with the extension <code>.epub</code>, it will not be recognized by
+					eBraille reading system as an eBraille publication. In this case, the file would be recognized as an
+					EPUB publication and could be opened in EPUB reading systems (with some loss of braille-specific
+					functionality).</p>
+			</div>
 
 			<p>As the use of <a href="#css-req">CSS font properties</a> is not recommended, eBraille creators SHOULD NOT
 				use EPUB's <a data-cite="epub-33#sec-font-obfuscation">font obfuscation algorithm</a> [[epub-33]] to
