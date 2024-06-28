@@ -542,7 +542,7 @@
 
 				<p>The default rendition MUST be a braille rendition (i.e., identified by a <a
 						data-cite="epub-multi-rend-11#accessMode-attr"><code>rendition:accessMode</code> attribute</a>
-					with the value "<code>tactile</code>" [[epub-multi-rend-11]]).</p>
+					with the value <code>tactile</code> [[epub-multi-rend-11]]).</p>
 
 				<div class="note">
 					<p>[[epub-multi-rend-11]] is only a W3C Working Group Note. The technology is not currently
@@ -578,35 +578,530 @@
 			<section id="metadata">
 				<h3>Metadata</h3>
 
-				<p>The eBraille package document metadata MUST meet all the requirements for [[epub-33]] <a
-						data-cite="epub-33#sec-pkg-metadata">metadata</a>.</p>
+				<section id="meta-req">
+					<h4>General requirements</h4>
 
-				<p>In particular, EPUB requires that all eBraille publications include a unique identifier, the title of
-					the publication, the language of the content, and the last modification date.</p>
+					<p>The eBraille package document metadata MUST meet all the requirements for [[epub-33]] <a
+							data-cite="epub-33#sec-pkg-metadata">metadata</a>.</p>
 
-				<p>[=eBraille publications=] additionally MUST include the following metadata:</p>
+					<p>[=eBraille publications=] additionally MUST include all metadata defined in <a
+							href="#meta-req-prop"></a>.</p>
 
-				<ul>
-					<li>braille code</li>
-					<li>braille grade</li>
-					<li>language</li>
-					<li>title</li>
-				</ul>
+					<p>eBraille publications SHOULD include all metadata defined in <a href="#meta-rec-prop"></a>.</p>
+				</section>
 
-				<p>eBraille publications SHOULD include the following metadata:</p>
+				<section id="meta-req-prop">
+					<h4>Required properties</h4>
 
-				<ul>
-					<li>author</li>
-					<li>braille producer</li>
-				</ul>
+					<section id="dc:creator">
+						<h4>dc:creator</h4>
 
-				<div class="ed-note">
-					<p>How to specify required and recommended metadata will be provided in a future update to this
-						document.</p>
-				</div>
+						<p>The REQUIRED <code>dc:creator</code> [[dcterms]] identifies the name(s) of the primary
+							author, editor, etc. Follow regional conventions for name layout.</p>
 
-				<aside class="example" title="eBraille required metadata">
-					<pre><code>&lt;package &#8230; 
+						<p>The role the creator played in the creation of the content MAY be specified by <a
+								data-cite="epub-33#subexpression">associating</a> a <a data-cite="epub-33#role"
+									><code>role</code> property</a> [[epub-33]] with the element.</p>
+
+						<p>Repeat the element for each creator name.</p>
+
+						<div class="note">
+							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dccreator">definition of
+									the <code>dc:creator</code> element</a> in [[epub-33]].</p>
+						</div>
+
+						<aside class="example"
+							title="A single author with an English name arraigned with the last name appearing first and then followed by a comma and then the first name">
+							<pre><code class="html">&lt;dc:creator>
+   Twain, Mark
+&lt;/dc:creator></code></pre>
+						</aside>
+
+						<aside class="example"
+							title="A single author with a Japanese name arraigned with first name appearing first and then followed by last name with no comma">
+							<pre><code class="html">&lt;dc:creator>
+   Akiko Akazome
+&lt;/dc:creator></code></pre>
+						</aside>
+
+						<aside class="example" title="Multiple authors with roles identified">
+							<pre><code class="html">&lt;dc:creator id="aut01">
+   Brontë, Charlotte
+&lt;/dc:creator>
+&lt;meta property="role" refines="aut01">aut&lt;/meta>
+
+&lt;dc:creator id="aut02">
+   Melville, Herman
+&lt;/dc:creator>
+&lt;meta property="role" refines="aut02">aut&lt;/meta></code></pre>
+						</aside>
+					</section>
+
+					<section id="dc:format">
+						<h4>dc:format</h4>
+
+						<p>The REQUIRED <code>dc:format</code> element [[dcterms]] identifies verion of the eBraille
+							standard an publication conforms to. The value MUST contain both the name "eBraille" and the
+							version number.</p>
+
+						<p>For example, for this version of the specification, the value would be "<code>eBraille
+								1.0</code>".</p>
+
+						<aside class="example" title="eBraille version number">
+							<pre><code class="html">&lt;dc:format>
+   eBraille 1.0
+&lt;/dc:format></code></pre>
+						</aside>
+					</section>
+
+					<section id="dc:identifier">
+						<h4>dc:identifier</h4>
+
+						<p>The REQUIRED <code>dc:identifier</code> element [[epub-33]] contains an identifier for an
+							[=eBraille publication=], such as a UUID, DOI, or ISBN.</p>
+
+						<p>These identifiers SHOULD be formatted using a Uniform Resource Name.</p>
+
+						<p>One identifier MUST be identified as the unique identifier for the publication using the the
+								<code>package</code> element's <a data-cite="epub-33#attrdef-package-unique-identifier"
+									><code>unique-identifier</code> attribute</a> [[epub-33]]. This identifier MUST be
+							unique to the publication.</p>
+
+						<div class="note">
+							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dcidentifier">definition
+									of the <code>dc:identifier</code> element</a> in [[epub-33]].</p>
+						</div>
+
+						<aside class="example" title="Unique identifier as ISBN">
+							<pre><code class="html">&lt;package &#8230; unique-identifier="uid">
+   &lt;metadata>
+      &lt;dc:identifier id="uid">
+         urn:isbn:978-3-16-148410-0
+      &lt;/dc:identifier>
+      &#8230;
+   &lt;/metadata>
+   &#8230;
+&lt;/package></code></pre>
+						</aside>
+
+						<aside class="example" title="Identifier is DOI">
+							<pre><code class="html">&lt;dc:identifier>
+   urn:doi:10.1080/10509585.2015.1092083
+&lt;/dc:identifier></code></pre>
+						</aside>
+
+						<aside class="example" title="Identifier is UUID">
+							<pre><code class="html">&lt;dc:identifier>
+   urn:uuid:550e8400-e29b-41d4-a716-446655440000
+&lt;/dc:identifier></code></pre>
+						</aside>
+
+						<aside class="example" title="Identifier is URL">
+							<pre><code class="html">&lt;dc:identifier>
+   https://en.wikipedia.org/wiki/Braille
+&lt;/dc:identifier></code></pre>
+						</aside>
+					</section>
+
+					<section id="dc:language">
+						<h4>dc:language</h4>
+
+						<p>The REQUIRED <a href="epub-33#sec-opf-dclanguage"><code>dc:language</code> element</a>
+							[[epub-33]] identifies the language(s) of the [=eBraille publication=].</p>
+
+						<p>The value MUST be a <a href="https://www.rfc-editor.org/rfc/rfc5646#section-2.2.9"
+								>well-formed language tag</a> [[bcp47]]. When specified, a country code sub-tag MUST
+							refer to the language of the work being transcribed.</p>
+
+						<p>If multiple languages are used, repeat the tag for each language. The first language listed
+							in document order MUST be the primary language of the publication.</p>
+
+						<div class="note">
+							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dclanguage">definition
+									of the <code>dc:language</code> element</a> in [[epub-33]].</p>
+						</div>
+
+						<aside class="example" title="American English as only language of work">
+							<pre><code class="html">&lt;dc:language>
+   en-US
+&lt;/dc:language></code></pre>
+						</aside>
+
+						<aside class="example" title="A French textbook that teaches German">
+							<pre><code class="html">&lt;dc:language>
+   fr-FR
+&lt;/dc:language>
+&lt;dc:language>
+   de-DE
+&lt;/dc:language></code></pre>
+						</aside>
+					</section>
+
+					<section id="dc:title">
+						<h4>dc:title</h4>
+
+						<p>The REQUIRED <code>dc:title</code> element identifies the title of the source material.</p>
+
+						<p>The first <code>dc:title</code> element in document order identifies the primary title of the
+							[=eBraille publication=].</p>
+
+						<div class="note">
+							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dccreator">definition of
+									the <code>dc:title</code> element</a> in [[epub-33]].</p>
+						</div>
+
+						<aside class="example" title="The complete title of a work">
+							<pre><code class="html">&lt;dc:title>
+   Aus meinem Leben: Dichtung und Wahrheit
+&lt;/dc:title></code></pre>
+						</aside>
+					</section>
+
+					<section id="dcterms:dateCopyrighted">
+						<h4>dcterms:dateCopyrighted</h4>
+
+						<p>The REQUIRED <code>dcterms:dateCopyrighted</code> property [[dcterms]] identifies the
+							copyright date of the work being transcribed.</p>
+
+						<p>The value of the property MUST be an [[iso8601-1]] conformant date of the form
+								<code>YYYY-MM-DD</code>, <code>YYYY-MM</code>, or <code>YYYY</code></p>
+
+						<aside class="example" title="Date copyrighted where only the year is known">
+							<pre><code class="html">&lt;meta property="dcterms:dateCopyrighted">
+   2014
+&lt;/meta></code></pre>
+						</aside>
+					</section>
+
+					<section id="dcterms:modified">
+						<h4>dcterms:modified</h4>
+
+						<p>The REQUIRED <code>dcterms:modified</code> property identifies the date, in Coordinated
+							Universal Time (UTC), on which an [=eBraille publication=] was last modified.</p>
+
+						<p>The value MUST be an [[xmlschema-2]] dateTime conformant date of the form:
+								<code>YYYY-MM-DDThh:mm:ssZ</code>, where YYYY represents the year, MM the month, DD the
+							day, T is a separator indicating the start of the time section, hh the hour, mm the minutes,
+							ss the seconds, and Z represents the UTC time zone designator.</p>
+
+						<div class="note">
+							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dccreator">definition of
+									the last modified date</a> [[epub-33]].</p>
+						</div>
+
+						<aside class="example" title="Indicates the last date the eBraille file was modified">
+							<pre><code class="html">&lt;meta property="dcterms:modified">
+   2014-10-14T18:45:00Z
+&lt;/meta></code></pre>
+						</aside>
+					</section>
+
+					<section id="brl:code">
+						<h4>brl:code</h4>
+
+						<p>The REQUIRED <code>brl:code</code> property identifies the name of the braille code an
+							[=eBraille publication=] has been formatted in conformance with.</p>
+
+						<p>The value SHOULD include any code-specific information needed to fully its formatting (e.g.,
+							"contracted", "uncontracted", "bar by bar" etc.).</p>
+
+						<div class="ednote">
+							<p>A list of recommended braille code terminology will be provided with a future update to
+								this document. For multiple braille codes, codes should be listed in descending order
+								from most to least utilized within that file.</p>
+						</div>
+
+						<p>Each entry for <code>brl:code</code> SHOULD specify whether contractions are used if
+							contractions are possible within the code specified. Specify with round brackets and use the
+							terminology most suitable to the region.</p>
+
+						<aside class="example" title="A single uncontracted braille code">
+							<pre><code class="html">&lt;meta property="brl:code">
+   UEB (Uncontracted)
+&lt;/meta></code></pre>
+						</aside>
+
+						<p>If only some contractions are used, specify the code twice- both as contracted and
+							uncontracted. Put whichever code is most common first.</p>
+
+						<aside class="example" title="Use of a contracted and uncontracted braille code">
+							<pre><code class="html">&lt;meta property="brl:code">
+   UEB (Uncontracted), UEB (Contracted)
+&lt;/meta></code></pre>
+						</aside>
+					</section>
+
+					<section id="brl:completeTranscription">
+						<h4>brl:completeTranscription</h4>
+
+						<p>The REQUIRED <code>brl:completeTranscription</code> indicates whether the complete original
+							work has been transcribed of not.</p>
+
+						<p>The value MUST be <code>true</code> if complete and <code>false</code> if not complete.
+							Completeness is determined by whether the original work being transcribed is fully
+							represented in the braille rendition, minus any minor omissions such as illustrations
+							without captions or other material that is not ordinarily transcribed.</p>
+
+						<p>Only one instance of this property is allowed.</p>
+
+						<aside class="example" title="An incomplete transcription">
+							<pre><code class="html">&lt;meta property="brl:completeTranscription">
+   false
+&lt;/meta></code></pre>
+						</aside>
+
+						<aside class="example" title="A complete transcription">
+							<pre><code class="html">&lt;meta property="brl:completeTranscription">
+   true
+&lt;/meta></code></pre>
+						</aside>
+					</section>
+
+					<section id="brl:created">
+						<h4>brl:created</h4>
+
+						<p>The <code>brl:created</code> property identifies the date the transcription was created.</p>
+
+						<p>The value SHOULD be an [[iso8601-1]] conformant date of the form <code>YYYY-MM-DD</code>. If
+							the full date is unknown, the month and year (<code>YYYY-MM</code>) or year
+								(<code>YYYY</code>) MAY be specified instead.</p>
+
+						<p>Only one instance of this property is allowed.</p>
+
+						<aside class="example" title="brl:created with full date">
+							<pre><code class="html">&lt;meta property="brl:created">
+   2024-10-18
+&lt;/meta></code></pre>
+						</aside>
+
+						<aside class="example" title="brl:created with only month and year">
+							<pre><code class="html">&lt;meta property="brl:created">
+   2025-09
+&lt;/meta></code></pre>
+						</aside>
+					</section>
+
+					<section id="brl:dotNumber">
+						<h4>brl:dotNumber</h4>
+
+						<p>The REQUIRED <code>brl:dotNumber</code> property identifies whether the text of the
+							[=eBraille publication=] is encoded using 6- or 8-dot braille characters.</p>
+
+						<p>The value MUST be <code>6</code> or <code>8</code>, with <code>6</code> for 6-dot braille
+							characters and <code>8</code> for 8-dot braille characters. If both 6- and 8-dot braille
+							characters are used in the same file, use a comma to separate the values, with the one used
+							most often listed first.</p>
+
+						<p>Only one instance of this property is allowed.</p>
+
+						<aside class="example" title="brl:dotNumber for 6-dot braille">
+							<pre><code class="html">&lt;meta property="brl:dotNumber">
+   6
+&lt;/meta></code></pre>
+						</aside>
+
+						<aside class="example" title="brl:dotNumber when 8-dot braille is used more than 6-dot">
+							<pre><code class="html">&lt;meta property="brl:dotNumber">
+   8, 6
+&lt;/meta></code></pre>
+						</aside>
+					</section>
+
+					<section id="brl:printPublisher">
+						<h4>brl:printPublisher</h4>
+
+						<p>The REQUIRED <code>brl:printPublisher</code> property identifies the name of the publisher of
+							the work being transcribed.</p>
+
+						<p>If not transcribing a published print work, the name of the organization or individual that
+							produced the original text may be used as the publisher. If the work is an entirely original
+							braille publication, use the value <code>N/A</code>.</p>
+
+						<aside class="example" title="A printed work with an official publisher">
+							<pre><code class="html">&lt;meta property="brl:printPublisher">
+   Penguin Random House
+&lt;/meta></code></pre>
+						</aside>
+
+						<aside class="example" title="A printed work with no official publisher">
+							<pre><code class="html">&lt;meta property="brl:printPublisher">
+   International Council on English Braille
+&lt;/meta></code></pre>
+						</aside>
+						<aside class="example" title="An original braille work">
+							<pre><code class="html">&lt;meta property="brl:printPublisher">
+   N/A
+&lt;/meta></code></pre>
+						</aside>
+					</section>
+
+					<section id="brl:producer">
+						<h4>brl:producer</h4>
+
+						<p>The <code>brl:producer</code> property identifies the name(s) of the organization(s) or
+							individual(s) that produced the braille publication. Repeat the property for each
+							organization or individual.</p>
+
+						<p>The <code>brl:producer</code> and <code>dc:publisher</code> MAY identify the same
+							organization or individual but they do not have to. The producer is responsible for creating
+							an eBraille publication, while the publisher may have only commissioned the work from a
+							producer.</p>
+
+						<aside class="example" title="The name of the braille producer of a file">
+							<pre><code class="html">&lt;meta property="brl:producer">
+   American Printing House for the Blind
+&lt;/meta></code></pre>
+						</aside>
+					</section>
+
+					<section id="brl:tactileGraphics">
+						<h4>brl:tactileGraphics</h4>
+
+						<p>The <code>brl:tactileGraphics</code> property identifies whether an [=eBraille publication=]
+							contains tactile graphics.</p>
+
+						<p>The value is <code>true</code> if tactile graphics are present and <code>false</code> if
+							not.</p>
+
+						<p>If tactile graphics are present, the <code>brl:graphicType</code> property MUST also be
+							set.</p>
+
+						<p>Only one instance of this property is allowed.</p>
+
+						<aside class="example" title="An eBraille package with tactile graphics in SVG format">
+							<pre><code class="html">&lt;meta property="brl:tactileGraphics">
+   true
+&lt;/meta>
+&lt;meta property="brl:graphicType">
+   SVG
+&lt;/meta></code></pre>
+						</aside>
+
+						<aside class="example"
+							title="An eBraille package with most tactile graphics in PNG format and a few in PDF">
+							<pre><code class="html">&lt;meta property="brl:tactileGraphics">
+   true
+&lt;/meta>
+&lt;meta property="brl:graphicType">
+   PNG, PDF
+&lt;/meta></code></pre>
+						</aside>
+					</section>
+				</section>
+
+				<section id="meta-rec-prop">
+					<h4>Recommended properties</h4>
+
+					<section id="dc:publisher">
+						<h4>dc:publisher</h4>
+
+						<p>The RECOMMENDED <code>dc:publisher</code> element identifies the name(s) of the
+							organization(s) or individual(s) that published the [=eBraille publication=].</p>
+
+						<p>Repeat the property for each organization or individual.</p>
+
+						<aside class="example" title="eBraille publisher">
+							<pre><code class="html">&lt;dc:publisher>
+   Royal National Institute of Blind People
+&lt;/dc:publisher></code></pre>
+						</aside>
+					</section>
+
+					<section id="dc:description">
+						<h4>dc:description</h4>
+
+						<p>The RECOMMENDED <code>dc:description</code> element provides an abstract, a table of
+							contents, or a free-text account of the resource.</p>
+
+						<p>Only one instance of this element is allowed.</p>
+
+						<aside class="example" title="A brief description of a work">
+							<pre><code class="html">&lt;dc:description>
+   Frankenstein tells the story of Victor Frankenstein,
+   a young scientist who creates a sapient creature in
+   an unorthodox scientific experiment.
+&lt;/dc:description></code></pre>
+						</aside>
+					</section>
+
+					<section id="dc:rights">
+						<h4>dc:rights</h4>
+
+						<p>The RECOMMENDED <code>dc:rights</code> element provides rights information about an
+							[=eBraille publication=]. The rights statement includes various property rights associated
+							with the resource, including intellectual property rights.</p>
+
+						<p>Repeat the element to include more than one rights statement.</p>
+
+						<aside class="example" title="Rights as a literal value">
+							<pre><code class="html">&lt;dc:rights>
+   Further reproduction or distribution in other 
+   than an accessible format is prohibited.
+&lt;/dc:rights></code></pre>
+						</aside>
+					</section>
+
+					<section id="dc:subject">
+						<h4>dc:subject</h4>
+
+						<p>The RECOMMENDED <code>dc:subject</code> element [[dcterms]] identifies the subject of an
+							[=eBraille publication=].</p>
+
+						<p>The value SHOULD be a human-readable heading or label, but a code value MAY be used if the
+							subject taxonomy does not provide a separate descriptive label.</p>
+
+						<p>The system or scheme the element's value was drawn from MAY be identified using the <a
+								href="epub-33#authority"><code>authority</code> property</a> [[epub-33]].</p>
+
+						<p>When a scheme is identified, a subject code MUST be <a href="epub-33#subexpression"
+								>associated</a> using the <a href="epub-33#term"><code>term</code> property</a>
+							[[epub-33]].</p>
+
+						<p>Repeat the element for each subject.</p>
+
+						<div class="note">
+							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dcsubject">definition of
+									the <code>dc:subject</code> element</a> in [[epub-33]]</p>
+						</div>
+
+						<aside class="example" title="Subject as a literal value">
+							<pre><code class="html">&lt;dc:subject>
+   Geography
+&lt;/dc:subject></code></pre>
+						</aside>
+					</section>
+
+					<section id="dcterms:educationLevel">
+						<h4>dcterms:educationLevel</h4>
+
+						<p>The RECOMMENDED <code>dcterms:educationLevel</code> property identifies the level of
+							education an [=eBraille publication=] is targeted to (e.g., the grade level).</p>
+
+						<p>Repeat the element if the publication is intended for more than one education level.</p>
+
+						<aside class="example" title="Education level in the United States education system">
+							<pre><code class="html">&lt;meta property="dcterms:educationLevel">
+   3rd grade
+&lt;/meta></code></pre>
+						</aside>
+					</section>
+				</section>
+
+				<section id="meta-opt-prop">
+					<h4>Optional properties</h4>
+
+					<p>The package document metadata section MAY include <a data-cite="epub-33#sec-opf-dcmes-optional"
+							>any other Dublin Core elements</a> [[epub-33]] not listed as required or recommended.</p>
+
+					<p>It may also include properties from any other vocabulary provided a <a
+							data-cite="epub-33#sec-prefix-attr">prefix</a> [[epub-33]] is defined.</p>
+				</section>
+
+				<section id="meta-examples">
+					<h4>Examples</h4>
+
+					<aside class="example" title="eBraille required metadata">
+						<pre><code>&lt;package &#8230; 
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           unique-identifier="uid">
    &lt;metadata>
@@ -618,720 +1113,7 @@
    &lt;/metadata>
    &#8230;
 &lt;/package></code></pre>
-				</aside>
-
-				<section>
-					<h4>Dublin Core Required Metadata</h4>
-
-					<section id="dc:creator">
-						<h4>dc:creator</h4>
-
-						<p>The content of dc:creator shall be the name(s) of the primary author, editor, etc. (when
-							appropriate). Follow regional conventions for name layout. Note: For multiple creators, this
-							element shall be repeated as needed. </p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>Any string</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example"
-									title="A single author with an English name arraigned with the last name appearing first and then followed by a comma and then the first name">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:creator>
-		Twain, Mark
-	&lt;/dc:creator>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-								<aside class="example"
-									title="A single author with a Japanese name arraigned with first name appearing first and then followed by last name with no comma">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:creator>
-		Akiko Akazome
-	&lt;/dc:creator>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-								<aside class="example" title="Multiple authors with English names">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:creator>
-		Brontë, Charlotte
-	&lt;/dc:creator>
-	&lt;dc:creator>
-		Melville, Herman
-	&lt;/dc:creator>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="dc:format">
-						<h4>dc:format</h4>
-
-						<p>Used for the eBraille standard of the file, including version number</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>eBraille plus version number formatted as X.X</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="eBraille version number">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:format>
-		eBraille 1.0
-	&lt;/dc:format>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="dc:identifier">
-						<h4>dc:identifier</h4>
-
-						<p>Required by EPUB 3.3. Contains an identifier such as a UUID, DOI, or ISBN. These identifiers
-							should be formatted using a Uniform Resource Name and should reference the work being
-							transcribed.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>String that conforms to either ISBN, DOI, UUID, or URL</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="Identifier is ISBN">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:identifier>
-		urn:isbn:978-3-16-148410-0
-	&lt;/dc:identifier>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-								<aside class="example" title="Identifier is DOI">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:identifier>
-		urn:doi:10.1080/10509585.2015.1092083
-	&lt;/dc:identifier>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-								<aside class="example" title="Identifier is UUID">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:identifier>
-		urn:uuid:550e8400-e29b-41d4-a716-446655440000
-	&lt;/dc:identifier>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-								<aside class="example" title="Identifier is URL">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:identifier>
-		https://en.wikipedia.org/wiki/Braille
-	&lt;/dc:identifier>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="dc:language">
-						<h4>dc:language</h4>
-
-						<p>The content of dc:language shall be the BCP 47 compliant language code and optional country
-							code sub-tag and shall refer to the language of the work being transcribed. If multiple
-							languages are used, repeat the tag for multiple languages.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>language tag or language tag-country code</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="American English as only language of work">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:language>
-		en-US
-	&lt;/dc:language>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-								<aside class="example" title="A French textbook that teaches German">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:language>
-		fr-FR, de-DE
-	&lt;/dc:language>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="dc:publisher">
-						<h4>dc:publisher</h4>
-
-						<p>The content of dc:publisher shall be the name of the organization that published the eBraille
-							file.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>Any string</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="eBraille publisher">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:publisher>
-		Royal National Institute of Blind People
-	&lt;/dc:publisher>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="dc:title">
-						<h4>dc:title</h4>
-
-						<p>The content of dc:title shall be the title of the source material.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>Any string</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="The complete title of a work">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:title>
-		Aus meinem Leben: Dichtung und Wahrheit
-	&lt;/dc:title>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="dc:description">
-						<h4>dc:description</h4>
-
-						<p>The content of dc:description may include an abstract, a table of contents, or a free-text
-							account of the resource.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>Any string</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="A brief description of a work">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:description>
-		Frankenstein tells the story of Victor Frankenstein, a young scientist who creates a sapient creature in an unorthodox scientific experiment.
-	&lt;/dc:description>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="dc:rights">
-						<h4>dc:rights</h4>
-
-						<p>Typically, rights information includes a statement about various property rights associated
-							with the resource, including intellectual property rights. Recommended practice is to refer
-							to a rights statement with a URI. If this is not possible or feasible, a literal value
-							(name, label, or short text) may be provided.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>Any string</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="Rights as a literal value">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:rights>
-		Further reproduction or distribution in other than an accessible format is prohibited
-	&lt;/dc:rights>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="dc:subject">
-						<h4>dc:subject</h4>
-
-						<p>Recommended practice is to refer to the subject with a URI. If this is not possible or
-							feasible, a literal value that identifies the subject may be provided. Both should
-							preferably refer to a subject in a controlled vocabulary.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>Any string</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="Subject as a literal value">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dc:subject>
-		Geography
-	&lt;/dc:subject>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="dcterms:dateCopyrighted">
-						<h4>dcterms:dateCopyrighted</h4>
-
-						<p>Used for the copyright date of the work being transcribed. Value should be expressed as a
-							year according to ISO 8601-1.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>The date formatted as YYYY-MM-DD, YYYY-MM, or YYYY</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="Date copyrighted where only the year is known">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dcterms:dateCopyrighted>
-		2014
-	&lt;/dcterms:dateCopyrighted>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="dcterms:educationLevel">
-						<h4>dcterms:educationLevel</h4>
-
-						<p>A class of agents, defined in terms of progression through an educational or training
-							context, for which the eBraille package is intended.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>Any string</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="Education level in the United States education system">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dcterms:educationLevel>
-		3rd grade
-	&lt;/dcterms:educationLevel>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="dcterms:modified">
-						<h4>dcterms:modified</h4>
-
-						<p>Required by EPUB 3.3. Indicates the date on which the eBraille file was modified. Value
-							should express the date according to ISO 8601-1. Requires the full date plus time in
-							UTC.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>The date formatted as YYYY-MM-DDThh:mm:ssTZD where YYYY represents the year, MM
-										the month, DD the day, T is a separator indicating te start of the time section,
-										hh the hour, mm the minutes, ss the seconds, and TZD represents the time zone
-										designator (e.g. "Z" for UTC or an offset such as "+hh:mm")</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="Indicates the last date the eBraille file was modified">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;dcterms:modified>
-		2014-10-14T18:45:00Z
-	&lt;/dcterms:modified>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-				</section>
-
-				<section>
-					<h4>Dublin Core Recommended Metadata</h4>
-				</section>
-
-				<section>
-					<h4>Braille Required Metadata</h4>
-
-					<section id="brl:code">
-						<h4>brl:code</h4>
-
-						<p>The content of brl:code shall be the name of the braille code. Include code specific
-							information as needed (i.e. "contracted", "uncontracted", "bar by bar" etc.). A list of
-							recommended braille code terminology will be provided with a future draft of the Metadata
-							Best Practices document. For multiple braille codes, codes should be listed in descending
-							order from most to least utilized within that file.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>To be specified in a later version</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<p>Each entry for <code>brl:code</code> should specify whether contractions are used if
-									contractions are possible within the code specified. Specify with round brackets and
-									use the terminology most suitable for your region.</p>
-								<aside class="example" title="A single uncontracted braille code">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:code>
-		UEB (Uncontracted)
-	&lt;/brl:code>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-								<p>If only some contractions are used, specify the code twice- both as contracted and
-									uncontracted. Put whichever code is most common first.</p>
-								<aside class="example" title="Use of a contracted and uncontracted braille code">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:code>
-		UEB (Uncontracted), UEB (Contracted)
-	&lt;/brl:code>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="brl:completeTranscription">
-						<h4>brl:completeTranscription</h4>
-
-						<p>Value is true if complete and false if not complete with completeness being determined by
-							whether the original work being transcribed is fully represented in the braille rendition,
-							minus any minor omissions such as illustrations without captions or other material that is
-							not ordinarily transcribed.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>True, False</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<p>brl:completeTranscription should contain either <code>True</code> or
-										<code>False</code>.</p>
-								<aside class="example" title="An incomplete transcription">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:completeTranscription>
-		False
-	&lt;/brl:completeTranscription>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-								<aside class="example" title="A complete transcription">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:completeTranscription>
-		True
-	&lt;/brl:completeTranscription>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="brl:created">
-						<h4>brl:created</h4>
-
-						<p>brl:created is the date the transcription is created. Value should express the date according
-							to ISO 8601-1. If the full date is unknown, month and year (YYYY-MM) or just year (YYYY) may
-							be used.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>The date formatted as YYYY-MM-DD, YYYY-MM, or YYYY</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="brl:created with full date">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:created>
-		2024-10-18
-	&lt;/brl:created>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-								<aside class="example" title="brl:created with only month and year">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:created>
-		2025-09
-	&lt;/brl:created>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="brl:dotNumber">
-						<h4>brl:dotNumber</h4>
-
-						<p>The value for brl:dotNumber can be 6 or 8, with 6 for 6-dot braille characters and 8 for
-							8-dot braille characters. If both 6 and 8 dot braille are used in the same file, put the one
-							used most often first, then a comma, and then the other value.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>6, 8</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="brl:dotNumber for 6-dot braille">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:dotNumber>
-		6
-	&lt;/brl:dotNumber>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-								<aside class="example" title="brl:dotNumber when 8-dot braille is used more than 6-dot">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:dotNumber>
-		8, 6
-	&lt;/brl:dotNumber>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="brl:graphicType">
-						<h4>brl:graphicType</h4>
-
-						<p>Only required if brl:tactileGraphics is "true". Values are JPG, PNG, SVG, and PDF. When
-							multiple file types are used in the same file, separate each file type with a comma and
-							arrange them in order of most to least used.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>JPG, PDF, PNG, SVG</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="Only one graphic type">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:graphicType>
-		SVG
-	&lt;/brl:graphicType>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-								<aside class="example"
-									title="Multiple graphic types with PDF being used most, then JPG, and then SVG">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:graphicType>
-		PDF, JPG, SVG
-	&lt;/brl:graphicType>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="brl:printPublisher">
-						<h4>brl:printPublisher</h4>
-
-						<p>Shall be used to indicate the name of the publisher of the work being transcribed. If not
-							transcribing a published print work, the name of the organization or individual that
-							produced the original text may be used as the publisher. If the work is an entirely original
-							braille publication, N/A may be used instead.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>Any string, N/A</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="A printed work with an official publisher">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:printPublisher>
-		Penguin Random House
-	&lt;/brl:printPublisher>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-								<aside class="example" title="A printed work with no official publisher">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:printPublisher>
-		International Council on English Braille
-	&lt;/brl:printPublisher>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-								<aside class="example" title="An original braille work">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:printPublisher>
-		N/A
-	&lt;/brl:printPublisher>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="brl:producer">
-						<h4>brl:producer</h4>
-
-						<p>The content of brl:producer shall be the name of the organization that produced the braille
-							publication. The brl:producer and dc:publisher may be the same organization but they do not
-							have to be. The producer is literally responsible for creating the eBraille file, while the
-							publisher may have only commissioned the work from a producer. Brl:producer could be the
-							name of an organization or an individual.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>Any string</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="The name of the braille producer of a file">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:producer>
-		American Printing House for the Blind
-	&lt;/brl:producer>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-
-					<section id="brl:tactileGraphics">
-						<h4>brl:tactileGraphics</h4>
-
-						<p>Value is "true" if any tactile graphics are present in the eBraille package and "false" if
-							they are not present.</p>
-
-						<dl class="elemdef">
-							<dt>Allowed values:</dt>
-							<dd>
-								<ul class="nomark">
-									<li>true, false</li>
-								</ul>
-							</dd>
-
-							<dt>Examples</dt>
-							<dd>
-								<aside class="example" title="An eBraille package with tactile graphics">
-									<pre><code class="html">&lt;metadata ...>
-	&lt;brl:tactileGraphics>
-		True
-	&lt;/brl:tactileGraphics>
-	...
-&lt;/metadata></code></pre>
-								</aside>
-							</dd>
-						</dl>
-					</section>
-				</section>
-
-				<section>
-					<h4>Braille Recommended Metadata</h4>
+					</aside>
 				</section>
 			</section>
 
@@ -1747,7 +1529,7 @@
 					spine, it is better to create a separate document with publication-specific formatting.</p>
 
 				<p>As per the requirements of EPUB 3, the <a href="#manifest">manifest entry</a> for the primary entry
-					page has to have a <code>properties</code> attribute with the value "<code>nav</code>"
+					page has to have a <code>properties</code> attribute with the value <code>nav</code>
 					[[epub-33]].</p>
 
 				<aside class="example" title="Manifest entry for the primary entry page">
@@ -2328,12 +2110,6 @@
 						<p>Specifies the REQUIRED type of value using [[xmlschema-2]] datatypes.</p>
 					</dd>
 
-					<dt>Cardinality</dt>
-					<dd>
-						<p>Specifies the number of times eBraille creators MAY specify the property.</p>
-						<p>Properties with a minimum cardinality of one MUST be specified.</p>
-					</dd>
-
 					<dt>Description</dt>
 					<dd>
 						<p>Describes the purpose of the property and specifies any additional usage requirements that
@@ -2379,10 +2155,6 @@
 							</td>
 						</tr>
 						<tr>
-							<th>Cardinality:</th>
-							<td>Exactly one</td>
-						</tr>
-						<tr>
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="brl:completeTranscription">true&lt;/meta></pre>
@@ -2413,10 +2185,6 @@
 							</td>
 						</tr>
 						<tr>
-							<th>Cardinality:</th>
-							<td>Zero or more</td>
-						</tr>
-						<tr>
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="brl:producer">APH&lt;/meta></pre>
@@ -2424,43 +2192,6 @@
 						</tr>
 					</table>
 				</section>
-
-				<!--
-			<section id="volumes">
-				<h3>volumes</h3>
-
-				<table class="tabledef">
-					<caption>Definition of the <code>volumes</code> property</caption>
-					<tr>
-						<th>Name:</th>
-						<td>
-							<code>volumes</code>
-						</td>
-					</tr>
-					<tr>
-						<th>Description:</th>
-						<td>Identifies the total number of volumes within the eBraille publication. The number typically
-							corresponds to the number of XHTML content documents in the publication.</td>
-					</tr>
-					<tr>
-						<th>Allowed value(s):</th>
-						<td>
-							<code>xsd:unsignedInt</code>
-						</td>
-					</tr>
-					<tr>
-						<th>Cardinality:</th>
-						<td>Zero or one</td>
-					</tr>
-					<tr>
-						<th>Example:</th>
-						<td>
-							<pre>&lt;meta property="brl:volumes">3&lt;/meta></pre>
-						</td>
-					</tr>
-				</table>
-			</section>
--->
 			</section>
 
 			<section id="vocab-content">
@@ -2488,10 +2219,6 @@
 							</td>
 						</tr>
 						<tr>
-							<th>Cardinality:</th>
-							<td>Exactly one</td>
-						</tr>
-						<tr>
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="brl:dotNumber">6&lt;/meta></pre>
@@ -2515,9 +2242,11 @@
 							<th>Description:</th>
 							<td>
 								<p>Identifies the format(s) of any tactile graphics included in the work.</p>
-								<p>Required if <a href="#tactileGraphics"><code>tactileGraphics</code></a> has the value
-										"<code>true</code>".</p>
-								<p>Repeat the property for each different format.</p>
+								<p>The value is a comma-separated list containing one or more of the values
+										<code>JPG</code>, <code>PNG</code>, <code>SVG</code>, and <code>PDF</code>. When
+									multiple formats are included, order them from most- to least-used.</p>
+								<p>Required when <a href="#tactileGraphics"><code>tactileGraphics</code></a> has the
+									value <code>true</code>.</p>
 							</td>
 						</tr>
 						<tr>
@@ -2525,10 +2254,6 @@
 							<td>
 								<code>JPG</code> | <code>PDF</code> | <code>PNG</code> | <code>SVG</code>
 							</td>
-						</tr>
-						<tr>
-							<th>Cardinality:</th>
-							<td>One or more when required.</td>
 						</tr>
 						<tr>
 							<th>Example:</th>
@@ -2568,10 +2293,6 @@
 							</td>
 						</tr>
 						<tr>
-							<th>Cardinality:</th>
-							<td>Exactly one</td>
-						</tr>
-						<tr>
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="brl:minimumCells">10&lt;/meta></pre>
@@ -2607,10 +2328,6 @@
 							</td>
 						</tr>
 						<tr>
-							<th>Cardinality:</th>
-							<td>Exactly one</td>
-						</tr>
-						<tr>
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="brl:minimumLines">5&lt;/meta></pre>
@@ -2639,10 +2356,6 @@
 							<td>
 								<code>true</code> | <code>false</code>
 							</td>
-						</tr>
-						<tr>
-							<th>Cardinality:</th>
-							<td>Exactly one</td>
 						</tr>
 						<tr>
 							<th>Example:</th>
