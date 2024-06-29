@@ -796,6 +796,32 @@
 						</aside>
 					</section>
 
+					<section id="brl:cellType">
+						<h4>brl:cellType</h4>
+
+						<p>The REQUIRED <code>brl:cellType</code> property identifies whether the text of the [=eBraille
+							publication=] is encoded using 6- or 8-dot braille characters.</p>
+
+						<p>The value MUST be <code>6</code> or <code>8</code>, with <code>6</code> for 6-dot braille
+							characters and <code>8</code> for 8-dot braille characters. If both 6- and 8-dot braille
+							characters are used in the same file, use a comma to separate the values, with the one used
+							most often listed first.</p>
+
+						<p>Only one instance of this property is allowed.</p>
+
+						<aside class="example" title="brl:cellType for 6-dot braille">
+							<pre><code class="html">&lt;meta property="brl:cellType">
+   6
+&lt;/meta></code></pre>
+						</aside>
+
+						<aside class="example" title="brl:cellType when 8-dot braille is used more than 6-dot">
+							<pre><code class="html">&lt;meta property="brl:cellType">
+   8, 6
+&lt;/meta></code></pre>
+						</aside>
+					</section>
+
 					<section id="brl:code">
 						<h4>brl:code</h4>
 
@@ -877,32 +903,6 @@
 						<aside class="example" title="brl:created with only month and year">
 							<pre><code class="html">&lt;meta property="brl:created">
    2025-09
-&lt;/meta></code></pre>
-						</aside>
-					</section>
-
-					<section id="brl:dotNumber">
-						<h4>brl:dotNumber</h4>
-
-						<p>The REQUIRED <code>brl:dotNumber</code> property identifies whether the text of the
-							[=eBraille publication=] is encoded using 6- or 8-dot braille characters.</p>
-
-						<p>The value MUST be <code>6</code> or <code>8</code>, with <code>6</code> for 6-dot braille
-							characters and <code>8</code> for 8-dot braille characters. If both 6- and 8-dot braille
-							characters are used in the same file, use a comma to separate the values, with the one used
-							most often listed first.</p>
-
-						<p>Only one instance of this property is allowed.</p>
-
-						<aside class="example" title="brl:dotNumber for 6-dot braille">
-							<pre><code class="html">&lt;meta property="brl:dotNumber">
-   6
-&lt;/meta></code></pre>
-						</aside>
-
-						<aside class="example" title="brl:dotNumber when 8-dot braille is used more than 6-dot">
-							<pre><code class="html">&lt;meta property="brl:dotNumber">
-   8, 6
 &lt;/meta></code></pre>
 						</aside>
 					</section>
@@ -2197,31 +2197,32 @@
 			<section id="vocab-content">
 				<h3>Content properties</h3>
 
-				<section id="dotNumber">
-					<h4>dotNumber</h4>
+				<section id="cellType">
+					<h4>cellType</h4>
 
 					<table class="tabledef">
-						<caption>Definition of the <code>dotNumber</code> property</caption>
+						<caption>Definition of the <code>cellType</code> property</caption>
 						<tr>
 							<th>Name:</th>
 							<td>
-								<code>dotNumber</code>
+								<code>cellType</code>
 							</td>
 						</tr>
 						<tr>
 							<th>Description:</th>
-							<td>Identifies whether 6 or 8 dot braille cell characters are used in the text.</td>
+							<td>Identifies whether 6- or 8-dot braille cell characters are used in the text or, when
+								both are present, which is the more commonly used.</td>
 						</tr>
 						<tr>
 							<th>Allowed value(s):</th>
 							<td>
-								<code>6</code> | <code>8</code>
+								<code>6</code> | <code>8</code> | <code>6, 8</code> | <code>8, 6</code>
 							</td>
 						</tr>
 						<tr>
 							<th>Example:</th>
 							<td>
-								<pre>&lt;meta property="brl:dotNumber">6&lt;/meta></pre>
+								<pre>&lt;meta property="brl:cellType">6&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
