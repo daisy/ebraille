@@ -1047,6 +1047,29 @@
 &lt;/package></code></pre>
 				</aside>
 
+				<p>The primary entry page MUST include an [[html]] [^link^] element with its [^link/rel^] attribute set
+					to the value <code>publication</code>. The [^link/href^] attribute MUST specify the package document
+					and the [^link/type^] attribute MUST contain the media type of the package document
+						(<code>application/oebps-package+xml</code>).</p>
+
+				<aside class="example" title="Publication link in the primary entry page">
+					<pre><code>&lt;html &#8230;>
+   &lt;head>
+      &#8230;
+      &lt;link rel="publication" href="package.opf" type="application/oebps-package+xml"/>
+      &#8230;
+   &lt;/head>
+   &lt;body>
+      &#8230;
+   &lt;/body>
+&lt;/html></code></pre>
+				</aside>
+
+				<p>Although it is possible to discover the package document by its required name and location, this
+					requirement ensures that [=eBraille reading systems=] can programmatically determine that the
+					primary entry page belongs to an [=eBraille publication=] (i.e., to avoid having to check for a
+					package document for any web page a user might try to open).</p>
+
 				<p>The primary entry page MAY include [[html]] [^script^] elements only if the document is not included
 					in the spine. This exception is to allow publishers to include a user interface to better enable
 					reading of their publication in browsers. It is not meant for general scripting of the content.</p>
