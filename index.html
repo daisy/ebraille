@@ -1093,8 +1093,15 @@
 					<p>The package document metadata section MAY include <a data-cite="epub-33#sec-opf-dcmes-optional"
 							>any other Dublin Core elements</a> [[epub-33]] not listed as required or recommended.</p>
 
-					<p>It may also include properties from any other vocabulary provided a <a
-							data-cite="epub-33#sec-prefix-attr">prefix</a> [[epub-33]] is defined.</p>
+					<p>Metadata from vocabularies with a <a data-cite="epub-33#sec-metadata-reserved-prefixes">reserved
+							prefix</a> MAY also be added. Properties from other vocabulary are also allowed provided a
+							<a data-cite="epub-33#sec-prefix-attr">prefix</a> [[epub-33]] is defined.</p>
+
+					<div class="note">
+						<p>Properties from the <a href="#ebrl-meta-vocab">eBraille metadata vocabulary</a> can be used
+							without defining the <code>brl:</code> prefix, as detailed in <a href="#app-vocab-ref"
+							></a>.</p>
+					</div>
 				</section>
 
 				<section id="meta-examples">
@@ -2095,8 +2102,11 @@
 						document</a>, this specification reserves the prefix "<code>brl:</code>" for use with properties
 					in this vocabulary.</p>
 
-				<p>Until such time as the prefix is formally registered as an EPUB 3 reserved prefix, it MUST be
-					declared in the eBraille package document.</p>
+				<div class="note">
+					<p>If compatibility with EPUB 3 is a concern, the <code>brl:</code> prefix will have to be declared
+						as it is not recognized as a <a href="epub-33#sec-metadata-reserved-prefixes">reserved
+							prefix</a> [[epub-33]] in that format.</p>
+				</div>
 			</section>
 
 			<section>
