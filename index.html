@@ -538,7 +538,9 @@
 						rendition</a> [[epub-multi-rend-11]] (i.e., one listed first in the <a
 						data-cite="epub-33#sec-container-metainf-container.xml"><code>container.xml</code> file</a>
 					[[epub-33]]) is subject to the <a href="#fileset-structure">file naming and location
-						requirements</a> for the package document and primary entry page.</p>
+						requirements</a> for the package document and primary entry page. The <a
+						href="#xhtml-char-encoding">recommendation to use only 6- and 8-dot Unicode characters</a> also
+					only applies to the default rendition.</p>
 
 				<p>The <a href="#dc:language">publication language</a> of subsequent renditions is not required to use
 					the <code>Brai</code> script designator.</p>
@@ -550,6 +552,10 @@
 				<div class="note">
 					<p>[[epub-multi-rend-11]] is only a W3C Working Group Note. The technology is not currently
 						considered stable and should be used with appropriate caution.</p>
+
+					<p>The eBraille working group may consider a replacement technology for multiple renditions in a
+						future version if there is significant need for them and implementation of the EPUB technology
+						proves too difficult.</p>
 				</div>
 			</section>
 		</section>
@@ -1476,18 +1482,65 @@
 					SVG images are not supported in the [=spine=] but can be embedded in XHTML documents.</p>
 			</section>
 
-			<section id="html-req">
-				<h3>Requirements</h3>
+			<section id="xhtml">
+				<h3>XHTML</h3>
 
-				<p>An [=eBraille content document=]:</p>
+				<p>An [=eBraille content document=] MUST be an <a data-cite="epub-33#sec-xhtml">XHTML content
+						document</a> as defined [[epub-33]] with additional constraints as defined in the following
+					subsections.</p>
 
-				<ul>
-					<li>MUST be an <a data-cite="epub-33#sec-xhtml">XHTML content document</a> [[epub-33]].</li>
-					<li>MUST NOT contain features specified in <a href="#html-no-support"></a>.</li>
-				</ul>
+				<section id="xhtml-char-encoding">
+					<h4>Character encoding</h4>
 
-				<section id="html-no-support">
-					<h3>Unsupported features</h3>
+					<p>[=eBraille content documents=] are required to provide their text content in 6- or 8-dot braille
+						characters. eBraille is not meant as a delivery format for ASCII braille or similar mappings to
+						braille cells.</p>
+
+					<p>For this reason, the text content of [=eBraille content documents=] SHOULD consist only of the
+						following [[unicode]] characters:</p>
+
+					<ul>
+						<li><a href="https://www.unicode.org/charts/nameslist/c_2800.html">Braille Patterns</a> (U+2800
+							… U+28FF) ;</li>
+						<li>[=ASCII whitespace=] [[infra]]: <ul>
+								<li>TAB (U+0009)</li>
+								<li>LF (U+000A)</li>
+								<li>FF (U+000C)</li>
+								<li>CR (U+000D)</li>
+								<li>SPACE (U+0020)</li>
+							</ul>
+						</li>
+						<li>NO-BREAK SPACE (U+00A0)</li>
+						<li>SOFT HYPHEN (U+00AD)</li>
+					</ul>
+
+					<div class="note">
+						<p>The zero width space character is not included in this list as eBraille creators are advised
+							to use the [^wbr^] element [[html]] to indicate break opportunities within words.</p>
+					</div>
+
+					<p>This restriction only applies to the renderable text of an XHTML document as well as the
+						attributes that could be rendered depending on the display capabilities of a device or user
+						configuration settings, for example:</p>
+
+					<ul>
+						<li>the [^img/alt^] attribute [[html]] for images and image maps that cannot be displayed;</li>
+						<li>the [^th/abbr^] attribute [[html]] for alternative table headings;</li>
+						<li>the [^abbr/title^] attribute [[html]] for expansions of abbreviations.</li>
+					</ul>
+
+					<p>This restriction does not apply to attributes that carry meta information (e.g., the
+						[^global/class^] and [^a/href^] attributes [[html]], as well as the [^html-global/title^]
+						attribute in <a href="#page-list">the page list</a>).</p>
+
+					<div class="note">
+						<p>For some technologies that can be embedded in eBraille content documents, such as [[mathml]],
+							it will not be possible to restrict the text to braille characters.</p>
+					</div>
+				</section>
+
+				<section id="xhtml-no-support">
+					<h4>Unsupported features</h4>
 
 					<p>eBraille does not support scripted interactivity or form submissions. Consequently, authors MUST
 						NOT include [[html]] [^script^] elements or the [^form^] element's [^form/action^] attribute in
@@ -1591,10 +1644,6 @@
 								font used by the reading device, using absolute lengths is regarded as unreliable. Using
 								font-relative lengths in style sheets is also needed in order to reliably use relative
 								widths and heights in <a href="#media-queries">media queries</a>.</p>
-							<p>Reading devices MUST guarantee that <code>1ch</code> corresponds with the cell-to-cell
-								distance (i.e. the distance from center to center of corresponding dots in adjacent
-								cells), while <code>1em</code> should correspond with the line-to-line distance (i.e.
-								the distance from center to center of corresponding dots from one line to the next).</p>
 						</li>
 					</ul>
 
@@ -1757,6 +1806,29 @@
    &#8230;
 &lt;/package></pre>
 				</aside>
+
+				<p>The primary entry page MUST include an [[html]] [^link^] element with its [^link/rel^] attribute set
+					to the value <code>publication</code>. The [^link/href^] attribute MUST specify the package document
+					and the [^link/type^] attribute MUST contain the media type of the package document
+						(<code>application/oebps-package+xml</code>).</p>
+
+				<aside class="example" title="Publication link in the primary entry page">
+					<pre><code>&lt;html &#8230;>
+   &lt;head>
+      &#8230;
+      &lt;link rel="publication" href="package.opf" type="application/oebps-package+xml"/>
+      &#8230;
+   &lt;/head>
+   &lt;body>
+      &#8230;
+   &lt;/body>
+&lt;/html></code></pre>
+				</aside>
+
+				<p>Although it is possible to discover the package document by its required name and location, this
+					requirement ensures that [=eBraille reading systems=] can programmatically determine that the
+					primary entry page belongs to an [=eBraille publication=] (i.e., to avoid having to check for a
+					package document for any web page a user might try to open).</p>
 
 				<p>The primary entry page MAY include [[html]] [^script^] elements only if the document is not included
 					in the spine. This exception is to allow publishers to include a user interface to better enable
@@ -2132,7 +2204,27 @@
 		<section id="ebrl-packaging">
 			<h2>Packaging</h2>
 
+			<p>When [=eBraille publications=] are distributed to end users as a single file set, they MUST be packaged
+				in an EPUB container, as defined in <a data-cite="epub-33#sec-container-zip">OCF ZIP Container</a>
+				[[epub-33]].</p>
+
+			<p>Packaged eBraille publications are also identified by the media type identifier
+					"<code>application/epub+zip</code>" [[epub-33]]. The requirements for specifying the identifier in
+				the <code>mimetype</code> file are defined in <a data-cite="epub-33#sec-zip-container-mime">OCF ZIP
+					container media type identification</a>.</p>
+
 			<p>A packaged eBraille file set MUST use the extension <code>.ebrl</code>.</p>
+
+			<div class="note">
+				<p>If an eBraille file is packaged with the extension <code>.epub</code>, it will not be recognized by
+					eBraille reading system as an eBraille publication. In this case, the file would be recognized as an
+					EPUB publication and could be opened in EPUB reading systems (with some loss of braille-specific
+					functionality).</p>
+			</div>
+
+			<p>As the use of <a href="#css-req">CSS font properties</a> is not recommended, eBraille creators SHOULD NOT
+				use EPUB's <a data-cite="epub-33#sec-font-obfuscation">font obfuscation algorithm</a> [[epub-33]] to
+				embed fonts.</p>
 		</section>
 		<section id="ebrl-security-privacy">
 			<h2>Security and privacy</h2>
@@ -2227,55 +2319,109 @@
 			</section>
 
 			<section id="rs-req">
-				<h3>Reading system requirements</h3>
+				<h3 id="rs-req-hd">Reading system requirements</h3>
 
-				<p>An [=eBraille reading system=] MUST meet the <a data-cite="epub-rs-33#sec-rs-conformance"
-						>requirements for EPUB reading systems</a> [[epub-rs-33]], with the following differences:</p>
+				<section id="rs-req-epub" aria-labelledby="rs-req-epub-hd rs-req-hd">
+					<h4 id="rs-req-epub-hd">General</h4>
 
-				<ul>
-					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-epub-rs-conf-remote-res">remote resources</a>
-						[[epub-rs-33]].</li>
-					<li>It MUST NOT resolve [=path-absolute-URL strings=] [[url]].</li>
-					<li>As remote resources, forms, and scripting are not supported, it MUST NOT allow [=eBraille
-						publications=] to have <a data-cite="epub-rs-33#sec-epub-rs-network-access">network access</a>
-						[[epub-rs-33]]. (Note that barring network access should not prevent users from following <a
-							data-cite="epub-rs-33#sec-epub-rs-external-links">external hyperlinks</a> [[epub-rs-33]] in
-						a publication.)</li>
-					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-pkg-doc-manifest">manifest fallbacks</a>
-						[[epub-rs-33]].</li>
-					<li>It MUST only support [=eBraille content documents=] in the <code>spine</code>. The reading
-						system MAY reject eBraille publications with other formats in the spine or ignore their entries
-						when rendering the publication.</li>
-					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-xhtml-forms">form submission</a>
-						[[epub-rs-33]].</li>
-					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-svg">SVG content documents</a>. (Note that this
-						does not affect <a data-cite="epub-rs-33#sec-xhtml-svg">embedded SVG</a> [[epub-rs-33]].)</li>
-					<li>It MUST NOT support EPUB 3's <a data-cite="epub-33#sec-css-prefixed">prefixed CSS properties</a>
-						[[epub-33]].</li>
-					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-scripted-content">scripting</a>
-						[[epub-rs-33]].</li>
-					<li>It is not required that eBraille publications be <a data-cite="epub-rs-33#sec-container-iri"
-							>assigned a unique URL</a> [[epub-rs-33]], as scripting is not supported, but it is still
-						recommended to domain isolate publications in case scripting is introduced in a future
-						version.</li>
-					<li>It MUST NOT support <a data-cite="epub-rs-33#epub-rs-33/#sec-rendering-control">fixed
-							layouts</a> [[epub-rs-33]].</li>
-					<li>It MUST NOT support <a data-cite="epub-rs-33#sec-epub-rs-conf-backward">backward
-							compatibility</a> or <a data-cite="epub-rs-33#sec-epub-rs-conf-forward">forward
-							compatibility</a> with other EPUB versions [[epub-rs-33]].</li>
-				</ul>
+					<p>An [=eBraille reading system=] MUST meet the <a data-cite="epub-rs-33#sec-rs-conformance"
+							>requirements for EPUB reading systems</a> [[epub-rs-33]], with the following
+						differences:</p>
 
-				<p>In addition, eBraille reading systems MUST support PDF for tactile graphics. If an eBraille reading
-					system is not capable of rendering PDFs embedded in [=eBraille content documents=], it MUST provide
-					a mechanism that allows the user to open the graphics in an application that supports PDF
-					rendering.</p>
+					<ul>
+						<li>It MUST NOT support <a data-cite="epub-rs-33#sec-epub-rs-conf-remote-res">remote
+								resources</a> [[epub-rs-33]].</li>
+						<li>It MUST NOT resolve [=path-absolute-URL strings=] [[url]].</li>
+						<li>As remote resources, forms, and scripting are not supported, it MUST NOT allow [=eBraille
+							publications=] to have <a data-cite="epub-rs-33#sec-epub-rs-network-access">network
+								access</a> [[epub-rs-33]]. (Note that barring network access should not prevent users
+							from following <a data-cite="epub-rs-33#sec-epub-rs-external-links">external hyperlinks</a>
+							[[epub-rs-33]] in a publication.)</li>
+						<li>It MUST only support [=eBraille content documents=] in the <code>spine</code>. The reading
+							system MAY reject eBraille publications with other formats in the spine or ignore their
+							entries when rendering the publication.</li>
+						<li>It MUST NOT support <a data-cite="epub-rs-33#sec-xhtml-forms">form submission</a>
+							[[epub-rs-33]].</li>
+						<li>It MUST NOT support <a data-cite="epub-rs-33#sec-scripted-content">scripting</a>
+							[[epub-rs-33]].</li>
+						<li>It is only required to support <a data-cite="epub-rs-33#sec-ocf">OCF processing</a>
+							[[epub-33]] if it supports <a href="#ebrl-packaging">packaged eBraille
+							publications</a>.</li>
+					</ul>
+				</section>
 
-				<p>If an eBraille reading system supports web access, it SHOULD allow users to download unpackaged
-					eBraille publications hosted on the web by specifying the path to the package document.</p>
+				<section id="rs-req-non-critical">
+					<h4>Non-critical features</h4>
+
+					<p>The following EPUB reading system features [[epub-rs-33]] are not supported in the authoring of
+						eBraille publications. Unlike the features restricted in <a href="rs-req-epub"></a>, the
+						existence of these features will not affect the rendering of [=eBraille publications=] and does
+						not affect their privacy or security. Reading systems built on EPUB rendering engines MAY
+						support the features although they SHOULD be disabled, if possible, to discourage use by
+						eBraille creators:</p>
+
+					<ul>
+						<li><a data-cite="epub-rs-33#sec-pkg-doc-manifest">manifest fallbacks</a>.</li>
+						<li><a data-cite="epub-rs-33#sec-svg">SVG content documents</a>. (Note that this does not affect
+								<a data-cite="epub-rs-33#sec-xhtml-svg">embedded SVG</a>.)</li>
+						<li><a data-cite="epub-33#sec-css-prefixed">EPUB 3's prefixed CSS properties</a>.</li>
+						<li><a data-cite="epub-rs-33#epub-rs-33/#sec-rendering-control">fixed layouts</a>.</li>
+						<li><a data-cite="epub-rs-33#sec-epub-rs-conf-backward">backward compatibility</a> or <a
+								data-cite="epub-rs-33#sec-epub-rs-conf-forward">forward compatibility</a> with other
+							EPUB versions.</li>
+					</ul>
+
+					<p>eBraille reading systems not built on EPUB rendering engines MUST NOT add support for these
+						features.</p>
+				</section>
+
+				<section>
+					<h4>Publication types</h4>
+
+					<p>An eBraille reading system MUST support at least one of <a href="#ebrl-packaging">packaged
+							eBraille publications</a> or <a href="#ebrl-web-deploy">web-hosted eBraille
+						publications</a>, but SHOULD support both deployment methods.</p>
+
+					<p>For packaged eBraille publications, reading systems:</p>
+
+					<ul>
+						<li>SHOULD NOT fail to open a publication solely because the <code>mimetype</code> is missing or
+							not encoded or stored as required.</li>
+						<li>are not required to <a data-cite="epub-rs-33#sec-container-iri">assign a unique URL</a>
+							[[epub-rs-33]] to publications because scripting is not supported. It is still RECOMMENDED
+							to domain isolate publications in case scripting is introduced in a future version,
+							however.</li>
+					</ul>
+
+					<p>If an eBraille reading system supports web access, it SHOULD allow users to download unpackaged
+						eBraille publications hosted on the web by specifying the path to the package document.</p>
+				</section>
+
+				<section id="rs-req-fonts">
+					<h4>Font support</h4>
+
+					<p>In addition to the general requirements for CSS support in [[epub-rs-33]], Reading devices MUST
+						guarantee that <code>1ch</code> corresponds with the cell-to-cell distance (i.e., the distance
+						from center to center of corresponding dots in adjacent cells), while <code>1em</code> should
+						correspond with the line-to-line distance (i.e., the distance from center to center of
+						corresponding dots from one line to the next).</p>
+
+					<p>As the <a href="#css-req">use of CSS font properties</a> is not recommended, reading system
+						support for <a data-cite="epub-rs-33#sec-container-fobfus">font obfuscation</a> is OPTIONAL.</p>
+				</section>
+
+				<section id="rs-req-cmt">
+					<h4>Core media types</h4>
+
+					<p>eBraille reading systems MUST support PDF for tactile graphics in addition to the core media
+						types requirements in [[epub-rs-33]]. If an eBraille reading system is not capable of rendering
+						PDFs embedded in [=eBraille content documents=], it MUST provide a mechanism that allows the
+						user to open the graphics in an application that supports PDF rendering.</p>
+				</section>
 			</section>
 
-			<section id="rs-browser">
-				<h3>Web-hosted eBraille publications</h3>
+			<section id="rs-web">
+				<h3>Browser-based reading systems</h3>
 
 				<p>[=eBraille publications=] made available over the web in unpackaged form are expected to provide
 					minimal functionality in web browsers without the need for a dedicated [=eBraille reading
