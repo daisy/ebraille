@@ -578,16 +578,97 @@
 			<section id="metadata">
 				<h3>Metadata</h3>
 
-				<section id="meta-req">
+				<section id="meta-about" class="informative">
+					<h4>About package document metadata</h4>
+
+					<section id="meta-elements">
+						<h4>Metadata elements</h4>
+
+						<p>The following elements are allowed in the package document metadata:</p>
+
+						<dl>
+							<dt>Dublin Core elements</dt>
+							<dd>
+								<p>Dublin Core defines 15 core elements in the <code>/elements/1.1/</code> namespace
+									[[dcterms]] that can be used anywhere in the package document. Elements not in the
+										<a href="#meta-req-prop">required</a> or <a href="#meta-rec-prop"
+										>recommended</a> metadata sections are valid to use &#8212; these are considered
+										<a href="#meta-additional">optional elements</a>.</p>
+							</dd>
+
+							<dt>The <code>meta</code> element</dt>
+							<dd>
+								<p>The <a data-cite="epub-33#sec-meta-elem"><code>meta</code> element</a> [[epub-33]] is
+									used to express properties from metdata vocabularies, where its
+										<code>property</code> attribute defines the property name.</p>
+								<p>Metadata properties defined in this element typically require a <a
+										href="#meta-prefixes">prefix</a>.</p>
+							</dd>
+
+							<dt>The <code>link</code> element</dt>
+							<dd>
+								<p>The <a data-cite="epub-33#sec-link-elem"><code>link</code> element</a> [[epub-33]] is
+									used to associate resource with an [=eBraille publication=], such as metadata
+									records.</p>
+								<p>Metadata properties defined in this element also typically require a <a
+										href="#meta-prefixes">prefix</a>.</p>
+							</dd>
+						</dl>
+
+						<div class="note">
+							<p>For more information about the attributes allowed on these elements, refer to their
+								definitions in [[epub-33]].</p>
+						</div>
+					</section>
+
+					<section id="meta-prefixes">
+						<h4>Using prefixes</h4>
+
+						<p>The <code>meta</code> and <code>link</code> elements are meant for use with properties
+							defined in existing metadata vocabularies, such as those in the Dublin Core
+								<code>/terms/</code> namespace [[dcterms]].</p>
+
+						<p>EPUB 3 defines a set of <a data-cite="epub-33#sec-reserved-prefixes">reserved prefixes</a>
+							[[epub-33]] for common metadata vocabularies. Properties from these vocabularies can be used
+							without having to declare their prefix.</p>
+
+						<p>If properties from other vocabularies are needed, a prefix needs to be declared before they
+							can be used. Prefixes are defined in the <code>prefix</code> attribute on the root
+								<code>package</code> element. Both the prefix and a URL to associate with the prefix
+							have to be specified.</p>
+
+						<aside class="example" title="Declaring a new prefix">
+							<pre><code>&lt;package &#8230; prefix="ex: https://example.com/metadata/">
+   &lt;metadata>
+      &#8230;
+      &lt;meta property="ex:revisionDate">2024-01-01&lt;/meta>
+      &#8230;
+   &lt;/metadata>
+   &#8230;
+&lt;/package></code></pre>
+						</aside>
+
+						<div class="note">
+							<p>For more information about using prefixes in the package document, refer to <a
+									data-cite="epub-33#sec-vocab-assoc">Vocabulary association mechanisms</a>
+								[[epub-33]].</p>
+						</div>
+					</section>
+				</section>
+
+				<section id="meta-req-general">
 					<h4>General requirements</h4>
 
-					<p>The eBraille package document metadata MUST meet all the requirements for [[epub-33]] <a
-							data-cite="epub-33#sec-pkg-metadata">metadata</a>.</p>
+					<p>The eBraille package document metadata:</p>
 
-					<p>[=eBraille publications=] additionally MUST include all metadata defined in <a
-							href="#meta-req-prop"></a>.</p>
+					<ul>
+						<li>MUST meet all the requirements for [[epub-33]] <a data-cite="epub-33#sec-pkg-metadata"
+								>metadata</a>.</li>
 
-					<p>eBraille publications SHOULD include all metadata defined in <a href="#meta-rec-prop"></a>.</p>
+						<li>MUST include all metadata defined in <a href="#meta-req-prop"></a>.</li>
+
+						<li>SHOULD include all metadata defined in <a href="#meta-rec-prop"></a>.</li>
+					</ul>
 				</section>
 
 				<section id="meta-req-prop">
@@ -596,8 +677,8 @@
 					<section id="dc:creator">
 						<h4>dc:creator</h4>
 
-						<p>The REQUIRED <code>dc:creator</code> [[dcterms]] identifies the name(s) of the primary
-							author, editor, etc. Follow regional conventions for name layout.</p>
+						<p>The REQUIRED <code>dc:creator</code> element [[dcterms]] identifies the name(s) of the
+							primary author, editor, etc. Follow regional conventions for name layout.</p>
 
 						<p>The role the creator played in the creation of the content MAY be specified by <a
 								data-cite="epub-33#subexpression">associating</a> a <a data-cite="epub-33#role"
@@ -628,12 +709,12 @@
 							<pre><code class="html">&lt;dc:creator id="aut01">
    Brontë, Charlotte
 &lt;/dc:creator>
-&lt;meta property="role" refines="aut01">aut&lt;/meta>
+&lt;meta property="role" refines="#aut01">aut&lt;/meta>
 
 &lt;dc:creator id="aut02">
    Melville, Herman
 &lt;/dc:creator>
-&lt;meta property="role" refines="aut02">aut&lt;/meta></code></pre>
+&lt;meta property="role" refines="#aut02">aut&lt;/meta></code></pre>
 						</aside>
 					</section>
 
@@ -740,7 +821,8 @@
 					<section id="dc:title">
 						<h4>dc:title</h4>
 
-						<p>The REQUIRED <code>dc:title</code> element identifies the title of the source material.</p>
+						<p>The REQUIRED <code>dc:title</code> element [[dcterms]] identifies the title of the source
+							material.</p>
 
 						<p>The first <code>dc:title</code> element in document order identifies the primary title of the
 							[=eBraille publication=].</p>
