@@ -608,7 +608,7 @@
 							<dt>The <code>meta</code> element</dt>
 							<dd>
 								<p>The <a data-cite="epub-33#sec-meta-elem"><code>meta</code> element</a> [[epub-33]] is
-									used to express properties from metdata vocabularies, where its
+									used to express properties from metadata vocabularies, where its
 										<code>property</code> attribute defines the property name.</p>
 								<p>Metadata properties defined in this element typically require a <a
 										href="#meta-prefixes">prefix</a>.</p>
@@ -749,7 +749,7 @@
 					<section id="dc:format">
 						<h4>dc:format</h4>
 
-						<p>The REQUIRED <code>dc:format</code> element [[dcterms]] identifies verion of the eBraille
+						<p>The REQUIRED <code>dc:format</code> element [[dcterms]] identifies version of the eBraille
 							standard an publication conforms to. The [=value=] MUST contain both the name "eBraille" and
 							the version number.</p>
 
@@ -791,7 +791,7 @@
 						<p>The element MAY include an <a data-cite="epub-33#attrdef-id"><code>id</code></a> attribute
 							[[epub-33]].</p>
 
-						<p>One identifier MUST be identified as the unique identifier for the publication using the the
+						<p>One identifier MUST be identified as the unique identifier for the publication using the
 								<code>package</code> element's <a data-cite="epub-33#attrdef-package-unique-identifier"
 									><code>unique-identifier</code> attribute</a> [[epub-33]]. This identifier MUST be
 							unique to the publication.</p>
@@ -976,7 +976,7 @@
 							[=eBraille publication=] has been formatted in conformance with.</p>
 
 						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>brl:completeTranscription</code>.</p>
+							set to <code>brl:code</code>.</p>
 
 						<aside class="example" title="A single uncontracted braille code">
 							<pre>&lt;meta property="brl:code">
@@ -985,7 +985,7 @@
 						</aside>
 
 						<p>The [=value=] SHOULD include all relevant code-specific information (e.g., "contracted",
-							"uncontracted", "bar by bar" etc.). Specify this information in parenthese after the code
+							"uncontracted", "bar by bar" etc.). Specify this information in parentheses after the code
 							name.</p>
 
 						<aside class="example" title="A single uncontracted braille code">
@@ -1115,7 +1115,7 @@
 						</aside>
 
 						<p>The <code>brl:producer</code> and <code>dc:publisher</code> MAY identify the same
-							organization or individual but they do not have to. The producer is responsible for creating
+							organization or individual, but they do not have to. The producer is responsible for creating
 							an eBraille publication, while the publisher may have only commissioned the work from a
 							producer.</p>
 
