@@ -68,9 +68,11 @@ async function validateExamples() {
 				let unicodeBraille = result.textContent;
 				if (content.length > 0 && style.length > 0) {
 					content = content.item(0).textContent;
-					style = style.item(0);
-					let columns = parseInt(style.dataset.pageWidth);
-					style = style.textContent;
+					let columns = parseInt(style.item(0).dataset.pageWidth);
+					style = Array.from(style).reduce(
+						(textContent, s) => textContent + s.textContent,
+						""
+					);
 					let script = example.getElementsByClassName("javascript");
 					script = script.length > 0 ? script.item(0).textContent : null;
 					if (script != null)
