@@ -540,6 +540,9 @@
 					[[epub-33]]) is subject to the <a href="#fileset-structure">file naming and location
 						requirements</a> for the package document and primary entry page.</p>
 
+				<p>The <a href="#dc:language">publication language</a> of subsequent renditions is not required to use
+					the <code>Brai</code> script designator.</p>
+
 				<p>The default rendition MUST be a braille rendition (i.e., identified by a <a
 						data-cite="epub-multi-rend-11#accessMode-attr"><code>rendition:accessMode</code> attribute</a>
 					with the value <code>tactile</code> [[epub-multi-rend-11]]).</p>
@@ -812,12 +815,21 @@
 							[[epub-33]] identifies the language(s) of the [=eBraille publication=].</p>
 
 						<p>The [=value=] MUST be a <a href="https://www.rfc-editor.org/rfc/rfc5646#section-2.2.9"
-								>well-formed language tag</a> [[bcp47]]. When specified, a country code sub-tag MUST
-							refer to the language of the work being transcribed.</p>
+								>well-formed language tag</a> [[bcp47]]. The language code MUST include the script
+							subtag <code>Brai</code> to indicate the text is encoded in braille.</p>
 
-						<aside class="example" title="American English as only language of work">
+						<aside class="example" title="Language identifier for Italian braille">
 							<pre class="html">&lt;dc:language>
-   en-US
+   it-Brai
+&lt;/dc:language></pre>
+						</aside>
+
+						<p>When specified, a country code subtag MUST refer to the language of the work being
+							transcribed.</p>
+
+						<aside class="example" title="Language identifier for American English braille">
+							<pre class="html">&lt;dc:language>
+   en-Brai-US
 &lt;/dc:language></pre>
 						</aside>
 
@@ -829,10 +841,10 @@
 
 						<aside class="example" title="A French textbook that teaches German">
 							<pre class="html">&lt;dc:language>
-   fr-FR
+   fr-Brai-FR
 &lt;/dc:language>
 &lt;dc:language>
-   de-DE
+   de-Brai-DE
 &lt;/dc:language></pre>
 						</aside>
 
