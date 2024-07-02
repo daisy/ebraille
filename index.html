@@ -538,7 +538,9 @@
 						rendition</a> [[epub-multi-rend-11]] (i.e., one listed first in the <a
 						data-cite="epub-33#sec-container-metainf-container.xml"><code>container.xml</code> file</a>
 					[[epub-33]]) is subject to the <a href="#fileset-structure">file naming and location
-						requirements</a> for the package document and primary entry page.</p>
+						requirements</a> for the package document and primary entry page. The <a
+						href="#xhtml-char-encoding">recommendation to use only 6- and 8-dot Unicode characters</a> also
+					only applies to the default rendition.</p>
 
 				<p>The default rendition MUST be a braille rendition (i.e., identified by a <a
 						data-cite="epub-multi-rend-11#accessMode-attr"><code>rendition:accessMode</code> attribute</a>
@@ -765,18 +767,65 @@
 					SVG images are not supported in the [=spine=] but can be embedded in XHTML documents.</p>
 			</section>
 
-			<section id="html-req">
-				<h3>Requirements</h3>
+			<section id="xhtml">
+				<h3>XHTML</h3>
 
-				<p>An [=eBraille content document=]:</p>
+				<p>An [=eBraille content document=] MUST be an <a data-cite="epub-33#sec-xhtml">XHTML content
+						document</a> as defined [[epub-33]] with additional constraints as defined in the following
+					subsections.</p>
 
-				<ul>
-					<li>MUST be an <a data-cite="epub-33#sec-xhtml">XHTML content document</a> [[epub-33]].</li>
-					<li>MUST NOT contain features specified in <a href="#html-no-support"></a>.</li>
-				</ul>
+				<section id="xhtml-char-encoding">
+					<h4>Character encoding</h4>
 
-				<section id="html-no-support">
-					<h3>Unsupported features</h3>
+					<p>[=eBraille content documents=] are required to provide their text content in 6- or 8-dot braille
+						characters. eBraille is not meant as a delivery format for ASCII braille or similar mappings to
+						braille cells.</p>
+
+					<p>For this reason, the text content of [=eBraille content documents=] SHOULD consist only of the
+						following [[unicode]] characters:</p>
+
+					<ul>
+						<li><a href="https://www.unicode.org/charts/nameslist/c_2800.html">Braille Patterns</a> (U+2800
+							… U+28FF) ;</li>
+						<li>[=ASCII whitespace=] [[infra]]: <ul>
+								<li>TAB (U+0009)</li>
+								<li>LF (U+000A)</li>
+								<li>FF (U+000C)</li>
+								<li>CR (U+000D)</li>
+								<li>SPACE (U+0020)</li>
+							</ul>
+						</li>
+						<li>NO-BREAK SPACE (U+00A0)</li>
+						<li>SOFT HYPHEN (U+00AD)</li>
+					</ul>
+
+					<div class="note">
+						<p>The zero width space character is not included in this list as eBraille creators are advised
+							to use the [^wbr^] element [[html]] to indicate break opportunities within words.</p>
+					</div>
+
+					<p>This restriction only applies to the renderable text of an XHTML document as well as the
+						attributes that could be rendered depending on the display capabilities of a device or user
+						configuration settings, for example:</p>
+
+					<ul>
+						<li>the [^img/alt^] attribute [[html]] for images and image maps that cannot be displayed;</li>
+						<li>the [^th/abbr^] attribute [[html]] for alternative table headings;</li>
+						<li>the [^abbr/title^] attribute [[html]] for expansions of abbreviations.</li>
+					</ul>
+
+					<p>This restriction does not apply to attributes that carry meta information (e.g., the
+						[^global/class^] and [^a/href^] attributes [[html]], as well as the [^html-global/title^]
+						attribute in <a href="#page-list">the page list</a>).</p>
+
+					<div class="note">
+						<p>For some technologies that can be embedded in eBraille content documents, such as [[mathml]],
+							it will not be possible to restrict the text to braille characters.</p>
+					</div>
+				</section>
+
+				<section id="xhtml-no-support">
+					<h4>Unsupported features</h4>
 
 					<p>eBraille does not support scripted interactivity or form submissions. Consequently, authors MUST
 						NOT include [[html]] [^script^] elements or the [^form^] element's [^form/action^] attribute in
