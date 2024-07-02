@@ -621,6 +621,21 @@
 						</div>
 					</section>
 
+					<section id="meta-values">
+						<h4>Metadata values</h4>
+
+						<p>EPUB 3 requires that all Dublin Core [[dcterms]] and <code>meta</code> elements have <a
+								data-cite="epub-33#sec-metadata-values">child text content</a> [[epub-33]] (i.e., they
+							have to have at least one non-whitespace character after <a
+								data-cite="infra#strip-leading-and-trailing-ascii-whitespace">leading and trailing ASCII
+								whitespace</a> [[?infra]] is stripped). In the descriptions for these elements, this
+							specification refers to this content as the element's <dfn>value</dfn>.</p>
+
+						<p>Whitespace within these element values is not significant. Sequences of one or more
+							whitespace characters are <a data-cite="infra#strip-and-collapse-ascii-whitespace">collapsed
+								to a single space</a> [[infra]] during processing.</p>
+					</section>
+
 					<section id="meta-prefixes">
 						<h4>Using prefixes</h4>
 
@@ -726,8 +741,8 @@
 						<h4>dc:format</h4>
 
 						<p>The REQUIRED <code>dc:format</code> element [[dcterms]] identifies verion of the eBraille
-							standard an publication conforms to. The value MUST contain both the name "eBraille" and the
-							version number.</p>
+							standard an publication conforms to. The [=value=] MUST contain both the name "eBraille" and
+							the version number.</p>
 
 						<p>For example, for this version of the specification, the value would be "<code>eBraille
 								1.0</code>".</p>
@@ -771,7 +786,7 @@
 								<code>package</code> element's <a data-cite="epub-33#attrdef-package-unique-identifier"
 									><code>unique-identifier</code> attribute</a> [[epub-33]]. This identifier MUST be
 							unique to the publication.</p>
-						
+
 						<aside class="example" title="Unique identifier as ISBN">
 							<pre>&lt;package &#8230; unique-identifier="uid">
    &lt;metadata>
@@ -783,10 +798,10 @@
    &#8230;
 &lt;/package></pre>
 						</aside>
-						
+
 						<div class="note">
 							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dcidentifier">definition
-								of the <code>dc:identifier</code> element</a> in [[epub-33]].</p>
+									of the <code>dc:identifier</code> element</a> in [[epub-33]].</p>
 						</div>
 					</section>
 
@@ -796,7 +811,7 @@
 						<p>The REQUIRED <a href="epub-33#sec-opf-dclanguage"><code>dc:language</code> element</a>
 							[[epub-33]] identifies the language(s) of the [=eBraille publication=].</p>
 
-						<p>The value MUST be a <a href="https://www.rfc-editor.org/rfc/rfc5646#section-2.2.9"
+						<p>The [=value=] MUST be a <a href="https://www.rfc-editor.org/rfc/rfc5646#section-2.2.9"
 								>well-formed language tag</a> [[bcp47]]. When specified, a country code sub-tag MUST
 							refer to the language of the work being transcribed.</p>
 
@@ -870,7 +885,7 @@
 &lt;/meta></pre>
 						</aside>
 
-						<p>The value of the property MUST be an [[iso8601-1]] conformant date of the form
+						<p>The [=value=] of the property MUST be an [[iso8601-1]] conformant date of the form
 								<code>YYYY-MM-DD</code>, <code>YYYY-MM</code>, or <code>YYYY</code></p>
 
 						<aside class="example" title="Date copyrighted where only the year is known">
@@ -895,7 +910,7 @@
 &lt;/meta></pre>
 						</aside>
 
-						<p>The value MUST be an [[xmlschema-2]] dateTime conformant date of the form:
+						<p>The [=value=] MUST be an [[xmlschema-2]] dateTime conformant date of the form:
 								<code>YYYY-MM-DDThh:mm:ssZ</code>, where YYYY represents the year, MM the month, DD the
 							day, T is a separator indicating the start of the time section, hh the hour, mm the minutes,
 							ss the seconds, and Z represents the UTC time zone designator.</p>
@@ -921,7 +936,7 @@
 &lt;/meta></pre>
 						</aside>
 
-						<p>The value MUST be <code>6</code> or <code>8</code>, with <code>6</code> for 6-dot braille
+						<p>The [=value=] MUST be <code>6</code> or <code>8</code>, with <code>6</code> for 6-dot braille
 							characters and <code>8</code> for 8-dot braille characters.</p>
 
 						<p>If both 6- and 8-dot braille characters are used in the same file, use a comma to separate
@@ -951,7 +966,7 @@
 &lt;/meta></pre>
 						</aside>
 
-						<p>The value SHOULD include all relevant code-specific information (e.g., "contracted",
+						<p>The [=value=] SHOULD include all relevant code-specific information (e.g., "contracted",
 							"uncontracted", "bar by bar" etc.). Specify this information in parenthese after the code
 							name.</p>
 
@@ -992,7 +1007,7 @@
 &lt;/meta></pre>
 						</aside>
 
-						<p>The value MUST be <code>true</code> if complete and <code>false</code> if not complete.
+						<p>The [=value=] MUST be <code>true</code> if complete and <code>false</code> if not complete.
 							Completeness is determined by whether the original work being transcribed is fully
 							represented in the braille rendition, minus any minor omissions such as illustrations
 							without captions or other material that is not ordinarily transcribed.</p>
@@ -1020,8 +1035,8 @@
 &lt;/meta></pre>
 						</aside>
 
-						<p>The value SHOULD be an [[iso8601-1]] conformant date of the form <code>YYYY-MM-DD</code>. If
-							the full date is unknown, the month and year (<code>YYYY-MM</code>) or year
+						<p>The [=value=] SHOULD be an [[iso8601-1]] conformant date of the form <code>YYYY-MM-DD</code>.
+							If the full date is unknown, the month and year (<code>YYYY-MM</code>) or year
 								(<code>YYYY</code>) MAY be specified instead.</p>
 
 						<aside class="example" title="brl:created with only month and year">
@@ -1098,7 +1113,7 @@
 						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
 							set to <code>brl:tactileGraphics</code>.</p>
 
-						<p>The element's value is <code>true</code> if tactile graphics are present and
+						<p>The element's [=value=] is <code>true</code> if tactile graphics are present and
 								<code>false</code> if not.</p>
 
 						<aside class="example" title="An eBraille package with no tactile graphics">
@@ -1206,8 +1221,8 @@
 						<p>The RECOMMENDED <code>dc:subject</code> element [[dcterms]] identifies the subject of an
 							[=eBraille publication=].</p>
 
-						<p>The value SHOULD be a human-readable heading or label, but a code value MAY be used if the
-							subject taxonomy does not provide a separate descriptive label.</p>
+						<p>The [=value=] SHOULD be a human-readable heading or label, but a code value MAY be used if
+							the subject taxonomy does not provide a separate descriptive label.</p>
 
 						<aside class="example" title="Subject as a literal value">
 							<pre>&lt;dc:subject>
