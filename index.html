@@ -600,9 +600,9 @@
 							<dd>
 								<p>Dublin Core defines 15 core elements in the <code>/elements/1.1/</code> namespace
 									[[dcterms]] that can be used anywhere in the package document. Elements not in the
-										<a href="#meta-req-prop">required</a> or <a href="#meta-rec-prop"
-										>recommended</a> metadata sections are valid to use &#8212; these are considered
-										<a href="#meta-additional">optional elements</a>.</p>
+										<a href="#meta-req">required</a> or <a href="#meta-rec">recommended</a> metadata
+									sections are valid to use &#8212; these are considered <a href="#meta-additional"
+										>optional elements</a>.</p>
 							</dd>
 
 							<dt>The <code>meta</code> element</dt>
@@ -689,14 +689,14 @@
 						<li>MUST meet all the requirements for [[epub-33]] <a data-cite="epub-33#sec-pkg-metadata"
 								>metadata</a>.</li>
 
-						<li>MUST include all metadata defined in <a href="#meta-req-prop"></a>.</li>
+						<li>MUST include all metadata defined in <a href="#meta-req"></a>.</li>
 
-						<li>SHOULD include all metadata defined in <a href="#meta-rec-prop"></a>.</li>
+						<li>SHOULD include all metadata defined in <a href="#meta-rec"></a>.</li>
 					</ul>
 				</section>
 
-				<section id="meta-req-prop">
-					<h4>Required properties</h4>
+				<section id="meta-req">
+					<h4>Required metadata</h4>
 
 					<section id="dc:creator">
 						<h4>dc:creator</h4>
@@ -939,17 +939,17 @@
 						</div>
 					</section>
 
-					<section id="brl:cellType">
-						<h4>brl:cellType</h4>
+					<section id="a11y:cellType">
+						<h4>a11y:cellType</h4>
 
-						<p>The REQUIRED <code>brl:cellType</code> property identifies whether the text of the [=eBraille
-							publication=] is encoded using 6- or 8-dot braille characters.</p>
+						<p>The REQUIRED <code>a11y:cellType</code> property identifies whether the text of the
+							[=eBraille publication=] is encoded using 6- or 8-dot braille characters.</p>
 
 						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>brl:cellType</code>.</p>
+							set to <code>a11y:cellType</code>.</p>
 
-						<aside class="example" title="brl:cellType for 6-dot braille">
-							<pre>&lt;meta property="brl:cellType">
+						<aside class="example" title="a11y:cellType for 6-dot braille">
+							<pre>&lt;meta property="a11y:cellType">
    6
 &lt;/meta></pre>
 						</aside>
@@ -960,8 +960,8 @@
 						<p>If both 6- and 8-dot braille characters are used in the same file, use a comma to separate
 							the values, with the one used most often listed first.</p>
 
-						<aside class="example" title="brl:cellType when 8-dot braille is used more than 6-dot">
-							<pre>&lt;meta property="brl:cellType">
+						<aside class="example" title="a11y:cellType when 8-dot braille is used more than 6-dot">
+							<pre>&lt;meta property="a11y:cellType">
    8, 6
 &lt;/meta></pre>
 						</aside>
@@ -969,17 +969,17 @@
 						<p>Only one instance of this property is allowed.</p>
 					</section>
 
-					<section id="brl:code">
-						<h4>brl:code</h4>
+					<section id="a11y:code">
+						<h4>a11y:code</h4>
 
-						<p>The REQUIRED <code>brl:code</code> property identifies the name of the braille code an
+						<p>The REQUIRED <code>a11y:code</code> property identifies the name of the braille code an
 							[=eBraille publication=] has been formatted in conformance with.</p>
 
 						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>brl:code</code>.</p>
+							set to <code>a11y:code</code>.</p>
 
 						<aside class="example" title="A single uncontracted braille code">
-							<pre>&lt;meta property="brl:code">
+							<pre>&lt;meta property="a11y:code">
    UEB
 &lt;/meta></pre>
 						</aside>
@@ -989,7 +989,7 @@
 							name.</p>
 
 						<aside class="example" title="A single uncontracted braille code">
-							<pre>&lt;meta property="brl:code">
+							<pre>&lt;meta property="a11y:code">
    UEB (Uncontracted)
 &lt;/meta></pre>
 						</aside>
@@ -998,7 +998,7 @@
 							uncontracted. Put whichever code is most common first.</p>
 
 						<aside class="example" title="Use of a contracted and uncontracted braille code">
-							<pre>&lt;meta property="brl:code">
+							<pre>&lt;meta property="a11y:code">
    UEB (Uncontracted), UEB (Contracted)
 &lt;/meta></pre>
 						</aside>
@@ -1010,17 +1010,17 @@
 						</div>
 					</section>
 
-					<section id="brl:completeTranscription">
-						<h4>brl:completeTranscription</h4>
+					<section id="a11y:completeTranscription">
+						<h4>a11y:completeTranscription</h4>
 
-						<p>The REQUIRED <code>brl:completeTranscription</code> indicates whether the complete original
+						<p>The REQUIRED <code>a11y:completeTranscription</code> indicates whether the complete original
 							work has been transcribed of not.</p>
 
 						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>brl:completeTranscription</code>.</p>
+							set to <code>a11y:completeTranscription</code>.</p>
 
 						<aside class="example" title="An incomplete transcription">
-							<pre>&lt;meta property="brl:completeTranscription">
+							<pre>&lt;meta property="a11y:completeTranscription">
    false
 &lt;/meta></pre>
 						</aside>
@@ -1031,7 +1031,7 @@
 							without captions or other material that is not ordinarily transcribed.</p>
 
 						<aside class="example" title="A complete transcription">
-							<pre>&lt;meta property="brl:completeTranscription">
+							<pre>&lt;meta property="a11y:completeTranscription">
    true
 &lt;/meta></pre>
 						</aside>
@@ -1039,16 +1039,16 @@
 						<p>Only one instance of this property is allowed.</p>
 					</section>
 
-					<section id="brl:created">
-						<h4>brl:created</h4>
+					<section id="a11y:created">
+						<h4>a11y:created</h4>
 
-						<p>The <code>brl:created</code> property identifies the date the transcription was created.</p>
+						<p>The <code>a11y:created</code> property identifies the date the transcription was created.</p>
 
 						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>brl:created</code>.</p>
+							set to <code>a11y:created</code>.</p>
 
-						<aside class="example" title="brl:created with full date">
-							<pre>&lt;meta property="brl:created">
+						<aside class="example" title="a11y:created with full date">
+							<pre>&lt;meta property="a11y:created">
    2024-10-18
 &lt;/meta></pre>
 						</aside>
@@ -1057,8 +1057,8 @@
 							If the full date is unknown, the month and year (<code>YYYY-MM</code>) or year
 								(<code>YYYY</code>) MAY be specified instead.</p>
 
-						<aside class="example" title="brl:created with only month and year">
-							<pre>&lt;meta property="brl:created">
+						<aside class="example" title="a11y:created with only month and year">
+							<pre>&lt;meta property="a11y:created">
    2025-09
 &lt;/meta></pre>
 						</aside>
@@ -1066,17 +1066,17 @@
 						<p>Only one instance of this property is allowed.</p>
 					</section>
 
-					<section id="brl:printPublisher">
-						<h4>brl:printPublisher</h4>
+					<section id="a11y:printPublisher">
+						<h4>a11y:printPublisher</h4>
 
-						<p>The REQUIRED <code>brl:printPublisher</code> property identifies the name of the publisher of
-							the work being transcribed.</p>
+						<p>The REQUIRED <code>a11y:printPublisher</code> property identifies the name of the publisher
+							of the work being transcribed.</p>
 
 						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>brl:printPublisher</code>.</p>
+							set to <code>a11y:printPublisher</code>.</p>
 
 						<aside class="example" title="A printed work with an official publisher">
-							<pre>&lt;meta property="brl:printPublisher">
+							<pre>&lt;meta property="a11y:printPublisher">
    Penguin Random House
 &lt;/meta></pre>
 						</aside>
@@ -1085,7 +1085,7 @@
 							produced the original text MAY be used as the publisher.</p>
 
 						<aside class="example" title="A printed work with no official publisher">
-							<pre>&lt;meta property="brl:printPublisher">
+							<pre>&lt;meta property="a11y:printPublisher">
    International Council on English Braille
 &lt;/meta></pre>
 						</aside>
@@ -1093,61 +1093,61 @@
 						<p>If the work is an entirely original braille publication, use the value <code>N/A</code>.</p>
 
 						<aside class="example" title="An original braille work">
-							<pre>&lt;meta property="brl:printPublisher">
+							<pre>&lt;meta property="a11y:printPublisher">
    N/A
 &lt;/meta></pre>
 						</aside>
 					</section>
 
-					<section id="brl:producer">
-						<h4>brl:producer</h4>
+					<section id="a11y:producer">
+						<h4>a11y:producer</h4>
 
-						<p>The <code>brl:producer</code> property identifies the name(s) of the organization(s) or
+						<p>The <code>a11y:producer</code> property identifies the name(s) of the organization(s) or
 							individual(s) that produced the braille publication.</p>
 
 						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>brl:producer</code>.</p>
+							set to <code>a11y:producer</code>.</p>
 
 						<aside class="example" title="The name of the braille producer of a file">
-							<pre>&lt;meta property="brl:producer">
+							<pre>&lt;meta property="a11y:producer">
    American Printing House for the Blind
 &lt;/meta></pre>
 						</aside>
 
-						<p>The <code>brl:producer</code> and <code>dc:publisher</code> MAY identify the same
-							organization or individual, but they do not have to. The producer is responsible for creating
-							an eBraille publication, while the publisher may have only commissioned the work from a
-							producer.</p>
+						<p>The <code>a11y:producer</code> and <code>dc:publisher</code> MAY identify the same
+							organization or individual, but they do not have to. The producer is responsible for
+							creating an eBraille publication, while the publisher may have only commissioned the work
+							from a producer.</p>
 
 						<p>Repeat the property for each organization or individual.</p>
 					</section>
 
-					<section id="brl:tactileGraphics">
-						<h4>brl:tactileGraphics</h4>
+					<section id="a11y:tactileGraphics">
+						<h4>a11y:tactileGraphics</h4>
 
-						<p>The <code>brl:tactileGraphics</code> property identifies whether an [=eBraille publication=]
+						<p>The <code>a11y:tactileGraphics</code> property identifies whether an [=eBraille publication=]
 							contains tactile graphics.</p>
 
 						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>brl:tactileGraphics</code>.</p>
+							set to <code>a11y:tactileGraphics</code>.</p>
 
 						<p>The element's [=value=] is <code>true</code> if tactile graphics are present and
 								<code>false</code> if not.</p>
 
 						<aside class="example" title="An eBraille package with no tactile graphics">
-							<pre>&lt;meta property="brl:tactileGraphics">
+							<pre>&lt;meta property="a11y:tactileGraphics">
    false
 &lt;/meta></pre>
 						</aside>
 
-						<p>If tactile graphics are present, the <code>brl:graphicType</code> property MUST also be
+						<p>If tactile graphics are present, the <code>a11y:graphicType</code> property MUST also be
 							set.</p>
 
 						<aside class="example" title="An eBraille package with tactile graphics in SVG format">
-							<pre>&lt;meta property="brl:tactileGraphics">
+							<pre>&lt;meta property="a11y:tactileGraphics">
    true
 &lt;/meta>
-&lt;meta property="brl:graphicType">
+&lt;meta property="a11y:graphicType">
    SVG
 &lt;/meta></pre>
 						</aside>
@@ -1157,10 +1157,10 @@
 
 						<aside class="example"
 							title="An eBraille package with most tactile graphics in PNG format and a few in PDF">
-							<pre>&lt;meta property="brl:tactileGraphics">
+							<pre>&lt;meta property="a11y:tactileGraphics">
    true
 &lt;/meta>
-&lt;meta property="brl:graphicType">
+&lt;meta property="a11y:graphicType">
    PNG, PDF
 &lt;/meta></pre>
 						</aside>
@@ -1169,8 +1169,8 @@
 					</section>
 				</section>
 
-				<section id="meta-rec-prop">
-					<h4>Recommended properties</h4>
+				<section id="meta-rec">
+					<h4>Recommended metadata</h4>
 
 					<section id="dc:publisher">
 						<h4>dc:publisher</h4>
@@ -1312,9 +1312,9 @@
 							<a data-cite="epub-33#sec-prefix-attr">prefix</a> [[epub-33]] is defined.</p>
 
 					<div class="note">
-						<p>Properties from the <a href="#ebrl-meta-vocab">eBraille metadata vocabulary</a> can be used
-							without defining the <code>brl:</code> prefix, as detailed in <a href="#app-vocab-ref"
-							></a>.</p>
+						<p>The <a href="#ebrl-meta-vocab">accessibility metadata properties</a> defined in this
+							specification can be used without defining the <code>a11y:</code> prefix, as detailed in <a
+								href="#app-vocab-ref"></a>.</p>
 					</div>
 				</section>
 
@@ -2439,28 +2439,26 @@
 			</section>
 		</section>
 		<section id="ebrl-meta-vocab" class="appendix">
-			<h2>eBraille Metadata Vocabulary</h2>
+			<h2>Accessibility Metadata Properties</h2>
 
 			<section id="app-vocab-about">
 				<h3>About this vocabulary</h3>
 
-				<p>This vocabulary defines braille-specific properties for describing [=eBraille publications=].</p>
+				<p>This vocabulary defines metadata properties for describing [=eBraille publications=].</p>
+
+				<p>Properties are only added to this vocabulary if suitable equivalents are not already defined in
+					existing vocabularies such as Dublin Core and Schema.org.</p>
 			</section>
 
 			<section id="app-vocab-ref">
 				<h3>Referencing</h3>
 
-				<p>The base URL for referencing this vocabulary is <code>https://www.daisy.org/tbd</code></p>
+				<p>The base URL for referencing this vocabulary is
+						<code>http://idpf.org/epub/vocab/package/a11y/#</code></p>
 
-				<p>For compatibility with the EPUB 3 <a href="https://www.w3.org/TR/epub/#dfn-package-document">package
-						document</a>, this specification reserves the prefix "<code>brl:</code>" for use with properties
-					in this vocabulary.</p>
-
-				<div class="note">
-					<p>If compatibility with EPUB 3 is a concern, the <code>brl:</code> prefix will have to be declared
-						as it is not recognized as a <a href="epub-33#sec-metadata-reserved-prefixes">reserved
-							prefix</a> [[epub-33]] in that format.</p>
-				</div>
+				<p>The <a data-cite="epub-33#sec-reserved-prefixes">reserved prefix</a>
+					<code>a11y:</code> [[epub-33]] MUST be used to reference these properties in EPUB 3-compatible <a
+						href="#ebrl-package-doc">package documents</a>.</p>
 			</section>
 
 			<section>
@@ -2521,7 +2519,7 @@
 						<tr>
 							<th>Example:</th>
 							<td>
-								<pre>&lt;meta property="brl:completeTranscription">true&lt;/meta></pre>
+								<pre>&lt;meta property="a11y:completeTranscription">true&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -2551,7 +2549,7 @@
 						<tr>
 							<th>Example:</th>
 							<td>
-								<pre>&lt;meta property="brl:producer">APH&lt;/meta></pre>
+								<pre>&lt;meta property="a11y:producer">APH&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -2586,7 +2584,7 @@
 						<tr>
 							<th>Example:</th>
 							<td>
-								<pre>&lt;meta property="brl:cellType">6&lt;/meta></pre>
+								<pre>&lt;meta property="a11y:cellType">6&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -2623,7 +2621,7 @@
 						<tr>
 							<th>Example:</th>
 							<td>
-								<pre>&lt;meta property="brl:graphicType">SVG&lt;/meta></pre>
+								<pre>&lt;meta property="a11y:graphicType">SVG&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -2660,7 +2658,7 @@
 						<tr>
 							<th>Example:</th>
 							<td>
-								<pre>&lt;meta property="brl:minimumCells">10&lt;/meta></pre>
+								<pre>&lt;meta property="a11y:minimumCells">10&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -2695,7 +2693,7 @@
 						<tr>
 							<th>Example:</th>
 							<td>
-								<pre>&lt;meta property="brl:minimumLines">5&lt;/meta></pre>
+								<pre>&lt;meta property="a11y:minimumLines">5&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -2725,7 +2723,7 @@
 						<tr>
 							<th>Example:</th>
 							<td>
-								<pre>&lt;meta property="brl:tactileGraphics">true&lt;/meta></pre>
+								<pre>&lt;meta property="a11y:tactileGraphics">true&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
