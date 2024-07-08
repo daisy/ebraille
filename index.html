@@ -205,7 +205,7 @@
 						<p>For more information, refer to <a href="#ebrl-content-docs"></a>.</p>
 					</dd>
 
-					<dt><dfn data-lt="eBraille author|eBraille authors|author|authors">eBraille creator</dfn></dt>
+					<dt><dfn>eBraille creator</dfn></dt>
 					<dd>
 						<p>An individual, organization, or process that produces an [=eBraille publication=].</p>
 					</dd>
@@ -1561,9 +1561,9 @@
 				<section id="xhtml-no-support">
 					<h4>Unsupported features</h4>
 
-					<p>eBraille does not support scripted interactivity or form submissions. Consequently, authors MUST
-						NOT include [[html]] [^script^] elements or the [^form^] element's [^form/action^] attribute in
-							<a>eBraille content documents</a>.</p>
+					<p>eBraille does not support scripted interactivity or form submissions. Consequently, [=eBraille
+						creators=] MUST NOT include [[html]] [^script^] elements or the [^form^] element's
+						[^form/action^] attribute in <a>eBraille content documents</a>.</p>
 
 					<div class="note">
 						<p>The lack of support for scripting means that html elements that depend on scripting (e.g.,
@@ -1586,14 +1586,14 @@
 				<section id="css-intro" class="informative">
 					<h4>Introduction</h4>
 
-					<p><a>eBraille authors</a> may use CSS [[css2]] to style and layout <a>content documents</a>. With
-						the few exceptions defined in this section, eBraille defers to EPUB and the <abbr title="World
+					<p>[=eBraille creators=] may use CSS [[css2]] to style and layout <a>content documents</a>. With the
+						few exceptions defined in this section, eBraille defers to EPUB and the <abbr title="World
 						Wide Web Consortium">W3C</abbr> to define CSS.</p>
 
 					<div class="note">
 						<p>Keep in mind that some <a>reading systems</a> will not support all desired features of CSS.
 							The following are identified as potentially problematic, depending on the technology choices
-							of reading system implementations, and should therefore be treaten with care:</p>
+							of reading system implementations, and should therefore be used with caution:</p>
 						<ul>
 							<li>The "<a data-cite="css-page#">CSS Paged Media Module Level 3</a>" working draft
 								[[css-page]], which builds on the "<a data-cite="css2/page.html#the-page">Paged
@@ -1628,7 +1628,7 @@
 								gets applied, its size, whether it's bold, italic, etc.). Creators should assume that
 								reading devices determine the shape and size of the braille symbols (e.g. for technical
 								reasons, or to ensure a good reading experience).</p>
-							<p>The font-related properties include, but are not be limited to:</p>
+							<p>The font-related properties include, but are not limited to:</p>
 							<ul>
 								<li><a data-cite="css-fonts#font-family-prop"><code>font-family</code></a>,</li>
 								<li><a data-cite="css-fonts#font-size-prop"><code>font-size</code></a>,</li>
@@ -1996,8 +1996,8 @@
 
 					<p>Each entry in the page list MUST include the print page number equivalent in a [^title^]
 						attribute [[html]]. Providing both encodings allows reading systems to match the page number
-						regardless of whether the device accepts braille input or not and avoids any mistranlation of
-						the page numbers if only one encoding is provided.</p>
+						regardless of whether the device accepts braille input or not and avoids mistranslation of the
+						page numbers if only one encoding is provided.</p>
 
 					<aside class="example" title="Page list with front and body matter">
 						<pre>&lt;nav epub:type="page-list"
@@ -2209,7 +2209,7 @@
 					specification</a> [[epub-a11y-11]]. eBraille publications are only meant for braille users, so it is
 				not expected that [=eBraille creators=] can produce them to fully meet the requirements of W3C's <a
 					data-cite="wcag#">Web Content Accessibility Guidelines</a> [[wcag22]]. There is not always a benefit
-				to braille users in meeting all of that standards requirements.</p>
+				to braille users in meeting all of that standard's requirements.</p>
 
 			<p>At the same time, it is possible to create eBraille publications that fail to meet the needs of users if
 				care is not taken to optimize the content. Not properly identifying headings, for example, will limit
