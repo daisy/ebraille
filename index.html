@@ -1066,39 +1066,6 @@
 						<p>Only one instance of this property is allowed.</p>
 					</section>
 
-					<section id="a11y:printPublisher">
-						<h4>a11y:printPublisher</h4>
-
-						<p>The REQUIRED <code>a11y:printPublisher</code> property identifies the name of the publisher
-							of the work being transcribed.</p>
-
-						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>a11y:printPublisher</code>.</p>
-
-						<aside class="example" title="A printed work with an official publisher">
-							<pre>&lt;meta property="a11y:printPublisher">
-   Penguin Random House
-&lt;/meta></pre>
-						</aside>
-
-						<p>If not transcribing a published print work, the name of the organization or individual that
-							produced the original text MAY be used as the publisher.</p>
-
-						<aside class="example" title="A printed work with no official publisher">
-							<pre>&lt;meta property="a11y:printPublisher">
-   International Council on English Braille
-&lt;/meta></pre>
-						</aside>
-
-						<p>If the work is an entirely original braille publication, use the value <code>N/A</code>.</p>
-
-						<aside class="example" title="An original braille work">
-							<pre>&lt;meta property="a11y:printPublisher">
-   N/A
-&lt;/meta></pre>
-						</aside>
-					</section>
-
 					<section id="a11y:producer">
 						<h4>a11y:producer</h4>
 
@@ -1120,6 +1087,39 @@
 							from a producer.</p>
 
 						<p>Repeat the property for each organization or individual.</p>
+					</section>
+
+					<section id="a11y:sourcePublisher">
+						<h4>a11y:sourcePublisher</h4>
+
+						<p>The REQUIRED <code>a11y:sourcePublisher</code> property identifies the name of the publisher
+							of the work being transcribed.</p>
+
+						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
+							set to <code>a11y:sourcePublisher</code>.</p>
+
+						<aside class="example" title="A printed work with an official publisher">
+							<pre>&lt;meta property="a11y:sourcePublisher">
+   Penguin Random House
+&lt;/meta></pre>
+						</aside>
+
+						<p>If not transcribing a published print work, the name of the organization or individual that
+							produced the original text MAY be used as the publisher.</p>
+
+						<aside class="example" title="A printed work with no official publisher">
+							<pre>&lt;meta property="a11y:sourcePublisher">
+   International Council on English Braille
+&lt;/meta></pre>
+						</aside>
+
+						<p>If the work is an entirely original braille publication, use the value <code>N/A</code>.</p>
+
+						<aside class="example" title="An original braille work">
+							<pre>&lt;meta property="a11y:sourcePublisher">
+   N/A
+&lt;/meta></pre>
+						</aside>
 					</section>
 
 					<section id="a11y:tactileGraphics">
@@ -2713,6 +2713,38 @@
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="a11y:minimumLines">5&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<section id="sourcePublisher">
+					<h4>sourcePublisher</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>sourcePublisher</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>sourcePublisher</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>
+								<p>Identifies the name of the publisher of the work being transcribed.</p>
+							</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>xsd:string</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="a11y:sourcePublisher">HarperCollins&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
