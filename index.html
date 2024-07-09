@@ -556,8 +556,9 @@
 			<section id="fileset-naming">
 				<h3>File paths and file names</h3>
 
-				<p>eBraille file paths and file names MUST adhere to the file naming restrictions specified in <a
-						data-cite="epub-33#sec-container-filenames">section 4.2.3</a> of [[epub-33]].</p>
+				<p>To avoid potential naming issues when opening [=eBraille publications=] on common operating systems,
+					eBraille file paths and file names MUST adhere to the EPUB 3 file naming restrictions specified in
+						<a data-cite="epub-33#sec-container-filenames">File paths and file names</a> [[epub-33]].</p>
 			</section>
 
 			<section id="fileset-urls">
@@ -577,22 +578,27 @@
 				<h3>Multiple renditions</h3>
 
 				<p>An [=eBraille publication=] MAY contain multiple renditions of the content. The specifics of how this
-					is done are defined in EPUB 3 Multiple-Rendition Publications 1.1 [[epub-multi-rend-11]].</p>
+					is done are defined in <a href="https://www.w3.org/TR/epub-multi-rend-11/">EPUB 3 Multiple-Rendition
+						Publications 1.1</a> [[epub-multi-rend-11]].</p>
 
-				<p>When including multiple renditions, only the <a data-cite="epub-multi-rend-11##container">default
-						rendition</a> [[epub-multi-rend-11]] (i.e., one listed first in the <a
+				<p>When including multiple renditions, the <a data-cite="epub-multi-rend-11#container">default
+						rendition</a> [[epub-multi-rend-11]] &#8212; the one listed first in the <a
 						data-cite="epub-33#sec-container-metainf-container.xml"><code>container.xml</code> file</a>
-					[[epub-33]]) is subject to the <a href="#fileset-structure">file naming and location
-						requirements</a> for the package document and primary entry page. The <a
-						href="#xhtml-char-encoding">recommendation to use only 6- and 8-dot Unicode characters</a> also
-					only applies to the default rendition.</p>
+					[[epub-33]] &#8212; MUST be a braille rendition. The default rendition has a default <a
+						data-cite="epub-multi-rend-11#accessMode-attr"><code>rendition:accessMode</code> selection
+						attribute</a> [[epub-multi-rend-11]] equivalent to the value <code>tactile</code>. No other
+					value is allowed if the attribute is set explicitly.</p>
 
-				<p>The <a href="#dc:language">publication language</a> of subsequent renditions is not required to use
-					the <code>Brai</code> script designator.</p>
+				<p>Subsequent renditions are exempt from the following requirements:</p>
 
-				<p>The default rendition MUST be a braille rendition (i.e., identified by a <a
-						data-cite="epub-multi-rend-11#accessMode-attr"><code>rendition:accessMode</code> attribute</a>
-					with the value <code>tactile</code> [[epub-multi-rend-11]]).</p>
+				<ul>
+					<li>The <a href="#fileset-structure">file naming and location requirements</a> for the package
+						document and primary entry page, as this would cause conflicts.</li>
+					<li>The <a href="#xhtml-char-encoding">recommendation to use only 6- and 8-dot Unicode
+							characters</a> if the rendition is not in braille.</li>
+					<li>The <a href="#dc:language">publication language</a> requirement to use the <code>Brai</code>
+						script designator if the rendition is not in braille.</li>
+				</ul>
 
 				<div class="note">
 					<p>[[epub-multi-rend-11]] is only a W3C Working Group Note. The technology is not currently
