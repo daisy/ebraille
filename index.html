@@ -619,20 +619,60 @@
 				<p>eBraille uses the EPUB 3 <a data-cite="epub-33#sec-package-doc">package document</a> [[epub-33]] to
 					express information about an [=eBraille publication=].</p>
 
-				<p>The package document contains three primary sections:</p>
+				<p>The package document is an XML document that contains three primary sections that encapsulate
+					information about the content and how to render it:</p>
 
 				<ul>
-					<li>Metadata &#8212; the <a href="#metadata"><code>metadata</code> element</a> contains
+					<li><a href="#metadata">Metadata</a> &#8212; the <code>metadata</code> element contains
 						bibliographic and rendering information about an eBraille publication.</li>
-					<li>Manifest &#8212; the <a href="#manifest"><code>manifest</code> element</a> contains a list of
-						all the publication resources.</li>
-					<li>Spine &#8212; the <a href="#spine"><code>spine</code></a> element contains the default ordering
-						of eBraille content documents.</li>
+					<li><a href="#manifest">Manifest</a> &#8212; the <code>manifest</code> element contains a list of
+						all the <a href="#ebrl-resources">publication resources</a>.</li>
+					<li><a href="#spine">Spine</a> &#8212; the <code>spine</code> element contains the default ordering
+						of [=eBraille content documents=].</li>
 				</ul>
+
+				<p>These sections are all contained within the <a href="#package-element">root <code>package</code>
+						element</a>.</p>
 
 				<p>The primary difference of the eBraille package document is only in the metadata that is required and
 					recommended. The eBraille implementation of the package document is also more limited in the
-					features it allows &#8212; manifest fallbacks and legacy element are not allowed, for example.</p>
+					features it allows &#8212; EPUB 3's <a data-cite="epub-33#sec-manifest-fallbacks">manifest
+						fallbacks</a> and <a data-cite="epub-33#sec-pkg-legacy">legacy elements</a> [[epub-33]] are not
+					allowed, for example.</p>
+			</section>
+
+			<section id="package-element">
+				<h3>The <code>package</code> element</h3>
+
+				<p>At the root of the eBraille package document is the <code>package</code> element. This element MUST
+					conform to the <a data-cite="epub-33#sec-package-elem">requirements for the <code>package</code>
+						element</a> in [[epub-33]].</p>
+
+				<p>For example, EPUB 3 requires the <code>package</code> element's <a
+						data-cite="epub-33#attrdef-package-version"><code>version</code> attribute</a> [[epub-33]] have
+					the value "<code>3.0</code>". This identifies that the package document conforms to the EPUB 3
+					definition. (The identifier that the content conforms to this specification is contained in the
+					required <a href="#dc:format"><code>dc:format</code> element</a>.)</p>
+
+				<p>It is also required that the <code>unique-identifier</code> attribute [[epub-33]] be specified. This
+					attribute references the ID of the <a href="#dc:identifier"><code>dc:identifier</code> element</a>
+					that contains the unique identifier for the publication.</p>
+
+				<p>Although setting the default language of the package document text on the <code>package</code>
+					element is not required, it is best practice to set it here in an <a
+						data-cite="epub-33#attrdef-xml-lang"><code>xml:lang</code> attribute</a> [[epub-33]] so that
+					language information is available for every element that requires it.</p>
+
+				<aside class="example" title="Typical attributes specified on a package element">
+					<p>In this example, a <code>dc:identifier</code> element with the <code>id</code> attribute value
+							<code>uid</code> (not shown) is be specified in the metadata.</p>
+					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf"
+         version="3.0"
+         unique-identifier="uid"
+         xml:lang="en">
+   &#8230;
+&lt;/package></pre>
+				</aside>
 			</section>
 
 			<section id="metadata">
@@ -644,14 +684,18 @@
 					<section id="meta-elements">
 						<h4>Metadata elements</h4>
 
-						<p>The following elements are allowed in the package document metadata:</p>
+						<p>Metadata about an [=eBraille publication=] is expressed in the package document's
+								<code>metadata</code> element. This element is the first child of the root
+								<code>package</code> element.</p>
+
+						<p>The following elements are allowed as children of the <code>metadata</code> element:</p>
 
 						<dl>
 							<dt>Dublin Core elements</dt>
 							<dd>
 								<p>Dublin Core defines 15 core elements in the <code>/elements/1.1/</code> namespace
-									[[dcterms]] that can be used anywhere in the package document. Elements not in the
-										<a href="#meta-req">required</a> or <a href="#meta-rec">recommended</a> metadata
+									[[dcterms]] that can be used in the <code>metadata</code> element. Elements not in
+									the <a href="#meta-req">required</a> or <a href="#meta-rec">recommended</a> metadata
 									sections are valid to use &#8212; these are considered <a href="#meta-additional"
 										>optional elements</a>.</p>
 							</dd>
