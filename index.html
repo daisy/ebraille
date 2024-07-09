@@ -631,7 +631,7 @@
 						of [=eBraille content documents=].</li>
 				</ul>
 
-				<p>These sections are all contained within the <a href="#package-element">root <code>package</code>
+				<p>These sections are all contained within the <a href="#package-elem">root <code>package</code>
 						element</a>.</p>
 
 				<p>The primary difference of the eBraille package document is only in the metadata that is required and
@@ -641,7 +641,7 @@
 					allowed, for example.</p>
 			</section>
 
-			<section id="package-element">
+			<section id="package-elem">
 				<h3>The <code>package</code> element</h3>
 
 				<p>At the root of the eBraille package document is the <code>package</code> element. This element MUST
@@ -663,9 +663,9 @@
 						data-cite="epub-33#attrdef-xml-lang"><code>xml:lang</code> attribute</a> [[epub-33]] so that
 					language information is available for every element that requires it.</p>
 
-				<aside class="example" title="Typical attributes specified on a package element">
+				<aside class="example" title="Typical package element attributes">
 					<p>In this example, a <code>dc:identifier</code> element with the <code>id</code> attribute value
-							<code>uid</code> (not shown) is be specified in the metadata.</p>
+							<code>uid</code> (not shown) is specified in the metadata.</p>
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf"
          version="3.0"
          unique-identifier="uid"
@@ -684,36 +684,42 @@
 					<section id="meta-elements">
 						<h4>Metadata elements</h4>
 
-						<p>Metadata about an [=eBraille publication=] is expressed in the package document's
-								<code>metadata</code> element. This element is the first child of the root
-								<code>package</code> element.</p>
+						<p>Metadata about an [=eBraille publication=] is expressed in the package document's <a
+								data-cite="epub-33#the-metadata-elem"><code>metadata</code> element</a> [[epub-33]].
+							This element is the first child of the root <a href="#package-elem"><code>package</code>
+								element</a>.</p>
 
 						<p>The following elements are allowed as children of the <code>metadata</code> element:</p>
 
 						<dl>
-							<dt>Dublin Core elements</dt>
+							<dt id="dc-elem">Dublin Core elements</dt>
 							<dd>
-								<p>Dublin Core defines 15 core elements in the <code>/elements/1.1/</code> namespace
-									[[dcterms]] that can be used in the <code>metadata</code> element. Elements not in
-									the <a href="#meta-req">required</a> or <a href="#meta-rec">recommended</a> metadata
-									sections are valid to use &#8212; these are considered <a href="#meta-additional"
+								<p>Dublin Core defines <a
+										href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#section-3"
+										>15 elements</a> in the <code>/elements/1.1/</code> namespace [[dcterms]]. Any
+									of these element can be used in the <code>metadata</code> element &#8212; elements
+									not listed in the <a href="#meta-req">required</a> or <a href="#meta-rec"
+										>recommended</a> metadata sections are considered <a href="#meta-additional"
 										>optional elements</a>.</p>
 							</dd>
 
-							<dt>The <code>meta</code> element</dt>
+							<dt id="meta-elem">The <code>meta</code> element</dt>
 							<dd>
 								<p>The <a data-cite="epub-33#sec-meta-elem"><code>meta</code> element</a> [[epub-33]] is
 									used to express properties from metadata vocabularies, where its
 										<code>property</code> attribute defines the property name.</p>
 								<p>Metadata properties defined in this element typically require a <a
-										href="#meta-prefixes">prefix</a>.</p>
+										href="#meta-prefixes">prefix</a> (many prefixes are reserved and do not have to
+									be declared).</p>
 							</dd>
 
-							<dt>The <code>link</code> element</dt>
+							<dt id="link-elem">The <code>link</code> element</dt>
 							<dd>
 								<p>The <a data-cite="epub-33#sec-link-elem"><code>link</code> element</a> [[epub-33]] is
-									used to associate resource with an [=eBraille publication=], such as metadata
+									used to associate resources with an [=eBraille publication=], such as metadata
 									records.</p>
+								<p>Linked resources are typically not publication resources so are not listed in the <a
+										href="#manifest">manifest</a>.</p>
 								<p>Metadata properties defined in this element also typically require a <a
 										href="#meta-prefixes">prefix</a>.</p>
 							</dd>
@@ -728,9 +734,9 @@
 					<section id="meta-values">
 						<h4>Metadata values</h4>
 
-						<p>EPUB 3 requires that all Dublin Core [[dcterms]] and <code>meta</code> elements have <a
-								data-cite="epub-33#sec-metadata-values">child text content</a> [[epub-33]] (i.e., they
-							have to have at least one non-whitespace character after <a
+						<p>EPUB 3 requires that all Dublin Core [[dcterms]] and <a href="#meta-elem"><code>meta</code>
+								elements</a> have <a data-cite="epub-33#sec-metadata-values">child text content</a>
+							[[epub-33]] (i.e., they have to have at least one non-whitespace character after <a
 								data-cite="infra#strip-leading-and-trailing-ascii-whitespace">leading and trailing ASCII
 								whitespace</a> [[?infra]] is stripped). In the descriptions for these elements, this
 							specification refers to this content as the element's <dfn>value</dfn>.</p>
@@ -743,18 +749,20 @@
 					<section id="meta-prefixes">
 						<h4>Using prefixes</h4>
 
-						<p>The <code>meta</code> and <code>link</code> elements are meant for use with properties
-							defined in existing metadata vocabularies, such as those in the Dublin Core
-								<code>/terms/</code> namespace [[dcterms]].</p>
+						<p>The <a href="#meta-elem"><code>meta</code> element</a> and <a href="#link-elem"
+									><code>link</code> element</a> are meant for use with properties defined in existing
+							metadata vocabularies, such as those in the Dublin Core <code>/terms/</code> namespace
+							[[dcterms]].</p>
 
 						<p>EPUB 3 defines a set of <a data-cite="epub-33#sec-reserved-prefixes">reserved prefixes</a>
 							[[epub-33]] for common metadata vocabularies. Properties from these vocabularies can be used
 							without having to declare their prefix.</p>
 
 						<p>If properties from other vocabularies are needed, a prefix needs to be declared before they
-							can be used. Prefixes are defined in the <code>prefix</code> attribute on the root
-								<code>package</code> element. Both the prefix and a URL to associate with the prefix
-							have to be specified.</p>
+							can be used. Prefixes are defined in the <code>prefix</code> attribute on the <a
+								href="#package-elem">root <code>package</code> element</a>. Both the prefix and a URL to
+							associate with the prefix have to be specified. These values are separated by
+							whitespace.</p>
 
 						<aside class="example" title="Declaring a new prefix">
 							<pre>&lt;package &#8230; prefix="ex: https://example.com/metadata/">
@@ -781,8 +789,8 @@
 					<p>The eBraille package document metadata:</p>
 
 					<ul>
-						<li>MUST meet all the requirements for [[epub-33]] <a data-cite="epub-33#sec-pkg-metadata"
-								>metadata</a>.</li>
+						<li>MUST meet all the requirements for <a data-cite="epub-33#sec-pkg-metadata">EPUB 3
+								metadata</a> [[epub-33]].</li>
 
 						<li>MUST include all metadata defined in <a href="#meta-req"></a>.</li>
 
@@ -989,8 +997,8 @@
 						<p>The REQUIRED <code>dcterms:dateCopyrighted</code> property [[dcterms]] identifies the
 							copyright date of the work being transcribed.</p>
 
-						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>dcterms:dateCopyrighted</code>.</p>
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>dcterms:dateCopyrighted</code>.</p>
 
 						<aside class="example" title="Date copyrighted where only the year is known">
 							<pre>&lt;meta property="dcterms:dateCopyrighted">
@@ -1014,8 +1022,8 @@
 						<p>The REQUIRED <code>dcterms:modified</code> property identifies the date, in Coordinated
 							Universal Time (UTC), on which an [=eBraille publication=] was last modified.</p>
 
-						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>dcterms:modified</code>.</p>
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>dcterms:modified</code>.</p>
 
 						<aside class="example" title="Indicates the last date the eBraille file was modified">
 							<pre>&lt;meta property="dcterms:modified">
@@ -1040,8 +1048,8 @@
 						<p>The REQUIRED <code>a11y:cellType</code> property identifies whether the text of the
 							[=eBraille publication=] is encoded using 6- or 8-dot braille characters.</p>
 
-						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>a11y:cellType</code>.</p>
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>a11y:cellType</code>.</p>
 
 						<aside class="example" title="a11y:cellType for 6-dot braille">
 							<pre>&lt;meta property="a11y:cellType">
@@ -1070,8 +1078,8 @@
 						<p>The REQUIRED <code>a11y:code</code> property identifies the name of the braille code an
 							[=eBraille publication=] has been formatted in conformance with.</p>
 
-						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>a11y:code</code>.</p>
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>a11y:code</code>.</p>
 
 						<aside class="example" title="A single uncontracted braille code">
 							<pre>&lt;meta property="a11y:code">
@@ -1111,8 +1119,8 @@
 						<p>The REQUIRED <code>a11y:completeTranscription</code> indicates whether the complete original
 							work has been transcribed of not.</p>
 
-						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>a11y:completeTranscription</code>.</p>
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>a11y:completeTranscription</code>.</p>
 
 						<aside class="example" title="An incomplete transcription">
 							<pre>&lt;meta property="a11y:completeTranscription">
@@ -1139,8 +1147,8 @@
 
 						<p>The <code>a11y:created</code> property identifies the date the transcription was created.</p>
 
-						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>a11y:created</code>.</p>
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>a11y:created</code>.</p>
 
 						<aside class="example" title="a11y:created with full date">
 							<pre>&lt;meta property="a11y:created">
@@ -1167,8 +1175,8 @@
 						<p>The <code>a11y:producer</code> property identifies the name(s) of the organization(s) or
 							individual(s) that produced the braille publication.</p>
 
-						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>a11y:producer</code>.</p>
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>a11y:producer</code>.</p>
 
 						<aside class="example" title="The name of the braille producer of a file">
 							<pre>&lt;meta property="a11y:producer">
@@ -1190,8 +1198,8 @@
 						<p>The REQUIRED <code>a11y:sourcePublisher</code> property identifies the name of the publisher
 							of the work being transcribed.</p>
 
-						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>a11y:sourcePublisher</code>.</p>
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>a11y:sourcePublisher</code>.</p>
 
 						<aside class="example" title="A printed work with an official publisher">
 							<pre>&lt;meta property="a11y:sourcePublisher">
@@ -1223,8 +1231,8 @@
 						<p>The <code>a11y:tactileGraphics</code> property identifies whether an [=eBraille publication=]
 							contains tactile graphics.</p>
 
-						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>a11y:tactileGraphics</code>.</p>
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>a11y:tactileGraphics</code>.</p>
 
 						<p>The element's [=value=] is <code>true</code> if tactile graphics are present and
 								<code>false</code> if not.</p>
@@ -1402,8 +1410,8 @@
 						<p>The RECOMMENDED <code>dcterms:educationLevel</code> property identifies the level of
 							education an [=eBraille publication=] is targeted to (e.g., the grade level).</p>
 
-						<p>The property is defined in a <code>meta</code> tag with its <code>property</code> attribute
-							set to <code>dcterms:educationLevel</code>.</p>
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>dcterms:educationLevel</code>.</p>
 
 						<aside class="example" title="Education level in the United States education system">
 							<pre>&lt;meta property="dcterms:educationLevel">
@@ -1422,7 +1430,7 @@
 							>any other Dublin Core elements</a> [[epub-33]] not listed as required or recommended.</p>
 
 					<p>Metadata from vocabularies with a <a data-cite="epub-33#sec-metadata-reserved-prefixes">reserved
-							prefix</a> MAY also be added. Properties from other vocabulary are also allowed provided a
+							prefix</a> MAY also be added. Properties from other vocabularies are also allowed provided a
 							<a data-cite="epub-33#sec-prefix-attr">prefix</a> [[epub-33]] is defined.</p>
 
 					<div class="note">
@@ -1440,11 +1448,86 @@
           xmlns:dc="http://purl.org/dc/elements/1.1/"
           unique-identifier="uid">
    &lt;metadata>
-      &lt;dc:identifier id="uid">41f1328c-0571-4e71-8be8-e65bc148281a&lt;/dc:identifier>
+      &lt;!-- required metadata -->
       &lt;dc:title>World Cultures and Geography&lt;/dc:title>
-      &lt;dc:language>en&lt;dc:language>
-      &lt;meta property="dcterms:modified">2024-03-20T12:34:56Z&lt;/meta>
-      &#8230;
+      &lt;dc:creator>Sarah Witham Bednarz&lt;/dc:creator>
+      &lt;dc:creator>Ines M. Miyares&lt;/dc:creator>
+      &lt;dc:creator>Mark C. Schug&lt;/dc:creator>
+      &lt;dc:creator>Charles S. White&lt;/dc:creator>
+      &lt;dc:format>eBraille 1.0&lt;/dc:format>
+      &lt;dc:identifier id="uid">
+         41f1328c-0571-4e71-8be8-e65bc148281a
+      &lt;/dc:identifier>
+      &lt;dc:language>en-Brai-US&lt;/dc:language>
+      &lt;meta property="dcterms:dateCopyrighted">
+         2024
+      &lt;/meta>
+      &lt;meta property="dcterms:modified">
+         2015-02-24T13:37:19Z
+      &lt;/meta>
+      &lt;meta property="a11y:cellType">6&lt;/meta>
+      &lt;meta property="a11y:code">UEB&lt;/meta>
+      &lt;meta property="a11y:completeTranscription">
+         false
+      &lt;/meta>
+      &lt;meta property="a11y:created">2003&lt;/meta>
+      &lt;meta property="a11y:producer">
+         DAISY Consortium
+      &lt;/meta>
+      &lt;meta property="a11y:sourcePublisher">
+         McDougal Littell, a division of
+         Houghton Mifflin Company
+      &lt;/meta>
+      &lt;meta property="a11y:tactileGraphics">false&lt;/meta>
+
+      &lt;!-- recommended metadata -->
+      &lt;dc:publisher>DAISY Consortium&lt;/dc:publisher>
+      &lt;dc:date>2014-12-11T09:12:52+00:00&lt;/dc:date>
+      &lt;dc:description>
+         This is a sample eBraille publication.
+      &lt;/dc:description>
+      &lt;dc:rights>All rights reserved.&lt;/dc:rights>
+      &lt;dc:source>urn:isbn:9780618596645&lt;/dc:source>
+      &lt;dc:subject>Social Studies&lt;/dc:subject>
+      &lt;meta property="dcterms:educationLevel">
+         06 and up
+      &lt;/meta>
+      
+      &lt;!-- other metadata -->
+      &lt;meta property="a11y:pageBreakSource">
+         urn:isbn:9780618596645
+      &lt;/meta>
+      &lt;meta property="a11y:contributor">
+         DAISY XML Techniques Team
+      &lt;/meta>
+      &lt;meta property="schema:accessMode">
+         tactile
+      &lt;/meta>
+      &lt;meta property="schema:accessibilityFeature">
+         alternativeText
+      &lt;/meta>
+      &lt;meta property="schema:accessibilityFeature">
+         longDescription
+      &lt;/meta>
+      &lt;meta property="schema:accessibilityFeature">
+         printPageNumbers
+      &lt;/meta>
+      &lt;meta property="schema:accessibilityFeature">
+         readingOrder
+      &lt;/meta>
+      &lt;meta property="schema:accessibilityFeature">
+         structuralNavigation
+      &lt;/meta>
+      &lt;meta property="schema:accessibilityFeature">
+         tableOfContents
+      &lt;/meta>
+      &lt;meta property="schema:accessibilityFeature">
+         unlocked
+      &lt;/meta>
+      &lt;meta property="schema:educationalRole">
+         student
+      &lt;/meta>
+      &lt;meta property="schema:typicalAgeRange">18+&lt;/meta>
    &lt;/metadata>
    &#8230;
 &lt;/package></pre>
@@ -1455,14 +1538,20 @@
 			<section id="manifest">
 				<h3>Manifest</h3>
 
-				<p>The package document <code>manifest</code> element contains a list all of the resources in the
-					[=eBraille publication=]. Each <code>item</code> element child defines one resource, minimally
-					providing the following information:</p>
+				<p>The package document <a data-cite="epub-33#sec-manifest-elem"><code>manifest</code> element</a>
+					[[epub-33]] contains a list all of the resources in the [=eBraille publication=]. It is the second
+					required child of the root <a href="#package-elem"><code>package</code> element</a>.</p>
+
+				<p>Each <a data-cite="epub-33#sec-item-elem"><code>item</code> element</a> [[epub-33]] child of the
+						<code>manifest</code> defines one resource, minimally providing the following information:</p>
 
 				<ul>
-					<li>an identifier for the resource in its <code>id</code> attribute;</li>
-					<li>the location of the resource in its <code>href</code> attribute; and</li>
-					<li>the media type of the resource in its <code>media-type</code> attribute.</li>
+					<li>an identifier for the resource in its <a data-cite="epub-33#attrdef-id"><code>id</code>
+							attribute</a> [[epub-33]];</li>
+					<li>the location of the resource in its <a data-cite="epub-33#attrdef-item-href"><code>href</code>
+							attribute</a> [[epub-33]]; and</li>
+					<li>the media type of the resource in its <a data-cite="epub-33#attrdef-item-media-type"
+								><code>media-type</code> attribute</a> [[epub-33]].</li>
 				</ul>
 
 				<aside class="example" title="Manifest entry for an eBraille content document">
@@ -1478,9 +1567,10 @@
 &lt;/package></pre>
 				</aside>
 
-				<p>Manifest entries may also identify specific properties of the resource in the <code>properties</code>
-					attribute. For eBraille, this attribute will typically only be used for the <a href="#ebrl-nav"
-						>navigation document</a> and when SVG tactile graphics are embedded in the resource.</p>
+				<p>Manifest entries may also identify specific properties of the resource in the <a
+						data-cite="epub-33#sec-item-resource-properties"><code>properties</code> attribute</a>. For
+					eBraille, this attribute will typically only be used for the <a href="#ebrl-nav">navigation
+						document</a> and when SVG tactile graphics are embedded in the resource.</p>
 
 				<aside class="example" title="Manifest entry for an eBraille content document with embedded SVG">
 					<p>In this example, the <code>chapter02.html</code> file contains one or more SVG images. These
@@ -1502,7 +1592,9 @@
 				</aside>
 
 				<p>The manifest entries for [=eBraille content documents=] may also indicate if a <a href="#ebrl-mo"
-						>media overlay document</a> is available in the <code>media-overlays</code> attribute.</p>
+						>media overlay document</a> is available in the <a
+						data-cite="epub-33#attrdef-item-media-overlay"><code>media-overlay</code> attribute</a>
+					[[epub-33]].</p>
 
 				<p>For the complete set of requirements for the manifest, refer to the <a
 						data-cite="epub-33#sec-pkg-manifest">The <code>manifest</code> element</a> in [[epub-33]].</p>
@@ -1516,9 +1608,13 @@
 			<section id="spine">
 				<h3>Spine</h3>
 
-				<p>The package document <code>spine</code> element defines the default reading order for an [=eBraille
-					publication=]. Each <code>itemref</code> child of the <code>spine</code> references the manifest
-					entry for an [=eBraille content document=] in its required <code>idref</code> attribute.</p>
+				<p>The package document <a data-cite="epub-33#sec-spine-elem"><code>spine</code> element</a> [[epub-33]]
+					is the third required child of the root <a href="#package-elem"><code>package</code> element</a>. It
+					defines the default reading order for an [=eBraille publication=].</p>
+
+				<p>Each <code>itemref</code> child of the <code>spine</code> references the manifest entry for an
+					[=eBraille content document=] in its required <a data-cite="epub-33/#attrdef-item-href"
+							><code>idref</code> attribute</a> [[epub-33]].</p>
 
 				<aside class="example" title="Spine item reference to an eBraille content document">
 					<pre>&lt;package &#8230;>
@@ -1526,7 +1622,7 @@
    &lt;manifest>
       &lt;item id="c01"
             href="eBraille/chapter01.xhtml"
-            media-type="application/xhtml+xml"/>
+            media-type="application/xhtml+xml"
       &#8230;
    &lt;/manifest>
    &lt;spine>
@@ -1536,14 +1632,14 @@
 &lt;/package></pre>
 				</aside>
 
-				<p>The <code>linear</code> attribute is used to indicate if a resource referenced from the spine
-					contains content that must be read sequentially or not. Linear content typically consists of
-					eBraille content documents that contain content in the primary reading order while non-linear
-					content contains supplementary material such as notes and descriptions that can be accessed out of
-					sequence (e.g., an [=eBraille reading system=] might opt to not render them until after all the
-					linear content has been read). If the <code>linear</code> attribute is not specified, the spine item
-					defaults to being linear content (i.e., the attribute is only required to specify non-linear
-					content).</p>
+				<p>The <a data-cite="epub-33#attrdef-itemref-linear"><code>linear</code> attribute</a> [[epub-33]] is
+					used to indicate if the resource referenced contains content that must be read sequentially or not.
+					Linear content typically consists of eBraille content documents that contain content in the primary
+					reading order while non-linear content contains supplementary material such as notes and
+					descriptions that can be accessed out of sequence (e.g., an [=eBraille reading system=] might opt to
+					not render them until after all the linear content has been read). If the <code>linear</code>
+					attribute is not specified, the spine item defaults to being linear content (i.e., the attribute is
+					only required to specify non-linear content).</p>
 
 				<aside class="example" title="Linear and non-linear spine item reference">
 					<p>In the following example, the answer key for chapter 5 of a publication is marked as
