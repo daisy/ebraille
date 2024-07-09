@@ -122,9 +122,10 @@
 
 				<p>An [=eBraille publication=] differs from reading a typical web site in that the braille is not
 					transformed on the fly but comes formatted according to the rules of the regional braille code where
-					the publication was produced. But users are not locked into the default display. With the display
-					flexibility of CSS, and standardized markup practices, they could apply styles for another region or
-					even modify the display to their own preferences (e.g., by changing the maximum line length).</p>
+					the publication was produced. Users are not locked into this default display, however. With the
+					display flexibility of CSS, and standardized markup practices, they can apply styles for another
+					region or even modify the display to their own preferences (e.g., by changing the maximum line
+					length).</p>
 
 				<p>eBraille publications are also designed to be flexible for deployment. An eBraille publication can be
 					placed on the web, unzipped on a user's local file system, or distributed in EPUB 3-compatible
@@ -142,24 +143,26 @@
 					adapt to these modifications. Consequently, an eBraille publication may not render exactly as
 					intended outside of eBraille reading systems.</p>
 
-				<p>The primary difference between the eBraille format and EPUB 3 is eBraille publications do not have to
-					be packaged and distributed in an [=EPUB container=] [[epub-33]]. An [=eBraille publication=] will
-					be easy to package in an EPUB container when needed, however.</p>
+				<p>The primary difference between the eBraille format and EPUB 3 is [=eBraille publications=] do not
+					have to be packaged and distributed in an [=EPUB container=] [[epub-33]] &#8212; they can be
+					deployed on the web as an unpackaged set of files. An eBraille publication is packagable in an EPUB
+					container when that is the preferred distribution method, but eBraille uses the file extension
+						<code>.ebrl</code> not <code>.epub</code>.</p>
 
 				<p>Compatibility with EPUB 3 also means that eBraille relies on the same <a
 						data-cite="epub-33#sec-intro-relations">underlying technologies</a> [[epub-33]]. Many of these
 					technologies, like [[html]], are referred to as "evergreen" or "living" standards as they are
-					updated often and they do not have version numbers. Others, like [[svg]], are referred to without a
+					updated often and do not have version numbers. Others, like [[svg]], are referred to without a
 					specific version number so that the latest recommendation is always the recommended one to use.</p>
 
 				<p>The practical effect of this approach is predominantly beneficial for [=eBraille creators=]. New
-					features become available for use as soon as they are standardized, without having to wait for the
-					eBraille standard to catch up. It does come with some drawbacks, however. eBraille creators also
-					have to keep themselves apprised of changes to the underlying technologies, and use their best
-					judgement in some cases as to whether a new feature is supported well enough in [=eBraille reading
-					systems=] to begin deploying. In some rare cases, it may also mean that content that was previously
-					valid may no longer be, but breaking changes like this usually only happen when features are
-					unsupported or are found to have serious security or privacy flaws.</p>
+					features become available for use as soon as they are standardized; it is not required to wait for a
+					new revision of the eBraille standard to allow them. The approach does come with some drawbacks,
+					however. eBraille creators also have to keep themselves apprised of changes to the underlying
+					technologies, and use their best judgement in some cases as to whether a new feature is supported
+					well enough in [=eBraille reading systems=] to begin deploying. In some rare cases, it may also mean
+					that content that was previously valid may no longer be, but breaking changes like this usually only
+					happen when features are unsupported or are found to have serious security or privacy flaws.</p>
 			</section>
 
 			<section id="future-dir" class="informative">
@@ -197,7 +200,9 @@
 				</div>
 
 				<dl>
-					<dt><dfn data-lt="content document|content documents">eBraille content document</dfn></dt>
+					<dt>
+						<dfn data-lt="content document|content documents">eBraille content document</dfn>
+					</dt>
 					<dd>
 						<p data-cite="html">eBraille content documents contain all or part of the content of a braille
 							publication. They use a restrictive set of [[html]] tags and define processing requirements
@@ -205,19 +210,25 @@
 						<p>For more information, refer to <a href="#ebrl-content-docs"></a>.</p>
 					</dd>
 
-					<dt><dfn>eBraille creator</dfn></dt>
+					<dt>
+						<dfn>eBraille creator</dfn>
+					</dt>
 					<dd>
 						<p>An individual, organization, or process that produces an [=eBraille publication=].</p>
 					</dd>
 
-					<dt><dfn>eBraille file set</dfn></dt>
+					<dt>
+						<dfn>eBraille file set</dfn>
+					</dt>
 					<dd>
 						<p>The set of files that comprise an [=eBraille publication=]. The eBraille file set is
 							contained within the [=publication root=].</p>
 						<p>For more information, refer to <a href="#fileset-structure"></a>.</p>
 					</dd>
 
-					<dt><dfn>eBraille publication</dfn></dt>
+					<dt>
+						<dfn>eBraille publication</dfn>
+					</dt>
 					<dd>
 						<p>A logical document entity consisting of a set of interrelated resources.</p>
 						<p>An eBraille publication typically represents a single intellectual or artistic work, but this
@@ -231,7 +242,9 @@
 							conformant with this specification.</p>
 					</dd>
 
-					<dt><dfn>primary entry page</dfn></dt>
+					<dt>
+						<dfn>primary entry page</dfn>
+					</dt>
 					<dd>
 						<p>The default [=eBraille content document=] that users reading an [=eBraille publication=] in a
 							browser are expected to encounter. It is located in the [=publication root=] and specially
@@ -242,7 +255,9 @@
 						<p>For more information, refer to <a href="#ebrl-nav"></a></p>
 					</dd>
 
-					<dt><dfn>publication root</dfn></dt>
+					<dt>
+						<dfn>publication root</dfn>
+					</dt>
 					<dd>The root directory is the base of the [=eBraille file set=]. All the resources of an eBraille
 						publication are located at or below this directory.</dd>
 				</dl>
@@ -1477,7 +1492,9 @@
 
 				<ul>
 					<li>all features marked as <a data-cite="epub-33#deprecated">deprecated</a> [[epub-33]]</li>
-					<li><a href="#fallbacks">manifest fallbacks</a></li>
+					<li>
+						<a href="#fallbacks">manifest fallbacks</a>
+					</li>
 					<li><a data-cite="epub-33#sec-pkg-collections">collections</a> [[epub-33]]</li>
 					<li><a data-cite="epub-33#sec-pkg-legacy">legacy features</a> [[epub-33]]</li>
 				</ul>
