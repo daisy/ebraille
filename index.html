@@ -272,12 +272,38 @@
 						data-cite="epub-33#sec-metadata-reserved-prefixes">reserved prefixes</a> [[epub-33]] are used
 					without declaration.</p>
 
-				<p>References to Dublin Core elements [[dcterms]] use the <code>dc:</code> prefix. This prefix must be
-					declared in the package document for their use to be valid
-						(<code>xmlns:dc="http://purl.org/dc/elements/1.1/"</code>)</p>
+				<p>The following namespace prefixes [[xml-names]] are also sometimes used in examples without an
+					explicit declaration, but the declaration is required for their use to be valid:</p>
 
-				<p>The <code>epub</code> namespace prefix [[xml-names]] is also used on elements and attributes without
-					always having an explicit declaration (<code>xmlns:epub="http://www.idpf.org/2007/ops"</code>).</p>
+				<table class="zebra">
+					<thead>
+						<tr>
+							<th>Prefix</th>
+							<th>Required Declaration</th>
+							<th>Usage</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<code>dc:</code>
+							</td>
+							<td>
+								<code>xmlns:dc="http://purl.org/dc/elements/1.1/"</code>
+							</td>
+							<td>For Dublin Core elements [[dcterms]] in the package metadata.</td>
+						</tr>
+						<tr>
+							<td>
+								<code>epub:</code>
+							</td>
+							<td>
+								<code>xmlns:epub="http://www.idpf.org/2007/ops"</code>
+							</td>
+							<td>For attributes defined in EPUB 3 for use in XHTML and SMIL documents.</td>
+						</tr>
+					</tbody>
+				</table>
 			</section>
 		</section>
 		<section id="ebrl-pub">
