@@ -1683,10 +1683,10 @@
 				<h3>Introduction</h3>
 
 				<p>[=eBraille content documents=] define the markup and presentation of the content of an [=eBraille
-					publication=]. An eBraille content document is encoded using <a data-cite="html#">XML syntax</a> of
-					[[html]], also commonly known as XHTML, and is styled using CSS [[css2]].</p>
+					publication=]. An eBraille content document is encoded using the <a data-cite="html#">XML syntax</a>
+					of [[html]], also commonly known as XHTML, and is styled using CSS [[css2]].</p>
 
-				<p>eBraille content documents are not only formatted text. For example, they may include tactile
+				<p>eBraille content documents are not limited to formatted text. For example, they may include tactile
 					graphics, audio, and video. The primary difference between the features of an eBraille content
 					document and a typical web page is that scripting and forms are not supported.</p>
 
@@ -1779,14 +1779,15 @@
 				<section id="css-intro" class="informative">
 					<h4>Introduction</h4>
 
-					<p>[=eBraille creators=] may use CSS [[css2]] to style and layout <a>content documents</a>. With the
-						few exceptions defined in this section, eBraille defers to EPUB and the <abbr title="World
-						Wide Web Consortium">W3C</abbr> to define CSS.</p>
+					<p>[=eBraille creators=] may use CSS [[css2]] to style and lay out [=content documents=]. With the
+						few exceptions defined in this section, eBraille defers to [[epub-33]], and more specifically to
+						the CSS standardization work done in <abbr title="World Wide Web Consortium">W3C</abbr>, to
+						define CSS.</p>
 
 					<div class="note">
-						<p>Keep in mind that some <a>reading systems</a> will not support all desired features of CSS.
-							The following are identified as potentially problematic, depending on the technology choices
-							of reading system implementations, and should therefore be used with caution:</p>
+						<p>Keep in mind that some [=reading systems=] will not support all desired features of CSS. The
+							following are identified as potentially problematic, depending on the technology choices of
+							reading system implementations, and should therefore be used with caution:</p>
 						<ul>
 							<li>The "<a data-cite="css-page#">CSS Paged Media Module Level 3</a>" working draft
 								[[css-page]], which builds on the "<a data-cite="css2/page.html#the-page">Paged
@@ -1794,10 +1795,10 @@
 						</ul>
 					</div>
 
-					<p>Note that the presentation of content is not determined by author style sheets only. <a>Reading
-							systems</a> are expected to apply default styles that make sense for the current locale, in
-						case author styles are missing or incomplete. This may be done through CSS or through other
-						means. Reading systems may also perform specific styling according to user preferences.</p>
+					<p>Note that the presentation of content is not determined by author style sheets only. Reading
+						systems are expected to apply default styles that make sense for the current locale, in case
+						author styles are missing or incomplete. This may be done through CSS or through other means.
+						Reading systems may also perform specific styling according to user preferences.</p>
 				</section>
 
 				<section id="css-req">
@@ -1813,14 +1814,14 @@
 						<li>CSS style sheets MUST be UTF-8 encoded [[unicode]].</li>
 					</ul>
 
-					<p>In addition, the following are strongly RECOMMENDED:</p>
+					<p>In addition, eBraille creators:</p>
 
 					<ul>
 						<li>
-							<p>eBraille creators SHOULD NOT use properties that affect the text's font (e.g., which font
-								gets applied, its size, whether it's bold, italic, etc.). Creators should assume that
-								reading devices determine the shape and size of the braille symbols (e.g. for technical
-								reasons, or to ensure a good reading experience).</p>
+							<p>SHOULD NOT use properties that affect the text's font (e.g., which font gets applied, its
+								size, whether it is bold, italic, etc.). Creators should assume that reading systems
+								determine the shape and size of the braille symbols (e.g., for technical reasons, or to
+								ensure a good reading experience).</p>
 							<p>The font-related properties include, but are not limited to:</p>
 							<ul>
 								<li><a data-cite="css-fonts#font-family-prop"><code>font-family</code></a>,</li>
@@ -1848,8 +1849,7 @@
 							</ul>
 						</li>
 						<li>
-							<p>eBraille creators SHOULD use <a data-cite="css-values#font-relative-lengths"
-									>font-relative lengths</a>
+							<p>SHOULD use <a data-cite="css-values#font-relative-lengths">font-relative lengths</a>
 								<!-- `em'
 								is already defined in css2/syndata.html#length-units, but ch' `isn't -->
 								[[css-values]] only. Because it should be assumed that creators have no control over the
@@ -1880,43 +1880,30 @@
 							data-cite="xml-stylesheet#"><code>xml-stylesheet</code></a> processing instructions
 						[[xml-stylesheet]].</p>
 
-					<ul>
-						<li>
-							<p>[=eBraille creators=] SHOULD NOT use media queries that discriminate between a braille
-								display and a screen when the target medium is a braille display.</p>
-							<div class="note">
-								<p>The logical consequence of this is that it will be impossible to discriminate between
-									visual and tactile access modes, in other words it forces rendering on a screen and
-									on a braille display that are otherwise comparable, to be the same, and the CSS to
-									have the same requirements.</p>
-								<p>Note that we do not recommend using <a data-cite="mediaqueries#valdef-media-braille"
-											><code>braille</code></a>, nor <a data-cite="mediaqueries#grid"
-											><code>(grid)</code></a>, because there are currently no known CSS
-									implementations that match these, so requiring [=eBraille reading systems=] to match
-									them could be problematic. <!-- Another reason to not
+					<p>[=eBraille creators=] SHOULD NOT use media queries that discriminate between a braille display
+						and a screen when the target medium is a braille display.</p>
+
+					<div class="note">
+						<p>The logical consequence of this is that it will be impossible to discriminate between visual
+							and tactile access modes. In other words, it forces rendering on a screen and on a braille
+							display, that are otherwise comparable, to be the same, and the CSS to have the same
+							requirements.</p>
+
+						<p>The use of <a data-cite="mediaqueries#valdef-media-braille"><code>braille</code></a>, and <a
+								data-cite="mediaqueries#grid"><code>(grid)</code></a> is not recommended because there
+							are currently no known CSS implementations that match these types, so requiring [=eBraille
+							reading systems=] to match them could be problematic. <!-- Another reason to not
 									recommend <code>braille</code> is because it is expected to become
 									deprecated.--></p>
-								<p>We don't recommend using <a data-cite="mediaqueries#valdef-media-screen"
-											><code>screen</code></a> because we want to be forward-compatible with a
-									possible future version of the standard that supports differences in styling for
-									screens vs. braille displays, might that become a requirement.</p>
-							</div>
-							<p>[=eBraille reading systems=] of type braille display MUST match either
-									<code>braille</code> or <code>screen</code>, and SHOULD ideally match both. They
-								SHOULD ideally match both <code>(grid)</code> and <code>not (grid)</code>.</p>
-							<div class="ednote">
-								<p>[[mediaqueries]] deprecates <a data-cite="mediaqueries#valdef-media-braille"
-											><code>braille</code></a> and requires that user agents recognize the media
-									type as valid, but make it match nothing. So maybe we should replace "<em>MUST match
-										either <code>braille</code> or <code>screen</code>, and SHOULD ideally match
-										both</em>" with "<em>SHOULD match <code>screen</code></em>".</p>
-							</div>
-						</li>
-						<li>
-							<p>To adapt the styling based on the dimensions of the viewport, eBraille creators SHOULD
-								use <a data-cite="css-values#font-relative-lengths">font-relative lengths</a>.</p>
-						</li>
-					</ul>
+
+						<p>Using <a data-cite="mediaqueries#valdef-media-screen"><code>screen</code></a> is also not
+							recommended to be forward-compatible with a possible future version of the standard that
+							supports differences in styling for screens vs. braille displays.</p>
+					</div>
+
+					<p>To adapt the styling based on the dimensions of the viewport, eBraille creators SHOULD use <a
+							data-cite="css-values#font-relative-lengths">font-relative lengths</a>.</p>
+
 					<div class="note">
 						<p>More specific guidance on how to use media queries in eBraille content documents is provided
 							in the <a href="best-practices/styling/#media-queries">eBraille Styling Best
@@ -1994,30 +1981,9 @@
 			<section id="nav-req">
 				<h3>General requirements</h3>
 
-				<p>The primary entry page MUST be named <code>index.html</code>. This file has to be located in the
-					[=publication root=], as defined in <a href="#fileset-structure"></a>.</p>
-
 				<p>The primary entry page MUST be a conforming <a data-cite="epub-33#sec-nav">EPUB navigation
-						document</a> [[epub-33]].</p>
-
-				<p>As the primary entry page is meant to help browser users navigate the publication, it SHOULD NOT be
-					included in the <a href="#spine">spine</a>. If the publication needs a table of contents in the
-					spine, it is better to create a separate document with publication-specific formatting.</p>
-
-				<p>As per the requirements of EPUB 3, the <a href="#manifest">manifest entry</a> for the primary entry
-					page has to have a <code>properties</code> attribute with the value <code>nav</code>
-					[[epub-33]].</p>
-
-				<aside class="example" title="Manifest entry for the primary entry page">
-					<pre>&lt;package &#8230;>
-   &#8230;
-   &lt;manifest>
-      &lt;item id="nav" href="index.html" type="application/xhtml+xml" properties="nav"/>
-      &#8230;
-   &lt;/manifest>
-   &#8230;
-&lt;/package></pre>
-				</aside>
+						document</a> [[epub-33]]. In addition, it MUST be named <code>index.html</code> and be located
+					in the [=publication root=], as defined in <a href="#fileset-structure"></a>.</p>
 
 				<p>The primary entry page MUST include an [[html]] [^link^] element with its [^link/rel^] attribute set
 					to the value <code>publication</code>. The [^link/href^] attribute MUST specify the package document
@@ -2052,6 +2018,25 @@
 						expected to disable the scripting in the primary entry page regardless of the document's
 						placement in the spine.</p>
 				</div>
+
+				<p>As the primary entry page is meant to help browser users navigate the publication, it SHOULD NOT be
+					included in the <a href="#spine">spine</a>. If the publication needs a table of contents in the
+					spine, it is better to create a separate document with publication-specific formatting.</p>
+
+				<p>As per the requirements of EPUB 3, the <a href="#manifest">manifest entry</a> for the primary entry
+					page has to have a <code>properties</code> attribute with the value <code>nav</code>
+					[[epub-33]].</p>
+
+				<aside class="example" title="Manifest entry for the primary entry page">
+					<pre>&lt;package &#8230;>
+   &#8230;
+   &lt;manifest>
+      &lt;item id="nav" href="index.html" type="application/xhtml+xml" properties="nav"/>
+      &#8230;
+   &lt;/manifest>
+   &#8230;
+&lt;/package></pre>
+				</aside>
 			</section>
 
 			<section id="navigation">
@@ -2287,7 +2272,7 @@
 							<code>nav</code> element. Each [[html]] list item ([^li^]) represents one landmark in the
 						publication.</p>
 
-					<p>The name of the landmarked is wrapped inside an [[html]] anchor tag ([^a^]) that provides a
+					<p>The name of the landmark is wrapped inside an [[html]] anchor tag ([^a^]) that provides a
 						machine-readable semantic that identifies the type of landmark in its <code>epub:type</code>
 						attribute. These semantics are drawn from the <a href="https://www.w3.org/TR/epub-ssv-11">EPUB
 							Structural Semantics Vocabulary</a> [[epub-ssv-11]].</p>
@@ -2325,10 +2310,11 @@
 			<p>eBraille publications support <a data-cite="epub-33##sec-media-overlays">media overlays</a> as defined in
 				[[epub-33]]. Media overlays allow prerecorded audio to be synchronized with the content of [=eBraille
 				content documents=], allowing users to switch between reading braille, listening to auditory playback,
-				or reading along with the narration.</p>
+				or reading along with narration.</p>
 
 			<p>A media overlay document MAY be associated with an [=eBraille content document=] by adding a
-					<code>media-overlays</code> attribute to its package document manifest entry.</p>
+					<code>media-overlays</code> attribute to its <a href="#manifest">package document manifest
+				entry</a>.</p>
 
 			<aside class="example" title="An eBraille content document with media overlay">
 				<p>The following package document manifest markup shows the media overlay for the eBraille content
@@ -2353,8 +2339,8 @@
 
 			<p>The body of a media overlay document consists of [^par^] and [^seq^] elements [[epub-33]]. The
 					<code>par</code> element defines the audio content to associate with the specified content, while
-					<code>seq</code> elements are used to group <code>seq</code> elements into logical structures such
-				as figures and tables.</p>
+					<code>seq</code> elements are used to group <code>par</code> and other <code>seq</code> elements
+				into logical structures such as figures and tables.</p>
 
 			<aside class="example" title="A media overlay document">
 				<p>The following media overlay document shows the markup for a table. <code>seq</code> elements are used
@@ -2417,13 +2403,13 @@
 			<h2>Packaging</h2>
 
 			<p>When [=eBraille publications=] are distributed to end users as a single file set, they MUST be packaged
-				in an EPUB container, as defined in <a data-cite="epub-33#sec-container-zip">OCF ZIP Container</a>
-				[[epub-33]].</p>
+				in a conforming EPUB container as defined in <a data-cite="epub-33#sec-container-zip">OCF ZIP
+					Container</a> [[epub-33]].</p>
 
-			<p>Packaged eBraille publications are also identified by the media type identifier
-					"<code>application/epub+zip</code>" [[epub-33]]. The requirements for specifying the identifier in
+			<p>Packaged eBraille publications are use the same media type identifier as EPUB:
+					<code>application/epub+zip</code> [[epub-33]]. The requirements for specifying this identifier in
 				the <code>mimetype</code> file are defined in <a data-cite="epub-33#sec-zip-container-mime">OCF ZIP
-					container media type identification</a>.</p>
+					container media type identification</a> [[epub-33]].</p>
 
 			<p>A packaged eBraille file set MUST use the extension <code>.ebrl</code>.</p>
 
@@ -2476,8 +2462,8 @@
 					<dd>
 						<p>Malicious actors could include false metadata &#8212; such as the title, author, and
 							publisher &#8212; in an eBraille publication to trick unsuspecting users into believing they
-							are reading material from a trustworthy source. This could lead users to be more trusting of
-							external links than they otherwise would be.</p>
+							are reading material from a trustworthy source. This could, for example, lead users to be
+							more trusting of external links than they otherwise would be.</p>
 					</dd>
 				</dl>
 			</section>
@@ -2524,10 +2510,10 @@
 					support <a href="#ebrl-mo">media overlays</a>, for example, if it does not support audio
 					playback.</p>
 
-				<p>As eBraille publications can be deployed unpackaged on the web, users may not even always require a
+				<p>As eBraille publications can be deployed unpackaged on the web, users may not even require a
 					dedicated eBraille reading system to read them. A very basic reading experience will be possible
-					directly from a standard web browser, and browser-based reading systems can provide a richer reading
-					experience for reading on the web.</p>
+					directly from a standard web browser, while browser-based reading systems could provide a richer
+					reading experience for reading on the web.</p>
 			</section>
 
 			<section id="rs-req">
@@ -2563,13 +2549,13 @@
 				</section>
 
 				<section id="rs-req-non-critical">
-					<h4>Non-critical features</h4>
+					<h4>Other unsupported features</h4>
 
 					<p>The following EPUB reading system features [[epub-rs-33]] are not supported in the authoring of
-						eBraille publications. Unlike the features restricted in <a href="rs-req-epub"></a>, the
+						eBraille publications. Unlike the features restricted in <a href="#rs-req-epub"></a>, the
 						existence of these features will not affect the rendering of [=eBraille publications=] and does
 						not affect their privacy or security. Reading systems built on EPUB rendering engines MAY
-						support the features although they SHOULD be disabled, if possible, to discourage use by
+						support these features although they SHOULD be disabled, if possible, to discourage use by
 						eBraille creators:</p>
 
 					<ul>
@@ -2620,6 +2606,22 @@
 
 					<p>As the <a href="#css-req">use of CSS font properties</a> is not recommended, reading system
 						support for <a data-cite="epub-rs-33#sec-container-fobfus">font obfuscation</a> is OPTIONAL.</p>
+				</section>
+
+				<section id="rs-mq">
+					<h4>Media queries</h4>
+
+					<p>[=eBraille reading systems=] of type braille display MUST match either <code>braille</code> or
+							<code>screen</code>, and SHOULD match both. They SHOULD match both <code>(grid)</code> and
+							<code>not (grid)</code>.</p>
+
+					<div class="ednote">
+						<p>[[mediaqueries]] deprecates <a data-cite="mediaqueries#valdef-media-braille"
+									><code>braille</code></a> and requires that user agents recognize the media type as
+							valid, but make it match nothing. So maybe we should replace "<em>MUST match either
+									<code>braille</code> or <code>screen</code>, and SHOULD match both</em>" with
+								"<em>SHOULD match <code>screen</code></em>".</p>
+					</div>
 				</section>
 
 				<section id="rs-req-cmt">
@@ -2686,8 +2688,7 @@
 
 					<dt>Description</dt>
 					<dd>
-						<p>Describes the purpose of the property and specifies any additional usage requirements that
-							eBraille creators must follow.</p>
+						<p>Describes the purpose of the property and specifies any additional usage requirements.</p>
 					</dd>
 
 					<dt>Example</dt>
@@ -2697,7 +2698,7 @@
 
 					<dt>Name</dt>
 					<dd>
-						<p>Specifies the name of the property as it MUST appear in the metadata.</p>
+						<p>Specifies the name of the property as it MUST appear in metadata.</p>
 					</dd>
 				</dl>
 			</section>
