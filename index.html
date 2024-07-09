@@ -268,19 +268,19 @@
 			<section id="auth-shorthands" class="informative">
 				<h3>Authoring shorthands</h3>
 
-				<p>In <a href="#metadata">package document metadata</a> examples, <a
+				<p>In <a href="#metadata">package document metadata</a>, <a
 						data-cite="epub-33#sec-metadata-reserved-prefixes">reserved prefixes</a> [[epub-33]] are used
 					without declaration.</p>
 
-				<p>The following namespace prefixes [[xml-names]] are also sometimes used in examples without an
-					explicit declaration, but the declaration is required for their use to be valid:</p>
+				<p>The following namespace prefixes [[xml-names]] are also sometimes used without an explicit
+					declaration, but the listed declaration is required for their use to be valid:</p>
 
 				<table class="zebra">
 					<thead>
 						<tr>
 							<th>Prefix</th>
-							<th>Required Declaration</th>
-							<th>Usage</th>
+							<th>Required declaration</th>
+							<th>Used with</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -291,7 +291,7 @@
 							<td>
 								<code>xmlns:dc="http://purl.org/dc/elements/1.1/"</code>
 							</td>
-							<td>For Dublin Core elements [[dcterms]] in the package metadata.</td>
+							<td>Dublin Core elements [[dcterms]]</td>
 						</tr>
 						<tr>
 							<td>
@@ -300,7 +300,7 @@
 							<td>
 								<code>xmlns:epub="http://www.idpf.org/2007/ops"</code>
 							</td>
-							<td>For attributes defined in EPUB 3 for use in XHTML and SMIL documents.</td>
+							<td>EPUB 3-defined attributes [[epub-33]]</td>
 						</tr>
 					</tbody>
 				</table>
@@ -354,7 +354,7 @@
 				<p>To ensure that [=eBraille reading systems=] are capable of rendering the content of [=eBraille
 					publications=], only certain widely supported resource types are allowed to be included without
 					fallbacks. These are called core media types and are designated by their MIME media type [[rfc2046]]
-					(e.g., XHTML documents have the MIME media type <code>application/xhtml+xml</code>.</p>
+					(e.g., XHTML documents have the MIME media type <code>application/xhtml+xml</code>).</p>
 
 				<p>Being designated a core media type does not mean that all reading systems are required to support the
 					type of resource, however. A reading system without audio capabilities will not be able to render
@@ -388,15 +388,16 @@
 					using <a data-cite="epub-33#sec-intrinsic-fallbacks">intrinsic fallback methods</a> [[epub-33]].</p>
 
 				<div class="note">
-					<p><a href="#fallbacks">Manifest fallbacks</a> are not supported in eBraille, so foreign resources
-						cannot be used in the <a href="#spine">spine</a>. Similarly, foreign image formats have to
-						include fallbacks using the [[html]] [^img^] and [^picture^] elements' intrinsic fallback
-						capabilities.</p>
+					<p><a href="#fallbacks">Manifest fallbacks</a> are not supported in eBraille. This means they cannot
+						be used to include foreign resources in the <a href="#spine">spine</a> or as a means of
+						providing fallbacks for foreign image formats (in the latter case, fallbacks can be provided
+						instead using the [[html]] [^img^] and [^picture^] elements' intrinsic fallback
+						capabilities).</p>
 				</div>
 
 				<p>It is generally best to avoid foreign resources unless absolutely necessary. PDF tactile graphics are
-					an example of a foreign resource that may not be avoidable for some EPUB creators, but using the
-					[[html]] [^object^] element's intrinsic fallback capabilities can avoid having to duplicate the
+					an example of a foreign resource that may not be avoidable for some [=eBraille creators=], but using
+					the [[html]] [^object^] element's intrinsic fallback capabilities can avoid having to duplicate the
 					image in a core media type format.</p>
 
 				<aside class="example" title="PDF tactile image with fallback">
@@ -405,18 +406,21 @@
      type="application/pdf"
      height="250"
      width="100"
-     aria-labelledby="alt">
-   &lt;p id="alt">&lt;!-- alternative text -->&lt;/p>
+     aria-label="alternative text">
+   &lt;p>&lt;!-- description -->&lt;/p>
 &lt;/object></pre>
+				</aside>
+				<aside class="ednote">
+					<p>The accessibility of using an <code>object</code> element is still to be determined. Guidance on
+						how to embed PDFs may change in a future update.</p>
 				</aside>
 			</section>
 
 			<section id="fallbacks">
 				<h3>Resource fallbacks</h3>
 
-				<p>[=eBraille publications=] only support [=XHTML content documents=] in the [=spine=] [[epub-33]].
-					Consequently, the use of <a data-cite="epub-33#sec-manifest-fallbacks">manifest fallbacks</a>
-					[[epub-33]] is not supported.</p>
+				<p>eBraille does not support the use of <a data-cite="epub-33#sec-manifest-fallbacks">manifest
+						fallbacks</a> [[epub-33]].</p>
 
 				<p>The intrinsic fallback methods provided by [[html]] elements are supported.</p>
 			</section>
@@ -440,8 +444,8 @@
 			<section id="res-exemptions" class="informative">
 				<h3>Exempt resources</h3>
 
-				<p>Note that it is possible to include additional resources in an [=eBraille publication=] that are not
-					part of the rendering of the content. EPUB 3 defines resources that are not used in the [=spine=] or
+				<p>It is possible to include additional resources in an [=eBraille publication=] that are not part of
+					the rendering of the content. EPUB 3 defines resources that are not used in the [=spine=] or
 					embedded in [=xhtml content documents=] as exempt from the normal [=core media type resource=]
 					restrictions [[epub-33]].</p>
 
@@ -478,8 +482,8 @@
 
 					<p>The <code>.xhtml</code> extension may be useful if eBraille content documents are opened in a
 						browser on a local file system (e.g., for testing), as this triggers some browsers to render the
-						content using the correct XML parser. It has no effect on documents served over the web,
-						however.</p>
+						content using the correct XML parser. The extension has no effect on documents served over the
+						web, however.</p>
 				</div>
 			</section>
 
