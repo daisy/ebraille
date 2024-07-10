@@ -12,6 +12,7 @@ function addDAISYStatus() {
 	
 	const status = {
 		'ed': 'Editor\'s Draft',
+		'fpwd': 'First Public Working Draft',
 		'wd': 'Working Draft',
 		'cr': 'Candidate Recommendation',
 		'pr': 'Proposed Recommendation',
