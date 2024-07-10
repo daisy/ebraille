@@ -52,4 +52,12 @@ function addDAISYStatus() {
 		wgLabel[i].innerHTML = respecConfig.daisyWG;
 	}
 	
+	/* add previous version */
+	
+	if (respecConfig.hasOwnProperty('previousVersion')) {
+		var dl_entry = '<dt>Previous version:</dt><dd><a href="' + respecConfig.previousVersion + '">' + respecConfig.previousVersion + '</a></dd>';
+		
+		var dd = document.querySelector('div.head > details > dl > dd:nth-child(6)');
+			dd.insertAdjacentHTML('afterEnd', dl_entry);
+	}
 }
