@@ -15,5 +15,5 @@ The main objectives for the next phase of the project are:
 
 ### Best Practices
 - [eBraille Tagging Best Practices](https://daisy.github.io/ebraille/best-practices/tagging/)
-- [eBraille Styling Best Practices](https://bertfrees.github.io/ebraille/best-practices/styling/)
+- [eBraille Styling Best Practices](https://daisy.github.io/ebraille/best-practices/styling/)
 
