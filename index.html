@@ -100,6 +100,11 @@
 		<p class="copyright">Copyright &#169; DAISY Consortium 2023</p>
 		<section id="abstract">
 			<p>This specification defines eBraille, a digital reading format for braille publications.</p>
+
+			<p>eBraille uses an EPUB 3-compatible file set based on the Open Web Platform &#8212; using technologies
+				such as XHTML and CSS &#8212; to encode braille in semantically enhanced markup and allow it to adapt to
+				the different capabilities of braille reading devices. The file set is designed for both packaged
+				distribution to end users and deployment to the web for online and downloadable reading.</p>
 		</section>
 		<section id="sotd">
 			<div data-include="common/status.html" data-include-replace="true"></div>
@@ -2408,7 +2413,13 @@
 				in a conforming EPUB container as defined in <a data-cite="epub-33#sec-container-zip">OCF ZIP
 					Container</a> [[epub-33]].</p>
 
-			<p>Packaged eBraille publications are use the same media type identifier as EPUB:
+			<p>As packaging is separate from the [=eBraille file set=], the <a
+					data-cite="epub-33/#sec-zip-container-mime"><code>mimetype</code></a> and <a
+					data-cite="epub-33/#sec-container-metainf-container.xml"><code>container.xml</code></a> files
+				[[epub-33]] are only required for a packaged eBraille file. The files MAY be omitted if an eBraille
+				publication is not packaged.</p>
+
+			<p>Packaged eBraille publications use the same media type identifier as EPUB:
 					<code>application/epub+zip</code> [[epub-33]]. The requirements for specifying this identifier in
 				the <code>mimetype</code> file are defined in <a data-cite="epub-33#sec-zip-container-mime">OCF ZIP
 					container media type identification</a> [[epub-33]].</p>
