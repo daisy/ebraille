@@ -5,6 +5,7 @@
 		<title>eBraille Styling Best Practices</title>
 		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
 		<script src="../../common/js/status.js" class="remove"></script>
+		<script src="../../common/js/copyright.js" class="remove"></script>
 		<script type="text/javascript" src="replaceTaggingLinks.js"></script>
 		<script type="text/javascript" src="replaceBrfLinks.js"></script>
 		<script type="text/javascript" src="js-renderer-prototype/index.js"></script>
@@ -41,7 +42,7 @@
 				],
 				github: 'daisy/ebraille',
 				preProcess: [replaceTaggingLinks, replaceBrfLinks],
-				postProcess: [addDAISYStatus, validateExamples],
+				postProcess: [addDAISYStatus, validateExamples, addCopyrightYear],
 				localBiblio: {
 					"ebraille": {
 						href: new URL("../../", document.baseURI).href,
@@ -171,7 +172,7 @@
 		</style>
 	</head>
 	<body>
-		<p class="copyright">Copyright &#169; DAISY Consortium 2024</p>
+		<p class="copyright">Copyright &#169; DAISY Consortium <span id="copyYear">2024</span></p>
 		<section id="abstract">
 			<p>&#8230;</p>
 		</section>
