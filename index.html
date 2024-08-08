@@ -815,17 +815,16 @@
 						<p>The REQUIRED <code>dc:creator</code> element [[dcterms]] identifies the name(s) of the
 							primary author, editor, etc. Follow regional conventions for name layout.</p>
 
-						<aside class="example"
-							title="A single author with an English name arraigned with the last name appearing first and then followed by a comma and then the first name">
+						<aside class="example" title="A single author with an English name">
 							<pre>&lt;dc:creator>
-   Twain, Mark
+   Mark Twain
 &lt;/dc:creator></pre>
 						</aside>
 
 						<aside class="example"
-							title="A single author with a Japanese name arraigned with first name appearing first and then followed by last name with no comma">
+							title="A single author with a Japanese name arraigned with first name appearing first and then followed by last">
 							<pre>&lt;dc:creator>
-   Akiko Akazome
+   Akiko AKAZOME
 &lt;/dc:creator></pre>
 						</aside>
 
@@ -833,23 +832,34 @@
 									><code>dir</code></a>, <a data-cite="epub-33#attrdef-id"><code>id</code></a>, <a
 								data-cite="epub-33#attrdef-xml-lang"><code>xml:lang</code></a> [[epub-33]].</p>
 
-						<p>The role the creator played in the creation of the content MAY be specified by <a
-								data-cite="epub-33#subexpression">associating</a> a <a data-cite="epub-33#role"
+						<p>Repeat the element for each creator name.</p>
+
+						<p>To identify the role the creator played in the creation of the content, <a
+								data-cite="epub-33#subexpression">associate</a> a <a data-cite="epub-33#role"
 									><code>role</code> property</a> [[epub-33]] with the element.</p>
 
 						<aside class="example" title="Multiple authors with roles identified">
 							<pre>&lt;dc:creator id="aut01">
-   Brontë, Charlotte
+   Charlotte Brontë
 &lt;/dc:creator>
 &lt;meta property="role" refines="#aut01">aut&lt;/meta>
 
 &lt;dc:creator id="aut02">
-   Melville, Herman
+   Herman Melville
 &lt;/dc:creator>
 &lt;meta property="role" refines="#aut02">aut&lt;/meta></pre>
 						</aside>
 
-						<p>Repeat the element for each creator name.</p>
+						<p>To provide the creator's name for sorting purposes, associate a <a
+								data-cite="epub-33#file-as"><code>file-as</code> property</a> [[epub-33]] with the
+							element.</p>
+
+						<aside class="example" title="Author's name with sortable equivalent">
+							<pre>&lt;dc:creator id="aut01">
+   Charlotte Brontë
+&lt;/dc:creator>
+&lt;meta property="file-as" refines="#aut01">Brontë, Charlotte&lt;/meta></pre>
+						</aside>
 
 						<div class="note">
 							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dccreator">definition of
