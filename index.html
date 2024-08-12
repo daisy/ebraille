@@ -815,17 +815,16 @@
 						<p>The REQUIRED <code>dc:creator</code> element [[dcterms]] identifies the name(s) of the
 							primary author, editor, etc. Follow regional conventions for name layout.</p>
 
-						<aside class="example"
-							title="A single author with an English name arraigned with the last name appearing first and then followed by a comma and then the first name">
+						<aside class="example" title="A single author with an English name">
 							<pre>&lt;dc:creator>
-   Twain, Mark
+   Mark Twain
 &lt;/dc:creator></pre>
 						</aside>
 
 						<aside class="example"
-							title="A single author with a Japanese name arraigned with first name appearing first and then followed by last name with no comma">
+							title="A single author with a Japanese name arraigned with first name appearing first and then followed by last">
 							<pre>&lt;dc:creator>
-   Akiko Akazome
+   Akiko AKAZOME
 &lt;/dc:creator></pre>
 						</aside>
 
@@ -833,23 +832,34 @@
 									><code>dir</code></a>, <a data-cite="epub-33#attrdef-id"><code>id</code></a>, <a
 								data-cite="epub-33#attrdef-xml-lang"><code>xml:lang</code></a> [[epub-33]].</p>
 
-						<p>The role the creator played in the creation of the content MAY be specified by <a
-								data-cite="epub-33#subexpression">associating</a> a <a data-cite="epub-33#role"
+						<p>Repeat the element for each creator name.</p>
+
+						<p>To identify the role the creator played in the creation of the content, <a
+								data-cite="epub-33#subexpression">associate</a> a <a data-cite="epub-33#role"
 									><code>role</code> property</a> [[epub-33]] with the element.</p>
 
 						<aside class="example" title="Multiple authors with roles identified">
 							<pre>&lt;dc:creator id="aut01">
-   Brontë, Charlotte
+   Charlotte Brontë
 &lt;/dc:creator>
 &lt;meta property="role" refines="#aut01">aut&lt;/meta>
 
 &lt;dc:creator id="aut02">
-   Melville, Herman
+   Herman Melville
 &lt;/dc:creator>
 &lt;meta property="role" refines="#aut02">aut&lt;/meta></pre>
 						</aside>
 
-						<p>Repeat the element for each creator name.</p>
+						<p>To provide the creator's name for sorting purposes, associate a <a
+								data-cite="epub-33#file-as"><code>file-as</code> property</a> [[epub-33]] with the
+							element.</p>
+
+						<aside class="example" title="Author's name with sortable equivalent">
+							<pre>&lt;dc:creator id="aut01">
+   Charlotte Brontë
+&lt;/dc:creator>
+&lt;meta property="file-as" refines="#aut01">Brontë, Charlotte&lt;/meta></pre>
+						</aside>
 
 						<div class="note">
 							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dccreator">definition of
@@ -2986,6 +2996,29 @@
 						</tr>
 					</table>
 				</section>
+			</section>
+		</section>
+		<section id="change-log" class="informative">
+			<h2>Change log</h2>
+
+			<div class="note">
+				<p>This section identifies substantive changes made to the eBraille specification between drafts. For a
+					list of all changes, refer to the <a
+						href="https://github.com/daisy/ebraille/issues?q=is%3Aissue+is%3Aclosed">issue tracker</a>.</p>
+			</div>
+
+			<section id="changes-latest">
+				<h3>Changes since the <a href="https://daisy.org/s/ebraille/1.0/FPWD-ebraille-20240725/">First Public
+						Working Draft</a></h3>
+
+				<ul>
+					<li>08-Aug-2024: Updated the names in the <code>dc:creator</code> element examples and added
+						explanation and examples of using the <code>file-as</code> property to provide sorting info.
+						Refer to <a href="https://github.com/daisy/ebraille/issues/218">issue 218</a>.</li>
+					<li>08-Aug-2024: Fixed the definition of whitespace characters allowed in content documents to refer
+						to the XML definition as Form Feed is not valid in XHTML. Refer to <a
+							href="https://github.com/daisy/ebraille/issues/238">issue 238</a>.</li>
+				</ul>
 			</section>
 		</section>
 		<div data-include="common/acknowledgements.html" data-include-replace="true"></div>
