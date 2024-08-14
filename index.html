@@ -1017,17 +1017,17 @@
 
 						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
 								<code>property</code> attribute set to <code>dcterms:dateCopyrighted</code>.</p>
-
-						<aside class="example" title="Date copyrighted where only the year is known">
+						
+						<p>The [=value=] of the property MUST be an [[iso8601-1]] conformant date of the form
+							<code>YYYY-MM-DD</code>, <code>YYYY-MM</code>, or <code>YYYY</code></p>
+						
+						<aside class="example" title="Full copyright date">
 							<pre>&lt;meta property="dcterms:dateCopyrighted">
    2010-01-02
 &lt;/meta></pre>
 						</aside>
-
-						<p>The [=value=] of the property MUST be an [[iso8601-1]] conformant date of the form
-								<code>YYYY-MM-DD</code>, <code>YYYY-MM</code>, or <code>YYYY</code></p>
-
-						<aside class="example" title="Date copyrighted where only the year is known">
+						
+						<aside class="example" title="Copyright date where only the year is known">
 							<pre>&lt;meta property="dcterms:dateCopyrighted">
    2014
 &lt;/meta></pre>
