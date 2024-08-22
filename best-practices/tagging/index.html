@@ -107,7 +107,7 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>box</code>, <code>nemeth</code>, various strings</li>
+							<li><code>box</code>, <code>nemeth</code></li>
 						</ul>
 					</dd>
 				
@@ -302,8 +302,9 @@
 				</aside>
 
 				<aside class="example" title="Multiline heading">
-					<pre><code class="html">&lt;h1>⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠛&lt;br/>
-⠠⠞⠓⠑ ⠠⠗⠑⠍⠁⠗⠅⠁⠃⠇⠑ ⠠⠞⠗⠥⠞⠓&lt;br/>
+					<p>Note the use of <code>&lt;wbr/></code> instead of <code>&lt;br/></code>. <code>&lt;wbr/></code>, being optional, will only be utilized if the display being used cannot accommodate the entire heading on one line.</p>
+					<pre><code class="html">&lt;h1>⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠛&lt;wbr/>
+⠠⠞⠓⠑ ⠠⠗⠑⠍⠁⠗⠅⠁⠃⠇⠑ ⠠⠞⠗⠥⠞⠓&lt;wbr/>
 ⠁⠃⠕⠥⠞ ⠠⠚⠕⠓⠝ ⠠⠎⠍⠊⠞⠓&lt;/h1></code></pre>
 				</aside>
 				<aside class="example" title="Running header, also called a running head or running heading when used for the title of the work being transcribed">
@@ -321,7 +322,7 @@
 					<dt>Element(s):</dt>
 					<dd>
 						<p data-cite="html">[^img^], [^a^]</p>
-						<p>Note that <code>img</code> is used for jpg, png, and svg, while <code>a</code> is used for pdf.
+						<p>Note that <code>img</code> is used for jpg, png, and svg, while <code>a</code> is used for pdf.</p>
 					</dd>
 
 					<dt>Reserved <code>class</code> values:</dt>
@@ -527,7 +528,7 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>left-aligned</code>, <code>directions</code>, <code>hanging</code><code>specific-number</code></li>
+							<li><code>left-aligned</code>, <code>directions</code>, <code>hanging</code>, <code>specific-number</code></li>
 								<ul class="nomark">
 									<li><code>left-aligned</code>&#8212; used to denote a paragraph that should be left justified.</li>
 									<li><code>directions</code>&#8212; used to denote directions that will typically accompany tests, quizzes, or multiple choice questions.</li>
@@ -579,6 +580,10 @@
 					<dt>Element(s):</dt>
 					<dd>
 						<p>[^table^], [^tr^], [^th^], [^td^], [^thead^], [^tbody^], [^tfoot^]</p>
+					</dd>
+					<dt>Attributes</dt>
+					<dd>
+						<p>[^scope^], [^headers^], [^axis^]</p>
 					</dd>
 
 					<dt>Reserved <code>class</code> values:</dt>
