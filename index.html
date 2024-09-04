@@ -821,8 +821,7 @@
 &lt;/dc:creator></pre>
 						</aside>
 
-						<aside class="example"
-							title="A single Japanese author with first name followed by last">
+						<aside class="example" title="A single Japanese author with first name followed by last">
 							<pre>&lt;dc:creator>
    Akiko AKAZOME
 &lt;/dc:creator></pre>
@@ -1017,16 +1016,16 @@
 
 						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
 								<code>property</code> attribute set to <code>dcterms:dateCopyrighted</code>.</p>
-						
+
 						<p>The [=value=] of the property MUST be an [[iso8601-1]] conformant date of the form
-							<code>YYYY-MM-DD</code>, <code>YYYY-MM</code>, or <code>YYYY</code></p>
-						
+								<code>YYYY-MM-DD</code>, <code>YYYY-MM</code>, or <code>YYYY</code></p>
+
 						<aside class="example" title="Full copyright date">
 							<pre>&lt;meta property="dcterms:dateCopyrighted">
    2010-01-02
 &lt;/meta></pre>
 						</aside>
-						
+
 						<aside class="example" title="Copyright date where only the year is known">
 							<pre>&lt;meta property="dcterms:dateCopyrighted">
    2014
@@ -2998,21 +2997,138 @@
 				</section>
 			</section>
 		</section>
+		<section id="app-media-types" class="appendix">
+			<h2>Media type registrations</h2>
+
+			<section id="app-media-type">
+				<h3>The <code>application/ebrl+zip</code> media type</h3>
+
+				<p>This appendix registers the media type <code>application/ebrl+zip</code> for the eBraille
+					implementation of the EPUB Open Container Format (OCF).</p>
+
+				<p>The OCF ZIP container file is based on the zip archive format (see <a
+						href="https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT"
+						>https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT</a>). It is used to encapsulate an
+					eBraille publication.</p>
+
+				<dl class="variablelist">
+					<dt>MIME media type name:</dt>
+					<dd>
+						<p>
+							<code>application</code>
+						</p>
+					</dd>
+
+					<dt>MIME subtype name:</dt>
+					<dd>
+						<p>
+							<code>ebrl+zip</code>
+						</p>
+					</dd>
+
+					<dt>Required parameters:</dt>
+					<dd>
+						<p>None.</p>
+					</dd>
+
+					<dt>Optional parameters:</dt>
+					<dd>
+						<p>None.</p>
+					</dd>
+
+					<dt>Encoding considerations:</dt>
+					<dd>
+						<p>OCF ZIP container files are binary files encoded in the <a class="media-type"
+								href="https://www.iana.org/assignments/media-types/application/zip">
+								<code>application/zip</code></a> media type.</p>
+					</dd>
+
+					<dt>Security considerations:</dt>
+					<dd>
+						<p>All processors that read OCF ZIP container files should rigorously check the size and
+							validity of data retrieved.</p>
+						<p>In addition, because of the various content types that can be embedded in OCF ZIP container
+							files, <code>application/ebrl+zip</code> may describe content that poses security
+							implications beyond those noted here. However, only in cases where the processor recognizes
+							and processes the additional content, or where further processing of that content is
+							dispatched to other processors, would security issues potentially arise. In such cases,
+							matters of security would fall outside the domain of this registration document.</p>
+						<p>Security considerations that apply to <code>application/zip</code> also apply to OCF ZIP
+							container files.</p>
+					</dd>
+
+					<dt>Interoperability considerations:</dt>
+					<dd>
+						<p>None.</p>
+					</dd>
+
+					<dt>Published specification:</dt>
+					<dd>
+						<p>This media type registration is for the eBraille implementation of the EPUB Open Container
+							Format (OCF), as described by the eBraille specification located at <a
+								href="https://www.daisy.org/s/eBraille"
+								><code>https://www.daisy.org/s/eBraille</code></a>.</p>
+					</dd>
+
+					<dt>Applications that use this media type:</dt>
+					<dd>
+						<p>This media type is in use for the distribution of braille documents in the eBraille
+							format.</p>
+					</dd>
+
+					<dt>Additional information:</dt>
+					<dd>
+						<dl class="variablelist">
+							<dt>Magic number(s):</dt>
+							<dd>
+								<p>0: <code>PK 0x03 0x04</code></p>
+							</dd>
+
+							<dt>File extension(s):</dt>
+							<dd>
+								<p>eBraille container files are identified with the extension <code>.ebrl</code>.</p>
+							</dd>
+
+							<dt>Macintosh file type code(s):</dt>
+							<dd>
+								<p>ZIP</p>
+							</dd>
+						</dl>
+					</dd>
+
+					<dt>Person &amp; email address to contact for further information:</dt>
+					<dd>
+						<p>eBraille Working Group (ebraille@daisylists.org)</p>
+					</dd>
+
+					<dt>Intended usage:</dt>
+					<dd>
+						<p>COMMON</p>
+					</dd>
+
+					<dt>Author/change controller:</dt>
+					<dd>
+						<p>DAISY Consortium</p>
+					</dd>
+				</dl>
+			</section>
+		</section>
 		<section id="index" class="informative"></section>
 		<section id="change-log" class="informative">
 			<h2>Change log</h2>
-
+			
 			<div class="note">
 				<p>This section identifies substantive changes made to the eBraille specification between drafts. For a
 					list of all changes, refer to the <a
 						href="https://github.com/daisy/ebraille/issues?q=is%3Aissue+is%3Aclosed">issue tracker</a>.</p>
 			</div>
-
+			
 			<section id="changes-latest">
 				<h3>Changes since the <a href="https://daisy.org/s/ebraille/1.0/FPWD-ebraille-20240725/">First Public
-						Working Draft</a></h3>
-
+					Working Draft</a></h3>
+				
 				<ul>
+					<li>29-Aug-2024: Added media type registration for eBraille container.</li>
 					<li>08-Aug-2024: Updated the names in the <code>dc:creator</code> element examples and added
 						explanation and examples of using the <code>file-as</code> property to provide sorting info.
 						Refer to <a href="https://github.com/daisy/ebraille/issues/218">issue 218</a>.</li>
