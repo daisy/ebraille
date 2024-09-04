@@ -107,7 +107,7 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>box</code>, <code>nemeth</code>, various strings</li>
+							<li><code>box</code>, <code>nemeth</code></li>
 						</ul>
 					</dd>
 				
@@ -300,8 +300,8 @@
 				<aside class="example" title="Simple heading">
 					<pre><code class="html">&lt;h1>⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝&lt;/h1></code></pre>
 				</aside>
-
 				<aside class="example" title="Multiline heading">
+					<p>Note that while <code>&lt;br/></code> can be used to force multiple lines, doing so will hardcode those breaks. It is better to identify the heading with either a tag or class and use CSS to center the braille &lpar;<code>text-wrap: balance</code>&rpar;. See the <a href=https://daisy.github.io/ebraille/best-practices/styling/#line-breaking>Styling Best Practices section on line breaks</a> for more information.</p>
 					<pre><code class="html">&lt;h1>⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠛&lt;br/>
 ⠠⠞⠓⠑ ⠠⠗⠑⠍⠁⠗⠅⠁⠃⠇⠑ ⠠⠞⠗⠥⠞⠓&lt;br/>
 ⠁⠃⠕⠥⠞ ⠠⠚⠕⠓⠝ ⠠⠎⠍⠊⠞⠓&lt;/h1></code></pre>
@@ -321,7 +321,7 @@
 					<dt>Element(s):</dt>
 					<dd>
 						<p data-cite="html">[^img^], [^a^]</p>
-						<p>Note that <code>img</code> is used for jpg, png, and svg, while <code>a</code> is used for pdf.
+						<p>Note that <code>img</code> is used for jpg, png, and svg, while <code>a</code> is used for pdf.</p>
 					</dd>
 
 					<dt>Reserved <code>class</code> values:</dt>
@@ -492,7 +492,7 @@
 </p>
 					</dd>
 
-					<dt>Reserved <code>class</code> values:</dt>
+					<dt>Supported <code>role</code> values:</dt>
 					<dd>
 						<ul class="nomark">
 							<li><code>doc-pagebreak</code>&#8212; A separator denoting the position before which a break occurs between two contiguous pages in a statically paginated version of the content.</li>
@@ -527,7 +527,7 @@
 					<dt>Reserved <code>class</code> values:</dt>
 					<dd>
 						<ul class="nomark">
-							<li><code>left-aligned</code>, <code>directions</code>, <code>hanging</code><code>specific-number</code></li>
+							<li><code>left-aligned</code>, <code>directions</code>, <code>hanging</code>, <code>specific-number</code></li>
 								<ul class="nomark">
 									<li><code>left-aligned</code>&#8212; used to denote a paragraph that should be left justified.</li>
 									<li><code>directions</code>&#8212; used to denote directions that will typically accompany tests, quizzes, or multiple choice questions.</li>
@@ -579,6 +579,10 @@
 					<dt>Element(s):</dt>
 					<dd>
 						<p>[^table^], [^tr^], [^th^], [^td^], [^thead^], [^tbody^], [^tfoot^]</p>
+					</dd>
+					<dt>Attributes</dt>
+					<dd>
+						<p>[^scope^], [^headers^], [^axis^]</p>
 					</dd>
 
 					<dt>Reserved <code>class</code> values:</dt>
@@ -656,6 +660,29 @@
   &lt;/tbody>
 &lt;/table></code></pre>
 				</aside>
+			</section>
+			<section id="Text splitting">
+				<h4>Text Splitting</h4>
+
+				<dl id="elemdef-p" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p>[^wbr^], [^&amp;shy;^]</p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li>None.</li>
+						</ul>
+					</dd>
+				</dl>
+
+				<aside class="example" title="Text optionally broken with no hyphen">
+					<pre><code class="html">&ltp>⠼⠛⠌⠙&ltwbr>⠐⠖&ltwbr>⠼⠑⠌⠓&ltwbr>⠐⠖&ltwbr>⠼⠁⠚&ltwbr>⠐⠣⠼⠊⠊⠊&ltwbr>⠐⠤&ltwbr>⠼⠙⠐⠜&ltwbr>⠐⠣⠼⠓⠛⠉&ltwbr>⠐⠦&ltwbr>⠼⠙⠐⠜&lt/p></code></pre></aside>
+				<aside class="example" title="Text optionally broken with hyphen">
+					<p>Note that CSS can be used to set the hyphen character when <code>&amp;shy;</code> is used.</p>
+					<pre><code class="html">&ltp>⠼⠛⠌⠙&amp;shy;⠐⠖&amp;shy;⠼⠑⠌⠓&amp;shy;⠐⠖&amp;shy;⠼⠁⠚&amp;shy;⠐⠣⠼⠊⠊⠊&amp;shy;⠐⠤&amp;shy;⠼⠙⠐⠜&amp;shy;⠐⠣⠼⠓⠛⠉&amp;shy;⠐⠦&amp;shy;⠼⠙⠐⠜&lt/p></code></pre></aside>
 			</section>
 						<section id="Transcriber's Notes">
 				<h4>Transcriber's Notes</h4>
