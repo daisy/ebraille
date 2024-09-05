@@ -2428,10 +2428,18 @@
 				[[epub-33]] are only required for a packaged eBraille file. The files MAY be omitted if an eBraille
 				publication is not packaged.</p>
 
-			<p>Packaged eBraille publications use the same media type identifier as EPUB:
-					<code>application/epub+zip</code> [[epub-33]]. The requirements for specifying this identifier in
+			<p>Packaged eBraille publications use the same media type identifier as EPUB in the <code>mimetype</code>
+				file: <code>application/epub+zip</code> [[epub-33]]. The requirements for specifying this identifier in
 				the <code>mimetype</code> file are defined in <a data-cite="epub-33#sec-zip-container-mime">OCF ZIP
 					container media type identification</a> [[epub-33]].</p>
+
+			<div class="note">
+				<p>The EPUB media type identifier in the <code>mimetype</code> is required for compatibility with the
+					OCF Zip Container and helps make eBraille files compatible with EPUB reading systems.</p>
+				<p>The actual media type for eBraille publications is <code>application/ebrl+zip</code>, as defined in
+						<a href="#app-media-type"></a>. This is the media type used, for example, when serving eBraille
+					publications over the web.</p>
+			</div>
 
 			<p>A packaged eBraille file set MUST use the extension <code>.ebrl</code>.</p>
 
@@ -3116,17 +3124,17 @@
 		<section id="index" class="informative"></section>
 		<section id="change-log" class="informative">
 			<h2>Change log</h2>
-			
+
 			<div class="note">
 				<p>This section identifies substantive changes made to the eBraille specification between drafts. For a
 					list of all changes, refer to the <a
 						href="https://github.com/daisy/ebraille/issues?q=is%3Aissue+is%3Aclosed">issue tracker</a>.</p>
 			</div>
-			
+
 			<section id="changes-latest">
 				<h3>Changes since the <a href="https://daisy.org/s/ebraille/1.0/FPWD-ebraille-20240725/">First Public
-					Working Draft</a></h3>
-				
+						Working Draft</a></h3>
+
 				<ul>
 					<li>29-Aug-2024: Added media type registration for eBraille container.</li>
 					<li>08-Aug-2024: Updated the names in the <code>dc:creator</code> element examples and added
