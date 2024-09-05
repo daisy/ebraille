@@ -924,24 +924,21 @@ ol.toc li span + a {
 					each row when text spans multiple rows.</p>
 
 				<aside class="example" title="Centered heading split onto multiple lines">
-					<div class="issue" data-number="211"
-					     title="Enhance “Multiline heading“ example in Tagging Best Practices">
-						<p>BANA stipulates that centered headings should be balanced and divided at a logical
+					<p>BANA stipulates that centered headings should be balanced and divided at a logical
 						location when longer than one line (rule 4.4.3). The
 						“<a data-cite="tagging#example-multiline-heading">Multiline heading</a>”
-						example in [[tagging]] suggests using <code>br</code> elements to manually divide the
-						heading into lines. However the balancing can also be achieved automatically
+						example in [[tagging]] explains how to use <code>br</code> elements to manually divide
+						the heading into lines. However the balancing can also be achieved automatically
 						using <a data-cite="css-text-4#text-wrap-style"><code >text-wrap: balance</code></a>
 						[[css-text-4]], as this example shows.</p>
-					</div>
 					<pre><code class="html">&lt;p&gt;⠠⠞⠓⠑ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠑⠙⠊⠝⠛ ⠁ ⠉⠑⠝⠞⠑⠗⠑⠙ ⠓⠑⠁⠙⠊⠝⠛⠲&lt;/p&gt;
 &lt;h1&gt;⠠⠁ ⠉⠑⠝⠞⠑⠗⠑⠙ ⠓⠑⠁⠙⠊⠝⠛ ⠎⠏⠇⠊⠞ ⠕⠝ ⠍⠥⠇⠞⠊⠏⠇⠑ ⠇⠊⠝⠑⠎ ⠺⠊⠞⠓ ⠞⠓⠑ ⠙⠊⠧⠊⠎⠊⠕⠝⠎ ⠓⠁⠏⠏⠑⠝⠊⠝⠛ ⠁⠞ ⠇⠕⠛⠊⠉⠁⠇ ⠏⠕⠊⠝⠞⠎&lt;/h1&gt;
 &lt;p&gt;⠞⠓⠑ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠕⠺⠊⠝⠛ ⠁ ⠉⠑⠝⠞⠑⠗⠑⠙ ⠓⠑⠁⠙⠊⠝⠛&lt;/p&gt;</code></pre>
 					<p>In order to obtain the following desired layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠊⠝⠛⠀⠁⠀⠉⠑⠝⠞⠑⠗⠑⠙⠀⠓⠑⠁⠙⠊⠝⠛⠲⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠑⠝⠞⠑⠗⠑⠙⠀⠓⠑⠁⠙⠊⠝⠛⠀⠎⠏⠇⠊⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠕⠝⠀⠍⠥⠇⠞⠊⠏⠇⠑⠀⠇⠊⠝⠑⠎⠀⠺⠊⠞⠓⠀⠞⠓⠑⠀⠙⠊⠧⠊⠎⠊⠕⠝⠎⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠑⠝⠞⠑⠗⠑⠙⠀⠓⠑⠁⠙⠊⠝⠛⠀⠎⠏⠇⠊⠞⠀⠕⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠍⠥⠇⠞⠊⠏⠇⠑⠀⠇⠊⠝⠑⠎⠀⠺⠊⠞⠓⠀⠞⠓⠑⠀⠙⠊⠧⠊⠎⠊⠕⠝⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠓⠁⠏⠏⠑⠝⠊⠝⠛⠀⠁⠞⠀⠇⠕⠛⠊⠉⠁⠇⠀⠏⠕⠊⠝⠞⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠞⠓⠑⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠕⠺⠊⠝⠛⠀⠁⠀⠉⠑⠝⠞⠑⠗⠑⠙⠀⠓⠑⠁⠙⠊⠝⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
@@ -953,10 +950,6 @@ ol.toc li span + a {
 						<code>1ch</code>, the second and third lines become aligned with the grid,
 						but the first becomes misaligned.
 					</p>-->
-					<div class="issue" data-number="229" title="Double check the desired layout">
-						<p>The actual layout does not exactly match the desired layout. The automatic
-						text balancing seems more optimal.</p>
-					</div>
 					<pre><code class="css" data-page-width="49">p {
    text-indent: 2ch;
 }
