@@ -899,9 +899,42 @@ ol.toc li span + a {
 				<!--<div class="issue" title="Seeking an example of collaping insignifcant white space
 				characters"><span/></div>-->
 
-				<div class="issue" data-number="94" title="Seeking an example of preserving significant white
+				<div class="issue" data-number="94" title="Seeking more examples of preserving significant white
 				space characters / preformatted content"><span/></div>
 
+				<p>By default, certain white space characters in HTML code, such as <a
+				data-cite="css-text#tabs">tabs</a> (U+0009), <a
+				data-cite="css-text#segment-break">newlines</a>, and multiple consecutive <a
+				data-cite="css-text#spaces">spaces</a> (U+0020), are interpreted as not relevant to the final
+				rendering, because white space is often used to format (line wrap and indent) the source
+				code. However sometimes white space characters are relevant to the rendering of the document,
+				in which case the author must indicate that they must be preserved. This is done using the ‘<a
+				data-cite="css-text#propdef-white-space">white-space</a>’ property.</p>
+
+				<p>The following example of a number line illustrates this. The white space characters must be
+				preserved because they are essential for the correct formatting of the number line.</p>
+
+				<aside class="example" title="Number line">
+					<pre><code class="html">&lt;pre&gt;⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠒⠒
+⠳⠪⠐⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠳⠕
+⠀⠀⠀⠐⠤⠼⠃⠀⠀⠀⠼⠚⠀⠀⠀⠼⠃⠀⠀⠀⠼⠙&lt;/pre&gt;</code></pre>
+					<p>The following desired layout for the above HTML code is obtained automatically,</p>
+					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠳⠪⠐⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠳⠕⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠐⠤⠼⠃⠀⠀⠀⠼⠚⠀⠀⠀⠼⠃⠀⠀⠀⠼⠙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>due of the default style that is associated with the [[html]] <a
+					data-cite="html#the-pre-element"><code>pre</code></a> element:</p>
+					<pre><code class="css" data-page-width="40">pre {
+    white-space: pre;
+}</code></pre>
+					<details class="specification-links">
+						<summary>CSS features used in this example</summary>
+						<ul>
+							<li><a data-cite="css-text#white-space-property">White Space and Wrapping:
+							the ‘white-space’ property</a> [[css-text]]</li>
+						</ul>
+					</details>
+				</aside>
 			</section>
 
 			<section id="line-breaking">
@@ -1896,34 +1929,6 @@ ol.toc li span + a {
 
 			<section id="misc">
 				<h3>Miscellaneous examples</h3>
-
-				<aside class="example" title="Number line">
-					<div class="issue" data-number="231"
-					     title="Missing best practices for correctly tagging this example">
-						<p>Missing an example in [[tagging]] of a “number line“. Is this to be handled
-						with a <code>pre</code> element?</p>
-					</div>
-					<pre><code class="html">&lt;pre&gt;⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠒⠒
-⠳⠪⠐⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠳⠕
-⠀⠀⠀⠐⠤⠼⠃⠀⠀⠀⠼⠚⠀⠀⠀⠼⠃⠀⠀⠀⠼⠙&lt;/pre&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠳⠪⠐⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠒⠒⠒⠺⠒⠳⠕⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠐⠤⠼⠃⠀⠀⠀⠼⠚⠀⠀⠀⠼⠃⠀⠀⠀⠼⠙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="40">pre {
-    white-space: pre;
-}</code></pre>
-					<details class="specification-links">
-						<summary>CSS features used in this example</summary>
-						<ul>
-							<li><a data-cite="css-text#white-space-property">White Space and Wrapping:
-							the ‘white-space’ property</a> [[css-text]]</li>
-							<li><a data-cite="css-values-5#attr-notation">Attribute References: the
-							‘attr()’ function</a> [[css-values]]</li>
-						</ul>
-					</details>
-				</aside>
 
 				<aside class="example" title="Spatial math">
 					<div class="issue" data-number="231"
