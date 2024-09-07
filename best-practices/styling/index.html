@@ -1091,6 +1091,30 @@ p {
 							‘text-indent’ property</a></li>
 						</ul>
 					</details>
+					<div class="note">
+						<p>The same result may be achieved using the “border-image” approach
+						described below.</p>
+						<details class="alternative">
+							<summary>Alternative CSS style sheet</summary>
+							<pre><code class="css" data-page-width="40">.box {
+   border-style: solid;
+   border-width: 1rem 0;
+   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠀⠶⠀⠀⠀⠛⠀⠀");
+   border-image-slice: 33.34%;
+   border-image-repeat: round round;
+   margin: 1rem 0;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+							<pre><code class="javascript">window.onload = function() {
+  let script = document.createElement("script");
+  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
+  document.head.appendChild(script);
+};
+</code></pre>
+						</details>
+					</div>
 				</aside>
 
 				<!--<aside class="example" title="Simple box with centered heading">
@@ -1185,6 +1209,34 @@ p {
 							‘text-indent’ property</a></li>
 						</ul>
 					</details>
+					<div class="note">
+						<p>The same result may be achieved using the “border-image” approach
+						described below.</p>
+						<details class="alternative">
+							<summary>Alternative CSS style sheet</summary>
+							<pre><code class="css" data-page-width="40">.box {
+   border-style: solid;
+   border-width: 1rem 0;
+   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠀⠿⠀⠀⠀⠿⠀⠀");
+   border-image-slice: 33.34%;
+   border-image-repeat: round round;
+   margin: 1rem 0;
+}
+.box .box {
+   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠀⠶⠀⠀⠀⠛⠀⠀");
+   margin: 0;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+							<pre><code class="javascript">window.onload = function() {
+  let script = document.createElement("script");
+  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
+  document.head.appendChild(script);
+};
+</code></pre>
+						</details>
+					</div>
 				</aside>
 
 				<aside class="example" title="A box inside another box">
@@ -1230,6 +1282,32 @@ p {
 							‘text-indent’ property</a></li>
 						</ul>
 					</details>
+					<div class="note">
+						<p>The same result may be achieved using the “border-image” approach
+						described below.</p>
+						<details class="alternative">
+							<summary>Alternative CSS style sheet</summary>
+							<pre><code class="css" data-page-width="40">.box {
+   border-style: solid;
+   border-width: 1rem 1ch;
+   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⣀⣀⣀⢸⠉⠉⠉⡇");
+   border-image-slice: 33.34%;
+   border-image-repeat: round round;
+}
+.box .box {
+   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⡏⠉⢹⢸⣸⣀⣇⡇");
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+							<pre><code class="javascript">window.onload = function() {
+  let script = document.createElement("script");
+  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
+  document.head.appendChild(script);
+};
+</code></pre>
+						</details>
+					</div>
 				</aside>
 
 				<p>Using <a data-cite="css-backgrounds#border-style"><code>border-style</code></a>
@@ -1241,6 +1319,16 @@ p {
 					through <a data-cite="css-backgrounds#border-images">border images</a>
 					[[css-backgrounds]], as the following example demonstrates.</p>
 
+				<p>A
+					special <a data-cite="css-backgrounds#border-image-source"><code>border-image-source</code></a>
+					value of
+					<code>url("https://daisy.org/ebraille/border-image?pattern=&lt;PATTERN&gt;")</code>
+					may be used to generate the source image for creating a border of braille dot
+					patterns. <code>&lt;PATTERN&gt;</code> is a string of 8 Unicode braille pattern
+					characters that define the border, clockwise and starting from the top-left
+					corner. (The first character is used as the top-left corner, the second
+					character is used to form the top border, etc.)</p>
+
 				<aside class="example" title="Border image">
 					<a class="tagging-link" href="../tagging/index.html#example-a-standard-box"></a>
 					<p>In order to obtain the following desired layout for the above HTML code,</p>
@@ -1251,13 +1339,25 @@ p {
 					<pre><code class="css" data-page-width="35">.box {
    border-style: solid;
    border-width: 1rem 1ch;
-   border-image-slice: 37 20 37 20;
+   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠐⠐⠐⠐⠐⠐⠐⠐");
+   border-image-slice: 33.34%;
    border-image-repeat: round round;
-   border-image-source: url("./border-image/⠐⠐⠐⠐⠐⠐⠐⠐.png");
 }
 p {
    text-indent: 2ch;
 }</code></pre>
+					<div class="issue" title="Service for generating border images is not available yet">
+						<p>The DAISY service for generating border images is currently not available
+						yet. Client-side scripting is required to resolve the
+						"<code>https://daisy.org/ebraille/border-image</code>" URLs, using the <a
+						href="handleBorderImageURLs.js">handleBorderImageURLs.js</a> polyfill:</p>
+						<pre><code class="javascript">window.onload = function() {
+  let script = document.createElement("script");
+  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
+  document.head.appendChild(script);
+};
+</code></pre>
+					</div>
 					<details class="specification-links">
 						<summary>CSS features used in this example</summary>
 						<ul>
