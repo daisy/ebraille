@@ -6,6 +6,7 @@
 		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
 		<script src="../../common/js/status.js" class="remove"></script>
 		<script src="../../common/js/copyright.js" class="remove"></script>
+		<script src="../../common/js/examples.js" class="remove"></script>
 		<script type="text/javascript" src="replaceTaggingLinks.js"></script>
 		<script type="text/javascript" src="replaceBrfLinks.js"></script>
 		<script type="text/javascript" src="js-renderer-prototype/index.js"></script>
@@ -42,7 +43,7 @@
 				],
 				github: 'daisy/ebraille',
 				preProcess: [replaceTaggingLinks, replaceBrfLinks],
-				postProcess: [addDAISYStatus, validateExamples, addCopyrightYear],
+				postProcess: [addDAISYStatus, validateExamples, addCopyrightYear, fixExampleHeaders],
 				localBiblio: {
 					"ebraille": {
 						href: new URL("../../", document.baseURI).href,
