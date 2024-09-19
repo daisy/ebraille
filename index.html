@@ -867,6 +867,33 @@
 						</div>
 					</section>
 
+					<section id="dc:date">
+						<h5>dc:date</h5>
+
+						<p>The REQUIRED <code>dc:date</code> element [[dcterms]] defines the publication date of the
+							[=eBraille publication=].</p>
+
+						<p>It is RECOMMENDED that the date string conform to [[iso8601]], particularly the subset
+							expressed in W3C Date and Time Formats [[datetime]].</p>
+
+						<aside class="example" title="A single author with an English name">
+							<pre>&lt;dc:date>
+   2024-08-20
+&lt;/dc:date></pre>
+						</aside>
+
+						<p>The element MAY include the following attributes: <a data-cite="epub-33#attrdef-dir">dir</a>,
+								<a data-cite="epub-33#attrdef-id">id</a>, <a data-cite="epub-33#attrdef-xml-lang"
+								>xml:lang</a> [[epub-33]].</p>
+
+						<p>Only one <code>dc:date</code> element is allowed in the package document metadata.</p>
+
+						<div class="note">
+							<p>The publication date is not the same as the <a href="#dcterms:modified">last modification
+									date</a>, which is the last time the publication was changed. </p>
+						</div>
+					</section>
+
 					<section id="dc:format">
 						<h5>dc:format</h5>
 
@@ -3137,6 +3164,8 @@
 						Working Draft</a></h3>
 
 				<ul>
+					<li>19-Sept-2024: Added <code>dc:date</code> as a required element. Refer to <a
+							href="https://github.com/daisy/ebraille/issues/263">issue 263</a>.</li>
 					<li>29-Aug-2024: Added media type registration for eBraille container.</li>
 					<li>08-Aug-2024: Updated the names in the <code>dc:creator</code> element examples and added
 						explanation and examples of using the <code>file-as</code> property to provide sorting info.
