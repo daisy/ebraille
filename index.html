@@ -1209,7 +1209,26 @@
 
 						<p>Repeat the property for each organization or individual.</p>
 					</section>
-
+					
+					<section id="a11y:sourceDate">
+						<h5>a11y:sourceDate</h5>
+						
+						<p>The REQUIRED <code>a11y:sourceDate</code> property identifies the date on which the source
+							work was published.</p>
+						
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+							<code>property</code> attribute set to <code>a11y:sourceDate</code>.</p>
+						
+						<p>It is RECOMMENDED that the date string conform to [[iso8601]], particularly the subset
+							expressed in W3C Date and Time Formats [[datetime]].</p>
+						
+						<aside class="example" title="Date of a source publication">
+							<pre>&lt;meta property="a11y:sourceDate">
+   2020-03-15
+&lt;/meta></pre>
+						</aside>
+					</section>
+					
 					<section id="a11y:sourcePublisher">
 						<h5>a11y:sourcePublisher</h5>
 
@@ -2706,7 +2725,7 @@
 						href="#ebrl-package-doc">package documents</a>.</p>
 			</section>
 
-			<section>
+			<section id="app-vocab-field-defs">
 				<h3>Property field definitions</h3>
 
 				<p>The fields in the vocabulary definition tables have the following implicit requirements:</p>
@@ -2794,6 +2813,70 @@
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="a11y:producer">APH&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+				
+				<section id="sourceDate">
+					<h4>sourceDate</h4>
+					
+					<table class="tabledef">
+						<caption>Definition of the <code>sourceDate</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>sourceDate</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>
+								<p>Identifies the date on which the source work was published.</p>
+							</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>xsd:string</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="a11y:sourceDate">2010-10-10&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+				
+				<section id="sourcePublisher">
+					<h4>sourcePublisher</h4>
+					
+					<table class="tabledef">
+						<caption>Definition of the <code>sourcePublisher</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>sourcePublisher</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>
+								<p>Identifies the name of the publisher of the work being transcribed.</p>
+							</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>xsd:string</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="a11y:sourcePublisher">HarperCollins&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -2938,38 +3021,6 @@
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="a11y:minimumLines">5&lt;/meta></pre>
-							</td>
-						</tr>
-					</table>
-				</section>
-
-				<section id="sourcePublisher">
-					<h4>sourcePublisher</h4>
-
-					<table class="tabledef">
-						<caption>Definition of the <code>sourcePublisher</code> property</caption>
-						<tr>
-							<th>Name:</th>
-							<td>
-								<code>sourcePublisher</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Description:</th>
-							<td>
-								<p>Identifies the name of the publisher of the work being transcribed.</p>
-							</td>
-						</tr>
-						<tr>
-							<th>Allowed value(s):</th>
-							<td>
-								<code>xsd:string</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Example:</th>
-							<td>
-								<pre>&lt;meta property="a11y:sourcePublisher">HarperCollins&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -3137,6 +3188,7 @@
 						Working Draft</a></h3>
 
 				<ul>
+					<li>23-Sept-2024: Added <code>a11y:sourceDate</code> to the required metadata.</li>
 					<li>29-Aug-2024: Added media type registration for eBraille container.</li>
 					<li>08-Aug-2024: Updated the names in the <code>dc:creator</code> element examples and added
 						explanation and examples of using the <code>file-as</code> property to provide sorting info.
