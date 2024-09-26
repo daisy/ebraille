@@ -1210,58 +1210,6 @@
 						<p>Repeat the property for each organization or individual.</p>
 					</section>
 					
-					<section id="a11y:sourceDate">
-						<h5>a11y:sourceDate</h5>
-						
-						<p>The REQUIRED <code>a11y:sourceDate</code> property identifies the date on which the source
-							work was published.</p>
-						
-						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
-							<code>property</code> attribute set to <code>a11y:sourceDate</code>.</p>
-						
-						<p>It is RECOMMENDED that the date string conform to [[iso8601]], particularly the subset
-							expressed in W3C Date and Time Formats [[datetime]].</p>
-						
-						<aside class="example" title="Date of a source publication">
-							<pre>&lt;meta property="a11y:sourceDate">
-   2020-03-15
-&lt;/meta></pre>
-						</aside>
-					</section>
-					
-					<section id="a11y:sourcePublisher">
-						<h5>a11y:sourcePublisher</h5>
-
-						<p>The REQUIRED <code>a11y:sourcePublisher</code> property identifies the name of the publisher
-							of the work being transcribed.</p>
-
-						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
-								<code>property</code> attribute set to <code>a11y:sourcePublisher</code>.</p>
-
-						<aside class="example" title="A printed work with an official publisher">
-							<pre>&lt;meta property="a11y:sourcePublisher">
-   Penguin Random House
-&lt;/meta></pre>
-						</aside>
-
-						<p>If not transcribing a published print work, the name of the organization or individual that
-							produced the original text MAY be used as the publisher.</p>
-
-						<aside class="example" title="A printed work with no official publisher">
-							<pre>&lt;meta property="a11y:sourcePublisher">
-   International Council on English Braille
-&lt;/meta></pre>
-						</aside>
-
-						<p>If the work is an entirely original braille publication, use the value <code>N/A</code>.</p>
-
-						<aside class="example" title="An original braille work">
-							<pre>&lt;meta property="a11y:sourcePublisher">
-   N/A
-&lt;/meta></pre>
-						</aside>
-					</section>
-
 					<section id="a11y:tactileGraphics">
 						<h5>a11y:tactileGraphics</h5>
 
@@ -1457,6 +1405,50 @@
 						</aside>
 
 						<p>Repeat the element if the publication is intended for more than one education level.</p>
+					</section>
+				
+					<section id="a11y:sourceDate">
+						<h5>a11y:sourceDate</h5>
+						
+						<p>The REQUIRED <code>a11y:sourceDate</code> property identifies the date on which the source
+							work was published.</p>
+						
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+							<code>property</code> attribute set to <code>a11y:sourceDate</code>.</p>
+						
+						<p>It is RECOMMENDED that the date string conform to [[iso8601]], particularly the subset
+							expressed in W3C Date and Time Formats [[datetime]].</p>
+						
+						<aside class="example" title="Date of a source publication">
+							<pre>&lt;meta property="a11y:sourceDate">
+   2020-03-15
+&lt;/meta></pre>
+						</aside>
+					</section>
+					
+					<section id="a11y:sourcePublisher">
+						<h5>a11y:sourcePublisher</h5>
+						
+						<p>The REQUIRED <code>a11y:sourcePublisher</code> property identifies the name of the publisher
+							of the work being transcribed.</p>
+						
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+							<code>property</code> attribute set to <code>a11y:sourcePublisher</code>.</p>
+						
+						<aside class="example" title="A printed work with an official publisher">
+							<pre>&lt;meta property="a11y:sourcePublisher">
+   Penguin Random House
+&lt;/meta></pre>
+						</aside>
+						
+						<p>If not transcribing a published print work, the name of the organization or individual that
+							produced the original text MAY be used as the publisher.</p>
+						
+						<aside class="example" title="A printed work with no official publisher">
+							<pre>&lt;meta property="a11y:sourcePublisher">
+   International Council on English Braille
+&lt;/meta></pre>
+						</aside>
 					</section>
 				</section>
 
