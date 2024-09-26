@@ -867,6 +867,33 @@
 						</div>
 					</section>
 
+					<section id="dc:date">
+						<h5>dc:date</h5>
+
+						<p>The REQUIRED <code>dc:date</code> element [[dcterms]] defines the publication date of the
+							[=eBraille publication=].</p>
+
+						<p>It is RECOMMENDED that the date string conform to [[iso8601]], particularly the subset
+							expressed in W3C Date and Time Formats [[datetime]].</p>
+
+						<aside class="example" title="Expressing the publication date">
+							<pre>&lt;dc:date>
+   2024-08-20
+&lt;/dc:date></pre>
+						</aside>
+
+						<p>The element MAY include the following attributes: <a data-cite="epub-33#attrdef-dir">dir</a>,
+								<a data-cite="epub-33#attrdef-id">id</a>, <a data-cite="epub-33#attrdef-xml-lang"
+								>xml:lang</a> [[epub-33]].</p>
+
+						<p>Only one <code>dc:date</code> element is allowed in the package document metadata.</p>
+
+						<div class="note">
+							<p>The publication date is not the same as the <a href="#dcterms:modified">last modification
+									date</a>, which is the last time the publication was changed. </p>
+						</div>
+					</section>
+
 					<section id="dc:format">
 						<h5>dc:format</h5>
 
@@ -1093,6 +1120,11 @@
 					<section id="a11y:code">
 						<h5>a11y:code</h5>
 
+						<div class="ednote">
+							<p>A list of recommended braille code terminology will be provided with a future update to
+								this document.</p>
+						</div>
+
 						<p>The REQUIRED <code>a11y:code</code> property identifies the name of the braille code an
 							[=eBraille publication=] has been formatted in conformance with.</p>
 
@@ -1124,11 +1156,8 @@
 &lt;/meta></pre>
 						</aside>
 
-						<div class="ednote">
-							<p>A list of recommended braille code terminology will be provided with a future update to
-								this document. For multiple braille codes, codes should be listed in descending order
-								from most to least utilized within that file.</p>
-						</div>
+						<p>For multiple braille codes, codes should be listed in descending order from most to least
+							utilized within that file.</p>
 					</section>
 
 					<section id="a11y:completeTranscription">
@@ -2780,6 +2809,36 @@
 					</table>
 				</section>
 
+				<section id="created">
+					<h4>created</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>created</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>created</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>Identifies the date the transcription was created.</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>xsd:string</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="a11y:created">2024-03-15&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+
 				<section id="producer">
 					<h4>producer</h4>
 
@@ -2904,6 +2963,37 @@
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="a11y:cellType">6&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<section id="code">
+					<h4>code</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>code</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>code</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>Identifies the name of the braille code the publication has been formatted in
+								conformance with.</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>xsd:string</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="a11y:code">UEB&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -3184,6 +3274,8 @@
 							href="https://github.com/daisy/ebraille/issues/221">issue 221</a>.</li>
 					<li>23-Sept-2024: Added <code>a11y:sourceDate</code> to the recommended metadata. Refer to <a
 							href="https://github.com/daisy/ebraille/issues/200">issue 200</a>.</li>
+					<li>19-Sept-2024: Added <code>dc:date</code> as a required element. Refer to <a
+							href="https://github.com/daisy/ebraille/issues/263">issue 263</a>.</li>
 					<li>29-Aug-2024: Added media type registration for eBraille container.</li>
 					<li>08-Aug-2024: Updated the names in the <code>dc:creator</code> element examples and added
 						explanation and examples of using the <code>file-as</code> property to provide sorting info.
