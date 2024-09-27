@@ -1065,17 +1065,44 @@ h1 {
 						<a data-cite="css-backgrounds#border-images">border images</a>
 						[[css-backgrounds]]. This is the recommended approach.</p>
 
-					<p>A
-						special <a data-cite="css-backgrounds#border-image-source"><code>border-image-source</code></a>
-						value of
-						<code>url("https://daisy.org/ebraille/border-image?pattern=&lt;PATTERN&gt;")</code>
-						may be used to generate the source image for creating a border of braille dot
-						patterns. <code>&lt;PATTERN&gt;</code> is a string of 8 Unicode braille pattern
-						characters that define the border, clockwise and starting from the top-left
-						corner. (The first character is used as the top-left corner, the second
-						character is used to form the top border, etc.)</p>
+					<p>The desired border is obtained by choosing a source image that has specific
+						braille cells at specific positions. The
+						“<a href="#example-a-standard-box">A standard box</a>” example below shows a
+						box consisting of dot 5 cells on all sides. The corresponding source image
+						is made up of nine (three by three) equally sized areas, all except the middle
+						one holding a dot 5 cell. Each of the eight areas holds the pattern to be used
+						for the corresponding corner or side of the border.</p>
 
-					<aside class="example" title="Border image">
+					<figure>
+						<img src="border-images/⠐⠐⠐⠐⠐⠐⠐⠐.png" alt="Image consisting of eight dot 5
+						     cells on a three by three grid"/>
+						<figcaption>Border image for a border of dot 5 cells</figcaption>
+					</figure>
+
+					<aside class="note">
+						<p>This approach is straightforward, except for the part of creating the source
+							images. Luckily, DAISY Consortium provides a web service for generating
+							border images based on Unicode braille characters.</p>
+						<p>The URL of the service is <a href="https://daisy.org/ebraille/border-image"><code
+							>https://daisy.org/ebraille/border-image</code></a>. A “pattern” query
+							parameter is required: the value must be a string of eight Unicode braille
+							pattern characters that define the border, clockwise and starting from the
+							top-left corner.</p>
+						<p>Applied to the example, the pattern is a string of eight ‘⠐’ (U+2810)
+							characters, resulting in the URL
+							<a href="https://daisy.org/ebraille/border-image?pattern=⠐⠐⠐⠐⠐⠐⠐⠐"><code
+							>https://daisy.org/ebraille/border-image?pattern=⠐⠐⠐⠐⠐⠐⠐⠐</code></a>.</p>
+						<p>As <a data-cite="ebraille#resource-location">eBraille does not support remote
+							resources</a>, the image can not be referenced directly from the style sheet
+							through this URL. An additional step is required: the image must be
+							downloaded and placed in or below the root directory</a> of the
+							publication. (Note that in theory a <code>data:</code> URL scheme may also
+							be used to embed the image in the style sheet.)</p>
+					</aside>
+
+					<div class="issue" title="The web service for generating border images is not available yet"></div>
+
+					<aside class="example" title="A standard box">
 						<a class="tagging-link" href="../tagging/index.html#example-a-standard-box"></a>
 						<p>In order to obtain the following desired layout for the above HTML code,</p>
 						<pre><code class="formatted-braille">⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐
@@ -1085,25 +1112,13 @@ h1 {
 						<pre><code class="css" data-page-width="35">.box {
    border-style: solid;
    border-width: 1rem 1ch;
-   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠐⠐⠐⠐⠐⠐⠐⠐");
+   border-image-source: url("border-images/⠐⠐⠐⠐⠐⠐⠐⠐.png");
    border-image-slice: 33.34%;
    border-image-repeat: round round;
 }
 p {
    text-indent: 2ch;
 }</code></pre>
-						<div class="issue" title="Service for generating border images is not available yet">
-							<p>The DAISY service for generating border images is currently not available
-							yet. Client-side scripting is required to resolve the
-							"<code>https://daisy.org/ebraille/border-image</code>" URLs, using the <a
-							href="handleBorderImageURLs.js">handleBorderImageURLs.js</a> polyfill:</p>
-							<pre><code class="javascript">window.onload = function() {
-  let script = document.createElement("script");
-  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
-  document.head.appendChild(script);
-};
-</code></pre>
-						</div>
 						<details class="specification-links">
 							<summary>CSS features used in this example</summary>
 							<ul>
@@ -1228,7 +1243,7 @@ p {
 						<pre><code class="css" data-page-width="40">.box.yellow {
    border-style: solid;
    border-width: 0 0 1rem 0;
-   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠀⠀⠀⠀⠀⠿⠀⠀");
+   border-image-source: url("border-images/⠀⠀⠀⠀⠀⠿⠀⠀.png");
    border-image-slice: 33.34%;
    border-image-repeat: round round;
    margin: 1rem 0;
@@ -1243,12 +1258,6 @@ p {
 p {
    text-indent: 2ch;
 }</code></pre>
-						<pre><code class="javascript">window.onload = function() {
-  let script = document.createElement("script");
-  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
-  document.head.appendChild(script);
-};
-</code></pre>
 						<details class="specification-links">
 							<summary>CSS features used in this example</summary>
 							<ul>
@@ -1623,7 +1632,7 @@ p {
 								<pre><code class="css" data-page-width="40">.box {
    border-style: solid;
    border-width: 1rem 0;
-   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠀⠶⠀⠀⠀⠛⠀⠀");
+   border-image-source: url("border-images/⠀⠶⠀⠀⠀⠛⠀⠀.png");
    border-image-slice: 33.34%;
    border-image-repeat: round round;
    margin: 1rem 0;
@@ -1631,12 +1640,6 @@ p {
 p {
    text-indent: 2ch;
 }</code></pre>
-								<pre><code class="javascript">window.onload = function() {
-  let script = document.createElement("script");
-  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
-  document.head.appendChild(script);
-};
-</code></pre>
 							</details>
 						</div>
 					</aside>
@@ -1740,24 +1743,18 @@ p {
 								<pre><code class="css" data-page-width="40">.box {
    border-style: solid;
    border-width: 1rem 0;
-   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠀⠿⠀⠀⠀⠿⠀⠀");
+   border-image-source: url("border-images/⠀⠿⠀⠀⠀⠿⠀⠀.png");
    border-image-slice: 33.34%;
    border-image-repeat: round round;
    margin: 1rem 0;
 }
 .box .box {
-   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠀⠶⠀⠀⠀⠛⠀⠀");
+   border-image-source: url("border-images/⠀⠶⠀⠀⠀⠛⠀⠀.png");
    margin: 0;
 }
 p {
    text-indent: 2ch;
 }</code></pre>
-								<pre><code class="javascript">window.onload = function() {
-  let script = document.createElement("script");
-  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
-  document.head.appendChild(script);
-};
-</code></pre>
 							</details>
 						</div>
 					</aside>
@@ -1812,22 +1809,16 @@ p {
 								<pre><code class="css" data-page-width="40">.box {
    border-style: solid;
    border-width: 1rem 1ch;
-   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⣀⣀⣀⢸⠉⠉⠉⡇");
+   border-image-source: url("border-images/⣀⣀⣀⢸⠉⠉⠉⡇.png");
    border-image-slice: 33.34%;
    border-image-repeat: round round;
 }
 .box .box {
-   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⡏⠉⢹⢸⣸⣀⣇⡇");
+   border-image-source: url("border-images/⡏⠉⢹⢸⣸⣀⣇⡇.png");
 }
 p {
    text-indent: 2ch;
 }</code></pre>
-								<pre><code class="javascript">window.onload = function() {
-  let script = document.createElement("script");
-  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
-  document.head.appendChild(script);
-};
-</code></pre>
 							</details>
 						</div>
 					</aside>
