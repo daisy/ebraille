@@ -1227,8 +1227,11 @@ p {
 						<p>the following CSS style sheet may be applied:</p>
 						<pre><code class="css" data-page-width="40">.box.yellow {
    border-style: solid;
-   border-width: 0 0 .65rem 0;
-   margin: 1rem 0 1.353rem 0;
+   border-width: 0 0 1rem 0;
+   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠀⠀⠀⠀⠀⠿⠀⠀");
+   border-image-slice: 33.34%;
+   border-image-repeat: round round;
+   margin: 1rem 0;
 }
 .box.yellow::before {
    display: flex;
@@ -1240,6 +1243,12 @@ p {
 p {
    text-indent: 2ch;
 }</code></pre>
+						<pre><code class="javascript">window.onload = function() {
+  let script = document.createElement("script");
+  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
+  document.head.appendChild(script);
+};
+</code></pre>
 						<details class="specification-links">
 							<summary>CSS features used in this example</summary>
 							<ul>
@@ -1255,6 +1264,7 @@ p {
 								‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a></li>
 								<li><a data-cite="css-text#white-space-property">White Space and Wrapping:
 								the ‘white-space’ property</a></li>
+								<li><a data-cite="css-backgrounds#border-images">Border Images</a></li>
 								<li><a data-cite="css-backgrounds#border-style">Line Patterns: the ‘border-style’
 								properties</a></li>
 								<li><a data-cite="css-backgrounds#border-width">Line Thickness: the ‘border-width’
