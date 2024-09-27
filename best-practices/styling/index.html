@@ -908,8 +908,8 @@ ol.toc li span + a {
 				data-cite="css-text#spaces">spaces</a> (U+0020), are interpreted as not relevant to the final
 				rendering, because white space is often used to format (line wrap and indent) the source
 				code. However sometimes white space characters are relevant to the rendering of the document,
-				in which case the author must indicate that they must be preserved. This is done using the ‘<a
-				data-cite="css-text#propdef-white-space">white-space</a>’ property.</p>
+				in which case the author must indicate that they must be preserved. This is done using the <a
+				data-cite="css-text#propdef-white-space">white-space</a> property.</p>
 
 				<p>The following example of a number line illustrates this. The white space characters must be
 				preserved because they are essential for the correct formatting of the number line.</p>
@@ -1031,7 +1031,7 @@ h1 {
 
 			</section>
 
-			<section id="borders">
+			<section id="borders-lines">
 				<h3>Borders and lines</h3>
 
 				<div class="issue" data-number="96" title="Seeking an example of shrinking a block
@@ -1040,303 +1040,49 @@ h1 {
 				<div class="issue" data-number="95" title="Seeking an example of a horizontal line
 				of type &quot;end marker&quot;"><span/></div>
 
-				<p>The following examples show how
+				<p>Different approaches to creating lines exist. The recommended approach for border
+					lines is to use <a data-cite="css-backgrounds#border-images">border
+					images</a>. For horizontal lines, a (sometimes necessary) alternative is to
+					specify the line as a string of braille characters. Finally, for good measure,
+					the most commonly used approach to creating borders in print, namely
 					the <a data-cite="css-backgrounds#border-style"><code>border-style</code></a>
-					and <a data-cite="css-backgrounds#border-width"><code>border-width</code></a>
-					properties [[css-backgrounds]] may be used to create box
-					lines. <a data-cite="css-box#margin-shorthand"><code>margin</code></a>
-					and <a data-cite="css-box#padding-shorthand"><code>padding</code></a> are used
-					to control the spacing between the box lines, the text within the box, and the
-					surrounding text.</p>
+					property, is mentioned as an option for braille too.</p>
 
-				<aside class="example" title="Simple box with blank lines">
-					<pre><code class="html">&lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠑⠙⠑⠎ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
-&lt;div class="box"&gt;
-   &lt;p&gt;⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋⠞⠑⠗ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
-</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠑⠎⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
-⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠞⠑⠗⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="40">.box {
-   border-style: solid;
-   border-width: .45rem 0;
-   margin: 1.22rem 0 1.55rem 0;
-   padding: .33rem 0 0 0;
-}
-p {
-   text-indent: 2ch;
-}</code></pre>
-					<details class="specification-links">
-						<summary>CSS features used in this example</summary>
-						<ul>
-							<li><a data-cite="css-backgrounds#border-style">Line Patterns: the ‘border-style’
-							properties</a></li>
-							<li><a data-cite="css-backgrounds#border-width">Line Thickness: the ‘border-width’
-							properties</a></li>
-							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
-							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
-							‘margin-left’ properties</a></li>
-							<li><a data-cite="css-box#padding-physical">Page-relative (Physical) Padding
-							Properties: the ‘padding-top’, ‘padding-right’, ‘padding-bottom’, and
-							‘padding-left’ properties</a></li>
-							<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
-							‘text-indent’ property</a></li>
-						</ul>
-					</details>
-					<div class="note">
-						<p>The same result may be achieved using the “border-image” approach
-						described below.</p>
-						<details class="alternative">
-							<summary>Alternative CSS style sheet</summary>
-							<pre><code class="css" data-page-width="40">.box {
-   border-style: solid;
-   border-width: 1rem 0;
-   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠀⠶⠀⠀⠀⠛⠀⠀");
-   border-image-slice: 33.34%;
-   border-image-repeat: round round;
-   margin: 1rem 0;
-}
-p {
-   text-indent: 2ch;
-}</code></pre>
-							<pre><code class="javascript">window.onload = function() {
-  let script = document.createElement("script");
-  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
-  document.head.appendChild(script);
-};
-</code></pre>
-						</details>
-					</div>
-				</aside>
+				<section id="border-image">
+					<h4>Border images</h4>
 
-				<!--<aside class="example" title="Simple box with centered heading">
-					<p class="ednote">
-						Missing an example in [[tagging]] of Simple box with centered heading.
-					</p>
-					<pre><code class="html">&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠑⠎ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
-&lt;h1&gt;⠠⠹ ⠓⠂⠙⠬ ⠊⠎ ⠁⠎⠎⠕⠉⠊⠁⠞⠫ ⠾ ⠮ ⠃⠕⠭&lt;/h1&gt;
-&lt;div class="box"&gt;
-   &lt;p&gt;⠠⠹ ⠊⠎ ⠁ ⠃⠕⠭ ⠾ ⠁ ⠓⠂⠙⠬⠲&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
-</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠑⠎⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠠⠹⠀⠓⠂⠙⠬⠀⠊⠎⠀⠁⠎⠎⠕⠉⠊⠁⠞⠫⠀⠾⠀⠮⠀⠃⠕⠭⠀⠀⠀⠀⠀⠀
-⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
-⠀⠀⠠⠹⠀⠊⠎⠀⠁⠀⠃⠕⠭⠀⠾⠀⠁⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<!- -<p class="ednote">
-						To properly center the <code>h1</code>, the right margin may or may not need
-						to be increased with <code>1ch</code>, depending on the content. (In this
-						case, it doesn't.)
-					</p>- ->
-					<pre><code class="css" data-page-width="40">.box {
-   border-style: solid;
-   border-width: .45rem 0;
-   margin: 0.22rem 0 1.55rem 0;
-   padding: .33rem 0 0 0;
-}
-h1 {
-   text-align: center;
-   margin: 1rem 3ch 0 3ch;
-}
-p {
-   text-indent: 2ch;
-}</code></pre>
-				</aside>-->
+					<p>As explained below in <a href="#border-style">Drawing borders with the
+						‘<code>border-style</code>’ property</a>,
+						the <a data-cite="css-backgrounds#border-style"><code>border-style</code></a>
+						and <a data-cite="css-backgrounds#border-width"><code>border-width</code></a>
+						properties may be used to draw lines with a certain thickness and
+						pattern. For screen/print CSS, this is the most common method. However, for
+						braille, ultimately it is
+						the <a data-cite="ebraille#dfn-reading-system">eBraille reading system</a>
+						that approximates the lines with a series of raised braille dots. More
+						control over the exact braille dot patterns used to make up the lines can be
+						achieved through
+						<a data-cite="css-backgrounds#border-images">border images</a>
+						[[css-backgrounds]]. This is the recommended approach.</p>
 
-				<aside class="example" title="Simple box inside a full box with blank lines">
-					<pre><code class="html">&lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠑⠙⠑⠎ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
-&lt;div class="box"&gt;
-   &lt;div class="box"&gt;
-      &lt;p&gt;⠠⠞⠓⠊⠎ ⠊⠎ ⠁ ⠃⠕⠭ ⠊⠝⠎⠊⠙⠑ ⠁ ⠃⠕⠭⠲&lt;/p&gt;
-   &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋⠞⠑⠗ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
-</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠑⠎⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
-⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
-⠀⠀⠠⠞⠓⠊⠎⠀⠊⠎⠀⠁⠀⠃⠕⠭⠀⠊⠝⠎⠊⠙⠑⠀⠁⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛
-⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠞⠑⠗⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="40">.box {
-   border-style: solid;
-   border-width: .67rem 0;
-   margin: 1rem 0 1.33rem 0;
-   padding: .33rem 0 0 0;
-}
-.box .box {
-   border-width: .45rem 0;
-   margin: .22rem 0 0.55rem 0;
-   padding: .33rem 0 0 0;
-}
-p {
-   text-indent: 2ch;
-}</code></pre>
-					<details class="specification-links">
-						<summary>CSS features used in this example</summary>
-						<ul>
-							<li><a data-cite="css-backgrounds#border-style">Line Patterns: the ‘border-style’
-							properties</a></li>
-							<li><a data-cite="css-backgrounds#border-width">Line Thickness: the ‘border-width’
-							properties</a></li>
-							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
-							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
-							‘margin-left’ properties</a></li>
-							<li><a data-cite="css-box#padding-physical">Page-relative (Physical) Padding
-							Properties: the ‘padding-top’, ‘padding-right’, ‘padding-bottom’, and
-							‘padding-left’ properties</a></li>
-							<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
-							‘text-indent’ property</a></li>
-						</ul>
-					</details>
-					<div class="note">
-						<p>The same result may be achieved using the “border-image” approach
-						described below.</p>
-						<details class="alternative">
-							<summary>Alternative CSS style sheet</summary>
-							<pre><code class="css" data-page-width="40">.box {
-   border-style: solid;
-   border-width: 1rem 0;
-   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠀⠿⠀⠀⠀⠿⠀⠀");
-   border-image-slice: 33.34%;
-   border-image-repeat: round round;
-   margin: 1rem 0;
-}
-.box .box {
-   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠀⠶⠀⠀⠀⠛⠀⠀");
-   margin: 0;
-}
-p {
-   text-indent: 2ch;
-}</code></pre>
-							<pre><code class="javascript">window.onload = function() {
-  let script = document.createElement("script");
-  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
-  document.head.appendChild(script);
-};
-</code></pre>
-						</details>
-					</div>
-				</aside>
+					<p>A
+						special <a data-cite="css-backgrounds#border-image-source"><code>border-image-source</code></a>
+						value of
+						<code>url("https://daisy.org/ebraille/border-image?pattern=&lt;PATTERN&gt;")</code>
+						may be used to generate the source image for creating a border of braille dot
+						patterns. <code>&lt;PATTERN&gt;</code> is a string of 8 Unicode braille pattern
+						characters that define the border, clockwise and starting from the top-left
+						corner. (The first character is used as the top-left corner, the second
+						character is used to form the top border, etc.)</p>
 
-				<aside class="example" title="A box inside another box">
-					<p>
-						This is another example of a box inside another box, but with a layout that
-						does not come from BANA or any other standard.
-					</p>
-					<a class="tagging-link" href="../tagging/index.html#example-a-box-inside-another-box"></a>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀
-⡇⡏⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⢹⢸
-⡇⡇⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⢸⢸
-⡇⣇⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣸⢸
-⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="35">.box {
-   border-style: solid;
-   border-width: .23rem .3ch;
-   margin: .66rem .2ch .77rem .2ch;
-   padding: .11rem .6ch 0 .55ch;
-}
-.box .box {
-   margin: 0 0 .11rem 0;
-   padding: .77rem .6ch .66rem .65ch;
-}
-p {
-   text-indent: 2ch;
-}</code></pre>
-					<details class="specification-links">
-						<summary>CSS features used in this example</summary>
-						<ul>
-							<li><a data-cite="css-backgrounds#border-style">Line Patterns: the ‘border-style’
-							properties</a></li>
-							<li><a data-cite="css-backgrounds#border-width">Line Thickness: the ‘border-width’
-							properties</a></li>
-							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
-							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
-							‘margin-left’ properties</a></li>
-							<li><a data-cite="css-box#padding-physical">Page-relative (Physical) Padding
-							Properties: the ‘padding-top’, ‘padding-right’, ‘padding-bottom’, and
-							‘padding-left’ properties</a></li>
-							<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
-							‘text-indent’ property</a></li>
-						</ul>
-					</details>
-					<div class="note">
-						<p>The same result may be achieved using the “border-image” approach
-						described below.</p>
-						<details class="alternative">
-							<summary>Alternative CSS style sheet</summary>
-							<pre><code class="css" data-page-width="40">.box {
-   border-style: solid;
-   border-width: 1rem 1ch;
-   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⣀⣀⣀⢸⠉⠉⠉⡇");
-   border-image-slice: 33.34%;
-   border-image-repeat: round round;
-}
-.box .box {
-   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⡏⠉⢹⢸⣸⣀⣇⡇");
-}
-p {
-   text-indent: 2ch;
-}</code></pre>
-							<pre><code class="javascript">window.onload = function() {
-  let script = document.createElement("script");
-  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
-  document.head.appendChild(script);
-};
-</code></pre>
-						</details>
-					</div>
-				</aside>
-
-				<p>Using <a data-cite="css-backgrounds#border-style"><code>border-style</code></a>
-					and <a data-cite="css-backgrounds#border-width"><code>border-width</code></a>,
-					one can draw lines with a certain thickness and pattern, but ultimately it is
-					the <a data-cite="ebraille#dfn-reading-system">eBraille reading system</a> that
-					approximates the lines with a series of raised braille dots. More control over
-					the exact braille dot patterns used to make up the lines can be achieved
-					through <a data-cite="css-backgrounds#border-images">border images</a>
-					[[css-backgrounds]], as the following example demonstrates.</p>
-
-				<p>A
-					special <a data-cite="css-backgrounds#border-image-source"><code>border-image-source</code></a>
-					value of
-					<code>url("https://daisy.org/ebraille/border-image?pattern=&lt;PATTERN&gt;")</code>
-					may be used to generate the source image for creating a border of braille dot
-					patterns. <code>&lt;PATTERN&gt;</code> is a string of 8 Unicode braille pattern
-					characters that define the border, clockwise and starting from the top-left
-					corner. (The first character is used as the top-left corner, the second
-					character is used to form the top border, etc.)</p>
-
-				<aside class="example" title="Border image">
-					<a class="tagging-link" href="../tagging/index.html#example-a-standard-box"></a>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐
+					<aside class="example" title="Border image">
+						<a class="tagging-link" href="../tagging/index.html#example-a-standard-box"></a>
+						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<pre><code class="formatted-braille">⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐
 ⠐⠀⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⠀⠐
 ⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="35">.box {
+						<p>the following CSS style sheet may be applied:</p>
+						<pre><code class="css" data-page-width="35">.box {
    border-style: solid;
    border-width: 1rem 1ch;
    border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠐⠐⠐⠐⠐⠐⠐⠐");
@@ -1346,57 +1092,65 @@ p {
 p {
    text-indent: 2ch;
 }</code></pre>
-					<div class="issue" title="Service for generating border images is not available yet">
-						<p>The DAISY service for generating border images is currently not available
-						yet. Client-side scripting is required to resolve the
-						"<code>https://daisy.org/ebraille/border-image</code>" URLs, using the <a
-						href="handleBorderImageURLs.js">handleBorderImageURLs.js</a> polyfill:</p>
-						<pre><code class="javascript">window.onload = function() {
+						<div class="issue" title="Service for generating border images is not available yet">
+							<p>The DAISY service for generating border images is currently not available
+							yet. Client-side scripting is required to resolve the
+							"<code>https://daisy.org/ebraille/border-image</code>" URLs, using the <a
+							href="handleBorderImageURLs.js">handleBorderImageURLs.js</a> polyfill:</p>
+							<pre><code class="javascript">window.onload = function() {
   let script = document.createElement("script");
   script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
   document.head.appendChild(script);
 };
 </code></pre>
-					</div>
-					<details class="specification-links">
-						<summary>CSS features used in this example</summary>
-						<ul>
-							<li><a data-cite="css-backgrounds#border-images">Border Images</a></li>
-							<li><a data-cite="css-backgrounds#border-style">Line Patterns: the ‘border-style’
-							properties</a></li>
-							<li><a data-cite="css-backgrounds#border-width">Line Thickness: the ‘border-width’
-							properties</a></li>
-							<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
-							‘text-indent’ property</a></li>
-						</ul>
-					</details>
-				</aside>
+						</div>
+						<details class="specification-links">
+							<summary>CSS features used in this example</summary>
+							<ul>
+								<li><a data-cite="css-backgrounds#border-images">Border Images</a></li>
+								<li><a data-cite="css-backgrounds#border-style">Line Patterns: the ‘border-style’
+								properties</a></li>
+								<li><a data-cite="css-backgrounds#border-width">Line Thickness: the ‘border-width’
+								properties</a></li>
+								<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
+								‘text-indent’ property</a></li>
+							</ul>
+						</details>
+					</aside>
+				</section>
 
-				<p>Another way to create lines is by specifying line patterns consisting of Unicode
-					braille characters as
-					the <a data-cite="css-content#content-property"><code>content</code></a>
-					[[css-content]]
-					of <a data-cite="css-pseudo#generated-content"><code>::before</code>
-					and <code>::after</code></a> pseudo-elements [[css-pseudo]], as shown in the
-					following examples. To make the layout adapt to varying device widths, the line
-					pattern is extended long enough to always overflow the
-					viewport. The <a data-cite="css-overflow#overflow-control"><code>overflow</code></a>
-					[[css-overflow]]
-					and <a data-cite="css-text#white-space-property"><code>white-space</code></a>
-					[[css-text]] properties are used to hide the overflowing part of the line, while
-					the <a data-cite="css-flexbox#justify-content-property"><code>justify-content</code></a>
-					property [[css-flexbox]] is used to align it to the right or left.</p>
+				<section id="line-of-characters">
+					<h4>Specifying lines as braille characters</h4>
 
-				<aside class="example" title="Nemeth box with blank lines">
-					<pre><code class="html">&lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠑⠙⠑⠎ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
+					<p>Another way to create (horizontal) lines is by specifying them as strings of Unicode
+						braille characters. Since the braille characters should not be part of the content,
+						but should rather be generated by the style sheet, the lines must be specified as the
+						<a data-cite="css-content#content-property"><code>content</code></a> [[css-content]]
+						of <a data-cite="css-pseudo#generated-content"><code>::before</code> or
+						<code>::after</code></a> pseudo-elements [[css-pseudo]]. To make the layout adapt to
+						varying device widths, the line pattern is extended long enough to always overflow the
+						viewport. The <a data-cite="css-overflow#overflow-control"><code>overflow</code></a>
+						[[css-overflow]] and
+						<a data-cite="css-text#white-space-property"><code>white-space</code></a> [[css-text]]
+						properties are used to hide the overflowing part of the line, while the
+						<a data-cite="css-flexbox#justify-content-property"><code>justify-content</code></a>
+						property [[css-flexbox]] is used to align it to the right or left.</p>
+
+					<p>This approach is suitable for horitontal lines only. For vertical lines, one
+						must resort to border images. On the other hand, the border image approach is
+						less suitable for use cases where the line goes together with other other content on
+						the same row. This is illustrated in the following examples.</p>
+
+					<aside class="example" title="Nemeth box with blank lines">
+						<pre><code class="html">&lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠑⠙⠑⠎ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
 &lt;div class="box nemeth"&gt;⠼⠒⠈⠡⠢
 ⠼⠆⠈⠡⠒⠈⠡⠲
 ⠼⠲⠈⠡⠶
 ⠼⠢⠈⠡⠖⠴ ⠨⠅ ⠼⠒⠴⠴&lt;/div&gt;
 &lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋⠞⠑⠗ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
 </code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠑⠎⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠑⠎⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠸⠩⠀⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
 ⠼⠒⠈⠡⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -1406,8 +1160,8 @@ p {
 ⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠀⠸⠱
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠞⠑⠗⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="40">.nemeth {
+						<p>the following CSS style sheet may be applied:</p>
+						<pre><code class="css" data-page-width="40">.nemeth {
    white-space: pre;
 }
 .box.nemeth {
@@ -1430,39 +1184,39 @@ p {
 p {
    text-indent: 2ch;
 }</code></pre>
-					<details class="specification-links">
-						<summary>CSS features used in this example</summary>
-						<ul>
-							<li><a data-cite="css-pseudo#generated-content">Generated Content
-							Pseudo-elements: ‘::before’ and ‘::after’</a></li>
-							<li><a data-cite="css-content#content-property">Inserting and replacing
-							content with the ‘content’ property</a></li>
-							<li><a data-cite="css-flexbox#flex-containers">Flex Containers: the ‘flex’ and
-							‘inline-flex’ display values</a></li>
-							<li><a data-cite="css-flexbox#justify-content-property">Axis Alignment: the
-							‘justify-content’ property</a></li>
-							<li><a data-cite="css-overflow#overflow-control">Managing Overflow: the
-							‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a></li>
-							<li><a data-cite="css-text#white-space-property">White Space and Wrapping:
-							the ‘white-space’ property</a></li>
-							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
-							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
-							‘margin-left’ properties</a></li>
-							<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
-							‘text-indent’ property</a></li>
-						</ul>
-					</details>
-				</aside>
+						<details class="specification-links">
+							<summary>CSS features used in this example</summary>
+							<ul>
+								<li><a data-cite="css-pseudo#generated-content">Generated Content
+								Pseudo-elements: ‘::before’ and ‘::after’</a></li>
+								<li><a data-cite="css-content#content-property">Inserting and replacing
+								content with the ‘content’ property</a></li>
+								<li><a data-cite="css-flexbox#flex-containers">Flex Containers: the ‘flex’ and
+								‘inline-flex’ display values</a></li>
+								<li><a data-cite="css-flexbox#justify-content-property">Axis Alignment: the
+								‘justify-content’ property</a></li>
+								<li><a data-cite="css-overflow#overflow-control">Managing Overflow: the
+								‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a></li>
+								<li><a data-cite="css-text#white-space-property">White Space and Wrapping:
+								the ‘white-space’ property</a></li>
+								<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+								Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+								‘margin-left’ properties</a></li>
+								<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
+								‘text-indent’ property</a></li>
+							</ul>
+						</details>
+					</aside>
 
-				<aside class="example" title="Simple box with color">
-					<pre><code class="html">&lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋⠞⠑⠗ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
+					<aside class="example" title="Simple box with color">
+						<pre><code class="html">&lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋⠞⠑⠗ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
 &lt;div class="box yellow"&gt;
    &lt;p&gt;⠠⠞⠓⠊⠎ ⠃⠕⠭ ⠓⠁⠎ ⠁ ⠉⠕⠇⠕⠗ ⠁⠎⠎⠕⠉⠊⠁⠞⠑⠙ ⠺⠊⠞⠓ ⠊⠞⠲&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋⠞⠑⠗ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
 </code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠞⠑⠗⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠞⠑⠗⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠈⠨⠣⠽⠑⠇⠇⠕⠺⠈⠨⠜⠀⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
 ⠀⠀⠠⠞⠓⠊⠎⠀⠃⠕⠭⠀⠓⠁⠎⠀⠁⠀⠉⠕⠇⠕⠗⠀⠁⠎⠎⠕⠉⠊⠁⠞⠑⠙⠀⠺⠊⠞⠓⠀
@@ -1470,8 +1224,8 @@ p {
 ⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠞⠑⠗⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="40">.box.yellow {
+						<p>the following CSS style sheet may be applied:</p>
+						<pre><code class="css" data-page-width="40">.box.yellow {
    border-style: solid;
    border-width: 0 0 .65rem 0;
    margin: 1rem 0 1.353rem 0;
@@ -1486,39 +1240,39 @@ p {
 p {
    text-indent: 2ch;
 }</code></pre>
-					<details class="specification-links">
-						<summary>CSS features used in this example</summary>
-						<ul>
-							<li><a data-cite="css-pseudo#generated-content">Generated Content
-							Pseudo-elements: ‘::before’ and ‘::after’</a></li>
-							<li><a data-cite="css-content#content-property">Inserting and replacing
-							content with the ‘content’ property</a></li>
-							<li><a data-cite="css-flexbox#flex-containers">Flex Containers: the ‘flex’ and
-							‘inline-flex’ display values</a></li>
-							<li><a data-cite="css-flexbox#justify-content-property">Axis Alignment: the
-							‘justify-content’ property</a></li>
-							<li><a data-cite="css-overflow#overflow-control">Managing Overflow: the
-							‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a></li>
-							<li><a data-cite="css-text#white-space-property">White Space and Wrapping:
-							the ‘white-space’ property</a></li>
-							<li><a data-cite="css-backgrounds#border-style">Line Patterns: the ‘border-style’
-							properties</a></li>
-							<li><a data-cite="css-backgrounds#border-width">Line Thickness: the ‘border-width’
-							properties</a></li>
-							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
-							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
-							‘margin-left’ properties</a></li>
-							<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
-							‘text-indent’ property</a></li>
-						</ul>
-					</details>
-				</aside>
+						<details class="specification-links">
+							<summary>CSS features used in this example</summary>
+							<ul>
+								<li><a data-cite="css-pseudo#generated-content">Generated Content
+								Pseudo-elements: ‘::before’ and ‘::after’</a></li>
+								<li><a data-cite="css-content#content-property">Inserting and replacing
+								content with the ‘content’ property</a></li>
+								<li><a data-cite="css-flexbox#flex-containers">Flex Containers: the ‘flex’ and
+								‘inline-flex’ display values</a></li>
+								<li><a data-cite="css-flexbox#justify-content-property">Axis Alignment: the
+								‘justify-content’ property</a></li>
+								<li><a data-cite="css-overflow#overflow-control">Managing Overflow: the
+								‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a></li>
+								<li><a data-cite="css-text#white-space-property">White Space and Wrapping:
+								the ‘white-space’ property</a></li>
+								<li><a data-cite="css-backgrounds#border-style">Line Patterns: the ‘border-style’
+								properties</a></li>
+								<li><a data-cite="css-backgrounds#border-width">Line Thickness: the ‘border-width’
+								properties</a></li>
+								<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+								Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+								‘margin-left’ properties</a></li>
+								<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
+								‘text-indent’ property</a></li>
+							</ul>
+						</details>
+					</aside>
 
-				<p>The following examples show how the same technique may be used to create a line
-					of guide dots preceding a print page number.</p>
+					<p>The following examples show how the same technique may be used to create a line
+						of guide dots preceding a print page number.</p>
 
-				<aside class="example" title="Print page indicator separating two pieces of text">
-					<pre><code class="html">&lt;p&gt;⠠⠋⠁⠗⠑⠺⠑⠇⠇⠂ ⠍⠽ ⠙⠑⠁⠗⠂ ⠑⠭⠉⠑⠇⠇⠑⠝⠞
+					<aside class="example" title="Print page indicator separating two pieces of text">
+						<pre><code class="html">&lt;p&gt;⠠⠋⠁⠗⠑⠺⠑⠇⠇⠂ ⠍⠽ ⠙⠑⠁⠗⠂ ⠑⠭⠉⠑⠇⠇⠑⠝⠞
 ⠠⠍⠁⠗⠛⠁⠗⠑⠞⠲ ⠠⠓⠑⠁⠧⠑⠝ ⠎⠓⠕⠺⠑⠗ ⠙⠕⠺⠝ ⠃⠇⠑⠎⠎⠊⠝⠛⠎
 ⠕⠝ ⠽⠕⠥⠂ ⠁⠝⠙ ⠎⠁⠧⠑ ⠍⠑⠂ ⠞⠓⠁⠞ ⠠⠊ ⠍⠁⠽ ⠁⠛⠁⠊⠝
 ⠁⠝⠙ ⠁⠛⠁⠊⠝ ⠞⠑⠎⠞⠊⠋⠽ ⠍⠽ ⠛⠗⠁⠞⠊⠞⠥⠙⠑ ⠋⠕⠗ ⠁⠇⠇
@@ -1539,8 +1293,8 @@ p {
 ⠁⠏⠏⠑⠁⠗ ⠞⠕ ⠃⠑ ⠍⠑⠝ ⠕⠝ ⠺⠓⠕⠍ ⠠⠊ ⠉⠁⠝ ⠙⠑⠏⠑⠝⠙
 ⠁⠝⠙ ⠁⠗⠑ ⠉⠑⠗⠞⠁⠊⠝⠇⠽ ⠏⠕⠎⠎⠑⠎⠎⠑⠙ ⠕⠋ ⠙⠁⠥⠝⠞⠇⠑⠎⠎
 ⠉⠕⠥⠗⠁⠛⠑⠲&lt;/p&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠀⠀⠠⠋⠁⠗⠑⠺⠑⠇⠇⠂⠀⠍⠽⠀⠙⠑⠁⠗⠂⠀⠑⠭⠉⠑⠇⠇⠑⠝⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀
+						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<pre><code class="formatted-braille">⠀⠀⠠⠋⠁⠗⠑⠺⠑⠇⠇⠂⠀⠍⠽⠀⠙⠑⠁⠗⠂⠀⠑⠭⠉⠑⠇⠇⠑⠝⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠠⠍⠁⠗⠛⠁⠗⠑⠞⠲⠀⠠⠓⠑⠁⠧⠑⠝⠀⠎⠓⠕⠺⠑⠗⠀⠙⠕⠺⠝⠀⠃⠇⠑⠎⠎⠊⠝⠛⠎
 ⠕⠝⠀⠽⠕⠥⠂⠀⠁⠝⠙⠀⠎⠁⠧⠑⠀⠍⠑⠂⠀⠞⠓⠁⠞⠀⠠⠊⠀⠍⠁⠽⠀⠁⠛⠁⠊⠝⠀⠀
 ⠁⠝⠙⠀⠁⠛⠁⠊⠝⠀⠞⠑⠎⠞⠊⠋⠽⠀⠍⠽⠀⠛⠗⠁⠞⠊⠞⠥⠙⠑⠀⠋⠕⠗⠀⠁⠇⠇⠀⠀
@@ -1562,8 +1316,8 @@ p {
 ⠁⠏⠏⠑⠁⠗⠀⠞⠕⠀⠃⠑⠀⠍⠑⠝⠀⠕⠝⠀⠺⠓⠕⠍⠀⠠⠊⠀⠉⠁⠝⠀⠙⠑⠏⠑⠝⠙⠀⠀
 ⠁⠝⠙⠀⠁⠗⠑⠀⠉⠑⠗⠞⠁⠊⠝⠇⠽⠀⠏⠕⠎⠎⠑⠎⠎⠑⠙⠀⠕⠋⠀⠙⠁⠥⠝⠞⠇⠑⠎⠎
 ⠉⠕⠥⠗⠁⠛⠑⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="40">p {
+						<p>the following CSS style sheet may be applied:</p>
+						<pre><code class="css" data-page-width="40">p {
    text-indent: 2ch;
 }
 h1 {
@@ -1581,34 +1335,34 @@ h1 {
 [role~=doc-pagebreak]::after {
    content: attr(aria-label);
 }</code></pre>
-					<details class="specification-links">
-						<summary>CSS features used in this example</summary>
-						<ul>
-							<li><a data-cite="css-pseudo#generated-content">Generated Content
-							Pseudo-elements: ‘::before’ and ‘::after’</a></li>
-							<li><a data-cite="css-content#content-property">Inserting and replacing
-							content with the ‘content’ property</a></li>
-							<li><a data-cite="css-values-5#attr-notation">Attribute References: the
-							‘attr()’ function</a></li>
-							<li><a data-cite="css-flexbox#flex-containers">Flex Containers: the ‘flex’ and
-							‘inline-flex’ display values</a></li>
-							<li><a data-cite="css-flexbox#justify-content-property">Axis Alignment: the
-							‘justify-content’ property</a></li>
-							<li><a data-cite="css-overflow#overflow-control">Managing Overflow: the
-							‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a></li>
-							<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
-							‘text-indent’ property</a></li>
-							<li><a data-cite="css-text#text-align-property">Text Alignment: the
-							‘text-align’ shorthand</a></li>
-							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
-							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
-							‘margin-left’ properties</a></li>
-						</ul>
-					</details>
-				</aside>
+						<details class="specification-links">
+							<summary>CSS features used in this example</summary>
+							<ul>
+								<li><a data-cite="css-pseudo#generated-content">Generated Content
+								Pseudo-elements: ‘::before’ and ‘::after’</a></li>
+								<li><a data-cite="css-content#content-property">Inserting and replacing
+								content with the ‘content’ property</a></li>
+								<li><a data-cite="css-values-5#attr-notation">Attribute References: the
+								‘attr()’ function</a></li>
+								<li><a data-cite="css-flexbox#flex-containers">Flex Containers: the ‘flex’ and
+								‘inline-flex’ display values</a></li>
+								<li><a data-cite="css-flexbox#justify-content-property">Axis Alignment: the
+								‘justify-content’ property</a></li>
+								<li><a data-cite="css-overflow#overflow-control">Managing Overflow: the
+								‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a></li>
+								<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
+								‘text-indent’ property</a></li>
+								<li><a data-cite="css-text#text-align-property">Text Alignment: the
+								‘text-align’ shorthand</a></li>
+								<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+								Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+								‘margin-left’ properties</a></li>
+							</ul>
+						</details>
+					</aside>
 
-				<aside class="example" title="Print page number interrupting text">
-					<pre><code class="html">&lt;p&gt;⠠⠞⠓⠑⠎⠑ ⠗⠑⠋⠇⠑⠉⠞⠊⠕⠝⠎ ⠓⠁⠧⠑ ⠙⠊⠎⠏⠑⠇⠇⠑⠙ ⠞⠓⠑
+					<aside class="example" title="Print page number interrupting text">
+						<pre><code class="html">&lt;p&gt;⠠⠞⠓⠑⠎⠑ ⠗⠑⠋⠇⠑⠉⠞⠊⠕⠝⠎ ⠓⠁⠧⠑ ⠙⠊⠎⠏⠑⠇⠇⠑⠙ ⠞⠓⠑
 ⠁⠛⠊⠞⠁⠞⠊⠕⠝ ⠺⠊⠞⠓ ⠺⠓⠊⠉⠓ ⠠⠊ ⠃⠑⠛⠁⠝ ⠍⠽ ⠇⠑⠞⠞⠑⠗⠂
 ⠁⠝⠙ ⠠⠊ ⠋⠑⠑⠇ ⠍⠽ ⠓⠑⠁⠗⠞ ⠛⠇⠕⠺ ⠺⠊⠞⠓ ⠁⠝
 ⠑⠝⠞⠓⠥⠎⠊⠁⠎⠍ ⠺⠓⠊⠉⠓ ⠑⠇⠑⠧⠁⠞⠑⠎ ⠍⠑ ⠞⠕ ⠓⠑⠁⠧⠑⠝⠂
@@ -1636,8 +1390,8 @@ h1 {
 ⠋⠁⠞⠓⠑⠗⠄⠎ ⠙⠽⠊⠝⠛ ⠊⠝⠚⠥⠝⠉⠞⠊⠕⠝ ⠓⠁⠙ ⠋⠕⠗⠃⠊⠙⠙⠑⠝
 ⠍⠽ ⠥⠝⠉⠇⠑ ⠞⠕ ⠁⠇⠇⠕⠺ ⠍⠑ ⠞⠕ ⠑⠍⠃⠁⠗⠅ ⠊⠝ ⠁
 ⠎⠑⠁⠋⠁⠗⠊⠝⠛ ⠇⠊⠋⠑⠲&lt;/p&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠑⠎⠑⠀⠗⠑⠋⠇⠑⠉⠞⠊⠕⠝⠎⠀⠓⠁⠧⠑⠀⠙⠊⠎⠏⠑⠇⠇⠑⠙⠀⠞⠓⠑⠀
+						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠑⠎⠑⠀⠗⠑⠋⠇⠑⠉⠞⠊⠕⠝⠎⠀⠓⠁⠧⠑⠀⠙⠊⠎⠏⠑⠇⠇⠑⠙⠀⠞⠓⠑⠀
 ⠁⠛⠊⠞⠁⠞⠊⠕⠝⠀⠺⠊⠞⠓⠀⠺⠓⠊⠉⠓⠀⠠⠊⠀⠃⠑⠛⠁⠝⠀⠍⠽⠀⠇⠑⠞⠞⠑⠗⠂
 ⠁⠝⠙⠀⠠⠊⠀⠋⠑⠑⠇⠀⠍⠽⠀⠓⠑⠁⠗⠞⠀⠛⠇⠕⠺⠀⠺⠊⠞⠓⠀⠁⠝⠀⠀⠀⠀⠀⠀⠀
 ⠑⠝⠞⠓⠥⠎⠊⠁⠎⠍⠀⠺⠓⠊⠉⠓⠀⠑⠇⠑⠧⠁⠞⠑⠎⠀⠍⠑⠀⠞⠕⠀⠓⠑⠁⠧⠑⠝⠂⠀
@@ -1666,8 +1420,8 @@ h1 {
 ⠞⠕⠀⠁⠇⠇⠕⠺⠀⠍⠑⠀⠞⠕⠀⠑⠍⠃⠁⠗⠅⠀⠊⠝⠀⠁⠀⠎⠑⠁⠋⠁⠗⠊⠝⠛⠀⠀⠀⠀
 ⠇⠊⠋⠑⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 </code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="40">p {
+						<p>the following CSS style sheet may be applied:</p>
+						<pre><code class="css" data-page-width="40">p {
    text-indent: 2ch;
 }
 [role~=doc-pagebreak] {
@@ -1680,31 +1434,31 @@ h1 {
    content: '⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤';
 }
 </code></pre>
-					<details class="specification-links">
-						<summary>CSS features used in this example</summary>
-						<ul>
-							<li><a data-cite="css-pseudo#generated-content">Generated Content
-							Pseudo-elements: ‘::before’ and ‘::after’</a></li>
-							<li><a data-cite="css-content#content-property">Inserting and replacing
-							content with the ‘content’ property</a></li>
-							<li><a data-cite="css-flexbox#flex-containers">Flex Containers: the ‘flex’ and
-							‘inline-flex’ display values</a></li>
-							<li><a data-cite="css-flexbox#justify-content-property">Axis Alignment: the
-							‘justify-content’ property</a></li>
-							<li><a data-cite="css-overflow#overflow-control">Managing Overflow: the
-							‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a></li>
-							<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
-							‘text-indent’ property</a></li>
-						</ul>
-					</details>
-				</aside>
+						<details class="specification-links">
+							<summary>CSS features used in this example</summary>
+							<ul>
+								<li><a data-cite="css-pseudo#generated-content">Generated Content
+								Pseudo-elements: ‘::before’ and ‘::after’</a></li>
+								<li><a data-cite="css-content#content-property">Inserting and replacing
+								content with the ‘content’ property</a></li>
+								<li><a data-cite="css-flexbox#flex-containers">Flex Containers: the ‘flex’ and
+								‘inline-flex’ display values</a></li>
+								<li><a data-cite="css-flexbox#justify-content-property">Axis Alignment: the
+								‘justify-content’ property</a></li>
+								<li><a data-cite="css-overflow#overflow-control">Managing Overflow: the
+								‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a></li>
+								<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
+								‘text-indent’ property</a></li>
+							</ul>
+						</details>
+					</aside>
 
-				<p>Guide dots may also be used within a table layout, as the following examples shows.</p>
+					<p>Guide dots may also be used within a table layout, as the following examples shows.</p>
 
-				<aside class="example" title="Table of contents with guide dots">
-					<p>Refer to the “<a href="#example-table-of-contents">table of contents</a>” example
-						above:</p>
-					<pre><code class="html">&lt;ol class="toc"&gt;
+					<aside class="example" title="Table of contents with guide dots">
+						<p>Refer to the “<a href="#example-table-of-contents">table of contents</a>” example
+							above:</p>
+						<pre><code class="html">&lt;ol class="toc"&gt;
   &lt;li&gt;&lt;span&gt;⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝&lt;/span&gt; &lt;a href="#page-5"&gt;⠼⠑&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;span&gt;⠠⠏⠗⠑⠤⠠⠋⠇⠊⠣⠞&lt;/span&gt; &lt;a href="#page-6"&gt;⠼⠋&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;span&gt;⠠⠋⠗⠁⠝⠅⠢⠌⠑⠔&lt;/span&gt; &lt;a href="#page-7"&gt;⠼⠛&lt;/a&gt;&lt;/li&gt;
@@ -1718,9 +1472,9 @@ h1 {
   &lt;li&gt;&lt;span&gt;⠠⠠⠉⠓⠁⠏⠞⠑⠗ ⠠⠠⠊⠊&lt;/span&gt; &lt;a href="#page-38"&gt;⠼⠉⠓&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code, with guide
-					dots between the titles and page numbers,</p>
-					<pre><code class="formatted-braille">⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠑
+						<p>In order to obtain the following desired layout for the above HTML code, with guide
+						dots between the titles and page numbers,</p>
+						<pre><code class="formatted-braille">⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠑
 ⠠⠏⠗⠑⠤⠠⠋⠇⠊⠣⠞⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠋
 ⠠⠋⠗⠁⠝⠅⠢⠌⠑⠔⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛
 ⠠⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠓
@@ -1731,8 +1485,8 @@ h1 {
 ⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠧⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠑
 ⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠉⠃
 ⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠠⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠉⠓</code></pre>
-					<p>the CSS style sheet may be extended as follows:</p>
-					<pre><code class="css" data-page-width="40">ol.toc li:has(span) {
+						<p>the CSS style sheet may be extended as follows:</p>
+						<pre><code class="css" data-page-width="40">ol.toc li:has(span) {
    display: flex;
 }
 ol.toc li span {
@@ -1760,39 +1514,314 @@ ol.toc li span + a {
    flex-shrink: 0;
    align-self: flex-end;
 }</code></pre>
-					<details class="specification-links">
-						<summary>CSS features used in this example</summary>
-						<ul>
-							<li><a data-cite="css-flexbox#flex-containers">Flex Containers: the ‘flex’ and
-							‘inline-flex’ display values</a></li>
-							<li><a data-cite="css-flexbox#flex-grow-property">The ‘flex-grow’
-							property</a></li>
-							<li><a data-cite="css-flexbox#flex-shrink-property">The ‘flex-shrink’
-							property</a></li>
-							<li><a data-cite="css-flexbox#order-property"> Display Order: the ‘order’
-							property</a></li>
-							<li><a data-cite="css-flexbox#justify-content-property">Axis Alignment: the
-							‘justify-content’ property</a></li>
-							<li><a data-cite="css-flexbox#align-items-property">Cross-axis Alignment: the
-							‘align-items’ and ‘align-self’ properties</a></li>
-							<li><a data-cite="css-pseudo#generated-content">Generated Content
-							Pseudo-elements: ‘::before’ and ‘::after’</a></li>
-							<li><a data-cite="css-content#content-property">Inserting and replacing
-							content with the ‘content’ property</a></li>
-							<li><a data-cite="css-box#padding-physical">Page-relative (Physical) Padding
-							Properties: the ‘padding-top’, ‘padding-right’, ‘padding-bottom’, and
-							‘padding-left’ properties</a></li>
-							<li><a data-cite="css-sizing#preferred-size-properties">Preferred Size Properties:
-							the ‘width’ and ‘height’ properties</a></li>
-							<li><a data-cite="css-overflow#overflow-control">Managing Overflow: the
-							‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a></li>
-							<li><a data-cite="css2/visuren.html#z-index">Specifying the stack level: the
-							‘z-index’ property</a></li>
-							<li><a data-cite="css-backgrounds##background-color">Base Color: the
-							‘background-color’ property</a></li>
-						</ul>
-					</details>
-				</aside>
+						<details class="specification-links">
+							<summary>CSS features used in this example</summary>
+							<ul>
+								<li><a data-cite="css-flexbox#flex-containers">Flex Containers: the ‘flex’ and
+								‘inline-flex’ display values</a></li>
+								<li><a data-cite="css-flexbox#flex-grow-property">The ‘flex-grow’
+								property</a></li>
+								<li><a data-cite="css-flexbox#flex-shrink-property">The ‘flex-shrink’
+								property</a></li>
+								<li><a data-cite="css-flexbox#order-property"> Display Order: the ‘order’
+								property</a></li>
+								<li><a data-cite="css-flexbox#justify-content-property">Axis Alignment: the
+								‘justify-content’ property</a></li>
+								<li><a data-cite="css-flexbox#align-items-property">Cross-axis Alignment: the
+								‘align-items’ and ‘align-self’ properties</a></li>
+								<li><a data-cite="css-pseudo#generated-content">Generated Content
+								Pseudo-elements: ‘::before’ and ‘::after’</a></li>
+								<li><a data-cite="css-content#content-property">Inserting and replacing
+								content with the ‘content’ property</a></li>
+								<li><a data-cite="css-box#padding-physical">Page-relative (Physical) Padding
+								Properties: the ‘padding-top’, ‘padding-right’, ‘padding-bottom’, and
+								‘padding-left’ properties</a></li>
+								<li><a data-cite="css-sizing#preferred-size-properties">Preferred Size Properties:
+								the ‘width’ and ‘height’ properties</a></li>
+								<li><a data-cite="css-overflow#overflow-control">Managing Overflow: the
+								‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a></li>
+								<li><a data-cite="css2/visuren.html#z-index">Specifying the stack level: the
+								‘z-index’ property</a></li>
+								<li><a data-cite="css-backgrounds##background-color">Base Color: the
+								‘background-color’ property</a></li>
+							</ul>
+						</details>
+					</aside>
+				</section>
+
+				<section id="border-style">
+					<h4>Drawing borders with the ‘<code>border-style</code>’ property</h4>
+
+					<p>The following examples show how
+						the <a data-cite="css-backgrounds#border-style"><code>border-style</code></a>
+						and <a data-cite="css-backgrounds#border-width"><code>border-width</code></a>
+						properties [[css-backgrounds]] may be used to create box
+						lines. <a data-cite="css-box#margin-shorthand"><code>margin</code></a>
+						and <a data-cite="css-box#padding-shorthand"><code>padding</code></a> are used
+						to control the spacing between the box lines, the text within the box, and the
+						surrounding text.</p>
+
+					<p>Generally this approach is more complicated than the “border-image”
+						approach. This is why the latter is recommended.</p>
+
+					<aside class="example" title="Simple box with blank lines">
+						<pre><code class="html">&lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠑⠙⠑⠎ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
+&lt;div class="box"&gt;
+   &lt;p&gt;⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋⠞⠑⠗ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
+</code></pre>
+						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠑⠎⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
+⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠞⠑⠗⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+						<p>the following CSS style sheet may be applied:</p>
+						<pre><code class="css" data-page-width="40">.box {
+   border-style: solid;
+   border-width: .45rem 0;
+   margin: 1.22rem 0 1.55rem 0;
+   padding: .33rem 0 0 0;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+						<details class="specification-links">
+							<summary>CSS features used in this example</summary>
+							<ul>
+								<li><a data-cite="css-backgrounds#border-style">Line Patterns: the ‘border-style’
+								properties</a></li>
+								<li><a data-cite="css-backgrounds#border-width">Line Thickness: the ‘border-width’
+								properties</a></li>
+								<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+								Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+								‘margin-left’ properties</a></li>
+								<li><a data-cite="css-box#padding-physical">Page-relative (Physical) Padding
+								Properties: the ‘padding-top’, ‘padding-right’, ‘padding-bottom’, and
+								‘padding-left’ properties</a></li>
+								<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
+								‘text-indent’ property</a></li>
+							</ul>
+						</details>
+						<div class="note">
+							<p>The same result may be achieved using the “border-image” approach.</p>
+							<details class="alternative">
+								<summary>Alternative CSS style sheet</summary>
+								<pre><code class="css" data-page-width="40">.box {
+   border-style: solid;
+   border-width: 1rem 0;
+   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠀⠶⠀⠀⠀⠛⠀⠀");
+   border-image-slice: 33.34%;
+   border-image-repeat: round round;
+   margin: 1rem 0;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+								<pre><code class="javascript">window.onload = function() {
+  let script = document.createElement("script");
+  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
+  document.head.appendChild(script);
+};
+</code></pre>
+							</details>
+						</div>
+					</aside>
+
+					<!--<aside class="example" title="Simple box with centered heading">
+						<p class="ednote">
+							Missing an example in [[tagging]] of Simple box with centered heading.
+						</p>
+						<pre><code class="html">&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠑⠎ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+&lt;h1&gt;⠠⠹ ⠓⠂⠙⠬ ⠊⠎ ⠁⠎⠎⠕⠉⠊⠁⠞⠫ ⠾ ⠮ ⠃⠕⠭&lt;/h1&gt;
+&lt;div class="box"&gt;
+   &lt;p&gt;⠠⠹ ⠊⠎ ⠁ ⠃⠕⠭ ⠾ ⠁ ⠓⠂⠙⠬⠲&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
+</code></pre>
+						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<pre><code class="formatted-braille">⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠑⠎⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠠⠹⠀⠓⠂⠙⠬⠀⠊⠎⠀⠁⠎⠎⠕⠉⠊⠁⠞⠫⠀⠾⠀⠮⠀⠃⠕⠭⠀⠀⠀⠀⠀⠀
+⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
+⠀⠀⠠⠹⠀⠊⠎⠀⠁⠀⠃⠕⠭⠀⠾⠀⠁⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+						<p>the following CSS style sheet may be applied:</p>
+						<!- -<p class="ednote">
+							To properly center the <code>h1</code>, the right margin may or may not need
+							to be increased with <code>1ch</code>, depending on the content. (In this
+							case, it doesn't.)
+						</p>- ->
+						<pre><code class="css" data-page-width="40">.box {
+   border-style: solid;
+   border-width: .45rem 0;
+   margin: 0.22rem 0 1.55rem 0;
+   padding: .33rem 0 0 0;
+}
+h1 {
+   text-align: center;
+   margin: 1rem 3ch 0 3ch;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+					</aside>-->
+
+					<aside class="example" title="Simple box inside a full box with blank lines">
+						<pre><code class="html">&lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠑⠙⠑⠎ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
+&lt;div class="box"&gt;
+   &lt;div class="box"&gt;
+      &lt;p&gt;⠠⠞⠓⠊⠎ ⠊⠎ ⠁ ⠃⠕⠭ ⠊⠝⠎⠊⠙⠑ ⠁ ⠃⠕⠭⠲&lt;/p&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋⠞⠑⠗ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
+</code></pre>
+						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠑⠎⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
+⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
+⠀⠀⠠⠞⠓⠊⠎⠀⠊⠎⠀⠁⠀⠃⠕⠭⠀⠊⠝⠎⠊⠙⠑⠀⠁⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛
+⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠞⠑⠗⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+						<p>the following CSS style sheet may be applied:</p>
+						<pre><code class="css" data-page-width="40">.box {
+   border-style: solid;
+   border-width: .67rem 0;
+   margin: 1rem 0 1.33rem 0;
+   padding: .33rem 0 0 0;
+}
+.box .box {
+   border-width: .45rem 0;
+   margin: .22rem 0 0.55rem 0;
+   padding: .33rem 0 0 0;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+						<details class="specification-links">
+							<summary>CSS features used in this example</summary>
+							<ul>
+								<li><a data-cite="css-backgrounds#border-style">Line Patterns: the ‘border-style’
+								properties</a></li>
+								<li><a data-cite="css-backgrounds#border-width">Line Thickness: the ‘border-width’
+								properties</a></li>
+								<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+								Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+								‘margin-left’ properties</a></li>
+								<li><a data-cite="css-box#padding-physical">Page-relative (Physical) Padding
+								Properties: the ‘padding-top’, ‘padding-right’, ‘padding-bottom’, and
+								‘padding-left’ properties</a></li>
+								<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
+								‘text-indent’ property</a></li>
+							</ul>
+						</details>
+						<div class="note">
+							<p>The same result may be achieved using the “border-image” approach.</p>
+							<details class="alternative">
+								<summary>Alternative CSS style sheet</summary>
+								<pre><code class="css" data-page-width="40">.box {
+   border-style: solid;
+   border-width: 1rem 0;
+   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠀⠿⠀⠀⠀⠿⠀⠀");
+   border-image-slice: 33.34%;
+   border-image-repeat: round round;
+   margin: 1rem 0;
+}
+.box .box {
+   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⠀⠶⠀⠀⠀⠛⠀⠀");
+   margin: 0;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+								<pre><code class="javascript">window.onload = function() {
+  let script = document.createElement("script");
+  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
+  document.head.appendChild(script);
+};
+</code></pre>
+							</details>
+						</div>
+					</aside>
+
+					<aside class="example" title="A box inside another box">
+						<p>
+							This is another example of a box inside another box, but with a layout that
+							does not come from BANA or any other standard.
+						</p>
+						<a class="tagging-link" href="../tagging/index.html#example-a-box-inside-another-box"></a>
+						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<pre><code class="formatted-braille">⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀
+⡇⡏⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⢹⢸
+⡇⡇⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⢸⢸
+⡇⣇⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣸⢸
+⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉</code></pre>
+						<p>the following CSS style sheet may be applied:</p>
+						<pre><code class="css" data-page-width="35">.box {
+   border-style: solid;
+   border-width: .23rem .3ch;
+   margin: .66rem .2ch .77rem .2ch;
+   padding: .11rem .6ch 0 .55ch;
+}
+.box .box {
+   margin: 0 0 .11rem 0;
+   padding: .77rem .6ch .66rem .65ch;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+						<details class="specification-links">
+							<summary>CSS features used in this example</summary>
+							<ul>
+								<li><a data-cite="css-backgrounds#border-style">Line Patterns: the ‘border-style’
+								properties</a></li>
+								<li><a data-cite="css-backgrounds#border-width">Line Thickness: the ‘border-width’
+								properties</a></li>
+								<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+								Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+								‘margin-left’ properties</a></li>
+								<li><a data-cite="css-box#padding-physical">Page-relative (Physical) Padding
+								Properties: the ‘padding-top’, ‘padding-right’, ‘padding-bottom’, and
+								‘padding-left’ properties</a></li>
+								<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
+								‘text-indent’ property</a></li>
+							</ul>
+						</details>
+						<div class="note">
+							<p>The same result may be achieved using the “border-image” approach.</p>
+							<details class="alternative">
+								<summary>Alternative CSS style sheet</summary>
+								<pre><code class="css" data-page-width="40">.box {
+   border-style: solid;
+   border-width: 1rem 1ch;
+   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⣀⣀⣀⢸⠉⠉⠉⡇");
+   border-image-slice: 33.34%;
+   border-image-repeat: round round;
+}
+.box .box {
+   border-image-source: url("https://daisy.org/ebraille/border-image?pattern=⡏⠉⢹⢸⣸⣀⣇⡇");
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+								<pre><code class="javascript">window.onload = function() {
+  let script = document.createElement("script");
+  script.src = "https://daisy.github.io/ebraille/best-practices/styling/handleBorderImageURLs.js";
+  document.head.appendChild(script);
+};
+</code></pre>
+							</details>
+						</div>
+					</aside>
+				</section>
 			</section>
 
 			<section id="tables">
