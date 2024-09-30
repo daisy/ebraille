@@ -791,7 +791,53 @@ h1 {
 							‘text-indent’ property</a></li>
 						</ul>
 					</details>
-				</aside>
+				</aside><!--
+
+				This is another example of a centered heading, that does not really add anything new:
+
+				<aside class="example" title="Centered heading with a title and subtitle on different lines">
+					<div class="issue" data-number="231"
+					     title="Missing best practices for correctly tagging this example">
+						<p>Missing an example in [[tagging]] of a centered heading with a title and
+						subtitle on different lines.</p>
+					</div>
+					<pre><code class="html">&lt;p&gt;⠠⠞⠓⠑ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠑⠙⠊⠝⠛ ⠁ ⠉⠑⠝⠞⠑⠗⠑⠙ ⠓⠑⠁⠙⠊⠝⠛⠲&lt;/p&gt;
+&lt;header&gt;
+  &lt;h1&gt;⠠⠞⠊⠞⠇⠑⠒&lt;/h1&gt;
+  &lt;p&gt;⠎⠥⠃⠞⠊⠞⠇⠑&lt;/p&gt;
+&lt;/header&gt;
+&lt;p&gt;⠠⠞⠓⠑ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠕⠺⠊⠝⠛ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠑⠁⠙⠊⠝⠛&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠊⠝⠛⠀⠁⠀⠉⠑⠝⠞⠑⠗⠑⠙⠀⠓⠑⠁⠙⠊⠝⠛⠲
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠞⠊⠞⠇⠑⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠎⠥⠃⠞⠊⠞⠇⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠕⠺⠊⠝⠛⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠑⠁⠙⠊⠝⠛⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<!- -<p class="ednote">
+						It is not possible to properly center the <code>header</code> in all
+						situations. In this case the first line is not aligned to the grid, but the
+						second is. By increasing the right margin with <code>1ch</code>, the first
+						line becomes aligned with the grid, but the second becomes misaligned.
+					</p>- ->
+					<pre><code class="css" data-page-width="41">p {
+   text-indent: 2ch;
+}
+header:has(> h1) {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 3ch;
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+}
+header > h1,
+header > p {
+  margin: 0;
+  text-indent: inherit;
+  text-align: inherit;
+}</code></pre>
+				</aside>-->
 
 				<p>The following example shows how content may be spatially arranged using the flexible box
 					layout module [[css-flexbox]].
@@ -2097,54 +2143,6 @@ p {
 						</details>
 					</div>
 				</aside>-->
-			</section>
-
-			<section id="misc">
-				<h3>Miscellaneous examples</h3>
-
-				<aside class="example" title="Centered heading with a title and subtitle on different lines">
-					<div class="issue" data-number="231"
-					     title="Missing best practices for correctly tagging this example">
-						<p>Missing an example in [[tagging]] of a centered heading with a title and
-						subtitle on different lines.</p>
-					</div>
-					<pre><code class="html">&lt;p&gt;⠠⠞⠓⠑ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠑⠙⠊⠝⠛ ⠁ ⠉⠑⠝⠞⠑⠗⠑⠙ ⠓⠑⠁⠙⠊⠝⠛⠲&lt;/p&gt;
-&lt;header&gt;
-  &lt;h1&gt;⠠⠞⠊⠞⠇⠑⠒&lt;/h1&gt;
-  &lt;p&gt;⠎⠥⠃⠞⠊⠞⠇⠑&lt;/p&gt;
-&lt;/header&gt;
-&lt;p&gt;⠠⠞⠓⠑ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠕⠺⠊⠝⠛ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠑⠁⠙⠊⠝⠛&lt;/p&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠊⠝⠛⠀⠁⠀⠉⠑⠝⠞⠑⠗⠑⠙⠀⠓⠑⠁⠙⠊⠝⠛⠲
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠞⠊⠞⠇⠑⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠎⠥⠃⠞⠊⠞⠇⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠕⠺⠊⠝⠛⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠑⠁⠙⠊⠝⠛⠀⠀</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<!--<p class="ednote">
-						It is not possible to properly center the <code>header</code> in all
-						situations. In this case the first line is not aligned to the grid, but the
-						second is. By increasing the right margin with <code>1ch</code>, the first
-						line becomes aligned with the grid, but the second becomes misaligned.
-					</p>-->
-					<pre><code class="css" data-page-width="41">p {
-   text-indent: 2ch;
-}
-header:has(> h1) {
-   text-align: center;
-   margin-left: 3ch;
-   margin-right: 3ch;
-   margin-top: 1rem;
-   margin-bottom: 1rem;
-}
-header > h1,
-header > p {
-  margin: 0;
-  text-indent: inherit;
-  text-align: inherit;
-}</code></pre>
-				</aside>
 			</section>
 		</section>
 		<div data-include="../../common/acknowledgements.html" data-include-replace="true"></div>
