@@ -763,7 +763,7 @@ ol ol li {
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠑⠝⠞⠑⠗⠑⠙⠀⠓⠑⠁⠙⠊⠝⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠕⠺⠊⠝⠛⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠑⠁⠙⠊⠝⠛</code></pre>
+⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠕⠺⠊⠝⠛⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠑⠁⠙⠊⠝⠛⠀</code></pre>
 					<p>the following CSS style sheet may be applied:</p>
 					<!--<p class="ednote">
 						To properly center the <code>h1</code>, the right margin may or may not need
@@ -804,47 +804,32 @@ h1 {
 				</p>
 
 				<aside class="example" title="Table of contents">
-					<div class="issue" data-number="140"
-					     title="Enhance “Table of contents“ example in Tagging Best Practices">
-						<p>Using the flexible box layout module, tables of contents can be correctly
-						formatted, including runovers
-						and <a href="#example-table-of-contents-with-guide-dots">guide dots</a>. It
-						however comes at the price of a slightly increased complexity of the
-						markup. Notice the wrapping of items in
-						<code>span</code> tags, and compare this with the simpler markup of the “<a
-						data-cite="tagging#example-a-table-of-contents-with-links">A table
-						of contents with links</a>” example from [[tagging]]. A possible solution
-						would be to insert the <code>span</code> tags through scripting, if scripting
-						would be allowed.</p>
-					</div>
-					<pre><code class="html">&lt;ol class="toc"&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝&lt;/span&gt; &lt;a href="#page-5"&gt;⠼⠑&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠏⠗⠑⠤⠠⠋⠇⠊⠛⠓⠞&lt;/span&gt; &lt;a href="#page-6"&gt;⠼⠋&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠋⠗⠁⠝⠅⠑⠝⠎⠞⠑⠊⠝&lt;/span&gt; &lt;a href="#page-7"&gt;⠼⠛&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝&lt;/span&gt; &lt;a href="#page-8"&gt;⠼⠓&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠏⠗⠑⠋⠁⠉⠑&lt;/span&gt; &lt;a href="#page-14"&gt;⠼⠁⠙&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠊&lt;/span&gt; &lt;a href="#page-17"&gt;⠼⠁⠛&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠊&lt;/span&gt; &lt;a href="#page-20"&gt;⠼⠃⠚&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠊⠊&lt;/span&gt; &lt;a href="#page-24"&gt;⠼⠃⠙&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠧&lt;/span&gt; &lt;a href="#page-25"&gt;⠼⠃⠑&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠉⠓⠁⠏⠞⠑⠗ ⠠⠊&lt;/span&gt; &lt;a href="#page-32"&gt;⠼⠉⠃&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠉⠓⠁⠏⠞⠑⠗ ⠠⠠⠊⠊&lt;/span&gt; &lt;a href="#page-38"&gt;⠼⠉⠓&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</code></pre>
+					<a class="tagging-link"
+					   href="../tagging/index.html#example-a-table-of-contents-with-links"></a>
+					<p>Notice the <code>span</code> elements around the chapter names: these are needed to
+						correctly style the table. Using the flexible box layout module, tables of contents
+						can be correctly formatted, including runovers and guide dots. It however comes at
+						the price of a slightly increased complexity of the markup.
+						<!-- Note that the spans would not be needed if scripting would be allowed,
+							however we want to avoid scripting if possible, hence the need for the
+							additional markup. -->
+					</p>
 					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠑
-⠠⠏⠗⠑⠤⠠⠋⠇⠊⠛⠓⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠋
-⠠⠋⠗⠁⠝⠅⠑⠝⠎⠞⠑⠊⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠛
-⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠓
-⠠⠠⠏⠗⠑⠋⠁⠉⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠙
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠛
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠚
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠙
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠑
-⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠃
-⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠠⠊⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠓</code></pre>
+					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠞⠁⠃⠇⠑⠀⠕⠋⠀⠠⠉⠕⠝⠞⠑⠝⠞⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠑
+⠠⠏⠗⠑⠤⠠⠋⠇⠊⠛⠓⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠋
+⠠⠋⠗⠁⠝⠅⠑⠝⠎⠞⠑⠊⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠛
+⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠓
+⠠⠠⠏⠗⠑⠋⠁⠉⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠙
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠛
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠚
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠙
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠑
+⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠃
+⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠠⠊⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠓</code></pre>
 					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="40">ol.toc li:has(span) {
+					<pre><code class="css" data-page-width="39">ol.toc li:has(span) {
    display: flex;
 }
 ol.toc li:has(span)::before {
@@ -857,7 +842,18 @@ ol.toc li span + a {
    order: 3;
    flex-shrink: 0;
    align-self: flex-end;
+}
+h1 {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 3ch;
+   margin-bottom: 1rem;
 }</code></pre>
+					<p class="note">
+						The “<a href="#example-table-of-contents-with-guide-dots">Table of contents
+						with guide dots</a>” example builds on this example by adding guide dots between
+						the items on the left and page numbers on the right.
+					</p>
 					<details class="specification-links">
 						<summary>CSS features used in this example</summary>
 						<ul>
@@ -877,6 +873,11 @@ ol.toc li span + a {
 							content with the ‘content’ property</a></li>
 							<li><a data-cite="css-sizing#preferred-size-properties">Preferred Size Properties:
 							the ‘width’ and ‘height’ properties</a></li>
+							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+							‘margin-left’ properties</a></li>
+							<li><a data-cite="css-text#text-align-property">Text Alignment: the
+							‘text-align’ shorthand</a></li>
 						</ul>
 					</details>
 				</aside>
@@ -1481,37 +1482,25 @@ h1 {
 					<p>Guide dots may also be used within a table layout, as the following examples shows.</p>
 
 					<aside class="example" title="Table of contents with guide dots">
-						<p>Refer to the “<a href="#example-table-of-contents">table of contents</a>” example
-							above:</p>
-						<pre><code class="html">&lt;ol class="toc"&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝&lt;/span&gt; &lt;a href="#page-5"&gt;⠼⠑&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠏⠗⠑⠤⠠⠋⠇⠊⠣⠞&lt;/span&gt; &lt;a href="#page-6"&gt;⠼⠋&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠋⠗⠁⠝⠅⠢⠌⠑⠔&lt;/span&gt; &lt;a href="#page-7"&gt;⠼⠛&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝&lt;/span&gt; &lt;a href="#page-8"&gt;⠼⠓&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠏⠗⠑⠋⠁⠉⠑&lt;/span&gt; &lt;a href="#page-14"&gt;⠼⠁⠙&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠊&lt;/span&gt; &lt;a href="#page-17"&gt;⠼⠁⠛&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠊&lt;/span&gt; &lt;a href="#page-20"&gt;⠼⠃⠚&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠊⠊&lt;/span&gt; &lt;a href="#page-24"&gt;⠼⠃⠙&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠧&lt;/span&gt; &lt;a href="#page-25"&gt;⠼⠃⠑&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠉⠓⠁⠏⠞⠑⠗ ⠠⠊&lt;/span&gt; &lt;a href="#page-32"&gt;⠼⠉⠃&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠉⠓⠁⠏⠞⠑⠗ ⠠⠠⠊⠊&lt;/span&gt; &lt;a href="#page-38"&gt;⠼⠉⠓&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</code></pre>
+						<a class="tagging-link"
+						   href="../tagging/index.html#example-a-table-of-contents-with-links"></a>
 						<p>In order to obtain the following desired layout for the above HTML code, with guide
 						dots between the titles and page numbers,</p>
-						<pre><code class="formatted-braille">⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠑
-⠠⠏⠗⠑⠤⠠⠋⠇⠊⠣⠞⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠋
-⠠⠋⠗⠁⠝⠅⠢⠌⠑⠔⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛
-⠠⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠓
-⠠⠠⠏⠗⠑⠋⠁⠉⠑⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠁⠙
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠁⠛
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠚
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠙
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠧⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠑
-⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠉⠃
-⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠠⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠉⠓</code></pre>
+						<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠞⠁⠃⠇⠑⠀⠕⠋⠀⠠⠉⠕⠝⠞⠑⠝⠞⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠑
+⠠⠏⠗⠑⠤⠠⠋⠇⠊⠛⠓⠞⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠋
+⠠⠋⠗⠁⠝⠅⠑⠝⠎⠞⠑⠊⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛
+⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠓
+⠠⠠⠏⠗⠑⠋⠁⠉⠑⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠁⠙
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠁⠛
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠚
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠙
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠧⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠑
+⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠉⠃
+⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠠⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠉⠓</code></pre>
 						<p>the CSS style sheet may be extended as follows:</p>
-						<pre><code class="css" data-page-width="40">ol.toc li:has(span) {
+						<pre><code class="css" data-page-width="39">ol.toc li:has(span) {
    display: flex;
 }
 ol.toc li span {
@@ -1538,6 +1527,12 @@ ol.toc li span + a {
    order: 3;
    flex-shrink: 0;
    align-self: flex-end;
+}
+h1 {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 3ch;
+   margin-bottom: 1rem;
 }</code></pre>
 						<details class="specification-links">
 							<summary>CSS features used in this example</summary>
@@ -1569,6 +1564,11 @@ ol.toc li span + a {
 								‘z-index’ property</a></li>
 								<li><a data-cite="css-backgrounds##background-color">Base Color: the
 								‘background-color’ property</a></li>
+								<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+								Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+								‘margin-left’ properties</a></li>
+								<li><a data-cite="css-text#text-align-property">Text Alignment: the
+								‘text-align’ shorthand</a></li>
 							</ul>
 						</details>
 					</aside>
