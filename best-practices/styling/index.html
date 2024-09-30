@@ -1917,8 +1917,11 @@ p {
 						the first print line begins a new braille line).</p>
 					</div>
 					<pre><code class="css" data-page-width="40">.prose {
-   /* Preserve a column of four characters for the numbers. Note that, regardless
-      of the width of the column, each line number is separated from the text by
+   /* Line numbers are assumed to be two characters wide, and a column of four
+      characters is preserved for the numbers. Adapting to the actual width of
+      the widest line number is not possible without scripting (which eBraille
+      does not allow). Note that, regardless of the width of the column and the
+      width of the line numbers, each line number is separated from the text by
       at least two blanks (due to the `margin-left: 2ch'). */
    padding-right: 4ch;
 }
@@ -1940,6 +1943,9 @@ p {
 .prose .linenum:not(:-moz-first-node)::before {
    content: " \A0 ";
 }</code></pre>
+					<p class="note">Notice how this style sheet has issues formatting the prose exactly
+						according to the rules of BANA. This shows that not every complex layout requirement
+						can be fulfilled with (pure) CSS.</p>
 					<details class="specification-links">
 						<summary>CSS features used in this example</summary>
 						<ul>
@@ -1961,13 +1967,9 @@ p {
 							‘padding-left’ properties</a></li>
 						</ul>
 					</details>
+					<!--
 					<div class="ednote">
 						<p>This example shows possible use cases for allowing scripting in the future.</p>
-						<div class="issue" title="Don't include scripting in best practices">
-							<p>Because scripting is currenly forbidden, we obviously shouldn't
-							include it in the best practices. Still it seems useful to have it included
-							somewhere, to show the limitations of CSS.</p>
-						</div>
 						<details>
 							<summary>This CSS and JavaScript may be applied to enhance the styling</summary>
 							<div style="white-space: pre-wrap; font-family: Menlo, Consolas, 'DejaVu Sans Mono', Monaco, monospace; font-size: .9em"
@@ -2065,7 +2067,7 @@ p {
 </div>
 						</details>
 					</div>
-				</aside>
+				</aside>-->
 			</section>
 
 			<section id="misc">
