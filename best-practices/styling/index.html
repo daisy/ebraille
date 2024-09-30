@@ -913,7 +913,9 @@ h1 {
 				data-cite="css-text#propdef-white-space">white-space</a> property.</p>
 
 				<p>The following example of a number line illustrates this. The white space characters must be
-				preserved because they are essential for the correct formatting of the number line.</p>
+					preserved because they are essential for the correct formatting of the number line. Note how,
+					by “<em>pre-formatting</em>” (or hard-coding) the number line, it is not able to adapt to
+					varying device widths.</p>
 
 				<aside class="example" title="Number line">
 					<pre><code class="html">&lt;pre&gt;⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠒⠒
@@ -935,6 +937,33 @@ h1 {
 							the ‘white-space’ property</a> [[css-text]]</li>
 						</ul>
 					</details>
+				</aside>
+
+				<p>Another use case for the <code>pre</code> element is spatially arranged math. In theory
+					the techniques from <a href="#alignment">Alignment, positioning and spatial
+					arrangement</a> could be applied for this particular case, but that may not be the case
+					for every mathematical expression, and pre-formatting content may be more practical
+					anyway.</p>
+
+				<aside class="example" title="Spatial math">
+					<!--<div class="issue" data-number="231"
+					     title="Missing best practices for correctly tagging this example">
+						<p>Missing an example in [[tagging]] of “spatial math“.</p>
+					</div>-->
+					<pre><code class="html">&lt;pre&gt;⠼⠁⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠲
+⠀⠀⠀⠀⠀⠀⠼⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠚⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠓⠑
+⠀⠀⠀⠀⠐⠖⠼⠀⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠀⠃⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠃⠚
+⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒&lt;/pre&gt;</code></pre>
+					<p>The following desired layout for the above HTML code is obtained automatically,</p>
+					<pre><code class="formatted-braille">⠼⠁⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠼⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠚⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠓⠑⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠐⠖⠼⠀⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠀⠃⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠃⠚⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>due of the default style that is associated with the [[html]] <a
+					data-cite="html#the-pre-element"><code>pre</code></a> element:</p>
+					<pre><code class="css" data-page-width="40">pre {
+    white-space: pre;
+}</code></pre>
 				</aside>
 			</section>
 
@@ -2072,27 +2101,6 @@ p {
 
 			<section id="misc">
 				<h3>Miscellaneous examples</h3>
-
-				<aside class="example" title="Spatial math">
-					<div class="issue" data-number="231"
-					     title="Missing best practices for correctly tagging this example">
-						<p>Missing an example in [[tagging]] of “spatial math“. Is this to be handled
-						with a <code>pre</code> element?</p>
-					</div>
-					<pre><code class="html">&lt;pre&gt;⠼⠁⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠲
-⠀⠀⠀⠀⠀⠀⠼⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠚⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠓⠑
-⠀⠀⠀⠀⠐⠖⠼⠀⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠀⠃⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠃⠚
-⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒&lt;/pre&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠼⠁⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠼⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠚⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠓⠑⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠐⠖⠼⠀⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠀⠃⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠃⠚⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="40">pre {
-    white-space: pre;
-}</code></pre>
-				</aside>
 
 				<aside class="example" title="Centered heading with a title and subtitle on different lines">
 					<div class="issue" data-number="231"
