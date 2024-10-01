@@ -1124,7 +1124,7 @@
 							<p>A list of recommended braille code terminology will be provided with a future update to
 								this document.</p>
 						</div>
-						
+
 						<p>The REQUIRED <code>a11y:code</code> property identifies the name of the braille code an
 							[=eBraille publication=] has been formatted in conformance with.</p>
 
@@ -1237,39 +1237,6 @@
 							from a producer.</p>
 
 						<p>Repeat the property for each organization or individual.</p>
-					</section>
-
-					<section id="a11y:sourcePublisher">
-						<h5>a11y:sourcePublisher</h5>
-
-						<p>The REQUIRED <code>a11y:sourcePublisher</code> property identifies the name of the publisher
-							of the work being transcribed.</p>
-
-						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
-								<code>property</code> attribute set to <code>a11y:sourcePublisher</code>.</p>
-
-						<aside class="example" title="A printed work with an official publisher">
-							<pre>&lt;meta property="a11y:sourcePublisher">
-   Penguin Random House
-&lt;/meta></pre>
-						</aside>
-
-						<p>If not transcribing a published print work, the name of the organization or individual that
-							produced the original text MAY be used as the publisher.</p>
-
-						<aside class="example" title="A printed work with no official publisher">
-							<pre>&lt;meta property="a11y:sourcePublisher">
-   International Council on English Braille
-&lt;/meta></pre>
-						</aside>
-
-						<p>If the work is an entirely original braille publication, use the value <code>N/A</code>.</p>
-
-						<aside class="example" title="An original braille work">
-							<pre>&lt;meta property="a11y:sourcePublisher">
-   N/A
-&lt;/meta></pre>
-						</aside>
 					</section>
 
 					<section id="a11y:tactileGraphics">
@@ -1467,6 +1434,50 @@
 						</aside>
 
 						<p>Repeat the element if the publication is intended for more than one education level.</p>
+					</section>
+
+					<section id="a11y:sourceDate">
+						<h5>a11y:sourceDate</h5>
+
+						<p>The REQUIRED <code>a11y:sourceDate</code> property identifies the date on which the source
+							work was published.</p>
+
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>a11y:sourceDate</code>.</p>
+
+						<p>It is RECOMMENDED that the date string conform to [[iso8601]], particularly the subset
+							expressed in W3C Date and Time Formats [[datetime]].</p>
+
+						<aside class="example" title="Date of a source publication">
+							<pre>&lt;meta property="a11y:sourceDate">
+   2020-03-15
+&lt;/meta></pre>
+						</aside>
+					</section>
+
+					<section id="a11y:sourcePublisher">
+						<h5>a11y:sourcePublisher</h5>
+
+						<p>The REQUIRED <code>a11y:sourcePublisher</code> property identifies the name of the publisher
+							of the work being transcribed.</p>
+
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>a11y:sourcePublisher</code>.</p>
+
+						<aside class="example" title="A printed work with an official publisher">
+							<pre>&lt;meta property="a11y:sourcePublisher">
+   Penguin Random House
+&lt;/meta></pre>
+						</aside>
+
+						<p>If not transcribing a published print work, the name of the organization or individual that
+							produced the original text MAY be used as the publisher.</p>
+
+						<aside class="example" title="A printed work with no official publisher">
+							<pre>&lt;meta property="a11y:sourcePublisher">
+   International Council on English Braille
+&lt;/meta></pre>
+						</aside>
 					</section>
 				</section>
 
@@ -2713,12 +2724,13 @@
 			</section>
 		</section>
 		<section id="ebrl-meta-vocab" class="appendix">
-			<h2>Accessibility Metadata Properties</h2>
+			<h2>Accessible Formats Metadata Properties</h2>
 
 			<section id="app-vocab-about">
 				<h3>About this vocabulary</h3>
 
-				<p>This vocabulary defines metadata properties for describing [=eBraille publications=].</p>
+				<p>This vocabulary defines metadata properties for describing any accessible format, but with specific
+					focus on the needs of [=eBraille publications=].</p>
 
 				<p>Properties are only added to this vocabulary if suitable equivalents are not already defined in
 					existing vocabularies such as Dublin Core and Schema.org.</p>
@@ -2735,7 +2747,7 @@
 						href="#ebrl-package-doc">package documents</a>.</p>
 			</section>
 
-			<section>
+			<section id="app-vocab-field-defs">
 				<h3>Property field definitions</h3>
 
 				<p>The fields in the vocabulary definition tables have the following implicit requirements:</p>
@@ -2800,7 +2812,7 @@
 
 				<section id="created">
 					<h4>created</h4>
-					
+
 					<table class="tabledef">
 						<caption>Definition of the <code>created</code> property</caption>
 						<tr>
@@ -2827,7 +2839,7 @@
 						</tr>
 					</table>
 				</section>
-				
+
 				<section id="producer">
 					<h4>producer</h4>
 
@@ -2853,6 +2865,70 @@
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="a11y:producer">APH&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<section id="sourceDate">
+					<h4>sourceDate</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>sourceDate</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>sourceDate</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>
+								<p>Identifies the date on which the source work was published.</p>
+							</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>xsd:string</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="a11y:sourceDate">2010-10-10&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<section id="sourcePublisher">
+					<h4>sourcePublisher</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>sourcePublisher</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>sourcePublisher</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>
+								<p>Identifies the name of the publisher of the work being transcribed.</p>
+							</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>xsd:string</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="a11y:sourcePublisher">HarperCollins&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -2895,7 +2971,7 @@
 
 				<section id="code">
 					<h4>code</h4>
-					
+
 					<table class="tabledef">
 						<caption>Definition of the <code>code</code> property</caption>
 						<tr>
@@ -2923,7 +2999,7 @@
 						</tr>
 					</table>
 				</section>
-				
+
 				<section id="graphicType">
 					<h4>graphicType</h4>
 
@@ -3028,38 +3104,6 @@
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="a11y:minimumLines">5&lt;/meta></pre>
-							</td>
-						</tr>
-					</table>
-				</section>
-
-				<section id="sourcePublisher">
-					<h4>sourcePublisher</h4>
-
-					<table class="tabledef">
-						<caption>Definition of the <code>sourcePublisher</code> property</caption>
-						<tr>
-							<th>Name:</th>
-							<td>
-								<code>sourcePublisher</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Description:</th>
-							<td>
-								<p>Identifies the name of the publisher of the work being transcribed.</p>
-							</td>
-						</tr>
-						<tr>
-							<th>Allowed value(s):</th>
-							<td>
-								<code>xsd:string</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Example:</th>
-							<td>
-								<pre>&lt;meta property="a11y:sourcePublisher">HarperCollins&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -3227,6 +3271,10 @@
 						Working Draft</a></h3>
 
 				<ul>
+					<li>26-Sept-2024: Moved <code>a11y:sourcePublisher</code> to the recommended metadata. Refer to <a
+							href="https://github.com/daisy/ebraille/issues/221">issue 221</a>.</li>
+					<li>23-Sept-2024: Added <code>a11y:sourceDate</code> to the recommended metadata. Refer to <a
+							href="https://github.com/daisy/ebraille/issues/200">issue 200</a>.</li>
 					<li>19-Sept-2024: Added <code>dc:date</code> as a required element. Refer to <a
 							href="https://github.com/daisy/ebraille/issues/263">issue 263</a>.</li>
 					<li>29-Aug-2024: Added media type registration for eBraille container.</li>
