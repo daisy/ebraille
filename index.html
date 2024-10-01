@@ -767,6 +767,12 @@
 							[[epub-33]] for common metadata vocabularies. Properties from these vocabularies can be used
 							without having to declare their prefix.</p>
 
+						<div class="note">
+							<p>The prefixes <code>a11y:</code> and <code>dcterms:</code> are reserved prefixes in EPUB
+								3. They do not have to be declared to use the associated required and recommended
+								metadata properties in this specification.</p>
+						</div>
+
 						<p>If properties from other vocabularies are needed, a prefix needs to be declared before they
 							can be used. Prefixes are defined in the <code>prefix</code> attribute on the <a
 								href="#package-elem">root <code>package</code> element</a>. Both the prefix and a URL to
@@ -1124,7 +1130,7 @@
 							<p>A list of recommended braille code terminology will be provided with a future update to
 								this document.</p>
 						</div>
-						
+
 						<p>The REQUIRED <code>a11y:code</code> property identifies the name of the braille code an
 							[=eBraille publication=] has been formatted in conformance with.</p>
 
@@ -1477,14 +1483,12 @@
 							>any other Dublin Core elements</a> [[epub-33]] not listed as required or recommended.</p>
 
 					<p>Metadata from vocabularies with a <a data-cite="epub-33#sec-metadata-reserved-prefixes">reserved
-							prefix</a> MAY also be added. Properties from other vocabularies are also allowed provided a
-							<a data-cite="epub-33#sec-prefix-attr">prefix</a> [[epub-33]] is defined.</p>
+							prefix</a> MAY also be added, including metadata properties in the <a>Accessible Formats
+							Metadata Vocabulary</a> that are not listed as required or recommended in the preceding
+						sections.</p>
 
-					<div class="note">
-						<p>The <a href="#ebrl-meta-vocab">accessibility metadata properties</a> defined in this
-							specification can be used without defining the <code>a11y:</code> prefix, as detailed in <a
-								href="#app-vocab-ref"></a>.</p>
-					</div>
+					<p>Properties from other vocabularies are also allowed provided a <a
+							data-cite="epub-33#sec-prefix-attr">prefix</a> [[epub-33]] is defined.</p>
 				</section>
 
 				<section id="meta-examples">
@@ -2800,7 +2804,7 @@
 
 				<section id="created">
 					<h4>created</h4>
-					
+
 					<table class="tabledef">
 						<caption>Definition of the <code>created</code> property</caption>
 						<tr>
@@ -2827,7 +2831,7 @@
 						</tr>
 					</table>
 				</section>
-				
+
 				<section id="producer">
 					<h4>producer</h4>
 
@@ -2895,7 +2899,7 @@
 
 				<section id="code">
 					<h4>code</h4>
-					
+
 					<table class="tabledef">
 						<caption>Definition of the <code>code</code> property</caption>
 						<tr>
@@ -2923,7 +2927,7 @@
 						</tr>
 					</table>
 				</section>
-				
+
 				<section id="graphicType">
 					<h4>graphicType</h4>
 
