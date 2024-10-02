@@ -109,6 +109,9 @@
 			@font-face {
 				font-family: 'odt2braille8';
 				src: url('js-renderer-prototype/odt2braille8.ttf') format('truetype');
+				ascent-override: 70%;
+				descent-override: 30%;
+				size-adjust: 111.111%;
 			}
 			.css {
 				margin-left: 35px;
@@ -118,7 +121,7 @@
 				display: inline-block !important;
 				font-family: 'odt2braille8', monospace;
 				font-size: 20px;
-				line-height: .9em;
+				line-height: 1em;
 				letter-spacing: 0;
 			}
 			.formatted-braille button {
