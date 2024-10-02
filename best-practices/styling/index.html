@@ -96,6 +96,9 @@
 					"css-values": {
 						aliasOf: "CSS-VALUES-5"
 					},
+					"css-inline": {
+						aliasOf: "css-inline-3"
+					},
 					"css2": {
 						aliasOf: "CSS22-20160412"
 					}
@@ -106,13 +109,22 @@
 		<link rel="stylesheet" href="../../common/css/common.css" />
 		<style type="text/css">
 			/*<![CDATA[*/
+			/* FIXME: these @font-face declarations from js-renderer-prototype/base.css must be
+			   duplicated here in order to make the rendering work. */
 			@font-face {
 				font-family: 'odt2braille8';
 				src: url('js-renderer-prototype/odt2braille8.ttf') format('truetype');
 				ascent-override: 70%;
 				descent-override: 30%;
 				size-adjust: 111.111%;
-			}
+			}/*
+			@font-face {
+				font-family: double-line-spacing;
+				src: url('js-renderer-prototype/odt2braille8.ttf') format('truetype');
+				ascent-override: 70%;
+				descent-override: 130%;
+				size-adjust: 111.111%;
+			}*/
 			.css {
 				margin-left: 35px;
 			}
@@ -935,8 +947,26 @@ h1 {
 			<section id="text-spacing">
 				<h3>Text spacing</h3>
 
-				<div class="issue" title="Need HTML and CSS for increased line spacing"><span/></div>
+				<div class="issue" title="Seeking an example of increased inter-word spacing"><span/></div>
+
+				<div class="issue" title="Seeking an example of increased letter spacing"><span/></div>
+
+				<p>The following example shows how
+					the <a data-cite="css-inline#propdef-line-height"><code>line-height</code></a>
+					property may be used to achieve “double line spacing”, a layout with blank rows
+					between rows of braille, which helps with tracking for those who are not as
+					experienced or have difficulty feeling the braille.</p>
+
 				<aside class="example" title="Paragraph and heading that are double spaced">
+					<pre><code class="html">&lt;h1&gt;⠠⠁⠇⠊⠉⠑ ⠊⠝ ⠠⠺⠕⠝⠙⠑⠗⠇⠁⠝⠙⠀&lt;/h1&gt;
+&lt;p&gt;⠨⠶⠠⠁⠇⠊⠉⠑ ⠊⠝ ⠠⠺⠕⠝⠙⠑⠗⠇⠁⠝⠙⠨⠄ ⠊⠎ ⠁ ⠎⠞⠕⠗⠽ ⠁⠃⠕⠥⠞
+⠁ ⠛⠊⠗⠇ ⠝⠁⠍⠑⠙ ⠠⠁⠇⠊⠉⠑ ⠺⠓⠕ ⠋⠁⠇⠇⠎ ⠙⠕⠺⠝ ⠁ ⠗⠁⠃⠃⠊⠞ ⠓⠕⠇⠑ ⠁⠝⠙
+⠑⠝⠞⠑⠗⠎ ⠁ ⠍⠁⠛⠊⠉⠁⠇ ⠺⠕⠗⠇⠙ ⠋⠥⠇⠇ ⠕⠋ ⠎⠞⠗⠁⠝⠛⠑ ⠁⠝⠙ ⠺⠕⠝⠙⠑⠗⠋⠥⠇
+⠉⠗⠑⠁⠞⠥⠗⠑⠎⠲ ⠠⠁⠎ ⠎⠓⠑ ⠑⠭⠏⠇⠕⠗⠑⠎ ⠞⠓⠊⠎ ⠝⠑⠺ ⠏⠇⠁⠉⠑⠂ ⠎⠓⠑ ⠍⠑⠑⠞⠎
+⠞⠁⠇⠅⠊⠝⠛ ⠁⠝⠊⠍⠁⠇⠎⠂ ⠁ ⠛⠗⠥⠍⠏⠽ ⠟⠥⠑⠑⠝⠂ ⠁⠝⠙ ⠑⠧⠑⠝ ⠁
+⠙⠊⠎⠁⠏⠏⠑⠁⠗⠊⠝⠛ ⠉⠁⠞⠲ ⠠⠁⠇⠊⠉⠑ ⠓⠁⠎ ⠞⠕ ⠥⠎⠑ ⠓⠑⠗ ⠊⠍⠁⠛⠊⠝⠁⠞⠊⠕⠝
+⠁⠝⠙ ⠉⠥⠗⠊⠕⠎⠊⠞⠽ ⠞⠕ ⠋⠊⠝⠙ ⠓⠑⠗ ⠺⠁⠽ ⠞⠓⠗⠕⠥⠛⠓ ⠁⠇⠇ ⠞⠓⠑ ⠉⠗⠁⠵⠽
+⠁⠙⠧⠑⠝⠞⠥⠗⠑⠎ ⠊⠝ ⠠⠺⠕⠝⠙⠑⠗⠇⠁⠝⠙⠲&lt;/p&gt;</code></pre>
 					<p>In order to obtain the following desired layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠇⠊⠉⠑⠀⠊⠝⠀⠠⠺⠕⠝⠙⠑⠗⠇⠁⠝⠙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -959,9 +989,49 @@ h1 {
 ⠋⠊⠝⠙⠀⠓⠑⠗⠀⠺⠁⠽⠀⠞⠓⠗⠕⠥⠛⠓⠀⠁⠇⠇⠀⠞⠓⠑⠀⠉⠗⠁⠵⠽⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠁⠙⠧⠑⠝⠞⠥⠗⠑⠎⠀⠊⠝⠀⠠⠺⠕⠝⠙⠑⠗⠇⠁⠝⠙⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40"><!--
+/* ISSUE: line-height is not the same as leading (https://en.wikipedia.org/wiki/Leading), but we
+          would like it to behave as leading in order to be able to accurately position braille
+          cells (on the dot grid). This becomes increasingly challenging when there are different
+          parts with different line-heights. The only solution I have come up with so far is
+          declaring a dedicated @font-face for double line spacing, with special values for
+          ascent-override and descent-override
+          (https://drafts.csswg.org/css-fonts-5/#font-metrics-override-desc), in order to align
+          the braille cells with the top of line boxes. However, because the eBraille
+          specification says that one "SHOULD NOT use properties that affect the text's font", we
+          can not recommend this solution. It is not clear whether other (simple) solutions exist,
+          or whether certain upcoming CSS features could address the issue (see e.g.
+          https://drafts.csswg.org/css-inline/#text-edges).
+          */
+@font-face {
+    font-family: double-line-spacing;
+    src: url('odt2braille8.ttf') format('truetype');
+    ascent-override: 70%;
+    descent-override: 130%;
+    size-adjust: 111.111%;
+}
+-->h1 {
+   text-align: center;
+   margin-bottom: 1rem;
+}
+p {
+   line-height: 2rem;<!--
+   font-family: double-line-spacing; -->
+}</code></pre>
+					<details class="specification-links">
+						<summary>CSS features used in this example</summary>
+						<ul>
+							<li><a data-cite="css-inline#line-height-property">Line Spacing: the
+							‘line-height’ property</a></li>
+							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+							‘margin-left’ properties</a></li>
+							<li><a data-cite="css-text#text-align-property">Text Alignment: the
+							‘text-align’ shorthand</a></li>
+						</ul>
+					</details>
 				</aside>
-
-				<div class="issue" title="Seeking an example of increased inter-word spacing"><span/></div>
 
 				<!--<div class="issue" title="Need HTML and CSS for increased inter-word spacing"><span/></div>
 
@@ -977,8 +1047,6 @@ h1 {
 ⠁⠝⠙⠀⠊⠝⠉⠗⠑⠁⠎⠊⠝⠛⠀⠉⠕⠝⠋⠊⠙⠑⠝⠉⠑⠀⠀⠀⠊⠝⠀⠞⠓⠑⠀⠀⠀⠀⠼⠛
 ⠎⠥⠉⠉⠑⠎⠎⠀⠕⠋⠀⠍⠽⠀⠥⠝⠙⠑⠗⠞⠁⠅⠊⠝⠛⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
 				</aside>-->
-
-				<div class="issue" title="Seeking an example of increased letter spacing"><span/></div>
 			</section>
 
 			<section id="white-space">
