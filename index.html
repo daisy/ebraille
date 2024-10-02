@@ -1087,6 +1087,49 @@
 						</div>
 					</section>
 
+					<section id="a11y:brailleSystem">
+						<h5>a11y:brailleSystem</h5>
+
+						<div class="ednote">
+							<p>A list of recommended braille code terminology will be provided with a future update to
+								this document.</p>
+						</div>
+
+						<p>The REQUIRED <code>a11y:brailleSystem</code> property identifies the name of the braille
+							system an [=eBraille publication=] has been formatted in conformance with.</p>
+
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>a11y:brailleSystem</code>.</p>
+
+						<aside class="example" title="A single uncontracted braille code">
+							<pre>&lt;meta property="a11y:brailleSystem">
+   UEB
+&lt;/meta></pre>
+						</aside>
+
+						<p>The [=value=] SHOULD include all relevant code-specific information (e.g., "contracted",
+							"uncontracted", "bar by bar" etc.). Specify this information in parentheses after the code
+							name.</p>
+
+						<aside class="example" title="A single uncontracted braille code">
+							<pre>&lt;meta property="a11y:brailleSystem">
+   UEB (Uncontracted)
+&lt;/meta></pre>
+						</aside>
+
+						<p>If only some contractions are used, specify the code twice &#8212; both as contracted and
+							uncontracted. Put whichever code is most common first.</p>
+
+						<aside class="example" title="Use of a contracted and uncontracted braille code">
+							<pre>&lt;meta property="a11y:brailleSystem">
+   UEB (Uncontracted), UEB (Contracted)
+&lt;/meta></pre>
+						</aside>
+
+						<p>For multiple braille codes, codes should be listed in descending order from most to least
+							utilized within that file.</p>
+					</section>
+
 					<section id="a11y:cellType">
 						<h5>a11y:cellType</h5>
 
@@ -1115,49 +1158,6 @@
 						</aside>
 
 						<p>Only one instance of this property is allowed.</p>
-					</section>
-
-					<section id="a11y:code">
-						<h5>a11y:code</h5>
-
-						<div class="ednote">
-							<p>A list of recommended braille code terminology will be provided with a future update to
-								this document.</p>
-						</div>
-
-						<p>The REQUIRED <code>a11y:code</code> property identifies the name of the braille code an
-							[=eBraille publication=] has been formatted in conformance with.</p>
-
-						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
-								<code>property</code> attribute set to <code>a11y:code</code>.</p>
-
-						<aside class="example" title="A single uncontracted braille code">
-							<pre>&lt;meta property="a11y:code">
-   UEB
-&lt;/meta></pre>
-						</aside>
-
-						<p>The [=value=] SHOULD include all relevant code-specific information (e.g., "contracted",
-							"uncontracted", "bar by bar" etc.). Specify this information in parentheses after the code
-							name.</p>
-
-						<aside class="example" title="A single uncontracted braille code">
-							<pre>&lt;meta property="a11y:code">
-   UEB (Uncontracted)
-&lt;/meta></pre>
-						</aside>
-
-						<p>If only some contractions are used, specify the code twice &#8212; both as contracted and
-							uncontracted. Put whichever code is most common first.</p>
-
-						<aside class="example" title="Use of a contracted and uncontracted braille code">
-							<pre>&lt;meta property="a11y:code">
-   UEB (Uncontracted), UEB (Contracted)
-&lt;/meta></pre>
-						</aside>
-
-						<p>For multiple braille codes, codes should be listed in descending order from most to least
-							utilized within that file.</p>
 					</section>
 
 					<section id="a11y:completeTranscription">
@@ -1525,7 +1525,7 @@
          2015-02-24T13:37:19Z
       &lt;/meta>
       &lt;meta property="a11y:cellType">6&lt;/meta>
-      &lt;meta property="a11y:code">UEB&lt;/meta>
+      &lt;meta property="a11y:brailleSystem">UEB&lt;/meta>
       &lt;meta property="a11y:completeTranscription">
          false
       &lt;/meta>
@@ -2939,6 +2939,37 @@
 			<section id="vocab-content">
 				<h3>Content properties</h3>
 
+				<section id="brailleSystem">
+					<h4>brailleSystem</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>brailleSystem</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>brailleSystem</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>Identifies the name of the braille system the publication has been formatted in
+								conformance with.</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>xsd:string</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="a11y:brailleSystem">UEB&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+
 				<section id="cellType">
 					<h4>cellType</h4>
 
@@ -2965,37 +2996,6 @@
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="a11y:cellType">6&lt;/meta></pre>
-							</td>
-						</tr>
-					</table>
-				</section>
-
-				<section id="code">
-					<h4>code</h4>
-
-					<table class="tabledef">
-						<caption>Definition of the <code>code</code> property</caption>
-						<tr>
-							<th>Name:</th>
-							<td>
-								<code>code</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Description:</th>
-							<td>Identifies the name of the braille code the publication has been formatted in
-								conformance with.</td>
-						</tr>
-						<tr>
-							<th>Allowed value(s):</th>
-							<td>
-								<code>xsd:string</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Example:</th>
-							<td>
-								<pre>&lt;meta property="a11y:code">UEB&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -3272,6 +3272,8 @@
 						Working Draft</a></h3>
 
 				<ul>
+					<li>30-Sept-2024: Renamed <code>code</code> to <code>brailleSystem</code>. Refer to <a
+							href="https://github.com/daisy/ebraille/issues/195">issue 195</a>.</li>
 					<li>30-Sept-2024: Renamed <code>a11y:created</code> to <code>a11y:dateTranscribed</code>. Refer to
 							<a href="https://github.com/daisy/ebraille/issues/198">issue 198</a>.</li>
 					<li>26-Sept-2024: Moved <code>a11y:sourcePublisher</code> to the recommended metadata. Refer to <a
