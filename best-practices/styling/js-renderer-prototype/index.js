@@ -33,7 +33,7 @@
         iframe.contentWindow.document.open();
         iframe.contentWindow.document.write(html);
         iframe.contentWindow.document.close();
-	await new Promise(resolve => iframe.onload = resolve);
+        await new Promise(resolve => iframe.onload = resolve);
         let canvas = await html2canvas(iframe.contentWindow.document.body, options);
         if (iframeContainer == null) {
             iframe.style.width = canvas.style.width;
