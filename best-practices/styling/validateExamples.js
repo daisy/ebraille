@@ -39,6 +39,16 @@ function createButton(text, onclick) {
 	return button;
 }
 
+function hasAncestor(element, predicate) {
+	let parent = element.parentElement;
+	if (parent == null)
+		return false;
+	else if (predicate(parent))
+		return true;
+	else
+		return hasAncestor(parent, predicate);
+}
+
 async function validateExamples() {
 	if (DEVELOPER_MODE) {
 		let top; {
@@ -70,11 +80,17 @@ async function validateExamples() {
 					content = content.item(0).textContent;
 					let columns = parseInt(style.item(0).dataset.pageWidth);
 					style = Array.from(style).reduce(
-						(textContent, s) => textContent + s.textContent,
+						(textContent, s) => hasAncestor(s, e => e.classList.contains("alternative"))
+							? textContent
+							: textContent + s.textContent,
 						""
 					);
 					let script = example.getElementsByClassName("javascript");
-					script = script.length > 0 ? script.item(0).textContent : null;
+					script = script.length > 0 ? script.item(0) : null;
+					if (script != null && hasAncestor(script, e => e.classList.contains("alternative")))
+						script = null;
+					if (script != null)
+						script = script.textContent;
 					if (script != null)
 						buttons.push(
 							createButton("Validate without JS", async function() {
@@ -116,6 +132,34 @@ async function validateExamples() {
 							this.parentNode.removeChild(this);
 						})
 					);
+					let alternative = example.getElementsByClassName("alternative");
+					if (alternative.length > 0) {
+						alternative = alternative.item(0);
+						let style = Array.from(alternative.getElementsByClassName("css")).reduce(
+							(textContent, s) => textContent + s.textContent,
+							""
+						);
+						let script = alternative.getElementsByClassName("javascript");
+						script = script.length > 0 ? script.item(0).textContent : null;
+						buttons.push(
+							createButton("Validate with alternative CSS", async function() {
+								this.onclick = null;
+								let formatted = await formatBraille(content, columns, style, script, {
+									debugIframe: iframe => createPopup("iframe").appendChild(iframe),
+									debugCanvas: canvas => createPopup("canvas").appendChild(canvas),
+									debugMatch: canvas => createPopup("match").appendChild(canvas)
+								});
+								formatted = decodeHTML(formatted).replace(/[\u2800\n]+$/, "").replace(/\s+$/, "");
+								let expected = unicodeBraille.replace(/[\u2800\n]+$/, "").replace(/\s+$/, "");
+								if (formatted == expected) {
+									result.style.border = "2px solid green";
+								} else {
+									result.style.border = "2px solid red";
+								}
+								this.parentNode.removeChild(this);
+							})
+						);
+					}
 				}
 				// also add button to copy HTML code to clipboard
 				{
