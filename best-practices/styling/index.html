@@ -70,7 +70,7 @@
 						aliasOf: "css-box-3"
 					},
 					"css-text": {
-						aliasOf: "css3-text"
+						aliasOf: "css-text-4"
 					},
 					"selectors": {
 						aliasOf: "selectors-4"
@@ -1127,14 +1127,38 @@ p {
 				<div class="issue" title="Seeking an example of breaking within words
 				(hyphenation)"><span/></div>
 
-				<div class="issue" title="Need HTML and CSS for choosing the hyphen character"><span/></div>
+				<p>Sometimes it is necessary to break long words across rows, to save space, or
+					simply because a word is too long to fit within one row. The section
+					on <a data-cite="tagging#Text splitting">Text Splitting</a> in [[tagging]]
+					explains how this can be achieved using the Unicode character U+00AD (SOFT
+					HYPHEN) and the
+					[[html]] <a data-cite="html#the-wbr-element"><code>wbr</code></a> element.</p>
+
+				<p>The following example shows how one can specify the symbol or string that must
+					appear before the break of a word, using
+					the <a data-cite="css-text#propdef-hyphenate-character"><code>hyphenate-character</code></a>.</p>
 
 				<aside class="example"
 				       title="Long math equations split between two lines with a continuation indicator (dot 5)">
+					<pre><code class="html">&lt;span class="math"&gt;
+   ⠼⠛⠌⠙⠐⠖⠼⠑⠌⠓⠐⠖⠼⠁⠚⠐⠣⠼⠊⠊⠊⠐⠤⠼⠙⠐⠜⠐⠣⠼⠓⠛⠉⠐⠦&amp;shy;⠼⠙⠐⠜
+&lt;/span&gt;</code></pre>
 					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠼⠛⠌⠙⠐⠖⠼⠑⠌⠓⠐⠖⠼⠁⠚⠐⠣⠼⠊⠊⠊⠐⠤⠼⠙⠐⠜⠐⠣⠼⠓⠛⠉⠐⠦⠐
-⠼⠙⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<pre><code class="formatted-braille">⠼⠛⠌⠙⠐⠖⠼⠑⠌⠓⠐⠖⠼⠁⠚⠐⠣⠼⠊⠊⠊⠐⠤⠼⠙⠐⠜⠐⠣⠼⠓⠛⠉⠐⠦⠐⠀⠀
+⠼⠙⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="38">span.math {
+   hyphenate-character: "⠐";
+}</code></pre>
+					<details class="specification-links">
+						<summary>CSS features used in this example</summary>
+						<ul>
+							<li><a data-cite="css-text#hyphenate-character">Hyphens: the
+							‘hyphenate-character’ property</a></li>
+						</ul>
+					</details>
 				</aside>
+
 				<p>The following example shows how
 					the <a data-cite="css-text-4#text-wrap-style"><code>text-wrap-style</code></a>
 					property [[css-text-4]] property may be used to balance the remaining space on
