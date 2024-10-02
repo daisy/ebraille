@@ -1093,6 +1093,49 @@
 						</div>
 					</section>
 
+					<section id="a11y:brailleSystem">
+						<h5>a11y:brailleSystem</h5>
+
+						<div class="ednote">
+							<p>A list of recommended braille code terminology will be provided with a future update to
+								this document.</p>
+						</div>
+
+						<p>The REQUIRED <code>a11y:brailleSystem</code> property identifies the name of the braille
+							system an [=eBraille publication=] has been formatted in conformance with.</p>
+
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>a11y:brailleSystem</code>.</p>
+
+						<aside class="example" title="A single uncontracted braille code">
+							<pre>&lt;meta property="a11y:brailleSystem">
+   UEB
+&lt;/meta></pre>
+						</aside>
+
+						<p>The [=value=] SHOULD include all relevant code-specific information (e.g., "contracted",
+							"uncontracted", "bar by bar" etc.). Specify this information in parentheses after the code
+							name.</p>
+
+						<aside class="example" title="A single uncontracted braille code">
+							<pre>&lt;meta property="a11y:brailleSystem">
+   UEB (Uncontracted)
+&lt;/meta></pre>
+						</aside>
+
+						<p>If only some contractions are used, specify the code twice &#8212; both as contracted and
+							uncontracted. Put whichever code is most common first.</p>
+
+						<aside class="example" title="Use of a contracted and uncontracted braille code">
+							<pre>&lt;meta property="a11y:brailleSystem">
+   UEB (Uncontracted), UEB (Contracted)
+&lt;/meta></pre>
+						</aside>
+
+						<p>For multiple braille codes, codes should be listed in descending order from most to least
+							utilized within that file.</p>
+					</section>
+
 					<section id="a11y:cellType">
 						<h5>a11y:cellType</h5>
 
@@ -1121,49 +1164,6 @@
 						</aside>
 
 						<p>Only one instance of this property is allowed.</p>
-					</section>
-
-					<section id="a11y:code">
-						<h5>a11y:code</h5>
-
-						<div class="ednote">
-							<p>A list of recommended braille code terminology will be provided with a future update to
-								this document.</p>
-						</div>
-
-						<p>The REQUIRED <code>a11y:code</code> property identifies the name of the braille code an
-							[=eBraille publication=] has been formatted in conformance with.</p>
-
-						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
-								<code>property</code> attribute set to <code>a11y:code</code>.</p>
-
-						<aside class="example" title="A single uncontracted braille code">
-							<pre>&lt;meta property="a11y:code">
-   UEB
-&lt;/meta></pre>
-						</aside>
-
-						<p>The [=value=] SHOULD include all relevant code-specific information (e.g., "contracted",
-							"uncontracted", "bar by bar" etc.). Specify this information in parentheses after the code
-							name.</p>
-
-						<aside class="example" title="A single uncontracted braille code">
-							<pre>&lt;meta property="a11y:code">
-   UEB (Uncontracted)
-&lt;/meta></pre>
-						</aside>
-
-						<p>If only some contractions are used, specify the code twice &#8212; both as contracted and
-							uncontracted. Put whichever code is most common first.</p>
-
-						<aside class="example" title="Use of a contracted and uncontracted braille code">
-							<pre>&lt;meta property="a11y:code">
-   UEB (Uncontracted), UEB (Contracted)
-&lt;/meta></pre>
-						</aside>
-
-						<p>For multiple braille codes, codes should be listed in descending order from most to least
-							utilized within that file.</p>
 					</section>
 
 					<section id="a11y:completeTranscription">
@@ -1195,16 +1195,17 @@
 						<p>Only one instance of this property is allowed.</p>
 					</section>
 
-					<section id="a11y:created">
-						<h5>a11y:created</h5>
+					<section id="a11y:dateTranscribed">
+						<h5>a11y:dateTranscribed</h5>
 
-						<p>The <code>a11y:created</code> property identifies the date the transcription was created.</p>
+						<p>The <code>a11y:dateTranscribed</code> property identifies the date the transcription was
+							created.</p>
 
 						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
-								<code>property</code> attribute set to <code>a11y:created</code>.</p>
+								<code>property</code> attribute set to <code>a11y:dateTranscribed</code>.</p>
 
-						<aside class="example" title="a11y:created with full date">
-							<pre>&lt;meta property="a11y:created">
+						<aside class="example" title="Transcription date with full date">
+							<pre>&lt;meta property="a11y:dateTranscribed">
    2024-10-18
 &lt;/meta></pre>
 						</aside>
@@ -1213,8 +1214,8 @@
 							If the full date is unknown, the month and year (<code>YYYY-MM</code>) or year
 								(<code>YYYY</code>) MAY be specified instead.</p>
 
-						<aside class="example" title="a11y:created with only month and year">
-							<pre>&lt;meta property="a11y:created">
+						<aside class="example" title="Transcription date with only month and year">
+							<pre>&lt;meta property="a11y:dateTranscribed">
    2025-09
 &lt;/meta></pre>
 						</aside>
@@ -1243,39 +1244,6 @@
 							from a producer.</p>
 
 						<p>Repeat the property for each organization or individual.</p>
-					</section>
-
-					<section id="a11y:sourcePublisher">
-						<h5>a11y:sourcePublisher</h5>
-
-						<p>The REQUIRED <code>a11y:sourcePublisher</code> property identifies the name of the publisher
-							of the work being transcribed.</p>
-
-						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
-								<code>property</code> attribute set to <code>a11y:sourcePublisher</code>.</p>
-
-						<aside class="example" title="A printed work with an official publisher">
-							<pre>&lt;meta property="a11y:sourcePublisher">
-   Penguin Random House
-&lt;/meta></pre>
-						</aside>
-
-						<p>If not transcribing a published print work, the name of the organization or individual that
-							produced the original text MAY be used as the publisher.</p>
-
-						<aside class="example" title="A printed work with no official publisher">
-							<pre>&lt;meta property="a11y:sourcePublisher">
-   International Council on English Braille
-&lt;/meta></pre>
-						</aside>
-
-						<p>If the work is an entirely original braille publication, use the value <code>N/A</code>.</p>
-
-						<aside class="example" title="An original braille work">
-							<pre>&lt;meta property="a11y:sourcePublisher">
-   N/A
-&lt;/meta></pre>
-						</aside>
 					</section>
 
 					<section id="a11y:tactileGraphics">
@@ -1474,6 +1442,50 @@
 
 						<p>Repeat the element if the publication is intended for more than one education level.</p>
 					</section>
+
+					<section id="a11y:sourceDate">
+						<h5>a11y:sourceDate</h5>
+
+						<p>The REQUIRED <code>a11y:sourceDate</code> property identifies the date on which the source
+							work was published.</p>
+
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>a11y:sourceDate</code>.</p>
+
+						<p>It is RECOMMENDED that the date string conform to [[iso8601]], particularly the subset
+							expressed in W3C Date and Time Formats [[datetime]].</p>
+
+						<aside class="example" title="Date of a source publication">
+							<pre>&lt;meta property="a11y:sourceDate">
+   2020-03-15
+&lt;/meta></pre>
+						</aside>
+					</section>
+
+					<section id="a11y:sourcePublisher">
+						<h5>a11y:sourcePublisher</h5>
+
+						<p>The REQUIRED <code>a11y:sourcePublisher</code> property identifies the name of the publisher
+							of the work being transcribed.</p>
+
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>a11y:sourcePublisher</code>.</p>
+
+						<aside class="example" title="A printed work with an official publisher">
+							<pre>&lt;meta property="a11y:sourcePublisher">
+   Penguin Random House
+&lt;/meta></pre>
+						</aside>
+
+						<p>If not transcribing a published print work, the name of the organization or individual that
+							produced the original text MAY be used as the publisher.</p>
+
+						<aside class="example" title="A printed work with no official publisher">
+							<pre>&lt;meta property="a11y:sourcePublisher">
+   International Council on English Braille
+&lt;/meta></pre>
+						</aside>
+					</section>
 				</section>
 
 				<section id="meta-additional">
@@ -1519,11 +1531,11 @@
          2015-02-24T13:37:19Z
       &lt;/meta>
       &lt;meta property="a11y:cellType">6&lt;/meta>
-      &lt;meta property="a11y:code">UEB&lt;/meta>
+      &lt;meta property="a11y:brailleSystem">UEB&lt;/meta>
       &lt;meta property="a11y:completeTranscription">
          false
       &lt;/meta>
-      &lt;meta property="a11y:created">2003&lt;/meta>
+      &lt;meta property="a11y:dateTranscribed">2003&lt;/meta>
       &lt;meta property="a11y:producer">
          DAISY Consortium
       &lt;/meta>
@@ -2719,12 +2731,13 @@
 			</section>
 		</section>
 		<section id="ebrl-meta-vocab" class="appendix">
-			<h2>Accessibility Metadata Properties</h2>
+			<h2>Accessible Formats Metadata Properties</h2>
 
 			<section id="app-vocab-about">
 				<h3>About this vocabulary</h3>
 
-				<p>This vocabulary defines metadata properties for describing [=eBraille publications=].</p>
+				<p>This vocabulary defines metadata properties for describing any accessible format, but with specific
+					focus on the needs of [=eBraille publications=].</p>
 
 				<p>Properties are only added to this vocabulary if suitable equivalents are not already defined in
 					existing vocabularies such as Dublin Core and Schema.org.</p>
@@ -2741,7 +2754,7 @@
 						href="#ebrl-package-doc">package documents</a>.</p>
 			</section>
 
-			<section>
+			<section id="app-vocab-field-defs">
 				<h3>Property field definitions</h3>
 
 				<p>The fields in the vocabulary definition tables have the following implicit requirements:</p>
@@ -2804,15 +2817,15 @@
 					</table>
 				</section>
 
-				<section id="created">
-					<h4>created</h4>
+				<section id="dateTranscribed">
+					<h4>dateTranscribed</h4>
 
 					<table class="tabledef">
-						<caption>Definition of the <code>created</code> property</caption>
+						<caption>Definition of the <code>dateTranscribed</code> property</caption>
 						<tr>
 							<th>Name:</th>
 							<td>
-								<code>created</code>
+								<code>dateTranscribed</code>
 							</td>
 						</tr>
 						<tr>
@@ -2828,7 +2841,7 @@
 						<tr>
 							<th>Example:</th>
 							<td>
-								<pre>&lt;meta property="a11y:created">2024-03-15&lt;/meta></pre>
+								<pre>&lt;meta property="a11y:dateTranscribed">2024-03-15&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -2863,10 +2876,105 @@
 						</tr>
 					</table>
 				</section>
+
+				<section id="sourceDate">
+					<h4>sourceDate</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>sourceDate</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>sourceDate</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>
+								<p>Identifies the date on which the source work was published.</p>
+							</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>xsd:string</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="a11y:sourceDate">2010-10-10&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<section id="sourcePublisher">
+					<h4>sourcePublisher</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>sourcePublisher</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>sourcePublisher</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>
+								<p>Identifies the name of the publisher of the work being transcribed.</p>
+							</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>xsd:string</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="a11y:sourcePublisher">HarperCollins&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
 			</section>
 
 			<section id="vocab-content">
 				<h3>Content properties</h3>
+
+				<section id="brailleSystem">
+					<h4>brailleSystem</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>brailleSystem</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>brailleSystem</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>Identifies the name of the braille system the publication has been formatted in
+								conformance with.</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>xsd:string</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="a11y:brailleSystem">UEB&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
 
 				<section id="cellType">
 					<h4>cellType</h4>
@@ -2894,37 +3002,6 @@
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="a11y:cellType">6&lt;/meta></pre>
-							</td>
-						</tr>
-					</table>
-				</section>
-
-				<section id="code">
-					<h4>code</h4>
-
-					<table class="tabledef">
-						<caption>Definition of the <code>code</code> property</caption>
-						<tr>
-							<th>Name:</th>
-							<td>
-								<code>code</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Description:</th>
-							<td>Identifies the name of the braille code the publication has been formatted in
-								conformance with.</td>
-						</tr>
-						<tr>
-							<th>Allowed value(s):</th>
-							<td>
-								<code>xsd:string</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Example:</th>
-							<td>
-								<pre>&lt;meta property="a11y:code">UEB&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -3034,38 +3111,6 @@
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="a11y:minimumLines">5&lt;/meta></pre>
-							</td>
-						</tr>
-					</table>
-				</section>
-
-				<section id="sourcePublisher">
-					<h4>sourcePublisher</h4>
-
-					<table class="tabledef">
-						<caption>Definition of the <code>sourcePublisher</code> property</caption>
-						<tr>
-							<th>Name:</th>
-							<td>
-								<code>sourcePublisher</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Description:</th>
-							<td>
-								<p>Identifies the name of the publisher of the work being transcribed.</p>
-							</td>
-						</tr>
-						<tr>
-							<th>Allowed value(s):</th>
-							<td>
-								<code>xsd:string</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Example:</th>
-							<td>
-								<pre>&lt;meta property="a11y:sourcePublisher">HarperCollins&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -3236,6 +3281,14 @@
 					<li>30-Sept-2024: Added clarifying note that <code>dc:identifier</code> is not for the source work's
 						identifier(s). Refer to <a href="https://github.com/daisy/ebraille/issues/171">issue
 						171</a>.</li>
+					<li>30-Sept-2024: Renamed <code>code</code> to <code>brailleSystem</code>. Refer to <a
+							href="https://github.com/daisy/ebraille/issues/195">issue 195</a>.</li>
+					<li>30-Sept-2024: Renamed <code>a11y:created</code> to <code>a11y:dateTranscribed</code>. Refer to
+							<a href="https://github.com/daisy/ebraille/issues/198">issue 198</a>.</li>
+					<li>26-Sept-2024: Moved <code>a11y:sourcePublisher</code> to the recommended metadata. Refer to <a
+							href="https://github.com/daisy/ebraille/issues/221">issue 221</a>.</li>
+					<li>23-Sept-2024: Added <code>a11y:sourceDate</code> to the recommended metadata. Refer to <a
+							href="https://github.com/daisy/ebraille/issues/200">issue 200</a>.</li>
 					<li>19-Sept-2024: Added <code>dc:date</code> as a required element. Refer to <a
 							href="https://github.com/daisy/ebraille/issues/263">issue 263</a>.</li>
 					<li>29-Aug-2024: Added media type registration for eBraille container.</li>
