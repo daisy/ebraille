@@ -1353,12 +1353,12 @@
 					<section id="dc:source">
 						<h5>dc:source</h5>
 
-						<p>The RECOMMENDED <code>dc:source</code> element provides a reference to the work being
-							transcribed.</p>
+						<p>When an [=eBraille publication=] is a transcription of another work, it is RECOMMENDED that
+							the source be identified in a <code>dc:source</code> element.</p>
 
 						<aside class="example" title="Source publication identified by ISBN">
 							<pre>&lt;dc:source>
-   urn:isbn:0-618-16841-9
+   urn:isbn:9780679783275
 &lt;/dc:source></pre>
 						</aside>
 
@@ -1367,6 +1367,56 @@
 
 						<p>The element MAY include an <a data-cite="epub-33#attrdef-id"><code>id</code></a> attribute
 							[[epub-33]].</p>
+
+						<p>It is also RECOMMENDED to specify the publisher of the source work. Use a
+								<code>dcterms:publisher</code> property with a <code>refines</code> attribute that
+							references the <code>dc:source</code> element.</p>
+
+						<aside class="example" title="A source work from a print publisher">
+							<pre>&lt;dc:source id="src">
+   urn:isbn:9780679783275
+&lt;/dc:source>
+&lt;meta property="dcterms:publisher" refines="#src">
+   Penguin Random House
+&lt;/meta></pre>
+						</aside>
+
+						<p>If not transcribing a published print work, the name of the organization or individual that
+							produced the original text MAY be used as the publisher.</p>
+
+						<aside class="example" title="A source work from an organization">
+							<pre>&lt;meta property="dcterms:publisher" refines="#src">
+   International Council on English Braille
+&lt;/meta></pre>
+						</aside>
+
+						<p>It is also RECOMMENDED to specify the date of publication of the source work. Use a
+								<code>dcterms:date</code> property with a <code>refines</code> attribute that references
+							the <code>dc:source</code> element.</p>
+
+						<p>It is RECOMMENDED that the date string conform to [[iso8601]], particularly the subset
+							expressed in W3C Date and Time Formats [[datetime]].</p>
+
+						<aside class="example" title="Source publication date">
+							<pre>&lt;dc:source id="src">
+   urn:isbn:9780679783275
+&lt;/dc:source>
+&lt;meta property="dcterms:date" refines="#src">
+   2000-10-10
+&lt;/meta></pre>
+						</aside>
+
+						<aside class="example" title="Full source identification with publisher and date">
+							<pre>&lt;dc:source id="src">
+   urn:isbn:9780679783275
+&lt;/dc:source>
+&lt;meta property="dcterms:publisher" refines="#src">
+   Penguin Random House
+&lt;/meta>
+&lt;meta property="dcterms:date" refines="#src">
+   2000-10-10
+&lt;/meta></pre>
+						</aside>
 					</section>
 
 					<section id="dc:subject">
@@ -1435,50 +1485,6 @@
 
 						<p>Repeat the element if the publication is intended for more than one education level.</p>
 					</section>
-
-					<section id="a11y:sourceDate">
-						<h5>a11y:sourceDate</h5>
-
-						<p>The REQUIRED <code>a11y:sourceDate</code> property identifies the date on which the source
-							work was published.</p>
-
-						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
-								<code>property</code> attribute set to <code>a11y:sourceDate</code>.</p>
-
-						<p>It is RECOMMENDED that the date string conform to [[iso8601]], particularly the subset
-							expressed in W3C Date and Time Formats [[datetime]].</p>
-
-						<aside class="example" title="Date of a source publication">
-							<pre>&lt;meta property="a11y:sourceDate">
-   2020-03-15
-&lt;/meta></pre>
-						</aside>
-					</section>
-
-					<section id="a11y:sourcePublisher">
-						<h5>a11y:sourcePublisher</h5>
-
-						<p>The REQUIRED <code>a11y:sourcePublisher</code> property identifies the name of the publisher
-							of the work being transcribed.</p>
-
-						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
-								<code>property</code> attribute set to <code>a11y:sourcePublisher</code>.</p>
-
-						<aside class="example" title="A printed work with an official publisher">
-							<pre>&lt;meta property="a11y:sourcePublisher">
-   Penguin Random House
-&lt;/meta></pre>
-						</aside>
-
-						<p>If not transcribing a published print work, the name of the organization or individual that
-							produced the original text MAY be used as the publisher.</p>
-
-						<aside class="example" title="A printed work with no official publisher">
-							<pre>&lt;meta property="a11y:sourcePublisher">
-   International Council on English Braille
-&lt;/meta></pre>
-						</aside>
-					</section>
 				</section>
 
 				<section id="meta-additional">
@@ -1532,10 +1538,6 @@
       &lt;meta property="a11y:producer">
          DAISY Consortium
       &lt;/meta>
-      &lt;meta property="a11y:sourcePublisher">
-         McDougal Littell, a division of
-         Houghton Mifflin Company
-      &lt;/meta>
       &lt;meta property="a11y:tactileGraphics">false&lt;/meta>
 
       &lt;!-- recommended metadata -->
@@ -1545,7 +1547,14 @@
          This is a sample eBraille publication.
       &lt;/dc:description>
       &lt;dc:rights>All rights reserved.&lt;/dc:rights>
-      &lt;dc:source>urn:isbn:9780618596645&lt;/dc:source>
+      &lt;dc:source id="src">urn:isbn:9780618596645&lt;/dc:source>
+      &lt;meta property="dcterms:publisher" refines="#src">
+         McDougal Littell, a division of
+         Houghton Mifflin Company
+      &lt;/meta>
+      &lt;meta property="dcterms:date" refines="#src">
+         2004
+      &lt;/meta>
       &lt;dc:subject>Social Studies&lt;/dc:subject>
       &lt;meta property="dcterms:educationLevel">
          06 and up
@@ -2869,70 +2878,6 @@
 						</tr>
 					</table>
 				</section>
-
-				<section id="sourceDate">
-					<h4>sourceDate</h4>
-
-					<table class="tabledef">
-						<caption>Definition of the <code>sourceDate</code> property</caption>
-						<tr>
-							<th>Name:</th>
-							<td>
-								<code>sourceDate</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Description:</th>
-							<td>
-								<p>Identifies the date on which the source work was published.</p>
-							</td>
-						</tr>
-						<tr>
-							<th>Allowed value(s):</th>
-							<td>
-								<code>xsd:string</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Example:</th>
-							<td>
-								<pre>&lt;meta property="a11y:sourceDate">2010-10-10&lt;/meta></pre>
-							</td>
-						</tr>
-					</table>
-				</section>
-
-				<section id="sourcePublisher">
-					<h4>sourcePublisher</h4>
-
-					<table class="tabledef">
-						<caption>Definition of the <code>sourcePublisher</code> property</caption>
-						<tr>
-							<th>Name:</th>
-							<td>
-								<code>sourcePublisher</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Description:</th>
-							<td>
-								<p>Identifies the name of the publisher of the work being transcribed.</p>
-							</td>
-						</tr>
-						<tr>
-							<th>Allowed value(s):</th>
-							<td>
-								<code>xsd:string</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Example:</th>
-							<td>
-								<pre>&lt;meta property="a11y:sourcePublisher">HarperCollins&lt;/meta></pre>
-							</td>
-						</tr>
-					</table>
-				</section>
 			</section>
 
 			<section id="vocab-content">
@@ -3271,6 +3216,10 @@
 						Working Draft</a></h3>
 
 				<ul>
+					<li>01-Oct-2024: Replaced the <code>a11y:sourcePublisher</code> and <code>a11y:sourceDate</code>
+						properties with guidance on using the <code>refines</code> attribute to attach
+							<code>dcterms:publisher</code> and <code>dcterms:date</code> to the source. Refer to <a
+							href="https://github.com/daisy/ebraille/issues/280">issue 280</a>.</li>
 					<li>26-Sept-2024: Moved <code>a11y:sourcePublisher</code> to the recommended metadata. Refer to <a
 							href="https://github.com/daisy/ebraille/issues/221">issue 221</a>.</li>
 					<li>23-Sept-2024: Added <code>a11y:sourceDate</code> to the recommended metadata. Refer to <a
