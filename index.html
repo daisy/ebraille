@@ -936,6 +936,12 @@
 &lt;/dc:identifier></pre>
 						</aside>
 
+						<div class="note">
+							<p>The <code>dc:identifier</code> element is not used to identify the source work being
+								transcribed. Use the <a href="#dc:source"><code>dc:source</code> element</a> for the
+								source work's identifier(s).</p>
+						</div>
+
 						<p>The element MAY include an <a data-cite="epub-33#attrdef-id"><code>id</code></a> attribute
 							[[epub-33]].</p>
 
@@ -3272,6 +3278,9 @@
 						Working Draft</a></h3>
 
 				<ul>
+					<li>30-Sept-2024: Added clarifying note that <code>dc:identifier</code> is not for the source work's
+						identifier(s). Refer to <a href="https://github.com/daisy/ebraille/issues/171">issue
+						171</a>.</li>
 					<li>30-Sept-2024: Renamed <code>code</code> to <code>brailleSystem</code>. Refer to <a
 							href="https://github.com/daisy/ebraille/issues/195">issue 195</a>.</li>
 					<li>30-Sept-2024: Renamed <code>a11y:created</code> to <code>a11y:dateTranscribed</code>. Refer to
