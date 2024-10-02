@@ -1189,16 +1189,17 @@
 						<p>Only one instance of this property is allowed.</p>
 					</section>
 
-					<section id="a11y:created">
-						<h5>a11y:created</h5>
+					<section id="a11y:dateTranscribed">
+						<h5>a11y:dateTranscribed</h5>
 
-						<p>The <code>a11y:created</code> property identifies the date the transcription was created.</p>
+						<p>The <code>a11y:dateTranscribed</code> property identifies the date the transcription was
+							created.</p>
 
 						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
-								<code>property</code> attribute set to <code>a11y:created</code>.</p>
+								<code>property</code> attribute set to <code>a11y:dateTranscribed</code>.</p>
 
-						<aside class="example" title="a11y:created with full date">
-							<pre>&lt;meta property="a11y:created">
+						<aside class="example" title="Transcription date with full date">
+							<pre>&lt;meta property="a11y:dateTranscribed">
    2024-10-18
 &lt;/meta></pre>
 						</aside>
@@ -1207,8 +1208,8 @@
 							If the full date is unknown, the month and year (<code>YYYY-MM</code>) or year
 								(<code>YYYY</code>) MAY be specified instead.</p>
 
-						<aside class="example" title="a11y:created with only month and year">
-							<pre>&lt;meta property="a11y:created">
+						<aside class="example" title="Transcription date with only month and year">
+							<pre>&lt;meta property="a11y:dateTranscribed">
    2025-09
 &lt;/meta></pre>
 						</aside>
@@ -1528,7 +1529,7 @@
       &lt;meta property="a11y:completeTranscription">
          false
       &lt;/meta>
-      &lt;meta property="a11y:created">2003&lt;/meta>
+      &lt;meta property="a11y:dateTranscribed">2003&lt;/meta>
       &lt;meta property="a11y:producer">
          DAISY Consortium
       &lt;/meta>
@@ -2810,15 +2811,15 @@
 					</table>
 				</section>
 
-				<section id="created">
-					<h4>created</h4>
+				<section id="dateTranscribed">
+					<h4>dateTranscribed</h4>
 
 					<table class="tabledef">
-						<caption>Definition of the <code>created</code> property</caption>
+						<caption>Definition of the <code>dateTranscribed</code> property</caption>
 						<tr>
 							<th>Name:</th>
 							<td>
-								<code>created</code>
+								<code>dateTranscribed</code>
 							</td>
 						</tr>
 						<tr>
@@ -2834,7 +2835,7 @@
 						<tr>
 							<th>Example:</th>
 							<td>
-								<pre>&lt;meta property="a11y:created">2024-03-15&lt;/meta></pre>
+								<pre>&lt;meta property="a11y:dateTranscribed">2024-03-15&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -3271,6 +3272,8 @@
 						Working Draft</a></h3>
 
 				<ul>
+					<li>30-Sept-2024: Renamed <code>a11y:created</code> to <code>a11y:dateTranscribed</code>. Refer to
+							<a href="https://github.com/daisy/ebraille/issues/198">issue 198</a>.</li>
 					<li>26-Sept-2024: Moved <code>a11y:sourcePublisher</code> to the recommended metadata. Refer to <a
 							href="https://github.com/daisy/ebraille/issues/221">issue 221</a>.</li>
 					<li>23-Sept-2024: Added <code>a11y:sourceDate</code> to the recommended metadata. Refer to <a
