@@ -1820,7 +1820,7 @@
 
 					<p>The restriction also applies to CSS styling that would generate non-braille characters (e.g.,
 						list styling for numbers, letters, and glyphs, and the use of the <code>content</code> property
-						to dynmically add text before or after elements). Reading systems are not expected to convert
+						to dynamically add text before or after elements). Reading systems are not expected to convert
 						such styling to braille characters.</p>
 
 					<div class="note">
@@ -1840,13 +1840,14 @@
 				<section id="xhtml-list-format">
 					<h4>List formatting</h4>
 
-					<p>When authoring [[html]] ordered ([^ol^]) and unordered ([^ul^]) lists, eBraille creators SHOULD
-						embed the list number, letter, or glyph within each item (e.g., by setting
+					<p>When authoring [[html]] ordered ([^ol^]) and unordered ([^ul^]) lists, [=eBraille creators=]
+						SHOULD embed the list number, letter, or glyph within each item (e.g., by setting
 							<code>list-style-type</code> to <code>none</code> to override the default styling). Do not
 						rely on [=reading systems=] to convert the automatic styling of lists to braille characters.</p>
 
-					<p>CSS SHOULD only be used for styling lists when the braille characters to display are supplied
-						(e.g., by setting <code>list-style-type: '⠿⠲ '</code> to insert braille bullets).</p>
+					<p>eBraille creators SHOULD only use CSS for marking list items when the style sheet supplies the
+						braille characters to display (e.g., by setting <code>list-style-type: '⠿⠲ '</code> to insert
+						braille bullets).</p>
 				</section>
 
 				<section id="xhtml-no-support">
