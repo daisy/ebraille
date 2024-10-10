@@ -1507,9 +1507,9 @@
 							>any other Dublin Core elements</a> [[epub-33]] not listed as required or recommended.</p>
 
 					<p>Metadata from vocabularies with a <a data-cite="epub-33#sec-metadata-reserved-prefixes">reserved
-							prefix</a> MAY also be added, including metadata properties in the <a>Accessible Formats
-							Metadata Vocabulary</a> that are not listed as required or recommended in the preceding
-						sections.</p>
+							prefix</a> MAY also be added, including metadata properties in the <a
+							href="#ebrl-meta-vocab">Accessible Formats Metadata Vocabulary</a> that are not listed as
+						required or recommended in the preceding sections.</p>
 
 					<p>Properties from other vocabularies are also allowed provided a <a
 							data-cite="epub-33#sec-prefix-attr">prefix</a> [[epub-33]] is defined.</p>
@@ -1782,7 +1782,7 @@
 				<section id="xhtml-char-encoding">
 					<h4>Character encoding</h4>
 
-					<p>[=eBraille content documents=] are required to provide their text content in 6- or 8-dot braille
+					<p>[=eBraille content documents=] are expected to provide their text content in 6- or 8-dot braille
 						characters. eBraille is not meant as a delivery format for ASCII braille or similar mappings to
 						braille cells.</p>
 
@@ -1818,7 +1818,16 @@
 						<li>the [^abbr/title^] attribute [[html]] for expansions of abbreviations.</li>
 					</ul>
 
-					<p>This restriction does not apply to attributes that carry meta information (e.g., the
+					<p>The restriction also applies to CSS styling that would generate non-braille characters (e.g.,
+						list styling for numbers, letters, and glyphs, and the use of the <code>content</code> property
+						to dynamically add text before or after elements). Reading systems are not expected to convert
+						such styling to braille characters.</p>
+
+					<div class="note">
+						<p>This restriction does not prevent the use of CSS to insert braille characters.</p>
+					</div>
+
+					<p>The restriction does not apply to attributes that carry meta information (e.g., the
 						[^global/class^] and [^a/href^] attributes [[html]], as well as the [^html-global/title^]
 						attribute in <a href="#page-list">the page list</a>).</p>
 
@@ -1826,6 +1835,19 @@
 						<p>For some technologies that can be embedded in eBraille content documents, such as [[mathml]],
 							it will not be possible to restrict the text to braille characters.</p>
 					</div>
+				</section>
+
+				<section id="xhtml-list-format">
+					<h4>List formatting</h4>
+
+					<p>When authoring [[html]] ordered ([^ol^]) and unordered ([^ul^]) lists, [=eBraille creators=]
+						SHOULD embed the list number, letter, or glyph within each item (e.g., by setting
+							<code>list-style-type</code> to <code>none</code> to override the default styling). Do not
+						rely on [=reading systems=] to convert the automatic styling of lists to braille characters.</p>
+
+					<p>eBraille creators SHOULD only use CSS for marking list items when the style sheet supplies the
+						braille characters to display (e.g., by setting <code>list-style-type: '⠿⠲ '</code> to insert
+						braille bullets).</p>
 				</section>
 
 				<section id="xhtml-no-support">
@@ -3227,6 +3249,9 @@
 						Working Draft</a></h3>
 
 				<ul>
+					<li>07-Oct-2024: Added clarifications that CSS should not be used to insert non-braille characters
+						and that list numbering should be embedded. Refer to <a
+							href="https://github.com/daisy/ebraille/issues/273">issue 273</a>.</li>
 					<li>02-Oct-2024: Replaced the <code>a11y:sourcePublisher</code> and <code>a11y:sourceDate</code>
 						properties with guidance on using the <code>refines</code> attribute to attach
 							<code>dcterms:publisher</code> and <code>dcterms:date</code> to the source. Refer to <a
