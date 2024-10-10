@@ -1,13 +1,16 @@
 @font-face {
     font-family: 'odt2braille8';
     src: url('odt2braille8.ttf') format('truetype');
+    ascent-override: 70%;
+    descent-override: 30%;
+    size-adjust: 111.111%;
 }
 :root {
     font-size: 18px; /* this value is overridden in index.js */
 }
 * {
     font-family: 'odt2braille8', monospace;
-    font-size: 1.11111rem;
+    font-size: 1rem;
     font-weight: normal;
     line-height: 1rem;
     letter-spacing: 0;

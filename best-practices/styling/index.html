@@ -70,7 +70,7 @@
 						aliasOf: "css-box-3"
 					},
 					"css-text": {
-						aliasOf: "css3-text"
+						aliasOf: "css-text-4"
 					},
 					"selectors": {
 						aliasOf: "selectors-4"
@@ -96,6 +96,9 @@
 					"css-values": {
 						aliasOf: "CSS-VALUES-5"
 					},
+					"css-inline": {
+						aliasOf: "css-inline-3"
+					},
 					"css2": {
 						aliasOf: "CSS22-20160412"
 					}
@@ -106,10 +109,22 @@
 		<link rel="stylesheet" href="../../common/css/common.css" />
 		<style type="text/css">
 			/*<![CDATA[*/
+			/* FIXME: these @font-face declarations from js-renderer-prototype/base.css must be
+			   duplicated here in order to make the rendering work. */
 			@font-face {
 				font-family: 'odt2braille8';
 				src: url('js-renderer-prototype/odt2braille8.ttf') format('truetype');
-			}
+				ascent-override: 70%;
+				descent-override: 30%;
+				size-adjust: 111.111%;
+			}/*
+			@font-face {
+				font-family: double-line-spacing;
+				src: url('js-renderer-prototype/odt2braille8.ttf') format('truetype');
+				ascent-override: 70%;
+				descent-override: 130%;
+				size-adjust: 111.111%;
+			}*/
 			.css {
 				margin-left: 35px;
 			}
@@ -118,7 +133,7 @@
 				display: inline-block !important;
 				font-family: 'odt2braille8', monospace;
 				font-size: 20px;
-				line-height: .9em;
+				line-height: 1em;
 				letter-spacing: 0;
 			}
 			.formatted-braille button {
@@ -278,7 +293,7 @@
    ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛
    ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛ ⠛⠛⠛⠛
 &lt;/div&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code only
+					<p>In order to obtain the following layout for the above HTML code only
 						for devices that are wider than 30 cells,</p>
 					<pre><code class="formatted-braille">⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠀⠀⠀⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠀
 ⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠂⠂⠂⠂⠀⠀⠀⠀⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠛⠛⠛⠛⠀⠀
@@ -331,24 +346,24 @@
 					that you don't get two blank lines because two adjacent elements both required a
 					blank line in the same location.</p>
 
-				<aside class="example" title="Two blocked paragraphs with a blank in between">
+				<aside class="example" title="Two left-aligned paragraphs with a blank in between">
 					<p>
 						Two <a
-						data-cite="tagging#example-a-blocked-paragraph-that-is-flush-with-the-left-margin"
-						>“blocked” paragraphs</a> [[tagging]] (i.e. paragraphs without an
-						indentation) are separated from each other using a blank line.
+						data-cite="tagging#example-a-left-aligned-paragraph-that-is-flush-with-the-left-margin"
+						>“left-aligned” paragraphs</a> [[tagging]] are separated from each other using
+						a blank line.
 					</p>
-					<pre><code class="html">&lt;p class="blocked"&gt;⠠⠥⠏⠕⠝ ⠓⠑⠁⠗⠊⠝⠛ ⠞⠓⠊⠎ ⠓⠑ ⠁⠏⠏⠑⠁⠗⠑⠙
+					<pre><code class="html">&lt;p class="left-aligned"&gt;⠠⠥⠏⠕⠝ ⠓⠑⠁⠗⠊⠝⠛ ⠞⠓⠊⠎ ⠓⠑ ⠁⠏⠏⠑⠁⠗⠑⠙
 ⠎⠁⠞⠊⠎⠋⠊⠑⠙ ⠁⠝⠙ ⠉⠕⠝⠎⠑⠝⠞⠑⠙ ⠞⠕ ⠉⠕⠍⠑ ⠕⠝
 ⠃⠕⠁⠗⠙⠲ ⠠⠛⠕⠕⠙ ⠠⠛⠕⠙⠖ ⠠⠍⠁⠗⠛⠁⠗⠑⠞⠂ ⠊⠋ ⠽⠕⠥ ⠓⠁⠙
 ⠎⠑⠑⠝ ⠞⠓⠑ ⠍⠁⠝ ⠺⠓⠕ ⠞⠓⠥⠎ ⠉⠁⠏⠊⠞⠁⠇⠁⠞⠑⠙ ⠋⠕⠗
 ⠓⠊⠎ ⠎⠁⠋⠑⠞⠽⠂ ⠽⠕⠥⠗ ⠎⠥⠗⠏⠗⠊⠎⠑ ⠺⠕⠥⠇⠙ ⠓⠁⠧⠑
 ⠃⠑⠑⠝ ⠃⠕⠥⠝⠙⠇⠑⠎⠎⠲&lt;/p&gt;
-&lt;p class="blocked"&gt;⠠⠞⠺⠕ ⠙⠁⠽⠎ ⠏⠁⠎⠎⠑⠙ ⠊⠝ ⠞⠓⠊⠎ ⠍⠁⠝⠝⠑⠗ ⠃⠑⠋⠕⠗⠑
+&lt;p class="left-aligned"&gt;⠠⠞⠺⠕ ⠙⠁⠽⠎ ⠏⠁⠎⠎⠑⠙ ⠊⠝ ⠞⠓⠊⠎ ⠍⠁⠝⠝⠑⠗ ⠃⠑⠋⠕⠗⠑
 ⠓⠑ ⠺⠁⠎ ⠁⠃⠇⠑ ⠞⠕ ⠎⠏⠑⠁⠅ ⠁⠝⠙ ⠠⠊ ⠕⠋⠞⠑⠝ ⠋⠑⠁⠗⠑⠙
 ⠞⠓⠁⠞ ⠓⠊⠎ ⠎⠥⠋⠋⠑⠗⠊⠝⠛⠎ ⠓⠁⠙ ⠙⠑⠏⠗⠊⠧⠑⠙ ⠓⠊⠍ ⠕⠋
 ⠥⠝⠙⠑⠗⠎⠞⠁⠝⠙⠊⠝⠛⠲&lt;/p&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p>In order to obtain the following layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠠⠥⠏⠕⠝⠀⠓⠑⠁⠗⠊⠝⠛⠀⠞⠓⠊⠎⠀⠓⠑⠀⠁⠏⠏⠑⠁⠗⠑⠙⠀⠎⠁⠞⠊⠎⠋⠊⠑⠙
 ⠁⠝⠙⠀⠉⠕⠝⠎⠑⠝⠞⠑⠙⠀⠞⠕⠀⠉⠕⠍⠑⠀⠕⠝⠀⠃⠕⠁⠗⠙⠲⠀⠠⠛⠕⠕⠙⠀⠀⠀
 ⠠⠛⠕⠙⠖⠀⠠⠍⠁⠗⠛⠁⠗⠑⠞⠂⠀⠊⠋⠀⠽⠕⠥⠀⠓⠁⠙⠀⠎⠑⠑⠝⠀⠞⠓⠑⠀⠍⠁⠝
@@ -360,7 +375,7 @@
 ⠞⠓⠁⠞⠀⠓⠊⠎⠀⠎⠥⠋⠋⠑⠗⠊⠝⠛⠎⠀⠓⠁⠙⠀⠙⠑⠏⠗⠊⠧⠑⠙⠀⠓⠊⠍⠀⠕⠋⠀
 ⠥⠝⠙⠑⠗⠎⠞⠁⠝⠙⠊⠝⠛⠲</code></pre>
 					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="40">p + p.blocked {
+					<pre><code class="css" data-page-width="40">p + p.left-aligned {
    margin-top: 1rem;
 }</code></pre>
 					<details class="specification-links">
@@ -381,7 +396,7 @@
 &lt;h1&gt;⠠⠁ ⠉⠑⠝⠞⠑⠗⠑⠙ ⠓⠑⠁⠙⠊⠝⠛&lt;/h1&gt;
 &lt;h2&gt;⠠⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠑⠁⠙⠊⠝⠛&lt;/h2&gt;
 &lt;p&gt;⠠⠞⠓⠑ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠕⠺⠊⠝⠛ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠑⠁⠙⠊⠝⠛&lt;/p&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p>In order to obtain the following layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠊⠝⠛⠀⠁⠀⠉⠑⠝⠞⠑⠗⠑⠙⠀⠀⠀⠀⠀⠀⠀⠀
 ⠓⠑⠁⠙⠊⠝⠛⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -430,7 +445,7 @@ h1, h2 {
 					<pre><code class="html">&lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠫⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬⠲&lt;/p&gt;
 &lt;h3&gt;⠠⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬ ⠐⠣⠓⠼⠉⠐⠜&lt;/h3&gt;
 &lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠪⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬⠲&lt;/p&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p>In order to obtain the following layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠑⠇⠇⠤⠼⠛⠀⠓⠂⠙⠬⠀⠐⠣⠓⠼⠉⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -453,7 +468,7 @@ h3 {
 &lt;h2&gt;⠠⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠂⠙⠬ ⠐⠣⠓⠼⠃⠐⠜&lt;/h2&gt;
 &lt;h3&gt;⠠⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬ ⠐⠣⠓⠼⠉⠐⠜&lt;/h3&gt;
 &lt;p&gt;⠠⠮ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠪⠬ ⠁ ⠉⠑⠇⠇⠤⠼⠛ ⠓⠂⠙⠬⠲&lt;/p&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p>In order to obtain the following layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠀⠀⠠⠮⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠬⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠲⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠠⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠂⠙⠬⠀⠐⠣⠓⠼⠃⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -487,8 +502,8 @@ h2 + * {
 					properties may be used to mark the start of paragraphs with an indent of two cells, or to
 					mark the start of list items with a “hanging” indent.</p>
 
-				<aside class="example" title="A blocked paragraph preceding an indented one">
-					<pre><code class="html">&lt;p class="blocked"&gt;⠠⠥⠏⠕⠝  ⠓⠑⠁⠗⠊⠝⠛ ⠞⠓⠊⠎ ⠓⠑ ⠁⠏⠏⠑⠁⠗⠑⠙
+				<aside class="example" title="A left-aligned paragraph preceding an indented one">
+					<pre><code class="html">&lt;p class="left-aligned"&gt;⠠⠥⠏⠕⠝  ⠓⠑⠁⠗⠊⠝⠛ ⠞⠓⠊⠎ ⠓⠑ ⠁⠏⠏⠑⠁⠗⠑⠙
 ⠎⠁⠞⠊⠎⠋⠊⠑⠙ ⠁⠝⠙ ⠉⠕⠝⠎⠑⠝⠞⠑⠙ ⠞⠕ ⠉⠕⠍⠑ ⠕⠝
 ⠃⠕⠁⠗⠙⠲ ⠠⠛⠕⠕⠙ ⠠⠛⠕⠙⠖ ⠠⠍⠁⠗⠛⠁⠗⠑⠞⠂ ⠊⠋ ⠽⠕⠥ ⠓⠁⠙
 ⠎⠑⠑⠝ ⠞⠓⠑ ⠍⠁⠝ ⠺⠓⠕ ⠞⠓⠥⠎ ⠉⠁⠏⠊⠞⠁⠇⠁⠞⠑⠙ ⠋⠕⠗
@@ -498,7 +513,7 @@ h2 + * {
 ⠓⠑ ⠺⠁⠎ ⠁⠃⠇⠑ ⠞⠕ ⠎⠏⠑⠁⠅ ⠁⠝⠙ ⠠⠊ ⠕⠋⠞⠑⠝ ⠋⠑⠁⠗⠑⠙
 ⠞⠓⠁⠞ ⠓⠊⠎ ⠎⠥⠋⠋⠑⠗⠊⠝⠛⠎ ⠓⠁⠙ ⠙⠑⠏⠗⠊⠧⠑⠙ ⠓⠊⠍ ⠕⠋
 ⠥⠝⠙⠑⠗⠎⠞⠁⠝⠙⠊⠝⠛⠲&lt;/p&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p>In order to obtain the following layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠠⠥⠏⠕⠝⠀⠓⠑⠁⠗⠊⠝⠛⠀⠞⠓⠊⠎⠀⠓⠑⠀⠁⠏⠏⠑⠁⠗⠑⠙⠀⠎⠁⠞⠊⠎⠋⠊⠑⠙
 ⠁⠝⠙⠀⠉⠕⠝⠎⠑⠝⠞⠑⠙⠀⠞⠕⠀⠉⠕⠍⠑⠀⠕⠝⠀⠃⠕⠁⠗⠙⠲⠀⠠⠛⠕⠕⠙⠀⠀⠀
 ⠠⠛⠕⠙⠖⠀⠠⠍⠁⠗⠛⠁⠗⠑⠞⠂⠀⠊⠋⠀⠽⠕⠥⠀⠓⠁⠙⠀⠎⠑⠑⠝⠀⠞⠓⠑⠀⠍⠁⠝
@@ -512,7 +527,7 @@ h2 + * {
 					<pre><code class="css" data-page-width="40">p {
    text-indent: 2ch;
 }
-p.blocked {
+p.left-aligned {
    text-indent: 0;
 }</code></pre>
 					<details class="specification-links">
@@ -535,10 +550,10 @@ p.blocked {
 					<pre><code class="html"><pre><code class="html">&lt;p&gt;⠠⠘⠥ ⠓⠑⠜⠬ ⠹ ⠓⠑ ⠁⠏⠏⠑⠜⠫ ⠎⠁⠞⠊⠎⠋⠊⠫ ⠯ ⠒⠎⠢⠞⠫ ⠞⠕ ⠉⠕⠍⠑
 ⠕⠝ ⠃⠕⠜⠙⠲ ⠠⠛⠙ ⠠⠛⠕⠙⠖ ⠠⠍⠜⠛⠜⠑⠞⠂ ⠊⠋ ⠽ ⠸⠓ ⠎⠑⠢ ⠮ ⠍⠁⠝ ⠱⠕ ⠹⠥⠎
 ⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫ ⠿ ⠦ ⠎⠁⠋⠑⠞⠽⠂ ⠽⠗ ⠎⠥⠗⠏⠗⠊⠎⠑ ⠺⠙ ⠓ ⠃⠑⠢ ⠃⠨⠙⠨⠎⠲&lt;/p&gt;
-&lt;p class="blocked"&gt;⠠⠞⠺⠕ ⠐⠙⠎ ⠏⠁⠎⠎⠫ ⠔ ⠹ ⠍⠁⠝⠝⠻ ⠆⠋ ⠓⠑
+&lt;p class="left-aligned"&gt;⠠⠞⠺⠕ ⠐⠙⠎ ⠏⠁⠎⠎⠫ ⠔ ⠹ ⠍⠁⠝⠝⠻ ⠆⠋ ⠓⠑
 ⠴ ⠁⠃⠇⠑ ⠞⠕ ⠎⠏⠂⠅⠂ ⠯ ⠠⠊ ⠷⠞⠢ ⠋⠑⠜⠫ ⠞ ⠦ ⠎⠥⠖⠻⠬⠎ ⠸⠓ ⠙⠑⠏⠗⠊⠧⠫ ⠓⠍
 ⠷ ⠐⠥⠌⠯⠬⠲&lt;/p&gt;</code></pre></code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p>In order to obtain the following layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠀⠀⠠⠘⠥⠀⠓⠑⠜⠬⠀⠹⠀⠓⠑⠀⠁⠏⠏⠑⠜⠫⠀⠎⠁⠞⠊⠎⠋⠊⠫⠀⠯⠀⠒⠎⠢⠞⠫⠀
 ⠞⠕⠀⠉⠕⠍⠑⠀⠕⠝⠀⠃⠕⠜⠙⠲⠀⠠⠛⠙⠀⠠⠛⠕⠙⠖⠀⠠⠍⠜⠛⠜⠑⠞⠂⠀⠊⠋⠀⠽
 ⠸⠓⠀⠎⠑⠢⠀⠮⠀⠍⠁⠝⠀⠱⠕⠀⠹⠥⠎⠀⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫⠀⠿⠀⠦⠀⠀⠀⠀⠀⠀
@@ -551,10 +566,10 @@ p.blocked {
 					<pre><code class="css" data-page-width="40">p {
    text-indent: 2ch;
 }
-p.blocked {
+p.left-aligned {
    text-indent: 0;
 }
-p + p.blocked {
+p + p.left-aligned {
    margin-top: 1rem;
 }
 </code></pre>
@@ -571,7 +586,7 @@ p + p.blocked {
 ⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫ ⠿ ⠦ ⠎⠁⠋⠑⠞⠽⠂ ⠽⠗ ⠎⠥⠗⠏⠗⠊⠎⠑ ⠺⠙ ⠓ ⠃⠑⠢ ⠃⠨⠙⠨⠎⠲&lt;/p&gt;
 &lt;p&gt;⠠⠞⠺⠕ ⠐⠙⠎ ⠏⠁⠎⠎⠫ ⠔ ⠹ ⠍⠁⠝⠝⠻ ⠆⠋ ⠓⠑ ⠴ ⠁⠃⠇⠑ ⠞⠕ ⠎⠏⠂⠅⠂
 ⠯ ⠠⠊ ⠷⠞⠢ ⠋⠑⠜⠫ ⠞ ⠦ ⠎⠥⠖⠻⠬⠎ ⠸⠓ ⠙⠑⠏⠗⠊⠧⠫ ⠓⠍ ⠷ ⠐⠥⠌⠯⠬⠲&lt;/p&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p>In order to obtain the following layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠀⠀⠠⠘⠥⠀⠓⠑⠜⠬⠀⠹⠀⠓⠑⠀⠁⠏⠏⠑⠜⠫⠀⠎⠁⠞⠊⠎⠋⠊⠫⠀⠯⠀⠒⠎⠢⠞⠫⠀
 ⠞⠕⠀⠉⠕⠍⠑⠀⠕⠝⠀⠃⠕⠜⠙⠲⠀⠠⠛⠙⠀⠠⠛⠕⠙⠖⠀⠠⠍⠜⠛⠜⠑⠞⠂⠀⠊⠋⠀⠽
 ⠸⠓⠀⠎⠑⠢⠀⠮⠀⠍⠁⠝⠀⠱⠕⠀⠹⠥⠎⠀⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫⠀⠿⠀⠦⠀⠀⠀⠀⠀⠀
@@ -597,7 +612,7 @@ p + p.blocked {
   &lt;li&gt;⠡⠑⠑⠎⠑&lt;/li&gt;
   &lt;li&gt;⠞⠕⠍⠁⠞⠕⠑⠎&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p>In order to obtain the following layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠀⠀⠠⠩⠕⠏⠏⠬⠀⠇⠊⠌⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠉⠜⠗⠕⠞⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -641,7 +656,7 @@ li {
     &lt;/ol&gt;
   &lt;/li&gt;
 &lt;/ol&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p>In order to obtain the following layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠼⠁⠲⠀⠠⠺⠓⠊⠉⠓⠀⠏⠇⠁⠝⠑⠞⠀⠊⠎⠀⠉⠇⠕⠎⠑⠎⠞⠀⠞⠕⠀⠞⠓⠑⠀⠎⠥⠝⠦
 ⠀⠀⠁⠲⠀⠠⠧⠑⠝⠥⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠃⠲⠀⠠⠍⠑⠗⠉⠥⠗⠽⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -695,7 +710,7 @@ li {
     &lt;/ol&gt;
   &lt;/li&gt;
 &lt;/ol&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p>In order to obtain the following layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠼⠁⠲⠀⠠⠺⠓⠊⠉⠓⠀⠏⠇⠁⠝⠑⠞⠀⠊⠎
 ⠀⠀⠀⠀⠉⠇⠕⠑⠎⠞⠀⠞⠕⠀⠞⠓⠑⠀⠀⠀
 ⠀⠀⠀⠀⠎⠥⠝⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -757,13 +772,13 @@ ol ol li {
 					<pre><code class="html">&lt;p&gt;⠠⠞⠓⠑ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠑⠙⠊⠝⠛ ⠁ ⠉⠑⠝⠞⠑⠗⠑⠙ ⠓⠑⠁⠙⠊⠝⠛⠲&lt;/p&gt;
 &lt;h1&gt;⠠⠁ ⠉⠑⠝⠞⠑⠗⠑⠙ ⠓⠑⠁⠙⠊⠝⠛&lt;/h1&gt;
 &lt;p&gt;⠠⠞⠓⠑ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠕⠺⠊⠝⠛ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠑⠁⠙⠊⠝⠛&lt;/p&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p>In order to obtain the following layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠊⠝⠛⠀⠁⠀⠉⠑⠝⠞⠑⠗⠑⠙⠀⠀⠀⠀⠀⠀⠀⠀
 ⠓⠑⠁⠙⠊⠝⠛⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠑⠝⠞⠑⠗⠑⠙⠀⠓⠑⠁⠙⠊⠝⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠕⠺⠊⠝⠛⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠑⠁⠙⠊⠝⠛</code></pre>
+⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠕⠺⠊⠝⠛⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠑⠁⠙⠊⠝⠛⠀</code></pre>
 					<p>the following CSS style sheet may be applied:</p>
 					<!--<p class="ednote">
 						To properly center the <code>h1</code>, the right margin may or may not need
@@ -791,7 +806,53 @@ h1 {
 							‘text-indent’ property</a></li>
 						</ul>
 					</details>
-				</aside>
+				</aside><!--
+
+				This is another example of a centered heading, that does not really add anything new:
+
+				<aside class="example" title="Centered heading with a title and subtitle on different lines">
+					<div class="issue" data-number="231"
+					     title="Missing best practices for correctly tagging this example">
+						<p>Missing an example in [[tagging]] of a centered heading with a title and
+						subtitle on different lines.</p>
+					</div>
+					<pre><code class="html">&lt;p&gt;⠠⠞⠓⠑ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠑⠙⠊⠝⠛ ⠁ ⠉⠑⠝⠞⠑⠗⠑⠙ ⠓⠑⠁⠙⠊⠝⠛⠲&lt;/p&gt;
+&lt;header&gt;
+  &lt;h1&gt;⠠⠞⠊⠞⠇⠑⠒&lt;/h1&gt;
+  &lt;p&gt;⠎⠥⠃⠞⠊⠞⠇⠑&lt;/p&gt;
+&lt;/header&gt;
+&lt;p&gt;⠠⠞⠓⠑ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠕⠺⠊⠝⠛ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠑⠁⠙⠊⠝⠛&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠊⠝⠛⠀⠁⠀⠉⠑⠝⠞⠑⠗⠑⠙⠀⠓⠑⠁⠙⠊⠝⠛⠲
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠞⠊⠞⠇⠑⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠎⠥⠃⠞⠊⠞⠇⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠕⠺⠊⠝⠛⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠑⠁⠙⠊⠝⠛⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<!- -<p class="ednote">
+						It is not possible to properly center the <code>header</code> in all
+						situations. In this case the first line is not aligned to the grid, but the
+						second is. By increasing the right margin with <code>1ch</code>, the first
+						line becomes aligned with the grid, but the second becomes misaligned.
+					</p>- ->
+					<pre><code class="css" data-page-width="41">p {
+   text-indent: 2ch;
+}
+header:has(> h1) {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 3ch;
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+}
+header > h1,
+header > p {
+  margin: 0;
+  text-indent: inherit;
+  text-align: inherit;
+}</code></pre>
+				</aside>-->
 
 				<p>The following example shows how content may be spatially arranged using the flexible box
 					layout module [[css-flexbox]].
@@ -804,47 +865,32 @@ h1 {
 				</p>
 
 				<aside class="example" title="Table of contents">
-					<div class="issue" data-number="140"
-					     title="Enhance “Table of contents“ example in Tagging Best Practices">
-						<p>Using the flexible box layout module, tables of contents can be correctly
-						formatted, including runovers
-						and <a href="#example-table-of-contents-with-guide-dots">guide dots</a>. It
-						however comes at the price of a slightly increased complexity of the
-						markup. Notice the wrapping of items in
-						<code>span</code> tags, and compare this with the simpler markup of the “<a
-						data-cite="tagging#example-a-table-of-contents-with-links">A table
-						of contents with links</a>” example from [[tagging]]. A possible solution
-						would be to insert the <code>span</code> tags through scripting, if scripting
-						would be allowed.</p>
-					</div>
-					<pre><code class="html">&lt;ol class="toc"&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝&lt;/span&gt; &lt;a href="#page-5"&gt;⠼⠑&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠏⠗⠑⠤⠠⠋⠇⠊⠛⠓⠞&lt;/span&gt; &lt;a href="#page-6"&gt;⠼⠋&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠋⠗⠁⠝⠅⠑⠝⠎⠞⠑⠊⠝&lt;/span&gt; &lt;a href="#page-7"&gt;⠼⠛&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝&lt;/span&gt; &lt;a href="#page-8"&gt;⠼⠓&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠏⠗⠑⠋⠁⠉⠑&lt;/span&gt; &lt;a href="#page-14"&gt;⠼⠁⠙&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠊&lt;/span&gt; &lt;a href="#page-17"&gt;⠼⠁⠛&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠊&lt;/span&gt; &lt;a href="#page-20"&gt;⠼⠃⠚&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠊⠊&lt;/span&gt; &lt;a href="#page-24"&gt;⠼⠃⠙&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠧&lt;/span&gt; &lt;a href="#page-25"&gt;⠼⠃⠑&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠉⠓⠁⠏⠞⠑⠗ ⠠⠊&lt;/span&gt; &lt;a href="#page-32"&gt;⠼⠉⠃&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠉⠓⠁⠏⠞⠑⠗ ⠠⠠⠊⠊&lt;/span&gt; &lt;a href="#page-38"&gt;⠼⠉⠓&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠑
-⠠⠏⠗⠑⠤⠠⠋⠇⠊⠛⠓⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠋
-⠠⠋⠗⠁⠝⠅⠑⠝⠎⠞⠑⠊⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠛
-⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠓
-⠠⠠⠏⠗⠑⠋⠁⠉⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠙
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠛
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠚
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠙
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠑
-⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠃
-⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠠⠊⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠓</code></pre>
+					<a class="tagging-link"
+					   href="../tagging/index.html#example-a-table-of-contents-with-links"></a>
+					<p>Notice the <code>span</code> elements around the chapter names: these are needed to
+						correctly style the table. Using the flexible box layout module, tables of contents
+						can be correctly formatted, including runovers and guide dots. It however comes at
+						the price of a slightly increased complexity of the markup.
+						<!-- Note that the spans would not be needed if scripting would be allowed,
+							however we want to avoid scripting if possible, hence the need for the
+							additional markup. -->
+					</p>
+					<p>In order to obtain the following layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠞⠁⠃⠇⠑⠀⠕⠋⠀⠠⠉⠕⠝⠞⠑⠝⠞⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠑
+⠠⠏⠗⠑⠤⠠⠋⠇⠊⠛⠓⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠋
+⠠⠋⠗⠁⠝⠅⠑⠝⠎⠞⠑⠊⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠛
+⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠓
+⠠⠠⠏⠗⠑⠋⠁⠉⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠙
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠛
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠚
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠙
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠑
+⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠃
+⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠠⠊⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠓</code></pre>
 					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="40">ol.toc li:has(span) {
+					<pre><code class="css" data-page-width="39">ol.toc li:has(span) {
    display: flex;
 }
 ol.toc li:has(span)::before {
@@ -857,7 +903,18 @@ ol.toc li span + a {
    order: 3;
    flex-shrink: 0;
    align-self: flex-end;
+}
+h1 {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 3ch;
+   margin-bottom: 1rem;
 }</code></pre>
+					<p class="note">
+						The “<a href="#example-table-of-contents-with-guide-dots">Table of contents
+						with guide dots</a>” example builds on this example by adding guide dots between
+						the items on the left and page numbers on the right.
+					</p>
 					<details class="specification-links">
 						<summary>CSS features used in this example</summary>
 						<ul>
@@ -877,6 +934,11 @@ ol.toc li span + a {
 							content with the ‘content’ property</a></li>
 							<li><a data-cite="css-sizing#preferred-size-properties">Preferred Size Properties:
 							the ‘width’ and ‘height’ properties</a></li>
+							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+							‘margin-left’ properties</a></li>
+							<li><a data-cite="css-text#text-align-property">Text Alignment: the
+							‘text-align’ shorthand</a></li>
 						</ul>
 					</details>
 				</aside>
@@ -885,23 +947,110 @@ ol.toc li span + a {
 			<section id="text-spacing">
 				<h3>Text spacing</h3>
 
-				<div class="issue" title="Seeking an example of increased line spacing"><span/></div>
-
 				<div class="issue" title="Seeking an example of increased inter-word spacing"><span/></div>
 
 				<div class="issue" title="Seeking an example of increased letter spacing"><span/></div>
 
+				<p>The following example shows how
+					the <a data-cite="css-inline#propdef-line-height"><code>line-height</code></a>
+					property may be used to achieve “double line spacing”, a layout with blank rows
+					between rows of braille, which helps with tracking for those who are not as
+					experienced or have difficulty feeling the braille.</p>
+
+				<aside class="example" title="Paragraph and heading that are double spaced">
+					<pre><code class="html">&lt;h1&gt;⠠⠁⠇⠊⠉⠑ ⠊⠝ ⠠⠺⠕⠝⠙⠑⠗⠇⠁⠝⠙⠀&lt;/h1&gt;
+&lt;p&gt;⠨⠶⠠⠁⠇⠊⠉⠑ ⠊⠝ ⠠⠺⠕⠝⠙⠑⠗⠇⠁⠝⠙⠨⠄ ⠊⠎ ⠁ ⠎⠞⠕⠗⠽ ⠁⠃⠕⠥⠞
+⠁ ⠛⠊⠗⠇ ⠝⠁⠍⠑⠙ ⠠⠁⠇⠊⠉⠑ ⠺⠓⠕ ⠋⠁⠇⠇⠎ ⠙⠕⠺⠝ ⠁ ⠗⠁⠃⠃⠊⠞ ⠓⠕⠇⠑ ⠁⠝⠙
+⠑⠝⠞⠑⠗⠎ ⠁ ⠍⠁⠛⠊⠉⠁⠇ ⠺⠕⠗⠇⠙ ⠋⠥⠇⠇ ⠕⠋ ⠎⠞⠗⠁⠝⠛⠑ ⠁⠝⠙ ⠺⠕⠝⠙⠑⠗⠋⠥⠇
+⠉⠗⠑⠁⠞⠥⠗⠑⠎⠲ ⠠⠁⠎ ⠎⠓⠑ ⠑⠭⠏⠇⠕⠗⠑⠎ ⠞⠓⠊⠎ ⠝⠑⠺ ⠏⠇⠁⠉⠑⠂ ⠎⠓⠑ ⠍⠑⠑⠞⠎
+⠞⠁⠇⠅⠊⠝⠛ ⠁⠝⠊⠍⠁⠇⠎⠂ ⠁ ⠛⠗⠥⠍⠏⠽ ⠟⠥⠑⠑⠝⠂ ⠁⠝⠙ ⠑⠧⠑⠝ ⠁
+⠙⠊⠎⠁⠏⠏⠑⠁⠗⠊⠝⠛ ⠉⠁⠞⠲ ⠠⠁⠇⠊⠉⠑ ⠓⠁⠎ ⠞⠕ ⠥⠎⠑ ⠓⠑⠗ ⠊⠍⠁⠛⠊⠝⠁⠞⠊⠕⠝
+⠁⠝⠙ ⠉⠥⠗⠊⠕⠎⠊⠞⠽ ⠞⠕ ⠋⠊⠝⠙ ⠓⠑⠗ ⠺⠁⠽ ⠞⠓⠗⠕⠥⠛⠓ ⠁⠇⠇ ⠞⠓⠑ ⠉⠗⠁⠵⠽
+⠁⠙⠧⠑⠝⠞⠥⠗⠑⠎ ⠊⠝ ⠠⠺⠕⠝⠙⠑⠗⠇⠁⠝⠙⠲&lt;/p&gt;</code></pre>
+					<p>In order to obtain the following layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠇⠊⠉⠑⠀⠊⠝⠀⠠⠺⠕⠝⠙⠑⠗⠇⠁⠝⠙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠨⠶⠠⠁⠇⠊⠉⠑⠀⠊⠝⠀⠠⠺⠕⠝⠙⠑⠗⠇⠁⠝⠙⠨⠄⠀⠊⠎⠀⠁⠀⠎⠞⠕⠗⠽⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠁⠃⠕⠥⠞⠀⠁⠀⠛⠊⠗⠇⠀⠝⠁⠍⠑⠙⠀⠠⠁⠇⠊⠉⠑⠀⠺⠓⠕⠀⠋⠁⠇⠇⠎⠀⠙⠕⠺⠝
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠁⠀⠗⠁⠃⠃⠊⠞⠀⠓⠕⠇⠑⠀⠁⠝⠙⠀⠑⠝⠞⠑⠗⠎⠀⠁⠀⠍⠁⠛⠊⠉⠁⠇⠀⠺⠕⠗⠇⠙
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠋⠥⠇⠇⠀⠕⠋⠀⠎⠞⠗⠁⠝⠛⠑⠀⠁⠝⠙⠀⠺⠕⠝⠙⠑⠗⠋⠥⠇⠀⠉⠗⠑⠁⠞⠥⠗⠑⠎⠲
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠁⠎⠀⠎⠓⠑⠀⠑⠭⠏⠇⠕⠗⠑⠎⠀⠞⠓⠊⠎⠀⠝⠑⠺⠀⠏⠇⠁⠉⠑⠂⠀⠎⠓⠑⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠍⠑⠑⠞⠎⠀⠞⠁⠇⠅⠊⠝⠛⠀⠁⠝⠊⠍⠁⠇⠎⠂⠀⠁⠀⠛⠗⠥⠍⠏⠽⠀⠟⠥⠑⠑⠝⠂⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠁⠝⠙⠀⠑⠧⠑⠝⠀⠁⠀⠙⠊⠎⠁⠏⠏⠑⠁⠗⠊⠝⠛⠀⠉⠁⠞⠲⠀⠠⠁⠇⠊⠉⠑⠀⠓⠁⠎⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠞⠕⠀⠥⠎⠑⠀⠓⠑⠗⠀⠊⠍⠁⠛⠊⠝⠁⠞⠊⠕⠝⠀⠁⠝⠙⠀⠉⠥⠗⠊⠕⠎⠊⠞⠽⠀⠞⠕⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠋⠊⠝⠙⠀⠓⠑⠗⠀⠺⠁⠽⠀⠞⠓⠗⠕⠥⠛⠓⠀⠁⠇⠇⠀⠞⠓⠑⠀⠉⠗⠁⠵⠽⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠁⠙⠧⠑⠝⠞⠥⠗⠑⠎⠀⠊⠝⠀⠠⠺⠕⠝⠙⠑⠗⠇⠁⠝⠙⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40"><!--
+/* ISSUE: line-height is not the same as leading (https://en.wikipedia.org/wiki/Leading), but we
+          would like it to behave as leading in order to be able to accurately position braille
+          cells (on the dot grid). This becomes increasingly challenging when there are different
+          parts with different line-heights. The only solution I have come up with so far is
+          declaring a dedicated @font-face for double line spacing, with special values for
+          ascent-override and descent-override
+          (https://drafts.csswg.org/css-fonts-5/#font-metrics-override-desc), in order to align
+          the braille cells with the top of line boxes. However, because the eBraille
+          specification says that one "SHOULD NOT use properties that affect the text's font", we
+          can not recommend this solution. It is not clear whether other (simple) solutions exist,
+          or whether certain upcoming CSS features could address the issue (see e.g.
+          https://drafts.csswg.org/css-inline/#text-edges).
+          */
+@font-face {
+    font-family: double-line-spacing;
+    src: url('odt2braille8.ttf') format('truetype');
+    ascent-override: 70%;
+    descent-override: 130%;
+    size-adjust: 111.111%;
+}
+-->h1 {
+   text-align: center;
+   margin-bottom: 1rem;
+}
+p {
+   line-height: 2rem;<!--
+   font-family: double-line-spacing; -->
+}</code></pre>
+					<details class="specification-links">
+						<summary>CSS features used in this example</summary>
+						<ul>
+							<li><a data-cite="css-inline#line-height-property">Line Spacing: the
+							‘line-height’ property</a></li>
+							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+							‘margin-left’ properties</a></li>
+							<li><a data-cite="css-text#text-align-property">Text Alignment: the
+							‘text-align’ shorthand</a></li>
+						</ul>
+					</details>
+				</aside>
+
+				<!--<div class="issue" title="Need HTML and CSS for increased inter-word spacing"><span/></div>
+
+				<aside class="example" title="Line numbered text with inter-word spacing"></aside>
+					<p>In order to obtain the following layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠠⠽⠕⠥⠀⠺⠊⠇⠇⠀⠗⠑⠚⠕⠊⠉⠑⠀⠞⠕⠀⠓⠑⠁⠗⠀⠞⠓⠁⠞⠀⠝⠕⠀⠀⠀⠀⠀⠼⠉
+⠙⠊⠎⠁⠎⠞⠑⠗⠀⠓⠁⠎⠀⠁⠉⠉⠕⠍⠏⠁⠝⠊⠑⠙⠀⠞⠓⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠉⠕⠍⠍⠑⠝⠉⠑⠍⠑⠝⠞⠀⠕⠋⠀⠁⠝⠀⠑⠝⠞⠑⠗⠏⠗⠊⠎⠑⠀⠺⠓⠊⠉⠓⠀⠀⠀⠼⠙
+⠽⠕⠥⠀⠓⠁⠧⠑⠀⠗⠑⠛⠁⠗⠙⠑⠙⠀⠺⠊⠞⠓⠀⠀⠀⠎⠥⠉⠓⠀⠑⠧⠊⠇⠀⠀⠀⠀⠼⠑
+⠋⠕⠗⠑⠃⠕⠙⠊⠝⠛⠎⠲⠀⠠⠊⠀⠁⠗⠗⠊⠧⠑⠙⠀⠓⠑⠗⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠽⠑⠎⠞⠑⠗⠙⠁⠽⠂⠀⠁⠝⠙⠀⠍⠽⠀⠋⠊⠗⠎⠞⠀⠞⠁⠎⠅⠀⠀⠀⠊⠎⠀⠞⠕⠀⠀⠼⠋
+⠁⠎⠎⠥⠗⠑⠀⠍⠽⠀⠙⠑⠁⠗⠀⠎⠊⠎⠞⠑⠗⠀⠕⠋⠀⠍⠽⠀⠺⠑⠇⠋⠁⠗⠑⠀⠀⠀⠀⠀
+⠁⠝⠙⠀⠊⠝⠉⠗⠑⠁⠎⠊⠝⠛⠀⠉⠕⠝⠋⠊⠙⠑⠝⠉⠑⠀⠀⠀⠊⠝⠀⠞⠓⠑⠀⠀⠀⠀⠼⠛
+⠎⠥⠉⠉⠑⠎⠎⠀⠕⠋⠀⠍⠽⠀⠥⠝⠙⠑⠗⠞⠁⠅⠊⠝⠛⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+				</aside>-->
 			</section>
 
 			<section id="white-space">
 				<h3>White space handling</h3>
-
-				<!--<div class="issue" title="Seeking an example of collaping insignifcant white space
-				characters"><span/></div>-->
-
-				<div class="issue" data-number="94" title="Seeking more examples of preserving significant white
-				space characters / preformatted content"><span/></div>
-
 				<p>By default, certain white space characters in HTML code, such as <a
 				data-cite="css-text#tabs">tabs</a> (U+0009), <a
 				data-cite="css-text#segment-break">newlines</a>, and multiple consecutive <a
@@ -912,7 +1061,9 @@ ol.toc li span + a {
 				data-cite="css-text#propdef-white-space">white-space</a> property.</p>
 
 				<p>The following example of a number line illustrates this. The white space characters must be
-				preserved because they are essential for the correct formatting of the number line.</p>
+					preserved because they are essential for the correct formatting of the number line. Note how,
+					by “<em>pre-formatting</em>” (or hard-coding) the number line, it is not able to adapt to
+					varying device widths.</p>
 
 				<aside class="example" title="Number line">
 					<pre><code class="html">&lt;pre&gt;⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠒⠒
@@ -935,6 +1086,33 @@ ol.toc li span + a {
 						</ul>
 					</details>
 				</aside>
+
+				<p>Another use case for the <code>pre</code> element is spatially arranged math. In theory
+					the techniques from <a href="#alignment">Alignment, positioning and spatial
+					arrangement</a> could be applied for this particular case, but that may not be the case
+					for every mathematical expression, and pre-formatting content may be more practical
+					anyway.</p>
+
+				<aside class="example" title="Spatially arranged horizontal equations">
+					<!--<div class="issue" data-number="231"
+					     title="Missing best practices for correctly tagging this example">
+						<p>Missing an example in [[tagging]] of “spatial math“.</p>
+					</div>-->
+					<pre><code class="html">&lt;pre&gt;⠼⠁⠲⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠲⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠼⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠚⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠁⠀
+⠀⠀⠀⠀⠐⠖⠼⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠀⠑⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠁⠑⠀
+⠀⠀⠀⠀⠀⠀⠐⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀&lt;/pre&gt;</code></pre>
+					<p>The following desired layout for the above HTML code is obtained automatically,</p>
+					<pre><code class="formatted-braille">⠼⠁⠲⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠲⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠼⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠚⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠁⠀
+⠀⠀⠀⠀⠐⠖⠼⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠀⠑⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠁⠑⠀
+⠀⠀⠀⠀⠀⠀⠐⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀</code></pre>
+					<p>due of the default style that is associated with the [[html]] <a
+					data-cite="html#the-pre-element"><code>pre</code></a> element:</p>
+					<pre><code class="css" data-page-width="33">pre {
+    white-space: pre;
+}</code></pre>
+				</aside>
 			</section>
 
 			<section id="line-breaking">
@@ -949,8 +1127,37 @@ ol.toc li span + a {
 				<div class="issue" title="Seeking an example of breaking within words
 				(hyphenation)"><span/></div>
 
-				<div class="issue" data-number="51" title="Seeking an example of choosing the hyphen
-				character"><span/></div>
+				<p>Sometimes it is necessary to break long words across rows, to save space, or
+					simply because a word is too long to fit within one row. The section
+					on <a data-cite="tagging#Text splitting">Text Splitting</a> in [[tagging]]
+					explains how this can be achieved using the Unicode character U+00AD (SOFT
+					HYPHEN) and the
+					[[html]] <a data-cite="html#the-wbr-element"><code>wbr</code></a> element.</p>
+
+				<p>The following example shows how one can specify the symbol or string that must
+					appear before the break of a word, using
+					the <a data-cite="css-text#propdef-hyphenate-character"><code>hyphenate-character</code></a>.</p>
+
+				<aside class="example"
+				       title="Long math equations split between two lines with a continuation indicator (dot 5)">
+					<pre><code class="html">&lt;span class="math"&gt;
+   ⠼⠛⠌⠙⠐⠖⠼⠑⠌⠓⠐⠖⠼⠁⠚⠐⠣⠼⠊⠊⠊⠐⠤⠼⠙⠐⠜⠐⠣⠼⠓⠛⠉⠐⠦&amp;shy;⠼⠙⠐⠜
+&lt;/span&gt;</code></pre>
+					<p>In order to obtain the following layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠼⠛⠌⠙⠐⠖⠼⠑⠌⠓⠐⠖⠼⠁⠚⠐⠣⠼⠊⠊⠊⠐⠤⠼⠙⠐⠜⠐⠣⠼⠓⠛⠉⠐⠦⠐⠀⠀
+⠼⠙⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="38">span.math {
+   hyphenate-character: "⠐";
+}</code></pre>
+					<details class="specification-links">
+						<summary>CSS features used in this example</summary>
+						<ul>
+							<li><a data-cite="css-text#hyphenate-character">Hyphens: the
+							‘hyphenate-character’ property</a></li>
+						</ul>
+					</details>
+				</aside>
 
 				<p>The following example shows how
 					the <a data-cite="css-text-4#text-wrap-style"><code>text-wrap-style</code></a>
@@ -968,7 +1175,7 @@ ol.toc li span + a {
 					<pre><code class="html">&lt;p&gt;⠠⠞⠓⠑ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠑⠙⠊⠝⠛ ⠁ ⠉⠑⠝⠞⠑⠗⠑⠙ ⠓⠑⠁⠙⠊⠝⠛⠲&lt;/p&gt;
 &lt;h1&gt;⠠⠁ ⠉⠑⠝⠞⠑⠗⠑⠙ ⠓⠑⠁⠙⠊⠝⠛ ⠎⠏⠇⠊⠞ ⠕⠝ ⠍⠥⠇⠞⠊⠏⠇⠑ ⠇⠊⠝⠑⠎ ⠺⠊⠞⠓ ⠞⠓⠑ ⠙⠊⠧⠊⠎⠊⠕⠝⠎ ⠓⠁⠏⠏⠑⠝⠊⠝⠛ ⠁⠞ ⠇⠕⠛⠊⠉⠁⠇ ⠏⠕⠊⠝⠞⠎&lt;/h1&gt;
 &lt;p&gt;⠞⠓⠑ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠕⠺⠊⠝⠛ ⠁ ⠉⠑⠝⠞⠑⠗⠑⠙ ⠓⠑⠁⠙⠊⠝⠛&lt;/p&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p>In order to obtain the following layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠊⠝⠛⠀⠁⠀⠉⠑⠝⠞⠑⠗⠑⠙⠀⠓⠑⠁⠙⠊⠝⠛⠲⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠀⠉⠑⠝⠞⠑⠗⠑⠙⠀⠓⠑⠁⠙⠊⠝⠛⠀⠎⠏⠇⠊⠞⠀⠕⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -996,6 +1203,12 @@ h1 {
    text-wrap: balance;
 }
 </code></pre>
+					<p>Note that using <code>br</code> for this use case is is only recommended when the
+						layout is optimized for a certain line length, and automatic balancing results in
+						illogical breaks for this line length.</p>
+					<!-- see also https://github.com/daisy/ebraille/pull/253#issuecomment-2321944399: when
+					     the layout needs to be optimized for a certain line length, it can be done in a way that
+					     it does not affect the layout for other line lengths -->
 					<details class="specification-links">
 						<summary>CSS features used in this example</summary>
 						<ul>
@@ -1014,21 +1227,203 @@ h1 {
 			</section>
 
 			<section id="page-breaking">
-				<h3>Page breaking and column layout</h3>
+				<h3>Page breaking <!--and column layout--></h3>
 
-				<div class="issue" title="Seeking an example of forcing page breaks"><span/></div>
+				<!--<div class="issue" title="Seeking an example of a column layout"><span/></div>-->
 
-				<div class="issue" data-number="93" title="Seeking an example of avoiding page breaks within
-				an element"><span/></div>
+				<p>Whether the user agent is an embosser or an electronic reading system, it may
+					break up content into discrete pages. For such cases, CSS allows you to express
+					where the user agent may or must break pages, whether subsequent content must
+					resume on a left- or right-hand page, etc.</p>
 
-				<div class="issue" data-number="93" title="Seeking an example of avoiding page breaks between
-				two elements"><span/></div>
+				<p class="note">
+					Remember that <a href="#media-queries">media queries</a> allow you to test
+					whether the target medium is paged or continuous, using
+					the <a data-cite="mediaqueries#mf-overflow-block"><code>overflow-block</code></a>
+					media feature [[mediaqueries]].</p>
 
-				<div class="issue" data-number="93" title="Seeking an example of avoiding orphan or widow
-				lines"><span/></div>
+				<div class="issue" title="Need HTML and CSS of forcing page breaks"><span/></div>
 
-				<div class="issue" title="Seeking an example of a column layout"><span/></div>
+				<aside class="example" title="Forced page break between front matter and body matter">
+					<p>In order to obtain the following layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠰⠊⠧
+⠠⠊⠝⠙⠕⠝⠑⠎⠊⠁⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛⠚
+⠠⠊⠗⠁⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛⠁
+⠠⠊⠗⠑⠇⠁⠝⠙⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛⠉
+⠠⠊⠎⠗⠁⠑⠇⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛⠙
+⠠⠊⠞⠁⠇⠽⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛⠋
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠏⠼⠃
+⠀⠀⠀⠀⠀⠀⠀⠠⠺⠕⠗⠇⠙⠀⠠⠃⠗⠁⠊⠇⠇⠑⠀⠠⠥⠎⠁⠛⠑⠀⠀⠀⠀⠀⠀⠼⠉⠙
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠞⠓⠊⠗⠙⠀⠠⠑⠙⠊⠞⠊⠕⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠃⠗⠁⠊⠇⠇⠑⠀⠠⠥⠎⠁⠛⠑⠀⠃⠽⠀⠠⠉⠕⠥⠝⠞⠗⠽⠀⠐⠣⠉⠕⠝⠞⠲⠐⠜⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠑⠉⠥⠁⠙⠕⠗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠇⠁⠝⠛⠥⠁⠛⠑⠒⠀⠠⠎⠏⠁⠝⠊⠎⠓⠀⠐⠣⠥⠎⠥⠁⠇⠇⠽⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠥⠝⠉⠕⠝⠞⠗⠁⠉⠞⠑⠙⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠠⠃⠗⠁⠊⠇⠇⠑⠀⠠⠎⠞⠁⠝⠙⠁⠗⠙⠎⠀⠠⠎⠑⠞⠀⠃⠽⠒⠀⠀⠀⠀⠀⠀
+⠠⠇⠁⠞⠊⠝⠀⠠⠁⠍⠑⠗⠊⠉⠁⠝⠀⠠⠃⠗⠁⠊⠇⠇⠑⠀⠠⠉⠕⠥⠝⠉⠊⠇⠀⠀⠀⠀
+⠀⠀⠐⠣⠠⠉⠕⠍⠊⠎⠊⠘⠌⠕⠝⠀⠠⠃⠗⠁⠊⠇⠇⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠇⠁⠞⠊⠝⠕⠁⠍⠑⠗⠊⠉⠁⠝⠁⠨⠜⠀⠐⠣⠠⠠⠉⠃⠇⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠇⠁⠞⠊⠝⠀⠠⠁⠍⠑⠗⠊⠉⠁⠝⠀⠠⠃⠇⠊⠝⠙⠀⠠⠥⠝⠊⠕⠝⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠐⠣⠠⠥⠝⠊⠘⠌⠕⠝⠀⠠⠇⠁⠞⠊⠝⠕⠁⠍⠑⠗⠊⠉⠁⠝⠁⠀⠙⠑⠀⠀⠀⠀⠀⠀
+⠀⠀⠉⠊⠑⠛⠕⠎⠐⠜⠀⠐⠣⠠⠠⠥⠇⠁⠉⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠺⠺⠺⠲⠥⠇⠁⠉⠙⠊⠛⠊⠞⠁⠇⠲⠕⠗⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠃⠗⠁⠊⠇⠇⠑⠈⠁⠥⠇⠁⠉⠙⠊⠛⠊⠞⠁⠇⠲⠕⠗⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠉⠕⠝⠎⠑⠚⠕⠀⠠⠊⠃⠑⠗⠕⠁⠍⠑⠗⠊⠉⠁⠝⠕⠀⠙⠑⠇⠀⠠⠃⠗⠁⠊⠇⠇⠑⠀
+⠀⠀⠐⠣⠠⠠⠉⠊⠃⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠁⠙⠞⠁⠈⠁⠕⠝⠉⠑⠲⠑⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</code></pre>
+				</aside>
+				<div class="issue"
+				     title="Need HTML and CSS of avoiding page breaks within an element"><span/></div>
 
+				<aside class="example" title="...">
+					<p>In order to obtain the following layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠠⠙⠕⠥⠛⠇⠁⠎⠀⠠⠁⠙⠁⠍⠎⠒⠀⠠⠁⠀⠠⠏⠊⠕⠝⠑⠑⠗⠀⠕⠋⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠎⠉⠊⠤⠠⠋⠊⠀⠠⠉⠕⠍⠑⠙⠽⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠙⠕⠥⠛⠇⠁⠎⠀⠠⠁⠙⠁⠍⠎⠀⠺⠁⠎⠀⠁⠀⠠⠃⠗⠊⠞⠊⠎⠓⠀⠁⠥⠞⠓⠕⠗⠀⠀⠀
+⠃⠑⠎⠞⠀⠅⠝⠕⠺⠝⠀⠋⠕⠗⠀⠓⠊⠎⠀⠛⠗⠕⠥⠝⠙⠃⠗⠑⠁⠅⠊⠝⠛⠀⠺⠕⠗⠅⠀⠀
+⠠⠞⠓⠑⠀⠠⠓⠊⠞⠉⠓⠓⠊⠅⠑⠗⠄⠎⠀⠠⠛⠥⠊⠙⠑⠀⠞⠕⠀⠞⠓⠑⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠛⠁⠇⠁⠭⠽⠂⠀⠁⠀⠎⠑⠗⠊⠑⠎⠀⠞⠓⠁⠞⠀⠉⠕⠍⠃⠊⠝⠑⠙⠀⠎⠉⠊⠑⠝⠉⠑⠀
+⠋⠊⠉⠞⠊⠕⠝⠀⠺⠊⠞⠓⠀⠙⠗⠽⠀⠠⠃⠗⠊⠞⠊⠎⠓⠀⠓⠥⠍⠕⠗⠲⠀⠠⠃⠕⠗⠝⠀⠀
+⠊⠝⠀⠼⠁⠊⠑⠃⠂⠀⠠⠁⠙⠁⠍⠎⠀⠓⠁⠙⠀⠁⠀⠅⠝⠁⠉⠅⠀⠋⠕⠗⠀⠺⠑⠁⠧⠊⠝⠛
+⠉⠕⠍⠏⠇⠑⠭⠂⠀⠏⠓⠊⠇⠕⠎⠕⠏⠓⠊⠉⠁⠇⠀⠟⠥⠑⠎⠞⠊⠕⠝⠎⠀⠁⠃⠕⠥⠞⠀⠀
+⠇⠊⠋⠑⠀⠁⠝⠙⠀⠑⠭⠊⠎⠞⠑⠝⠉⠑⠀⠊⠝⠞⠕⠀⠓⠊⠎⠀⠎⠞⠕⠗⠊⠑⠎⠀⠊⠝⠀⠁
+⠺⠁⠽⠀⠞⠓⠁⠞⠀⠺⠁⠎⠀⠃⠕⠞⠓⠀⠁⠉⠉⠑⠎⠎⠊⠃⠇⠑⠀⠁⠝⠙⠀⠁⠃⠎⠥⠗⠙⠲
+⠠⠓⠊⠎⠀⠥⠝⠊⠟⠥⠑⠀⠎⠞⠽⠇⠑⠀⠝⠕⠞⠀⠕⠝⠇⠽⠀⠗⠑⠎⠓⠁⠏⠑⠙⠀⠞⠓⠑⠀
+⠇⠁⠝⠙⠎⠉⠁⠏⠑⠀⠕⠋⠀⠎⠉⠊⠑⠝⠉⠑⠀⠋⠊⠉⠞⠊⠕⠝⠀⠃⠥⠞⠀⠁⠇⠎⠕⠀⠀⠀
+⠊⠝⠋⠇⠥⠑⠝⠉⠑⠙⠀⠁⠀⠛⠑⠝⠑⠗⠁⠞⠊⠕⠝⠀⠕⠋⠀⠺⠗⠊⠞⠑⠗⠎⠀⠁⠝⠙⠀⠀
+⠉⠕⠍⠑⠙⠊⠁⠝⠎⠀⠺⠓⠕⠀⠁⠙⠍⠊⠗⠑⠙⠀⠓⠊⠎⠀⠺⠊⠞⠀⠁⠝⠙⠀⠀⠀⠀⠀⠀⠀
+⠉⠗⠑⠁⠞⠊⠧⠊⠞⠽⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
+⠀⠀⠀⠀⠠⠞⠓⠑⠀⠠⠕⠗⠊⠛⠊⠝⠀⠕⠋⠀⠠⠞⠓⠑⠀⠠⠓⠊⠞⠉⠓⠓⠊⠅⠑⠗⠄⠎⠀⠀
+⠀⠀⠀⠀⠠⠛⠥⠊⠙⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠞⠓⠑⠀⠉⠕⠝⠉⠑⠏⠞⠀⠋⠕⠗⠀⠠⠞⠓⠑⠀⠠⠓⠊⠞⠉⠓⠓⠊⠅⠑⠗⠄⠎⠀⠀⠀
+⠠⠛⠥⠊⠙⠑⠀⠞⠕⠀⠞⠓⠑⠀⠠⠛⠁⠇⠁⠭⠽⠀⠁⠇⠇⠑⠛⠑⠙⠇⠽⠀⠉⠁⠍⠑⠀⠞⠕⠀
+⠠⠁⠙⠁⠍⠎⠀⠙⠥⠗⠊⠝⠛⠀⠁⠀⠙⠗⠥⠝⠅⠑⠝⠀⠝⠊⠛⠓⠞⠀⠊⠝⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠊⠝⠝⠎⠃⠗⠥⠉⠅⠂⠀⠠⠁⠥⠎⠞⠗⠊⠁⠲⠀⠠⠺⠓⠊⠇⠑⠀⠇⠽⠊⠝⠛⠀⠊⠝⠀⠁⠀
+⠋⠊⠑⠇⠙⠂⠀⠎⠞⠁⠗⠊⠝⠛⠀⠥⠏⠀⠁⠞⠀⠞⠓⠑⠀⠎⠞⠁⠗⠎⠂⠀⠓⠑⠀⠃⠑⠛⠁⠝
+⠏⠕⠝⠙⠑⠗⠊⠝⠛⠀⠞⠓⠑⠀⠥⠝⠊⠧⠑⠗⠎⠑⠀⠁⠝⠙⠀⠺⠓⠁⠞⠀⠅⠊⠝⠙⠀⠕⠋⠀
+⠛⠥⠊⠙⠑⠀⠎⠕⠍⠑⠕⠝⠑⠀⠺⠕⠥⠇⠙⠀⠝⠑⠑⠙⠀⠞⠕⠀⠝⠁⠧⠊⠛⠁⠞⠑⠀⠊⠞⠲
+⠠⠁⠇⠞⠓⠕⠥⠛⠓⠀⠠⠁⠙⠁⠍⠎⠀⠇⠁⠞⠑⠗⠀⠚⠕⠅⠑⠙⠀⠞⠓⠁⠞⠀⠞⠓⠑⠀⠀⠀
+⠙⠑⠞⠁⠊⠇⠎⠀⠕⠋⠀⠞⠓⠁⠞⠀⠝⠊⠛⠓⠞⠀⠺⠑⠗⠑⠀⠓⠁⠵⠽⠂⠀⠊⠞⠀⠇⠑⠙⠀
+⠞⠕⠀⠞⠓⠑⠀⠉⠗⠑⠁⠞⠊⠕⠝⠀⠕⠋⠀⠞⠓⠑⠀⠃⠑⠇⠕⠧⠑⠙⠀⠋⠊⠉⠞⠊⠕⠝⠁⠇
+⠛⠥⠊⠙⠑⠃⠕⠕⠅⠀⠞⠓⠁⠞⠀⠺⠕⠥⠇⠙⠀⠙⠑⠋⠊⠝⠑⠀⠍⠥⠉⠓⠀⠕⠋⠀⠓⠊⠎⠀
+⠉⠁⠗⠑⠑⠗⠲⠀⠠⠞⠓⠊⠎⠀⠍⠕⠍⠑⠝⠞⠀⠕⠋⠀⠎⠑⠗⠑⠝⠙⠊⠏⠊⠞⠽⠀⠊⠎⠀⠀
+⠕⠋⠞⠑⠝⠀⠉⠊⠞⠑⠙⠀⠁⠎⠀⠕⠝⠑⠀⠕⠋⠀⠞⠓⠑⠀⠍⠕⠎⠞⠀⠋⠁⠍⠕⠥⠎⠀⠀⠀
+⠦⠑⠥⠗⠑⠅⠁⠴⠀⠍⠕⠍⠑⠝⠞⠎⠀⠊⠝⠀⠇⠊⠞⠑⠗⠁⠗⠽⠀⠓⠊⠎⠞⠕⠗⠽⠲⠀⠀⠀
+⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠁⠙⠁⠍⠎⠄⠀⠁⠃⠊⠇⠊⠞⠽⠀⠞⠕⠀⠃⠇⠑⠝⠙⠀⠞⠓⠑⠀⠍⠥⠝⠙⠁⠝⠑⠀⠀
+⠺⠊⠞⠓⠀⠞⠓⠑⠀⠉⠕⠎⠍⠊⠉⠀⠺⠁⠎⠀⠁⠀⠎⠊⠛⠝⠁⠞⠥⠗⠑⠀⠞⠗⠁⠊⠞⠀⠕⠋
+⠓⠊⠎⠀⠺⠗⠊⠞⠊⠝⠛⠲⠀⠠⠺⠓⠑⠞⠓⠑⠗⠀⠊⠞⠀⠺⠁⠎⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠃⠥⠗⠑⠁⠥⠉⠗⠁⠞⠊⠉⠀⠁⠇⠊⠑⠝⠀⠗⠁⠉⠑⠀⠞⠗⠽⠊⠝⠛⠀⠞⠕⠀⠀⠀⠀⠀⠀⠀
+⠙⠑⠍⠕⠇⠊⠎⠓⠀⠠⠑⠁⠗⠞⠓⠀⠞⠕⠀⠍⠁⠅⠑⠀⠺⠁⠽⠀⠋⠕⠗⠀⠁⠝⠀⠀⠀⠀⠀⠀
+⠊⠝⠞⠑⠗⠎⠞⠑⠇⠇⠁⠗⠀⠓⠊⠛⠓⠺⠁⠽⠀⠕⠗⠀⠁⠀⠙⠑⠏⠗⠑⠎⠎⠑⠙⠀⠀⠀⠀⠀</code></pre>
+				</aside>
+
+				<div class="issue"
+				     title="Need HTML and CSS of avoiding page breaks between two elements">
+					<span/></div>
+
+				<aside class="example"
+				       title="“THE END” kept on the last line of the same page, without a blank link before">
+				<p>In order to obtain the following layout for the above HTML code,</p>
+				<pre><code class="formatted-braille">⠎⠓⠑⠑⠏⠤⠃⠑⠇⠇⠎⠂⠀⠁⠝⠙⠀⠞⠓⠑⠀⠠⠟⠥⠑⠑⠝⠄⠎⠀⠎⠓⠗⠊⠇⠇⠀⠀⠀⠀
+⠉⠗⠊⠑⠎⠀⠞⠕⠀⠞⠓⠑⠀⠧⠕⠊⠉⠑⠀⠕⠋⠀⠞⠓⠑⠀⠎⠓⠑⠏⠓⠑⠗⠙⠀⠀⠀⠀⠀⠀
+⠃⠕⠽⠤⠤⠁⠝⠙⠀⠞⠓⠑⠀⠎⠝⠑⠑⠵⠑⠀⠕⠋⠀⠞⠓⠑⠀⠃⠁⠃⠽⠂⠀⠞⠓⠑⠀⠀⠀⠀
+⠎⠓⠗⠊⠑⠅⠀⠕⠋⠀⠞⠓⠑⠀⠠⠛⠗⠽⠏⠓⠕⠝⠂⠀⠁⠝⠙⠀⠁⠇⠇⠀⠞⠓⠑⠀⠀⠀⠀⠀
+⠕⠞⠓⠑⠗⠀⠟⠥⠑⠑⠗⠀⠝⠕⠊⠎⠑⠎⠂⠀⠺⠕⠥⠇⠙⠀⠉⠓⠁⠝⠛⠑⠀⠐⠣⠎⠓⠑⠀⠀
+⠅⠝⠑⠺⠐⠜⠀⠞⠕⠀⠞⠓⠑⠀⠉⠕⠝⠋⠥⠎⠑⠙⠀⠉⠇⠁⠍⠕⠥⠗⠀⠕⠋⠀⠞⠓⠑⠀⠀⠀
+⠃⠥⠎⠽⠀⠋⠁⠗⠍⠤⠽⠁⠗⠙⠤⠤⠺⠓⠊⠇⠑⠀⠞⠓⠑⠀⠇⠕⠺⠊⠝⠛⠀⠕⠋⠀⠞⠓⠑⠀
+⠉⠁⠞⠞⠇⠑⠀⠊⠝⠀⠞⠓⠑⠀⠙⠊⠎⠞⠁⠝⠉⠑⠀⠺⠕⠥⠇⠙⠀⠞⠁⠅⠑⠀⠞⠓⠑⠀⠀⠀
+⠏⠇⠁⠉⠑⠀⠕⠋⠀⠞⠓⠑⠀⠠⠍⠕⠉⠅⠀⠠⠞⠥⠗⠞⠇⠑⠄⠎⠀⠓⠑⠁⠧⠽⠀⠎⠕⠃⠎⠲
+⠀⠀⠠⠇⠁⠎⠞⠇⠽⠂⠀⠎⠓⠑⠀⠏⠊⠉⠞⠥⠗⠑⠙⠀⠞⠕⠀⠓⠑⠗⠎⠑⠇⠋⠀⠓⠕⠺⠀⠀
+⠞⠓⠊⠎⠀⠎⠁⠍⠑⠀⠇⠊⠞⠞⠇⠑⠀⠎⠊⠎⠞⠑⠗⠀⠕⠋⠀⠓⠑⠗⠎⠀⠺⠕⠥⠇⠙⠂⠀⠀
+⠊⠝⠀⠞⠓⠑⠀⠁⠋⠞⠑⠗⠤⠞⠊⠍⠑⠂⠀⠃⠑⠀⠓⠑⠗⠎⠑⠇⠋⠀⠁⠀⠛⠗⠕⠺⠝⠀⠀⠀
+⠺⠕⠍⠁⠝⠆⠀⠁⠝⠙⠀⠓⠕⠺⠀⠎⠓⠑⠀⠺⠕⠥⠇⠙⠀⠅⠑⠑⠏⠂⠀⠞⠓⠗⠕⠥⠛⠓⠀⠀
+⠁⠇⠇⠀⠓⠑⠗⠀⠗⠊⠏⠑⠗⠀⠽⠑⠁⠗⠎⠂⠀⠞⠓⠑⠀⠎⠊⠍⠏⠇⠑⠀⠁⠝⠙⠀⠀⠀⠀⠀
+⠇⠕⠧⠊⠝⠛⠀⠓⠑⠁⠗⠞⠀⠕⠋⠀⠓⠑⠗⠀⠉⠓⠊⠇⠙⠓⠕⠕⠙⠒⠀⠁⠝⠙⠀⠓⠕⠺⠀⠀
+⠎⠓⠑⠀⠺⠕⠥⠇⠙⠀⠛⠁⠞⠓⠑⠗⠀⠁⠃⠕⠥⠞⠀⠓⠑⠗⠀⠕⠞⠓⠑⠗⠀⠇⠊⠞⠞⠇⠑⠀
+⠉⠓⠊⠇⠙⠗⠑⠝⠂⠀⠁⠝⠙⠀⠍⠁⠅⠑⠀⠠⠠⠞⠓⠑⠊⠗⠀⠑⠽⠑⠎⠀⠃⠗⠊⠛⠓⠞⠀⠀
+⠁⠝⠙⠀⠑⠁⠛⠑⠗⠀⠺⠊⠞⠓⠀⠍⠁⠝⠽⠀⠁⠀⠎⠞⠗⠁⠝⠛⠑⠀⠞⠁⠇⠑⠂⠀⠀⠀⠀⠀
+⠏⠑⠗⠓⠁⠏⠎⠀⠑⠧⠑⠝⠀⠺⠊⠞⠓⠀⠞⠓⠑⠀⠙⠗⠑⠁⠍⠀⠕⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠺⠕⠝⠙⠑⠗⠇⠁⠝⠙⠀⠕⠋⠀⠇⠕⠝⠛⠀⠁⠛⠕⠒⠀⠁⠝⠙⠀⠓⠕⠺⠀⠎⠓⠑⠀⠀⠀⠀
+⠺⠕⠥⠇⠙⠀⠋⠑⠑⠇⠀⠺⠊⠞⠓⠀⠁⠇⠇⠀⠞⠓⠑⠊⠗⠀⠎⠊⠍⠏⠇⠑⠀⠀⠀⠀⠀⠀⠀⠀
+⠎⠕⠗⠗⠕⠺⠎⠂⠀⠁⠝⠙⠀⠋⠊⠝⠙⠀⠁⠀⠏⠇⠑⠁⠎⠥⠗⠑⠀⠊⠝⠀⠁⠇⠇⠀⠀⠀⠀⠀
+⠞⠓⠑⠊⠗⠀⠎⠊⠍⠏⠇⠑⠀⠚⠕⠽⠎⠂⠀⠗⠑⠍⠑⠍⠃⠑⠗⠊⠝⠛⠀⠓⠑⠗⠀⠕⠺⠝⠀⠀
+⠉⠓⠊⠇⠙⠤⠇⠊⠋⠑⠂⠀⠁⠝⠙⠀⠞⠓⠑⠀⠓⠁⠏⠏⠽⠀⠎⠥⠍⠍⠑⠗⠀⠙⠁⠽⠎⠲⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠨⠣⠠⠞⠓⠑⠀⠠⠑⠝⠙⠈⠨⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+				</aside>
+
+				<div class="issue"
+				     title="Need HTML and CSS of avoiding orphan or widow lines"><span/></div>
+
+				<aside class="example" title="Heading moving to next page to remain with material">
+					<p>In order to obtain the following layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠠⠔⠞⠗⠕⠙⠥⠉⠰⠝⠀⠞⠕⠀⠠⠡⠑⠑⠎⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠡⠑⠑⠎⠑⠀⠊⠎⠀⠐⠕⠀⠷⠀⠮⠀⠕⠇⠙⠑⠌⠀⠯⠀⠍⠕⠌⠀⠧⠻⠎⠁⠞⠊⠇⠑⠀
+⠋⠕⠕⠙⠎⠀⠔⠀⠮⠀⠸⠺⠂⠀⠾⠀⠁⠀⠓⠊⠌⠕⠗⠽⠀⠙⠁⠞⠬⠀⠃⠁⠉⠅⠀⠹⠳⠎⠯⠎
+⠷⠀⠽⠑⠜⠎⠲⠀⠠⠍⠁⠙⠑⠀⠏⠗⠊⠍⠜⠊⠇⠽⠀⠋⠀⠍⠊⠇⠅⠂⠀⠡⠑⠑⠎⠑⠀⠉⠀⠀
+⠧⠜⠽⠀⠎⠊⠛⠝⠊⠋⠊⠉⠁⠝⠞⠇⠽⠀⠔⠀⠋⠇⠁⠧⠕⠗⠂⠀⠞⠑⠭⠞⠥⠗⠑⠂⠀⠯⠀⠀
+⠿⠍⠀⠙⠑⠏⠢⠙⠬⠀⠕⠝⠀⠋⠁⠉⠞⠕⠗⠎⠀⠇⠀⠮⠀⠞⠽⠏⠑⠀⠷⠀⠍⠊⠇⠅⠂⠀⠀⠀
+⠁⠛⠬⠀⠏⠗⠕⠉⠑⠎⠎⠂⠀⠯⠀⠏⠗⠕⠙⠥⠉⠰⠝⠀⠞⠑⠡⠝⠊⠟⠥⠑⠎⠲⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠠⠞⠽⠏⠑⠎⠀⠷⠀⠠⠍⠊⠇⠅⠀⠠⠥⠎⠫⠀⠔⠀⠠⠡⠑⠑⠎⠑⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠠⠏⠗⠕⠙⠥⠉⠰⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠡⠑⠑⠎⠑⠀⠉⠀⠆⠀⠍⠁⠙⠑⠀⠋⠀⠮⠀⠍⠊⠇⠅⠀⠷⠀⠧⠜⠊⠳⠎⠀⠀⠀⠀⠀⠀⠀⠀
+⠁⠝⠊⠍⠁⠇⠎⠂⠀⠑⠁⠡⠀⠒⠞⠗⠊⠃⠥⠞⠬⠀⠥⠝⠊⠟⠥⠑⠀⠐⠡⠊⠌⠊⠉⠎⠀⠞⠕⠀
+⠮⠀⠋⠔⠁⠇⠀⠏⠗⠕⠙⠥⠉⠞⠲⠀⠠⠮⠀⠍⠕⠌⠀⠉⠕⠍⠍⠕⠝⠀⠞⠽⠏⠑⠎⠀⠷⠀⠀⠀
+⠍⠊⠇⠅⠀⠥⠎⠫⠀⠜⠑⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠉⠪⠄⠎⠀⠠⠍⠊⠇⠅⠒⠀⠠⠮⠀⠍⠕⠌⠀⠺⠊⠙⠑⠇⠽⠀⠥⠎⠫⠀⠍⠊⠇⠅⠀⠀⠀⠀⠀
+⠠⠛⠕⠁⠞⠄⠎⠀⠠⠍⠊⠇⠅⠒⠀⠠⠐⠅⠝⠀⠿⠀⠭⠎⠀⠲⠞⠔⠉⠞⠊⠧⠑⠀⠞⠁⠝⠛⠽⠀
+⠀⠀⠋⠇⠁⠧⠕⠗⠂⠀⠷⠞⠢⠀⠋⠨⠙⠀⠔⠀⠎⠷⠞⠻⠀⠡⠑⠑⠎⠑⠎⠲⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠩⠑⠑⠏⠄⠎⠀⠠⠍⠊⠇⠅⠒⠀⠠⠗⠊⠡⠀⠔⠀⠋⠁⠞⠂⠀⠹⠀⠍⠊⠇⠅⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠏⠗⠕⠙⠥⠉⠑⠎⠀⠗⠕⠃⠥⠌⠂⠀⠉⠗⠂⠍⠽⠀⠡⠑⠑⠎⠑⠎⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠃⠥⠖⠁⠇⠕⠄⠎⠀⠠⠍⠊⠇⠅⠒⠀⠠⠥⠎⠫⠀⠏⠗⠊⠍⠜⠊⠇⠽⠀⠿⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠍⠕⠵⠵⠜⠑⠇⠇⠁⠂⠀⠃⠥⠖⠁⠇⠕⠄⠎⠀⠍⠊⠇⠅⠀⠁⠙⠙⠎⠀⠁⠀⠗⠊⠡⠂⠀⠀
+⠀⠀⠉⠗⠂⠍⠽⠀⠞⠑⠭⠞⠥⠗⠑⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁
+⠀⠀⠀⠀⠠⠡⠑⠑⠎⠑⠀⠠⠍⠁⠅⠬⠀⠠⠏⠗⠕⠉⠑⠎⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠮⠀⠏⠗⠕⠙⠥⠉⠰⠝⠀⠷⠀⠡⠑⠑⠎⠑⠀⠔⠧⠕⠇⠧⠑⠎⠀⠎⠐⠑⠁⠇⠀⠅⠑⠽⠀
+⠌⠑⠏⠎⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠁⠲⠀⠠⠉⠥⠗⠙⠇⠬⠀⠮⠀⠠⠍⠊⠇⠅⠒⠀⠠⠢⠵⠽⠍⠑⠎⠀⠕⠗⠀⠁⠉⠊⠙⠎⠀⠜⠑
+⠀⠀⠁⠙⠙⠫⠀⠞⠕⠀⠍⠊⠇⠅⠀⠞⠕⠀⠎⠑⠏⠜⠁⠞⠑⠀⠮⠀⠎⠕⠇⠊⠙⠀⠉⠥⠗⠙⠎⠀
+⠀⠀⠋⠀⠮⠀⠇⠊⠟⠥⠊⠙⠀⠱⠑⠽⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠃⠲⠀⠠⠙⠗⠁⠔⠬⠀⠮⠀⠠⠱⠑⠽⠒⠀⠠⠮⠀⠉⠥⠗⠙⠎⠀⠜⠑⠀⠙⠗⠁⠔⠫⠀⠞⠕⠀
+⠀⠀⠗⠑⠍⠕⠧⠑⠀⠑⠭⠉⠑⠎⠎⠀⠍⠕⠊⠌⠥⠗⠑⠂⠀⠙⠑⠞⠻⠍⠔⠬⠀⠮⠀⠀⠀⠀⠀⠀
+⠀⠀⠡⠑⠑⠎⠑⠄⠎⠀⠋⠊⠗⠍⠰⠎⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠉⠲⠀⠠⠍⠕⠇⠙⠬⠀⠯⠀⠠⠏⠗⠑⠎⠎⠬⠒⠀⠠⠮⠀⠉⠥⠗⠙⠎⠀⠜⠑⠀⠩⠁⠏⠫⠀⠯
+⠀⠀⠐⠎⠐⠞⠎⠀⠏⠗⠑⠎⠎⠫⠀⠞⠕⠀⠿⠍⠀⠮⠀⠡⠑⠑⠎⠑⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠼⠙⠲⠀⠠⠁⠛⠬⠒⠀⠠⠐⠎⠀⠡⠑⠑⠎⠑⠎⠀⠜⠑⠀⠁⠛⠫⠀⠞⠕⠀⠙⠑⠧⠑⠇⠕⠏⠀⠀
+⠀⠀⠋⠇⠁⠧⠕⠗⠀⠯⠀⠞⠑⠭⠞⠥⠗⠑⠂⠀⠱⠊⠇⠑⠀⠕⠮⠗⠎⠀⠜⠑⠀⠑⠁⠞⠢⠀⠀⠀
+⠀⠀⠋⠗⠑⠩⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+				</aside>
 			</section>
 
 			<section id="borders-lines">
@@ -1104,7 +1499,7 @@ h1 {
 
 					<aside class="example" title="A standard box">
 						<a class="tagging-link" href="../tagging/index.html#example-a-standard-box"></a>
-						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<p>In order to obtain the following layout for the above HTML code,</p>
 						<pre><code class="formatted-braille">⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐
 ⠐⠀⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⠀⠐
 ⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐</code></pre>
@@ -1164,7 +1559,7 @@ p {
 ⠼⠢⠈⠡⠖⠴ ⠨⠅ ⠼⠒⠴⠴&lt;/div&gt;
 &lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋⠞⠑⠗ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
 </code></pre>
-						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<p>In order to obtain the following layout for the above HTML code,</p>
 						<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠑⠎⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠸⠩⠀⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
@@ -1230,7 +1625,7 @@ p {
 &lt;/div&gt;
 &lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋⠞⠑⠗ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
 </code></pre>
-						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<p>In order to obtain the following layout for the above HTML code,</p>
 						<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠊⠎⠀⠁⠋⠞⠑⠗⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠈⠨⠣⠽⠑⠇⠇⠕⠺⠈⠨⠜⠀⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
@@ -1312,7 +1707,7 @@ p {
 ⠁⠏⠏⠑⠁⠗ ⠞⠕ ⠃⠑ ⠍⠑⠝ ⠕⠝ ⠺⠓⠕⠍ ⠠⠊ ⠉⠁⠝ ⠙⠑⠏⠑⠝⠙
 ⠁⠝⠙ ⠁⠗⠑ ⠉⠑⠗⠞⠁⠊⠝⠇⠽ ⠏⠕⠎⠎⠑⠎⠎⠑⠙ ⠕⠋ ⠙⠁⠥⠝⠞⠇⠑⠎⠎
 ⠉⠕⠥⠗⠁⠛⠑⠲&lt;/p&gt;</code></pre>
-						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<p>In order to obtain the following layout for the above HTML code,</p>
 						<pre><code class="formatted-braille">⠀⠀⠠⠋⠁⠗⠑⠺⠑⠇⠇⠂⠀⠍⠽⠀⠙⠑⠁⠗⠂⠀⠑⠭⠉⠑⠇⠇⠑⠝⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠠⠍⠁⠗⠛⠁⠗⠑⠞⠲⠀⠠⠓⠑⠁⠧⠑⠝⠀⠎⠓⠕⠺⠑⠗⠀⠙⠕⠺⠝⠀⠃⠇⠑⠎⠎⠊⠝⠛⠎
 ⠕⠝⠀⠽⠕⠥⠂⠀⠁⠝⠙⠀⠎⠁⠧⠑⠀⠍⠑⠂⠀⠞⠓⠁⠞⠀⠠⠊⠀⠍⠁⠽⠀⠁⠛⠁⠊⠝⠀⠀
@@ -1409,7 +1804,7 @@ h1 {
 ⠋⠁⠞⠓⠑⠗⠄⠎ ⠙⠽⠊⠝⠛ ⠊⠝⠚⠥⠝⠉⠞⠊⠕⠝ ⠓⠁⠙ ⠋⠕⠗⠃⠊⠙⠙⠑⠝
 ⠍⠽ ⠥⠝⠉⠇⠑ ⠞⠕ ⠁⠇⠇⠕⠺ ⠍⠑ ⠞⠕ ⠑⠍⠃⠁⠗⠅ ⠊⠝ ⠁
 ⠎⠑⠁⠋⠁⠗⠊⠝⠛ ⠇⠊⠋⠑⠲&lt;/p&gt;</code></pre>
-						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<p>In order to obtain the following layout for the above HTML code,</p>
 						<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠑⠎⠑⠀⠗⠑⠋⠇⠑⠉⠞⠊⠕⠝⠎⠀⠓⠁⠧⠑⠀⠙⠊⠎⠏⠑⠇⠇⠑⠙⠀⠞⠓⠑⠀
 ⠁⠛⠊⠞⠁⠞⠊⠕⠝⠀⠺⠊⠞⠓⠀⠺⠓⠊⠉⠓⠀⠠⠊⠀⠃⠑⠛⠁⠝⠀⠍⠽⠀⠇⠑⠞⠞⠑⠗⠂
 ⠁⠝⠙⠀⠠⠊⠀⠋⠑⠑⠇⠀⠍⠽⠀⠓⠑⠁⠗⠞⠀⠛⠇⠕⠺⠀⠺⠊⠞⠓⠀⠁⠝⠀⠀⠀⠀⠀⠀⠀
@@ -1475,37 +1870,25 @@ h1 {
 					<p>Guide dots may also be used within a table layout, as the following examples shows.</p>
 
 					<aside class="example" title="Table of contents with guide dots">
-						<p>Refer to the “<a href="#example-table-of-contents">table of contents</a>” example
-							above:</p>
-						<pre><code class="html">&lt;ol class="toc"&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝&lt;/span&gt; &lt;a href="#page-5"&gt;⠼⠑&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠏⠗⠑⠤⠠⠋⠇⠊⠣⠞&lt;/span&gt; &lt;a href="#page-6"&gt;⠼⠋&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠋⠗⠁⠝⠅⠢⠌⠑⠔&lt;/span&gt; &lt;a href="#page-7"&gt;⠼⠛&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝&lt;/span&gt; &lt;a href="#page-8"&gt;⠼⠓&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠏⠗⠑⠋⠁⠉⠑&lt;/span&gt; &lt;a href="#page-14"&gt;⠼⠁⠙&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠊&lt;/span&gt; &lt;a href="#page-17"&gt;⠼⠁⠛&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠊&lt;/span&gt; &lt;a href="#page-20"&gt;⠼⠃⠚&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠊⠊&lt;/span&gt; &lt;a href="#page-24"&gt;⠼⠃⠙&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠧&lt;/span&gt; &lt;a href="#page-25"&gt;⠼⠃⠑&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠉⠓⠁⠏⠞⠑⠗ ⠠⠊&lt;/span&gt; &lt;a href="#page-32"&gt;⠼⠉⠃&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;span&gt;⠠⠠⠉⠓⠁⠏⠞⠑⠗ ⠠⠠⠊⠊&lt;/span&gt; &lt;a href="#page-38"&gt;⠼⠉⠓&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</code></pre>
-						<p>In order to obtain the following desired layout for the above HTML code, with guide
+						<a class="tagging-link"
+						   href="../tagging/index.html#example-a-table-of-contents-with-links"></a>
+						<p>In order to obtain the following layout for the above HTML code, with guide
 						dots between the titles and page numbers,</p>
-						<pre><code class="formatted-braille">⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠑
-⠠⠏⠗⠑⠤⠠⠋⠇⠊⠣⠞⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠋
-⠠⠋⠗⠁⠝⠅⠢⠌⠑⠔⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛
-⠠⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠓
-⠠⠠⠏⠗⠑⠋⠁⠉⠑⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠁⠙
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠁⠛
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠚
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠙
-⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠧⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠑
-⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠉⠃
-⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠠⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠉⠓</code></pre>
+						<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠞⠁⠃⠇⠑⠀⠕⠋⠀⠠⠉⠕⠝⠞⠑⠝⠞⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠑
+⠠⠏⠗⠑⠤⠠⠋⠇⠊⠛⠓⠞⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠋
+⠠⠋⠗⠁⠝⠅⠑⠝⠎⠞⠑⠊⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛
+⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠓
+⠠⠠⠏⠗⠑⠋⠁⠉⠑⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠁⠙
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠁⠛
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠚
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠙
+⠠⠠⠇⠑⠞⠞⠑⠗⠀⠠⠠⠊⠧⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠃⠑
+⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠉⠃
+⠠⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠠⠊⠊⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠉⠓</code></pre>
 						<p>the CSS style sheet may be extended as follows:</p>
-						<pre><code class="css" data-page-width="40">ol.toc li:has(span) {
+						<pre><code class="css" data-page-width="39">ol.toc li:has(span) {
    display: flex;
 }
 ol.toc li span {
@@ -1532,6 +1915,12 @@ ol.toc li span + a {
    order: 3;
    flex-shrink: 0;
    align-self: flex-end;
+}
+h1 {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 3ch;
+   margin-bottom: 1rem;
 }</code></pre>
 						<details class="specification-links">
 							<summary>CSS features used in this example</summary>
@@ -1563,6 +1952,11 @@ ol.toc li span + a {
 								‘z-index’ property</a></li>
 								<li><a data-cite="css-backgrounds##background-color">Base Color: the
 								‘background-color’ property</a></li>
+								<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+								Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+								‘margin-left’ properties</a></li>
+								<li><a data-cite="css-text#text-align-property">Text Alignment: the
+								‘text-align’ shorthand</a></li>
 							</ul>
 						</details>
 					</aside>
@@ -1590,7 +1984,7 @@ ol.toc li span + a {
 &lt;/div&gt;
 &lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋⠞⠑⠗ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
 </code></pre>
-						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<p>In order to obtain the following layout for the above HTML code,</p>
 						<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠑⠎⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
@@ -1656,7 +2050,7 @@ p {
 &lt;/div&gt;
 &lt;p&gt;⠠⠹ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋ ⠮ ⠃⠕⠭⠲&lt;/p&gt;
 </code></pre>
-						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<p>In order to obtain the following layout for the above HTML code,</p>
 						<pre><code class="formatted-braille">⠀⠀⠠⠹⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠫⠑⠎⠀⠮⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠠⠹⠀⠓⠂⠙⠬⠀⠊⠎⠀⠁⠎⠎⠕⠉⠊⠁⠞⠫⠀⠾⠀⠮⠀⠃⠕⠭⠀⠀⠀⠀⠀⠀
@@ -1695,7 +2089,7 @@ p {
 &lt;/div&gt;
 &lt;p&gt;⠠⠞⠓⠊⠎ ⠞⠑⠭⠞ ⠊⠎ ⠁⠋⠞⠑⠗ ⠞⠓⠑ ⠃⠕⠭⠲&lt;/p&gt;
 </code></pre>
-						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<p>In order to obtain the following layout for the above HTML code,</p>
 						<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠊⠎⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠑⠎⠀⠞⠓⠑⠀⠃⠕⠭⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿
@@ -1767,7 +2161,7 @@ p {
 							does not come from BANA or any other standard.
 						</p>
 						<a class="tagging-link" href="../tagging/index.html#example-a-box-inside-another-box"></a>
-						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<p>In order to obtain the following layout for the above HTML code,</p>
 						<pre><code class="formatted-braille">⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀
 ⡇⡏⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⢹⢸
 ⡇⡇⠀⠀⠠⠎⠑⠑⠀⠁⠇⠎⠕⠀⠠⠉⠓⠁⠏⠞⠑⠗⠀⠼⠃⠑⠀⠀⠀⠀⠀⠀⠀⢸⢸
@@ -1858,7 +2252,7 @@ p {
 				mode)"><span/></div>
 			</section>
 
-			<section id="counters">
+			<!--<section id="counters">
 				<h3>Automatic numbering</h3>
 
 				<div class="issue" title="Seeking an example of automatic numbering of list
@@ -1867,7 +2261,7 @@ p {
 				<div class="issue" title="Seeking an example of choosing bullit character for list
 				items"><span/></div>
 
-			</section>
+			</section>-->
 
 			<section id="float">
 				<h3>Floating content</h3>
@@ -1892,7 +2286,7 @@ p {
     ⠊⠝ ⠞⠓⠑ ⠎⠥⠉⠉⠑⠎⠎ ⠕⠋ ⠍⠽ ⠥⠝⠙⠑⠗⠞⠁⠅⠊⠝⠛⠲
   &lt;/p&gt;
 &lt;/div&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<p>In order to obtain the following layout for the above HTML code,</p>
 					<pre><code class="formatted-braille">⠠⠽⠕⠥⠀⠺⠊⠇⠇⠀⠗⠑⠚⠕⠊⠉⠑⠀⠞⠕⠀⠓⠑⠁⠗⠀⠞⠓⠁⠞⠀⠝⠕⠀⠀⠀⠀⠀⠼⠉
 ⠙⠊⠎⠁⠎⠞⠑⠗⠀⠓⠁⠎⠀⠁⠉⠉⠕⠍⠏⠁⠝⠊⠑⠙⠀⠞⠓⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠉⠕⠍⠍⠑⠝⠉⠑⠍⠑⠝⠞⠀⠕⠋⠀⠁⠝⠀⠑⠝⠞⠑⠗⠏⠗⠊⠎⠑⠀⠺⠓⠊⠉⠓⠀⠀⠀⠼⠙
@@ -1911,8 +2305,11 @@ p {
 						the first print line begins a new braille line).</p>
 					</div>
 					<pre><code class="css" data-page-width="40">.prose {
-   /* Preserve a column of four characters for the numbers. Note that, regardless
-      of the width of the column, each line number is separated from the text by
+   /* Line numbers are assumed to be two characters wide, and a column of four
+      characters is preserved for the numbers. Adapting to the actual width of
+      the widest line number is not possible without scripting (which eBraille
+      does not allow). Note that, regardless of the width of the column and the
+      width of the line numbers, each line number is separated from the text by
       at least two blanks (due to the `margin-left: 2ch'). */
    padding-right: 4ch;
 }
@@ -1934,6 +2331,9 @@ p {
 .prose .linenum:not(:-moz-first-node)::before {
    content: " \A0 ";
 }</code></pre>
+					<p class="note">Notice how this style sheet has issues formatting the prose exactly
+						according to the rules of BANA. This shows that not every complex layout requirement
+						can be fulfilled with (pure) CSS.</p>
 					<details class="specification-links">
 						<summary>CSS features used in this example</summary>
 						<ul>
@@ -1955,13 +2355,9 @@ p {
 							‘padding-left’ properties</a></li>
 						</ul>
 					</details>
+					<!--
 					<div class="ednote">
 						<p>This example shows possible use cases for allowing scripting in the future.</p>
-						<div class="issue" title="Don't include scripting in best practices">
-							<p>Because scripting is currenly forbidden, we obviously shouldn't
-							include it in the best practices. Still it seems useful to have it included
-							somewhere, to show the limitations of CSS.</p>
-						</div>
 						<details>
 							<summary>This CSS and JavaScript may be applied to enhance the styling</summary>
 							<div style="white-space: pre-wrap; font-family: Menlo, Consolas, 'DejaVu Sans Mono', Monaco, monospace; font-size: .9em"
@@ -2059,76 +2455,7 @@ p {
 </div>
 						</details>
 					</div>
-				</aside>
-			</section>
-
-			<section id="misc">
-				<h3>Miscellaneous examples</h3>
-
-				<aside class="example" title="Spatial math">
-					<div class="issue" data-number="231"
-					     title="Missing best practices for correctly tagging this example">
-						<p>Missing an example in [[tagging]] of “spatial math“. Is this to be handled
-						with a <code>pre</code> element?</p>
-					</div>
-					<pre><code class="html">&lt;pre&gt;⠼⠁⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠲
-⠀⠀⠀⠀⠀⠀⠼⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠚⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠓⠑
-⠀⠀⠀⠀⠐⠖⠼⠀⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠀⠃⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠃⠚
-⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒&lt;/pre&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠼⠁⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠃⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠉⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠼⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁⠚⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠓⠑⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠐⠖⠼⠀⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠀⠃⠉⠀⠀⠀⠀⠀⠀⠀⠐⠖⠼⠃⠚⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠒⠒⠀⠀⠀⠀⠀⠀</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="40">pre {
-    white-space: pre;
-}</code></pre>
-				</aside>
-
-				<aside class="example" title="Centered heading with a title and subtitle on different lines">
-					<div class="issue" data-number="231"
-					     title="Missing best practices for correctly tagging this example">
-						<p>Missing an example in [[tagging]] of a centered heading with a title and
-						subtitle on different lines.</p>
-					</div>
-					<pre><code class="html">&lt;p&gt;⠠⠞⠓⠑ ⠞⠑⠭⠞ ⠏⠗⠑⠉⠑⠙⠊⠝⠛ ⠁ ⠉⠑⠝⠞⠑⠗⠑⠙ ⠓⠑⠁⠙⠊⠝⠛⠲&lt;/p&gt;
-&lt;header&gt;
-  &lt;h1&gt;⠠⠞⠊⠞⠇⠑⠒&lt;/h1&gt;
-  &lt;p&gt;⠎⠥⠃⠞⠊⠞⠇⠑&lt;/p&gt;
-&lt;/header&gt;
-&lt;p&gt;⠠⠞⠓⠑ ⠞⠑⠭⠞ ⠋⠕⠇⠇⠕⠺⠊⠝⠛ ⠁ ⠉⠑⠇⠇⠤⠼⠑ ⠓⠑⠁⠙⠊⠝⠛&lt;/p&gt;</code></pre>
-					<p>In order to obtain the following desired layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠏⠗⠑⠉⠑⠙⠊⠝⠛⠀⠁⠀⠉⠑⠝⠞⠑⠗⠑⠙⠀⠓⠑⠁⠙⠊⠝⠛⠲
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠞⠊⠞⠇⠑⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠎⠥⠃⠞⠊⠞⠇⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠠⠞⠓⠑⠀⠞⠑⠭⠞⠀⠋⠕⠇⠇⠕⠺⠊⠝⠛⠀⠁⠀⠉⠑⠇⠇⠤⠼⠑⠀⠓⠑⠁⠙⠊⠝⠛⠀⠀</code></pre>
-					<p>the following CSS style sheet may be applied:</p>
-					<!--<p class="ednote">
-						It is not possible to properly center the <code>header</code> in all
-						situations. In this case the first line is not aligned to the grid, but the
-						second is. By increasing the right margin with <code>1ch</code>, the first
-						line becomes aligned with the grid, but the second becomes misaligned.
-					</p>-->
-					<pre><code class="css" data-page-width="41">p {
-   text-indent: 2ch;
-}
-header:has(> h1) {
-   text-align: center;
-   margin-left: 3ch;
-   margin-right: 3ch;
-   margin-top: 1rem;
-   margin-bottom: 1rem;
-}
-header > h1,
-header > p {
-  margin: 0;
-  text-indent: inherit;
-  text-align: inherit;
-}</code></pre>
-				</aside>
+				</aside>-->
 			</section>
 		</section>
 		<div data-include="../../common/acknowledgements.html" data-include-replace="true"></div>
