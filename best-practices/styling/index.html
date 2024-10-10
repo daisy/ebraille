@@ -353,13 +353,13 @@
 						>“left-aligned” paragraphs</a> [[tagging]] are separated from each other using
 						a blank line.
 					</p>
-					<pre><code class="html">&lt;p class="blocked"&gt;⠠⠥⠏⠕⠝ ⠓⠑⠁⠗⠊⠝⠛ ⠞⠓⠊⠎ ⠓⠑ ⠁⠏⠏⠑⠁⠗⠑⠙
+					<pre><code class="html">&lt;p class="left-aligned"&gt;⠠⠥⠏⠕⠝ ⠓⠑⠁⠗⠊⠝⠛ ⠞⠓⠊⠎ ⠓⠑ ⠁⠏⠏⠑⠁⠗⠑⠙
 ⠎⠁⠞⠊⠎⠋⠊⠑⠙ ⠁⠝⠙ ⠉⠕⠝⠎⠑⠝⠞⠑⠙ ⠞⠕ ⠉⠕⠍⠑ ⠕⠝
 ⠃⠕⠁⠗⠙⠲ ⠠⠛⠕⠕⠙ ⠠⠛⠕⠙⠖ ⠠⠍⠁⠗⠛⠁⠗⠑⠞⠂ ⠊⠋ ⠽⠕⠥ ⠓⠁⠙
 ⠎⠑⠑⠝ ⠞⠓⠑ ⠍⠁⠝ ⠺⠓⠕ ⠞⠓⠥⠎ ⠉⠁⠏⠊⠞⠁⠇⠁⠞⠑⠙ ⠋⠕⠗
 ⠓⠊⠎ ⠎⠁⠋⠑⠞⠽⠂ ⠽⠕⠥⠗ ⠎⠥⠗⠏⠗⠊⠎⠑ ⠺⠕⠥⠇⠙ ⠓⠁⠧⠑
 ⠃⠑⠑⠝ ⠃⠕⠥⠝⠙⠇⠑⠎⠎⠲&lt;/p&gt;
-&lt;p class="blocked"&gt;⠠⠞⠺⠕ ⠙⠁⠽⠎ ⠏⠁⠎⠎⠑⠙ ⠊⠝ ⠞⠓⠊⠎ ⠍⠁⠝⠝⠑⠗ ⠃⠑⠋⠕⠗⠑
+&lt;p class="left-aligned"&gt;⠠⠞⠺⠕ ⠙⠁⠽⠎ ⠏⠁⠎⠎⠑⠙ ⠊⠝ ⠞⠓⠊⠎ ⠍⠁⠝⠝⠑⠗ ⠃⠑⠋⠕⠗⠑
 ⠓⠑ ⠺⠁⠎ ⠁⠃⠇⠑ ⠞⠕ ⠎⠏⠑⠁⠅ ⠁⠝⠙ ⠠⠊ ⠕⠋⠞⠑⠝ ⠋⠑⠁⠗⠑⠙
 ⠞⠓⠁⠞ ⠓⠊⠎ ⠎⠥⠋⠋⠑⠗⠊⠝⠛⠎ ⠓⠁⠙ ⠙⠑⠏⠗⠊⠧⠑⠙ ⠓⠊⠍ ⠕⠋
 ⠥⠝⠙⠑⠗⠎⠞⠁⠝⠙⠊⠝⠛⠲&lt;/p&gt;</code></pre>
@@ -375,7 +375,7 @@
 ⠞⠓⠁⠞⠀⠓⠊⠎⠀⠎⠥⠋⠋⠑⠗⠊⠝⠛⠎⠀⠓⠁⠙⠀⠙⠑⠏⠗⠊⠧⠑⠙⠀⠓⠊⠍⠀⠕⠋⠀
 ⠥⠝⠙⠑⠗⠎⠞⠁⠝⠙⠊⠝⠛⠲</code></pre>
 					<p>the following CSS style sheet may be applied:</p>
-					<pre><code class="css" data-page-width="40">p + p.blocked {
+					<pre><code class="css" data-page-width="40">p + p.left-aligned {
    margin-top: 1rem;
 }</code></pre>
 					<details class="specification-links">
@@ -502,8 +502,8 @@ h2 + * {
 					properties may be used to mark the start of paragraphs with an indent of two cells, or to
 					mark the start of list items with a “hanging” indent.</p>
 
-				<aside class="example" title="A blocked paragraph preceding an indented one">
-					<pre><code class="html">&lt;p class="blocked"&gt;⠠⠥⠏⠕⠝  ⠓⠑⠁⠗⠊⠝⠛ ⠞⠓⠊⠎ ⠓⠑ ⠁⠏⠏⠑⠁⠗⠑⠙
+				<aside class="example" title="A left-aligned paragraph preceding an indented one">
+					<pre><code class="html">&lt;p class="left-aligned"&gt;⠠⠥⠏⠕⠝  ⠓⠑⠁⠗⠊⠝⠛ ⠞⠓⠊⠎ ⠓⠑ ⠁⠏⠏⠑⠁⠗⠑⠙
 ⠎⠁⠞⠊⠎⠋⠊⠑⠙ ⠁⠝⠙ ⠉⠕⠝⠎⠑⠝⠞⠑⠙ ⠞⠕ ⠉⠕⠍⠑ ⠕⠝
 ⠃⠕⠁⠗⠙⠲ ⠠⠛⠕⠕⠙ ⠠⠛⠕⠙⠖ ⠠⠍⠁⠗⠛⠁⠗⠑⠞⠂ ⠊⠋ ⠽⠕⠥ ⠓⠁⠙
 ⠎⠑⠑⠝ ⠞⠓⠑ ⠍⠁⠝ ⠺⠓⠕ ⠞⠓⠥⠎ ⠉⠁⠏⠊⠞⠁⠇⠁⠞⠑⠙ ⠋⠕⠗
@@ -527,7 +527,7 @@ h2 + * {
 					<pre><code class="css" data-page-width="40">p {
    text-indent: 2ch;
 }
-p.blocked {
+p.left-aligned {
    text-indent: 0;
 }</code></pre>
 					<details class="specification-links">
@@ -550,7 +550,7 @@ p.blocked {
 					<pre><code class="html"><pre><code class="html">&lt;p&gt;⠠⠘⠥ ⠓⠑⠜⠬ ⠹ ⠓⠑ ⠁⠏⠏⠑⠜⠫ ⠎⠁⠞⠊⠎⠋⠊⠫ ⠯ ⠒⠎⠢⠞⠫ ⠞⠕ ⠉⠕⠍⠑
 ⠕⠝ ⠃⠕⠜⠙⠲ ⠠⠛⠙ ⠠⠛⠕⠙⠖ ⠠⠍⠜⠛⠜⠑⠞⠂ ⠊⠋ ⠽ ⠸⠓ ⠎⠑⠢ ⠮ ⠍⠁⠝ ⠱⠕ ⠹⠥⠎
 ⠉⠁⠏⠊⠞⠥⠇⠁⠞⠫ ⠿ ⠦ ⠎⠁⠋⠑⠞⠽⠂ ⠽⠗ ⠎⠥⠗⠏⠗⠊⠎⠑ ⠺⠙ ⠓ ⠃⠑⠢ ⠃⠨⠙⠨⠎⠲&lt;/p&gt;
-&lt;p class="blocked"&gt;⠠⠞⠺⠕ ⠐⠙⠎ ⠏⠁⠎⠎⠫ ⠔ ⠹ ⠍⠁⠝⠝⠻ ⠆⠋ ⠓⠑
+&lt;p class="left-aligned"&gt;⠠⠞⠺⠕ ⠐⠙⠎ ⠏⠁⠎⠎⠫ ⠔ ⠹ ⠍⠁⠝⠝⠻ ⠆⠋ ⠓⠑
 ⠴ ⠁⠃⠇⠑ ⠞⠕ ⠎⠏⠂⠅⠂ ⠯ ⠠⠊ ⠷⠞⠢ ⠋⠑⠜⠫ ⠞ ⠦ ⠎⠥⠖⠻⠬⠎ ⠸⠓ ⠙⠑⠏⠗⠊⠧⠫ ⠓⠍
 ⠷ ⠐⠥⠌⠯⠬⠲&lt;/p&gt;</code></pre></code></pre>
 					<p>In order to obtain the following layout for the above HTML code,</p>
@@ -566,10 +566,10 @@ p.blocked {
 					<pre><code class="css" data-page-width="40">p {
    text-indent: 2ch;
 }
-p.blocked {
+p.left-aligned {
    text-indent: 0;
 }
-p + p.blocked {
+p + p.left-aligned {
    margin-top: 1rem;
 }
 </code></pre>
