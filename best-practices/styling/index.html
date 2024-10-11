@@ -99,6 +99,9 @@
 					"css-inline": {
 						aliasOf: "css-inline-3"
 					},
+					"css-break": {
+						aliasOf: "css-break-3"
+					},
 					"css2": {
 						aliasOf: "CSS22-20160412"
 					}
@@ -135,6 +138,23 @@
 				font-size: 20px;
 				line-height: 1em;
 				letter-spacing: 0;
+				white-space: pre;
+				background-color: white;
+				padding: .5em;
+			}
+			.formatted-braille.paged {
+				border: none;
+				padding: 0;
+				background-color: initial;
+			}
+			.formatted-braille.paged .braille-page {
+				border: 1px solid black;
+				background-color: white;
+				padding: .5em;
+				margin-top: .5em;
+			}
+			.formatted-braille.paged .braille-page:first-child {
+				margin-top: 0;
 			}
 			.formatted-braille button {
 				visibility: hidden;
@@ -1229,8 +1249,8 @@ h1 {
 			<section id="page-breaking">
 				<h3>Page breaking <!--and column layout--></h3>
 
-				<div class="issue" data-number="93" title="Seeking an example of avoiding page breaks between
-				two elements"><span/></div>
+				<div class="issue" data-number="93" title="Seeking an example of avoiding orphan or widow
+				lines"><span/></div>
 
 				<!--<div class="issue" title="Seeking an example of a column layout"><span/></div>-->
 
@@ -1398,23 +1418,31 @@ h1 {
 					<pre><code class="css" data-page-width="40"></code></pre>
 				</aside>-->
 
-				<div class="issue"
-				     title="Need HTML and CSS of avoiding orphan or widow lines"><span/></div>
+				<p>Indicating that an element must not be separated from content following or
+					preceding it, if possible, is done
+					with <a data-cite="css-break#break-between"><code>break-after:
+					avoid-page</code></a>
+					and <a data-cite="css-break#break-between"><code>break-before:
+					avoid-page</code></a> [[css-break]], respectively.</p>
 
 				<aside class="example" title="Heading moving to next page to remain with material">
+					<pre><code class="html">&lt;p&gt;⠠⠡⠑⠑⠎⠑ ⠉ ⠆ ⠍⠁⠙⠑ ⠋ ⠮ ⠍⠊⠇⠅ ⠷ ⠧⠜⠊⠳⠎ ⠁⠝⠊⠍⠁⠇⠎⠂ ⠑⠁⠡
+   ⠒⠞⠗⠊⠃⠥⠞⠬ ⠥⠝⠊⠟⠥⠑ ⠐⠡⠊⠌⠊⠉⠎ ⠞⠕ ⠮ ⠋⠔⠁⠇ ⠏⠗⠕⠙⠥⠉⠞⠲ ⠠⠮ ⠍⠕⠌
+   ⠉⠕⠍⠍⠕⠝ ⠞⠽⠏⠑⠎ ⠷ ⠍⠊⠇⠅ ⠥⠎⠫ ⠜⠑⠒&lt;/p&gt;
+&lt;ul&gt;
+   &lt;li&gt;⠠⠉⠪⠄⠎ ⠠⠍⠊⠇⠅⠒ ⠠⠮ ⠍⠕⠌ ⠺⠊⠙⠑⠇⠽ ⠥⠎⠫ ⠍⠊⠇⠅&lt;/li&gt;
+   &lt;li&gt;⠠⠛⠕⠁⠞⠄⠎ ⠠⠍⠊⠇⠅⠒ ⠠⠐⠅⠝ ⠿ ⠭⠎ ⠲⠞⠔⠉⠞⠊⠧⠑ ⠞⠁⠝⠛⠽ ⠋⠇⠁⠧⠕⠗⠂
+      ⠷⠞⠢ ⠋⠨⠙ ⠔ ⠎⠷⠞⠻ ⠡⠑⠑⠎⠑⠎⠲&lt;/li&gt;
+   &lt;li&gt;⠠⠩⠑⠑⠏⠄⠎ ⠠⠍⠊⠇⠅⠒ ⠠⠗⠊⠡ ⠔ ⠋⠁⠞⠂ ⠹ ⠍⠊⠇⠅ ⠏⠗⠕⠙⠥⠉⠑⠎
+      ⠗⠕⠃⠥⠌⠂ ⠉⠗⠂⠍⠽ ⠡⠑⠑⠎⠑⠎⠲&lt;/li&gt;
+   &lt;li&gt;⠠⠃⠥⠖⠁⠇⠕⠄⠎ ⠠⠍⠊⠇⠅⠒ ⠠⠥⠎⠫ ⠏⠗⠊⠍⠜⠊⠇⠽ ⠿ ⠍⠕⠵⠵⠜⠑⠇⠇⠁⠂
+      ⠃⠥⠖⠁⠇⠕⠄⠎ ⠍⠊⠇⠅ ⠁⠙⠙⠎ ⠁ ⠗⠊⠡⠂ ⠉⠗⠂⠍⠽ ⠞⠑⠭⠞⠥⠗⠑⠲&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;⠠⠡⠑⠑⠎⠑ ⠠⠍⠁⠅⠬ ⠠⠏⠗⠕⠉⠑⠎⠎&lt;/h2&gt;
+&lt;p&gt;⠠⠃⠥⠖⠁⠇⠕⠄⠎ ⠠⠍⠊⠇⠅⠒ ⠠⠥⠎⠫ ⠏⠗⠊⠍⠜⠊⠇⠽ ⠿ ⠍⠕⠵⠵⠜⠑⠇⠇⠁⠂
+   ⠃⠥⠖⠁⠇⠕⠄⠎ ⠍⠊⠇⠅ ⠁⠙⠙⠎ ⠁ ⠗⠊⠡⠂ ⠉⠗⠂⠍⠽ ⠞⠑⠭⠞⠥⠗⠑⠲&lt;/p&gt;</code></pre>
 					<p>In order to obtain the following layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠠⠔⠞⠗⠕⠙⠥⠉⠰⠝⠀⠞⠕⠀⠠⠡⠑⠑⠎⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠠⠡⠑⠑⠎⠑⠀⠊⠎⠀⠐⠕⠀⠷⠀⠮⠀⠕⠇⠙⠑⠌⠀⠯⠀⠍⠕⠌⠀⠧⠻⠎⠁⠞⠊⠇⠑⠀
-⠋⠕⠕⠙⠎⠀⠔⠀⠮⠀⠸⠺⠂⠀⠾⠀⠁⠀⠓⠊⠌⠕⠗⠽⠀⠙⠁⠞⠬⠀⠃⠁⠉⠅⠀⠹⠳⠎⠯⠎
-⠷⠀⠽⠑⠜⠎⠲⠀⠠⠍⠁⠙⠑⠀⠏⠗⠊⠍⠜⠊⠇⠽⠀⠋⠀⠍⠊⠇⠅⠂⠀⠡⠑⠑⠎⠑⠀⠉⠀⠀
-⠧⠜⠽⠀⠎⠊⠛⠝⠊⠋⠊⠉⠁⠝⠞⠇⠽⠀⠔⠀⠋⠇⠁⠧⠕⠗⠂⠀⠞⠑⠭⠞⠥⠗⠑⠂⠀⠯⠀⠀
-⠿⠍⠀⠙⠑⠏⠢⠙⠬⠀⠕⠝⠀⠋⠁⠉⠞⠕⠗⠎⠀⠇⠀⠮⠀⠞⠽⠏⠑⠀⠷⠀⠍⠊⠇⠅⠂⠀⠀⠀
-⠁⠛⠬⠀⠏⠗⠕⠉⠑⠎⠎⠂⠀⠯⠀⠏⠗⠕⠙⠥⠉⠰⠝⠀⠞⠑⠡⠝⠊⠟⠥⠑⠎⠲⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠠⠞⠽⠏⠑⠎⠀⠷⠀⠠⠍⠊⠇⠅⠀⠠⠥⠎⠫⠀⠔⠀⠠⠡⠑⠑⠎⠑⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠠⠏⠗⠕⠙⠥⠉⠰⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠠⠡⠑⠑⠎⠑⠀⠉⠀⠆⠀⠍⠁⠙⠑⠀⠋⠀⠮⠀⠍⠊⠇⠅⠀⠷⠀⠧⠜⠊⠳⠎⠀⠀⠀⠀⠀⠀⠀⠀
+					<code class="formatted-braille paged"><div class="braille-page">⠠⠡⠑⠑⠎⠑⠀⠉⠀⠆⠀⠍⠁⠙⠑⠀⠋⠀⠮⠀⠍⠊⠇⠅⠀⠷⠀⠧⠜⠊⠳⠎⠀⠀⠀⠀⠀⠀⠀⠀
 ⠁⠝⠊⠍⠁⠇⠎⠂⠀⠑⠁⠡⠀⠒⠞⠗⠊⠃⠥⠞⠬⠀⠥⠝⠊⠟⠥⠑⠀⠐⠡⠊⠌⠊⠉⠎⠀⠞⠕⠀
 ⠮⠀⠋⠔⠁⠇⠀⠏⠗⠕⠙⠥⠉⠞⠲⠀⠠⠮⠀⠍⠕⠌⠀⠉⠕⠍⠍⠕⠝⠀⠞⠽⠏⠑⠎⠀⠷⠀⠀⠀
 ⠍⠊⠇⠅⠀⠥⠎⠫⠀⠜⠑⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -1427,22 +1455,26 @@ h1 {
 ⠠⠃⠥⠖⠁⠇⠕⠄⠎⠀⠠⠍⠊⠇⠅⠒⠀⠠⠥⠎⠫⠀⠏⠗⠊⠍⠜⠊⠇⠽⠀⠿⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠍⠕⠵⠵⠜⠑⠇⠇⠁⠂⠀⠃⠥⠖⠁⠇⠕⠄⠎⠀⠍⠊⠇⠅⠀⠁⠙⠙⠎⠀⠁⠀⠗⠊⠡⠂⠀⠀
 ⠀⠀⠉⠗⠂⠍⠽⠀⠞⠑⠭⠞⠥⠗⠑⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁
-⠀⠀⠀⠀⠠⠡⠑⠑⠎⠑⠀⠠⠍⠁⠅⠬⠀⠠⠏⠗⠕⠉⠑⠎⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠠⠮⠀⠏⠗⠕⠙⠥⠉⠰⠝⠀⠷⠀⠡⠑⠑⠎⠑⠀⠔⠧⠕⠇⠧⠑⠎⠀⠎⠐⠑⠁⠇⠀⠅⠑⠽⠀
-⠌⠑⠏⠎⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠼⠁⠲⠀⠠⠉⠥⠗⠙⠇⠬⠀⠮⠀⠠⠍⠊⠇⠅⠒⠀⠠⠢⠵⠽⠍⠑⠎⠀⠕⠗⠀⠁⠉⠊⠙⠎⠀⠜⠑
-⠀⠀⠁⠙⠙⠫⠀⠞⠕⠀⠍⠊⠇⠅⠀⠞⠕⠀⠎⠑⠏⠜⠁⠞⠑⠀⠮⠀⠎⠕⠇⠊⠙⠀⠉⠥⠗⠙⠎⠀
-⠀⠀⠋⠀⠮⠀⠇⠊⠟⠥⠊⠙⠀⠱⠑⠽⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠼⠃⠲⠀⠠⠙⠗⠁⠔⠬⠀⠮⠀⠠⠱⠑⠽⠒⠀⠠⠮⠀⠉⠥⠗⠙⠎⠀⠜⠑⠀⠙⠗⠁⠔⠫⠀⠞⠕⠀
-⠀⠀⠗⠑⠍⠕⠧⠑⠀⠑⠭⠉⠑⠎⠎⠀⠍⠕⠊⠌⠥⠗⠑⠂⠀⠙⠑⠞⠻⠍⠔⠬⠀⠮⠀⠀⠀⠀⠀⠀
-⠀⠀⠡⠑⠑⠎⠑⠄⠎⠀⠋⠊⠗⠍⠰⠎⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠼⠉⠲⠀⠠⠍⠕⠇⠙⠬⠀⠯⠀⠠⠏⠗⠑⠎⠎⠬⠒⠀⠠⠮⠀⠉⠥⠗⠙⠎⠀⠜⠑⠀⠩⠁⠏⠫⠀⠯
-⠀⠀⠐⠎⠐⠞⠎⠀⠏⠗⠑⠎⠎⠫⠀⠞⠕⠀⠿⠍⠀⠮⠀⠡⠑⠑⠎⠑⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠼⠙⠲⠀⠠⠁⠛⠬⠒⠀⠠⠐⠎⠀⠡⠑⠑⠎⠑⠎⠀⠜⠑⠀⠁⠛⠫⠀⠞⠕⠀⠙⠑⠧⠑⠇⠕⠏⠀⠀
-⠀⠀⠋⠇⠁⠧⠕⠗⠀⠯⠀⠞⠑⠭⠞⠥⠗⠑⠂⠀⠱⠊⠇⠑⠀⠕⠮⠗⠎⠀⠜⠑⠀⠑⠁⠞⠢⠀⠀⠀
-⠀⠀⠋⠗⠑⠩⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</div><div class="braille-page">⠀⠀⠀⠀⠠⠡⠑⠑⠎⠑⠀⠠⠍⠁⠅⠬⠀⠠⠏⠗⠕⠉⠑⠎⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠮⠀⠏⠗⠕⠙⠥⠉⠰⠝⠀⠷⠀⠡⠑⠑⠎⠑⠀⠔⠧⠕⠇⠧⠑⠎⠀⠎⠐⠑⠁⠇⠀⠅⠑⠽⠀
+⠌⠑⠏⠎⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</div></code>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">/* For clarity, any CSS that is not relevant for the page break was left out */
+h2 {
+   margin-top: 1;
+   break-after: avoid-page;
+}</code></pre>
+					<details class="specification-links">
+						<summary>CSS features used in this example</summary>
+						<ul>
+							<li><a data-cite="css-break#break-between">Breaks Between Boxes: the
+							‘break-before’ and ‘break-after’ properties</a></li>
+							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+							‘margin-left’ properties</a></li>
+						</ul>
+					</details>
 				</aside>
 			</section>
 
