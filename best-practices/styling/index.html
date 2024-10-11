@@ -1265,11 +1265,38 @@ h1 {
 					the <a data-cite="mediaqueries#mf-overflow-block"><code>overflow-block</code></a>
 					media feature [[mediaqueries]].</p>
 
-				<div class="issue" title="Need HTML and CSS of forcing page breaks"><span/></div>
+				<p>In the next example, content following the frontmatter is forced to resume on a
+					new page, using
+					<a data-cite="css-break#break-between"><code>break-after: page</code></a>
+					[[css-break]].</p>
 
 				<aside class="example" title="Forced page break between front matter and body matter">
+					<pre><code class="html">&lt;ul class="toc"&gt;
+   &lt;li&gt;&lt;span&gt;⠠⠊⠝⠙⠕⠝⠑⠎⠊⠁&lt;/span&gt; &lt;a href="#page-70"&gt;⠼⠛⠚&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;span&gt;⠠⠊⠗⠁⠝&lt;/span&gt; &lt;a href="#page-71"&gt;⠼⠛⠁&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;span&gt;⠠⠊⠗⠑⠇⠁⠝⠙&lt;/span&gt; &lt;a href="#page-73"&gt;⠼⠛⠉&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;span&gt;⠠⠊⠎⠗⠁⠑⠇&lt;/span&gt; &lt;a href="#page-74"&gt;⠼⠛⠙&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;span&gt;⠠⠊⠞⠁⠇⠽&lt;/span&gt; &lt;a href="#page-76"&gt;⠼⠛⠋&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;⠠⠺⠕⠗⠇⠙ ⠠⠃⠗⠁⠊⠇⠇⠑ ⠠⠥⠎⠁⠛⠑ ⠠⠞⠓⠊⠗⠙ ⠠⠑⠙⠊⠞⠊⠕⠝&lt;/h1&gt;
+&lt;h1&gt;⠠⠃⠗⠁⠊⠇⠇⠑ ⠠⠥⠎⠁⠛⠑ ⠃⠽ ⠠⠉⠕⠥⠝⠞⠗⠽ ⠐⠣⠉⠕⠝⠞⠲⠐⠜&lt;/h1&gt;
+&lt;h1&gt;⠠⠑⠉⠥⠁⠙⠕⠗&lt;/h1&gt;
+&lt;dl&gt;
+   &lt;dt&gt;⠠⠇⠁⠝⠛⠥⠁⠛⠑⠒&lt;/dt&gt;
+   &lt;dd&gt;⠠⠎⠏⠁⠝⠊⠎⠓ ⠐⠣⠥⠎⠥⠁⠇⠇⠽ ⠥⠝⠉⠕⠝⠞⠗⠁⠉⠞⠑⠙⠐⠜&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h2&gt;⠠⠃⠗⠁⠊⠇⠇⠑ ⠠⠎⠞⠁⠝⠙⠁⠗⠙⠎ ⠠⠎⠑⠞ ⠃⠽⠒&lt;/h2&gt;
+&lt;ul&gt;
+   &lt;li&gt;⠠⠇⠁⠞⠊⠝ ⠠⠁⠍⠑⠗⠊⠉⠁⠝ ⠠⠃⠗⠁⠊⠇⠇⠑ ⠠⠉⠕⠥⠝⠉⠊⠇
+      ⠐⠣⠠⠉⠕⠍⠊⠎⠊⠘⠌⠕⠝ ⠠⠃⠗⠁⠊⠇⠇⠑ ⠠⠇⠁⠞⠊⠝⠕⠁⠍⠑⠗⠊⠉⠁⠝⠁⠨⠜
+      ⠐⠣⠠⠠⠉⠃⠇⠐⠜&lt;/li&gt;
+   &lt;li&gt;⠠⠇⠁⠞⠊⠝ ⠠⠁⠍⠑⠗⠊⠉⠁⠝ ⠠⠃⠇⠊⠝⠙ ⠠⠥⠝⠊⠕⠝ ⠐⠣⠠⠥⠝⠊⠘⠌⠕⠝
+      ⠠⠇⠁⠞⠊⠝⠕⠁⠍⠑⠗⠊⠉⠁⠝⠁ ⠙⠑ ⠉⠊⠑⠛⠕⠎⠐⠜ ⠐⠣⠠⠠⠥⠇⠁⠉⠐⠜&lt;/li&gt;
+   &lt;li&gt;⠺⠺⠺⠲⠥⠇⠁⠉⠙⠊⠛⠊⠞⠁⠇⠲⠕⠗⠛&lt;/li&gt;
+   &lt;li&gt;⠠⠃⠗⠁⠊⠇⠇⠑⠈⠁⠥⠇⠁⠉⠙⠊⠛⠊⠞⠁⠇⠲⠕⠗⠛&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
 					<p>In order to obtain the following layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠰⠊⠧
+					<code class="formatted-braille paged"><div class="braille-page">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠰⠊⠧
 ⠠⠊⠝⠙⠕⠝⠑⠎⠊⠁⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛⠚
 ⠠⠊⠗⠁⠝⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛⠁
 ⠠⠊⠗⠑⠇⠁⠝⠙⠀⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠀⠼⠛⠉
@@ -1293,8 +1320,7 @@ h1 {
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠏⠼⠃
-⠀⠀⠀⠀⠀⠀⠀⠠⠺⠕⠗⠇⠙⠀⠠⠃⠗⠁⠊⠇⠇⠑⠀⠠⠥⠎⠁⠛⠑⠀⠀⠀⠀⠀⠀⠼⠉⠙
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠏⠼⠃</div><div class="braille-page">⠀⠀⠀⠀⠀⠀⠀⠠⠺⠕⠗⠇⠙⠀⠠⠃⠗⠁⠊⠇⠇⠑⠀⠠⠥⠎⠁⠛⠑⠀⠀⠀⠀⠀⠀⠼⠉⠙
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠞⠓⠊⠗⠙⠀⠠⠑⠙⠊⠞⠊⠕⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠠⠃⠗⠁⠊⠇⠇⠑⠀⠠⠥⠎⠁⠛⠑⠀⠃⠽⠀⠠⠉⠕⠥⠝⠞⠗⠽⠀⠐⠣⠉⠕⠝⠞⠲⠐⠜⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -1310,12 +1336,19 @@ h1 {
 ⠀⠀⠐⠣⠠⠥⠝⠊⠘⠌⠕⠝⠀⠠⠇⠁⠞⠊⠝⠕⠁⠍⠑⠗⠊⠉⠁⠝⠁⠀⠙⠑⠀⠀⠀⠀⠀⠀
 ⠀⠀⠉⠊⠑⠛⠕⠎⠐⠜⠀⠐⠣⠠⠠⠥⠇⠁⠉⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠺⠺⠺⠲⠥⠇⠁⠉⠙⠊⠛⠊⠞⠁⠇⠲⠕⠗⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠠⠃⠗⠁⠊⠇⠇⠑⠈⠁⠥⠇⠁⠉⠙⠊⠛⠊⠞⠁⠇⠲⠕⠗⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠠⠉⠕⠝⠎⠑⠚⠕⠀⠠⠊⠃⠑⠗⠕⠁⠍⠑⠗⠊⠉⠁⠝⠕⠀⠙⠑⠇⠀⠠⠃⠗⠁⠊⠇⠇⠑⠀
-⠀⠀⠐⠣⠠⠠⠉⠊⠃⠐⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠁⠙⠞⠁⠈⠁⠕⠝⠉⠑⠲⠑⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠼⠁</code></pre>
+⠠⠃⠗⠁⠊⠇⠇⠑⠈⠁⠥⠇⠁⠉⠙⠊⠛⠊⠞⠁⠇⠲⠕⠗⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</div></code>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">/* For clarity, any CSS that is not relevant for the page break was left out */
+ul.toc {
+   break-after: page;
+}</code></pre>
+					<details class="specification-links">
+						<summary>CSS features used in this example</summary>
+						<ul>
+							<li><a data-cite="css-break#break-between">Breaks Between Boxes: the
+							‘break-before’ and ‘break-after’ properties</a></li>
+						</ul>
+					</details>
 				</aside>
 				<div class="issue"
 				     title="Need HTML and CSS of avoiding page breaks within an element"><span/></div>
