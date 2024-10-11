@@ -1229,6 +1229,9 @@ h1 {
 			<section id="page-breaking">
 				<h3>Page breaking <!--and column layout--></h3>
 
+				<div class="issue" data-number="93" title="Seeking an example of avoiding page breaks between
+				two elements"><span/></div>
+
 				<!--<div class="issue" title="Seeking an example of a column layout"><span/></div>-->
 
 				<p>Whether the user agent is an embosser or an electronic reading system, it may
@@ -1344,12 +1347,27 @@ h1 {
 ⠊⠝⠞⠑⠗⠎⠞⠑⠇⠇⠁⠗⠀⠓⠊⠛⠓⠺⠁⠽⠀⠕⠗⠀⠁⠀⠙⠑⠏⠗⠑⠎⠎⠑⠙⠀⠀⠀⠀⠀</code></pre>
 				</aside>
 
-				<div class="issue"
-				     title="Need HTML and CSS of avoiding page breaks between two elements">
-					<span/></div>
-
-				<aside class="example"
+				<!--<aside class="example"
 				       title="“THE END” kept on the last line of the same page, without a blank link before">
+					<pre><code class="html">&lt;p&gt;⠎⠓⠑⠑⠏⠤⠃⠑⠇⠇⠎⠂ ⠁⠝⠙ ⠞⠓⠑ ⠠⠟⠥⠑⠑⠝⠄⠎ ⠎⠓⠗⠊⠇⠇ ⠉⠗⠊⠑⠎ ⠞⠕ ⠞⠓⠑
+   ⠧⠕⠊⠉⠑ ⠕⠋ ⠞⠓⠑ ⠎⠓⠑⠏⠓⠑⠗⠙ ⠃⠕⠽⠤⠤⠁⠝⠙ ⠞⠓⠑ ⠎⠝⠑⠑⠵⠑ ⠕⠋ ⠞⠓⠑ ⠃⠁⠃⠽⠂
+   ⠞⠓⠑ ⠎⠓⠗⠊⠑⠅ ⠕⠋ ⠞⠓⠑ ⠠⠛⠗⠽⠏⠓⠕⠝⠂ ⠁⠝⠙ ⠁⠇⠇ ⠞⠓⠑ ⠕⠞⠓⠑⠗ ⠟⠥⠑⠑⠗
+   ⠝⠕⠊⠎⠑⠎⠂ ⠺⠕⠥⠇⠙ ⠉⠓⠁⠝⠛⠑ ⠐⠣⠎⠓⠑ ⠅⠝⠑⠺⠐⠜ ⠞⠕ ⠞⠓⠑ ⠉⠕⠝⠋⠥⠎⠑⠙ ⠉⠇⠁⠍⠕⠥⠗
+   ⠕⠋ ⠞⠓⠑ ⠃⠥⠎⠽ ⠋⠁⠗⠍⠤⠽⠁⠗⠙⠤⠤⠺⠓⠊⠇⠑ ⠞⠓⠑ ⠇⠕⠺⠊⠝⠛ ⠕⠋ ⠞⠓⠑ ⠉⠁⠞⠞⠇⠑ ⠊⠝
+   ⠞⠓⠑ ⠙⠊⠎⠞⠁⠝⠉⠑ ⠺⠕⠥⠇⠙ ⠞⠁⠅⠑ ⠞⠓⠑ ⠏⠇⠁⠉⠑ ⠕⠋ ⠞⠓⠑ ⠠⠍⠕⠉⠅ ⠠⠞⠥⠗⠞⠇⠑⠄⠎
+   ⠓⠑⠁⠧⠽ ⠎⠕⠃⠎⠲&lt;/p&gt;
+&lt;p&gt;⠠⠇⠁⠎⠞⠇⠽⠂ ⠎⠓⠑ ⠏⠊⠉⠞⠥⠗⠑⠙ ⠞⠕ ⠓⠑⠗⠎⠑⠇⠋ ⠓⠕⠺ ⠞⠓⠊⠎ ⠎⠁⠍⠑
+   ⠇⠊⠞⠞⠇⠑ ⠎⠊⠎⠞⠑⠗ ⠕⠋ ⠓⠑⠗⠎ ⠺⠕⠥⠇⠙⠂ ⠊⠝ ⠞⠓⠑ ⠁⠋⠞⠑⠗⠤⠞⠊⠍⠑⠂ ⠃⠑
+   ⠓⠑⠗⠎⠑⠇⠋ ⠁ ⠛⠗⠕⠺⠝ ⠺⠕⠍⠁⠝⠆ ⠁⠝⠙ ⠓⠕⠺ ⠎⠓⠑ ⠺⠕⠥⠇⠙ ⠅⠑⠑⠏⠂ ⠞⠓⠗⠕⠥⠛⠓
+   ⠁⠇⠇ ⠓⠑⠗ ⠗⠊⠏⠑⠗ ⠽⠑⠁⠗⠎⠂ ⠞⠓⠑ ⠎⠊⠍⠏⠇⠑ ⠁⠝⠙ ⠇⠕⠧⠊⠝⠛ ⠓⠑⠁⠗⠞ ⠕⠋ ⠓⠑⠗
+   ⠉⠓⠊⠇⠙⠓⠕⠕⠙⠒ ⠁⠝⠙ ⠓⠕⠺ ⠎⠓⠑ ⠺⠕⠥⠇⠙ ⠛⠁⠞⠓⠑⠗ ⠁⠃⠕⠥⠞ ⠓⠑⠗ ⠕⠞⠓⠑⠗
+   ⠇⠊⠞⠞⠇⠑ ⠉⠓⠊⠇⠙⠗⠑⠝⠂ ⠁⠝⠙ ⠍⠁⠅⠑ ⠠⠠⠞⠓⠑⠊⠗ ⠑⠽⠑⠎ ⠃⠗⠊⠛⠓⠞ ⠁⠝⠙ ⠑⠁⠛⠑⠗
+   ⠺⠊⠞⠓ ⠍⠁⠝⠽ ⠁ ⠎⠞⠗⠁⠝⠛⠑ ⠞⠁⠇⠑⠂ ⠏⠑⠗⠓⠁⠏⠎ ⠑⠧⠑⠝ ⠺⠊⠞⠓ ⠞⠓⠑ ⠙⠗⠑⠁⠍ ⠕⠋
+   ⠠⠺⠕⠝⠙⠑⠗⠇⠁⠝⠙ ⠕⠋ ⠇⠕⠝⠛ ⠁⠛⠕⠒ ⠁⠝⠙ ⠓⠕⠺ ⠎⠓⠑ ⠺⠕⠥⠇⠙ ⠋⠑⠑⠇ ⠺⠊⠞⠓ ⠁⠇⠇
+   ⠞⠓⠑⠊⠗ ⠎⠊⠍⠏⠇⠑ ⠎⠕⠗⠗⠕⠺⠎⠂ ⠁⠝⠙ ⠋⠊⠝⠙ ⠁ ⠏⠇⠑⠁⠎⠥⠗⠑ ⠊⠝ ⠁⠇⠇ ⠞⠓⠑⠊⠗
+   ⠎⠊⠍⠏⠇⠑ ⠚⠕⠽⠎⠂ ⠗⠑⠍⠑⠍⠃⠑⠗⠊⠝⠛ ⠓⠑⠗ ⠕⠺⠝ ⠉⠓⠊⠇⠙⠤⠇⠊⠋⠑⠂ ⠁⠝⠙ ⠞⠓⠑
+   ⠓⠁⠏⠏⠽ ⠎⠥⠍⠍⠑⠗ ⠙⠁⠽⠎⠲&lt;/p&gt;
+&lt;div class="the-end"&gt;⠈⠨⠣⠠⠞⠓⠑ ⠠⠑⠝⠙⠈⠨⠜&lt;/div&gt;</code></pre>
 				<p>In order to obtain the following layout for the above HTML code,</p>
 				<pre><code class="formatted-braille">⠎⠓⠑⠑⠏⠤⠃⠑⠇⠇⠎⠂⠀⠁⠝⠙⠀⠞⠓⠑⠀⠠⠟⠥⠑⠑⠝⠄⠎⠀⠎⠓⠗⠊⠇⠇⠀⠀⠀⠀
 ⠉⠗⠊⠑⠎⠀⠞⠕⠀⠞⠓⠑⠀⠧⠕⠊⠉⠑⠀⠕⠋⠀⠞⠓⠑⠀⠎⠓⠑⠏⠓⠑⠗⠙⠀⠀⠀⠀⠀⠀
@@ -1376,7 +1394,9 @@ h1 {
 ⠞⠓⠑⠊⠗⠀⠎⠊⠍⠏⠇⠑⠀⠚⠕⠽⠎⠂⠀⠗⠑⠍⠑⠍⠃⠑⠗⠊⠝⠛⠀⠓⠑⠗⠀⠕⠺⠝⠀⠀
 ⠉⠓⠊⠇⠙⠤⠇⠊⠋⠑⠂⠀⠁⠝⠙⠀⠞⠓⠑⠀⠓⠁⠏⠏⠽⠀⠎⠥⠍⠍⠑⠗⠀⠙⠁⠽⠎⠲⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠨⠣⠠⠞⠓⠑⠀⠠⠑⠝⠙⠈⠨⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
-				</aside>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40"></code></pre>
+				</aside>-->
 
 				<div class="issue"
 				     title="Need HTML and CSS of avoiding orphan or widow lines"><span/></div>
