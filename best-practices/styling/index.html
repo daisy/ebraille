@@ -1350,15 +1350,47 @@ ul.toc {
 						</ul>
 					</details>
 				</aside>
-				<div class="issue"
-				     title="Need HTML and CSS of avoiding page breaks within an element"><span/></div>
+
+				<p>When a page break must not occur within an element (unless there's no other way),
+					you use <a data-cite="css-break#break-within"><code>break-inside:
+					avoid-page</code></a> [[css-break]]:</p>
 
 				<aside class="example" title="Box kept together on page">
+					<pre><code class="html">&lt;h1&gt;⠠⠙⠕⠥⠛⠇⠁⠎ ⠠⠁⠙⠁⠍⠎⠒ ⠠⠁ ⠠⠏⠊⠕⠝⠑⠑⠗ ⠕⠋ ⠠⠎⠉⠊⠤⠠⠋⠊ ⠠⠉⠕⠍⠑⠙⠽&lt;/h1&gt;
+&lt;p&gt;⠠⠙⠕⠥⠛⠇⠁⠎ ⠠⠁⠙⠁⠍⠎ ⠺⠁⠎ ⠁ ⠠⠃⠗⠊⠞⠊⠎⠓ ⠁⠥⠞⠓⠕⠗ ⠃⠑⠎⠞ ⠅⠝⠕⠺⠝
+   ⠋⠕⠗ ⠓⠊⠎ ⠛⠗⠕⠥⠝⠙⠃⠗⠑⠁⠅⠊⠝⠛ ⠺⠕⠗⠅ ⠠⠞⠓⠑ ⠠⠓⠊⠞⠉⠓⠓⠊⠅⠑⠗⠄⠎ ⠠⠛⠥⠊⠙⠑ ⠞⠕
+   ⠞⠓⠑ ⠠⠛⠁⠇⠁⠭⠽⠂ ⠁ ⠎⠑⠗⠊⠑⠎ ⠞⠓⠁⠞ ⠉⠕⠍⠃⠊⠝⠑⠙ ⠎⠉⠊⠑⠝⠉⠑ ⠋⠊⠉⠞⠊⠕⠝ ⠺⠊⠞⠓
+   ⠙⠗⠽ ⠠⠃⠗⠊⠞⠊⠎⠓ ⠓⠥⠍⠕⠗⠲ ⠠⠃⠕⠗⠝ ⠊⠝ ⠼⠁⠊⠑⠃⠂ ⠠⠁⠙⠁⠍⠎ ⠓⠁⠙ ⠁ ⠅⠝⠁⠉⠅
+   ⠋⠕⠗ ⠺⠑⠁⠧⠊⠝⠛ ⠉⠕⠍⠏⠇⠑⠭⠂ ⠏⠓⠊⠇⠕⠎⠕⠏⠓⠊⠉⠁⠇ ⠟⠥⠑⠎⠞⠊⠕⠝⠎ ⠁⠃⠕⠥⠞ ⠇⠊⠋⠑
+   ⠁⠝⠙ ⠑⠭⠊⠎⠞⠑⠝⠉⠑ ⠊⠝⠞⠕ ⠓⠊⠎ ⠎⠞⠕⠗⠊⠑⠎ ⠊⠝ ⠁ ⠺⠁⠽ ⠞⠓⠁⠞ ⠺⠁⠎ ⠃⠕⠞⠓
+   ⠁⠉⠉⠑⠎⠎⠊⠃⠇⠑ ⠁⠝⠙ ⠁⠃⠎⠥⠗⠙⠲ ⠠⠓⠊⠎ ⠥⠝⠊⠟⠥⠑ ⠎⠞⠽⠇⠑ ⠝⠕⠞ ⠕⠝⠇⠽
+   ⠗⠑⠎⠓⠁⠏⠑⠙ ⠞⠓⠑ ⠇⠁⠝⠙⠎⠉⠁⠏⠑ ⠕⠋ ⠎⠉⠊⠑⠝⠉⠑ ⠋⠊⠉⠞⠊⠕⠝ ⠃⠥⠞ ⠁⠇⠎⠕
+   ⠊⠝⠋⠇⠥⠑⠝⠉⠑⠙ ⠁ ⠛⠑⠝⠑⠗⠁⠞⠊⠕⠝ ⠕⠋ ⠺⠗⠊⠞⠑⠗⠎ ⠁⠝⠙ ⠉⠕⠍⠑⠙⠊⠁⠝⠎ ⠺⠓⠕
+   ⠁⠙⠍⠊⠗⠑⠙ ⠓⠊⠎ ⠺⠊⠞ ⠁⠝⠙ ⠉⠗⠑⠁⠞⠊⠧⠊⠞⠽⠲&lt;/p&gt;
+&lt;div class="box"&gt;
+   &lt;h2&gt;⠠⠞⠓⠑ ⠠⠕⠗⠊⠛⠊⠝ ⠕⠋ ⠠⠞⠓⠑ ⠠⠓⠊⠞⠉⠓⠓⠊⠅⠑⠗⠄⠎ ⠠⠛⠥⠊⠙⠑&lt;/h2&gt;
+   &lt;p&gt;⠠⠞⠓⠑ ⠉⠕⠝⠉⠑⠏⠞ ⠋⠕⠗ ⠠⠞⠓⠑ ⠠⠓⠊⠞⠉⠓⠓⠊⠅⠑⠗⠄⠎ ⠠⠛⠥⠊⠙⠑ ⠞⠕
+      ⠞⠓⠑ ⠠⠛⠁⠇⠁⠭⠽ ⠁⠇⠇⠑⠛⠑⠙⠇⠽ ⠉⠁⠍⠑ ⠞⠕ ⠠⠁⠙⠁⠍⠎ ⠙⠥⠗⠊⠝⠛ ⠁ ⠙⠗⠥⠝⠅⠑⠝
+      ⠝⠊⠛⠓⠞ ⠊⠝ ⠠⠊⠝⠝⠎⠃⠗⠥⠉⠅⠂ ⠠⠁⠥⠎⠞⠗⠊⠁⠲ ⠠⠺⠓⠊⠇⠑ ⠇⠽⠊⠝⠛ ⠊⠝ ⠁
+      ⠋⠊⠑⠇⠙⠂ ⠎⠞⠁⠗⠊⠝⠛ ⠥⠏ ⠁⠞ ⠞⠓⠑ ⠎⠞⠁⠗⠎⠂ ⠓⠑ ⠃⠑⠛⠁⠝ ⠏⠕⠝⠙⠑⠗⠊⠝⠛ ⠞⠓⠑
+      ⠥⠝⠊⠧⠑⠗⠎⠑ ⠁⠝⠙ ⠺⠓⠁⠞ ⠅⠊⠝⠙ ⠕⠋ ⠛⠥⠊⠙⠑ ⠎⠕⠍⠑⠕⠝⠑ ⠺⠕⠥⠇⠙ ⠝⠑⠑⠙ ⠞⠕
+      ⠝⠁⠧⠊⠛⠁⠞⠑ ⠊⠞⠲ ⠠⠁⠇⠞⠓⠕⠥⠛⠓ ⠠⠁⠙⠁⠍⠎ ⠇⠁⠞⠑⠗ ⠚⠕⠅⠑⠙ ⠞⠓⠁⠞ ⠞⠓⠑
+      ⠙⠑⠞⠁⠊⠇⠎ ⠕⠋ ⠞⠓⠁⠞ ⠝⠊⠛⠓⠞ ⠺⠑⠗⠑ ⠓⠁⠵⠽⠂ ⠊⠞ ⠇⠑⠙ ⠞⠕ ⠞⠓⠑
+      ⠉⠗⠑⠁⠞⠊⠕⠝ ⠕⠋ ⠞⠓⠑ ⠃⠑⠇⠕⠧⠑⠙ ⠋⠊⠉⠞⠊⠕⠝⠁⠇ ⠛⠥⠊⠙⠑⠃⠕⠕⠅ ⠞⠓⠁⠞ ⠺⠕⠥⠇⠙
+      ⠙⠑⠋⠊⠝⠑ ⠍⠥⠉⠓ ⠕⠋ ⠓⠊⠎ ⠉⠁⠗⠑⠑⠗⠲ ⠠⠞⠓⠊⠎ ⠍⠕⠍⠑⠝⠞ ⠕⠋ ⠎⠑⠗⠑⠝⠙⠊⠏⠊⠞⠽
+      ⠊⠎ ⠕⠋⠞⠑⠝ ⠉⠊⠞⠑⠙ ⠁⠎ ⠕⠝⠑ ⠕⠋ ⠞⠓⠑ ⠍⠕⠎⠞ ⠋⠁⠍⠕⠥⠎ ⠦⠑⠥⠗⠑⠅⠁⠴
+      ⠍⠕⠍⠑⠝⠞⠎ ⠊⠝ ⠇⠊⠞⠑⠗⠁⠗⠽ ⠓⠊⠎⠞⠕⠗⠽⠲&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;⠠⠁⠙⠁⠍⠎⠄ ⠁⠃⠊⠇⠊⠞⠽ ⠞⠕ ⠃⠇⠑⠝⠙ ⠞⠓⠑ ⠍⠥⠝⠙⠁⠝⠑ ⠺⠊⠞⠓ ⠞⠓⠑
+   ⠉⠕⠎⠍⠊⠉ ⠺⠁⠎ ⠁ ⠎⠊⠛⠝⠁⠞⠥⠗⠑ ⠞⠗⠁⠊⠞ ⠕⠋ ⠓⠊⠎ ⠺⠗⠊⠞⠊⠝⠛⠲ ⠠⠺⠓⠑⠞⠓⠑⠗ ⠊⠞
+   ⠺⠁⠎ ⠁ ⠃⠥⠗⠑⠁⠥⠉⠗⠁⠞⠊⠉ ⠁⠇⠊⠑⠝ ⠗⠁⠉⠑ ⠞⠗⠽⠊⠝⠛ ⠞⠕ ⠙⠑⠍⠕⠇⠊⠎⠓ ⠠⠑⠁⠗⠞⠓
+   ⠞⠕ ⠍⠁⠅⠑ ⠺⠁⠽ ⠋⠕⠗ ⠁⠝ ⠊⠝⠞⠑⠗⠎⠞⠑⠇⠇⠁⠗ ⠓⠊⠛⠓⠺⠁⠽ ⠕⠗ ⠁ ⠙⠑⠏⠗⠑⠎⠎⠑⠙
+   ...&lt;/p&gt;</code></pre>
 					<p>In order to obtain the following layout for the above HTML code,</p>
-					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠠⠙⠕⠥⠛⠇⠁⠎⠀⠠⠁⠙⠁⠍⠎⠒⠀⠠⠁⠀⠠⠏⠊⠕⠝⠑⠑⠗⠀⠕⠋⠀⠀⠀⠀
+					<code class="formatted-braille paged"><div class="braille-page">⠀⠀⠀⠀⠀⠠⠙⠕⠥⠛⠇⠁⠎⠀⠠⠁⠙⠁⠍⠎⠒⠀⠠⠁⠀⠠⠏⠊⠕⠝⠑⠑⠗⠀⠕⠋⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠎⠉⠊⠤⠠⠋⠊⠀⠠⠉⠕⠍⠑⠙⠽⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠠⠙⠕⠥⠛⠇⠁⠎⠀⠠⠁⠙⠁⠍⠎⠀⠺⠁⠎⠀⠁⠀⠠⠃⠗⠊⠞⠊⠎⠓⠀⠁⠥⠞⠓⠕⠗⠀⠀⠀
+⠀⠀⠠⠙⠕⠥⠛⠇⠁⠎⠀⠠⠁⠙⠁⠍⠎⠀⠺⠁⠎⠀⠁⠀⠠⠃⠗⠊⠞⠊⠎⠓⠀⠁⠥⠞⠓⠕⠗⠀
 ⠃⠑⠎⠞⠀⠅⠝⠕⠺⠝⠀⠋⠕⠗⠀⠓⠊⠎⠀⠛⠗⠕⠥⠝⠙⠃⠗⠑⠁⠅⠊⠝⠛⠀⠺⠕⠗⠅⠀⠀
 ⠠⠞⠓⠑⠀⠠⠓⠊⠞⠉⠓⠓⠊⠅⠑⠗⠄⠎⠀⠠⠛⠥⠊⠙⠑⠀⠞⠕⠀⠞⠓⠑⠀⠀⠀⠀⠀⠀⠀⠀
 ⠠⠛⠁⠇⠁⠭⠽⠂⠀⠁⠀⠎⠑⠗⠊⠑⠎⠀⠞⠓⠁⠞⠀⠉⠕⠍⠃⠊⠝⠑⠙⠀⠎⠉⠊⠑⠝⠉⠑⠀
@@ -1373,7 +1405,13 @@ ul.toc {
 ⠉⠕⠍⠑⠙⠊⠁⠝⠎⠀⠺⠓⠕⠀⠁⠙⠍⠊⠗⠑⠙⠀⠓⠊⠎⠀⠺⠊⠞⠀⠁⠝⠙⠀⠀⠀⠀⠀⠀⠀
 ⠉⠗⠑⠁⠞⠊⠧⠊⠞⠽⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</div><div class="braille-page">⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶
 ⠀⠀⠀⠀⠠⠞⠓⠑⠀⠠⠕⠗⠊⠛⠊⠝⠀⠕⠋⠀⠠⠞⠓⠑⠀⠠⠓⠊⠞⠉⠓⠓⠊⠅⠑⠗⠄⠎⠀⠀
 ⠀⠀⠀⠀⠠⠛⠥⠊⠙⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠠⠞⠓⠑⠀⠉⠕⠝⠉⠑⠏⠞⠀⠋⠕⠗⠀⠠⠞⠓⠑⠀⠠⠓⠊⠞⠉⠓⠓⠊⠅⠑⠗⠄⠎⠀⠀⠀
@@ -1397,7 +1435,49 @@ ul.toc {
 ⠓⠊⠎⠀⠺⠗⠊⠞⠊⠝⠛⠲⠀⠠⠺⠓⠑⠞⠓⠑⠗⠀⠊⠞⠀⠺⠁⠎⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠃⠥⠗⠑⠁⠥⠉⠗⠁⠞⠊⠉⠀⠁⠇⠊⠑⠝⠀⠗⠁⠉⠑⠀⠞⠗⠽⠊⠝⠛⠀⠞⠕⠀⠀⠀⠀⠀⠀⠀
 ⠙⠑⠍⠕⠇⠊⠎⠓⠀⠠⠑⠁⠗⠞⠓⠀⠞⠕⠀⠍⠁⠅⠑⠀⠺⠁⠽⠀⠋⠕⠗⠀⠁⠝⠀⠀⠀⠀⠀⠀
-⠊⠝⠞⠑⠗⠎⠞⠑⠇⠇⠁⠗⠀⠓⠊⠛⠓⠺⠁⠽⠀⠕⠗⠀⠁⠀⠙⠑⠏⠗⠑⠎⠎⠑⠙⠀⠀⠀⠀⠀</code></pre>
+⠊⠝⠞⠑⠗⠎⠞⠑⠇⠇⠁⠗⠀⠓⠊⠛⠓⠺⠁⠽⠀⠕⠗⠀⠁⠀⠙⠑⠏⠗⠑⠎⠎⠑⠙⠀⠀⠀⠀⠀</div></code>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="49">.box {
+   break-inside: avoid-page;
+   margin: 1rem 0;
+   border-style: solid;
+   border-width: 1rem 0;
+   border-image-source: url("border-images/⠀⠶⠀⠀⠀⠛⠀⠀.png");
+   border-image-slice: 33.34%;
+   border-image-repeat: round round;
+}
+h1 {
+   text-align: center;
+   margin-left: 3ch;
+   margin-right: 3ch;
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+}
+h2 {
+   margin-left: 4ch;
+}
+p {
+   text-indent: 2ch;
+}</code></pre>
+					<details class="specification-links">
+						<summary>CSS features used in this example</summary>
+						<ul>
+							<li><a data-cite="css-break#break-within">Breaks Within Boxes: the ‘break-inside’
+							property</a></li>
+							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+							‘margin-left’ properties</a></li>
+							<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
+							‘text-indent’ property</a></li>
+							<li><a data-cite="css-text#text-align-property">Text Alignment: the
+							‘text-align’ shorthand</a></li>
+							<li><a data-cite="css-backgrounds#border-images">Border Images</a></li>
+							<li><a data-cite="css-backgrounds#border-style">Line Patterns: the ‘border-style’
+							properties</a></li>
+							<li><a data-cite="css-backgrounds#border-width">Line Thickness: the ‘border-width’
+							properties</a></li>
+						</ul>
+					</details>
 				</aside>
 
 				<!--<aside class="example"
