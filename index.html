@@ -63,6 +63,11 @@
 				postProcess: [addDAISYStatus,addCopyrightYear,fixExampleHeaders],
 				xref: ["epub-33"],
 				localBiblio: {
+					"code-registry" : {
+						"title": "eBraille Braille Code Registry",
+						"href": "https://daisy.org/s/ebraille/registries/codes",
+						"publisher": "DAISY"
+					},
 					"dpub-aria" : {
 						"title": "Digital Publishing WAI-ARIA Module",
 						"href": "https://www.w3.org/TR/dpub-aria/",
@@ -1102,30 +1107,19 @@
 					<section id="a11y:brailleSystem">
 						<h5>a11y:brailleSystem</h5>
 
-						<div class="ednote">
-							<p>A list of recommended braille code terminology will be provided with a future update to
-								this document.</p>
-						</div>
-
 						<p>The REQUIRED <code>a11y:brailleSystem</code> property identifies the name of the braille
 							system an [=eBraille publication=] has been formatted in conformance with.</p>
 
 						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
 								<code>property</code> attribute set to <code>a11y:brailleSystem</code>.</p>
 
-						<aside class="example" title="A single uncontracted braille code">
-							<pre>&lt;meta property="a11y:brailleSystem">
-   UEB
-&lt;/meta></pre>
-						</aside>
-
-						<p>The [=value=] SHOULD include all relevant code-specific information (e.g., "contracted",
-							"uncontracted", "bar by bar" etc.). Specify this information in parentheses after the code
-							name.</p>
+						<p>The [=value=] SHOULD be a value from the <a
+								href="https://daisy.org/s/ebraille/registries/codes/">eBraille Braille Codes
+								Registry</a> [[code-registry]].</p>
 
 						<aside class="example" title="A single uncontracted braille code">
 							<pre>&lt;meta property="a11y:brailleSystem">
-   UEB (Uncontracted)
+   UEB grade1
 &lt;/meta></pre>
 						</aside>
 
@@ -1134,7 +1128,10 @@
 
 						<aside class="example" title="Use of a contracted and uncontracted braille code">
 							<pre>&lt;meta property="a11y:brailleSystem">
-   UEB (Uncontracted), UEB (Contracted)
+   UEB grade2
+&lt;/meta>
+&lt;meta property="a11y:brailleSystem">
+   UEB grade1
 &lt;/meta></pre>
 						</aside>
 
