@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<title>eBraille Braille Code Metadata Requirements</title>
+		<script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
+		<script src="../../common/js/status.js" class="remove"></script>
+		<script src="../../common/js/copyright.js" class="remove"></script>
+		<script src="../../common/js/examples.js" class="remove"></script>
+		<script class="remove">
+			//<![CDATA[
+			var respecConfig = {
+				shortName: 'metadata-req',
+				specStatus: 'base',
+				daisyWG: 'eBraille Working Group',
+				daisyStatus: 'DRAFT-NOTE',
+				latestVersion: 'https://daisy.github.io/ebraille/best-practices/metadata',
+				edDraftURI: null,
+				editors: [
+					{
+						name: 'Willow Free',
+						company: 'American Printing House for the Blind',
+						url: 'https://www.aph.org/'
+					},
+					{
+						name: 'Matt Garrish',
+						company: 'DAISY Consortium',
+						url: 'https://daisy.org/'
+					}
+				],
+				logos: [
+					{
+						src: '../../common/images/daisy_high.jpg',
+						width: 112,
+						height: 100,
+						alt: 'DAISY Consortium logo',
+						url: 'https://daisy.org'
+					}
+				],
+				github: 'daisy/ebraille',
+				postProcess: [addDAISYStatus,addCopyrightYear,fixExampleHeaders]
+			};
+			// ]]>
+		</script>
+		<link rel="stylesheet" href="../../common/css/common.css" />
+	</head>
+	<body>
+		<p class="copyright">Copyright &#169; DAISY Consortium <span id="copyYear">2024</span></p>
+		<section id="abstract">
+			<p>&#8230;</p>
+		</section>
+		<section id="sotd">
+			<div data-include="../../common/status.html" data-include-replace="true"></div>
+			<p>The eBraille Working Group is seeking input on all aspects of this document. It is particularly
+				interested in implementation experience both creating eBraille publication and creating reading systems
+				in which to read them.</p>
+		</section>
+		<section id="intro">
+			<h2>Introduction</h2>
+			<p>This document defines a metadata standard tailored for the eBraille specification, facilitating consistent and accurate identification of braille codes, grades, and specializations across various languages and contexts. It provides a structured framework for identifying the braille system in use, including details on contraction levels, specialized braille systems (such as computer or music braille), and additional elements relevant to braille production. The goal of this document is to clearly define braille code metadata to enhance interoperability, backtranslation, and accessibility within eBraille documents.</p>
+			<section id="overview">
+				<h3>Overview</h3>
+				
+				<p>&#8230;</p>
+			</section>
+
+			<section id="conformance"></section>
+		</section>
+		<section id="metadata-requirements">
+			<h3>Metadata Requirements</h3>
+			<section id="rules">
+				<h4>Rules for Braille Code Metadata</h4>
+				<p>These rules intend to identify braille codes clearly using a single string. The goal is to have a unified system that makes it easier for software developers and braille library mantainers to </p>
+				<h2>Braille Code (Required)</h2>
+				<p>This identifies the specific braille system in use, such as Unified English Braille (UEB), Nemeth, or Bharati for Indian languages. For interoperabilty, braille code names should be in English.</p>
+				<h2>Grade (Required)</h2>
+				<p>This specifies the level of contraction or complexity in the braille code, such as grade1 for uncontracted braille and grade2 for contracted braille. If the braille system does not follow a specific grading system, <strong>no-grade</strong> is used.</p>
+				<h3>Allowed values:</h3>
+				<ul>
+					<li><strong>grade0</strong> - means no contractions are used</li>
+					<li><strong>grade1</strong> - means only some contractions within that code are used</li>
+					<li><strong>grade2</strong> - means all contractions within that code are used</li>
+					<li><strong>no-grade</strong> - means that the code does not use contractions or a grading system</li>
+				</ul>
+				<p>More feedback is needed about how each braille code views braille grades. In many braille regions, grades are not used.</p>
+				<h2>Specialization (Optional)</h2>
+				<p>For specialized systems like computer or music braille, an additional tag can be appended.</p>
+				<h3>Allowed values:</h3>
+				<ul>
+					<li><strong>comp8</strong> - 8-dot computer braille</li>
+					<li><strong>comp6</strong> - 6-dot computer braille</li>
+					<li><strong>math</strong> - code is only concerned with mathematics</li>
+					<li><strong>music</strong> - code is only concerned with music</li>
+					<li><strong>phonetic</strong> - code is only concerned with phonetics</li>
+				</ul>
+				<p>The categories are arranged in a single string. Each string is presented with each category separated by a space, and spaces within a category are shown with a hyphen. A generic code string would be:</p>
+				<p><strong>Braille-code grade specialization</strong></p>
+				<p>Which in practice looks like:</p>
+				<p><strong>IPA-Braille-2005 no-grade phonetic</strong></p>
+				<h1>Braille Code - Metadata Term</h1>
+    <dl>
+        <dt>Afrikaans contracted</dt>
+		<dd>Afrikaans grade2</dd>
+
+        <dt>Afrikaans uncontracted</dt>
+        <dd>Afrikaans grade1</dd>
+
+        <dt>Akkadian Borger</dt>
+        <dd>Akkadian-Borger grade1</dd>
+
+        <dt>Akkadian U.S.</dt>
+        <dd>Akkadian grade1</dd>
+
+        <dt>Arabic computer</dt>
+        <dd>Arabic no-grade comp8</dd>
+
+        <dt>Arabic contracted</dt>
+        <dd>Arabic grade2</dd>
+
+        <dt>Arabic uncontracted</dt>
+        <dd>Arabic grade1</dd>
+
+        <dt>Armenian computer</dt>
+        <dd>Armenian no-grade comp8</dd>
+
+        <dt>Bashkir</dt>
+        <dd>Bashkir grade1</dd>
+
+        <dt>Belarusian</dt>
+        <dd>Belarusian grade1</dd>
+
+        <dt>Belarusian computer</dt>
+        <dd>Belarusian no-grade comp8</dd>
+
+        <dt>Belarusian with capitals</dt>
+        <dd>Belarusian capitals grade0</dd>
+
+        <dt>Bharati</dt>
+        <dd>Bharati grade1</dd>
+
+        <dt>Bulgarian</dt>
+        <dd>Bulgarian grade1</dd>
+
+        <dt>Bulgarian computer</dt>
+        <dd>Bulgarian no-grade comp8</dd>
+
+        <dt>Burmese contracted</dt>
+        <dd>Burmese grade2</dd>
+
+        <dt>Burmese uncontracted</dt>
+        <dd>Burmese grade1</dd>
+
+        <dt>Cantonese</dt>
+        <dd>Cantonese grade1</dd>
+
+        <dt>Catalan</dt>
+        <dd>Catalan grade1</dd>
+
+        <dt>Cherokee</dt>
+        <dd>Cherokee grade1</dd>
+
+        <dt>Chichewa</dt>
+        <dd>Chichewa grade1</dd>
+
+        <dt>Coptic computer</dt>
+        <dd>Coptic no-grade comp8</dd>
+
+        <dt>Croatian</dt>
+        <dd>Croatian grade1</dd>
+
+        <dt>Croatian computer</dt>
+        <dd>Croatian no-grade comp8</dd>
+
+        <dt>Cuneiform transliterated</dt>
+        <dd>Cuneiform-Transliteration grade1</dd>
+
+        <dt>Czech</dt>
+        <dd>Czech grade1</dd>
+
+        <dt>Czech computer</dt>
+        <dd>Czech no-grade comp8</dd>
+
+        <dt>Danish computer 1993</dt>
+        <dd>Danish-1993 no-grade comp8</dd>
+
+        <dt>Danish computer 2022</dt>
+        <dd>Danish-2022 no-grade comp8</dd>
+
+        <dt>Danish contracted 6 dot 1993</dt>
+        <dd>Danish-6dot-1993 grade2</dd>
+
+        <dt>Danish contracted 6 dot 2022</dt>
+        <dd>Danish-6dot-2022 grade2</dd>
+
+        <dt>Danish contracted 8 dot 1993</dt>
+        <dd>Danish-8dot-1993 grade2</dd>
+
+        <dt>Danish contracted 8 dot 2022</dt>
+        <dd>Danish 8dot 2022 grade2</dd>
+
+        <dt>Danish partially contracted 6 dot 1993</dt>
+        <dd>Danish-6dot-1993 grade1</dd>
+
+        <dt>Danish partially contracted 8 dot 1993</dt>
+        <dd>Danish-8dot-1993 grade1</dd>
+
+        <dt>Danish uncontracted 6 dot 1993</dt>
+        <dd>Danish-6dot-1993 grade1</dd>
+
+        <dt>Danish uncontracted 6 dot 2022</dt>
+        <dd>Danish-6dot-2022 grade1</dd>
+
+        <dt>Danish uncontracted 8 dot 1993</dt>
+        <dd>Danish-8dot-1993 grade1</dd>
+
+        <dt>Danish uncontracted 8 dot 2022</dt>
+        <dd>Danish-8dot-2022 grade1</dd>
+
+        <dt>Dravidian computer</dt>
+        <dd>Dravidian no-grade comp8</dd>
+
+        <dt>Dutch</dt>
+        <dd>Dutch grade1</dd>
+
+        <dt>Dutch computer</dt>
+        <dd>Dutch no-grade comp8</dd>
+
+        <dt>English Canada computer</dt>
+        <dd>CBC no-grade comp8</dd>
+
+        <dt>English U.K. computer</dt>
+        <dd>SEB no-grade comp8</dd>
+
+        <dt>English U.K. contracted</dt>
+        <dd>SEB grade2</dd>
+
+        <dt>English U.K. uncontracted</dt>
+        <dd>SEB grade1</dd>
+
+        <dt>English U.S. computer 6 dot</dt>
+        <dd>CBC 6dot no-grade comp6</dd>
+
+        <dt>English U.S. computer 8 dot</dt>
+        <dd>CBC 8dot no-grade comp8</dd>
+
+        <dt>English U.S. computer NABCC</dt>
+        <dd>NABCC no-grade comp8</dd>
+
+        <dt>English U.S. contracted</dt>
+        <dd>EBAE grade2</dd>
+
+        <dt>English U.S. uncontracted</dt>
+        <dd>EBAE grade1</dd>
+
+        <dt>English unified contracted</dt>
+        <dd>ueb grade2</dd>
+
+        <dt>English unified uncontracted</dt>
+        <dd>ueb grade1</dd>
+
+        <dt>Esperanto</dt>
+        <dd>Esperanto grade1</dd>
+
+        <dt>Esperanto x system</dt>
+        <dd>Esperanto-x-system no-grade</dd>
+
+        <dt>Estonian computer</dt>
+        <dd>Estonian no-grade comp8</dd>
+
+        <dt>Ethiopic</dt>
+        <dd>Ethiopic grade1</dd>
+
+        <dt>Filipino contracted</dt>
+        <dd>Filipino grade2</dd>
+
+        <dt>Finnish</dt>
+        <dd>Finnish grade1</dd>
+
+        <dt>Finnish computer</dt>
+        <dd>Finnish no-grade comp8</dd>
+
+        <dt>French computer</dt>
+        <dd>French no-grade comp8</dd>
+
+        <dt>French contracted</dt>
+        <dd>French grade2</dd>
+
+        <dt>French uncontracted</dt>
+        <dd>French grade1</dd>
+
+        <dt>Georgian</dt>
+        <dd>Georgian grade1</dd>
+
+        <dt>German computer 6 dot</dt>
+        <dd>German-6dot no-grade comp6</dd>
+
+        <dt>German computer 8 dot</dt>
+        <dd>German-8dot no-grade comp8</dd>
+
+        <dt>German contracted</dt>
+        <dd>German grade2</dd>
+
+        <dt>German contracted with capitals</dt>
+        <dd>German-capitals grade2</dd>
+
+        <dt>German partially contracted</dt>
+        <dd>German grade1</dd>
+
+        <dt>German partially contracted with capitals</dt>
+        <dd>German-capitals grade1</dd>
+
+        <dt>German uncontracted</dt>
+        <dd>German grade0</dd>
+
+        <dt>German uncontracted with capitals</dt>
+        <dd>German-capitals grade0</dd>
+
+        <dt>Gondi</dt>
+        <dd>Gondi grade1</dd>
+
+        <dt>Greek</dt>
+        <dd>Greek grade1</dd>
+
+        <dt>Greek international English composed</dt>
+        <dd>Greek-international-English-composed grade0</dd>
+
+        <dt>Greek international English decomposed</dt>
+        <dd>Greek-international-English-decomposed grade0</dd>
+
+        <dt>Greek international Spanish</dt>
+        <dd>Greek-international-Spanish grade1</dd>
+
+        <dt>Hawaiian</dt>
+        <dd>Hawaiian grade1</dd>
+
+        <dt>Hebrew Biblical</dt>
+        <dd>Hebrew-Biblical grade1</dd>
+
+        <dt>Hebrew modern</dt>
+        <dd>Hebrew grade1</dd>
+
+        <dt>Hebrew modern computer</dt>
+        <dd>Hebrew no-grade comp8</dd>
+
+        <dt>Hungarian computer</dt>
+        <dd>Hungarian no-grade comp8</dd>
+
+        <dt>Hungarian contracted</dt>
+        <dd>Hungarian grade2</dd>
+
+        <dt>Hungarian partially contracted</dt>
+        <dd>Hungarian grade1</dd>
+
+        <dt>Icelandic</dt>
+        <dd>Icelandic grade1</dd>
+
+        <dt>International Phonetic Alphabet 2005</dt>
+        <dd>IPA-Braille-2005 no-grade phonetic</dd>
+
+        <dt>Inuktitut</dt>
+        <dd>Inuktitut grade1</dd>
+
+        <dt>Irish contracted</dt>
+        <dd>Irish grade2</dd>
+
+        <dt>Irish uncontracted</dt>
+        <dd>Irish grade1</dd>
+
+        <dt>isiXhosa contracted</dt>
+        <dd>isiXhosa grade2</dd>
+
+        <dt>isiXhosa uncontracted</dt>
+        <dd>isiXhosa grade1</dd>
+
+        <dt>isiZulu contracted</dt>
+        <dd>isiZulu grade2</dd>
+
+        <dt>isiZulu uncontracted</dt>
+        <dd>isiZulu grade1</dd>
+
+        <dt>Italian</dt>
+        <dd>Italian grade1</dd>
+
+        <dt>Italian computer</dt>
+        <dd>Italian no-grade comp8</dd>
+
+        <dt>Japanese Kantenji</dt>
+        <dd>Kantenji grade0</dd>
+
+        <dt>Japanese Kantenji UCS2</dt>
+        <dd>Kantenji-UCS2 grade0</dd>
+
+        <dt>Kazakh</dt>
+        <dd>Kazakh grade1</dd>
+
+        <dt>Khasi</dt>
+        <dd>Khasi grade1</dd>
+
+        <dt>Khmer</dt>
+        <dd>Khmer grade1</dd>
+
+        <dt>Kinyarwanda</dt>
+        <dd>Kinyarwanda grade1</dd>
+
+        <dt>Korean contracted</dt>
+        <dd>Korean grade2</dd>
+
+        <dt>Korean contracted 2006</dt>
+        <dd>Korean-2006 grade2</dd>
+
+        <dt>Korean uncontracted</dt>
+        <dd>Korean grade1</dd>
+
+        <dt>Korean uncontracted 2006</dt>
+        <dd>Korean-2006 grade1</dd>
+
+        <dt>Kurdish</dt>
+        <dd>Kurdish grade1</dd>
+
+        <dt>Lao</dt>
+        <dd>Lao grade1</dd>
+
+        <dt>Latvian</dt>
+        <dd>Latvian grade1</dd>
+
+        <dt>Lithuanian 6 dot</dt>
+        <dd>Lithuanian grade1</dd>
+
+        <dt>Lithuanian 8 dot</dt>
+        <dd>Lithuanian grade1</dd>
+
+        <dt>Luganda</dt>
+        <dd>Luganda grade1</dd>
+
+        <dt>Malay</dt>
+        <dd>Malay grade1</dd>
+
+        <dt>Maltese computer</dt>
+        <dd>Maltese no-grade comp8</dd>
+
+        <dt>Mandarin mainland China common braille scheme</dt>
+        <dd>Mandarin-common grade1</dd>
+
+        <dt>Mandarin mainland China double phonic</dt>
+        <dd>Mandarin-double-phonic grade2</dd>
+
+        <dt>Mandarin mainland China with tones</dt>
+        <dd>Mandarin-with-tones grade1</dd>
+
+        <dt>Mandarin mainland China without tones</dt>
+        <dd>Mandarin-no-tones grade1</dd>
+
+        <dt>Mandarin Taiwan bopomofo</dt>
+        <dd>Bopomofo grade1</dd>
+
+        <dt>Manipuri</dt>
+        <dd>Manipuri grade1</dd>
+
+        <dt>Maori</dt>
+        <dd>Maori grade1</dd>
+
+        <dt>Marwari</dt>
+        <dd>Marwari grade1</dd>
+
+        <dt>Mongolian contracted</dt>
+        <dd>Mongolian grade2</dd>
+
+        <dt>Mongolian uncontracted</dt>
+        <dd>Mongolian grade1</dd>
+
+        <dt>Munda</dt>
+        <dd>Munda grade1</dd>
+
+        <dt>Music</dt>
+        <dd>Braille-music no-grade music</dd>
+
+        <dt>Nemeth</dt>
+        <dd>Nemeth no-grade math</dd>
+
+        <dt>Northern Kurdish</dt>
+        <dd>Kurdish grade1</dd>
+
+        <dt>Norwegian computer</dt>
+        <dd>Norwegian no-grade comp8</dd>
+
+        <dt>Norwegian contracted grade 1</dt>
+        <dd>Norwegian grade1</dd>
+
+        <dt>Norwegian contracted grade 2</dt>
+        <dd>Norwegian grade2</dd>
+
+        <dt>Norwegian contracted grade 3</dt>
+        <dd>Norwegian grade3</dd>
+
+        <dt>Norwegian uncontracted 6 dot</dt>
+        <dd>Norwegian-6dot grade1</dd>
+
+        <dt>Norwegian uncontracted 8 dot</dt>
+        <dd>Norwegian-8dot grade1</dd>
+
+        <dt>Norwegian uncontracted 8 dot 6 dot fallback</dt>
+        <dd>Norwegian-8dot-6dot-fallback grade1</dd>
+
+        <dt>Pali</dt>
+        <dd>Pali grade1</dd>
+
+        <dt>Persian</dt>
+        <dd>Persian grade1</dd>
+
+        <dt>Persian computer</dt>
+        <dd>Persian no-grade comp8</dd>
+
+        <dt>Polish</dt>
+        <dd>Polish grade1</dd>
+
+        <dt>Polish computer</dt>
+        <dd>Polish no-grade comp8</dd>
+
+        <dt>Portuguese computer</dt>
+        <dd>Portuguese no-grade comp8</dd>
+
+        <dt>Portuguese contracted</dt>
+        <dd>Portuguese grade2</dd>
+
+        <dt>Portuguese uncontracted</dt>
+        <dd>Portuguese grade1</dd>
+
+        <dt>Romanian computer</dt>
+        <dd>Romanian no-grade comp8</dd>
+
+        <dt>Romanian uncontracted</dt>
+        <dd>Romanian grade1</dd>
+
+        <dt>Russian</dt>
+        <dd>Russian grade1</dd>
+
+        <dt>Russian computer</dt>
+        <dd>Russian no-grade comp8</dd>
+
+        <dt>Russian contracted</dt>
+        <dd>Russian grade2</dd>
+
+        <dt>Russian for program sources</dt>
+        <dd>Russian-program grade0</dd>
+
+        <dt>Russian with capitals</dt>
+        <dd>Russian-capitals grade1</dd>
+
+        <dt>Scottish Gaelic computer</dt>
+        <dd>Gaelic no-grade comp8</dd>
+
+        <dt>Sepedi contracted</dt>
+        <dd>Sepedi grade2</dd>
+
+        <dt>Sepedi uncontracted</dt>
+        <dd>Sepedi grade1</dd>
+
+        <dt>Serbian</dt>
+        <dd>Serbian grade1</dd>
+
+        <dt>Serbian Cyrillic</dt>
+        <dd>Serbian grade1 Cyrl</dd>
+
+        <dt>Sesotho contracted</dt>
+        <dd>Sesotho grade2</dd>
+
+        <dt>Sesotho uncontracted</dt>
+        <dd>Sesotho grade1</dd>
+
+        <dt>Setswana contracted</dt>
+        <dd>Setswana grade2</dd>
+
+        <dt>Setswana uncontracted</dt>
+        <dd>Setswana grade1</dd>
+
+        <dt>Slovak</dt>
+        <dd>Slovak grade1</dd>
+
+        <dt>Slovenian</dt>
+        <dd>Slovenian grade1</dd>
+
+        <dt>Slovenian computer</dt>
+        <dd>Slovenian no-grade comp8</dd>
+
+        <dt>Spanish computer</dt>
+        <dd>Spanish no-grade comp8</dd>
+
+        <dt>Spanish contracted</dt>
+        <dd>Spanish grade2</dd>
+
+        <dt>Spanish uncontracted</dt>
+        <dd>Spanish grade1</dd>
+
+        <dt>Swahili contracted grade 1.2</dt>
+        <dd>Swahili-grade-1.2 grade1</dd>
+
+        <dt>Swahili contracted grade 1.3</dt>
+        <dd>Swahili-grade-1.3 grade1</dd>
+
+        <dt>Swahili contracted grade 1.4</dt>
+        <dd>Swahili-grade-1.4 grade1</dd>
+
+        <dt>Swahili contracted grade 1.5</dt>
+        <dd>Swahili-grade-1.5 grade1</dd>
+
+        <dt>Swahili contracted grade 2</dt>
+        <dd>Swahili grade2</dd>
+
+        <dt>Swahili uncontracted</dt>
+        <dd>Swahili grade1</dd>
+
+        <dt>Swedish computer 1989</dt>
+        <dd>Swedish-1989 no-grade comp8</dd>
+
+        <dt>Swedish computer 1996</dt>
+        <dd>Swedish-1996 no-grade comp8</dd>
+
+        <dt>Swedish contracted</dt>
+        <dd>Swedish grade2</dd>
+
+        <dt>Swedish partially contracted</dt>
+        <dd>Swedish grade1</dd>
+
+        <dt>Swedish uncontracted</dt>
+        <dd>Swedish grade0</dd>
+
+        <dt>Syriac</dt>
+        <dd>Syriac grade1</dd>
+
+        <dt>Tamil computer</dt>
+        <dd>Bharati no-grade comp8</dd>
+
+        <dt>Tatar</dt>
+        <dd>Tatar grade1</dd>
+
+        <dt>Thai computer</dt>
+        <dd>Thai no-grade comp8</dd>
+
+        <dt>Thai partially contracted</dt>
+        <dd>Thai grade1</dd>
+
+        <dt>Thai uncontracted</dt>
+        <dd>Thai grade1</dd>
+
+        <dt>Tibetan computer</dt>
+        <dd>Tibetan no-grade comp8</dd>
+
+        <dt>Tshivenda contracted</dt>
+        <dd>Tshivenda grade2</dd>
+
+        <dt>Tshivenda uncontracted</dt>
+        <dd>Tshivenda grade1</dd>
+
+        <dt>Turkish computer</dt>
+        <dd>Turkish no-grade comp8</dd>
+
+        <dt>Turkish contracted</dt>
+        <dd>Turkish grade2</dd>
+
+        <dt>Turkish uncontracted</dt>
+        <dd>Turkish grade1</dd>
+
+        <dt>Ugaritic</dt>
+        <dd>Ugaritic grade1</dd>
+
+        <dt>Ukrainian</dt>
+        <dd>Ukrainian grade1</dd>
+
+        <dt>Ukrainian computer</dt>
+        <dd>Ukrainian no-grade comp8</dd>
+
+        <dt>Ukrainian with capitals</dt>
+        <dd>Ukrainian capitals grade1</dd>
+
+        <dt>Urdu contracted</dt>
+        <dd>Urdu grade2</dd>
+
+        <dt>Urdu uncontracted</dt>
+        <dd>Urdu grade1</dd>
+
+        <dt>Uzbek</dt>
+        <dd>Uzbek grade1</dd>
+
+        <dt>Vietnamese computer</dt>
+        <dd>Vietnamese no-grade comp8</dd>
+
+        <dt>Vietnamese contracted</dt>
+        <dd>Vietnamese grade2</dd>
+
+        <dt>Vietnamese partially contracted</dt>
+        <dd>Vietnamese grade1</dd>
+
+        <dt>Vietnamese Saigon contracted</dt>
+        <dd>Vietnamese-Saigon grade2</dd>
+
+        <dt>Vietnamese uncontracted</dt>
+        <dd>Vietnamese grade0</dd>
+
+        <dt>Welsh contracted</dt>
+        <dd>Welsh grade2</dd>
+
+        <dt>Welsh uncontracted</dt>
+        <dd>Welsh grade1</dd>
+
+        <dt>Yakut</dt>
+        <dd>Yakut grade1</dd>
+
+        <dt>Yiddish</dt>
+        <dd>Yiddish grade1</dd>
+
+    </dl>
+</section>
+		</section>
+		<div data-include="../../common/acknowledgements.html" data-include-replace="true"></div>
+	</body>
+</html>
