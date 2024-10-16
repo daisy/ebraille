@@ -582,7 +582,8 @@
 					</dd>
 					<dt>Attributes</dt>
 					<dd>
-						<p>[^scope^], [^headers^], [^axis^]</p>
+						<p>The attributes [^scope^] and [^headers^] must be used with an [^id^] to properly identify the relationship between the cells of the table.</p>
+						<p>[^abbr^] should be used with any long row or column headings.</p>
 					</dd>
 
 					<dt>Reserved <code>class</code> values:</dt>
@@ -600,65 +601,93 @@
 
 				<aside class="example" title="A basic table">
 					<pre><code class="html">&lt;table>
-  &lt;tr>
-    &lt;th>⠠⠝⠁⠍⠑&lt;/th>
-    &lt;th>⠠⠎⠉⠕⠗⠑&lt;/th>
-  &lt;/tr>
-  &lt;tr>
-    &lt;td>⠠⠚⠕⠓⠝&lt;/td>
-    &lt;td>⠼⠃⠑&lt;/td>
-  &lt;/tr>
-  &lt;tr>
-    &lt;td>⠠⠍⠁⠭&lt;/td>
-    &lt;td>⠼⠃⠃&lt;/td>
-  &lt;/tr>
-  &lt;tr>
-    &lt;td>⠠⠞⠁⠗⠁&lt;/td>
-    &lt;td>⠼⠃⠓&lt;/td>
-  &lt;/tr>
+	&lt;tr>
+		&lt;th id="name-header" scope="col">⠠⠝⠁⠍⠑&lt;/th>
+		&lt;th id="score-header" scope="col">⠠⠎⠉⠕⠗⠑&lt;/th>
+	&lt;/tr>
+	&lt;tr>
+		&lt;td headers="name-header">⠠⠚⠕⠓⠝&lt;/td>
+		&lt;td headers="score-header">⠼⠃⠑&lt;/td>
+	&lt;/tr>
+	&lt;tr>
+		&lt;td headers="name-header">⠠⠍⠁⠭&lt;/td>
+		&lt;td headers="score-header">⠼⠃⠃&lt;/td>
+	&lt;/tr>
+	&lt;tr>
+		&lt;td headers="name-header">⠠⠞⠁⠗⠁&lt;/td>
+		&lt;td headers="score-header">⠼⠃⠓&lt;/td>
+	&lt;/tr>
 &lt;/table></code></pre>
 				</aside>
 				
 				<aside class="example" title="A table with a recommended table type">
 					<pre><code class="html">&lt;table class="listed">
-  &lt;tr>
-    &lt;th>⠠⠝⠁⠍⠑&lt;/th>
-    &lt;th>⠠⠎⠉⠕⠗⠑&lt;/th>
-  &lt;/tr>
-  &lt;tr>
-    &lt;td>⠠⠚⠕⠓⠝&lt;/td>
-    &lt;td>⠼⠃⠑&lt;/td>
-  &lt;/tr>
-  &lt;tr>
-    &lt;td>⠠⠍⠁⠭&lt;/td>
-    &lt;td>⠼⠃⠃&lt;/td>
-  &lt;/tr>
-  &lt;tr>
-    &lt;td>⠠⠞⠁⠗⠁&lt;/td>
-    &lt;td>⠼⠃⠓&lt;/td>
-  &lt;/tr>
+	&lt;tr>
+		&lt;th id="name-header" scope="col">⠠⠝⠁⠍⠑&lt;/th>
+		&lt;th id="score-header" scope="col">⠠⠎⠉⠕⠗⠑&lt;/th>
+	&lt;/tr>
+	&lt;tr>
+		&lt;td headers="name-header">⠠⠚⠕⠓⠝&lt;/td>
+		&lt;td headers="score-header">⠼⠃⠑&lt;/td>
+	&lt;/tr>
+	&lt;tr>
+		&lt;td headers="name-header">⠠⠍⠁⠭&lt;/td>
+		&lt;td headers="score-header">⠼⠃⠃&lt;/td>
+	&lt;/tr>
+	&lt;tr>
+		&lt;td headers="name-header">⠠⠞⠁⠗⠁&lt;/td>
+		&lt;td headers="score-header">⠼⠃⠓&lt;/td>
+	&lt;/tr>
 &lt;/table></code></pre>
 				</aside>
 				<aside class="example" title="A table with header and body">
 					<pre><code class="html">&lt;table>
-  &lt;thead>
-    &lt;tr>
-      &lt;th>⠠⠙⠁⠞⠑&lt;/th>
-      &lt;th>⠠⠙⠑⠎⠉⠗⠊⠏⠞⠊⠕⠝&lt;/th>
-      &lt;th>⠠⠉⠗⠑⠙⠊⠞&lt;/th>
-      &lt;th>⠠⠙⠑⠃⠊⠞&lt;/th>
-    &lt;/tr>
-  &lt;/thead>
-  &lt;tbody>
-    &lt;tr>
-      &lt;td>⠼⠛ ⠠⠚⠥⠝&lt;/td>
-      &lt;td>⠠⠉⠁⠎⠓ ⠺⠊⠞⠓⠙⠗⠁⠺⠁⠇&lt;/td>
-      &lt;td>&lt;/td>
-      &lt;td>⠈⠎⠼⠁⠚⠚⠲⠚⠚&lt;/td>
-    &lt;/tr>
-    &#8230;
-  &lt;/tbody>
+	&lt;thead>
+		&lt;tr>
+		&lt;th id="date-header" scope="col">⠠⠙⠁⠞⠑&lt;/th>
+		&lt;th id="description-header" scope="col">⠠⠙⠑⠎⠉⠗⠊⠏⠞⠊⠕⠝&lt;/th>
+		&lt;th id="credit-header" scope="col">⠠⠉⠗⠑⠙⠊⠞&lt;/th>
+		&lt;th id="debit-header" scope="col">⠠⠙⠑⠃⠊⠞&lt;/th>
+		&lt;/tr>
+	&lt;/thead>
+	&lt;tbody>
+		&lt;tr>
+		&lt;td headers="date-header">⠼⠛ ⠠⠚⠥⠝&lt;/td>
+		&lt;td headers="description-header">⠠⠉⠁⠎⠓ ⠺⠊⠞⠓⠙⠗⠁⠺⠁⠇&lt;/td>
+		&lt;td headers="credit-header">&lt;/td>
+		&lt;td headers="debit-header">⠈⠎⠼⠁⠚⠚⠲⠚⠚&lt;/td>
+		&lt;/tr>
+		&#8230;
+	&lt;/tbody>
 &lt;/table></code></pre>
+				</aside>
+				<aside class="example" title="A table with long headings that may need to be abbreviated">
+					<pre><code class="html">&lt;table>
+	&lt;thead>
+		&lt;tr>
+		&lt;th id="fruit-header" abbr="Fruit" scope="col">⠠⠋⠗⠥⠊⠞&lt;/th>
+		&lt;th id="vitamin-header" abbr="Vitamins" scope="col">⠠⠧⠊⠞⠁⠍⠊⠝⠎ ⠊⠝ ⠠⠁⠃⠥⠝⠙⠁⠝⠉⠑&lt;/th>
+		&lt;th id="calories-header" abbr="Calories" scope="col">⠠⠉⠁⠇⠕⠗⠊⠑⠎ ⠎⠑⠗⠧⠊⠝⠛&lt;/th>
+		&lt;/tr>
+	&lt;/thead>
+	&lt;tbody>
+		&lt;tr>
+		&lt;th id="apple-header" abbr="Apple" scope="row">⠠⠁⠏⠏⠇⠑ ⠎⠑⠗⠧⠊⠝⠛&lt;/th>
+		&lt;td headers="fruit-header vitamin-header">⠠⠧⠊⠞⠁⠍⠊⠝ ⠉&lt;/td>
+		&lt;td headers="fruit-header calories-header">⠼⠊⠑ ⠉⠁⠇⠕⠗⠊⠑⠎&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+		&lt;th id="banana-header" abbr="Banana" scope="row">⠠⠃⠁⠝⠁⠝⠁ ⠎⠑⠗⠧⠊⠝⠛&lt;/th>
+		&lt;td headers="fruit-header vitamin-header">⠠⠧⠊⠞⠁⠍⠊⠝ ⠃⠼⠋&lt;/td>
+		&lt;td headers="fruit-header calories-header">⠼⠁⠚⠑ ⠉⠁⠇⠕⠗⠊⠑⠎&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+		&lt;th id="grape-header" abbr="Grape" scope="row">⠠⠛⠗⠁⠏⠑ ⠎⠑⠗⠧⠊⠝⠛&lt;/th>
+		&lt;td headers="fruit-header vitamin-header">⠠⠧⠊⠞⠁⠍⠊⠝ ⠁ ⠁⠝⠙ ⠧⠊⠞⠁⠍⠊⠝ ⠉&lt;/td>
+		&lt;td headers="fruit-header calories-header">⠼⠃⠋ ⠉⠁⠇⠕⠗⠊⠑⠎&lt;/td>
+		&lt;/tr>
+	&lt;/tbody>
+	&lt;/table></code></pre>
 				</aside>
 			</section>
 			<section id="Text splitting">
