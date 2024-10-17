@@ -48,7 +48,7 @@
 				postProcess: [addDAISYStatus, validateExamples, addCopyrightYear, fixExampleHeaders],
 				localBiblio: {
 					"ebraille": {
-						href: new URL("../../", document.baseURI).href,
+						href: 'https://daisy.org/s/ebraille/',
 						title: "eBraille 1.0",
 						publisher: "DAISY Consortium",
 						authors: [
@@ -57,7 +57,7 @@
 						]
 					},
 					"tagging": {
-						href: new URL("../tagging/", document.baseURI).href,
+						href: 'https://daisy.org/s/ebraille/best-practices/tagging/',
 						title: "eBraille Tagging Best Practices",
 						authors: ["Willow Free"],
 						status: "DAISY Editor's Draft"
@@ -111,7 +111,7 @@
 			};
 			// ]]>
 		</script>
-		<link rel="stylesheet" href="../../common/css/common.css" />
+		<link rel="stylesheet" href="../../common/css/common.css" class="remove" />
 		<style type="text/css">
 			/*<![CDATA[*/
 			/* FIXME: these @font-face declarations from js-renderer-prototype/base.css must be
@@ -212,7 +212,7 @@
 	<body>
 		<p class="copyright">Copyright &#169; DAISY Consortium <span id="copyYear">2024</span></p>
 		<section id="abstract">
-			<p>This document defines CSS styling conventions for the <a href="/">eBraille</a> format.</p>
+			<p>This document defines CSS styling conventions for the <a href="https://daisy.org/s/ebraille/">eBraille</a> format.</p>
 		</section>
 		<section id="sotd">
 			<div data-include="../../common/status.html" data-include-replace="true"></div>
@@ -1665,7 +1665,7 @@ h2 {
 							characters, resulting in the URL
 							<a href="https://daisy.org/ebraille/border-image?pattern=⠐⠐⠐⠐⠐⠐⠐⠐"><code
 							>https://daisy.org/ebraille/border-image?pattern=⠐⠐⠐⠐⠐⠐⠐⠐</code></a>.</p>
-						<p>As <a data-cite="ebraille#resource-location">eBraille does not support remote
+						<p>As <a data-cite="ebraille#res-location">eBraille does not support remote
 							resources</a>, the image can not be referenced directly from the style sheet
 							through this URL. An additional step is required: the image must be
 							downloaded and placed in or below the root directory</a> of the
@@ -2128,7 +2128,7 @@ h1 {
 								‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a></li>
 								<li><a data-cite="css2/visuren.html#z-index">Specifying the stack level: the
 								‘z-index’ property</a></li>
-								<li><a data-cite="css-backgrounds##background-color">Base Color: the
+								<li><a data-cite="css-backgrounds#background-color">Base Color: the
 								‘background-color’ property</a></li>
 								<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
 								Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and

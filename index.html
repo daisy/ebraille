@@ -101,7 +101,7 @@
 			};
 			// ]]>
 		</script>
-		<link rel="stylesheet" href="common/css/common.css" />
+		<link rel="stylesheet" href="common/css/common.css" class="remove" />
 	</head>
 	<body>
 		<p class="copyright">Copyright &#169; DAISY Consortium <span id="copyYear">2023</span></p>
@@ -388,7 +388,7 @@
 				<p>The complete list is available in the <a data-cite="epub-33#sec-core-media-types">core media types
 						section</a> of [[epub-33]].</p>
 
-				<p>All other media types are considered <a href="foreign-res">foreign resources</a>.</p>
+				<p>All other media types are considered <a href="#foreign-res">foreign resources</a>.</p>
 			</section>
 
 			<section id="foreign-res">
@@ -699,7 +699,7 @@
 						<h4>Metadata elements</h4>
 
 						<p>Metadata about an [=eBraille publication=] is expressed in the package document's <a
-								data-cite="epub-33#the-metadata-elem"><code>metadata</code> element</a> [[epub-33]].
+								data-cite="epub-33#sec-metadata-elem"><code>metadata</code> element</a> [[epub-33]].
 							This element is the first child of the root <a href="#package-elem"><code>package</code>
 								element</a>.</p>
 
@@ -982,7 +982,7 @@
 					<section id="dc:language">
 						<h5>dc:language</h5>
 
-						<p>The REQUIRED <a href="epub-33#sec-opf-dclanguage"><code>dc:language</code> element</a>
+						<p>The REQUIRED <a data-cite="epub-33#sec-opf-dclanguage"><code>dc:language</code> element</a>
 							[[epub-33]] identifies the language(s) of the [=eBraille publication=].</p>
 
 						<p>The [=value=] MUST be a <a href="https://www.rfc-editor.org/rfc/rfc5646#section-2.2.9"
@@ -1449,8 +1449,8 @@
 								data-cite="epub-33#attrdef-xml-lang"><code>xml:lang</code></a> [[epub-33]].</p>
 
 						<p>The system or scheme the element's value was drawn from MAY be identified using the <a
-								href="epub-33#authority"><code>authority</code> property</a> [[epub-33]]. A subject code
-							MUST also be specified when specifying the <code>authority</code> property.</p>
+								data-cite="epub-33#authority"><code>authority</code> property</a> [[epub-33]]. A subject
+							code MUST also be specified when specifying the <code>authority</code> property.</p>
 
 						<aside class="example" title="BISAC subject and code">
 							<pre>&lt;metadata …>
@@ -2406,7 +2406,7 @@
 		<section id="ebrl-mo">
 			<h2>Media overlays</h2>
 
-			<p>eBraille publications support <a data-cite="epub-33##sec-media-overlays">media overlays</a> as defined in
+			<p>eBraille publications support <a data-cite="epub-33#sec-media-overlays">media overlays</a> as defined in
 				[[epub-33]]. Media overlays allow prerecorded audio to be synchronized with the content of [=eBraille
 				content documents=], allowing users to switch between reading braille, listening to auditory playback,
 				or reading along with narration.</p>
@@ -2676,7 +2676,7 @@
 						<li><a data-cite="epub-rs-33#sec-svg">SVG content documents</a>. (Note that this does not affect
 								<a data-cite="epub-rs-33#sec-xhtml-svg">embedded SVG</a>.)</li>
 						<li><a data-cite="epub-33#sec-css-prefixed">EPUB 3's prefixed CSS properties</a>.</li>
-						<li><a data-cite="epub-rs-33#epub-rs-33/#sec-rendering-control">fixed layouts</a>.</li>
+						<li><a data-cite="epub-rs-33/#sec-rendering-control">fixed layouts</a>.</li>
 						<li><a data-cite="epub-rs-33#sec-epub-rs-conf-backward">backward compatibility</a> or <a
 								data-cite="epub-rs-33#sec-epub-rs-conf-forward">forward compatibility</a> with other
 							EPUB versions.</li>
