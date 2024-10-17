@@ -331,10 +331,18 @@
 				<aside class="example" title="Simple heading">
 					<pre><code class="html">&lt;h1>⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝&lt;/h1></code></pre>
 				</aside>
-				<aside class="example" title="Multiline heading">
-					<p>Note that while <code>&lt;br/></code> can be used to force multiple lines, doing so will hardcode those breaks. It is better to identify the heading with either a tag or class and use CSS to center the braille &lpar;<code>text-wrap: balance</code>&rpar;. See the <a href=https://daisy.github.io/ebraille/best-practices/styling/#line-breaking>Styling Best Practices section on line breaks</a> for more information.</p>
-					<pre><code class="html">&lt;h1>⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠛
-&lt;span class="subtitle">⠠⠞⠓⠑ ⠠⠗⠑⠍⠁⠗⠅⠁⠃⠇⠑ ⠠⠞⠗⠥⠞⠓ ⠁⠃⠕⠥⠞ ⠠⠚⠕⠓⠝ ⠠⠎⠍⠊⠞⠓&lt;span>&lt;/h1></code></pre>
+				<aside class="example" title="Multiline heading that consists of a main part and a subheading">
+					<pre><code class="html">&lt;h1>⠠⠙⠗⠲ ⠠⠎⠞⠗⠁⠝⠛⠑⠇⠕⠧⠑
+&lt;span class="subtitle">⠠⠕⠗⠒ ⠠⠓⠕⠺ ⠠⠊ ⠠⠇⠑⠁⠗⠝⠑⠙ ⠞⠕ ⠠⠎⠞⠕⠏ ⠠⠺⠕⠗⠗⠽⠊⠝⠛ ⠁⠝⠙ ⠠⠇⠕⠧⠑ ⠞⠓⠑ ⠠⠃⠕⠍⠃&lt;span>&lt;/h1></code></pre>
+				</aside>
+				<aside class="example" title="Multiline heading that does not consist of multiple parts">
+					<p>Note that while <code>&lt;br/></code> can be used to force multiple lines, doing so will hardcode
+						those breaks. It is better to use CSS to automatically balance the braille
+						&lpar;<code>text-wrap: balance</code>&rpar;, unless that results in illogical breaks. See
+						the <a href="https://daisy.github.io/ebraille/best-practices/styling/#line-breaking">Styling
+						Best Practices section on line breaks</a> for more information.</p>
+					<pre><code class="html">&lt;h1>⠠⠠⠠⠥⠎⠊⠝⠛ ⠝⠁⠞⠥⠗⠁⠇ ⠗⠑⠎⠕⠥⠗⠉⠑⠎&lt;br/>
+⠊⠝ ⠞⠓⠑ ⠥⠝⠊⠞⠑⠙ ⠎⠞⠁⠞⠑⠎⠠⠄&lt;/h1></code></pre>
 				</aside>
 				<aside class="example" title="Running header, also called a running head or running heading when used for the title of the work being transcribed">
 					<pre><code class="html">&lt;title class="running-heading">⠠⠁⠀⠠⠞⠁⠇⠑⠀⠷⠀⠠⠞⠺⠕⠀⠠⠉⠊⠞⠊⠑⠎&lt;/title></code></pre>
