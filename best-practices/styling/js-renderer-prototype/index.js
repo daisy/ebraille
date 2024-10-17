@@ -58,6 +58,8 @@
         return result;
     }
 
+    let fontSizeAdjust = 1.11111; // this value corresponds with size-adjust in font-face (see base.css)
+                                  // it affects em, but not ch
     let fontSize = 36.0 / window.devicePixelRatio;
 
     async function braille2canvas(braille, columns, css, script, options) {
@@ -72,12 +74,11 @@
         html += ("<body><div id='wrapper' style='width: " + columns + "ch'>" + braille + "</div></body>");
         html += "</html>";
         return await html2iframe2canvas(html, merge(options, {
-            width: columns * fontSize * 1.11111 / 2.0 // value corresponds with used font and font-size
+            width: columns * fontSize * fontSizeAdjust / 2.0
         }));
     }
 
-    // values correspond with used font, font-size and line-height (see base.css)
-    let cellWidth = window.devicePixelRatio * fontSize * 1.11111 / 2.0;
+    let cellWidth = window.devicePixelRatio * fontSize * fontSizeAdjust / 2.0;
     let cellHeight = window.devicePixelRatio * fontSize;
 
     async function getPatternsImageData() {
