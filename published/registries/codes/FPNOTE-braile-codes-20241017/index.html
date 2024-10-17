@@ -1,0 +1,1300 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
+<meta charset="utf-8">
+<meta name="generator" content="ReSpec 35.1.2">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.issue.closed span.issue-number::after{content:" (Closed)";font-size:smaller}
+.warning{border-color:#f11;border-color:var(--warning-border,#f11);border-width:.2em;border-style:solid;background:#fbe9e9;background:var(--warning-bg,#fbe9e9);color:#000;color:var(--text,#000)}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+		
+		
+<title>eBraille Braille Codes Registry</title>
+		
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+		
+		
+		
+		
+		
+<link rel="stylesheet" href="../../common/css/common.css">
+	
+<meta name="color-scheme" content="light">
+<meta name="description" content="…">
+<style>
+var{position:relative;cursor:pointer}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#222}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "shortName": "braile-codes",
+  "specStatus": "base",
+  "daisyWG": "eBraille Working Group",
+  "daisyStatus": "DRAFT-NOTE",
+  "latestVersion": "https://daisy.github.io/ebraille/registries/codes",
+  "thisVersion": "https://daisy.org/s/ebraille/registries/codes/FPNOTE-ebraille-codes-20241017/",
+  "edDraftURI": null,
+  "editors": [
+    {
+      "name": "Willow Free",
+      "company": "American Printing House for the Blind",
+      "url": "https://www.aph.org/"
+    },
+    {
+      "name": "Matt Garrish",
+      "company": "DAISY Consortium",
+      "url": "https://daisy.org/"
+    }
+  ],
+  "logos": [
+    {
+      "src": "../../common/images/daisy_high.jpg",
+      "width": 112,
+      "height": 100,
+      "alt": "DAISY Consortium logo",
+      "url": "https://daisy.org"
+    }
+  ],
+  "github": "daisy/ebraille",
+  "postProcess": [
+    null,
+    null,
+    null
+  ],
+  "publishISODate": "2024-10-17T00:00:00.000Z",
+  "generatedSubtitle": "17 October 2024"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/base.css"></head>
+	<body class="h-entry"><div class="head">
+    <p class="logos"><a class="logo" href="https://daisy.org"><img crossorigin="" alt="DAISY Consortium logo" height="100" src="../../common/images/daisy_high.jpg" width="112">
+  </a></p>
+    <h1 id="title" class="title">eBraille Braille Codes Registry</h1> 
+    <p id="w3c-state"><span id="daisy-status">DAISY Draft Working Group Note</span> <time class="dt-published" datetime="2024-10-17">17 October 2024</time></p>
+    <details open="">
+      <summary>More details about this document</summary>
+      <dl>
+        <dt>This version:</dt><dd>
+                <a class="u-url" href="https://daisy.org/s/ebraille/registries/codes/FPNOTE-ebraille-codes-20241017/">https://daisy.org/s/ebraille/registries/codes/FPNOTE-ebraille-codes-20241017/</a>
+              </dd>
+        <dt>Latest published version:</dt><dd>
+                <a href="https://daisy.github.io/ebraille/registries/codes">https://daisy.github.io/ebraille/registries/codes</a>
+              </dd>
+        
+        <dt>History:</dt><dd>
+                    <a href="https://github.com/daisy/ebraille/commits/">Commit history</a>
+                  </dd>
+        
+        
+        
+        
+        
+        <dt>Editors:</dt><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://www.aph.org/">Willow Free</a> (<span class="p-org org h-org">American Printing House for the Blind</span>)
+  </dd><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://daisy.org/">Matt Garrish</a> (<span class="p-org org h-org">DAISY Consortium</span>)
+  </dd>
+        
+        
+        <dt>Feedback:</dt><dd>
+        <a href="https://github.com/daisy/ebraille/">GitHub daisy/ebraille</a>
+        (<a href="https://github.com/daisy/ebraille/pulls/">pull requests</a>,
+        <a href="https://github.com/daisy/ebraille/issues/new/choose">new issue</a>,
+        <a href="https://github.com/daisy/ebraille/issues/">open issues</a>)
+      </dd>
+        
+        
+      </dl>
+    </details>
+    
+    
+    <p class="copyright">Copyright © DAISY Consortium <span id="copyYear">2024</span></p>
+    <hr title="Separator for header">
+  </div>
+		
+		<section id="abstract" class="introductory"><h2>Abstract</h2>
+			<p>…</p>
+		</section>
+		<section id="sotd" class="introductory"><h2>Status of This Document</h2>
+			
+	<p><em>This section describes the status of this document at the time of its publication.</em></p>
+	<p>This document was published by the <span class="daisy-wg">eBraille Working Group</span> as <span class="daisy-status">a Draft Working Group Note</span>.</p>
+	<p>Publication as <span class="daisy-status">a Draft Working Group Note</span> does not imply endorsement by the DAISY Consortium and
+		its members.</p>
+	<p>This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It
+		should only be cited as a work in progress.</p>
+	
+		</section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#intro"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overview"><bdi class="secno">1.1 </bdi>Overview</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1.2 </bdi>Conformance</a></li></ol></li><li class="tocline"><a class="tocxref" href="#about"><bdi class="secno">2. </bdi>About the registry</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#registration"><bdi class="secno">2.1 </bdi>Registering new codes</a></li><li class="tocline"><a class="tocxref" href="#code-rules"><bdi class="secno">2.2 </bdi>Code syntax</a></li></ol></li><li class="tocline"><a class="tocxref" href="#braille-codes"><bdi class="secno">3. </bdi>Braille codes</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#registered-codes"><bdi class="secno">3.1 </bdi>Registered codes</a></li><li class="tocline"><a class="tocxref" href="#proposed-codes"><bdi class="secno">3.2 </bdi>Proposed codes</a></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">A. </bdi>Acknowledgments</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">B. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">B.1 </bdi>Normative references</a></li></ol></li></ol></nav>
+		<section id="intro"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#intro" aria-label="Permalink for Section 1."></a></div>
+			
+
+			<section id="overview"><div class="header-wrapper"><h3 id="x1-1-overview"><bdi class="secno">1.1 </bdi>Overview</h3><a class="self-link" href="#overview" aria-label="Permalink for Section 1.1"></a></div>
+				
+
+				<p>This document defines a metadata standard tailored for the eBraille specification, facilitating
+					consistent and accurate identification of braille codes, grades, and specializations across various
+					languages and contexts. It provides a structured framework for identifying the braille system in
+					use, including details on contraction levels, specialized braille systems (such as computer or music
+					braille), and additional elements relevant to braille production. The goal of this document is to
+					clearly define braille code metadata to enhance interoperability, backtranslation, and accessibility
+					within eBraille documents.</p>
+			</section>
+
+			<section id="conformance"><div class="header-wrapper"><h3 id="x1-2-conformance"><bdi class="secno">1.2 </bdi>Conformance</h3><a class="self-link" href="#conformance" aria-label="Permalink for Section 1.2"></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
+        The key words <em class="rfc2119">MUST</em>, <em class="rfc2119">OPTIONAL</em>, <em class="rfc2119">REQUIRED</em>, and <em class="rfc2119">SHOULD</em> in this document
+        are to be interpreted as described in
+        <a href="https://datatracker.ietf.org/doc/html/bcp14">BCP 14</a>
+        [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
+        when, and only when, they appear in all capitals, as shown here.
+      </p></section>
+		</section>
+		<section id="about"><div class="header-wrapper"><h2 id="x2-about-the-registry"><bdi class="secno">2. </bdi>About the registry</h2><a class="self-link" href="#about" aria-label="Permalink for Section 2."></a></div>
+			
+
+			<section id="registration"><div class="header-wrapper"><h3 id="x2-1-registering-new-codes"><bdi class="secno">2.1 </bdi>Registering new codes</h3><a class="self-link" href="#registration" aria-label="Permalink for Section 2.1"></a></div>
+				
+
+				<div class="note" id="issue-container-generatedID"><div role="heading" class="ednote-title marker" id="h-ednote" aria-level="4"><span>Editor's note</span></div><div class="">
+					<p>The process for registering new codes through the group's github repository will be added in a
+						future update.</p>
+				</div></div>
+			</section>
+
+			<section id="code-rules"><div class="header-wrapper"><h3 id="x2-2-code-syntax"><bdi class="secno">2.2 </bdi>Code syntax</h3><a class="self-link" href="#code-rules" aria-label="Permalink for Section 2.2"></a></div>
+				
+
+				<p>These rules intend to identify braille codes clearly using a single string. The goal is to have a
+					unified system that makes it easier for software developers and braille library mantainers to </p>
+
+				<p>Codes <em class="rfc2119">MUST</em> be of the following form after <a href="https://www.w3.org/TR/xml/#AVNormalize">whitespace normalization</a>
+					[<cite><a class="bibref" data-link-type="biblio" href="#bib-xml" title="Extensible Markup Language (XML) 1.0 (Fifth Edition)">xml</a></cite>]:</p>
+
+				<table class="productionset">
+					<caption>(EBNF productions <a href="https://www.iso.org/standard/26153.html">ISO/IEC
+						14977</a>)<br> All terminal symbols are in the Unicode Block 'Basic Latin' (U+0000 to
+						U+007F).</caption>
+
+					<tbody>
+						<tr>
+							<td id="brl-code.ebnf.def">
+								<a href="#brl-code.ebnf.def">brl-code</a>
+							</td>
+							<td>=</td>
+							<td><a href="#brl-code.ebnf.code">code</a>
+								<a href="#brl-code.ebnf.space">space</a>
+								<a href="#brl-code.ebnf.grade">grade</a> [ <a href="#brl-code.ebnf.space">space</a>
+								<a href="#brl-code.ebnf.specialization">specialization</a> ] ;</td>
+						</tr>
+						<tr>
+							<td id="brl-code.ebnf.code">
+								<a href="#brl-code.ebnf.code">code</a>
+							</td>
+							<td>=</td>
+							<td>? character data ? ;</td>
+						</tr>
+						<tr>
+							<td id="brl-code.ebnf.grade">
+								<a href="#brl-code.ebnf.grade">grade</a>
+							</td>
+							<td>=</td>
+							<td> "grade0" | "grade1" | "grade2" | "no-grade" ;</td>
+						</tr>
+						<tr>
+							<td id="brl-code.ebnf.specialization">
+								<a href="#brl-code.ebnf.specialization">specialization</a>
+							</td>
+							<td>=</td>
+							<td> "comp8" | "comp6" | "math" | "music" | "phonetic" ;</td>
+						</tr>
+						<tr>
+							<td id="brl-code.ebnf.space">
+								<a href="#brl-code.ebnf.space">space</a>
+							</td>
+							<td>=</td>
+							<td>#x20 ;</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<p>The following list defines each component of a braille code in greater detail:</p>
+
+				<dl>
+					<dt>Code</dt>
+					<dd>
+						<p>The <em class="rfc2119">REQUIRED</em> code identifies the specific braille system in use, such as Unified English
+							Braille (UEB), Nemeth, or Bharati for Indian languages. For interoperabilty, braille code
+							names <em class="rfc2119">SHOULD</em> be in English.</p>
+					</dd>
+
+					<dt>Grade</dt>
+					<dd>
+						<p>The <em class="rfc2119">REQUIRED</em> grade specifies the level of contraction or complexity in the braille code, such
+							as grade1 for uncontracted braille and grade2 for contracted braille. If the braille system
+							does not follow a specific grading system, <strong>no-grade</strong> is used.</p>
+						<p>Allowed values:</p>
+						<ul>
+							<li><strong>grade0</strong> - means no contractions are used</li>
+							<li><strong>grade1</strong> - means only some contractions within that code are used</li>
+							<li><strong>grade2</strong> - means all contractions within that code are used</li>
+							<li><strong>no-grade</strong> - means that the code does not use contractions or a grading
+								system</li>
+						</ul>
+						<div class="note" id="issue-container-generatedID-0"><div role="heading" class="ednote-title marker" id="h-ednote-0" aria-level="4"><span>Editor's note</span></div><div class="">
+							<p>More feedback is needed about how each braille code views braille grades. In many braille
+								regions, grades are not used.</p>
+						</div></div>
+					</dd>
+
+					<dt>Specialization</dt>
+					<dd>
+						<p>The <em class="rfc2119">OPTIONAL</em> specialization identifies specialized systems like computer or music
+							braille.</p>
+						<p>Allowed values:</p>
+						<ul>
+							<li><strong>comp8</strong> - 8-dot computer braille</li>
+							<li><strong>comp6</strong> - 6-dot computer braille</li>
+							<li><strong>math</strong> - code is only concerned with mathematics</li>
+							<li><strong>music</strong> - code is only concerned with music</li>
+							<li><strong>phonetic</strong> - code is only concerned with phonetics</li>
+						</ul>
+					</dd>
+				</dl>
+			</section>
+		</section>
+		<section id="braille-codes"><div class="header-wrapper"><h2 id="x3-braille-codes"><bdi class="secno">3. </bdi>Braille codes</h2><a class="self-link" href="#braille-codes" aria-label="Permalink for Section 3."></a></div>
+			
+
+			<section id="registered-codes"><div class="header-wrapper"><h3 id="x3-1-registered-codes"><bdi class="secno">3.1 </bdi>Registered codes</h3><a class="self-link" href="#registered-codes" aria-label="Permalink for Section 3.1"></a></div>
+				
+
+				<p>No codes have been registered at this time.</p>
+			</section>
+
+			<section id="proposed-codes"><div class="header-wrapper"><h3 id="x3-2-proposed-codes"><bdi class="secno">3.2 </bdi>Proposed codes</h3><a class="self-link" href="#proposed-codes" aria-label="Permalink for Section 3.2"></a></div>
+				
+
+				<dl>
+					<dt><code>Afrikaans grade2</code></dt>
+					<dd>Afrikaans contracted</dd>
+
+					<dt><code>Afrikaans grade1</code></dt>
+					<dd>Afrikaans uncontracted</dd>
+
+					<dt><code>Akkadian-Borger grade1</code></dt>
+					<dd>Akkadian Borger</dd>
+
+					<dt><code>Akkadian grade1</code></dt>
+					<dd>Akkadian U.S.</dd>
+
+					<dt><code>Arabic no-grade comp8</code></dt>
+					<dd>Arabic computer</dd>
+
+					<dt><code>Arabic grade2</code></dt>
+					<dd>Arabic contracted</dd>
+
+					<dt><code>Arabic grade1</code></dt>
+					<dd>Arabic uncontracted</dd>
+
+					<dt><code>Armenian no-grade comp8</code></dt>
+					<dd>Armenian computer</dd>
+
+					<dt><code>Bashkir grade1</code></dt>
+					<dd>Bashkir</dd>
+
+					<dt><code>Belarusian grade1</code></dt>
+					<dd>Belarusian</dd>
+
+					<dt><code>Belarusian no-grade comp8</code></dt>
+					<dd>Belarusian computer</dd>
+
+					<dt><code>Belarusian capitals grade0</code></dt>
+					<dd>Belarusian with capitals</dd>
+
+					<dt><code>Bharati grade1</code></dt>
+					<dd>Bharati</dd>
+
+					<dt><code>Bulgarian grade1</code></dt>
+					<dd>Bulgarian</dd>
+
+					<dt><code>Bulgarian no-grade comp8</code></dt>
+					<dd>Bulgarian computer</dd>
+
+					<dt><code>Burmese grade2</code></dt>
+					<dd>Burmese contracted</dd>
+
+					<dt><code>Burmese grade1</code></dt>
+					<dd>Burmese uncontracted</dd>
+
+					<dt><code>Cantonese grade1</code></dt>
+					<dd>Cantonese</dd>
+
+					<dt><code>Catalan grade1</code></dt>
+					<dd>Catalan</dd>
+
+					<dt><code>Cherokee grade1</code></dt>
+					<dd>Cherokee</dd>
+
+					<dt><code>Chichewa grade1</code></dt>
+					<dd>Chichewa</dd>
+
+					<dt><code>Coptic no-grade comp8</code></dt>
+					<dd>Coptic computer</dd>
+
+					<dt><code>Croatian grade1</code></dt>
+					<dd>Croatian</dd>
+
+					<dt><code>Croatian no-grade comp8</code></dt>
+					<dd>Croatian computer</dd>
+
+					<dt><code>Cuneiform-Transliteration grade1</code></dt>
+					<dd>Cuneiform transliterated</dd>
+
+					<dt><code>Czech grade1</code></dt>
+					<dd>Czech</dd>
+
+					<dt><code>Czech no-grade comp8</code></dt>
+					<dd>Czech computer</dd>
+
+					<dt><code>Danish-1993 no-grade comp8</code></dt>
+					<dd>Danish computer 1993</dd>
+
+					<dt><code>Danish-2022 no-grade comp8</code></dt>
+					<dd>Danish computer 2022</dd>
+
+					<dt><code>Danish-6dot-1993 grade2</code></dt>
+					<dd>Danish contracted 6 dot 1993</dd>
+
+					<dt><code>Danish-6dot-2022 grade2</code></dt>
+					<dd>Danish contracted 6 dot 2022</dd>
+
+					<dt><code>Danish-8dot-1993 grade2</code></dt>
+					<dd>Danish contracted 8 dot 1993</dd>
+
+					<dt><code>Danish-8dot-2022 grade2</code></dt>
+					<dd>Danish contracted 8 dot 2022</dd>
+
+					<dt><code>Danish-6dot-1993 grade1</code></dt>
+					<dd>Danish partially contracted 6 dot 1993</dd>
+
+					<dt><code>Danish-8dot-1993 grade1</code></dt>
+					<dd>Danish partially contracted 8 dot 1993</dd>
+
+					<dt><code>Danish-6dot-1993 grade1</code></dt>
+					<dd>Danish uncontracted 6 dot 1993</dd>
+
+					<dt><code>Danish-6dot-2022 grade1</code></dt>
+					<dd>Danish uncontracted 6 dot 2022</dd>
+
+					<dt><code>Danish-8dot-1993 grade1</code></dt>
+					<dd>Danish uncontracted 8 dot 1993</dd>
+
+					<dt><code>Danish-8dot-2022 grade1</code></dt>
+					<dd>Danish uncontracted 8 dot 2022</dd>
+
+					<dt><code>Dravidian no-grade comp8</code></dt>
+					<dd>Dravidian computer</dd>
+
+					<dt><code>Dutch grade1</code></dt>
+					<dd>Dutch</dd>
+
+					<dt><code>Dutch no-grade comp8</code></dt>
+					<dd>Dutch computer</dd>
+
+					<dt><code>CBC no-grade comp8</code></dt>
+					<dd>English Canada computer</dd>
+
+					<dt><code>SEB no-grade comp8</code></dt>
+					<dd>English U.K. computer</dd>
+
+					<dt><code>SEB grade2</code></dt>
+					<dd>English U.K. contracted</dd>
+
+					<dt><code>SEB grade1</code></dt>
+					<dd>English U.K. uncontracted</dd>
+
+					<dt><code>CBC 6dot no-grade comp6</code></dt>
+					<dd>English U.S. computer 6 dot</dd>
+
+					<dt><code>CBC 8dot no-grade comp8</code></dt>
+					<dd>English U.S. computer 8 dot</dd>
+
+					<dt><code>NABCC no-grade comp8</code></dt>
+					<dd>English U.S. computer NABCC</dd>
+
+					<dt><code>EBAE grade2</code></dt>
+					<dd>English U.S. contracted</dd>
+
+					<dt><code>EBAE grade1</code></dt>
+					<dd>English U.S. uncontracted</dd>
+
+					<dt><code>ueb grade2</code></dt>
+					<dd>English unified contracted</dd>
+
+					<dt><code>ueb grade1</code></dt>
+					<dd>English unified uncontracted</dd>
+
+					<dt><code>Esperanto grade1</code></dt>
+					<dd>Esperanto</dd>
+
+					<dt><code>Esperanto-x-system no-grade</code></dt>
+					<dd>Esperanto x system</dd>
+
+					<dt><code>Estonian no-grade comp8</code></dt>
+					<dd>Estonian computer</dd>
+
+					<dt><code>Ethiopic grade1</code></dt>
+					<dd>Ethiopic</dd>
+
+					<dt><code>Filipino grade2</code></dt>
+					<dd>Filipino contracted</dd>
+
+					<dt><code>Finnish grade1</code></dt>
+					<dd>Finnish</dd>
+
+					<dt><code>Finnish no-grade comp8</code></dt>
+					<dd>Finnish computer</dd>
+
+					<dt><code>French no-grade comp8</code></dt>
+					<dd>French computer</dd>
+
+					<dt><code>French grade2</code></dt>
+					<dd>French contracted</dd>
+
+					<dt><code>French grade1</code></dt>
+					<dd>French uncontracted</dd>
+
+					<dt><code>Georgian grade1</code></dt>
+					<dd>Georgian</dd>
+
+					<dt><code>German-6dot no-grade comp6</code></dt>
+					<dd>German computer 6 dot</dd>
+
+					<dt><code>German-8dot no-grade comp8</code></dt>
+					<dd>German computer 8 dot</dd>
+
+					<dt><code>German grade2</code></dt>
+					<dd>German contracted</dd>
+
+					<dt><code>German-capitals grade2</code></dt>
+					<dd>German contracted with capitals</dd>
+
+					<dt><code>German grade1</code></dt>
+					<dd>German partially contracted</dd>
+
+					<dt><code>German-capitals grade1</code></dt>
+					<dd>German partially contracted with capitals</dd>
+
+					<dt><code>German grade0</code></dt>
+					<dd>German uncontracted</dd>
+
+					<dt><code>German-capitals grade0</code></dt>
+					<dd>German uncontracted with capitals</dd>
+
+					<dt><code>Gondi grade1</code></dt>
+					<dd>Gondi</dd>
+
+					<dt><code>Greek grade1</code></dt>
+					<dd>Greek</dd>
+
+					<dt><code>Greek-international-English-composed grade0</code></dt>
+					<dd>Greek international English composed</dd>
+
+					<dt><code>Greek-international-English-decomposed grade0</code></dt>
+					<dd>Greek international English decomposed</dd>
+
+					<dt><code>Greek-international-Spanish grade1</code></dt>
+					<dd>Greek international Spanish</dd>
+
+					<dt><code>Hawaiian grade1</code></dt>
+					<dd>Hawaiian</dd>
+
+					<dt><code>Hebrew-Biblical grade1</code></dt>
+					<dd>Hebrew Biblical</dd>
+
+					<dt><code>Hebrew grade1</code></dt>
+					<dd>Hebrew modern</dd>
+
+					<dt><code>Hebrew no-grade comp8</code></dt>
+					<dd>Hebrew modern computer</dd>
+
+					<dt><code>Hungarian no-grade comp8</code></dt>
+					<dd>Hungarian computer</dd>
+
+					<dt><code>Hungarian grade2</code></dt>
+					<dd>Hungarian contracted</dd>
+
+					<dt><code>Hungarian grade1</code></dt>
+					<dd>Hungarian partially contracted</dd>
+
+					<dt><code>Icelandic grade1</code></dt>
+					<dd>Icelandic</dd>
+
+					<dt><code>IPA-Braille-2005 no-grade phonetic</code></dt>
+					<dd>International Phonetic Alphabet 2005</dd>
+
+					<dt><code>Inuktitut grade1</code></dt>
+					<dd>Inuktitut</dd>
+
+					<dt><code>Irish grade2</code></dt>
+					<dd>Irish contracted</dd>
+
+					<dt><code>Irish grade1</code></dt>
+					<dd>Irish uncontracted</dd>
+
+					<dt><code>isiXhosa grade2</code></dt>
+					<dd>isiXhosa contracted</dd>
+
+					<dt><code>isiXhosa grade1</code></dt>
+					<dd>isiXhosa uncontracted</dd>
+
+					<dt><code>isiZulu grade2</code></dt>
+					<dd>isiZulu contracted</dd>
+
+					<dt><code>isiZulu grade1</code></dt>
+					<dd>isiZulu uncontracted</dd>
+
+					<dt><code>Italian grade1</code></dt>
+					<dd>Italian</dd>
+
+					<dt><code>Italian no-grade comp8</code></dt>
+					<dd>Italian computer</dd>
+
+					<dt><code>Kantenji grade0</code></dt>
+					<dd>Japanese Kantenji</dd>
+
+					<dt><code>Kazakh grade1</code></dt>
+					<dd>Kazakh</dd>
+
+					<dt><code>Khasi grade1</code></dt>
+					<dd>Khasi</dd>
+
+					<dt><code>Khmer grade1</code></dt>
+					<dd>Khmer</dd>
+
+					<dt><code>Kinyarwanda grade1</code></dt>
+					<dd>Kinyarwanda</dd>
+
+					<dt><code>Korean grade2</code></dt>
+					<dd>Korean contracted</dd>
+
+					<dt><code>Korean-2006 grade2</code></dt>
+					<dd>Korean contracted 2006</dd>
+
+					<dt><code>Korean grade1</code></dt>
+					<dd>Korean uncontracted</dd>
+
+					<dt><code>Korean-2006 grade1</code></dt>
+					<dd>Korean uncontracted 2006</dd>
+
+					<dt><code>Kurdish grade1</code></dt>
+					<dd>Kurdish</dd>
+
+					<dt><code>Lao grade1</code></dt>
+					<dd>Lao</dd>
+
+					<dt><code>Latvian grade1</code></dt>
+					<dd>Latvian</dd>
+
+					<dt><code>Lithuanian grade1</code></dt>
+					<dd>Lithuanian 6 dot</dd>
+
+					<dt><code>Lithuanian grade1</code></dt>
+					<dd>Lithuanian 8 dot</dd>
+
+					<dt><code>Luganda grade1</code></dt>
+					<dd>Luganda</dd>
+
+					<dt><code>Malay grade1</code></dt>
+					<dd>Malay</dd>
+
+					<dt><code>Maltese no-grade comp8</code></dt>
+					<dd>Maltese computer</dd>
+
+					<dt><code>Mandarin-common grade1</code></dt>
+					<dd>Mandarin mainland China common braille scheme</dd>
+
+					<dt><code>Mandarin-double-phonic grade2</code></dt>
+					<dd>Mandarin mainland China double phonic</dd>
+
+					<dt><code>Mandarin-with-tones grade1</code></dt>
+					<dd>Mandarin mainland China with tones</dd>
+
+					<dt><code>Mandarin-no-tones grade1</code></dt>
+					<dd>Mandarin mainland China without tones</dd>
+
+					<dt><code>Bopomofo grade1</code></dt>
+					<dd>Mandarin Taiwan bopomofo</dd>
+
+					<dt><code>Manipuri grade1</code></dt>
+					<dd>Manipuri</dd>
+
+					<dt><code>Maori grade1</code></dt>
+					<dd>Maori</dd>
+
+					<dt><code>Marwari grade1</code></dt>
+					<dd>Marwari</dd>
+
+					<dt><code>Mongolian grade2</code></dt>
+					<dd>Mongolian contracted</dd>
+
+					<dt><code>Mongolian grade1</code></dt>
+					<dd>Mongolian uncontracted</dd>
+
+					<dt><code>Munda grade1</code></dt>
+					<dd>Munda</dd>
+
+					<dt><code>Braille-music no-grade music</code></dt>
+					<dd>Music</dd>
+
+					<dt><code>Nemeth no-grade math</code></dt>
+					<dd>Nemeth</dd>
+
+					<dt><code>Kurdish grade1</code></dt>
+					<dd>Northern Kurdish</dd>
+
+					<dt><code>Norwegian no-grade comp8</code></dt>
+					<dd>Norwegian computer</dd>
+
+					<dt><code>Norwegian grade1</code></dt>
+					<dd>Norwegian contracted grade 1</dd>
+
+					<dt><code>Norwegian grade2</code></dt>
+					<dd>Norwegian contracted grade 2</dd>
+
+					<dt><code>Norwegian grade3</code></dt>
+					<dd>Norwegian contracted grade 3</dd>
+
+					<dt><code>Norwegian-6dot grade1</code></dt>
+					<dd>Norwegian uncontracted 6 dot</dd>
+
+					<dt><code>Norwegian-8dot grade1</code></dt>
+					<dd>Norwegian uncontracted 8 dot</dd>
+
+					<dt><code>Norwegian-8dot-6dot-fallback grade1</code></dt>
+					<dd>Norwegian uncontracted 8 dot 6 dot fallback</dd>
+
+					<dt><code>Pali grade1</code></dt>
+					<dd>Pali</dd>
+
+					<dt><code>Persian grade1</code></dt>
+					<dd>Persian</dd>
+
+					<dt><code>Persian no-grade comp8</code></dt>
+					<dd>Persian computer</dd>
+
+					<dt><code>Polish grade1</code></dt>
+					<dd>Polish</dd>
+
+					<dt><code>Polish no-grade comp8</code></dt>
+					<dd>Polish computer</dd>
+
+					<dt><code>Portuguese no-grade comp8</code></dt>
+					<dd>Portuguese computer</dd>
+
+					<dt><code>Portuguese grade2</code></dt>
+					<dd>Portuguese contracted</dd>
+
+					<dt><code>Portuguese grade1</code></dt>
+					<dd>Portuguese uncontracted</dd>
+
+					<dt><code>Romanian no-grade comp8</code></dt>
+					<dd>Romanian computer</dd>
+
+					<dt><code>Romanian grade1</code></dt>
+					<dd>Romanian uncontracted</dd>
+
+					<dt><code>Russian grade1</code></dt>
+					<dd>Russian</dd>
+
+					<dt><code>Russian no-grade comp8</code></dt>
+					<dd>Russian computer</dd>
+
+					<dt><code>Russian grade2</code></dt>
+					<dd>Russian contracted</dd>
+
+					<dt><code>Russian-program grade0</code></dt>
+					<dd>Russian for program sources</dd>
+
+					<dt><code>Russian-capitals grade1</code></dt>
+					<dd>Russian with capitals</dd>
+
+					<dt><code>Gaelic no-grade comp8</code></dt>
+					<dd>Scottish Gaelic computer</dd>
+
+					<dt><code>Sepedi grade2</code></dt>
+					<dd>Sepedi contracted</dd>
+
+					<dt><code>Sepedi grade1</code></dt>
+					<dd>Sepedi uncontracted</dd>
+
+					<dt><code>Serbian grade1</code></dt>
+					<dd>Serbian</dd>
+
+					<dt><code>Serbian grade1 Cyrl</code></dt>
+					<dd>Serbian Cyrillic</dd>
+
+					<dt><code>Sesotho grade2</code></dt>
+					<dd>Sesotho contracted</dd>
+
+					<dt><code>Sesotho grade1</code></dt>
+					<dd>Sesotho uncontracted</dd>
+
+					<dt><code>Setswana grade2</code></dt>
+					<dd>Setswana contracted</dd>
+
+					<dt><code>Setswana grade1</code></dt>
+					<dd>Setswana uncontracted</dd>
+
+					<dt><code>Slovak grade1</code></dt>
+					<dd>Slovak</dd>
+
+					<dt><code>Slovenian grade1</code></dt>
+					<dd>Slovenian</dd>
+
+					<dt><code>Slovenian no-grade comp8</code></dt>
+					<dd>Slovenian computer</dd>
+
+					<dt><code>Spanish no-grade comp8</code></dt>
+					<dd>Spanish computer</dd>
+
+					<dt><code>Spanish grade2</code></dt>
+					<dd>Spanish contracted</dd>
+
+					<dt><code>Spanish grade1</code></dt>
+					<dd>Spanish uncontracted</dd>
+
+					<dt><code>Swahili-grade-1.2 grade1</code></dt>
+					<dd>Swahili contracted grade 1.2</dd>
+
+					<dt><code>Swahili-grade-1.3 grade1</code></dt>
+					<dd>Swahili contracted grade 1.3</dd>
+
+					<dt><code>Swahili-grade-1.4 grade1</code></dt>
+					<dd>Swahili contracted grade 1.4</dd>
+
+					<dt><code>Swahili-grade-1.5 grade1</code></dt>
+					<dd>Swahili contracted grade 1.5</dd>
+
+					<dt><code>Swahili grade2</code></dt>
+					<dd>Swahili contracted grade 2</dd>
+
+					<dt><code>Swahili grade1</code></dt>
+					<dd>Swahili uncontracted</dd>
+
+					<dt><code>Swedish-1989 no-grade comp8</code></dt>
+					<dd>Swedish computer 1989</dd>
+
+					<dt><code>Swedish-1996 no-grade comp8</code></dt>
+					<dd>Swedish computer 1996</dd>
+
+					<dt><code>Swedish grade2</code></dt>
+					<dd>Swedish contracted</dd>
+
+					<dt><code>Swedish grade1</code></dt>
+					<dd>Swedish partially contracted</dd>
+
+					<dt><code>Swedish grade0</code></dt>
+					<dd>Swedish uncontracted</dd>
+
+					<dt><code>Syriac grade1</code></dt>
+					<dd>Syriac</dd>
+
+					<dt><code>Bharati no-grade comp8</code></dt>
+					<dd>Tamil computer</dd>
+
+					<dt><code>Tatar grade1</code></dt>
+					<dd>Tatar</dd>
+
+					<dt><code>Thai no-grade comp8</code></dt>
+					<dd>Thai computer</dd>
+
+					<dt><code>Thai grade1</code></dt>
+					<dd>Thai partially contracted</dd>
+
+					<dt><code>Thai grade1</code></dt>
+					<dd>Thai uncontracted</dd>
+
+					<dt><code>Tibetan no-grade comp8</code></dt>
+					<dd>Tibetan computer</dd>
+
+					<dt><code>Tshivenda grade2</code></dt>
+					<dd>Tshivenda contracted</dd>
+
+					<dt><code>Tshivenda grade1</code></dt>
+					<dd>Tshivenda uncontracted</dd>
+
+					<dt><code>Turkish no-grade comp8</code></dt>
+					<dd>Turkish computer</dd>
+
+					<dt><code>Turkish grade2</code></dt>
+					<dd>Turkish contracted</dd>
+
+					<dt><code>Turkish grade1</code></dt>
+					<dd>Turkish uncontracted</dd>
+
+					<dt><code>Ugaritic grade1</code></dt>
+					<dd>Ugaritic</dd>
+
+					<dt><code>Ukrainian grade1</code></dt>
+					<dd>Ukrainian</dd>
+
+					<dt><code>Ukrainian no-grade comp8</code></dt>
+					<dd>Ukrainian computer</dd>
+
+					<dt><code>Ukrainian capitals grade1</code></dt>
+					<dd>Ukrainian with capitals</dd>
+
+					<dt><code>Urdu grade2</code></dt>
+					<dd>Urdu contracted</dd>
+
+					<dt><code>Urdu grade1</code></dt>
+					<dd>Urdu uncontracted</dd>
+
+					<dt><code>Uzbek grade1</code></dt>
+					<dd>Uzbek</dd>
+
+					<dt><code>Vietnamese no-grade comp8</code></dt>
+					<dd>Vietnamese computer</dd>
+
+					<dt><code>Vietnamese grade2</code></dt>
+					<dd>Vietnamese contracted</dd>
+
+					<dt><code>Vietnamese grade1</code></dt>
+					<dd>Vietnamese partially contracted</dd>
+
+					<dt><code>Vietnamese-Saigon grade2</code></dt>
+					<dd>Vietnamese Saigon contracted</dd>
+
+					<dt><code>Vietnamese grade0</code></dt>
+					<dd>Vietnamese uncontracted</dd>
+
+					<dt><code>Welsh grade2</code></dt>
+					<dd>Welsh contracted</dd>
+
+					<dt><code>Welsh grade1</code></dt>
+					<dd>Welsh uncontracted</dd>
+
+					<dt><code>Yakut grade1</code></dt>
+					<dd>Yakut</dd>
+
+					<dt><code>Yiddish grade1</code></dt>
+					<dd>Yiddish</dd>
+				</dl>
+			</section>
+		</section>
+		
+<section class="appendix informative" id="acknowledgements"><div class="header-wrapper"><h2 id="a-acknowledgments"><bdi class="secno">A. </bdi>Acknowledgments</h2><a class="self-link" href="#acknowledgements" aria-label="Permalink for Appendix A."></a></div><p><em>This section is non-normative.</em></p>
+	
+	
+	<p>The following members of the eBraille working group contributed to the development of this document:</p>
+	
+	<ul>
+		<li>Alex Russomanno (NewHaptics)</li>
+		<li>Alexander Hars (Inventivio)</li>
+		<li>Alice O'Reilly (Library of Congress)</li>
+		<li>Amanda Lannan (University of Kentucky)</li>
+		<li>Amanda Whelan (Bucks County Intermediate Unit)</li>
+		<li>Andrea Dodson (Curriculum Associates)</li>
+		<li>Andrew Flatres (HumanWare)</li>
+		<li>Andrey Yakuboy</li>
+		<li>Angela Van Appelen (Affordable Braille Production)</li>
+		<li>Anja Lehmann</li>
+		<li>Aquinas Pather (Allyant)</li>
+		<li>Arne Kyrkjebø (Tibi)</li>
+		<li>Autumn Booths</li>
+		<li>Avneesh Singh (DAISY Consortium)</li>
+		<li>Basile Mignonneau</li>
+		<li>Bert Frees (DAISY Consortium)</li>
+		<li>Beth Pieters (IESBVI)</li>
+		<li>Caryn Navy (Duxbury Systems)</li>
+		<li>Chantelle Griffiths (Tactile and Technology Literacy Centre)</li>
+		<li>Charles LaPierre (Benetech)</li>
+		<li>Christian Egli (SBS Swiss Library for the Blind, Visually Impaired and Print Disabled)</li>
+		<li>Dan Brown (Pearson)</li>
+		<li>Dan Gardner (ViewPlus)</li>
+		<li>Dang Hoai Phuc (Sao Mai Center for the Blind)</li>
+		<li>Danielle Montour</li>
+		<li>Dave Gunn (DAISY Consortium)</li>
+		<li>David Holladay (Duxbury Systems)</li>
+		<li>Davy Kager (Dedicon)</li>
+		<li>Diane Spence</li>
+		<li>Dilip Ramesh (Thinkerbell Labs)</li>
+		<li>Doug Schepers (Fizz Studio)</li>
+		<li>Don van Dijk (Visio)</li>
+		<li>Edwin Wong (CNIB)</li>
+		<li>Francisco Martinez Calvo (ONCE)</li>
+		<li>George Kerscher (DAISY Consortium)</li>
+		<li>Greg Stilson (APH)</li>
+		<li>Gregory Gerhart (PaTTAN)</li>
+		<li>Hari Palani (UNAR Labs)</li>
+		<li>Kathryn Sheriff Segers (Tennessee School for the Blind)</li>
+		<li>James Bowden (RNIB)</li>
+		<li>Jarosław Urbański (Harpo)</li>
+		<li>Jason Megginson (The College Board)</li>
+		<li>Jen Goulden (Braille Authority of North America (BANA) and Crawford Technologies)</li>
+		<li>Jenna Gorlewicz (Saint Louis University)</li>
+		<li>Jennifer Dunnam (NFB)</li>
+		<li>Jennifer Sutton</li>
+		<li>John Ylioja (NNELS)</li>
+		<li>Joshua Miele (Amazon)</li>
+		<li>Judy Dixon</li>
+		<li>Kristin Spencer (APH)</li>
+		<li>Ka Li (NNELS)</li>
+		<li>Ki Kwang Sung (Dot)</li>
+		<li>Kim Charlson (Perkins School for the Blind)</li>
+		<li>Kristijan Ciganovic (BBi)</li>
+		<li>Kyle DeJute (APH)</li>
+		<li>Leona Holloway (Monash University)</li>
+		<li>Linda Turner (APH)</li>
+		<li>Manfred Muchenberger (SBS Swiss Library for the Blind, Visually Impaired and Print Disabled)</li>
+		<li>Marc Sutton (Apple)</li>
+		<li>Marty McKenzie (South Carolina School for the Deaf and the Blind)</li>
+		<li>Matt Garrish (DAISY Consortium)</li>
+		<li>Matthew Horspool</li>
+		<li>Melanie Romer Noel (Dot6.ca)</li>
+		<li>Michael Cantino (Northwest Regional ESD)</li>
+		<li>Michael Hunsaker (Davis School District)</li>
+		<li>Michael Johnson (Benetech)</li>
+		<li>Michael Ko (HIMS)</li>
+		<li>Michael Walker</li>
+		<li>Michael Whapples (APH)</li>
+		<li>Michal Tkacik (Braille Authority of Slovakia, Matej Hrebenda Slovak Library for the Blind in Levoca)</li>
+		<li>Mike Paciello (WebABLE.Com)</li>
+		<li>Mischa Kuenzle (SBS Swiss Library for the Blind, Visually Impaired and Print Disabled)</li>
+		<li>Nathalie Sorichter (FernUniversität in Hagen)</li>
+		<li>Nicole Gaines (APH)</li>
+		<li>Nils Huhta (Index Braille)</li>
+		<li>Paul Fontaine (Xavier Society for the Blind)</li>
+		<li>Peter Sullivan (Duxbury Systems)</li>
+		<li>Peter Tucic (HumanWare)</li>
+		<li>Reiner Delgado (DBSV)</li>
+		<li>Riane LaPaire (NNELS and Braille Literacy Canada (BLC-LBC))</li>
+		<li>Richard Orme (DAISY Consortium)</li>
+		<li>Robert Jaquiss (Independence Science)</li>
+		<li>Ron Miller (Vispero)</li>
+		<li>Robert Roldan (Amanuensis Braille)</li>
+		<li>Sarah Bradley</li>
+		<li>Sara Larkin (IESBVI)</li>
+		<li>Sarah Welch (APH)</li>
+		<li>Scott Erichsen (National Disability Insurance Agency)</li>
+		<li>Sile O'Modhrain (University of Michigan)</li>
+		<li>Steve Noble (Pearson)</li>
+		<li>Sue O'Brien (TSBVI)</li>
+		<li>Susan Osterhaus (TSBVI)</li>
+		<li>Svetlana Vasilyeva (Elita Group LLC)</li>
+		<li>Tamara Rorie (NLS)</li>
+		<li>Thomas Simpson (NewHaptics)</li>
+		<li>Tina Herzberg (University of South Carolina Upstate)</li>
+		<li>Venkatesh Chari (Orbit Research)</li>
+		<li>Willow Free (APH)</li>
+	</ul>
+</section>
+
+	
+
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="b-references"><bdi class="secno">B. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix B."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="b-1-normative-references"><bdi class="secno">B.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix B.1"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-rfc2119">[RFC2119]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
+    </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
+      <a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>
+    </dd><dt id="bib-xml">[xml]</dt><dd>
+      <a href="https://www.w3.org/TR/xml/"><cite>Extensible Markup Language (XML) 1.0 (Fifth Edition)</cite></a>. Tim Bray; Jean Paoli; Michael Sperberg-McQueen; Eve Maler; François Yergeau et al.  W3C. 26 November 2008. W3C Recommendation. URL: <a href="https://www.w3.org/TR/xml/">https://www.w3.org/TR/xml/</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

@@ -1,0 +1,1387 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
+<meta charset="utf-8">
+<meta name="generator" content="ReSpec 35.1.2">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+span.example-title{text-transform:none}
+:is(aside,div).example,div.illegal-example{padding:.5em;margin:1em 0;position:relative;clear:both}
+div.illegal-example{color:red}
+div.illegal-example p{color:#000}
+aside.example div.example{border-left-width:.1em;border-color:#999;background:#fff}
+</style>
+<style>
+.issue-label{text-transform:initial}
+.warning>p:first-child{margin-top:0}
+.warning{padding:.5em;border-left-width:.5em;border-left-style:solid}
+span.warning{padding:.1em .5em .15em}
+.issue.closed span.issue-number{text-decoration:line-through}
+.issue.closed span.issue-number::after{content:" (Closed)";font-size:smaller}
+.warning{border-color:#f11;border-color:var(--warning-border,#f11);border-width:.2em;border-style:solid;background:#fbe9e9;background:var(--warning-bg,#fbe9e9);color:#000;color:var(--text,#000)}
+.warning-title:before{content:"⚠";font-size:1.3em;float:left;padding-right:.3em;margin-top:-.3em}
+li.task-list-item{list-style:none}
+input.task-list-item-checkbox{margin:0 .35em .25em -1.6em;vertical-align:middle}
+.issue a.respec-gh-label{padding:5px;margin:0 2px 0 2px;font-size:10px;text-transform:none;text-decoration:none;font-weight:700;border-radius:4px;position:relative;bottom:2px;border:none;display:inline-block}
+</style>
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+		
+		
+<title>eBraille Tagging Best Practices</title>
+		
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+cite .bibref{font-style:normal}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none;display:inline-block}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h4,h5,h6)+a.self-link::before{color:#000}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+</style>
+		
+		
+		
+		
+		
+<link rel="stylesheet" href="../../common/css/common.css">
+	
+<meta name="color-scheme" content="light">
+<meta name="description" content="…">
+<style>
+.hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
+@media (prefers-color-scheme:dark){
+.hljs{--base:#282c34;--mono-1:#abb2bf;--mono-2:#818896;--mono-3:#5c6370;--hue-1:#56b6c2;--hue-2:#61aeee;--hue-3:#c678dd;--hue-4:#98c379;--hue-5:#e06c75;--hue-5-2:#be5046;--hue-6:#d19a66;--hue-6-2:#e6c07b}
+}
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;color:var(--mono-1,#383a42);background:#fafafa;background:var(--base,#fafafa)}
+.hljs-comment,.hljs-quote{color:#717277;color:var(--mono-3,#717277);font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4;color:var(--hue-3,#a626a4)}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;color:var(--hue-5,#ca4706);font-weight:700}
+.hljs-literal{color:#0b76c5;color:var(--hue-1,#0b76c5)}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c;color:var(--hue-4,#42803c)}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01;color:var(--hue-6-2,#9a6a01)}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801;color:var(--hue-6,#986801)}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3;color:var(--hue-2,#336ae3)}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
+var{position:relative;cursor:pointer}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#222}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "shortName": "ebraille-tag",
+  "specStatus": "base",
+  "daisyWG": "eBraille Working Group",
+  "daisyStatus": "DRAFT-NOTE",
+  "latestVersion": "https://daisy.github.io/ebraille/best-practices/tagging",
+  "thisVersion": "https://daisy.org/s/ebraille/best-practices/tagging/FPNOTE-ebraille-tag-20241017/",
+  "edDraftURI": null,
+  "editors": [
+    {
+      "name": "Willow Free",
+      "company": "American Printing House for the Blind",
+      "url": "https://www.aph.org/"
+    },
+    {
+      "name": "Matt Garrish",
+      "company": "DAISY Consortium",
+      "url": "https://daisy.org/"
+    }
+  ],
+  "authors": [
+    {
+      "name": "James Bowden",
+      "company": "Royal National Institute of Blind People",
+      "url": "https://www.rnib.org.uk/"
+    }
+  ],
+  "logos": [
+    {
+      "src": "../../common/images/daisy_high.jpg",
+      "width": 112,
+      "height": 100,
+      "alt": "DAISY Consortium logo",
+      "url": "https://daisy.org"
+    }
+  ],
+  "github": "daisy/ebraille",
+  "postProcess": [
+    null,
+    null,
+    null
+  ],
+  "publishISODate": "2024-10-17T00:00:00.000Z",
+  "generatedSubtitle": "17 October 2024"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/base.css"></head>
+	<body class="h-entry"><div class="head">
+    <p class="logos"><a class="logo" href="https://daisy.org"><img crossorigin="" alt="DAISY Consortium logo" height="100" src="../../common/images/daisy_high.jpg" width="112">
+  </a></p>
+    <h1 id="title" class="title">eBraille Tagging Best Practices</h1> 
+    <p id="w3c-state"><span id="daisy-status">DAISY Draft Working Group Note</span> <time class="dt-published" datetime="2024-10-17">17 October 2024</time></p>
+    <details open="">
+      <summary>More details about this document</summary>
+      <dl>
+        <dt>This version:</dt><dd>
+                <a class="u-url" href="https://daisy.org/s/ebraille/best-practices/tagging/FPNOTE-ebraille-tag-20241017/">https://daisy.org/s/ebraille/best-practices/tagging/FPNOTE-ebraille-tag-20241017/</a>
+              </dd>
+        <dt>Latest published version:</dt><dd>
+                <a href="https://daisy.github.io/ebraille/best-practices/tagging">https://daisy.github.io/ebraille/best-practices/tagging</a>
+              </dd>
+        
+        <dt>History:</dt><dd>
+                    <a href="https://github.com/daisy/ebraille/commits/">Commit history</a>
+                  </dd>
+        
+        
+        
+        
+        
+        <dt>Editors:</dt><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://www.aph.org/">Willow Free</a> (<span class="p-org org h-org">American Printing House for the Blind</span>)
+  </dd><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://daisy.org/">Matt Garrish</a> (<span class="p-org org h-org">DAISY Consortium</span>)
+  </dd>
+        
+        <dt>Author:</dt><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://www.rnib.org.uk/">James Bowden</a> (<span class="p-org org h-org">Royal National Institute of Blind People</span>)
+  </dd>
+        <dt>Feedback:</dt><dd>
+        <a href="https://github.com/daisy/ebraille/">GitHub daisy/ebraille</a>
+        (<a href="https://github.com/daisy/ebraille/pulls/">pull requests</a>,
+        <a href="https://github.com/daisy/ebraille/issues/new/choose">new issue</a>,
+        <a href="https://github.com/daisy/ebraille/issues/">open issues</a>)
+      </dd>
+        
+        
+      </dl>
+    </details>
+    
+    
+    <p class="copyright">Copyright © DAISY Consortium <span id="copyYear">2023-2024</span></p>
+    <hr title="Separator for header">
+  </div>
+		
+		<section id="abstract" class="introductory"><h2>Abstract</h2>
+			<p>…</p>
+		</section>
+		<section id="sotd" class="introductory"><h2>Status of This Document</h2>
+			
+	<p><em>This section describes the status of this document at the time of its publication.</em></p>
+	<p>This document was published by the <span class="daisy-wg">eBraille Working Group</span> as <span class="daisy-status">a Draft Working Group Note</span>.</p>
+	<p>Publication as <span class="daisy-status">a Draft Working Group Note</span> does not imply endorsement by the DAISY Consortium and
+		its members.</p>
+	<p>This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It
+		should only be cited as a work in progress.</p>
+	
+			<p>The eBraille Working Group is seeking input on all aspects of this document. It is particularly
+				interested in implementation experience both creating eBraille publication and creating reading systems
+				in which to read them.</p>
+		</section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#intro"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#overview"><bdi class="secno">1.1 </bdi>Overview</a></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">1.2 </bdi>Conformance</a></li></ol></li><li class="tocline"><a class="tocxref" href="#best-practices"><bdi class="secno">2. </bdi>eBraille tagging</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#aside"><bdi class="secno">2.1 </bdi>Aside</a></li><li class="tocline"><a class="tocxref" href="#boxes"><bdi class="secno">2.2 </bdi>Boxed text</a></li><li class="tocline"><a class="tocxref" href="#Braille grade"><bdi class="secno">2.3 </bdi>Braille grade</a></li><li class="tocline"><a class="tocxref" href="#caption"><bdi class="secno">2.4 </bdi>Captions</a></li><li class="tocline"><a class="tocxref" href="#em"><bdi class="secno">2.5 </bdi>Emphasis</a></li><li class="tocline"><a class="tocxref" href="#figures"><bdi class="secno">2.6 </bdi>Figures</a></li><li class="tocline"><a class="tocxref" href="#notes"><bdi class="secno">2.7 </bdi>Footnotes and endnotes</a></li><li class="tocline"><a class="tocxref" href="#hd"><bdi class="secno">2.8 </bdi>Headings</a></li><li class="tocline"><a class="tocxref" href="#img"><bdi class="secno">2.9 </bdi>Graphics</a></li><li class="tocline"><a class="tocxref" href="#linenum"><bdi class="secno">2.10 </bdi>Line numbers</a></li><li class="tocline"><a class="tocxref" href="#links"><bdi class="secno">2.11 </bdi>Links</a></li><li class="tocline"><a class="tocxref" href="#lists"><bdi class="secno">2.12 </bdi>Lists</a></li><li class="tocline"><a class="tocxref" href="#pagenum"><bdi class="secno">2.13 </bdi>Page numbers</a></li><li class="tocline"><a class="tocxref" href="#para"><bdi class="secno">2.14 </bdi>Paragraphs</a></li><li class="tocline"><a class="tocxref" href="#pre"><bdi class="secno">2.15 </bdi>Preformatted text</a></li><li class="tocline"><a class="tocxref" href="#tables"><bdi class="secno">2.16 </bdi>Tables</a></li><li class="tocline"><a class="tocxref" href="#Text splitting"><bdi class="secno">2.17 </bdi>Text Splitting</a></li><li class="tocline"><a class="tocxref" href="#Transcriber's Notes"><bdi class="secno">2.18 </bdi>Transcriber's Notes</a></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">A. </bdi>Acknowledgments</a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">B. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">B.1 </bdi>Normative references</a></li></ol></li></ol></nav>
+		<section id="intro"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#intro" aria-label="Permalink for Section 1."></a></div>
+			
+			
+			<section id="overview"><div class="header-wrapper"><h3 id="x1-1-overview"><bdi class="secno">1.1 </bdi>Overview</h3><a class="self-link" href="#overview" aria-label="Permalink for Section 1.1"></a></div>
+				
+				
+				<p>…</p>
+			</section>
+
+			<section id="conformance"><div class="header-wrapper"><h3 id="x1-2-conformance"><bdi class="secno">1.2 </bdi>Conformance</h3><a class="self-link" href="#conformance" aria-label="Permalink for Section 1.2"></a></div><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p></section>
+		</section>
+		<section id="best-practices"><div class="header-wrapper"><h2 id="x2-ebraille-tagging"><bdi class="secno">2. </bdi>eBraille tagging</h2><a class="self-link" href="#best-practices" aria-label="Permalink for Section 2."></a></div>
+			
+
+			<div class="note" id="issue-container-generatedID"><div role="heading" class="ednote-title marker" id="h-ednote" aria-level="3"><span>Editor's note</span></div><div class="">
+				<p>The examples in this section are provided only for early illustrative purposes. The exact class names
+					and formatting to use is still under development.</p>
+			</div></div>
+
+			<div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note" aria-level="3"><span>Note</span></div><div class="">
+				<p>This section only identifies elements for which specific braille formatting requirements are defined
+					by this specification. Authors may use any other [<cite><a class="bibref" data-link-type="biblio" href="#bib-html" title="HTML Standard">html</a></cite>] elements in their eBraille
+					publications.</p>
+				<p>The recommendations in this specification are included to help facilitate a number of desired features, including:</p>
+				<ul>
+					<li>To define an object which doesn't have an [<cite><a class="bibref" data-link-type="biblio" href="#bib-html" title="HTML Standard">html</a></cite>] tag, e.g. a line number, transcriber note.</li>
+					<li>If needed for navigation to such items, e.g. navigate directly to a transcriber note</li>
+					<li>To show/hide such items - e.g. show/hide print page indicators.</li>
+					<li>To enhance interoperability across different braille regions, so a different stylesheet can be swapped in to reformat a document according to local braille rules.</li>
+					<li>To better facilitate consistency amongst authoring and reading tools.</li>
+				</ul>  
+			</div></div>
+
+			<section id="aside"><div class="header-wrapper"><h3 id="x2-1-aside"><bdi class="secno">2.1 </bdi>Aside</h3><a class="self-link" href="#aside" aria-label="Permalink for Section 2.1"></a></div>
+				
+				<p>Asides are used for material that is indirectly related to the document's main content. Examples would include sidebars or call-out boxes.</p>
+				<dl id="elemdef-box" class="elemdef">
+										<dt>Element(s):</dt>
+					<dd>
+						<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/sections.html#the-aside-element">aside</a></code></p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li>none</li>
+						</ul>
+					</dd>
+					<dd>
+							<aside class="example" id="aside"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#aside">Example<bdi> 1</bdi></a><span class="example-title">: An aside</span>
+  </div>
+<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠠⠇⠁⠎⠞⠀⠺⠑⠑⠅⠑⠝⠙⠂⠀⠠⠊⠀⠺⠑⠝⠞⠀⠞⠕⠀⠞⠓⠑⠀⠵⠕⠕⠀⠺⠊⠞⠓ ⠍⠽⠀⠋⠁⠍⠊⠇⠽⠲⠀⠠⠺⠑⠀⠎⠏⠑⠝⠞⠀⠓⠕⠥⠗⠎⠀⠺⠁⠝⠙⠑⠗⠊⠝⠛ ⠞⠓⠗⠕⠥⠛⠓⠀⠞⠓⠑⠀⠙⠊⠋⠋⠑⠗⠑⠝⠞⠀⠑⠭⠓⠊⠃⠊⠞⠎⠂ ⠍⠁⠗⠧⠑⠇⠊⠝⠛⠀⠁⠞⠀⠞⠓⠑⠀⠧⠁⠗⠊⠑⠞⠽⠀⠕⠋⠀⠁⠝⠊⠍⠁⠇⠎⠀⠋⠗⠕⠍ ⠁⠇⠇⠀⠕⠧⠑⠗⠀⠞⠓⠑⠀⠺⠕⠗⠇⠙⠲⠀⠠⠞⠓⠑⠀⠇⠊⠕⠝⠎⠀⠺⠑⠗⠑ ⠑⠎⠏⠑⠉⠊⠁⠇⠇⠽⠀⠍⠁⠚⠑⠎⠞⠊⠉⠂⠀⠇⠕⠥⠝⠛⠊⠝⠛⠀⠇⠁⠵⠊⠇⠽⠀⠊⠝ ⠞⠓⠑⠀⠎⠥⠝⠲<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+	<span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠠⠃⠽⠀⠞⠓⠑⠀⠺⠁⠽⠂⠀⠙⠊⠙⠀⠽⠕⠥⠀⠅⠝⠕⠺⠀⠞⠓⠁⠞ ⠛⠊⠗⠁⠋⠋⠑⠎⠀⠕⠝⠇⠽⠀⠎⠇⠑⠑⠏⠀⠁⠃⠕⠥⠞⠀⠼⠉⠚⠀⠍⠊⠝⠥⠞⠑⠎⠀⠁ ⠙⠁⠽⠦⠀⠠⠊⠞⠄⠎⠀⠊⠝⠉⠗⠑⠙⠊⠃⠇⠑⠀⠓⠕⠺⠀⠞⠓⠑⠽⠀⠉⠁⠝ ⠋⠥⠝⠉⠞⠊⠕⠝⠀⠕⠝⠀⠎⠕⠀⠇⠊⠞⠞⠇⠑⠀⠗⠑⠎⠞⠖<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+	
+	<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠠⠁⠋⠞⠑⠗⠺⠁⠗⠙⠂⠀⠺⠑⠀⠧⠊⠎⠊⠞⠑⠙⠀⠞⠓⠑⠀⠗⠑⠏⠞⠊⠇⠑ ⠓⠕⠥⠎⠑⠂⠀⠺⠓⠑⠗⠑⠀⠍⠽⠀⠇⠊⠞⠞⠇⠑⠀⠃⠗⠕⠞⠓⠑⠗⠀⠺⠁⠎ ⠋⠁⠎⠉⠊⠝⠁⠞⠑⠙⠀⠃⠽⠀⠞⠓⠑⠀⠑⠝⠕⠗⠍⠕⠥⠎⠀⠁⠝⠁⠉⠕⠝⠙⠁⠲ ⠠⠕⠧⠑⠗⠁⠇⠇⠂⠀⠊⠞⠀⠺⠁⠎⠀⠁⠀⠋⠁⠝⠞⠁⠎⠞⠊⠉⠀⠙⠁⠽⠂⠀⠁⠝⠙⠀⠺⠑ ⠇⠑⠋⠞⠀⠺⠊⠞⠓⠀⠞⠕⠝⠎⠀⠕⠋⠀⠏⠊⠉⠞⠥⠗⠑⠎⠀⠁⠝⠙⠀⠍⠑⠍⠕⠗⠊⠑⠎⠲<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+	</code></pre>
+				</aside>
+				
+					</dd>
+				</dl>
+
+</section>
+			<section id="boxes"><div class="header-wrapper"><h3 id="x2-2-boxed-text"><bdi class="secno">2.2 </bdi>Boxed text</h3><a class="self-link" href="#boxes" aria-label="Permalink for Section 2.2"></a></div>
+				
+				<p>Boxes may be created by lines of braille characters, above, below, to the left or right of a block of text. The characters used, the size and which sides to show, are controlled by CSS.</p>
+				<dl id="elemdef-box" class="elemdef">
+										<dt>Element(s):</dt>
+					<dd>
+						<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">div</a></code></p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li><code>box</code>, <code>nemeth</code></li>
+						</ul>
+					</dd>
+				
+					<dt>How to use <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li><code>box</code> is used to signify a standard box.</li>
+							<aside class="example" id="example-a-standard-box"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-standard-box">Example<bdi> 2</bdi></a><span class="example-title">: A standard box</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"box"</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+							</aside>
+							<li>Put <code>box</code> inside <code>box</code> when a box contains a box.</li>
+							<aside class="example" id="example-a-box-inside-another-box"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-box-inside-another-box">Example<bdi> 3</bdi></a><span class="example-title">: A box inside another box</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"box"</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"box"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+				</aside>
+							<li><code>nemeth</code> is used for a box that has begin and end Nemeth symbols in its box lines.</li>
+							<aside class="example" id="example-a-nemeth-box"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-nemeth-box">Example<bdi> 4</bdi></a><span class="example-title">: A Nemeth box</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"box nemeth"</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+				</aside>
+							<li>Various strings can be used for boxes with specific text needs. Examples could include boxes with color. There is no way to define all possible strings that could be used in such a scenario. The writing software will need to define the limitations and allow the user to input the string, which is then used as the class to allow the CSS to input that string into the box line.</li>
+						<aside class="example" id="example-a-box-with-the-color-blue"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-box-with-the-color-blue">Example<bdi> 5</bdi></a><span class="example-title">: A box with the color blue</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"box blue"</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠠⠎⠑⠑ ⠁⠇⠎⠕ ⠠⠉⠓⠁⠏⠞⠑⠗ ⠼⠃⠑<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+				</aside>
+				</ul>
+					</dd>
+				</dl>
+
+</section>
+			<section id="Braille grade"><div class="header-wrapper"><h3 id="x2-3-braille-grade"><bdi class="secno">2.3 </bdi>Braille grade</h3><a class="self-link" href="#Braille grade" aria-label="Permalink for Section 2.3"></a></div>
+				
+				<p>Braille grade refers to whether contractions are used in the braille transcription. In Unified English Braille, for example, grade 1 braille uses no contractions, while grade 2 uses any applicable contractions. Documents can be in one grade but with sections that appear in a different grade.</p>
+				<dl id="elemdef-p" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a></code></p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li><code>grade-0</code>, <code>grade-1</code>, <code>grade-2</code></li>
+						</ul>
+						<p>Note that terms for braille grade vary throughout the world and that grade-related class values do not directly correlate to how a local region may understand the terms. Hence, in a region where uncontracted braille is called Grade 1, <code>grade-0</code> is preferred for the class name so that these terms may be better understood internationally. Basically, one should use the least value class for the least contracted grade of braille and move up in value from there.<br><br>
+						Additionally, braille grade should only be specified when it changes within the document. Otherwise, metadata is sufficient.</p>
+					</dd>
+				</dl>
+
+				<aside class="example" id="example-a-snippet-of-uncontracted-text-in-an-otherwise-contracted-document"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-snippet-of-uncontracted-text-in-an-otherwise-contracted-document">Example<bdi> 6</bdi></a><span class="example-title">: A snippet of uncontracted text in an otherwise contracted document.</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"grade-0"</span>&gt;</span>⠠⠞⠓⠊⠎⠀⠃⠗⠁⠊⠇⠇⠑⠀⠊⠎⠀⠥⠝⠉⠕⠝⠞⠗⠁⠉⠞⠑⠙⠲<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></code></pre></aside>
+			</section>
+			<section id="caption"><div class="header-wrapper"><h3 id="x2-4-captions"><bdi class="secno">2.4 </bdi>Captions</h3><a class="self-link" href="#caption" aria-label="Permalink for Section 2.4"></a></div>
+				
+				<p>Captions refer to any text in print that is associated with an image, table, or chart. The text is not added by the transcriber, like a description or alt text, but instead is transcribed from the print.</p>
+				<dl id="elemdef-p" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figcaption-element">figcaption</a></code></p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li>None</li>
+						</ul>
+					</dd>
+				</dl>
+
+				<aside class="example" id="example-a-caption-following-an-image"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-caption-following-an-image">Example<bdi> 7</bdi></a><span class="example-title">: A caption following an image.</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"54"</span>
+     <span class="hljs-attr">height</span>=<span class="hljs-string">"27"</span>
+     <span class="hljs-attr">src</span>=<span class="hljs-string">"..\images\diagram187.jpg"</span>
+     <span class="hljs-attr">alt</span>=<span class="hljs-string">"⠠⠙⠊⠁⠛⠗⠁⠍ ⠕⠋ ⠞⠺⠕ ⠊⠝⠞⠑⠗⠎⠑⠉⠞⠊⠝⠛ ⠉⠊⠗⠉⠇⠑⠎"</span>/&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>"⠠⠋⠊⠛⠥⠗⠑⠀⠼⠁⠒⠀⠠⠞⠓⠑⠎⠑⠀⠉⠊⠗⠉⠇⠑⠎⠀⠁⠗⠑⠀⠧⠑⠗⠽⠀⠊⠝⠞⠑⠗⠑⠎⠞⠊⠝⠛⠲"<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span></code></pre></aside>
+			</section>
+			<section id="em"><div class="header-wrapper"><h3 id="x2-5-emphasis"><bdi class="secno">2.5 </bdi>Emphasis</h3><a class="self-link" href="#em" aria-label="Permalink for Section 2.5"></a></div>
+				
+				<p>In contrast to print, braille uses characters placed before or sometimes after text to indicate various types of text emphasis. The following elements will not add the braille characters themselves but will instead just track where emphasis is placed so that reading systems can potentially offer features that utilize this information.</p>
+				<dl id="elemdef-em-strong" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element">em</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-strong-element">strong</a></code></p>
+						<p>Note that <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-b-element">b</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">i</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-mark-element">mark</a></code>, and <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-u-element">u</a></code> are not recommended and that <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-em-element">em</a></code> with a class should be used for emphasis other than italics and bold.</p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li><code>script</code>, <code>underline</code>, <code>custom-1</code>, <code>custom-2</code>, <code>custom-3</code>, <code>custom-4</code>, <code>custom-5</code></li>
+							<ul class="nomark">
+								<li><code>script</code>— used to denote text that is meant to mimic handwriting.</li>
+								<li><code>underline</code>— used to denote text that is underlined.</li>
+								<li><code>custom-#</code>— used in UEB to denote text that is emphasized in a way not covered by a planned type of emphasis. For example, you could use it for green highlighting since UEB has no means to denote that kind of emphasis. Other kinds of emphasis that could be represented are text with a different color or a significant font change. It could similarly be applied to other braille codes that have emphasis types not covered by the types available.</li>
+							</ul>
+						</ul>
+					</dd>
+				</dl>
+
+				<aside class="example" id="example-a-single-word-in-italics"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-single-word-in-italics">Example<bdi> 8</bdi></a><span class="example-title">: A single word in italics</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠠⠏⠗⠑⠎⠎ ⠞⠓⠑ <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>⠨⠂⠎⠟⠥⠁⠗⠑<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> ⠃⠥⠞⠞⠕⠝⠲<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+				</aside>
+
+				<aside class="example" id="example-use-em-with-a-class-value-for-emphasis-other-than-bold-and-italics"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-use-em-with-a-class-value-for-emphasis-other-than-bold-and-italics">Example<bdi> 9</bdi></a><span class="example-title">: Use &lt;em&gt; with a class value for emphasis other than bold and italics.</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠠⠏⠗⠑⠎⠎ ⠞⠓⠑ <span class="hljs-tag">&lt;<span class="hljs-name">em</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-1"</span>&gt;</span>⠈⠼⠂⠎⠟⠥⠁⠗⠑<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> ⠃⠥⠞⠞⠕⠝⠲<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+					
+				</aside>
+			</section>
+
+			<section id="figures"><div class="header-wrapper"><h3 id="x2-6-figures"><bdi class="secno">2.6 </bdi>Figures</h3><a class="self-link" href="#figures" aria-label="Permalink for Section 2.6"></a></div>
+				
+				<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element">figure</a></code> specifies self-contained content, like illustrations, diagrams, photos, code listings, etc.</p>
+				<dl id="elemdef-figure" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element">figure</a></code></p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li>None</li>
+						</ul>
+					</dd>
+				</dl>
+
+<aside class="example" id="example-a-caption-following-an-image-0"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-caption-following-an-image-0">Example<bdi> 10</bdi></a><span class="example-title">: A caption following an image.</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">figure</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"54"</span>
+     <span class="hljs-attr">height</span>=<span class="hljs-string">"27"</span>
+     <span class="hljs-attr">src</span>=<span class="hljs-string">"..\images\diagram187.jpg"</span>
+     <span class="hljs-attr">alt</span>=<span class="hljs-string">"⠠⠙⠊⠁⠛⠗⠁⠍ ⠕⠋ ⠞⠺⠕ ⠊⠝⠞⠑⠗⠎⠑⠉⠞⠊⠝⠛ ⠉⠊⠗⠉⠇⠑⠎"</span>/&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span>&gt;</span>"⠠⠋⠊⠛⠥⠗⠑⠀⠼⠁⠒⠀⠠⠞⠓⠑⠎⠑⠀⠉⠊⠗⠉⠇⠑⠎⠀⠁⠗⠑⠀⠧⠑⠗⠽⠀⠊⠝⠞⠑⠗⠑⠎⠞⠊⠝⠛⠲"<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span></code></pre></aside>
+			</section>
+
+			<section id="notes"><div class="header-wrapper"><h3 id="x2-7-footnotes-and-endnotes"><bdi class="secno">2.7 </bdi>Footnotes and endnotes</h3><a class="self-link" href="#notes" aria-label="Permalink for Section 2.7"></a></div>
+				
+
+				<dl id="elemdef-fn-en" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p data-cite="html"> <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">a</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">div</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">p</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/sections.html#the-section-element">section</a></code></p>
+					</dd>
+
+					<dt>Supported <code>role</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li><code>doc-noteref</code>— used to identify the actual symbol of the footnote or endnote. This symbol will typically appear as a superscripted number or symbol in the main body of text.</li>
+							<li><code>doc-footnote</code>— used to identify the entirety of a single footnote, so symbol and text.</li>
+							<li><code>doc-endnotes</code>— used to identify the entirety of a single endnote, so symbol and text.</li>
+						</ul>
+					</dd>
+				</dl>
+
+				<aside class="example" id="example-a-note-reference-and-footnote-or-endnote-must-share-a-unique-id-to-be-linked"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-note-reference-and-footnote-or-endnote-must-share-a-unique-id-to-be-linked">Example<bdi> 11</bdi></a><span class="example-title">: A note reference and footnote or endnote must share a unique ID to be linked.</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠲⠲⠲ ⠎⠞⠁⠞⠑⠎ ⠞⠓⠊⠎ ⠊⠝ ⠠⠞⠓⠕⠍⠏⠎⠕⠝⠲
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#footnote-28"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"doc-noteref"</span>&gt;</span>⠰⠔⠼⠃⠓<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"footnote-28"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"doc-footnote"</span>&gt;</span>⠰⠔⠼⠃⠓ ⠠⠞⠓⠕⠍⠏⠎⠕⠝⠂ ⠠⠞⠲⠒ ⠠⠏⠥⠃⠇⠊⠉ ⠠⠎⠏⠑⠁⠅⠊⠝⠛ ⠠⠙⠑⠍⠽⠎⠞⠊⠋⠊⠑⠙ ⠲⠲⠲<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+				</aside>
+			</section>
+
+			<section id="hd"><div class="header-wrapper"><h3 id="x2-8-headings"><bdi class="secno">2.8 </bdi>Headings</h3><a class="self-link" href="#hd" aria-label="Permalink for Section 2.8"></a></div>
+				
+
+				<dl id="elemdef-h1-h6" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p data-cite="html"><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/sections.html#the-h1-element">h1</a></code> - <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/sections.html#the-h6-element">h6</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/semantics.html#the-title-element">title</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">header</a></code></p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li><code>running-heading</code></li>
+						</ul>
+					</dd>
+				</dl>
+
+				<aside class="example" id="example-simple-heading"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-simple-heading">Example<bdi> 12</bdi></a><span class="example-title">: Simple heading</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></code></pre>
+				</aside>
+				<aside class="example" id="example-multiline-heading-that-consists-of-a-main-part-and-a-subheading"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-multiline-heading-that-consists-of-a-main-part-and-a-subheading">Example<bdi> 13</bdi></a><span class="example-title">: Multiline heading that consists of a main part and a subheading</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>⠠⠙⠗⠲ ⠠⠎⠞⠗⠁⠝⠛⠑⠇⠕⠧⠑
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"subtitle"</span>&gt;</span>⠠⠕⠗⠒ ⠠⠓⠕⠺ ⠠⠊ ⠠⠇⠑⠁⠗⠝⠑⠙ ⠞⠕ ⠠⠎⠞⠕⠏ ⠠⠺⠕⠗⠗⠽⠊⠝⠛ ⠁⠝⠙ ⠠⠇⠕⠧⠑ ⠞⠓⠑ ⠠⠃⠕⠍⠃<span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></code></pre>
+				</aside>
+				<aside class="example" id="example-multiline-heading-that-does-not-consist-of-multiple-parts"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-multiline-heading-that-does-not-consist-of-multiple-parts">Example<bdi> 14</bdi></a><span class="example-title">: Multiline heading that does not consist of multiple parts</span>
+  </div>
+					<p>Note that while <code>&lt;br/&gt;</code> can be used to force multiple lines, doing so will hardcode
+						those breaks. It is better to use CSS to automatically balance the braille
+						(<code>text-wrap: balance</code>), unless that results in illogical breaks. See
+						the <a href="https://daisy.github.io/ebraille/best-practices/styling/#line-breaking">Styling
+						Best Practices section on line breaks</a> for more information.</p>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>⠠⠠⠠⠥⠎⠊⠝⠛ ⠝⠁⠞⠥⠗⠁⠇ ⠗⠑⠎⠕⠥⠗⠉⠑⠎<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span>
+⠊⠝ ⠞⠓⠑ ⠥⠝⠊⠞⠑⠙ ⠎⠞⠁⠞⠑⠎⠠⠄<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></code></pre>
+				</aside>
+				<aside class="example" id="example-running-header-also-called-a-running-head-or-running-heading-when-used-for-the-title-of-the-work-being-transcribed"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-running-header-also-called-a-running-head-or-running-heading-when-used-for-the-title-of-the-work-being-transcribed">Example<bdi> 15</bdi></a><span class="example-title">: Running header, also called a running head or running heading when used for the title of the work being transcribed</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">title</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"running-heading"</span>&gt;</span>⠠⠁⠀⠠⠞⠁⠇⠑⠀⠷⠀⠠⠞⠺⠕⠀⠠⠉⠊⠞⠊⠑⠎<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></code></pre>
+				</aside>
+				<aside class="example" id="example-running-header-when-used-for-a-chapter-heading-and-not-the-title-of-the-entire-work"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-running-header-when-used-for-a-chapter-heading-and-not-the-title-of-the-entire-work">Example<bdi> 16</bdi></a><span class="example-title">: Running header when used for a chapter heading and not the title of the entire work.</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"running-heading"</span>&gt;</span>⠠⠉⠓⠁⠏⠞⠑⠗⠀⠠⠠⠊⠊⠊⠲⠀⠠⠞⠓⠑⠀⠠⠝⠊⠛⠓⠞⠀⠠⠄⠎⠓⠁⠙⠕⠚⠎⠀<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span></code></pre>
+				</aside>
+			</section>
+
+			<section id="img"><div class="header-wrapper"><h3 id="x2-9-graphics"><bdi class="secno">2.9 </bdi>Graphics</h3><a class="self-link" href="#img" aria-label="Permalink for Section 2.9"></a></div>
+				
+
+				<dl id="elemdef-img" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p data-cite="html"><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element">img</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">a</a></code></p>
+						<p>Note that <code>img</code> is used for jpg, png, and svg, while <code>a</code> is used for pdf.</p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li>TBD</li>
+						</ul>
+					</dd>
+				</dl>
+
+				<aside class="example" id="example-a-diagram-with-alternative-text"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-diagram-with-alternative-text">Example<bdi> 17</bdi></a><span class="example-title">: A diagram with alternative text</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"54"</span>
+     <span class="hljs-attr">height</span>=<span class="hljs-string">"27"</span>
+     <span class="hljs-attr">src</span>=<span class="hljs-string">"..\images\diagram187.jpg"</span>
+     <span class="hljs-attr">alt</span>=<span class="hljs-string">"⠠⠙⠊⠁⠛⠗⠁⠍ ⠕⠋ ⠞⠺⠕ ⠊⠝⠞⠑⠗⠎⠑⠉⠞⠊⠝⠛ ⠉⠊⠗⠉⠇⠑⠎"</span>/&gt;</span></code></pre>
+				</aside>
+				<aside class="example" id="example-use-a-download-link-for-graphics-that-use-a-file-type-that-is-not-a-traditional-image"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-use-a-download-link-for-graphics-that-use-a-file-type-that-is-not-a-traditional-image">Example<bdi> 18</bdi></a><span class="example-title">: Use a download link for graphics that use a file type that is not a traditional image</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/images/butterfly.pdf"</span> <span class="hljs-attr">download</span>&gt;</span>⠠⠛⠗⠁⠏⠓⠊⠉⠀⠷⠀⠁⠀⠃⠥⠞⠞⠻⠋⠇⠽<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></code></pre>
+				</aside>
+			</section>
+
+			<section id="linenum"><div class="header-wrapper"><h3 id="x2-10-line-numbers"><bdi class="secno">2.10 </bdi>Line numbers</h3><a class="self-link" href="#linenum" aria-label="Permalink for Section 2.10"></a></div>
+				
+
+				<dl id="elemdef-linenum" class="elemdef">
+					<dt>Element Name:</dt>
+					<dd>
+						<p data-cite="html"> <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">div</a></code></p>
+						<p>Note that <code>span</code> is used to denote the specific line number, with an ID, class, and aria-label, while <code>div</code> is used to denote the section that contains line numbers.
+					</p></dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li><code>linenum</code>, <code>prose</code>, <code>poetry</code></li>
+								<ul class="nomark">
+									<li><code>linenum</code>— applied to the div and span to identify each as involving line numbers.</li>
+									<li><code>prose</code>— applied to the div to identify the section as involving prose text with line numbers (some braille regions have different rules for prose line numbers vs poetry line numbers).</li>
+									<li><code>poetry</code>— applied to the div to identify the section as involving poetic text with line numbers.</li>
+								</ul>
+						</ul>
+					</dd>
+				</dl>
+
+				<aside class="example" id="example-a-paragraph-with-line-numbers"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-paragraph-with-line-numbers">Example<bdi> 19</bdi></a><span class="example-title">: A paragraph with line numbers</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"linenum prose"</span>&gt;</span>
+  …
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠲⠲⠲ ⠺⠁⠝⠙⠑⠗⠑⠙ ⠥⠏ ⠞⠓⠑ ⠎⠞⠕⠝⠽ ⠏⠁⠞⠓⠲ 
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"line135"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"linenum"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"⠼⠁⠉⠑"</span>/&gt;</span>
+    ⠠⠞⠕ ⠞⠓⠑⠊⠗ ⠇⠑⠋⠞⠂ ⠁ ⠎⠍⠕⠅⠽ ⠓⠁⠵⠑ ⠋⠗⠕⠍ ⠞⠓⠑ ⠧⠁⠇⠇⠑⠽ ⠃⠑⠇⠕⠺⠂
+    ⠞⠕ ⠞⠓⠑⠊⠗ ⠗⠊⠛⠓⠞⠂ ⠁⠝ ⠁⠇⠍⠕⠎⠞ ⠧⠑⠗⠞⠊⠉⠁⠇ ⠉⠇⠊⠋⠋⠲ ⠲⠲⠲<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+				</aside>
+			</section>
+
+			<section id="links"><div class="header-wrapper"><h3 id="x2-11-links"><bdi class="secno">2.11 </bdi>Links</h3><a class="self-link" href="#links" aria-label="Permalink for Section 2.11"></a></div>
+				
+
+				<dl id="elemdef-a" class="elemdef">
+					<dt>Element Name:</dt>
+					<dd>
+						<p data-cite="html"> <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element">a</a></code></p>
+						<p>Note that links can be either external or internal. An internal link could point to a location within the same xHTML file or to a different file within the same package. An external link points to a location outside of the package, such as a webpage.</p>
+					</dd>
+
+					<dt>Supported <code>role</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li><code>doc-backlink</code>— A link that allows the user to return to a related location in the content.</li>
+							<li><code>doc-biblioref</code>— A link referencing a bibliographic entry.</li>
+							<li><code>doc-glossref</code>— A link to a glossary definition.</li>
+						</ul>
+					</dd>
+				</dl>
+
+				<aside class="example" id="example-link-to-a-destination-within-the-same-file"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-link-to-a-destination-within-the-same-file">Example<bdi> 20</bdi></a><span class="example-title">: Link to a destination within the same file</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠠⠎⠑⠑
+   <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#sect_24"</span>&gt;</span>⠠⠎⠑⠉⠞⠊⠕⠝ ⠼⠃⠙<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> ⠋⠕⠗ ⠋⠥⠗⠞⠓⠑⠗ ⠊⠝⠋⠕⠗⠍⠁⠞i⠕⠝⠲<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+				</aside>
+
+				<aside class="example" id="example-link-to-a-destination-in-another-html-content-document"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-link-to-a-destination-in-another-html-content-document">Example<bdi> 21</bdi></a><span class="example-title">: Link to a destination in another HTML content document</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠠⠎⠑⠑
+   <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"appendices.htm#app_b"</span>&gt;</span>⠠⠁⠏⠏⠑⠝⠙⠊⠭ ⠠⠃<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+   ⠋⠕⠗ ⠋⠥⠗⠞⠓⠑⠗ ⠊⠝f⠕⠗⠍⠁⠞⠊⠕⠝⠲<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+				</aside>
+
+				<aside class="example" id="example-link-to-an-external-web-site"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-link-to-an-external-web-site">Example<bdi> 22</bdi></a><span class="example-title">: Link to an external web site</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠠⠍⠕⠗⠑ ⠙⠑⠞⠁⠊⠇⠎ ⠁⠗⠑ ⠁⠧⠁⠊⠇⠁⠃⠇⠑ ⠁⠞
+   <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://somesite.com/pages/.../details.aspx?sl=1&amp;ui=37"</span>&gt;</span>
+   ⠠⠉⠇⠑⠁⠝ ⠠⠺⠁⠞⠑⠗ ⠠⠏⠗⠕⠚⠑⠉⠞<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> ⠺⠑⠃⠎⠊⠞⠑⠲<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+				</aside>
+			</section>
+
+			<section id="lists"><div class="header-wrapper"><h3 id="x2-12-lists"><bdi class="secno">2.12 </bdi>Lists</h3><a class="self-link" href="#lists" aria-label="Permalink for Section 2.12"></a></div>
+				
+
+				<dl id="elemdef-lists" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">ol</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element">ul</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">dl</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-li-element">li</a></code></p>
+
+						<p>Note that <code>dl</code> is preferred for <code>glossary</code> and <code>index</code>.</p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+						<p>The reserved class values in this section are only applied to <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ol-element">ol</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element">ul</a></code>, and <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element">dl</a></code>.</p>
+					<dd>
+						<ul class="nomark">
+							<li><code>nomark</code>, <code>exercise</code>, <code>glossary</code>, <code>index</code>, <code>toc</code>, <code>poetry</code></li>
+								<ul class="nomark">
+									<li><code>nomark</code>— used to prevent the automatic inclusion of list prefixes, like bullets or numbers.</li>
+									<li><code>exercise</code>— used to denote an exercise question, typically one in a list format like a multiple-choice question.</li>
+									<li><code>glossary</code>— used to denote a glossary entry.</li>
+									<li><code>index</code>— used to denote an indices entry.</li>
+									<li><code>toc</code>— used to denote a table of contents entry.</li>
+									<li><code>poetry</code>— used to denote a line in a work of poetry that is meant to be formatted in stanzas or a way that is similar to a list.</li>
+								</ul>
+						</ul>
+					
+					</dd>
+				</dl>
+
+				<aside class="example" id="example-a-simple-list"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-simple-list">Example<bdi> 23</bdi></a><span class="example-title">: A simple list</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠠⠎⠓⠕⠏⠏⠊⠝⠛ ⠇⠊⠎⠞⠒<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>⠠⠉⠁⠗⠗⠕⠞⠎<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>⠠⠉⠓⠑⠑⠎⠑<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  ...
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>⠠⠞⠕⠍⠁⠞⠕⠑⠎<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code></pre>
+				</aside>
+
+				<aside class="example" id="example-a-multiple-choice-exercise"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-multiple-choice-exercise">Example<bdi> 24</bdi></a><span class="example-title">: A multiple-choice exercise</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"exercise"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>⠼⠁⠲ ⠠⠺⠓⠊⠉⠓ ⠏⠇⠁⠝⠑⠞ ⠊⠎ ⠉⠇⠕⠑⠎⠞ ⠞⠕ ⠞⠓⠑ ⠎⠥⠝⠦
+	<span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>⠁⠲ ⠠⠧⠑⠝⠥⠎<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>⠃⠲ ⠠⠍⠑⠗⠉⠥⠗⠽<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>⠉⠲ ⠠⠍⠁⠗⠎<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>⠼⠃⠲ ⠠⠓⠕⠺ ⠍⠁⠝⠽ ⠍⠕⠕⠝⠎ ⠙⠕⠑⠎ ⠠⠍⠁⠗⠎ ⠓⠁⠧⠑⠦
+	<span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>⠁⠲ ⠠⠧⠑⠝⠥⠎<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>⠃⠲ ⠠⠍⠑⠗⠉⠥⠗⠽<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>⠉⠲ ⠠⠍⠁⠗⠎<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  …
+<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span></code></pre>
+				</aside>
+				<aside class="example" id="example-a-table-of-contents-with-links"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-table-of-contents-with-links">Example<bdi> 25</bdi></a><span class="example-title">: A table of contents with links</span>
+  </div>
+					<p>Notice the <code>span</code> elements around the chapter names. The purpose
+					of these wrapper elements is to allow for more enhanced CSS styling. See the
+					“<a href="../styling/index.html#example-table-of-contents">Table of
+					contents</a>” and
+					“<a href="../styling/index.html#example-table-of-contents-with-guide-dots">Table
+					of contents with guide dots</a>” examples in Styling Best Practices.</p>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>⠠⠞⠁⠃⠇⠑⠀⠕⠋⠀⠠⠉⠕⠝⠞⠑⠝⠞⠎<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"toc"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#page-5"</span>&gt;</span>⠼⠑<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>⠠⠏⠗⠑⠤⠠⠋⠇⠊⠛⠓⠞<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#page-6"</span>&gt;</span>⠼⠋<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>⠠⠋⠗⠁⠝⠅⠑⠝⠎⠞⠑⠊⠝<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#page-7"</span>&gt;</span>⠼⠛<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>⠠⠠⠊⠝⠞⠗⠕⠙⠥⠉⠞⠊⠕⠝<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#page-8"</span>&gt;</span>⠼⠓<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>⠠⠠⠏⠗⠑⠋⠁⠉⠑<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#page-14"</span>&gt;</span>⠼⠁⠙<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠊<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#page-17"</span>&gt;</span>⠼⠁⠛<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠊<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#page-20"</span>&gt;</span>⠼⠃⠚<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠊⠊<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#page-24"</span>&gt;</span>⠼⠃⠙<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>⠠⠠⠇⠑⠞⠞⠑⠗ ⠠⠠⠊⠧<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#page-25"</span>&gt;</span>⠼⠃⠑<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>⠠⠠⠉⠓⠁⠏⠞⠑⠗ ⠠⠊<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#page-32"</span>&gt;</span>⠼⠉⠃<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>⠠⠠⠉⠓⠁⠏⠞⠑⠗ ⠠⠠⠊⠊<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#page-38"</span>&gt;</span>⠼⠉⠓<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+</code></pre>
+				</aside>
+			</section>
+
+			<section id="pagenum"><div class="header-wrapper"><h3 id="x2-13-page-numbers"><bdi class="secno">2.13 </bdi>Page numbers</h3><a class="self-link" href="#pagenum" aria-label="Permalink for Section 2.13"></a></div>
+				
+
+				<dl id="elemdef-pagenum" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">div</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a></code></p>
+<div class="note" id="issue-container-generatedID-1"><div role="heading" class="ednote-title marker" id="h-ednote-0" aria-level="4"><span>Editor's note</span><span class="issue-label">: Use [span] for all page numbers?</span></div><p class="">
+  It's possible to treat a span as a div (and vice versa), so it may be simpler to treat all page numbers as either span or div regardless of whether they interrupt another element.-WF
+</p></div>
+					</dd>
+
+					<dt>Supported <code>role</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li><code>doc-pagebreak</code>— A separator denoting the position before which a break occurs between two contiguous pages in a statically paginated version of the content.</li>
+						</ul>
+					</dd>
+				</dl>
+
+				<aside class="example" id="example-page-break-within-a-run-of-text"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-page-break-within-a-run-of-text">Example<bdi> 26</bdi></a><span class="example-title">: Page break within a run of text</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠲⠲⠲ ⠁⠝⠙ ⠁⠇⠇ ⠞⠓⠑
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"page23"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"doc-pagebreak"</span>&gt;</span>⠼⠃⠉<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+⠕⠞⠓⠑⠗⠎ ⠁⠛⠛⠗⠑⠑⠙⠲ ⠲⠲⠲<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+				</aside>
+
+				<aside class="example" id="example-page-break-before-a-new-section-heading"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-page-break-before-a-new-section-heading">Example<bdi> 27</bdi></a><span class="example-title">: Page break before a new section heading</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false">&lt;div class="doc-pagebreak"&gt;
+   &lt;div id="pagexvii" role="doc-pagebreak" aria-label="⠠⠠⠭⠧⠊⠊"&lt;/&gt;
+   &lt;h2&gt;⠠⠋⠕⠗⠑⠺⠕⠗⠙&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p&gt;⠠⠞⠓⠊⠎ ⠃⠕⠕⠅ ⠊⠎ ⠁⠊⠍⠑⠙ ⠁⠞ ⠲⠲⠲&lt;/p&gt;</code></pre>
+				</aside>
+			</section>
+
+			<section id="para"><div class="header-wrapper"><h3 id="x2-14-paragraphs"><bdi class="secno">2.14 </bdi>Paragraphs</h3><a class="self-link" href="#para" aria-label="Permalink for Section 2.14"></a></div>
+				
+
+				<dl id="elemdef-p" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element">p</a></code></p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li><code>left-aligned</code>, <code>directions</code>, <code>hanging</code></li>
+								<ul class="nomark">
+									<li><code>left-aligned</code>— used to denote a paragraph that should be left justified.</li>
+									<li><code>directions</code>— used to denote directions that will typically accompany tests, quizzes, or multiple choice questions.</li>
+									<li><code>hanging</code>— used to denote a paragraph in which the first line is set to the left margin, but all subsequent lines are indented.</li>
+							</ul>
+						</ul>
+					</dd>
+				</dl>
+
+				<aside class="example" id="example-a-basic-paragraph-of-text"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-basic-paragraph-of-text">Example<bdi> 28</bdi></a><span class="example-title">: A basic paragraph of text</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠠⠞⠓⠑ ⠟⠥⠊⠉⠅ ⠃⠗⠕⠺⠝ ⠋⠕⠭ ⠚⠥⠍⠏⠎ ⠕⠧⠑⠗ ⠞⠓⠑ ⠇⠁⠵⠽ ⠙⠕⠛⠲<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+				</aside>
+
+				<aside class="example" id="example-a-left-aligned-paragraph-that-is-flush-with-the-left-margin"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-left-aligned-paragraph-that-is-flush-with-the-left-margin">Example<bdi> 29</bdi></a><span class="example-title">: A left-aligned paragraph that is flush with the left margin</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"left-aligned"</span>&gt;</span>⠠⠞⠓⠊⠎⠀⠊⠎⠀⠝⠕⠞⠀⠊⠝⠙⠑⠝⠞⠑⠙ ⠲⠲⠲<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+				</aside>
+			</section>
+
+			<section id="pre"><div class="header-wrapper"><h3 id="x2-15-preformatted-text"><bdi class="secno">2.15 </bdi>Preformatted text</h3><a class="self-link" href="#pre" aria-label="Permalink for Section 2.15"></a></div>
+				
+
+				<dl id="elemdef-pre" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-pre-element">pre</a></code></p>
+						<p>Note that <code>pre</code> should be avoided unless otherwise necessary. When <code>pre</code> is used, the formatting will be hardcoded and not reflowable for different page sizes. In future revisions, additional terms will be defined to reduce instances where <code>pre</code> is needed.</p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li>None</li>
+						</ul>
+					</dd>
+				</dl>
+
+				<aside class="example" id="example-preformatted-text"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-preformatted-text">Example<bdi> 30</bdi></a><span class="example-title">: Preformatted text</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>⠁ ⠨⠜⠨⠝⠫⠳   ⠺⠄⠽⠉⠵⠹⠧  ⠨⠎⠳⠰⠹
+  ⠸⠜⠐⠙⠓⠋⠓⠶ ⠑⠓⠛⠓⠙⠓⠋⠓ ⠙⠐⠊⠛⠊⠐⠙⠓⠋⠓
+<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></code></pre>
+				</aside>
+			</section>
+
+			<section id="tables"><div class="header-wrapper"><h3 id="x2-16-tables"><bdi class="secno">2.16 </bdi>Tables</h3><a class="self-link" href="#tables" aria-label="Permalink for Section 2.16"></a></div>
+				
+
+				<dl id="elemdef-table" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element">table</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/tables.html#the-tr-element">tr</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/tables.html#the-th-element">th</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/tables.html#the-td-element">td</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/tables.html#the-thead-element">thead</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/tables.html#the-tbody-element">tbody</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/tables.html#the-tfoot-element">tfoot</a></code></p>
+					</dd>
+					<dt>Attributes</dt>
+					<dd>
+						<p>Either the attributes <code><a data-link-type="element-attr" data-type="element-attr" href="https://html.spec.whatwg.org/multipage/tables.html#attr-th-scope">scope</a></code> or <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">headers</a></code> with <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">id</a></code> must be used to properly identify the relationship between the cells of the table. <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/sections.html#the-header-element">headers</a></code> with <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-i-element">id</a></code> is preferred for complex tables.</p>
+						<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-abbr-element">abbr</a></code> should be used with any long row or column headings.</p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+						<p>The reserved class values in this section are only applied to <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/tables.html#the-table-element">table</a></code>.</p>
+					<dd>
+						<ul class="nomark">
+							<li><code>listed</code>, <code>linear</code>, <code>stairstep</code></li>
+								<ul class="nomark">
+									<li><code>listed</code>— presents the same information as the original table but in a listed format that repeats column headings for each entry.</li>
+									<li><code>linear</code>— presents the same information as the original table but in a listed format that rearranges the row entries according to their column headings. Column headings are not repeated but are presented in a transcriber's note that precedes the table and informs the reader of the layout of each row's entries.</li>
+									<li><code>stairstep</code>— presents the same information as the original table but in a specialized format that puts each row in its own section with each column entry in a list format where each column of that row begins two-cells to the right of the previous column. So the first column is in 1-1, the second in 3-3, and so on. The column headings appear in a transcriber's note and are used to inform the reader of the layout of the table.</li>
+							</ul>
+					</ul></dd>
+				</dl>
+
+				<aside class="example" id="example-a-basic-table"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-basic-table">Example<bdi> 31</bdi></a><span class="example-title">: A basic table</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span>⠠⠝⠁⠍⠑<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span>⠠⠎⠉⠕⠗⠑<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>⠠⠚⠕⠓⠝<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>⠼⠃⠑<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>⠠⠍⠁⠭<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>⠼⠃⠃<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>⠠⠞⠁⠗⠁<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>⠼⠃⠓<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></code></pre>
+				</aside>
+				
+				<aside class="example" id="example-a-table-with-a-recommended-table-type"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-table-with-a-recommended-table-type">Example<bdi> 32</bdi></a><span class="example-title">: A table with a recommended table type</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"listed"</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span>⠠⠝⠁⠍⠑<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span>⠠⠎⠉⠕⠗⠑<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>⠠⠚⠕⠓⠝<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>⠼⠃⠑<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>⠠⠍⠁⠭<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;&gt;</span>⠼⠃⠃<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;&gt;</span>⠠⠞⠁⠗⠁<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;&gt;</span>⠼⠃⠓<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></code></pre>
+				</aside>
+				<aside class="example" id="example-a-table-with-header-and-body"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-table-with-header-and-body">Example<bdi> 33</bdi></a><span class="example-title">: A table with header and body</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span>⠠⠙⠁⠞⠑<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span>⠠⠙⠑⠎⠉⠗⠊⠏⠞⠊⠕⠝<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span>⠠⠉⠗⠑⠙⠊⠞<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">scope</span>=<span class="hljs-string">"col"</span>&gt;</span>⠠⠙⠑⠃⠊⠞<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>⠼⠛ ⠠⠚⠥⠝<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>⠠⠉⠁⠎⠓ ⠺⠊⠞⠓⠙⠗⠁⠺⠁⠇<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>⠈⠎⠼⠁⠚⠚⠲⠚⠚<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+		…
+	<span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></code></pre>
+				</aside>
+				<aside class="example" id="example-a-table-with-long-headings-that-may-need-to-be-abbreviated-also-utilizes-id-and-headers-to-identify-cells"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-table-with-long-headings-that-may-need-to-be-abbreviated-also-utilizes-id-and-headers-to-identify-cells">Example<bdi> 34</bdi></a><span class="example-title">: A table with long headings that may need to be abbreviated. Also utilizes id and headers to identify cells.</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"fruit-header"</span> <span class="hljs-attr">abbr</span>=<span class="hljs-string">"⠠⠋⠗⠥⠊⠞"</span>&gt;</span>⠠⠋⠗⠥⠊⠞<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vitamin-header"</span> <span class="hljs-attr">abbr</span>=<span class="hljs-string">"⠠⠧⠊⠞⠁⠍⠊⠝⠎"</span>&gt;</span>⠠⠧⠊⠞⠁⠍⠊⠝⠎ ⠊⠝ ⠠⠁⠃⠥⠝⠙⠁⠝⠉⠑<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"calories-header"</span> <span class="hljs-attr">abbr</span>=<span class="hljs-string">"⠠⠉⠁⠇⠕⠗⠊⠑⠎"</span>&gt;</span>⠠⠉⠁⠇⠕⠗⠊⠑⠎ ⠎⠑⠗⠧⠊⠝⠛<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"apple-header"</span> <span class="hljs-attr">abbr</span>=<span class="hljs-string">"⠠⠁⠏⠏⠇⠑"</span>&gt;</span>⠠⠁⠏⠏⠇⠑ ⠎⠑⠗⠧⠊⠝⠛<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">headers</span>=<span class="hljs-string">"fruit-header vitamin-header"</span>&gt;</span>⠠⠧⠊⠞⠁⠍⠊⠝ ⠉<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">headers</span>=<span class="hljs-string">"fruit-header calories-header"</span>&gt;</span>⠼⠊⠑ ⠉⠁⠇⠕⠗⠊⠑⠎<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"banana-header"</span> <span class="hljs-attr">abbr</span>=<span class="hljs-string">"⠠⠃⠁⠝⠁⠝⠁"</span>&gt;</span>⠠⠃⠁⠝⠁⠝⠁ ⠎⠑⠗⠧⠊⠝⠛<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">headers</span>=<span class="hljs-string">"fruit-header vitamin-header"</span>&gt;</span>⠠⠧⠊⠞⠁⠍⠊⠝ ⠃⠼⠋<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">headers</span>=<span class="hljs-string">"fruit-header calories-header"</span>&gt;</span>⠼⠁⠚⠑ ⠉⠁⠇⠕⠗⠊⠑⠎<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"grape-header"</span> <span class="hljs-attr">abbr</span>=<span class="hljs-string">"⠠⠛⠗⠁⠏⠑"</span>&gt;</span>⠠⠛⠗⠁⠏⠑ ⠎⠑⠗⠧⠊⠝⠛<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">headers</span>=<span class="hljs-string">"fruit-header vitamin-header"</span>&gt;</span>⠠⠧⠊⠞⠁⠍⠊⠝ ⠁ ⠁⠝⠙ ⠧⠊⠞⠁⠍⠊⠝ ⠉<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">headers</span>=<span class="hljs-string">"fruit-header calories-header"</span>&gt;</span>⠼⠃⠋ ⠉⠁⠇⠕⠗⠊⠑⠎<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></code></pre>
+				</aside>
+			</section>
+			<section id="Text splitting"><div class="header-wrapper"><h3 id="x2-17-text-splitting"><bdi class="secno">2.17 </bdi>Text Splitting</h3><a class="self-link" href="#Text splitting" aria-label="Permalink for Section 2.17"></a></div>
+				
+
+				<dl id="elemdef-p" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-wbr-element">wbr</a></code>, &amp;shy;</p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li>None.</li>
+						</ul>
+					</dd>
+				</dl>
+
+				<aside class="example" id="example-text-optionally-broken-with-no-hyphen"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-text-optionally-broken-with-no-hyphen">Example<bdi> 35</bdi></a><span class="example-title">: Text optionally broken with no hyphen</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠼⠛⠌⠙<span class="hljs-tag">&lt;<span class="hljs-name">wbr</span>&gt;</span>⠐⠖<span class="hljs-tag">&lt;<span class="hljs-name">wbr</span>&gt;</span>⠼⠑⠌⠓<span class="hljs-tag">&lt;<span class="hljs-name">wbr</span>&gt;</span>⠐⠖<span class="hljs-tag">&lt;<span class="hljs-name">wbr</span>&gt;</span>⠼⠁⠚<span class="hljs-tag">&lt;<span class="hljs-name">wbr</span>&gt;</span>⠐⠣⠼⠊⠊⠊<span class="hljs-tag">&lt;<span class="hljs-name">wbr</span>&gt;</span>⠐⠤<span class="hljs-tag">&lt;<span class="hljs-name">wbr</span>&gt;</span>⠼⠙⠐⠜<span class="hljs-tag">&lt;<span class="hljs-name">wbr</span>&gt;</span>⠐⠣⠼⠓⠛⠉<span class="hljs-tag">&lt;<span class="hljs-name">wbr</span>&gt;</span>⠐⠦<span class="hljs-tag">&lt;<span class="hljs-name">wbr</span>&gt;</span>⠼⠙⠐⠜<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre></aside>
+				<aside class="example" id="example-text-optionally-broken-with-hyphen"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-text-optionally-broken-with-hyphen">Example<bdi> 36</bdi></a><span class="example-title">: Text optionally broken with hyphen</span>
+  </div>
+					<p>Note that CSS can be used to set the hyphen character when <code>&amp;shy;</code> is used.</p>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>⠼⠛⠌⠙<span class="hljs-symbol">&amp;shy;</span>⠐⠖<span class="hljs-symbol">&amp;shy;</span>⠼⠑⠌⠓<span class="hljs-symbol">&amp;shy;</span>⠐⠖<span class="hljs-symbol">&amp;shy;</span>⠼⠁⠚<span class="hljs-symbol">&amp;shy;</span>⠐⠣⠼⠊⠊⠊<span class="hljs-symbol">&amp;shy;</span>⠐⠤<span class="hljs-symbol">&amp;shy;</span>⠼⠙⠐⠜<span class="hljs-symbol">&amp;shy;</span>⠐⠣⠼⠓⠛⠉<span class="hljs-symbol">&amp;shy;</span>⠐⠦<span class="hljs-symbol">&amp;shy;</span>⠼⠙⠐⠜<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre></aside>
+			</section>
+						<section id="Transcriber's Notes"><div class="header-wrapper"><h3 id="x2-18-transcriber-s-notes"><bdi class="secno">2.18 </bdi>Transcriber's Notes</h3><a class="self-link" href="#Transcriber's Notes" aria-label="Permalink for Section 2.18"></a></div>
+				
+
+				<dl id="elemdef-p" class="elemdef">
+					<dt>Element(s):</dt>
+					<dd>
+						<p><code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a></code>, <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">div</a></code></p>
+					</dd>
+
+					<dt>Reserved <code>class</code> values:</dt>
+					<dd>
+						<ul class="nomark">
+							<li><code>transcriber-note</code>— used to identify a <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-span-element">span</a></code> or <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/grouping-content.html#the-div-element">div</a></code> as a transcriber's note, which is text that is added by a transcriber and not part of the original text.</li>
+						</ul>
+					</dd>
+				</dl>
+
+				<aside class="example" id="example-a-short-transcriber-s-note"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-short-transcriber-s-note">Example<bdi> 37</bdi></a><span class="example-title">: A short transcriber's note</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"transcriber-note"</span>&gt;</span>⠈⠨⠣⠙⠑⠋⠊⠝⠊⠞⠊⠕⠝⠈⠨⠜<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></code></pre></aside>
+				<aside class="example" id="example-a-transcriber-s-note-that-contains-multiple-blocks"><div class="marker" role="heading" aria-level="4">
+    <a class="self-link" href="#example-a-transcriber-s-note-that-contains-multiple-blocks">Example<bdi> 38</bdi></a><span class="example-title">: A transcriber's note that contains multiple blocks</span>
+  </div>
+					<pre><code class="html hljs" aria-busy="false"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"transcriber-note"</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>⠈⠨⠣⠠⠎⠽⠍⠃⠕⠇⠎⠀⠥⠎⠑⠙<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>⠨⠿⠒⠀⠊⠎⠀⠞⠕<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>⠨⠿⠒⠒⠀⠵⠈⠨⠜<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></aside>
+			</section>
+		</section>
+		
+<section class="appendix informative" id="acknowledgements"><div class="header-wrapper"><h2 id="a-acknowledgments"><bdi class="secno">A. </bdi>Acknowledgments</h2><a class="self-link" href="#acknowledgements" aria-label="Permalink for Appendix A."></a></div><p><em>This section is non-normative.</em></p>
+	
+	
+	<p>The following members of the eBraille working group contributed to the development of this document:</p>
+	
+	<ul>
+		<li>Alex Russomanno (NewHaptics)</li>
+		<li>Alexander Hars (Inventivio)</li>
+		<li>Alice O'Reilly (Library of Congress)</li>
+		<li>Amanda Lannan (University of Kentucky)</li>
+		<li>Amanda Whelan (Bucks County Intermediate Unit)</li>
+		<li>Andrea Dodson (Curriculum Associates)</li>
+		<li>Andrew Flatres (HumanWare)</li>
+		<li>Andrey Yakuboy</li>
+		<li>Angela Van Appelen (Affordable Braille Production)</li>
+		<li>Anja Lehmann</li>
+		<li>Aquinas Pather (Allyant)</li>
+		<li>Arne Kyrkjebø (Tibi)</li>
+		<li>Autumn Booths</li>
+		<li>Avneesh Singh (DAISY Consortium)</li>
+		<li>Basile Mignonneau</li>
+		<li>Bert Frees (DAISY Consortium)</li>
+		<li>Beth Pieters (IESBVI)</li>
+		<li>Caryn Navy (Duxbury Systems)</li>
+		<li>Chantelle Griffiths (Tactile and Technology Literacy Centre)</li>
+		<li>Charles LaPierre (Benetech)</li>
+		<li>Christian Egli (SBS Swiss Library for the Blind, Visually Impaired and Print Disabled)</li>
+		<li>Dan Brown (Pearson)</li>
+		<li>Dan Gardner (ViewPlus)</li>
+		<li>Dang Hoai Phuc (Sao Mai Center for the Blind)</li>
+		<li>Danielle Montour</li>
+		<li>Dave Gunn (DAISY Consortium)</li>
+		<li>David Holladay (Duxbury Systems)</li>
+		<li>Davy Kager (Dedicon)</li>
+		<li>Diane Spence</li>
+		<li>Dilip Ramesh (Thinkerbell Labs)</li>
+		<li>Doug Schepers (Fizz Studio)</li>
+		<li>Don van Dijk (Visio)</li>
+		<li>Edwin Wong (CNIB)</li>
+		<li>Francisco Martinez Calvo (ONCE)</li>
+		<li>George Kerscher (DAISY Consortium)</li>
+		<li>Greg Stilson (APH)</li>
+		<li>Gregory Gerhart (PaTTAN)</li>
+		<li>Hari Palani (UNAR Labs)</li>
+		<li>Kathryn Sheriff Segers (Tennessee School for the Blind)</li>
+		<li>James Bowden (RNIB)</li>
+		<li>Jarosław Urbański (Harpo)</li>
+		<li>Jason Megginson (The College Board)</li>
+		<li>Jen Goulden (Braille Authority of North America (BANA) and Crawford Technologies)</li>
+		<li>Jenna Gorlewicz (Saint Louis University)</li>
+		<li>Jennifer Dunnam (NFB)</li>
+		<li>Jennifer Sutton</li>
+		<li>John Ylioja (NNELS)</li>
+		<li>Joshua Miele (Amazon)</li>
+		<li>Judy Dixon</li>
+		<li>Kristin Spencer (APH)</li>
+		<li>Ka Li (NNELS)</li>
+		<li>Ki Kwang Sung (Dot)</li>
+		<li>Kim Charlson (Perkins School for the Blind)</li>
+		<li>Kristijan Ciganovic (BBi)</li>
+		<li>Kyle DeJute (APH)</li>
+		<li>Leona Holloway (Monash University)</li>
+		<li>Linda Turner (APH)</li>
+		<li>Manfred Muchenberger (SBS Swiss Library for the Blind, Visually Impaired and Print Disabled)</li>
+		<li>Marc Sutton (Apple)</li>
+		<li>Marty McKenzie (South Carolina School for the Deaf and the Blind)</li>
+		<li>Matt Garrish (DAISY Consortium)</li>
+		<li>Matthew Horspool</li>
+		<li>Melanie Romer Noel (Dot6.ca)</li>
+		<li>Michael Cantino (Northwest Regional ESD)</li>
+		<li>Michael Hunsaker (Davis School District)</li>
+		<li>Michael Johnson (Benetech)</li>
+		<li>Michael Ko (HIMS)</li>
+		<li>Michael Walker</li>
+		<li>Michael Whapples (APH)</li>
+		<li>Michal Tkacik (Braille Authority of Slovakia, Matej Hrebenda Slovak Library for the Blind in Levoca)</li>
+		<li>Mike Paciello (WebABLE.Com)</li>
+		<li>Mischa Kuenzle (SBS Swiss Library for the Blind, Visually Impaired and Print Disabled)</li>
+		<li>Nathalie Sorichter (FernUniversität in Hagen)</li>
+		<li>Nicole Gaines (APH)</li>
+		<li>Nils Huhta (Index Braille)</li>
+		<li>Paul Fontaine (Xavier Society for the Blind)</li>
+		<li>Peter Sullivan (Duxbury Systems)</li>
+		<li>Peter Tucic (HumanWare)</li>
+		<li>Reiner Delgado (DBSV)</li>
+		<li>Riane LaPaire (NNELS and Braille Literacy Canada (BLC-LBC))</li>
+		<li>Richard Orme (DAISY Consortium)</li>
+		<li>Robert Jaquiss (Independence Science)</li>
+		<li>Ron Miller (Vispero)</li>
+		<li>Robert Roldan (Amanuensis Braille)</li>
+		<li>Sarah Bradley</li>
+		<li>Sara Larkin (IESBVI)</li>
+		<li>Sarah Welch (APH)</li>
+		<li>Scott Erichsen (National Disability Insurance Agency)</li>
+		<li>Sile O'Modhrain (University of Michigan)</li>
+		<li>Steve Noble (Pearson)</li>
+		<li>Sue O'Brien (TSBVI)</li>
+		<li>Susan Osterhaus (TSBVI)</li>
+		<li>Svetlana Vasilyeva (Elita Group LLC)</li>
+		<li>Tamara Rorie (NLS)</li>
+		<li>Thomas Simpson (NewHaptics)</li>
+		<li>Tina Herzberg (University of South Carolina Upstate)</li>
+		<li>Venkatesh Chari (Orbit Research)</li>
+		<li>Willow Free (APH)</li>
+	</ul>
+</section>
+
+	
+
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="b-references"><bdi class="secno">B. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix B."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="b-1-normative-references"><bdi class="secno">B.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix B.1"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-html">[html]</dt><dd>
+      <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Dominic Farolino; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement} */
+  let panel = null;
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (type === "keydown" && event.key !== "Enter") return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement} */
+        const dfn = target.closest("dfn, .index-term");
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        const coords = deriveCoordinates(event);
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        panel.style.left = null;
+        panel.style.top = null;
+        panel.classList.add("docked");
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+    const panel = target.closest(".dfn-panel");
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement} */
+    const caret = panel.querySelector(".caret");
+    caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>
