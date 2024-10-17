@@ -95,7 +95,6 @@ dd{margin-left:0}
 		
 		
 		
-<link rel="stylesheet" href="common/css/common.css">
 	
 <meta name="color-scheme" content="light">
 <style>
@@ -140,8 +139,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   "daisyWG": "eBraille Working Group",
   "specStatus": "base",
   "daisyStatus": "WD",
-  "thisVersion": "https://daisy.org/s/ebraille/1.0/FPWD-ebraille-20241017/",
   "latestVersion": "https://daisy.org/s/ebraille/",
+  "thisVersion": "https://daisy.org/s/ebraille/1.0/WD-ebraille-20241017/",
   "previousVersion": "https://daisy.org/s/ebraille/1.0/FPWD-ebraille-20240725/",
   "edDraftURI": "https://daisy.github.io/ebraille/",
   "editors": [
@@ -178,7 +177,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   ],
   "logos": [
     {
-      "src": "common/images/daisy_high.jpg",
+      "src": "https://daisy.github.io/ebraille/common/images/daisy_high.jpg",
       "width": 112,
       "height": 100,
       "alt": "DAISY Consortium logo",
@@ -237,7 +236,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/base.css"></head>
 	<body class="h-entry" data-cite="epub-33"><div class="head">
-    <p class="logos"><a class="logo" href="https://daisy.org"><img crossorigin="" alt="DAISY Consortium logo" height="100" src="common/images/daisy_high.jpg" width="112">
+    <p class="logos"><a class="logo" href="https://daisy.org"><img crossorigin="" alt="DAISY Consortium logo" height="100" src="https://daisy.github.io/ebraille/common/images/daisy_high.jpg" width="112">
   </a></p>
     <h1 id="title" class="title">eBraille 1.0</h1> 
     <p id="w3c-state"><span id="daisy-status">DAISY Working Draft</span> <time class="dt-published" datetime="2024-10-17">17 October 2024</time></p>
@@ -245,7 +244,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       <summary>More details about this document</summary>
       <dl>
         <dt>This version:</dt><dd>
-                <a class="u-url" href="https://daisy.org/s/ebraille/1.0/FPWD-ebraille-20241017/">https://daisy.org/s/ebraille/1.0/FPWD-ebraille-20241017/</a>
+                <a class="u-url" href="https://daisy.org/s/ebraille/1.0/WD-ebraille-20241017/">https://daisy.org/s/ebraille/1.0/WD-ebraille-20241017/</a>
               </dd>
         <dt>Latest published version:</dt><dd>
                 <a href="https://daisy.org/s/ebraille/">https://daisy.org/s/ebraille/</a>
@@ -581,7 +580,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 				<p>The complete list is available in the <a href="https://www.w3.org/TR/epub-33/#sec-core-media-types" id="ref-for-index-term-core-media-types-section-1">core media types
 						section</a> of [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">epub-33</a></cite>].</p>
 
-				<p>All other media types are considered <a href="foreign-res">foreign resources</a>.</p>
+				<p>All other media types are considered <a href="#foreign-res">foreign resources</a>.</p>
 			</section>
 
 			<section id="foreign-res"><div class="header-wrapper"><h3 id="x3-3-foreign-resources"><bdi class="secno">3.3 </bdi>Foreign resources</h3><a class="self-link" href="#foreign-res" aria-label="Permalink for Section 3.3"></a></div>
@@ -880,7 +879,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 					<section id="meta-elements"><div class="header-wrapper"><h5 id="x5-3-1-1-metadata-elements"><bdi class="secno">5.3.1.1 </bdi>Metadata elements</h5><a class="self-link" href="#meta-elements" aria-label="Permalink for Section 5.3.1.1"></a></div>
 						
 
-						<p>Metadata about an <a data-link-type="dfn|abstract-op" href="#dfn-ebraille-publication" class="internalDFN" id="ref-for-dfn-ebraille-publication-23">eBraille publication</a> is expressed in the package document's <a href="https://www.w3.org/TR/epub-33/#the-metadata-elem" id="ref-for-index-term-metadata-element-1"><code>metadata</code> element</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">epub-33</a></cite>].
+						<p>Metadata about an <a data-link-type="dfn|abstract-op" href="#dfn-ebraille-publication" class="internalDFN" id="ref-for-dfn-ebraille-publication-23">eBraille publication</a> is expressed in the package document's <a href="https://www.w3.org/TR/epub-33/#sec-metadata-elem" id="ref-for-index-term-metadata-element-1"><code>metadata</code> element</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">epub-33</a></cite>].
 							This element is the first child of the root <a href="#package-elem"><code>package</code>
 								element</a>.</p>
 
@@ -1163,7 +1162,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 					<section id="dc:language"><div class="header-wrapper"><h5 id="x5-3-3-5-dc-language"><bdi class="secno">5.3.3.5 </bdi>dc:language</h5><a class="self-link" href="#dc:language" aria-label="Permalink for Section 5.3.3.5"></a></div>
 						
 
-						<p>The <em class="rfc2119">REQUIRED</em> <a href="epub-33#sec-opf-dclanguage"><code>dc:language</code> element</a>
+						<p>The <em class="rfc2119">REQUIRED</em> <a href="https://www.w3.org/TR/epub-33/#sec-opf-dclanguage" id="ref-for-index-term-dc-language-element-1"><code>dc:language</code> element</a>
 							[<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">epub-33</a></cite>] identifies the language(s) of the <a data-link-type="dfn|abstract-op" href="#dfn-ebraille-publication" class="internalDFN" id="ref-for-dfn-ebraille-publication-27">eBraille publication</a>.</p>
 
 						<p>The <a data-link-type="dfn|abstract-op" href="#dfn-value" class="internalDFN" id="ref-for-dfn-value-2">value</a> <em class="rfc2119">MUST</em> be a <a href="https://www.rfc-editor.org/rfc/rfc5646#section-2.2.9">well-formed language tag</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-bcp47" title="Tags for Identifying Languages">bcp47</a></cite>]. The language code <em class="rfc2119">MUST</em> include the script
@@ -1206,7 +1205,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 						</aside>
 
 						<div class="note" role="note" id="issue-container-generatedID-12"><div role="heading" class="note-title marker" id="h-note-11" aria-level="6"><span>Note</span></div><div class="">
-							<p>For more information, refer to the <a href="https://www.w3.org/TR/epub-33/#sec-opf-dclanguage" id="ref-for-index-term-definition-of-the-dc-language-element-1">definition
+							<p>For more information, refer to the <a href="https://www.w3.org/TR/epub-33/#sec-opf-dclanguage" id="ref-for-index-term-dc-language-element-2">definition
 									of the <code>dc:language</code> element</a> in [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">epub-33</a></cite>].</p>
 						</div></div>
 					</section>
@@ -1672,8 +1671,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 
 						<p>The element <em class="rfc2119">MAY</em> include the following attributes: <a href="https://www.w3.org/TR/epub-33/#attrdef-dir" id="ref-for-index-term-dir-7"><code>dir</code></a>, <a href="https://www.w3.org/TR/epub-33/#attrdef-id" id="ref-for-index-term-id-11"><code>id</code></a>, <a href="https://www.w3.org/TR/epub-33/#attrdef-xml-lang" id="ref-for-index-term-xml-lang-attribute-8"><code>xml:lang</code></a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">epub-33</a></cite>].</p>
 
-						<p>The system or scheme the element's value was drawn from <em class="rfc2119">MAY</em> be identified using the <a href="epub-33#authority"><code>authority</code> property</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">epub-33</a></cite>]. A subject code
-							<em class="rfc2119">MUST</em> also be specified when specifying the <code>authority</code> property.</p>
+						<p>The system or scheme the element's value was drawn from <em class="rfc2119">MAY</em> be identified using the <a href="https://www.w3.org/TR/epub-33/#authority" id="ref-for-index-term-authority-property-1"><code>authority</code> property</a> [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">epub-33</a></cite>]. A subject
+							code <em class="rfc2119">MUST</em> also be specified when specifying the <code>authority</code> property.</p>
 
 						<aside class="example" id="example-bisac-subject-and-code"><div class="marker" role="heading" aria-level="6">
     <a class="self-link" href="#example-bisac-subject-and-code">Example<bdi> 40</bdi></a><span class="example-title">: BISAC subject and code</span>
@@ -2623,7 +2622,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 		<section id="ebrl-mo"><div class="header-wrapper"><h2 id="x9-media-overlays"><bdi class="secno">9. </bdi>Media overlays</h2><a class="self-link" href="#ebrl-mo" aria-label="Permalink for Section 9."></a></div>
 			
 
-			<p>eBraille publications support <a href="https://www.w3.org/TR/epub-33/##sec-media-overlays" id="ref-for-index-term-media-overlays-1">media overlays</a> as defined in
+			<p>eBraille publications support <a href="https://www.w3.org/TR/epub-33/#sec-media-overlays" id="ref-for-index-term-media-overlays-1">media overlays</a> as defined in
 				[<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">epub-33</a></cite>]. Media overlays allow prerecorded audio to be synchronized with the content of <a data-link-type="dfn|abstract-op" href="#dfn-content-document" class="internalDFN" id="ref-for-dfn-content-document-16">eBraille content documents</a>, allowing users to switch between reading braille, listening to auditory playback,
 				or reading along with narration.</p>
 
@@ -2695,7 +2694,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 				were opened in a mainstream EPUB 3 reading system.</p>
 
 			<div class="note" role="note" id="issue-container-generatedID-32"><div role="heading" class="note-title marker" id="h-note-30" aria-level="3"><span>Note</span></div><div class="">
-				<p>For more information about creating media overlay documents, refer to the <a href="https://www.w3.org/TR/epub-33/#sec-media-overlays" id="ref-for-index-term-media-overlays-0-1">Media overlays</a> section of [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">epub-33</a></cite>].</p>
+				<p>For more information about creating media overlay documents, refer to the <a href="https://www.w3.org/TR/epub-33/#sec-media-overlays" id="ref-for-index-term-media-overlays-2">Media overlays</a> section of [<cite><a class="bibref" data-link-type="biblio" href="#bib-epub-33" title="EPUB 3.3">epub-33</a></cite>].</p>
 			</div></div>
 		</section>
 		<section id="ebrl-a11y"><div class="header-wrapper"><h2 id="x10-accessibility"><bdi class="secno">10. </bdi>Accessibility</h2><a class="self-link" href="#ebrl-a11y" aria-label="Permalink for Section 10."></a></div>
@@ -2885,7 +2884,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 						<li><a href="https://www.w3.org/TR/epub-rs-33/#sec-svg" id="ref-for-index-term-svg-content-documents-1">SVG content documents</a>. (Note that this does not affect
 								<a href="https://www.w3.org/TR/epub-rs-33/#sec-xhtml-svg" id="ref-for-index-term-embedded-svg-1">embedded SVG</a>.)</li>
 						<li><a href="https://www.w3.org/TR/epub-33/#sec-css-prefixed" id="ref-for-index-term-epub-3-s-prefixed-css-properties-1">EPUB 3's prefixed CSS properties</a>.</li>
-						<li><a href="https://www.w3.org/TR/epub-rs-33/#epub-rs-33/#sec-rendering-control" id="ref-for-index-term-fixed-layouts-0-1">fixed layouts</a>.</li>
+						<li><a href="https://www.w3.org/TR/epub-rs-33/#sec-rendering-control" id="ref-for-index-term-fixed-layouts-0-1">fixed layouts</a>.</li>
 						<li><a href="https://www.w3.org/TR/epub-rs-33/#sec-epub-rs-conf-backward" id="ref-for-index-term-backward-compatibility-1">backward compatibility</a> or <a href="https://www.w3.org/TR/epub-rs-33/#sec-epub-rs-conf-forward" id="ref-for-index-term-forward-compatibility-1">forward compatibility</a> with other
 							EPUB versions.</li>
 					</ul>
@@ -3546,6 +3545,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   </li><li>
     <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-docs-assoc-style" id="index-term-associate-styling-information" tabindex="0" aria-haspopup="dialog">associate styling information</span>
   </li><li>
+    <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#authority" id="index-term-authority-property" tabindex="0" aria-haspopup="dialog">authority property</span>
+  </li><li>
     <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-metadata-values" id="index-term-child-text-content" tabindex="0" aria-haspopup="dialog">child text content</span>
   </li><li>
     <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-pkg-collections" id="index-term-collections" tabindex="0" aria-haspopup="dialog">collections</span>
@@ -3560,11 +3561,11 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   </li><li>
     <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-data-urls" id="index-term-data-urls" tabindex="0" aria-haspopup="dialog">Data URLs</span>
   </li><li>
+    <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-opf-dclanguage" id="index-term-dc-language-element" tabindex="0" aria-haspopup="dialog">dc:language element</span>
+  </li><li>
     <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-opf-dccreator" id="index-term-definition-of-the-dc-creator-element" tabindex="0" aria-haspopup="dialog">definition of the dc:creator element</span>
   </li><li>
     <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-opf-dcidentifier" id="index-term-definition-of-the-dc-identifier-element" tabindex="0" aria-haspopup="dialog">definition of the dc:identifier element</span>
-  </li><li>
-    <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-opf-dclanguage" id="index-term-definition-of-the-dc-language-element" tabindex="0" aria-haspopup="dialog">definition of the dc:language element</span>
   </li><li>
     <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-opf-dcsubject" id="index-term-definition-of-the-dc-subject-element" tabindex="0" aria-haspopup="dialog">definition of the dc:subject element</span>
   </li><li>
@@ -3626,9 +3627,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   </li><li>
     <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-manifest-fallbacks" id="index-term-manifest-fallbacks" tabindex="0" aria-haspopup="dialog">manifest fallbacks</span>
   </li><li>
-    <span class="index-term" data-href="https://www.w3.org/TR/epub-33/##sec-media-overlays" id="index-term-media-overlays" tabindex="0" aria-haspopup="dialog">media overlays</span>
-  </li><li>
-    <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-media-overlays" id="index-term-media-overlays-0" tabindex="0" aria-haspopup="dialog">Media overlays</span>
+    <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-media-overlays" id="index-term-media-overlays" tabindex="0" aria-haspopup="dialog">media overlays</span>
   </li><li>
     <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#attrdef-item-media-overlay" id="index-term-media-overlay-attribute" tabindex="0" aria-haspopup="dialog">media-overlay attribute</span>
   </li><li>
@@ -3636,7 +3635,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   </li><li>
     <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-meta-elem" id="index-term-meta-element" tabindex="0" aria-haspopup="dialog">meta element</span>
   </li><li>
-    <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#the-metadata-elem" id="index-term-metadata-element" tabindex="0" aria-haspopup="dialog">metadata element</span>
+    <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-metadata-elem" id="index-term-metadata-element" tabindex="0" aria-haspopup="dialog">metadata element</span>
   </li><li>
     <span class="index-term" data-href="https://www.w3.org/TR/epub-33/#sec-zip-container-mime" id="index-term-mimetype" tabindex="0" aria-haspopup="dialog">mimetype</span>
   </li><li>
@@ -3737,7 +3736,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   </li><li>
     <span class="index-term" data-href="https://www.w3.org/TR/epub-rs-33/#sec-epub-rs-external-links" id="index-term-external-hyperlinks" tabindex="0" aria-haspopup="dialog">external hyperlinks</span>
   </li><li>
-    <span class="index-term" data-href="https://www.w3.org/TR/epub-rs-33/#epub-rs-33/#sec-rendering-control" id="index-term-fixed-layouts-0" tabindex="0" aria-haspopup="dialog">fixed layouts</span>
+    <span class="index-term" data-href="https://www.w3.org/TR/epub-rs-33/#sec-rendering-control" id="index-term-fixed-layouts-0" tabindex="0" aria-haspopup="dialog">fixed layouts</span>
   </li><li>
     <span class="index-term" data-href="https://www.w3.org/TR/epub-rs-33/#sec-container-fobfus" id="index-term-font-obfuscation" tabindex="0" aria-haspopup="dialog">font obfuscation</span>
   </li><li>
@@ -4659,6 +4658,18 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       <a href="#ref-for-index-term-associate-styling-information-1" title="§ 9. Media overlays">§ 9. Media overlays</a> 
     </li>
   </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-index-term-authority-property" aria-label="Links in this document to definition: authority property">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="https://www.w3.org/TR/epub-33/#authority" aria-label="Permalink for definition: authority property. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-index-term-authority-property-1" title="§ 5.3.4.5 dc:subject">§ 5.3.4.5 dc:subject</a> 
+    </li>
+  </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-index-term-child-text-content" aria-label="Links in this document to definition: child text content">
       <span class="caret"></span>
       <div>
@@ -4745,6 +4756,18 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       <a href="#ref-for-index-term-data-urls-1" title="§ 3.5 Resource location">§ 3.5 Resource location</a> 
     </li>
   </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-index-term-dc-language-element" aria-label="Links in this document to definition: dc:language element">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="https://www.w3.org/TR/epub-33/#sec-opf-dclanguage" aria-label="Permalink for definition: dc:language element. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-index-term-dc-language-element-1" title="§ 5.3.3.5 dc:language">§ 5.3.3.5 dc:language</a> <a href="#ref-for-index-term-dc-language-element-2" title="Reference 2">(2)</a> 
+    </li>
+  </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-index-term-definition-of-the-dc-creator-element" aria-label="Links in this document to definition: definition of the dc:creator element">
       <span class="caret"></span>
       <div>
@@ -4771,18 +4794,6 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       <ul>
     <li>
       <a href="#ref-for-index-term-definition-of-the-dc-identifier-element-1" title="§ 5.3.3.4 dc:identifier">§ 5.3.3.4 dc:identifier</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-index-term-definition-of-the-dc-language-element" aria-label="Links in this document to definition: definition of the dc:language element">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="https://www.w3.org/TR/epub-33/#sec-opf-dclanguage" aria-label="Permalink for definition: definition of the dc:language element. Activate to close this dialog.">Permalink</a>
-         
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-index-term-definition-of-the-dc-language-element-1" title="§ 5.3.3.5 dc:language">§ 5.3.3.5 dc:language</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-index-term-definition-of-the-dc-subject-element" aria-label="Links in this document to definition: definition of the dc:subject element">
@@ -5204,25 +5215,13 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-index-term-media-overlays" aria-label="Links in this document to definition: media overlays">
       <span class="caret"></span>
       <div>
-        <a class="self-link" href="https://www.w3.org/TR/epub-33/##sec-media-overlays" aria-label="Permalink for definition: media overlays. Activate to close this dialog.">Permalink</a>
+        <a class="self-link" href="https://www.w3.org/TR/epub-33/#sec-media-overlays" aria-label="Permalink for definition: media overlays. Activate to close this dialog.">Permalink</a>
          
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-      <a href="#ref-for-index-term-media-overlays-1" title="§ 9. Media overlays">§ 9. Media overlays</a> 
-    </li>
-  </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-index-term-media-overlays-0" aria-label="Links in this document to definition: Media overlays">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="https://www.w3.org/TR/epub-33/#sec-media-overlays" aria-label="Permalink for definition: Media overlays. Activate to close this dialog.">Permalink</a>
-         
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-      <a href="#ref-for-index-term-media-overlays-0-1" title="§ 9. Media overlays">§ 9. Media overlays</a> 
+      <a href="#ref-for-index-term-media-overlays-1" title="§ 9. Media overlays">§ 9. Media overlays</a> <a href="#ref-for-index-term-media-overlays-2" title="Reference 2">(2)</a> 
     </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-index-term-media-overlay-attribute" aria-label="Links in this document to definition: media-overlay attribute">
@@ -5264,7 +5263,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-index-term-metadata-element" aria-label="Links in this document to definition: metadata element">
       <span class="caret"></span>
       <div>
-        <a class="self-link" href="https://www.w3.org/TR/epub-33/#the-metadata-elem" aria-label="Permalink for definition: metadata element. Activate to close this dialog.">Permalink</a>
+        <a class="self-link" href="https://www.w3.org/TR/epub-33/#sec-metadata-elem" aria-label="Permalink for definition: metadata element. Activate to close this dialog.">Permalink</a>
          
       </div>
       <p><b>Referenced in:</b></p>
@@ -5806,7 +5805,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-index-term-fixed-layouts-0" aria-label="Links in this document to definition: fixed layouts">
       <span class="caret"></span>
       <div>
-        <a class="self-link" href="https://www.w3.org/TR/epub-rs-33/#epub-rs-33/#sec-rendering-control" aria-label="Permalink for definition: fixed layouts. Activate to close this dialog.">Permalink</a>
+        <a class="self-link" href="https://www.w3.org/TR/epub-rs-33/#sec-rendering-control" aria-label="Permalink for definition: fixed layouts. Activate to close this dialog.">Permalink</a>
          
       </div>
       <p><b>Referenced in:</b></p>
