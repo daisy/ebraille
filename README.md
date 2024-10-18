@@ -10,9 +10,19 @@ The main objectives for the next phase of the project are:
 ## Documents
 
 ### Specifications
-- [eBraille specification](https://daisy.github.io/ebraille/)
+- eBraille specification
+  - [Editor's Draft](https://daisy.github.io/ebraille/)
+  - [Latest Version](https://daisy.org/s/ebraille/1.0/)
 
 ### Best Practices
-- [eBraille Tagging Best Practices](https://daisy.github.io/ebraille/best-practices/tagging/)
-- [eBraille Styling Best Practices](https://daisy.github.io/ebraille/best-practices/styling/)
+- eBraille Tagging Best Practices
+  - [Editor's Draft](https://daisy.github.io/ebraille/best-practices/tagging/)
+  - [Latest Version](https://daisy.org/s/ebraille/best-practices/tagging/)
+- eBraille Styling Best Practices
+  - [Editor's Draft](https://daisy.github.io/ebraille/best-practices/styling/)
+  - [Latest Version](https://daisy.org/s/ebraille/best-practices/styling/)
 
+### Registries
+- eBraille Braille Codes Registry
+  - [Editor's Draft](https://daisy.github.io/ebraille/registries/codes/)
+  - [Latest Version](https://daisy.org/s/ebraille/registries/codes/)
