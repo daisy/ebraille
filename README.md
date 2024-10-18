@@ -10,7 +10,7 @@ The main objectives for the next phase of the project are:
 ## Documents
 
 ### Specifications
-- eBraille specification
+- eBraille 1.0
   - [Editor's Draft](https://daisy.github.io/ebraille/)
   - [Latest Version](https://daisy.org/s/ebraille/1.0/)
 
