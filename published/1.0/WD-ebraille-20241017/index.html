@@ -234,7 +234,217 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   "publishISODate": "2024-10-17T00:00:00.000Z",
   "generatedSubtitle": "17 October 2024"
 }</script>
-<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/base.css"></head>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/base.css">
+	<style>
+
+/* Element definitions */
+
+dl.elemdef {
+    border-left: 0.5em solid rgb(145,200,255);
+    background-color: rgb(236,246,255);
+    padding: 0.5em 1em;
+	margin-bottom: 2em;
+}
+
+dl.elemdef ul.nomark {
+	padding-left: 1em;
+}
+
+dl.elemdef > dd > ul.nomark:first-child {
+	padding-left: 0 !important;
+}
+
+dl.elemdef > dt {
+	font-weight: normal;
+	font-style: italic;
+}
+
+dl.elemdef > dt {
+	margin-bottom: 0.5em;
+}
+
+dl.elemdef dfn {
+	font-style: normal;
+}
+
+ul.nomark,
+ol.nomark {
+    list-style-type: none;
+}
+
+
+
+/* Table zebra styling */
+
+table.zebra {
+    font-size:inherit;
+    font:90%;
+    margin:1em;
+}
+
+table.zebra td {
+    padding-left: 0.3em;
+}
+
+table.zebra th {
+    font-weight: bold;
+    text-align: center;
+    background-color: rgb(0,0,128) !important;
+    font-size: 110%;
+    background: hsl(180, 30%, 50%);
+    color: #fff;
+}
+
+table.zebra th a:link {
+  color: #fff;
+}
+
+table.zebra th a:visited {
+  color: #aaa;
+}
+
+table.zebra tr:nth-child(even) {
+    background-color: hsl(180, 30%, 93%) !important;
+}
+
+table.zebra th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table.zebra td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+
+/* css styles */
+
+pre > code.css, pre.highlight.lang-css {
+    background: #FFE;
+}
+
+pre > code.css, pre.highlight.lang-css {
+    border: solid 0.0625em;
+    color: black;
+    border-top-left-radius: 0;
+}
+
+pre > code.css::before, pre.highlight.lang-css::before {
+    font: bold 0.8rem Helvetica Nue, sans-serif;
+    padding: 0.5em;
+    position: absolute;
+    top: auto;
+    margin: -0.640em 0 0 -3.1em /* 1em/0.8 + 1.5em + 0.5em*2 */;
+    width: 1.5em;
+    background: inherit;
+    border: 0.078125em;
+    border-style: solid none solid solid;
+    border-radius: 1em 0 0 1em;
+}
+
+pre > code.css::before, pre.highlight.lang-css::before {
+    content: 'CSS';
+}
+
+/* example wrapping */
+
+pre {
+	white-space: break-spaces !important;
+}
+
+/* vocabulary styles */
+
+.conf-pattern {
+	margin-left: 3rem;
+	font-style: italic;
+}
+
+.varlist {
+	margin-left: 3rem;
+}
+
+table.tabledef {
+	border-spacing: 0px;
+	border: none;
+	font-size: 1em;
+	width: 100%
+}
+
+table.tabledef td,
+table.tabledef th {
+	border: none;
+	background-color: rgb(236, 246, 255);
+	color: rgb(0, 0, 0);
+	padding: 0.3em;
+	vertical-align: top;
+}
+
+table.tabledef th {
+	text-align: left;
+	vertical-align: top;
+	width: 8em;
+	padding-left: 1em;
+}
+
+table.tabledef th {
+	border-left: 5px solid rgb(145, 200, 255);
+}
+
+table.tabledef td {
+	padding: 3px 3px 3px 10px;
+}
+
+table.tabledef td > p:first-child {
+	padding: 0em;
+	margin: 0em
+}
+
+table.tabledef th {
+	font-weight: normal;
+	font-style: italic;
+}
+
+
+/*  EBNF tables */
+
+
+table.productionset {
+    border: none;
+    border-left: 5px solid rgb(145,200,255);
+    background-color: rgb(236,246,255);
+}
+
+table.productionset caption {
+	text-align: left;
+	font-size: 80%;
+	font-style: normal;
+}
+
+table.productionset tbody tr {
+    border: none;
+}
+
+table.productionset tbody tr td {
+    border: none;
+    padding: 0.5em;
+    border-bottom: 1px solid #ddd;
+}
+
+table.productionset tbody tr td a {
+    text-decoration: none;
+    border-bottom: 1px dotted #000090;
+}
+
+table.productionset tbody tr td a:hover {
+    text-decoration: underline;
+}
+
+table.productionset tbody tr td a:visited,
+table.productionset tbody tr td a:active,
+table.productionset tbody tr td a:hover {
+    color: #000090;
+}
+
+a.deprecated,
+a.legacy {
+	font-size: 85%;
+	text-transform: uppercase;
+}
+	</style>
+	</head>
 	<body class="h-entry" data-cite="epub-33"><div class="head">
     <p class="logos"><a class="logo" href="https://daisy.org"><img crossorigin="" alt="DAISY Consortium logo" height="100" src="https://daisy.github.io/ebraille/common/images/daisy_high.jpg" width="112">
   </a></p>

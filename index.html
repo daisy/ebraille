@@ -7,6 +7,7 @@
 		<script src="common/js/status.js" class="remove"></script>
 		<script src="common/js/copyright.js" class="remove"></script>
 		<script src="common/js/examples.js" class="remove"></script>
+		<script src="common/js/css-inline.js" class="remove"></script>
 		<script class="remove">
 			//<![CDATA[
 			var respecConfig = {
@@ -60,7 +61,8 @@
 					}
 				],
 				github: 'daisy/ebraille',
-				postProcess: [addDAISYStatus,addCopyrightYear,fixExampleHeaders],
+                preProcess:[inlineCustomCSS],
+				postProcess: [addDAISYStatus,addCopyrightYear,fixExampleHeaders,embedCSS],
 				xref: ["epub-33"],
 				localBiblio: {
 					"code-registry" : {
@@ -101,7 +103,6 @@
 			};
 			// ]]>
 		</script>
-		<link rel="stylesheet" href="common/css/common.css" class="remove" />
 	</head>
 	<body>
 		<p class="copyright">Copyright &#169; DAISY Consortium <span id="copyYear">2023</span></p>

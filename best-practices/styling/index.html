@@ -7,6 +7,7 @@
 		<script src="../../common/js/status.js" class="remove"></script>
 		<script src="../../common/js/copyright.js" class="remove"></script>
 		<script src="../../common/js/examples.js" class="remove"></script>
+		<script src="../../common/js/css-inline.js" class="remove"></script>
 		<script type="text/javascript" src="replaceTaggingLinks.js" class="remove"></script>
 		<script type="text/javascript" src="replaceBrfLinks.js" class="remove"></script>
 		<script type="text/javascript" src="js-renderer-prototype/index.js" class="remove"></script>
@@ -44,7 +45,7 @@
 					}
 				],
 				github: 'daisy/ebraille',
-				preProcess: [replaceTaggingLinks, replaceBrfLinks],
+				preProcess: [replaceTaggingLinks, replaceBrfLinks, inlineCustomCSS],
 				postProcess: [addDAISYStatus, validateExamples, addCopyrightYear, fixExampleHeaders],
 				localBiblio: {
 					"ebraille": {
@@ -111,7 +112,6 @@
 			};
 			// ]]>
 		</script>
-		<link rel="stylesheet" href="../../common/css/common.css" class="remove" />
 		<style type="text/css">
 			/*<![CDATA[*/
 			/* FIXME: these @font-face declarations from js-renderer-prototype/base.css must be
