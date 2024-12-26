@@ -105,6 +105,12 @@
 					"css-break": {
 						aliasOf: "css-break-3"
 					},
+					"css-display": {
+						aliasOf: "css-display-3"
+					},
+					"css-tables": {
+						aliasOf: "css-tables-3"
+					},
 					"css2": {
 						aliasOf: "CSS22-20160412"
 					}
@@ -270,6 +276,8 @@
    margin: 0;
    padding: 0;
    border: none;
+   text-align: left;
+   vertical-align: baseline;
    list-style: none;
    color: black;
    text-decoration: none;
@@ -796,10 +804,8 @@ ol ol li {
 				<!--<div class="issue" title="Seeking an example of a list with aligned list items and
 					bullets/numbers"><span/></div>-->
 
-				<div class="issue" title="Cover spatial layout of tables">
-					<span>Spatial layout of tabular data that is marked up using the [[html]]
-					<a data-cite="html#the-table-element"><code>table</code></a></span> element,
-					is not covered yet in these best practices.</div>
+				<div class="issue" title="Seeking an example of a spatial table with cells or
+				headers running on multiple lines"><span/></div>
 
 				<p>The following example shows how
 					the <a data-cite="css-text#text-align-property"><code>text-align</code></a>
@@ -843,7 +849,7 @@ h1 {
 							‘text-indent’ property</a></li>
 						</ul>
 					</details>
-				</aside><!--
+				</aside>
 
 				<!-- this example is commented out because it doesn't add anything new -->
 				<!--<aside class="example" title="Centered heading with a title and subtitle on different lines">
@@ -891,7 +897,7 @@ header > p {
 				</aside>-->
 
 				<p>The following example shows how content may be spatially arranged using the flexible box
-					layout module [[css-flexbox]].
+					layout model [[css-flexbox]].
 					<a data-cite="css-flexbox#flex-grow-property"><code>flex-grow</code></a> is used to align
 					content
 					horizontally. <a data-cite="css-flexbox#align-items-property"><code>align-self</code></a>
@@ -904,7 +910,7 @@ header > p {
 					<a class="tagging-link"
 					   href="../tagging/index.html#example-a-table-of-contents-with-links"></a>
 					<p>Notice the <code>span</code> elements around the chapter names: these are needed to
-						correctly style the table. Using the flexible box layout module, tables of contents
+						correctly style the table. Using the flexible box layout model, tables of contents
 						can be correctly formatted, including runovers and guide dots. It however comes at
 						the price of a slightly increased complexity of the markup.
 						<!-- Note that the spans would not be needed if scripting would be allowed,
@@ -978,6 +984,144 @@ h1 {
 						</ul>
 					</details>
 				</aside>
+
+				<p>The flexbox model focuses on space distribution within a single axis. While it
+					is capable of handling semi-two-dimensional layouts such as a <a
+					href="#example-table-of-contents">two-column table of contents</a>, true two-dimentional
+					layouts require more specialized CSS models.</p>
+
+				<p>Using the [[html]] <a data-cite="html#the-table-element"><code>table</code></a> markup for
+					tabular data, as is recommended by [[tagging]], unlocks the features provided by the <a
+					data-cite="css-tables#">CSS table model</a>. The following example shows how the data cells
+					of a simple table can be layed out on a two-axis grid.</p>
+
+				<aside class="example" title="Simple spatial table">
+					<pre><code class="html">&lt;table&gt;
+   &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th scope="col"&gt;⠠⠔⠋⠔⠊⠞⠊⠧⠑&lt;/th&gt;
+        &lt;th scope="col"&gt;⠠⠏⠁⠌&lt;/th&gt;
+        &lt;th scope="col"&gt;⠠⠏⠁⠌ ⠠⠐⠏⠊⠉⠊⠏⠇⠑&lt;/th&gt;
+      &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠁⠺⠁⠅⠑&lt;/td&gt;
+        &lt;td&gt;⠁⠺⠕⠅⠑&lt;/td&gt;
+        &lt;td&gt;⠁⠺⠕⠅⠢&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠆&lt;/td&gt;
+        &lt;td&gt;⠺⠁⠎⠂ ⠶&lt;/td&gt;
+        &lt;td&gt;⠃⠑⠢&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠃⠑⠜&lt;/td&gt;
+        &lt;td&gt;⠃⠕⠗⠑&lt;/td&gt;
+        &lt;td&gt;⠃⠕⠗⠝&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+      &lt;/tr&gt;
+   &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠠⠔⠋⠔⠊⠞⠊⠧⠑⠀⠀⠠⠏⠁⠌⠀⠀⠀⠀⠠⠏⠁⠌⠀⠠⠐⠏⠊⠉⠊⠏⠇⠑⠀⠀⠀⠀⠀⠀⠀
+⠁⠺⠁⠅⠑⠀⠀⠀⠀⠀⠀⠁⠺⠕⠅⠑⠀⠀⠀⠁⠺⠕⠅⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠺⠁⠎⠂⠀⠶⠀⠀⠃⠑⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠃⠑⠜⠀⠀⠀⠀⠀⠀⠀⠀⠃⠕⠗⠑⠀⠀⠀⠀⠃⠕⠗⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠃⠂⠞⠀⠀⠀⠀⠀⠀⠀⠀⠃⠂⠞⠀⠀⠀⠀⠀⠃⠂⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">table {
+   display: table;
+   table-layout: fixed;
+   border-collapse: separate;
+   border-spacing: 2ch 0;
+   margin: 0 -2ch; /* cancel unwanted outer spacing that border-spacing
+                      adds (in addition to the spacing between cells) */
+}</code></pre>
+					<p class="note">
+						The “<a href="#example-spatial-table-with-lines-separating-header-cells-from-body"
+						>Spatial table with lines separating header cells from body</a>” example builds
+						on this example by separating the table headers from the body using horizontal
+						lines.
+					</p>
+					<p class="note">
+						The “<a href="#example-spatial-table-with-guide-dots">Spatial table with guide
+						dots</a>” example builds on this example by filling empty horizontal space in
+						between cells with guide dots.
+					</p>
+					<details class="specification-links">
+						<summary>CSS features used in this example</summary>
+						<ul>
+							<li><a data-cite="css-display#inner-model">Inner Display Layout Models:
+							the ‘flow’, ‘flow-root’, ‘table’, ‘flex’, ‘grid’, and ‘ruby’
+							keywords</a></li>
+							<li><a data-cite="css-tables#table-layout-property">The ‘table-layout’
+							property</a></li>
+							<li><a data-cite="css-tables#border-collapse-property">The
+							‘border-collapse’ property</a></li>
+							<li><a data-cite="css-tables#propdef-border-spacing">The
+							‘border-spacing’ property</a></li>
+							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+							‘margin-left’ properties</a></li>
+						</ul>
+					</details>
+				</aside>
+
+				<!-- this example is commented out because it doesn't add anything new -->
+				<!--<aside class="example" title="Simple spatial table">
+					<pre><code class="html">&lt;table&gt;
+   &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th scope="col"&gt;⠠⠁⠝⠊⠍⠁⠇&lt;/th&gt;
+        &lt;th scope="col"&gt;⠠⠇⠰⠛⠑⠌ ⠠⠇⠊⠋⠑ ⠠⠎⠏⠁⠝&lt;/th&gt;
+      &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠋⠗⠥⠊⠞ ⠋⠇⠽&lt;/td&gt;
+        &lt;td&gt;⠼⠑⠚ ⠐⠙⠎&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠡⠊⠍⠏⠁⠝⠵⠑⠑&lt;/td&gt;
+        &lt;td&gt;⠼⠉⠊ ⠽⠑⠜⠎&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠃⠇⠥⠑ ⠱⠁⠇⠑&lt;/td&gt;
+        &lt;td&gt;⠼⠊⠚ ⠽⠑⠜⠎&lt;/td&gt;
+      &lt;/tr&gt;
+   &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠠⠁⠝⠊⠍⠁⠇⠀⠀⠀⠀⠠⠇⠰⠛⠑⠌⠀⠠⠇⠊⠋⠑⠀⠠⠎⠏⠁⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠐⠒⠒⠒⠒⠒⠒⠒⠒⠀⠀⠐⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠋⠗⠥⠊⠞⠀⠋⠇⠽⠀⠀⠼⠑⠚⠀⠐⠙⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠡⠊⠍⠏⠁⠝⠵⠑⠑⠀⠀⠼⠉⠊⠀⠽⠑⠜⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠃⠇⠥⠑⠀⠱⠁⠇⠑⠀⠀⠼⠊⠚⠀⠽⠑⠜⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">table {
+   display: table;
+   table-layout: fixed;
+   border-collapse: separate;
+   border-spacing: 2ch 0;
+   margin: 0 -2ch;
+}
+th {
+   border-style: solid;
+   border-width: 0 0 1rem 1ch;
+   border-image-source: url("border-images/⠀⠀⠀⠀⠀⠒⠐⠀.png");
+   border-image-slice: 33.34%;
+   border-image-repeat: round round;
+}
+th::before {
+   margin-left: -1ch;
+   content: "";
+}</code></pre>
+				</aside>-->
 			</section>
 
 			<section id="text-spacing">
@@ -1160,10 +1304,10 @@ p {
 			<section id="line-breaking">
 				<h3>Wrapping and breaking text</h3>
 
-				<div class="issue" data-number="51" title="Seeking an example of the Unicode line breaking
+				<div class="issue" data-number="51" title="Cover Unicode line breaking
 				properties of the soft hyphen character"><span/></div>
 
-				<div class="issue" data-number="150" title="Seeking an example of the Unicode line breaking
+				<div class="issue" data-number="150" title="Cover Unicode line breaking
 				properties of the no-break space character"><span/></div>
 
 				<p>Sometimes it is necessary to break long words across rows, to save space, or
@@ -1618,7 +1762,7 @@ h2 {
 				<div class="issue" data-number="96" title="Seeking an example of shrinking a block
 				with a border to fit the content"><span/></div>
 
-				<div class="issue" data-number="95" title="Seeking an example of a horizontal line
+				<div class="issue" data-number="95" title="Cover horizontal line
 				of type &quot;end marker&quot;"><span/></div>
 
 				<p>Different approaches to creating lines exist. The recommended approach for border
@@ -1676,9 +1820,9 @@ h2 {
 						<p>As <a data-cite="ebraille#res-location">eBraille does not support remote
 							resources</a>, the image can not be referenced directly from the style sheet
 							through this URL. An additional step is required: the image must be
-							downloaded and placed in or below the root directory</a> of the
-							publication. (Note that in theory a <code>data:</code> URL scheme may also
-							be used to embed the image in the style sheet.)</p>
+							downloaded and placed in or below the root directoryof the publication.
+							(Note that in theory a <code>data:</code> URL scheme may also be used to
+							embed the image in the style sheet.)</p>
 					</aside>
 
 					<div class="issue" title="The web service for generating border images is not available yet"></div>
@@ -1710,6 +1854,107 @@ p {
 								properties</a></li>
 								<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
 								‘text-indent’ property</a></li>
+							</ul>
+						</details>
+					</aside>
+
+					<p>The next example builds onto the “<a
+						href="#example-simple-spatial-table">Simple spatial table</a>” example by
+						adding horizontal lines separating the headers of the table from the body. What
+						is special about the lines in this example is that they start with a single dot
+						5 cell before going into a dot 25 pattern. The first cell is represented by the
+						bottom left corner of the border image, the rest by the bottom center side. An
+						empty <code>::before</code> pseudo-element is used to shift the content one
+						character to the left, so that it aligns with the outer left side of the
+						border.</p>
+
+					<aside class="example"
+					       title="Spatial table with lines separating header cells from body">
+						<span>Refer to the “<a href="#example-simple-spatial-table">Simple spatial
+							table</a>” example:</span>
+						<pre><code class="html">&lt;table&gt;
+   &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th scope="col"&gt;⠠⠔⠋⠔⠊⠞⠊⠧⠑&lt;/th&gt;
+        &lt;th scope="col"&gt;⠠⠏⠁⠌&lt;/th&gt;
+        &lt;th scope="col"&gt;⠠⠏⠁⠌ ⠠⠐⠏⠊⠉⠊⠏⠇⠑&lt;/th&gt;
+      &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠁⠺⠁⠅⠑&lt;/td&gt;
+        &lt;td&gt;⠁⠺⠕⠅⠑&lt;/td&gt;
+        &lt;td&gt;⠁⠺⠕⠅⠢&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠆&lt;/td&gt;
+        &lt;td&gt;⠺⠁⠎⠂ ⠶&lt;/td&gt;
+        &lt;td&gt;⠃⠑⠢&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠃⠑⠜&lt;/td&gt;
+        &lt;td&gt;⠃⠕⠗⠑&lt;/td&gt;
+        &lt;td&gt;⠃⠕⠗⠝&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+      &lt;/tr&gt;
+   &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<pre><code class="formatted-braille">⠠⠔⠋⠔⠊⠞⠊⠧⠑⠀⠀⠠⠏⠁⠌⠀⠀⠀⠀⠠⠏⠁⠌⠀⠠⠐⠏⠊⠉⠊⠏⠇⠑⠀⠀⠀⠀⠀⠀⠀
+⠐⠒⠒⠒⠒⠒⠒⠒⠒⠀⠀⠐⠒⠒⠒⠒⠒⠀⠀⠐⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀
+⠁⠺⠁⠅⠑⠀⠐⠐⠐⠀⠀⠁⠺⠕⠅⠑⠀⠀⠀⠁⠺⠕⠅⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠆⠀⠐⠐⠐⠐⠐⠐⠐⠀⠀⠺⠁⠎⠂⠀⠶⠀⠀⠃⠑⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠃⠑⠜⠀⠐⠐⠐⠐⠐⠀⠀⠃⠕⠗⠑⠀⠀⠀⠀⠃⠕⠗⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠃⠂⠞⠀⠐⠐⠐⠐⠐⠀⠀⠃⠂⠞⠀⠐⠐⠀⠀⠃⠂⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+						<p>the following CSS style sheet may be applied:</p>
+						<pre><code class="css" data-page-width="40">table {
+   display: table;
+   table-layout: fixed;
+   border-collapse: separate;
+   border-spacing: 2ch 0;
+   margin: 0 -2ch;
+}
+th {
+   border-style: solid;
+   border-width: 0 0 1rem 1ch;
+   border-image-source: url("border-images/⠀⠀⠀⠀⠀⠒⠐⠀.png");
+   border-image-slice: 33.34%;
+   border-image-repeat: round round;
+}
+/* shift content of th one character to the left so that it aligns
+   with the ⠐ (dot 5) of the bottom left border */
+th::before {
+   margin-left: -1ch;
+   content: "";
+}</code></pre>
+						<details class="specification-links">
+							<summary>CSS features used in this example</summary>
+							<ul>
+								<li><a data-cite="css-backgrounds#border-images">Border Images</a></li>
+								<li><a data-cite="css-backgrounds#border-style">Line Patterns: the
+								‘border-style’ properties</a></li>
+								<li><a data-cite="css-backgrounds#border-width">Line Thickness: the
+								‘border-width’ properties</a></li>
+								<li><a data-cite="css-pseudo#generated-content">Generated Content
+								Pseudo-elements: ‘::before’ and ‘::after’</a></li>
+								<li><a data-cite="css-content#content-property">Inserting and replacing
+								content with the ‘content’ property</a></li>
+								<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+								Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+								‘margin-left’ properties</a></li>
+								<li><a data-cite="css-display#inner-model">Inner Display Layout Models:
+								the ‘flow’, ‘flow-root’, ‘table’, ‘flex’, ‘grid’, and ‘ruby’
+								keywords</a></li>
+								<li><a data-cite="css-tables#table-layout-property">The ‘table-layout’
+								property</a></li>
+								<li><a data-cite="css-tables#border-collapse-property">The
+								‘border-collapse’ property</a></li>
+								<li><a data-cite="css-tables#propdef-border-spacing">The
+								‘border-spacing’ property</a></li>
 							</ul>
 						</details>
 					</aside>
@@ -2053,7 +2298,7 @@ h1 {
 						</details>
 					</aside>
 
-					<p>Guide dots may also be used within a table layout, as the following examples shows.</p>
+					<p>Guide dots may also be used within a table layout, as the following examples show.</p>
 
 					<aside class="example" title="Table of contents with guide dots">
 						<a class="tagging-link"
@@ -2146,6 +2391,108 @@ h1 {
 							</ul>
 						</details>
 					</aside>
+
+					<aside class="example" title="Spatial table with guide dots">
+						<span>Refer to the “<a href="#example-simple-spatial-table">Simple spatial
+							table</a>” example:</span>
+						<pre><code class="html">&lt;table&gt;
+   &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th scope="col"&gt;⠠⠔⠋⠔⠊⠞⠊⠧⠑&lt;/th&gt;
+        &lt;th scope="col"&gt;⠠⠏⠁⠌&lt;/th&gt;
+        &lt;th scope="col"&gt;⠠⠏⠁⠌ ⠠⠐⠏⠊⠉⠊⠏⠇⠑&lt;/th&gt;
+      &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠁⠺⠁⠅⠑&lt;/td&gt;
+        &lt;td&gt;⠁⠺⠕⠅⠑&lt;/td&gt;
+        &lt;td&gt;⠁⠺⠕⠅⠢&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠆&lt;/td&gt;
+        &lt;td&gt;⠺⠁⠎⠂ ⠶&lt;/td&gt;
+        &lt;td&gt;⠃⠑⠢&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠃⠑⠜&lt;/td&gt;
+        &lt;td&gt;⠃⠕⠗⠑&lt;/td&gt;
+        &lt;td&gt;⠃⠕⠗⠝&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+      &lt;/tr&gt;
+   &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+						<p>In order to obtain the following desired layout for the above HTML code,</p>
+						<pre><code class="formatted-braille">⠠⠔⠋⠔⠊⠞⠊⠧⠑⠀⠀⠠⠏⠁⠌⠀⠀⠀⠀⠠⠏⠁⠌⠀⠠⠐⠏⠊⠉⠊⠏⠇⠑⠀⠀⠀⠀⠀⠀⠀
+⠐⠒⠒⠒⠒⠒⠒⠒⠒⠀⠀⠐⠒⠒⠒⠒⠒⠀⠀⠐⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠒⠀⠀⠀⠀⠀⠀⠀
+⠁⠺⠁⠅⠑⠀⠐⠐⠐⠀⠀⠁⠺⠕⠅⠑⠀⠀⠀⠁⠺⠕⠅⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠆⠀⠐⠐⠐⠐⠐⠐⠐⠀⠀⠺⠁⠎⠂⠀⠶⠀⠀⠃⠑⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠃⠑⠜⠀⠐⠐⠐⠐⠐⠀⠀⠃⠕⠗⠑⠀⠀⠀⠀⠃⠕⠗⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠃⠂⠞⠀⠐⠐⠐⠐⠐⠀⠀⠃⠂⠞⠀⠐⠐⠀⠀⠃⠂⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+						<p>the following CSS style sheet may be applied:</p>
+						<pre><code class="css" data-page-width="40">table {
+   display: table;
+   table-layout: fixed;
+   border-collapse: separate;
+   border-spacing: 2ch 0;
+   margin: 0 -2ch;
+}
+th {
+   border-style: solid;
+   border-width: 0 0 1rem 1ch;
+   border-image-source: url("border-images/⠀⠀⠀⠀⠀⠒⠐⠀.png");
+   border-image-slice: 33.34%;
+   border-image-repeat: round round;
+}
+th::before {
+   margin-left: -1ch;
+   content: "";
+}
+td:has(+ td) {
+   overflow: hidden;
+}
+td:has(+ td)::after {
+   display: inline-block;
+   width: 0ch;
+   content: "\A0⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐⠐";
+}</code></pre>
+					</aside>
+					<details class="specification-links">
+						<summary>CSS features used in this example</summary>
+						<ul>
+							<li><a data-cite="css-overflow#overflow-control">Managing Overflow: the
+							‘overflow-x’, ‘overflow-y’, and ‘overflow’ properties</a></li>
+							<li><a data-cite="css-sizing#preferred-size-properties">Preferred Size Properties:
+							the ‘width’ and ‘height’ properties</a></li>
+							<li><a data-cite="css-pseudo#generated-content">Generated Content
+							Pseudo-elements: ‘::before’ and ‘::after’</a></li>
+							<li><a data-cite="css-content#content-property">Inserting and replacing
+							content with the ‘content’ property</a></li>
+							<li><a data-cite="selectors#relational">The Relational Pseudo-class:
+							‘:has()’</a></li>
+							<li><a data-cite="css-display#inner-model">Inner Display Layout Models:
+							the ‘flow’, ‘flow-root’, ‘table’, ‘flex’, ‘grid’, and ‘ruby’
+							keywords</a></li>
+							<li><a data-cite="css-tables#table-layout-property">The ‘table-layout’
+							property</a></li>
+							<li><a data-cite="css-tables#border-collapse-property">The
+							‘border-collapse’ property</a></li>
+							<li><a data-cite="css-tables#propdef-border-spacing">The
+							‘border-spacing’ property</a></li>
+							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+							‘margin-left’ properties</a></li>
+							<li><a data-cite="css-backgrounds#border-images">Border Images</a></li>
+							<li><a data-cite="css-backgrounds#border-style">Line Patterns: the
+							‘border-style’ properties</a></li>
+							<li><a data-cite="css-backgrounds#border-width">Line Thickness: the
+							‘border-width’ properties</a></li>
+						</ul>
+					</details>
 				</section>
 
 				<section id="border-style">
@@ -2412,10 +2759,18 @@ p {
 			<section id="tables">
 				<h3>Rendering of tables</h3>
 
+				<p>This section focuses on tabular (i.e. two-dimensional) data that is marked up
+					using the [[html]] <a data-cite="html#the-table-element"><code>table</code></a>
+					element. Depending on the type of information and the size, tabular data may
+					best be represented two-dimensionally (“spatially”), or
+					one-dimensionally. Two-dimensional layout of tables is covered in <a
+					href="#alignment">Alignment, positioning and spatial arrangement</a>. Methods
+					for one-dimensional representation of tables are discussed below. This section
+					also deals with special handling of table headers and footers.</p>
+
 				<div class="ednote">
 					<p>This section will contain guidance for formatting requirements such as:</p>
 					<ul>
-						<li>spatial layout of a table (see <a href="#alignment">Alignment</a>)</li>
 						<li>laying out a table as a list</li>
 						<li>abbreviating table headings</li>
 						<li>repeating table headers/footers on subsequent pages (in paged mode)</li>
