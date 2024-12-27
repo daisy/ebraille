@@ -2757,7 +2757,8 @@ p {
 			</section>
 
 			<section id="tables">
-				<h3>Rendering of tables</h3>
+				<!--<h3>Rendering of tables</h3>-->
+				<h3>Alternate table formats</h3>
 
 				<p>This section focuses on tabular (i.e. two-dimensional) data that is marked up
 					using the [[html]] <a data-cite="html#the-table-element"><code>table</code></a>
@@ -2768,18 +2769,6 @@ p {
 					for one-dimensional representation of tables are discussed below. This section
 					also deals with special handling of table headers and footers.</p>
 
-				<div class="ednote">
-					<p>This section will contain guidance for formatting requirements such as:</p>
-					<ul>
-						<li>laying out a table as a list</li>
-						<li>abbreviating table headings</li>
-						<li>repeating table headers/footers on subsequent pages (in paged mode)</li>
-						<li>sticky table headers/footers (in scrolling mode)</li>
-					</ul>
-				</div>
-
-				<div class="issue" title="Cover layout of tables as lists"><span/></div>
-
 				<div class="issue" data-number="23" title="Seeking an example of abbreviating table
 				headings"><span/></div>
 
@@ -2788,6 +2777,290 @@ p {
 
 				<div class="issue" title="Seeking an example of sticky table headers/footers (in scrolling
 				mode)"><span/></div>
+
+				<p>A first way of presenting tables one-dimensionally is by “linearizing” them. The
+					linear table format is a flat list, where each list item represents one table row,
+					with all the cells (columns) of that row joined with separators in between. How this
+					can be accomplished with CSS is illustrated in the following example:</p>
+
+				<aside class="example" title="Table presented as linear with a transcriber's note">
+					<pre><code class="html">&lt;table class="linear"&gt;
+   &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th scope="col"&gt;⠠⠔⠋⠔⠊⠞⠊⠧⠑&lt;/th&gt;
+        &lt;th scope="col"&gt;⠠⠏⠁⠌&lt;/th&gt;
+        &lt;th scope="col"&gt;⠠⠏⠁⠌ ⠠⠐⠏⠊⠉⠊⠏⠇⠑&lt;/th&gt;
+      &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠁⠺⠁⠅⠑&lt;/td&gt;
+        &lt;td&gt;⠁⠺⠕⠅⠑&lt;/td&gt;
+        &lt;td&gt;⠁⠺⠕⠅⠢&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠆&lt;/td&gt;
+        &lt;td&gt;⠺⠁⠎⠂ ⠶&lt;/td&gt;
+        &lt;td&gt;⠃⠑⠢&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠃⠑⠜&lt;/td&gt;
+        &lt;td&gt;⠃⠕⠗⠑&lt;/td&gt;
+        &lt;td&gt;⠃⠕⠗⠝&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+      &lt;/tr&gt;
+   &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠈⠨⠣⠠⠉⠕⠇⠥⠍⠝⠎⠀⠋⠕⠇⠇⠪⠀⠐⠕⠀⠁⠝⠕⠮⠗⠀⠔⠀⠹⠀⠀⠀⠀
+⠀⠀⠀⠀⠕⠗⠙⠻⠒⠈⠨⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠔⠋⠔⠊⠞⠊⠧⠑⠒⠀⠠⠏⠁⠌⠆⠀⠠⠏⠁⠌⠀⠠⠐⠏⠊⠉⠊⠏⠇⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠁⠺⠁⠅⠑⠒⠀⠁⠺⠕⠅⠑⠆⠀⠁⠺⠕⠅⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠆⠒⠀⠺⠁⠎⠂⠀⠶⠆⠀⠃⠑⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠃⠑⠜⠒⠀⠃⠕⠗⠑⠆⠀⠃⠕⠗⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠃⠂⠞⠒⠀⠃⠂⠞⠆⠀⠃⠂⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">table.linear,
+table.linear thead,
+table.linear tbody,
+table.linear tr {
+   display: block;
+}
+table.linear::before {
+   display: block;
+   content: "⠈⠨⠣⠠⠉⠕⠇⠥⠍⠝⠎ ⠋⠕⠇⠇⠪ ⠐⠕ ⠁⠝⠕⠮⠗ ⠔ ⠹ ⠕⠗⠙⠻⠒⠈⠨⠜";
+   margin-left: 4ch;
+   text-indent: 2ch;
+}
+table.linear thead {
+   margin-bottom: 1rem;
+}
+table.linear td,
+table.linear th {
+   display: inline;
+}
+table.linear td:has(+ td)::after,
+table.linear th:has(+ th)::after {
+   content: "⠆";
+}
+table.linear td:first-child::after,
+table.linear th:first-child::after {
+   content: "⠒";
+}</code></pre>
+					<details class="specification-links">
+						<summary>CSS features used in this example</summary>
+						<ul>
+							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+							‘margin-left’ properties</a></li>
+							<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
+							‘text-indent’ property</a></li>
+							<li><a data-cite="css-pseudo#generated-content">Generated Content
+							Pseudo-elements: ‘::before’ and ‘::after’</a></li>
+							<li><a data-cite="css-content#content-property">Inserting and replacing
+							content with the ‘content’ property</a></li>
+							<li><a data-cite="selectors#relational">The Relational Pseudo-class:
+							‘:has()’</a></li>
+							<li><a data-cite="selectors#the-first-child-pseudo">‘:first-child’
+							pseudo-class</a></li>
+						</ul>
+					</details>
+				</aside>
+
+				<p>For formatting tables as nested lists —with outer list items representing table
+					rows and inner list items representing table cells— refer to the next
+					example. Notice how the increasing indentation of the inner list items
+					makes this a kind of two-dimensional format, albeit very different from a
+					<a href="#example-simple-spatial-table">true two-dimensional</a> one.</p>
+
+				<aside class="example" title="Table presented as stairstep with transcriber's note">
+					<pre><code class="html">&lt;table class="stairstep"&gt;
+   &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th scope="col"&gt;⠠⠔⠋⠔⠊⠞⠊⠧⠑&lt;/th&gt;
+        &lt;th scope="col"&gt;⠠⠏⠁⠌&lt;/th&gt;
+        &lt;th scope="col"&gt;⠠⠏⠁⠌ ⠠⠐⠏⠊⠉⠊⠏⠇⠑&lt;/th&gt;
+      &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠁⠺⠁⠅⠑&lt;/td&gt;
+        &lt;td&gt;⠁⠺⠕⠅⠑&lt;/td&gt;
+        &lt;td&gt;⠁⠺⠕⠅⠢&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠆&lt;/td&gt;
+        &lt;td&gt;⠺⠁⠎⠂ ⠶&lt;/td&gt;
+        &lt;td&gt;⠃⠑⠢&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠃⠑⠜&lt;/td&gt;
+        &lt;td&gt;⠃⠕⠗⠑&lt;/td&gt;
+        &lt;td&gt;⠃⠕⠗⠝&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+      &lt;/tr&gt;
+   &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠈⠨⠣⠠⠞⠁⠃⠇⠑⠀⠡⠁⠝⠛⠫⠀⠵⠀⠋⠕⠇⠇⠪⠎⠒⠈⠨⠜⠀⠀⠀⠀⠀⠀
+⠠⠔⠋⠔⠊⠞⠊⠧⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠠⠏⠁⠌⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠠⠏⠁⠌⠀⠠⠐⠏⠊⠉⠊⠏⠇⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠁⠺⠁⠅⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠁⠺⠕⠅⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠁⠺⠕⠅⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠺⠁⠎⠂⠀⠶⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠃⠑⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠃⠑⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠃⠕⠗⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠃⠕⠗⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠃⠂⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠃⠂⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠃⠂⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">table.stairstep,
+table.stairstep thead,
+table.stairstep tbody,
+table.stairstep tr,
+table.stairstep td,
+table.stairstep th {
+   display: block;
+}
+table.stairstep::before {
+   display: block;
+   content: "⠈⠨⠣⠠⠞⠁⠃⠇⠑ ⠡⠁⠝⠛⠫ ⠵ ⠋⠕⠇⠇⠪⠎⠒⠈⠨⠜";
+   margin-left: 4ch;
+   text-indent: 2ch;
+}
+table.stairstep thead {
+   margin-bottom: 1rem;
+}
+table.stairstep td:nth-child(2),
+table.stairstep th:nth-child(2) {
+   margin-left: 2ch;
+}
+table.stairstep td:nth-child(3),
+table.stairstep th:nth-child(3) {
+   margin-left: 4ch;
+}
+table.stairstep td:nth-child(4),
+table.stairstep th:nth-child(4) {
+   margin-left: 6ch;
+}
+table.stairstep td:nth-child(5),
+table.stairstep th:nth-child(5) {
+   margin-left: 8ch;
+}
+table.stairstep td:nth-child(6),
+table.stairstep th:nth-child(6) {
+   margin-left: 10ch;
+}</code></pre>
+					<details class="specification-links">
+						<summary>CSS features used in this example</summary>
+						<ul>
+							<li><a data-cite="css-box#margin-physical">Page-relative (Physical) Margin
+							Properties: the ‘margin-top’, ‘margin-right’, ‘margin-bottom’, and
+							‘margin-left’ properties</a></li>
+							<li><a data-cite="css-text#text-indent-property">First Line Indentation: the
+							‘text-indent’ property</a></li>
+							<li><a data-cite="css-pseudo#generated-content">Generated Content
+							Pseudo-elements: ‘::before’ and ‘::after’</a></li>
+							<li><a data-cite="css-content#content-property">Inserting and replacing
+							content with the ‘content’ property</a></li>
+							<li><a data-cite="selectors#relational">The Relational Pseudo-class:
+							‘:has()’</a></li>
+							<li><a data-cite="selectors#the-nth-child-pseudo">‘:nth-child()’
+							pseudo-class</a></li>
+						</ul>
+					</details>
+				</aside>
+
+				<!-- this example is commented out because it can not be handled with CSS -->
+				<!--
+				<aside class="example" title="Table presented as list with a transcriber's note">
+					<pre><code class="html">&lt;table class="listed"&gt;
+   &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th scope="col"&gt;⠠⠔⠋⠔⠊⠞⠊⠧⠑&lt;/th&gt;
+        &lt;th scope="col"&gt;⠠⠏⠁⠌&lt;/th&gt;
+        &lt;th scope="col"&gt;⠠⠏⠁⠌ ⠠⠐⠏⠊⠉⠊⠏⠇⠑&lt;/th&gt;
+      &lt;/tr&gt;
+   &lt;/thead&gt;
+   &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠁⠺⠁⠅⠑&lt;/td&gt;
+        &lt;td&gt;⠁⠺⠕⠅⠑&lt;/td&gt;
+        &lt;td&gt;⠁⠺⠕⠅⠢&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠆&lt;/td&gt;
+        &lt;td&gt;⠺⠁⠎⠂ ⠶&lt;/td&gt;
+        &lt;td&gt;⠃⠑⠢&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠃⠑⠜&lt;/td&gt;
+        &lt;td&gt;⠃⠕⠗⠑&lt;/td&gt;
+        &lt;td&gt;⠃⠕⠗⠝&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+        &lt;td&gt;⠃⠂⠞&lt;/td&gt;
+      &lt;/tr&gt;
+   &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+					<p>In order to obtain the following desired layout for the above HTML code,</p>
+					<pre><code class="formatted-braille">⠀⠀⠀⠀⠀⠀⠈⠨⠣⠠⠏⠗⠔⠞⠀⠿⠍⠁⠞⠀⠊⠎⠀⠡⠁⠝⠛⠫⠲⠀⠠⠗⠪⠀⠓⠂⠙⠬⠎⠀
+⠀⠀⠀⠀⠜⠑⠀⠃⠇⠕⠉⠅⠫⠀⠔⠀⠉⠑⠇⠇⠀⠼⠑⠆⠀⠉⠕⠇⠥⠍⠝⠀⠓⠂⠙⠬⠎⠀⠀⠀
+⠀⠀⠀⠀⠆⠛⠔⠀⠔⠀⠉⠑⠇⠇⠀⠼⠁⠲⠀⠠⠁⠇⠇⠀⠓⠂⠙⠬⠎⠀⠜⠑⠀⠗⠑⠏⠂⠞⠫⠀
+⠀⠀⠀⠀⠿⠀⠉⠇⠜⠰⠽⠲⠀⠠⠁⠀⠉⠕⠇⠕⠝⠀⠎⠑⠏⠜⠁⠞⠑⠎⠀⠓⠂⠙⠬⠎⠀⠋⠀⠀
+⠀⠀⠀⠀⠞⠁⠃⠇⠑⠀⠢⠞⠗⠊⠑⠎⠲⠈⠨⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠠⠔⠋⠔⠊⠞⠊⠧⠑⠒⠀⠁⠺⠁⠅⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠏⠁⠌⠒⠀⠁⠺⠕⠅⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠏⠁⠌⠀⠠⠐⠏⠊⠉⠊⠏⠇⠑⠒⠀⠁⠺⠕⠅⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠠⠔⠋⠔⠊⠞⠊⠧⠑⠒⠀⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠏⠁⠌⠒⠀⠺⠁⠎⠂⠀⠶⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠏⠁⠌⠀⠠⠐⠏⠊⠉⠊⠏⠇⠑⠒⠀⠃⠑⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠠⠔⠋⠔⠊⠞⠊⠧⠑⠒⠀⠃⠑⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠏⠁⠌⠒⠀⠃⠕⠗⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠏⠁⠌⠀⠠⠐⠏⠊⠉⠊⠏⠇⠑⠒⠀⠃⠕⠗⠝⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠠⠔⠋⠔⠊⠞⠊⠧⠑⠒⠀⠃⠂⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠏⠁⠌⠒⠀⠃⠂⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠠⠏⠁⠌⠀⠠⠐⠏⠊⠉⠊⠏⠇⠑⠒⠀⠃⠂⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</code></pre>
+					<p>the following CSS style sheet may be applied:</p>
+					<pre><code class="css" data-page-width="40">table.listed,
+table.listed thead,
+table.listed tbody,
+table.listed tr,
+table.listed td,
+table.listed th {
+   display: block;
+}
+table.listed::before {
+   display: block;
+   content: "⠈⠨⠣⠠⠏⠗⠔⠞ ⠿⠍⠁⠞ ⠊⠎ ⠡⠁⠝⠛⠫⠲ ⠠⠗⠪ ⠓⠂⠙⠬⠎ ⠜⠑ ⠃⠇⠕⠉⠅⠫ ⠔ ⠉⠑⠇⠇ "
+            "⠼⠑⠆ ⠉⠕⠇⠥⠍⠝ ⠓⠂⠙⠬⠎ ⠆⠛⠔ ⠔ ⠉⠑⠇⠇ ⠼⠁⠲ ⠠⠁⠇⠇ ⠓⠂⠙⠬⠎ ⠜⠑ ⠗⠑⠏⠂⠞⠫ "
+            "⠿ ⠉⠇⠜⠰⠽⠲ ⠠⠁ ⠉⠕⠇⠕⠝ ⠎⠑⠏⠜⠁⠞⠑⠎ ⠓⠂⠙⠬⠎ ⠋ ⠞⠁⠃⠇⠑ ⠢⠞⠗⠊⠑⠎⠲⠈⠨⠜";
+   margin-left: 4ch;
+   text-indent: 2ch;
+   margin-bottom: 1rem;
+}</code></pre>
+				</aside>-->
 			</section>
 
 			<!--<section id="counters">
