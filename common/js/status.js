@@ -14,9 +14,9 @@ function addDAISYStatus() {
 		'ed': 'Editor\'s Draft',
 		'fpwd': 'First Public Working Draft',
 		'wd': 'Working Draft',
-		'cr': 'Candidate Recommendation',
-		'pr': 'Proposed Recommendation',
-		'rec': 'Recommendation',
+		'cr': 'Candidate Release',
+		'pr': 'Proposed Release',
+		'final': 'Specification',
 		'draft-note': 'Draft Working Group Note',
 		'wg-note': 'Working Group Note'
 	};
