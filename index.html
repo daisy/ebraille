@@ -1140,17 +1140,17 @@
 							utilized within that file.</p>
 					</section>
 
-					<section id="a11y:cellType">
-						<h5>a11y:cellType</h5>
+					<section id="a11y:brailleCellType">
+						<h5>a11y:brailleCellType</h5>
 
-						<p>The REQUIRED <code>a11y:cellType</code> property identifies whether the text of the
+						<p>The REQUIRED <code>a11y:brailleCellType</code> property identifies whether the text of the
 							[=eBraille publication=] is encoded using 6- or 8-dot braille characters.</p>
 
 						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
-								<code>property</code> attribute set to <code>a11y:cellType</code>.</p>
+								<code>property</code> attribute set to <code>a11y:brailleCellType</code>.</p>
 
-						<aside class="example" title="a11y:cellType for 6-dot braille">
-							<pre>&lt;meta property="a11y:cellType">
+						<aside class="example" title="a11y:brailleCellType for 6-dot braille">
+							<pre>&lt;meta property="a11y:brailleCellType">
    6
 &lt;/meta></pre>
 						</aside>
@@ -1161,8 +1161,8 @@
 						<p>If both 6- and 8-dot braille characters are used in the same file, use a comma to separate
 							the values, with the one used most often listed first.</p>
 
-						<aside class="example" title="a11y:cellType when 8-dot braille is used more than 6-dot">
-							<pre>&lt;meta property="a11y:cellType">
+						<aside class="example" title="a11y:brailleCellType when 8-dot braille is used more than 6-dot">
+							<pre>&lt;meta property="a11y:brailleCellType">
    8, 6
 &lt;/meta></pre>
 						</aside>
@@ -1538,7 +1538,7 @@
       &lt;meta property="dcterms:modified">
          2015-02-24T13:37:19Z
       &lt;/meta>
-      &lt;meta property="a11y:cellType">6&lt;/meta>
+      &lt;meta property="a11y:brailleCellType">6&lt;/meta>
       &lt;meta property="a11y:brailleSystem">UEB&lt;/meta>
       &lt;meta property="a11y:completeTranscription">
          false
@@ -2949,15 +2949,15 @@
 					</table>
 				</section>
 
-				<section id="cellType">
-					<h4>cellType</h4>
+				<section id="brailleCellType">
+					<h4>brailleCellType</h4>
 
 					<table class="tabledef">
-						<caption>Definition of the <code>cellType</code> property</caption>
+						<caption>Definition of the <code>brailleCellType</code> property</caption>
 						<tr>
 							<th>Name:</th>
 							<td>
-								<code>cellType</code>
+								<code>brailleCellType</code>
 							</td>
 						</tr>
 						<tr>
@@ -2974,7 +2974,7 @@
 						<tr>
 							<th>Example:</th>
 							<td>
-								<pre>&lt;meta property="a11y:cellType">6&lt;/meta></pre>
+								<pre>&lt;meta property="a11y:brailleCellType">6&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
