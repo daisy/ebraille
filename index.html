@@ -1960,35 +1960,45 @@
 						[[xml-stylesheet]]:</p>
 
 					<ul>
-						<li>Media queries MUST NOT include the <a data-cite="mediaqueries#valdef-media-braille"
-								>deprecated <code>braille</code> media type</a> [[mediaqueries]] to target braille
-							displays. eBraille creators SHOULD NOT use media queries that discriminate between a braille
-							display and a screen when the target medium is a braille display.</li>
+						<li>
+							<p>eBraille creators SHOULD NOT use media queries that discriminate between a braille
+								display and a screen. Specifically,</p>
 
-						<li>Media queries SHOULD NOT include references to <a
-								data-cite="mediaqueries#descdef-media-grid">the <code>grid</code> feature</a>
-							[[mediaqueries]] to detect grid-based displays, either.</li>
+							<ul>
+								<li>media queries MUST NOT include
+									the <a data-cite="mediaqueries#valdef-media-braille">deprecated
+									<code>braille</code> media type</a> [[mediaqueries]] to target braille displays.</li>
 
-						<li>Media queries SHOULD NOT include the <a data-cite="mediaqueries#valdef-media-screen"
-									><code>screen</code> media type</a> [[mediaqueries]] to be forward-compatible with a
-							possible future version of the standard that supports differences in styling for screens
-							versus braille displays.</li>
+								<li>Media queries SHOULD NOT include references
+									to <a data-cite="mediaqueries#descdef-media-grid">the <code>grid</code> feature</a>
+									[[mediaqueries]] to detect braille displays, either.</li>
+
+								<li>Media queries SHOULD also NOT include
+									<a data-cite="mediaqueries#valdef-media-screen">the <code>screen</code> media
+									type</a> [[mediaqueries]] to target braille displays.</li>
+							</ul>
+
+							<div class="note">
+								<p>The primary motivation for these restrictions is making the rendering of an eBraille
+									publication on a computer screen representative for the rendering on a comparable
+									braille display. The recommendation against the use
+									of <a data-cite="mediaqueries#valdef-media-braille"><code>braille</code></a>
+									and <a data-cite="mediaqueries#grid"><code>(grid)</code></a> is also driven by the
+									fact that there are currently no known CSS implementations that match these types,
+									so requiring [=eBraille reading systems=] to match them could be problematic.</p>
+								<p>The recommendation against the use of
+									<a data-cite="mediaqueries#valdef-media-screen"><code>screen</code></a> was included
+									to be forward-compatible with a possible future version of the standard that
+									supports differences in styling for screens versus braille
+									displays. Currently, <a href="#rs-mq">eBraille reading systems are prompted to
+									match <code>screen</code></a>.</p>
+							</div>
+						</li>
 
 						<li>Media queries SHOULD use <a data-cite="css-values#font-relative-lengths">font-relative
 								lengths</a> [[css-values]] to adapt the styling based on the dimensions of the
 							viewport.</li>
 					</ul>
-
-					<p>A logical consequence of these restrictions is that it will be impossible to discriminate between
-						visual and tactile access modes. In other words, it forces rendering on a screen and on a
-						braille display, that are otherwise comparable, to be the same, and the CSS to have the same
-						requirements.</p>
-
-					<p>The use of <a data-cite="mediaqueries#valdef-media-braille"><code>braille</code></a>, and <a
-							data-cite="mediaqueries#grid"><code>(grid)</code></a> is not recommended because there are
-						currently no known CSS implementations that match these types, so requiring [=eBraille reading
-						systems=] to match them could be problematic. The <code>braille</code> media type is also
-						expected to be deprecated.</p>
 
 					<div class="note">
 						<p>More specific guidance on how to use media queries in eBraille content documents is provided
@@ -2709,8 +2719,9 @@
 				<section id="rs-mq">
 					<h4>Media queries</h4>
 
-					<p>[=eBraille reading systems=] of type braille display SHOULD match both <code>(grid)</code> and
-							<code>not (grid)</code> [[media-queries]].</p>
+					<p>[=eBraille reading systems=] of type braille display SHOULD
+						match <a data-cite="mediaqueries#valdef-media-screen" ><code>screen</code></a>, and SHOULD match
+						both <code>(grid)</code> and <code>not (grid)</code> [[media-queries]].</p>
 				</section>
 
 				<section id="rs-req-cmt">
@@ -3224,9 +3235,9 @@
 				<summary>Changes since the <a href="https://daisy.org/s/ebraille/1.0/WD-ebraille-20241017/">2024-10-17
 						Working Draft</a></summary>
 				<ul>
-					<li>11-Feb-2025: Restricted authoring of the <code>braille</code> media type and <code>grid</code>
-						feature and removed the reading system requirements to handle them to resolve the open editor's
-						note.</li>
+					<li>11-Feb-2025: Restricted authoring of the <code>braille</code> and <code>screen</code> media
+						types and <code>grid</code> feature and removed the reading system requirements to
+						handle <code>braille</code> to resolve the open editor's note.</li>
 				</ul>
 			</details>
 
