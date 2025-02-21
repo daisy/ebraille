@@ -1,0 +1,331 @@
+/* General Braille Settings */
+body {
+    margin: 0; /* No outer margin for eBraille content */
+    padding: 0;
+    line-height: 1rem; /* To avoid excessive rounding, the reading system will need to handle the space between lines */
+    font-family: 'SimBraille', monospace; /* Unicode braille font */
+    white-space: pre; /* Preserve braille spacing and indentation */
+}
+/* Headings */
+/* Prevent splitting and ensure headings stay with following content */
+h1, h2, h3 {
+    break-after: avoid; /* Avoid breaking immediately after the heading */
+    break-inside: avoid; /* Ensure the heading itself does not split across pages */
+}
+
+/* Centered Heading (h1) */
+h1 {
+    text-align: center; /* Center the text for a centered heading */
+    margin-top: 1rem; /* Blank line before heading */
+    margin-bottom: 1rem; /* Blank line after heading */
+}
+
+/* Cell-5 Heading (h2) */
+h2 {
+    margin-left: 4rem; /* Indented to the fifth cell */
+    margin-top: 1rem; /* Blank line before heading */
+}
+
+/* Cell-7 Heading (h3) */
+h3 {
+    margin-left: 6rem; /* Indented to the seventh cell */
+    margin-top: 1rem; /* Blank line before heading */
+}
+
+/* Left-Justified Paragraph (p) */
+p {
+    margin-top: 1rem; /* Blank line before */
+    padding-left: 0; /* Start at cell 1 */
+    text-indent: 0; /* No additional indentation */
+}
+
+/* Indented Paragraph (p.indented) */
+p.indented {
+    margin: 0; /* No blank lines before or after */
+    padding-left: 2rem; /* Start the first line at cell 3 */
+    text-indent: -2rem; /* Runover starts at cell 1 */
+}
+
+/* General List Styling */
+ul, ol {
+    list-style-type: none; /* Remove bullets/numbers */
+    margin: 1rem 0; /* Blank line before and after lists */
+    padding-left: 0; /* Start at cell 1 */
+}
+
+/* Remove the blank line before lists that follow cell-5 or cell-7 headings */
+h2 + ul, h2 + ol, 
+h3 + ul, h3 + ol {
+    margin-top: 0; /* No blank line before the list */
+}
+
+
+/* Level 1: No Nesting (1-3) */
+.level-1 {
+    padding-left: 0; /* Main items start at cell 1 */
+    text-indent: 2rem; /* Runovers align to cell 3 */
+}
+
+/* Level 2: Main Items and Subitems (1-5, 3-5) */
+.level-2 .level-1 {
+    padding-left: 0; /* Main items start at cell 1 */
+    text-indent: 4rem; /* Runovers align to cell 5 */
+}
+
+.level-2 .level-2 {
+    padding-left: 2rem; /* Subitems start at cell 3 */
+    text-indent: 2rem; /* Runovers align to cell 5 */
+}
+
+/* Level 3: Three Levels (1-7, 3-7, 5-7) */
+.level-3 .level-1 {
+    padding-left: 0; /* Main items start at cell 1 */
+    text-indent: 6rem; /* Runovers align to cell 7 */
+}
+
+.level-3 .level-2 {
+    padding-left: 2rem; /* Subitems start at cell 3 */
+    text-indent: 4rem; /* Runovers align to cell 7 */
+}
+
+.level-3 .level-3 {
+    padding-left: 4rem; /* Sub-subitems start at cell 5 */
+    text-indent: 2rem; /* Runovers align to cell 7 */
+}
+
+/* Level 4: Four Levels (1-9, 3-9, 5-9, 7-9) */
+.level-4 .level-1 {
+    padding-left: 0; /* Main items start at cell 1 */
+    text-indent: 8rem; /* Runovers align to cell 9 */
+}
+
+.level-4 .level-2 {
+    padding-left: 2rem; /* Subitems start at cell 3 */
+    text-indent: 6rem; /* Runovers align to cell 9 */
+}
+
+.level-4 .level-3 {
+    padding-left: 4rem; /* Sub-subitems start at cell 5 */
+    text-indent: 4rem; /* Runovers align to cell 9 */
+}
+
+.level-4 .level-4 {
+    padding-left: 6rem; /* Sub-sub-subitems start at cell 7 */
+    text-indent: 2rem; /* Runovers align to cell 9 */
+}
+
+/* Level 5: Five Levels (1-11, 3-11, 5-11, 7-11, 9-11) */
+.level-5 .level-1 {
+    padding-left: 0; /* Main items start at cell 1 */
+    text-indent: 10rem; /* Runovers align to cell 11 */
+}
+
+.level-5 .level-2 {
+    padding-left: 2rem; /* Subitems start at cell 3 */
+    text-indent: 8rem; /* Runovers align to cell 11 */
+}
+
+.level-5 .level-3 {
+    padding-left: 4rem; /* Sub-subitems start at cell 5 */
+    text-indent: 6rem; /* Runovers align to cell 11 */
+}
+
+.level-5 .level-4 {
+    padding-left: 6rem; /* Sub-sub-subitems start at cell 7 */
+    text-indent: 4rem; /* Runovers align to cell 11 */
+}
+
+.level-5 .level-5 {
+    padding-left: 8rem; /* Sub-sub-sub-subitems start at cell 9 */
+    text-indent: 2rem; /* Runovers align to cell 11 */
+}
+
+/* General Exercise Formatting */
+.exercise {
+    margin-top: 1rem; /* Blank line before exercise */
+    margin-bottom: 1rem; /* Blank line after exercise */
+    padding-left: 0; /* Start at cell 1 for main entry */
+    break-inside: avoid; /* Prevent breaking the exercise across pages */
+}
+
+/* Exercise with No Nesting: 1-3 */
+.exercise.level-1 {
+    padding-left: 0; /* Main item starts at cell 1 */
+    text-indent: 2rem; /* Runovers align to cell 3 */
+}
+
+/* Exercise with One Level of Nesting: 1-5, 3-5 */
+.exercise.level-2 {
+    padding-left: 0; /* Main item starts at cell 1 */
+    text-indent: 4rem; /* Runovers align to cell 5 */
+}
+
+.exercise.level-2 .subitem {
+    padding-left: 2rem; /* Subitems start at cell 3 */
+    text-indent: 2rem; /* Runovers align to cell 5 */
+}
+
+/* Page Break Handling for Nested Subitems */
+.exercise .subitem {
+    break-inside: avoid; /* Keep each subitem intact on the same page */
+}
+
+.exercise.level-2 {
+    break-after: avoid; /* Prevent breaking between main item and subitems if possible */
+}
+
+/* Poetry Formatting */
+/* General Poetry Formatting */
+.poetry {
+    margin-top: 1rem; /* Blank line before poem */
+    padding-left: 0; /* Start at cell 1 for main entry */
+    break-inside: avoid; /* Prevent breaking mid-poem if possible */
+}
+
+/* One-Level Poetry: 1-3 Indentation */
+.poetry.level-1 {
+    padding-left: 0; /* Start first line at cell 1 */
+    text-indent: 2rem; /* Runovers start at cell 3 */
+}
+
+/* Two-Level Poetry: 1-5, 3-5 */
+.poetry.level-2 {
+    padding-left: 0; /* First line of main entry at cell 1 */
+    text-indent: 4rem; /* Runovers stay at cell 5 */
+}
+.poetry.level-2 .sublevel-1 {
+    padding-left: 2rem; /* Sublevel starts at cell 5 */
+    text-indent: 2rem; /* Runovers stay at cell 5 */
+}
+
+/* Three-Level Poetry: 1-7, 3-7, 5-7 */
+.poetry.level-3 {
+    padding-left: 0; /* First line of main entry at cell 1 */
+    text-indent: 6rem; /* Runovers align with the deepest level (cell 7) */
+}
+.poetry.level-3 .sublevel-1 {
+    padding-left: 2rem; /* First sublevel starts at cell 3 */
+    text-indent: 4rem; /* Runovers align with the deepest level (cell 7) */
+}
+.poetry.level-3 .sublevel-2 {
+    padding-left: 4rem; /* Second sublevel starts at cell 5 */
+    text-indent: 2rem; /* Runovers align with the deepest level (cell 7) */
+}
+
+/* Four-Level Poetry: 1-9, 3-9, 5-9, 7-9 */
+.poetry.level-4 {
+    padding-left: 0; /* First line of main entry at cell 1 */
+    text-indent: 8rem; /* Runovers align with the deepest level (cell 9) */ 
+}
+.poetry.level-4 .sublevel-1 {
+    padding-left: 2rem; /* First sublevel starts at cell 3 */
+    text-indent: 6rem; /* Runovers align with the deepest level (cell 9) */
+}
+.poetry.level-4 .sublevel-2 {
+    padding-left: 4rem; /* Second sublevel starts at cell 5 */
+    text-indent: 4rem; /* Runovers align with the deepest level (cell 9) */
+}
+.poetry.level-4 .sublevel-3 {
+    padding-left: 6rem; /* Third sublevel starts at cell 7 */
+    text-indent: 2rem; /* Runovers align with the deepest level (cell 9) */
+}
+
+/* Centered Poems */
+.poetry.centered {
+    text-align: center; /* Center-align text for centered poems */
+    padding-left: 0; /* Use default cell 1 alignment */
+}
+
+/* Stanza Breaks */
+.poetry .stanza {
+    margin-top: 1rem; /* Blank line before each stanza */
+    break-inside: avoid; /* Ensure blank lines are avoided inside stanzas */
+}
+
+/* Stanza Number Headings */
+.poetry .stanza-number {
+    margin-left: 4rem; /* Cell-5 heading for stanza numbers */
+    margin-top: 1rem; /* Blank line before stanza number */
+    margin-bottom: 0; /* No additional spacing after stanza number */
+    break-inside: avoid; /* Ensure stanza numbers don't separate from stanzas */
+}
+
+/* Boxed Text */
+.box {
+    margin: 1rem 0;
+ }
+ .box::before {
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+    white-space: nowrap;
+    content: '⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶';
+ }
+ .box::after {
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+    white-space: nowrap;
+    content: '⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶';
+ }
+ 
+ p {
+    text-indent: 2ch;
+ }
+
+/* Nemeth Boxed Text */
+.box.nemeth {
+    margin: 1rem 0;
+ }
+ .box.nemeth::before {
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+    white-space: nowrap;
+    content: '⠸⠩ ⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶';
+ }
+ .box.nemeth::after {
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+    white-space: nowrap;
+    content: '⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶⠶ ⠸⠱';
+ }
+ 
+ p {
+    text-indent: 2ch;
+ }
+
+/* Block Quotes */
+blockquote {
+    margin-left: 4rem; /* Indent block quotes to cell 5 */
+    margin: 1rem;
+}
+
+/* Directions and Instructions */
+.instructions {
+    margin-left: 3rem; /* Standard indentation */
+    margin-top: 0; /* No extra space before */
+    margin-bottom: 0.5rem; /* Slight space below */
+    font-style: italic; /* Optional, use CSS class for emphasis if needed */
+}
+
+/* Transcriber's Note */
+.transcriber-note {
+    padding-left: 6rem; /* First line starts at cell 7 */
+    text-indent: -2rem; /* Align subsequent lines to cell 5 */
+    position: relative; /* Enable pseudo-elements for symbols */
+}
+
+/* Beginning and Ending Symbols */
+.transcriber-note::before {
+    content: "⠈⠨⠣"; /* Beginning symbol */
+    position: absolute; /* Inline with the text */
+    left: 0; /* Ensures the symbol appears at the start of the first line */
+}
+
+.transcriber-note::after {
+    content: "⠈⠨⠜"; /* Ending symbol */
+    position: absolute; /* Inline with the text */
+    right: 0; /* Ensures the symbol appears at the end of the last line */
+}
