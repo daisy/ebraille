@@ -95,6 +95,7 @@ var BorderImageGenerator = BorderImageGenerator || (function() {
 				console.log("Invalid pattern: " + pattern);
 				return "none";
 			}
+			pattern = pattern.replace(/\u2800/g, " ");
 			if ((h === undefined) != (w === undefined)) {
 				console.log("Height and width must both be specified, or not");
 				return "none";

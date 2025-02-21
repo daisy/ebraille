@@ -17,6 +17,8 @@
     margin: 0;
     padding: 0;
     border: none;
+    text-align: left;
+    vertical-align: baseline;
     list-style: none;
     color: black;
     text-decoration: none;
