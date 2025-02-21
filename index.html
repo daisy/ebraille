@@ -1086,6 +1086,36 @@
 						</div>
 					</section>
 
+					<section id="a11y:brailleCellType">
+						<h5>a11y:brailleCellType</h5>
+
+						<p>The REQUIRED <code>a11y:brailleCellType</code> property identifies whether the text of the
+							[=eBraille publication=] is encoded using 6- or 8-dot braille characters.</p>
+
+						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
+								<code>property</code> attribute set to <code>a11y:brailleCellType</code>.</p>
+
+						<aside class="example" title="a11y:brailleCellType for 6-dot braille">
+							<pre>&lt;meta property="a11y:brailleCellType">
+   6
+&lt;/meta></pre>
+						</aside>
+
+						<p>The [=value=] MUST be <code>6</code> or <code>8</code>, with <code>6</code> for 6-dot braille
+							characters and <code>8</code> for 8-dot braille characters.</p>
+
+						<p>If both 6- and 8-dot braille characters are used in the same file, use a comma to separate
+							the values, with the one used most often listed first.</p>
+
+						<aside class="example" title="a11y:brailleCellType when 8-dot braille is used more than 6-dot">
+							<pre>&lt;meta property="a11y:brailleCellType">
+   8, 6
+&lt;/meta></pre>
+						</aside>
+
+						<p>Only one instance of this property is allowed.</p>
+					</section>
+
 					<section id="a11y:brailleSystem">
 						<h5>a11y:brailleSystem</h5>
 
@@ -1119,36 +1149,6 @@
 
 						<p>For multiple braille codes, codes should be listed in descending order from most to least
 							utilized within that file.</p>
-					</section>
-
-					<section id="a11y:cellType">
-						<h5>a11y:cellType</h5>
-
-						<p>The REQUIRED <code>a11y:cellType</code> property identifies whether the text of the
-							[=eBraille publication=] is encoded using 6- or 8-dot braille characters.</p>
-
-						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
-								<code>property</code> attribute set to <code>a11y:cellType</code>.</p>
-
-						<aside class="example" title="a11y:cellType for 6-dot braille">
-							<pre>&lt;meta property="a11y:cellType">
-   6
-&lt;/meta></pre>
-						</aside>
-
-						<p>The [=value=] MUST be <code>6</code> or <code>8</code>, with <code>6</code> for 6-dot braille
-							characters and <code>8</code> for 8-dot braille characters.</p>
-
-						<p>If both 6- and 8-dot braille characters are used in the same file, use a comma to separate
-							the values, with the one used most often listed first.</p>
-
-						<aside class="example" title="a11y:cellType when 8-dot braille is used more than 6-dot">
-							<pre>&lt;meta property="a11y:cellType">
-   8, 6
-&lt;/meta></pre>
-						</aside>
-
-						<p>Only one instance of this property is allowed.</p>
 					</section>
 
 					<section id="a11y:completeTranscription">
@@ -1519,7 +1519,7 @@
       &lt;meta property="dcterms:modified">
          2015-02-24T13:37:19Z
       &lt;/meta>
-      &lt;meta property="a11y:cellType">6&lt;/meta>
+      &lt;meta property="a11y:brailleCellType">6&lt;/meta>
       &lt;meta property="a11y:brailleSystem">UEB&lt;/meta>
       &lt;meta property="a11y:completeTranscription">
          false
@@ -1783,8 +1783,9 @@
 					</ul>
 
 					<div class="note">
-						<p>The zero width space character is not included in this list as eBraille creators are advised
-							to use the [^wbr^] element [[html]] to indicate break opportunities within words.</p>
+						<p>The zero width space character (U+200B) is not included in this list as eBraille creators are
+							advised to use the [^wbr^] element [[html]] to indicate break opportunities within
+							words.</p>
 					</div>
 
 					<p>This restriction only applies to the renderable text of an XHTML document as well as the
@@ -2903,6 +2904,37 @@
 			<section id="vocab-content">
 				<h3>Content properties</h3>
 
+				<section id="brailleCellType">
+					<h4>brailleCellType</h4>
+
+					<table class="tabledef">
+						<caption>Definition of the <code>brailleCellType</code> property</caption>
+						<tr>
+							<th>Name:</th>
+							<td>
+								<code>brailleCellType</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>Identifies whether 6- or 8-dot braille cell characters are used in the text or, when
+								both are present, which is the more commonly used.</td>
+						</tr>
+						<tr>
+							<th>Allowed value(s):</th>
+							<td>
+								<code>6</code> | <code>8</code> | <code>6, 8</code> | <code>8, 6</code>
+							</td>
+						</tr>
+						<tr>
+							<th>Example:</th>
+							<td>
+								<pre>&lt;meta property="a11y:brailleCellType">6&lt;/meta></pre>
+							</td>
+						</tr>
+					</table>
+				</section>
+
 				<section id="brailleSystem">
 					<h4>brailleSystem</h4>
 
@@ -2929,37 +2961,6 @@
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="a11y:brailleSystem">UEB&lt;/meta></pre>
-							</td>
-						</tr>
-					</table>
-				</section>
-
-				<section id="cellType">
-					<h4>cellType</h4>
-
-					<table class="tabledef">
-						<caption>Definition of the <code>cellType</code> property</caption>
-						<tr>
-							<th>Name:</th>
-							<td>
-								<code>cellType</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Description:</th>
-							<td>Identifies whether 6- or 8-dot braille cell characters are used in the text or, when
-								both are present, which is the more commonly used.</td>
-						</tr>
-						<tr>
-							<th>Allowed value(s):</th>
-							<td>
-								<code>6</code> | <code>8</code> | <code>6, 8</code> | <code>8, 6</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Example:</th>
-							<td>
-								<pre>&lt;meta property="a11y:cellType">6&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -3235,9 +3236,12 @@
 				<summary>Changes since the <a href="https://daisy.org/s/ebraille/1.0/WD-ebraille-20241017/">2024-10-17
 						Working Draft</a></summary>
 				<ul>
-					<li>11-Feb-2025: Restricted authoring of the <code>braille</code> and <code>screen</code> media
+					<li>21-Feb-2025: Restricted authoring of the <code>braille</code> and <code>screen</code> media
 						types and <code>grid</code> feature and removed the reading system requirements to
 						handle <code>braille</code> to resolve the open editor's note.</li>
+					<li>18-Feb-2025: Renamed the <code>a11y:cellType</code> property to
+							<code>a11y:brailleCellType</code>. Refer to <a
+							href="https://github.com/daisy/ebraille/issues/194">issue 194</a>.</li>
 				</ul>
 			</details>
 
