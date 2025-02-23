@@ -63,7 +63,6 @@
 				github: 'daisy/ebraille',
                 preProcess:[inlineCustomCSS],
 				postProcess: [addDAISYStatus,addCopyrightYear,fixExampleHeaders],
-				xref: ["epub-33"],
 				localBiblio: {
 					"code-registry" : {
 						"title": "eBraille Braille Code Registry",
@@ -83,6 +82,26 @@
 					},
 					"css-cascade": {
 						"aliasOf": "css-cascade-5"
+					},
+					"epub3" : {
+						"title": "EPUB 3",
+						"href": "https://www.w3.org/TR/epub/",
+						"publisher": "W3C"
+					},
+					"epub-rs-3" : {
+						"title": "EPUB Reading Systems 3",
+						"href": "https://www.w3.org/TR/epub-rs/",
+						"publisher": "W3C"
+					},
+					"epub-a11y" : {
+						"title": "EPUB Accessibility",
+						"href": "https://www.w3.org/TR/epub-a11y/",
+						"publisher": "W3C"
+					},
+					"epub-ssv" : {
+						"title": "EPUB 3 Structural Semantics Vocabulary",
+						"href": "https://www.w3.org/TR/epub-ssv/",
+						"publisher": "W3C"
 					}
 				}
 			};
@@ -136,21 +155,22 @@
 			<section id="relationship-epub3" class="informative">
 				<h3>Relationship to EPUB 3</h3>
 
-				<p>The [=eBraille file set=] is designed to be compatible with EPUB 3 [[epub-33]] and adapt to changes
-					to that standard. Distribution and consumption on mainstream [=EPUB reading systems=], however, is
-					not a primary goal of this format. This specification introduces some additional requirements and
-					features beyond those defined in EPUB 3, and it is not expected that mainstream reading systems will
-					adapt to these modifications. Consequently, an eBraille publication may not render exactly as
-					intended outside of eBraille reading systems.</p>
+				<p>The [=eBraille file set=] is designed to be compatible with EPUB 3 [[epub3]] and adapt to changes to
+					that standard. Distribution and consumption on mainstream <a
+						data-cite="epub3#dfn-epub-reading-system">EPUB reading systems</a>, however, is not a primary
+					goal of this format. This specification introduces some additional requirements and features beyond
+					those defined in EPUB 3, and it is not expected that mainstream reading systems will adapt to these
+					modifications. Consequently, an eBraille publication may not render exactly as intended outside of
+					eBraille reading systems.</p>
 
 				<p>The primary difference between the eBraille format and EPUB 3 is [=eBraille publications=] do not
-					have to be packaged and distributed in an [=EPUB container=] [[epub-33]] &#8212; they can be
-					deployed on the web as an unpackaged set of files. An eBraille publication is packagable in an EPUB
-					container when that is the preferred distribution method, but eBraille uses the file extension
-						<code>.ebrl</code> not <code>.epub</code>.</p>
+					have to be packaged and distributed in an <a data-cite="epub3#dfn-epub-container">EPUB container</a>
+					[[epub3]] &#8212; they can be deployed on the web as an unpackaged set of files. An eBraille
+					publication is packagable in an EPUB container when that is the preferred distribution method, but
+					eBraille uses the file extension <code>.ebrl</code> not <code>.epub</code>.</p>
 
 				<p>Compatibility with EPUB 3 also means that eBraille relies on the same <a
-						data-cite="epub-33#sec-intro-relations">underlying technologies</a> [[epub-33]]. Many of these
+						data-cite="epub3#sec-intro-relations">underlying technologies</a> [[epub3]]. Many of these
 					technologies, like [[html]], are referred to as "evergreen" or "living" standards as they are
 					updated often and do not have version numbers. Others, like [[svg]], are referred to without a
 					specific version number so that the latest recommendation is always the recommended one to use.</p>
@@ -250,7 +270,8 @@
 							browser are expected to encounter. It is located in the [=publication root=] and specially
 							named to open by default when users browse to a folder containing an eBraille
 							publication.</p>
-						<p>The primary entry page is an implementation of the [=EPUB navigation document=] [[epub-33]].
+						<p>The primary entry page is an implementation of the <a
+								data-cite="epub3#dfn-epub-navigation-document">EPUB navigation document</a> [[epub3]].
 							It contains the table of contents for the publication.</p>
 						<p>For more information, refer to <a href="#ebrl-nav"></a></p>
 					</dd>
@@ -258,8 +279,8 @@
 					<dt>
 						<dfn>publication root</dfn>
 					</dt>
-					<dd>The root directory is the base of the [=eBraille file set=]. All the resources of an eBraille
-						publication are located at or below this directory.</dd>
+					<dd>The publication root is the base directory of the [=eBraille file set=]. All the resources of an
+						eBraille publication are located at or below this directory.</dd>
 				</dl>
 			</section>
 
@@ -269,7 +290,7 @@
 				<h3>Authoring shorthands</h3>
 
 				<p>In <a href="#metadata">package document metadata</a>, <a
-						data-cite="epub-33#sec-metadata-reserved-prefixes">reserved prefixes</a> [[epub-33]] are used
+						data-cite="epub3#sec-metadata-reserved-prefixes">reserved prefixes</a> [[epub3]] are used
 					without declaration.</p>
 
 				<p>The following namespace prefixes [[xml-names]] are also sometimes used without an explicit
@@ -300,7 +321,7 @@
 							<td>
 								<code>xmlns:epub="http://www.idpf.org/2007/ops"</code>
 							</td>
-							<td>EPUB 3-defined attributes [[epub-33]]</td>
+							<td>EPUB 3-defined attributes [[epub3]]</td>
 						</tr>
 					</tbody>
 				</table>
@@ -340,9 +361,10 @@
 				<p>An [=eBraille publication=] is typically composed of many resources &#8212; XHTML documents, CSS
 					files, tactile graphics, audio, video, etc.</p>
 
-				<p>As an eBraille publication is intended to be easily packaged as a conforming [=EPUB publication=],
-					the requirements for publication resources are inherited from EPUB, specifically as defined in <a
-						data-cite="epub-33#sec-publication-resources"></a> [[epub-33]].</p>
+				<p>As an eBraille publication is intended to be easily packaged as a conforming <a
+						data-cite="epub3#dfn-epub-publication">EPUB publication</a>, the requirements for publication
+					resources are inherited from EPUB, specifically as defined in <a
+						data-cite="epub3#sec-publication-resources"></a> [[epub3]].</p>
 
 				<p>This section represents a subsetting of the EPUB requirements, as certain features, such as manifest
 					fallbacks, are disallowed in eBraille publications.</p>
@@ -371,8 +393,8 @@
 					<li><code>image/svg+xml</code> &#8212; SVG images [[svg]]</li>
 				</ul>
 
-				<p>The complete list is available in the <a data-cite="epub-33#sec-core-media-types">core media types
-						section</a> of [[epub-33]].</p>
+				<p>The complete list is available in the <a data-cite="epub3#sec-core-media-types">core media types
+						section</a> of [[epub3]].</p>
 
 				<p>All other media types are considered <a href="#foreign-res">foreign resources</a>.</p>
 			</section>
@@ -385,7 +407,7 @@
 
 				<p>To avoid users not being able to access the content of the [=eBraille publication=], foreign
 					resources can only be used if a fallback to a core media type is provided. Fallbacks are provided
-					using <a data-cite="epub-33#sec-intrinsic-fallbacks">intrinsic fallback methods</a> [[epub-33]].</p>
+					using <a data-cite="epub3#sec-intrinsic-fallbacks">intrinsic fallback methods</a> [[epub3]].</p>
 
 				<div class="note">
 					<p><a href="#fallbacks">Manifest fallbacks</a> are not supported in eBraille. This means they cannot
@@ -415,8 +437,8 @@
 			<section id="fallbacks">
 				<h3>Resource fallbacks</h3>
 
-				<p>eBraille does not support the use of <a data-cite="epub-33#sec-manifest-fallbacks">manifest
-						fallbacks</a> [[epub-33]].</p>
+				<p>eBraille does not support the use of <a data-cite="epub3#sec-manifest-fallbacks">manifest
+						fallbacks</a> [[epub3]].</p>
 
 				<p>The intrinsic fallback methods provided by [[html]] elements are supported.</p>
 			</section>
@@ -424,30 +446,33 @@
 			<section id="res-location">
 				<h3>Resource location</h3>
 
-				<p>[=eBraille publications=] do not support [=remote resources=] [[epub-33]]. All publication resources
-					MUST be located in or below the [=root directory=], as defined in <a href="#fileset-structure"
-					></a>.</p>
+				<p>[=eBraille publications=] do not support <a data-cite="epub3#dfn-remote-resource">remote
+						resources</a> [[epub3]]. All publication resources MUST be located in or below the [=publication
+					root=], as defined in <a href="#fileset-structure"></a>.</p>
 
 				<p>eBraille does not support the <code>file:</code> URL scheme [[rfc8089]] for referencing resources in
 					an eBraille publication. Accessing files on the user's local file system presents too great a
 					security risk.</p>
 
 				<p>The <code>data:</code> URL scheme MAY be used to embed resources within [=eBraille content
-					documents=] per the restrictions outlined in <a data-cite="epub-33#sec-data-urls">Data URLs</a>
-					[[epub-33]].</p>
+					documents=] per the restrictions outlined in <a data-cite="epub3#sec-data-urls">Data URLs</a>
+					[[epub3]].</p>
 			</section>
 
 			<section id="res-exemptions" class="informative">
 				<h3>Exempt resources</h3>
 
 				<p>It is possible to include additional resources in an [=eBraille publication=] that are not part of
-					the rendering of the content. EPUB 3 defines resources that are not used in the [=spine=] or
-					embedded in [=xhtml content documents=] as exempt from the normal [=core media type resource=]
-					restrictions [[epub-33]].</p>
+					the rendering of the content. EPUB 3 defines resources that are not used in the <a
+						data-cite="epub3#dfn-spine">spine</a> or embedded in <a
+						data-cite="epub3#dfn-xhtml-content-document">xhtml content documents</a> as exempt from the
+					normal <a data-cite="epub3#dfn-core-media-type-resource">core media type resource</a> restrictions
+					[[epub3]].</p>
 
 				<p>This means, for example, that [=eBraille creators=] can embed pre-formatted braille in their
-					publication in a format such as PDF or BRF. The resource would still be listed in the [=manifest=],
-					but it would not be flagged as needing a fallback.</p>
+					publication in a format such as PDF or BRF. The resource would still be listed in the <a
+						data-cite="epub3#dfn-manifest">manifest</a>, but it would not be flagged as needing a
+					fallback.</p>
 
 				<p>It would not be possible to link to these resources from the eBraille publication, but the
 					publication could note the presence of the resources and include instructions on how to access them
@@ -487,7 +512,7 @@
 				<h3>XML conformance</h3>
 
 				<p>The requirements for XML-based media types [[rfc2046]] defined in <a
-						data-cite="epub-33#sec-xml-constraints">XML conformance</a> [[epub-33]] also apply to [=eBraille
+						data-cite="epub3#sec-xml-constraints">XML conformance</a> [[epub3]] also apply to [=eBraille
 					publications=].</p>
 
 				<p>The only difference is that eBraille publications only support UTF-8 [[unicode]]. UTF-16 MUST NOT be
@@ -501,11 +526,12 @@
 				<h3>Introduction</h3>
 
 				<p>The [=eBraille file set=] is like a physical manifestation of the <a
-						data-cite="epub-33#sec-container-abstract">OCF abstract container</a> [[epub-33]]. EPUB 3 only
-					defines its file set in the abstract because those files are expected to be zipped in the [=EPUB
-					container=] [[epub-33]]; the standard is not concerned with the physical files before they are
-					zipped or after they are unzipped. As a ZIP file does not have a true file system within it, the
-					rules for file naming and placement can only be defined virtually.</p>
+						data-cite="epub3#sec-container-abstract">OCF abstract container</a> [[epub3]]. EPUB 3 only
+					defines its file set in the abstract because those files are expected to be zipped in the <a
+						data-cite="epub3#dfn-epub-container">EPUB container</a> [[epub3]]; the standard is not concerned
+					with the physical files before they are zipped or after they are unzipped. As a ZIP file does not
+					have a true file system within it, the rules for file naming and placement can only be defined
+					virtually.</p>
 
 				<p>eBraille moves the rules for the OCF abstract container to the physical file set that exists before
 					and after packaging in the EPUB container. This allows an [=eBraille publication=] to be independent
@@ -513,10 +539,11 @@
 					distribution.</p>
 
 				<p>eBraille defines additional rules on the file structure in order to make it easier to read an
-					eBraille publication on the web or from a local file system. In particular, it requires the [=EPUB
-					navigation document=] [[epub-33]] be in the root of the file set and named <code>index.html</code>.
-					These requirements do not conflict with being able to package an eBraille publication as a valid
-					[=EPUB publication=] [[epub-33]], however.</p>
+					eBraille publication on the web or from a local file system. In particular, it requires the <a
+						data-cite="epub3#dfn-epub-navigation-document">EPUB navigation document</a> [[epub3]] be in the
+					root of the file set and named <code>index.html</code>. These requirements do not conflict with
+					being able to package an eBraille publication as a valid <a data-cite="epub3#dfn-epub-publication"
+						>EPUB publication</a> [[epub3]], however.</p>
 			</section>
 
 			<section id="fileset-structure">
@@ -526,20 +553,20 @@
 					&#8212; for all the contents of the [=eBraille publication=].</p>
 
 				<p>Unlike EPUB 3, the eBraille file set MUST NOT reference resources outside the publication root (i.e.,
-					[=remote resources=] [[epub-33]] are not supported).</p>
+						<a data-cite="epub3#dfn-remote-resource">remote resources</a> [[epub3]] are not supported).</p>
 
 				<p>The eBraille file set MUST contain the following files in the publication root:</p>
 
 				<ul>
-					<li>The <a data-cite="epub-33#sec-nav">EPUB navigation document</a> [[epub-33]]. This file MUST be
-						named <code>index.html</code></li>
-					<li>The <a data-cite="epub-33#sec-package-doc">EPUB package document</a> [[epub-33]]. This file MUST
-						be named <code>package.opf</code></li>
+					<li>The <a data-cite="epub3#sec-nav">EPUB navigation document</a> [[epub3]]. This file MUST be named
+							<code>index.html</code></li>
+					<li>The <a data-cite="epub3#sec-package-doc">EPUB package document</a> [[epub3]]. This file MUST be
+						named <code>package.opf</code></li>
 				</ul>
 
 				<p>There are no restrictions on where the rest of the eBraille publication content goes beyond the
-					requirement in EPUB 3 that <a data-cite="epub-33#sec-container-file-and-dir-structure">publication
-						resources are not allowed in a <code>META-INF</code> directory</a> [[epub-33]].</p>
+					requirement in EPUB 3 that <a data-cite="epub3#sec-container-file-and-dir-structure">publication
+						resources are not allowed in a <code>META-INF</code> directory</a> [[epub3]].</p>
 
 				<div class="note">
 					<p>For simplicity of unzipping and accessing a publication on a user's local file system, [=eBraille
@@ -554,7 +581,7 @@
 
 				<p>To avoid potential naming issues when opening [=eBraille publications=] on common operating systems,
 					eBraille file paths and file names MUST adhere to the EPUB 3 file naming restrictions specified in
-						<a data-cite="epub-33#sec-container-filenames">File paths and file names</a> [[epub-33]].</p>
+						<a data-cite="epub3#sec-container-filenames">File paths and file names</a> [[epub3]].</p>
 			</section>
 
 			<section id="fileset-urls">
@@ -579,8 +606,8 @@
 
 				<p>When including multiple renditions, the <a data-cite="epub-multi-rend-11#container">default
 						rendition</a> [[epub-multi-rend-11]] &#8212; the one listed first in the <a
-						data-cite="epub-33#sec-container-metainf-container.xml"><code>container.xml</code> file</a>
-					[[epub-33]] &#8212; MUST be a braille rendition. The default rendition has a default <a
+						data-cite="epub3#sec-container-metainf-container.xml"><code>container.xml</code> file</a>
+					[[epub3]] &#8212; MUST be a braille rendition. The default rendition has a default <a
 						data-cite="epub-multi-rend-11#accessMode-attr"><code>rendition:accessMode</code> selection
 						attribute</a> [[epub-multi-rend-11]] equivalent to the value <code>tactile</code>. No other
 					value is allowed if the attribute is set explicitly.</p>
@@ -612,7 +639,7 @@
 			<section id="package-doc-intro" class="informative">
 				<h3>Introduction</h3>
 
-				<p>eBraille uses the EPUB 3 <a data-cite="epub-33#sec-package-doc">package document</a> [[epub-33]] to
+				<p>eBraille uses the EPUB 3 <a data-cite="epub3#sec-package-doc">package document</a> [[epub3]] to
 					express information about an [=eBraille publication=].</p>
 
 				<p>The package document is an XML document that contains three primary sections that encapsulate
@@ -632,8 +659,8 @@
 
 				<p>The primary difference of the eBraille package document is only in the metadata that is required and
 					recommended. The eBraille implementation of the package document is also more limited in the
-					features it allows &#8212; EPUB 3's <a data-cite="epub-33#sec-manifest-fallbacks">manifest
-						fallbacks</a> and <a data-cite="epub-33#sec-pkg-legacy">legacy elements</a> [[epub-33]] are not
+					features it allows &#8212; EPUB 3's <a data-cite="epub3#sec-manifest-fallbacks">manifest
+						fallbacks</a> and <a data-cite="epub3#sec-pkg-legacy">legacy elements</a> [[epub3]] are not
 					allowed, for example.</p>
 			</section>
 
@@ -641,22 +668,22 @@
 				<h3>The <code>package</code> element</h3>
 
 				<p>At the root of the eBraille package document is the <code>package</code> element. This element MUST
-					conform to the <a data-cite="epub-33#sec-package-elem">requirements for the <code>package</code>
-						element</a> in [[epub-33]].</p>
+					conform to the <a data-cite="epub3#sec-package-elem">requirements for the <code>package</code>
+						element</a> in [[epub3]].</p>
 
 				<p>For example, EPUB 3 requires the <code>package</code> element's <a
-						data-cite="epub-33#attrdef-package-version"><code>version</code> attribute</a> [[epub-33]] have
-					the value "<code>3.0</code>". This identifies that the package document conforms to the EPUB 3
+						data-cite="epub3#attrdef-package-version"><code>version</code> attribute</a> [[epub3]] have the
+					value "<code>3.0</code>". This identifies that the package document conforms to the EPUB 3
 					definition. (The identifier that the content conforms to this specification is contained in the
 					required <a href="#dc:format"><code>dc:format</code> element</a>.)</p>
 
-				<p>It is also required that the <code>unique-identifier</code> attribute [[epub-33]] be specified. This
+				<p>It is also required that the <code>unique-identifier</code> attribute [[epub3]] be specified. This
 					attribute references the ID of the <a href="#dc:identifier"><code>dc:identifier</code> element</a>
 					that contains the unique identifier for the publication.</p>
 
 				<p>Although setting the default language of the package document text on the <code>package</code>
 					element is not required, it is best practice to set it here in an <a
-						data-cite="epub-33#attrdef-xml-lang"><code>xml:lang</code> attribute</a> [[epub-33]] so that
+						data-cite="epub3#attrdef-xml-lang"><code>xml:lang</code> attribute</a> [[epub3]] so that
 					language information is available for every element that requires it.</p>
 
 				<aside class="example" title="Typical package element attributes">
@@ -681,8 +708,8 @@
 						<h4>Metadata elements</h4>
 
 						<p>Metadata about an [=eBraille publication=] is expressed in the package document's <a
-								data-cite="epub-33#sec-metadata-elem"><code>metadata</code> element</a> [[epub-33]].
-							This element is the first child of the root <a href="#package-elem"><code>package</code>
+								data-cite="epub3#sec-metadata-elem"><code>metadata</code> element</a> [[epub3]]. This
+							element is the first child of the root <a href="#package-elem"><code>package</code>
 								element</a>.</p>
 
 						<p>The following elements are allowed as children of the <code>metadata</code> element:</p>
@@ -701,7 +728,7 @@
 
 							<dt id="meta-elem">The <code>meta</code> element</dt>
 							<dd>
-								<p>The <a data-cite="epub-33#sec-meta-elem"><code>meta</code> element</a> [[epub-33]] is
+								<p>The <a data-cite="epub3#sec-meta-elem"><code>meta</code> element</a> [[epub3]] is
 									used to express properties from metadata vocabularies, where its
 										<code>property</code> attribute defines the property name.</p>
 								<p>Metadata properties defined in this element typically require a <a
@@ -711,7 +738,7 @@
 
 							<dt id="link-elem">The <code>link</code> element</dt>
 							<dd>
-								<p>The <a data-cite="epub-33#sec-link-elem"><code>link</code> element</a> [[epub-33]] is
+								<p>The <a data-cite="epub3#sec-link-elem"><code>link</code> element</a> [[epub3]] is
 									used to associate resources with an [=eBraille publication=], such as metadata
 									records.</p>
 								<p>Linked resources are typically not publication resources so are not listed in the <a
@@ -723,7 +750,7 @@
 
 						<div class="note">
 							<p>For more information about the attributes allowed on these elements, refer to their
-								definitions in [[epub-33]].</p>
+								definitions in [[epub3]].</p>
 						</div>
 					</section>
 
@@ -731,8 +758,8 @@
 						<h4>Metadata values</h4>
 
 						<p>EPUB 3 requires that all Dublin Core [[dcterms]] and <a href="#meta-elem"><code>meta</code>
-								elements</a> have <a data-cite="epub-33#sec-metadata-values">child text content</a>
-							[[epub-33]] (i.e., they have to have at least one non-whitespace character after <a
+								elements</a> have <a data-cite="epub3#sec-metadata-values">child text content</a>
+							[[epub3]] (i.e., they have to have at least one non-whitespace character after <a
 								data-cite="infra#strip-leading-and-trailing-ascii-whitespace">leading and trailing ASCII
 								whitespace</a> [[?infra]] is stripped). In the descriptions for these elements, this
 							specification refers to this content as the element's <dfn>value</dfn>.</p>
@@ -750,8 +777,8 @@
 							metadata vocabularies, such as those in the Dublin Core <code>/terms/</code> namespace
 							[[dcterms]].</p>
 
-						<p>EPUB 3 defines a set of <a data-cite="epub-33#sec-reserved-prefixes">reserved prefixes</a>
-							[[epub-33]] for common metadata vocabularies. Properties from these vocabularies can be used
+						<p>EPUB 3 defines a set of <a data-cite="epub3#sec-reserved-prefixes">reserved prefixes</a>
+							[[epub3]] for common metadata vocabularies. Properties from these vocabularies can be used
 							without having to declare their prefix.</p>
 
 						<div class="note">
@@ -779,8 +806,8 @@
 
 						<div class="note">
 							<p>For more information about using prefixes in the package document, refer to <a
-									data-cite="epub-33#sec-vocab-assoc">Vocabulary association mechanisms</a>
-								[[epub-33]].</p>
+									data-cite="epub3#sec-vocab-assoc">Vocabulary association mechanisms</a>
+								[[epub3]].</p>
 						</div>
 					</section>
 				</section>
@@ -791,8 +818,8 @@
 					<p>The eBraille package document metadata:</p>
 
 					<ul>
-						<li>MUST meet all the requirements for <a data-cite="epub-33#sec-pkg-metadata">EPUB 3
-								metadata</a> [[epub-33]].</li>
+						<li>MUST meet all the requirements for <a data-cite="epub3#sec-pkg-metadata">EPUB 3 metadata</a>
+							[[epub3]].</li>
 
 						<li>MUST include all metadata defined in <a href="#meta-req"></a>.</li>
 
@@ -821,15 +848,15 @@
 &lt;/dc:creator></pre>
 						</aside>
 
-						<p>The element MAY include the following attributes: <a data-cite="epub-33#attrdef-dir"
-									><code>dir</code></a>, <a data-cite="epub-33#attrdef-id"><code>id</code></a>, <a
-								data-cite="epub-33#attrdef-xml-lang"><code>xml:lang</code></a> [[epub-33]].</p>
+						<p>The element MAY include the following attributes: <a data-cite="epub3#attrdef-dir"
+									><code>dir</code></a>, <a data-cite="epub3#attrdef-id"><code>id</code></a>, <a
+								data-cite="epub3#attrdef-xml-lang"><code>xml:lang</code></a> [[epub3]].</p>
 
 						<p>Repeat the element for each creator name.</p>
 
 						<p>To identify the role the creator played in the creation of the content, <a
-								data-cite="epub-33#subexpression">associate</a> a <a data-cite="epub-33#role"
-									><code>role</code> property</a> [[epub-33]] with the element.</p>
+								data-cite="epub3#subexpression">associate</a> a <a data-cite="epub3#role"
+									><code>role</code> property</a> [[epub3]] with the element.</p>
 
 						<aside class="example" title="Multiple authors with roles identified">
 							<pre>&lt;dc:creator id="aut01">
@@ -843,9 +870,8 @@
 &lt;meta property="role" refines="#aut02">aut&lt;/meta></pre>
 						</aside>
 
-						<p>To provide the creator's name for sorting purposes, associate a <a
-								data-cite="epub-33#file-as"><code>file-as</code> property</a> [[epub-33]] with the
-							element.</p>
+						<p>To provide the creator's name for sorting purposes, associate a <a data-cite="epub3#file-as"
+									><code>file-as</code> property</a> [[epub3]] with the element.</p>
 
 						<aside class="example" title="Author's name with sortable equivalent">
 							<pre>&lt;dc:creator id="aut01">
@@ -855,8 +881,8 @@
 						</aside>
 
 						<div class="note">
-							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dccreator">definition of
-									the <code>dc:creator</code> element</a> in [[epub-33]].</p>
+							<p>For more information, refer to the <a data-cite="epub3#sec-opf-dccreator">definition of
+									the <code>dc:creator</code> element</a> in [[epub3]].</p>
 						</div>
 					</section>
 
@@ -875,9 +901,9 @@
 &lt;/dc:date></pre>
 						</aside>
 
-						<p>The element MAY include the following attributes: <a data-cite="epub-33#attrdef-dir">dir</a>,
-								<a data-cite="epub-33#attrdef-id">id</a>, <a data-cite="epub-33#attrdef-xml-lang"
-								>xml:lang</a> [[epub-33]].</p>
+						<p>The element MAY include the following attributes: <a data-cite="epub3#attrdef-dir">dir</a>,
+								<a data-cite="epub3#attrdef-id">id</a>, <a data-cite="epub3#attrdef-xml-lang"
+								>xml:lang</a> [[epub3]].</p>
 
 						<p>Only one <code>dc:date</code> element is allowed in the package document metadata.</p>
 
@@ -903,14 +929,14 @@
 &lt;/dc:format></pre>
 						</aside>
 
-						<p>The element MAY include an <a data-cite="epub-33#attrdef-id"><code>id</code></a> attribute
-							[[epub-33]].</p>
+						<p>The element MAY include an <a data-cite="epub3#attrdef-id"><code>id</code></a> attribute
+							[[epub3]].</p>
 					</section>
 
 					<section id="dc:identifier">
 						<h5>dc:identifier</h5>
 
-						<p>The REQUIRED <code>dc:identifier</code> element [[epub-33]] contains an identifier for an
+						<p>The REQUIRED <code>dc:identifier</code> element [[epub3]] contains an identifier for an
 							[=eBraille publication=], such as a UUID, DOI, or ISBN.</p>
 
 						<p>These identifiers SHOULD be formatted using a Uniform Resource Name.</p>
@@ -935,12 +961,12 @@
 								source work's identifier(s).</p>
 						</div>
 
-						<p>The element MAY include an <a data-cite="epub-33#attrdef-id"><code>id</code></a> attribute
-							[[epub-33]].</p>
+						<p>The element MAY include an <a data-cite="epub3#attrdef-id"><code>id</code></a> attribute
+							[[epub3]].</p>
 
 						<p>One identifier MUST be identified as the unique identifier for the publication using the
-								<code>package</code> element's <a data-cite="epub-33#attrdef-package-unique-identifier"
-									><code>unique-identifier</code> attribute</a> [[epub-33]]. This identifier MUST be
+								<code>package</code> element's <a data-cite="epub3#attrdef-package-unique-identifier"
+									><code>unique-identifier</code> attribute</a> [[epub3]]. This identifier MUST be
 							unique to the publication.</p>
 
 						<aside class="example" title="Unique identifier as ISBN">
@@ -956,16 +982,16 @@
 						</aside>
 
 						<div class="note">
-							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dcidentifier">definition
-									of the <code>dc:identifier</code> element</a> in [[epub-33]].</p>
+							<p>For more information, refer to the <a data-cite="epub3#sec-opf-dcidentifier">definition
+									of the <code>dc:identifier</code> element</a> in [[epub3]].</p>
 						</div>
 					</section>
 
 					<section id="dc:language">
 						<h5>dc:language</h5>
 
-						<p>The REQUIRED <a data-cite="epub-33#sec-opf-dclanguage"><code>dc:language</code> element</a>
-							[[epub-33]] identifies the language(s) of the [=eBraille publication=].</p>
+						<p>The REQUIRED <a data-cite="epub3#sec-opf-dclanguage"><code>dc:language</code> element</a>
+							[[epub3]] identifies the language(s) of the [=eBraille publication=].</p>
 
 						<p>The [=value=] MUST be a <a href="https://www.rfc-editor.org/rfc/rfc5646#section-2.2.9"
 								>well-formed language tag</a> [[bcp47]]. The language code MUST include the script
@@ -986,8 +1012,8 @@
 &lt;/dc:language></pre>
 						</aside>
 
-						<p>The element MAY include an <a data-cite="epub-33#attrdef-id"><code>id</code></a> attribute
-							[[epub-33]].</p>
+						<p>The element MAY include an <a data-cite="epub3#attrdef-id"><code>id</code></a> attribute
+							[[epub3]].</p>
 
 						<p>If multiple languages are used, repeat the tag for each language. The first language listed
 							in document order MUST be the primary language of the publication.</p>
@@ -1002,8 +1028,8 @@
 						</aside>
 
 						<div class="note">
-							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dclanguage">definition
-									of the <code>dc:language</code> element</a> in [[epub-33]].</p>
+							<p>For more information, refer to the <a data-cite="epub3#sec-opf-dclanguage">definition of
+									the <code>dc:language</code> element</a> in [[epub3]].</p>
 						</div>
 					</section>
 
@@ -1019,9 +1045,9 @@
 &lt;/dc:title></pre>
 						</aside>
 
-						<p>The element MAY include the following attributes: <a data-cite="epub-33#attrdef-dir"
-									><code>dir</code></a>, <a data-cite="epub-33#attrdef-id"><code>id</code></a>, <a
-								data-cite="epub-33#attrdef-xml-lang"><code>xml:lang</code></a> [[epub-33]].</p>
+						<p>The element MAY include the following attributes: <a data-cite="epub3#attrdef-dir"
+									><code>dir</code></a>, <a data-cite="epub3#attrdef-id"><code>id</code></a>, <a
+								data-cite="epub3#attrdef-xml-lang"><code>xml:lang</code></a> [[epub3]].</p>
 
 						<p>The first <code>dc:title</code> element in document order identifies the primary title of the
 							[=eBraille publication=]. Subsequent <code>dc:title</code> elements may be ignored by
@@ -1029,8 +1055,8 @@
 							have access to the complete set of titles.</p>
 
 						<div class="note">
-							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dccreator">definition of
-									the <code>dc:title</code> element</a> in [[epub-33]].</p>
+							<p>For more information, refer to the <a data-cite="epub3#sec-opf-dccreator">definition of
+									the <code>dc:title</code> element</a> in [[epub3]].</p>
 						</div>
 
 					</section>
@@ -1081,8 +1107,8 @@
 							ss the seconds, and Z represents the UTC time zone designator.</p>
 
 						<div class="note">
-							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dccreator">definition of
-									the last modified date</a> [[epub-33]].</p>
+							<p>For more information, refer to the <a data-cite="epub3#sec-opf-dccreator">definition of
+									the last modified date</a> [[epub3]].</p>
 						</div>
 					</section>
 
@@ -1293,9 +1319,9 @@
 &lt;/dc:publisher></pre>
 						</aside>
 
-						<p>The element MAY include the following attributes: <a data-cite="epub-33#attrdef-dir"
-									><code>dir</code></a>, <a data-cite="epub-33#attrdef-id"><code>id</code></a>, <a
-								data-cite="epub-33#attrdef-xml-lang"><code>xml:lang</code></a> [[epub-33]].</p>
+						<p>The element MAY include the following attributes: <a data-cite="epub3#attrdef-dir"
+									><code>dir</code></a>, <a data-cite="epub3#attrdef-id"><code>id</code></a>, <a
+								data-cite="epub3#attrdef-xml-lang"><code>xml:lang</code></a> [[epub3]].</p>
 
 						<p>Repeat the property for each organization or individual.</p>
 					</section>
@@ -1314,9 +1340,9 @@
 &lt;/dc:description></pre>
 						</aside>
 
-						<p>The element MAY include the following attributes: <a data-cite="epub-33#attrdef-dir"
-									><code>dir</code></a>, <a data-cite="epub-33#attrdef-id"><code>id</code></a>, <a
-								data-cite="epub-33#attrdef-xml-lang"><code>xml:lang</code></a> [[epub-33]].</p>
+						<p>The element MAY include the following attributes: <a data-cite="epub3#attrdef-dir"
+									><code>dir</code></a>, <a data-cite="epub3#attrdef-id"><code>id</code></a>, <a
+								data-cite="epub3#attrdef-xml-lang"><code>xml:lang</code></a> [[epub3]].</p>
 
 						<p>Only one instance of this element is allowed.</p>
 					</section>
@@ -1335,9 +1361,9 @@
 &lt;/dc:rights></pre>
 						</aside>
 
-						<p>The element MAY include the following attributes: <a data-cite="epub-33#attrdef-dir"
-									><code>dir</code></a>, <a data-cite="epub-33#attrdef-id"><code>id</code></a>, <a
-								data-cite="epub-33#attrdef-xml-lang"><code>xml:lang</code></a> [[epub-33]].</p>
+						<p>The element MAY include the following attributes: <a data-cite="epub3#attrdef-dir"
+									><code>dir</code></a>, <a data-cite="epub3#attrdef-id"><code>id</code></a>, <a
+								data-cite="epub3#attrdef-xml-lang"><code>xml:lang</code></a> [[epub3]].</p>
 
 						<p>Repeat the element to include more than one rights statement.</p>
 					</section>
@@ -1357,8 +1383,8 @@
 						<p>The [=value=] of the element SHOULD uniquely identify the source. An ISBN, DOI, ISSN or
 							similar identifier from a controlled system is preferred.</p>
 
-						<p>The element MAY include an <a data-cite="epub-33#attrdef-id"><code>id</code></a> attribute
-							[[epub-33]].</p>
+						<p>The element MAY include an <a data-cite="epub3#attrdef-id"><code>id</code></a> attribute
+							[[epub3]].</p>
 
 						<p>It is also RECOMMENDED to specify the publisher of the source work. Use a
 								<code>dcterms:publisher</code> property with a <code>refines</code> attribute that
@@ -1426,12 +1452,12 @@
 &lt;/dc:subject></pre>
 						</aside>
 
-						<p>The element MAY include the following attributes: <a data-cite="epub-33#attrdef-dir"
-									><code>dir</code></a>, <a data-cite="epub-33#attrdef-id"><code>id</code></a>, <a
-								data-cite="epub-33#attrdef-xml-lang"><code>xml:lang</code></a> [[epub-33]].</p>
+						<p>The element MAY include the following attributes: <a data-cite="epub3#attrdef-dir"
+									><code>dir</code></a>, <a data-cite="epub3#attrdef-id"><code>id</code></a>, <a
+								data-cite="epub3#attrdef-xml-lang"><code>xml:lang</code></a> [[epub3]].</p>
 
 						<p>The system or scheme the element's value was drawn from MAY be identified using the <a
-								data-cite="epub-33#authority"><code>authority</code> property</a> [[epub-33]]. A subject
+								data-cite="epub3#authority"><code>authority</code> property</a> [[epub3]]. A subject
 							code MUST also be specified when specifying the <code>authority</code> property.</p>
 
 						<aside class="example" title="BISAC subject and code">
@@ -1455,8 +1481,8 @@
 						<p>Repeat the element for each subject.</p>
 
 						<div class="note">
-							<p>For more information, refer to the <a data-cite="epub-33#sec-opf-dcsubject">definition of
-									the <code>dc:subject</code> element</a> in [[epub-33]]</p>
+							<p>For more information, refer to the <a data-cite="epub3#sec-opf-dcsubject">definition of
+									the <code>dc:subject</code> element</a> in [[epub3]]</p>
 						</div>
 					</section>
 
@@ -1482,16 +1508,16 @@
 				<section id="meta-additional">
 					<h4>Additional metadata</h4>
 
-					<p>The package document metadata section MAY include <a data-cite="epub-33#sec-opf-dcmes-optional"
-							>any other Dublin Core elements</a> [[epub-33]] not listed as required or recommended.</p>
+					<p>The package document metadata section MAY include <a data-cite="epub3#sec-opf-dcmes-optional">any
+							other Dublin Core elements</a> [[epub3]] not listed as required or recommended.</p>
 
-					<p>Metadata from vocabularies with a <a data-cite="epub-33#sec-metadata-reserved-prefixes">reserved
+					<p>Metadata from vocabularies with a <a data-cite="epub3#sec-metadata-reserved-prefixes">reserved
 							prefix</a> MAY also be added, including metadata properties in the <a
 							href="#ebrl-meta-vocab">Accessible Formats Metadata Vocabulary</a> that are not listed as
 						required or recommended in the preceding sections.</p>
 
 					<p>Properties from other vocabularies are also allowed provided a <a
-							data-cite="epub-33#sec-prefix-attr">prefix</a> [[epub-33]] is defined.</p>
+							data-cite="epub3#sec-prefix-attr">prefix</a> [[epub3]] is defined.</p>
 				</section>
 
 				<section id="meta-examples">
@@ -1595,20 +1621,20 @@
 			<section id="manifest">
 				<h3>Manifest</h3>
 
-				<p>The package document <a data-cite="epub-33#sec-manifest-elem"><code>manifest</code> element</a>
-					[[epub-33]] contains a list all of the resources in the [=eBraille publication=]. It is the second
+				<p>The package document <a data-cite="epub3#sec-manifest-elem"><code>manifest</code> element</a>
+					[[epub3]] contains a list all of the resources in the [=eBraille publication=]. It is the second
 					required child of the root <a href="#package-elem"><code>package</code> element</a>.</p>
 
-				<p>Each <a data-cite="epub-33#sec-item-elem"><code>item</code> element</a> [[epub-33]] child of the
+				<p>Each <a data-cite="epub3#sec-item-elem"><code>item</code> element</a> [[epub3]] child of the
 						<code>manifest</code> defines one resource, minimally providing the following information:</p>
 
 				<ul>
-					<li>an identifier for the resource in its <a data-cite="epub-33#attrdef-id"><code>id</code>
-							attribute</a> [[epub-33]];</li>
-					<li>the location of the resource in its <a data-cite="epub-33#attrdef-item-href"><code>href</code>
-							attribute</a> [[epub-33]]; and</li>
-					<li>the media type of the resource in its <a data-cite="epub-33#attrdef-item-media-type"
-								><code>media-type</code> attribute</a> [[epub-33]].</li>
+					<li>an identifier for the resource in its <a data-cite="epub3#attrdef-id"><code>id</code>
+							attribute</a> [[epub3]];</li>
+					<li>the location of the resource in its <a data-cite="epub3#attrdef-item-href"><code>href</code>
+							attribute</a> [[epub3]]; and</li>
+					<li>the media type of the resource in its <a data-cite="epub3#attrdef-item-media-type"
+								><code>media-type</code> attribute</a> [[epub3]].</li>
 				</ul>
 
 				<aside class="example" title="Manifest entry for an eBraille content document">
@@ -1625,7 +1651,7 @@
 				</aside>
 
 				<p>Manifest entries may also identify specific properties of the resource in the <a
-						data-cite="epub-33#sec-item-resource-properties"><code>properties</code> attribute</a>. For
+						data-cite="epub3#sec-item-resource-properties"><code>properties</code> attribute</a>. For
 					eBraille, this attribute will typically only be used for the <a href="#ebrl-nav">navigation
 						document</a> and when SVG tactile graphics are embedded in the resource.</p>
 
@@ -1649,12 +1675,11 @@
 				</aside>
 
 				<p>The manifest entries for [=eBraille content documents=] may also indicate if a <a href="#ebrl-mo"
-						>media overlay document</a> is available in the <a
-						data-cite="epub-33#attrdef-item-media-overlay"><code>media-overlay</code> attribute</a>
-					[[epub-33]].</p>
+						>media overlay document</a> is available in the <a data-cite="epub3#attrdef-item-media-overlay"
+							><code>media-overlay</code> attribute</a> [[epub3]].</p>
 
 				<p>For the complete set of requirements for the manifest, refer to the <a
-						data-cite="epub-33#sec-pkg-manifest">The <code>manifest</code> element</a> in [[epub-33]].</p>
+						data-cite="epub3#sec-pkg-manifest">The <code>manifest</code> element</a> in [[epub3]].</p>
 
 				<div class="note">
 					<p>As eBraille does not support <a href="#fallbacks">manifest fallbacks</a>, the
@@ -1665,13 +1690,13 @@
 			<section id="spine">
 				<h3>Spine</h3>
 
-				<p>The package document <a data-cite="epub-33#sec-spine-elem"><code>spine</code> element</a> [[epub-33]]
-					is the third required child of the root <a href="#package-elem"><code>package</code> element</a>. It
+				<p>The package document <a data-cite="epub3#sec-spine-elem"><code>spine</code> element</a> [[epub3]] is
+					the third required child of the root <a href="#package-elem"><code>package</code> element</a>. It
 					defines the default reading order for an [=eBraille publication=].</p>
 
 				<p>Each <code>itemref</code> child of the <code>spine</code> references the manifest entry for an
-					[=eBraille content document=] in its required <a data-cite="epub-33/#attrdef-item-href"
-							><code>idref</code> attribute</a> [[epub-33]].</p>
+					[=eBraille content document=] in its required <a data-cite="epub3/#attrdef-item-href"
+							><code>idref</code> attribute</a> [[epub3]].</p>
 
 				<aside class="example" title="Spine item reference to an eBraille content document">
 					<pre>&lt;package &#8230;>
@@ -1689,8 +1714,8 @@
 &lt;/package></pre>
 				</aside>
 
-				<p>The <a data-cite="epub-33#attrdef-itemref-linear"><code>linear</code> attribute</a> [[epub-33]] is
-					used to indicate if the resource referenced contains content that must be read sequentially or not.
+				<p>The <a data-cite="epub3#attrdef-itemref-linear"><code>linear</code> attribute</a> [[epub3]] is used
+					to indicate if the resource referenced contains content that must be read sequentially or not.
 					Linear content typically consists of eBraille content documents that contain content in the primary
 					reading order while non-linear content contains supplementary material such as notes and
 					descriptions that can be accessed out of sequence (e.g., an [=eBraille reading system=] might opt to
@@ -1713,8 +1738,8 @@
 &lt;/package></pre>
 				</aside>
 
-				<p>For the complete set of requirements for the spine, refer to the <a data-cite="epub-33#sec-pkg-spine"
-						>The <code>spine</code> element</a> in [[epub-33]].</p>
+				<p>For the complete set of requirements for the spine, refer to the <a data-cite="epub3#sec-pkg-spine"
+						>The <code>spine</code> element</a> in [[epub3]].</p>
 			</section>
 
 			<section id="package-unsupported">
@@ -1724,12 +1749,12 @@
 					used:</p>
 
 				<ul>
-					<li>all features marked as <a data-cite="epub-33#deprecated">deprecated</a> [[epub-33]]</li>
+					<li>all features marked as <a data-cite="epub3#deprecated">deprecated</a> [[epub3]]</li>
 					<li>
 						<a href="#fallbacks">manifest fallbacks</a>
 					</li>
-					<li><a data-cite="epub-33#sec-pkg-collections">collections</a> [[epub-33]]</li>
-					<li><a data-cite="epub-33#sec-pkg-legacy">legacy features</a> [[epub-33]]</li>
+					<li><a data-cite="epub3#sec-pkg-collections">collections</a> [[epub3]]</li>
+					<li><a data-cite="epub3#sec-pkg-legacy">legacy features</a> [[epub3]]</li>
 				</ul>
 			</section>
 		</section>
@@ -1747,16 +1772,16 @@
 					graphics, audio, and video. The primary difference between the features of an eBraille content
 					document and a typical web page is that scripting and forms are not supported.</p>
 
-				<p>Note that unlike EPUB 3, eBraille only supports XHTML in the [=spine=] of an eBraille publication.
-					SVG images are not supported in the [=spine=] but can be embedded in XHTML documents.</p>
+				<p>Note that unlike EPUB 3, eBraille only supports XHTML in the <a data-cite="epub3#dfn-spine">spine</a>
+					[[epub3]] of an eBraille publication. SVG images are not supported in the <a
+						data-cite="epub3#dfn-spine">spine</a> [[epub3]] but can be embedded in XHTML documents.</p>
 			</section>
 
 			<section id="xhtml">
 				<h3>XHTML</h3>
 
-				<p>An [=eBraille content document=] MUST be an <a data-cite="epub-33#sec-xhtml">XHTML content
-						document</a> as defined [[epub-33]] with additional constraints as defined in the following
-					subsections.</p>
+				<p>An [=eBraille content document=] MUST be an <a data-cite="epub3#sec-xhtml">XHTML content document</a>
+					as defined [[epub3]] with additional constraints as defined in the following subsections.</p>
 
 				<section id="xhtml-char-encoding">
 					<h4>Character encoding</h4>
@@ -1823,7 +1848,8 @@
 					<p>When authoring [[html]] ordered ([^ol^]) and unordered ([^ul^]) lists, [=eBraille creators=]
 						SHOULD embed the list number, letter, or glyph within each item (e.g., by setting
 							<code>list-style-type</code> to <code>none</code> to override the default styling). Do not
-						rely on [=reading systems=] to convert the automatic styling of lists to braille characters.</p>
+						rely on [=eBraille reading systems=] to convert the automatic styling of lists to braille
+						characters.</p>
 
 					<p>eBraille creators SHOULD only use CSS for marking list items when the style sheet supplies the
 						braille characters to display (e.g., by setting <code>list-style-type: '⠿⠲ '</code> to insert
@@ -1858,15 +1884,15 @@
 				<section id="css-intro" class="informative">
 					<h4>Introduction</h4>
 
-					<p>[=eBraille creators=] may use CSS [[css2]] to style and lay out [=content documents=]. With the
-						few exceptions defined in this section, eBraille defers to [[epub-33]], and more specifically to
-						the CSS standardization work done in <abbr title="World Wide Web Consortium">W3C</abbr>, to
-						define CSS.</p>
+					<p>[=eBraille creators=] may use CSS [[css2]] to style and lay out [=eBraille content documents=].
+						With the few exceptions defined in this section, eBraille defers to [[epub3]], and more
+						specifically to the CSS standardization work done in <abbr title="World Wide Web Consortium"
+							>W3C</abbr>, to define CSS.</p>
 
 					<div class="note">
-						<p>Keep in mind that some [=reading systems=] will not support all desired features of CSS. The
-							following are identified as potentially problematic, depending on the technology choices of
-							reading system implementations, and should therefore be used with caution:</p>
+						<p>Keep in mind that some [=eBraille reading systems=] will not support all desired features of
+							CSS. The following are identified as potentially problematic, depending on the technology
+							choices of reading system implementations, and should therefore be used with caution:</p>
 						<ul>
 							<li>The "<a data-cite="css-page#">CSS Paged Media Module Level 3</a>" working draft
 								[[css-page]], which builds on the "<a data-cite="css2/page.html#the-page">Paged
@@ -1884,12 +1910,12 @@
 					<h4>CSS requirements</h4>
 
 					<p>The requirements for using CSS to style [=eBraille content documents=] are defined in <a
-							data-cite="epub-33#sec-css-req">CSS requirements</a> [[epub-33]] but with the following
+							data-cite="epub3#sec-css-req">CSS requirements</a> [[epub3]] but with the following
 						differences:</p>
 
 					<ul>
-						<li>[=eBraille creators=] MUST NOT use <a data-cite="epub-33#css-prefixes"><code>-epub-</code>
-								prefixed properties</a> [[epub-33]].</li>
+						<li>[=eBraille creators=] MUST NOT use <a data-cite="epub3#css-prefixes"><code>-epub-</code>
+								prefixed properties</a> [[epub3]].</li>
 						<li>CSS style sheets MUST be UTF-8 encoded [[unicode]].</li>
 					</ul>
 
@@ -1964,35 +1990,32 @@
 						<li>
 							<p>eBraille creators SHOULD NOT use media queries that discriminate between a braille
 								display and a screen. Specifically,</p>
-
 							<ul>
-								<li>media queries MUST NOT include
-									the <a data-cite="mediaqueries#valdef-media-braille">deprecated
-									<code>braille</code> media type</a> [[mediaqueries]] to target braille displays.</li>
+								<li>media queries MUST NOT include the <a data-cite="mediaqueries#valdef-media-braille"
+										>deprecated <code>braille</code> media type</a> [[mediaqueries]] to target
+									braille displays.</li>
 
-								<li>Media queries SHOULD NOT include references
-									to <a data-cite="mediaqueries#descdef-media-grid">the <code>grid</code> feature</a>
+								<li>Media queries SHOULD NOT include references to <a
+										data-cite="mediaqueries#descdef-media-grid">the <code>grid</code> feature</a>
 									[[mediaqueries]] to detect braille displays, either.</li>
 
-								<li>Media queries SHOULD also NOT include
-									<a data-cite="mediaqueries#valdef-media-screen">the <code>screen</code> media
-									type</a> [[mediaqueries]] to target braille displays.</li>
+								<li>Media queries SHOULD also NOT include <a
+										data-cite="mediaqueries#valdef-media-screen">the <code>screen</code> media
+										type</a> [[mediaqueries]] to target braille displays.</li>
 							</ul>
-
 							<div class="note">
 								<p>The primary motivation for these restrictions is making the rendering of an eBraille
 									publication on a computer screen representative for the rendering on a comparable
-									braille display. The recommendation against the use
-									of <a data-cite="mediaqueries#valdef-media-braille"><code>braille</code></a>
-									and <a data-cite="mediaqueries#grid"><code>(grid)</code></a> is also driven by the
-									fact that there are currently no known CSS implementations that match these types,
-									so requiring [=eBraille reading systems=] to match them could be problematic.</p>
-								<p>The recommendation against the use of
-									<a data-cite="mediaqueries#valdef-media-screen"><code>screen</code></a> was included
-									to be forward-compatible with a possible future version of the standard that
-									supports differences in styling for screens versus braille
-									displays. Currently, <a href="#rs-mq">eBraille reading systems are prompted to
-									match <code>screen</code></a>.</p>
+									braille display. The recommendation against the use of <a
+										data-cite="mediaqueries#valdef-media-braille"><code>braille</code></a> and <a
+										data-cite="mediaqueries#grid"><code>(grid)</code></a> is also driven by the fact
+									that there are currently no known CSS implementations that match these types, so
+									requiring [=eBraille reading systems=] to match them could be problematic.</p>
+								<p>The recommendation against the use of <a data-cite="mediaqueries#valdef-media-screen"
+											><code>screen</code></a> was included to be forward-compatible with a
+									possible future version of the standard that supports differences in styling for
+									screens versus braille displays. Currently, <a href="#rs-mq">eBraille reading
+										systems are prompted to match <code>screen</code></a>.</p>
 							</div>
 						</li>
 
@@ -2043,16 +2066,15 @@
 		<section id="ebrl-rendering-control">
 			<h2>Layout rendering control</h2>
 
-			<p>eBraille does not support <a data-cite="epub-33#sec-fixed-layouts">fixed layouts</a> as defined in
-				[[epub-33]]. Consequently, [=eBraille publications=]:</p>
+			<p>eBraille does not support <a data-cite="epub3#sec-fixed-layouts">fixed layouts</a> as defined in
+				[[epub3]]. Consequently, [=eBraille publications=]:</p>
 
 			<ul>
-				<li>MUST NOT specify the <a data-cite="epub-33#layout"><code>rendition:layout</code> property</a> with
-					the value <code>pre-paginated</code> in the package document metadata or specify its override
-					property <code>rendition:layout-pre-paginated</code> on <a href="#spine">spine</a> items
-					[[epub-33]].</li>
+				<li>MUST NOT specify the <a data-cite="epub3#layout"><code>rendition:layout</code> property</a> with the
+					value <code>pre-paginated</code> in the package document metadata or specify its override property
+						<code>rendition:layout-pre-paginated</code> on <a href="#spine">spine</a> items [[epub3]].</li>
 				<li>MUST NOT specify any other properties or spine overrides defined in <a
-						data-cite="epub-33#sec-fxl-package">Fixed-layout package settings</a> [[epub-33]].</li>
+						data-cite="epub3#sec-fxl-package">Fixed-layout package settings</a> [[epub3]].</li>
 			</ul>
 		</section>
 		<section id="ebrl-nav">
@@ -2061,9 +2083,10 @@
 			<section id="navdoc-intro" class="informative">
 				<h3>Introduction</h3>
 
-				<p>To make it easier to deploy [=eBraille publications=] on the web, the [=EPUB navigation document=] is
-					used as the primary entry point for publications. The required file naming (<code>index.html</code>)
-					and location of this file mean it will be the first document loaded when users browse to a folder
+				<p>To make it easier to deploy [=eBraille publications=] on the web, the <a
+						data-cite="epub3#dfn-epub-navigation-document">EPUB navigation document</a> [[epub3]] is used as
+					the primary entry point for publications. The required file naming (<code>index.html</code>) and
+					location of this file mean it will be the first document loaded when users browse to a folder
 					containing an eBraille publication.</p>
 
 				<p>By requiring the [=primary entry page=] be located in the [=publication root=], it is also easier for
@@ -2080,9 +2103,9 @@
 			<section id="nav-req">
 				<h3>General requirements</h3>
 
-				<p>The primary entry page MUST be a conforming <a data-cite="epub-33#sec-nav">EPUB navigation
-						document</a> [[epub-33]]. In addition, it MUST be named <code>index.html</code> and be located
-					in the [=publication root=], as defined in <a href="#fileset-structure"></a>.</p>
+				<p>The primary entry page MUST be a conforming <a data-cite="epub3#sec-nav">EPUB navigation document</a>
+					[[epub3]]. In addition, it MUST be named <code>index.html</code> and be located in the [=publication
+					root=], as defined in <a href="#fileset-structure"></a>.</p>
 
 				<p>The primary entry page MUST include an [[html]] [^link^] element with its [^link/rel^] attribute set
 					to the value <code>publication</code>. The [^link/href^] attribute MUST specify the package document
@@ -2123,8 +2146,7 @@
 					spine, it is better to create a separate document with publication-specific formatting.</p>
 
 				<p>As per the requirements of EPUB 3, the <a href="#manifest">manifest entry</a> for the primary entry
-					page has to have a <code>properties</code> attribute with the value <code>nav</code>
-					[[epub-33]].</p>
+					page has to have a <code>properties</code> attribute with the value <code>nav</code> [[epub3]].</p>
 
 				<aside class="example" title="Manifest entry for the primary entry page">
 					<pre>&lt;package &#8230;>
@@ -2147,8 +2169,8 @@
 					<p>The table of contents provides users access to the major sections of the publications.</p>
 
 					<p>The EPUB 3 specification requires that the table of contents be defined in an [[html]] [^nav^]
-						element whose <a data-cite="epub-33#dfn-epub-type"><code>epub:type</code> attribute</a>
-						specifies the value "<a data-cite="epub-33#sec-nav-toc"><code>toc</code></a>" [[epub-33]].</p>
+						element whose <a data-cite="epub3#dfn-epub-type"><code>epub:type</code> attribute</a> specifies
+						the value "<a data-cite="epub3#sec-nav-toc"><code>toc</code></a>" [[epub3]].</p>
 
 					<p>For compatibility with web-based rendering, the table of contents MUST also be identified by the
 						[^/role^] attribute [[html]] value "<a data-cite="dpub-aria#doc-toc"><code>doc-toc</code></a>"
@@ -2229,8 +2251,8 @@
 						a browser.</p>
 
 					<div class="note">
-						<p>For more information, refer to <a data-cite="epub-33#sec-nav-toc">The <code>toc nav</code>
-								element</a> in [[epub-33]].</p>
+						<p>For more information, refer to <a data-cite="epub3#sec-nav-toc">The <code>toc nav</code>
+								element</a> in [[epub3]].</p>
 					</div>
 				</section>
 
@@ -2242,8 +2264,8 @@
 						publication.</p>
 
 					<p>The EPUB 3 specification requires that the page list be defined in an [[html]] [^nav^] element
-						whose <a data-cite="epub-33#dfn-epub-type"><code>epub:type</code> attribute</a> specifies the
-						value "<a data-cite="epub-33#sec-nav-pagelist"><code>page-list</code></a>" [[epub-33]].</p>
+						whose <a data-cite="epub3#dfn-epub-type"><code>epub:type</code> attribute</a> specifies the
+						value "<a data-cite="epub3#sec-nav-pagelist"><code>page-list</code></a>" [[epub3]].</p>
 
 					<p>For compatibility with web-based rendering, the page list MUST also be identified by the
 						[^/role^] attribute [[html]] value "<a data-cite="dpub-aria#doc-pagelist"
@@ -2313,15 +2335,15 @@
 					</aside>
 
 					<p>Only include the page number in the <code>a</code> tag. Adding words such as "page" may break the
-						ability of users to jump to the page break (i.e., [=reading systems=] will typically try to find
-						an exact match for the page number a user enters).</p>
+						ability of users to jump to the page break (i.e., [=eBraille reading systems=] will typically
+						try to find an exact match for the page number a user enters).</p>
 
 					<p>Unlike the <a href="#nav-toc">table of contents</a>, the page list cannot include nested lists.
 						It is not possible to group pages together by the section they belong to, for example.</p>
 
 					<div class="note">
-						<p>For more information, refer to <a data-cite="epub-33#sec-nav-pagelist">The <code>page-list
-									nav</code> element</a> in [[epub-33]].</p>
+						<p>For more information, refer to <a data-cite="epub3#sec-nav-pagelist">The <code>page-list
+									nav</code> element</a> in [[epub3]].</p>
 					</div>
 				</section>
 
@@ -2338,8 +2360,8 @@
 						often need to access these reference sections for more information while reading.</p>
 
 					<p>The EPUB 3 specification requires that the landmarks be defined in an [[html]] [^nav^] element
-						whose <a data-cite="epub-33#dfn-epub-type"><code>epub:type</code> attribute</a> specifies the
-						value "<a data-cite="epub-33#sec-nav-pagelist"><code>landmarks</code></a>" [[epub-33]].</p>
+						whose <a data-cite="epub3#dfn-epub-type"><code>epub:type</code> attribute</a> specifies the
+						value "<a data-cite="epub3#sec-nav-pagelist"><code>landmarks</code></a>" [[epub3]].</p>
 
 					<aside class="example" title="Landmarks navigation element">
 						<pre>&lt;html xmlns="http://www.w3.org/1999/xhtml"
@@ -2369,8 +2391,8 @@
 
 					<p>The name of the landmark is wrapped inside an [[html]] anchor tag ([^a^]) that provides a
 						machine-readable semantic that identifies the type of landmark in its <code>epub:type</code>
-						attribute. These semantics are drawn from the <a href="https://www.w3.org/TR/epub-ssv-11">EPUB
-							Structural Semantics Vocabulary</a> [[epub-ssv-11]].</p>
+						attribute. These semantics are drawn from the <a href="https://www.w3.org/TR/epub-ssv">EPUB
+							Structural Semantics Vocabulary</a> [[epub-ssv]].</p>
 
 					<aside class="example" title="Landmarks for body matter and glossary">
 						<pre>&lt;nav
@@ -2393,8 +2415,8 @@
 					</aside>
 
 					<div class="note">
-						<p>For more information, refer to <a data-cite="epub-33#sec-nav-landmarks">The <code>landmarks
-									nav</code> element</a> in [[epub-33]].</p>
+						<p>For more information, refer to <a data-cite="epub3#sec-nav-landmarks">The <code>landmarks
+									nav</code> element</a> in [[epub3]].</p>
 					</div>
 				</section>
 			</section>
@@ -2402,8 +2424,8 @@
 		<section id="ebrl-mo">
 			<h2>Media overlays</h2>
 
-			<p>eBraille publications support <a data-cite="epub-33#sec-media-overlays">media overlays</a> as defined in
-				[[epub-33]]. Media overlays allow prerecorded audio to be synchronized with the content of [=eBraille
+			<p>eBraille publications support <a data-cite="epub3#sec-media-overlays">media overlays</a> as defined in
+				[[epub3]]. Media overlays allow prerecorded audio to be synchronized with the content of [=eBraille
 				content documents=], allowing users to switch between reading braille, listening to auditory playback,
 				or reading along with narration.</p>
 
@@ -2432,10 +2454,11 @@
 &lt;/package></pre>
 			</aside>
 
-			<p>The body of a media overlay document consists of [^par^] and [^seq^] elements [[epub-33]]. The
-					<code>par</code> element defines the audio content to associate with the specified content, while
-					<code>seq</code> elements are used to group <code>par</code> and other <code>seq</code> elements
-				into logical structures such as figures and tables.</p>
+			<p>The body of a media overlay document consists of <a data-cite="epub3#sec-smil-par-elem"
+					><code>par</code></a> and <a data-cite="epub3#sec-smil-seq-elem"><code>seq</code></a> elements
+				[[epub3]]. The <code>par</code> element defines the audio content to associate with the specified
+				content, while <code>seq</code> elements are used to group <code>par</code> and other <code>seq</code>
+				elements into logical structures such as figures and tables.</p>
 
 			<aside class="example" title="A media overlay document">
 				<p>The following media overlay document shows the markup for a table. <code>seq</code> elements are used
@@ -2465,22 +2488,22 @@
 &lt;/smil></pre>
 			</aside>
 
-			<p>Although it is possible to <a data-cite="epub-33#sec-docs-assoc-style">associate styling information</a>
-				[[epub-33]] with the audio playback, eBraille reading systems are not expected to use this information.
-				It would only be used if the [=eBraille publication=] were visually rendered, such as if the publication
+			<p>Although it is possible to <a data-cite="epub3#sec-docs-assoc-style">associate styling information</a>
+				[[epub3]] with the audio playback, eBraille reading systems are not expected to use this information. It
+				would only be used if the [=eBraille publication=] were visually rendered, such as if the publication
 				were opened in a mainstream EPUB 3 reading system.</p>
 
 			<div class="note">
 				<p>For more information about creating media overlay documents, refer to the <a
-						data-cite="epub-33#sec-media-overlays">Media overlays</a> section of [[epub-33]].</p>
+						data-cite="epub3#sec-media-overlays">Media overlays</a> section of [[epub3]].</p>
 			</div>
 		</section>
 		<section id="ebrl-a11y">
 			<h2>Accessibility</h2>
 
-			<p>[=eBraille publications=] fall under the category of <a data-cite="epub-a11y-11#sec-optimized-pubs"
-					>optimized publications</a> as defined by the <a data-cite="epub-a11y-11#">EPUB Accessibility
-					specification</a> [[epub-a11y-11]]. eBraille publications are only meant for braille users, so it is
+			<p>[=eBraille publications=] fall under the category of <a data-cite="epub-a11y#sec-optimized-pubs"
+					>optimized publications</a> as defined by the <a data-cite="epub-a11y#">EPUB Accessibility
+					specification</a> [[epub-a11y]]. eBraille publications are only meant for braille users, so it is
 				not expected that [=eBraille creators=] can produce them to fully meet the requirements of W3C's <a
 					data-cite="wcag#">Web Content Accessibility Guidelines</a> [[wcag22]]. There is not always a benefit
 				to braille users in meeting all of that standard's requirements.</p>
@@ -2491,26 +2514,25 @@
 				them difficult to navigate and understand.</p>
 
 			<p>So although fully meeting WCAG conformance may not be possible, eBraille SHOULD meet all success criteria
-				applicable to eBraille reading and include all relevant <a data-cite="epub-a11y-11#sec-discovery"
-					>accessibility metadata</a> [[epub-a11y-11]] in the package document.</p>
+				applicable to eBraille reading and include all relevant <a data-cite="epub-a11y#sec-discovery"
+					>accessibility metadata</a> [[epub-a11y]] in the package document.</p>
 		</section>
 		<section id="ebrl-packaging">
 			<h2>Packaging</h2>
 
 			<p>When [=eBraille publications=] are distributed to end users as a single file set, they MUST be packaged
-				in a conforming EPUB container as defined in <a data-cite="epub-33#sec-container-zip">OCF ZIP
-					Container</a> [[epub-33]].</p>
+				in a conforming EPUB container as defined in <a data-cite="epub3#sec-container-zip">OCF ZIP
+					Container</a> [[epub3]].</p>
 
-			<p>As packaging is separate from the [=eBraille file set=], the <a
-					data-cite="epub-33/#sec-zip-container-mime"><code>mimetype</code></a> and <a
-					data-cite="epub-33/#sec-container-metainf-container.xml"><code>container.xml</code></a> files
-				[[epub-33]] are only required for a packaged eBraille file. The files MAY be omitted if an eBraille
-				publication is not packaged.</p>
+			<p>As packaging is separate from the [=eBraille file set=], the <a data-cite="epub3/#sec-zip-container-mime"
+						><code>mimetype</code></a> and <a data-cite="epub3/#sec-container-metainf-container.xml"
+						><code>container.xml</code></a> files [[epub3]] are only required for a packaged eBraille file.
+				The files MAY be omitted if an eBraille publication is not packaged.</p>
 
 			<p>Packaged eBraille publications use the same media type identifier as EPUB in the <code>mimetype</code>
-				file: <code>application/epub+zip</code> [[epub-33]]. The requirements for specifying this identifier in
-				the <code>mimetype</code> file are defined in <a data-cite="epub-33#sec-zip-container-mime">OCF ZIP
-					container media type identification</a> [[epub-33]].</p>
+				file: <code>application/epub+zip</code> [[epub3]]. The requirements for specifying this identifier in
+				the <code>mimetype</code> file are defined in <a data-cite="epub3#sec-zip-container-mime">OCF ZIP
+					container media type identification</a> [[epub3]].</p>
 
 			<div class="note">
 				<p>The EPUB media type identifier is required in the <code>mimetype</code> file for conformance with the
@@ -2530,8 +2552,8 @@
 			</div>
 
 			<p>As the use of <a href="#css-req">CSS font properties</a> is not recommended, eBraille creators SHOULD NOT
-				use EPUB's <a data-cite="epub-33#sec-font-obfuscation">font obfuscation algorithm</a> [[epub-33]] to
-				embed fonts.</p>
+				use EPUB's <a data-cite="epub3#sec-font-obfuscation">font obfuscation algorithm</a> [[epub3]] to embed
+				fonts.</p>
 		</section>
 		<section id="ebrl-security-privacy">
 			<h2>Security and privacy</h2>
@@ -2540,7 +2562,7 @@
 				<h3>Threat model</h3>
 
 				<p>Although eBraille shares a common file set with EPUB 3, many of the <a
-						data-cite="epub-33#sec-security-privacy">privacy and security threats</a> [[epub-33]] that arise
+						data-cite="epub3#sec-security-privacy">privacy and security threats</a> [[epub3]] that arise
 					with EPUB 3 publications do not apply to [=eBraille publications=]. The reason is that the primary
 					threat vectors in EPUB 3 come from its allowance of scripting and network access. Users do not face
 					the same risks from third party scripts, from attempts by publishers to monitor their activities or
@@ -2580,8 +2602,8 @@
 			<section id="risk-mitigation">
 				<h3>Risk mitigation</h3>
 
-				<p>The following <a data-cite="epub-33#security-privacy-recommendations">recommendations from EPUB 3</a>
-					[[epub-33]] apply equally to [=eBraille publications=]:</p>
+				<p>The following <a data-cite="epub3#security-privacy-recommendations">recommendations from EPUB 3</a>
+					[[epub3]] apply equally to [=eBraille publications=]:</p>
 
 				<ul>
 					<li>Avoid links to untrustworthy web sites (e.g., that browsers do not recognize as safe).</li>
@@ -2609,10 +2631,9 @@
 			<section id="rs-intro" class="informative">
 				<h3>Introduction</h3>
 
-				<p>As an [=eBraille publication=] represents a subset of an <a data-cite="epub-33#sec-epub-conf">EPUB 3
-						publication</a> [[epub-33]], an eBraille reading system similarly consists of a subset of
-					features of a full <a data-cite="epub-rs-33#sec-rs-conformance">EPUB 3 reading system</a>
-					[[epub-rs-33]].</p>
+				<p>As an [=eBraille publication=] represents a subset of an <a data-cite="epub3#sec-epub-conf">EPUB 3
+						publication</a> [[epub3]], an eBraille reading system similarly consists of a subset of features
+					of a full <a data-cite="epub-rs-3#sec-rs-conformance">EPUB 3 reading system</a> [[epub-rs-3]].</p>
 
 				<p>Similar to EPUB 3, eBraille does not define a uniform set of requirements that all reading systems
 					must meet. Support is instead based on the capabilities of the device. A reading system might not
@@ -2631,36 +2652,35 @@
 				<section id="rs-req-epub" aria-labelledby="rs-req-epub-hd rs-req-hd">
 					<h4 id="rs-req-epub-hd">General</h4>
 
-					<p>An [=eBraille reading system=] MUST meet the <a data-cite="epub-rs-33#sec-rs-conformance"
-							>requirements for EPUB reading systems</a> [[epub-rs-33]], with the following
+					<p>An [=eBraille reading system=] MUST meet the <a data-cite="epub-rs-3#sec-rs-conformance"
+							>requirements for EPUB reading systems</a> [[epub-rs-3]], with the following
 						differences:</p>
 
 					<ul>
-						<li>It MUST NOT support <a data-cite="epub-rs-33#sec-epub-rs-conf-remote-res">remote
-								resources</a> [[epub-rs-33]].</li>
+						<li>It MUST NOT support <a data-cite="epub-rs-3#sec-epub-rs-conf-remote-res">remote
+								resources</a> [[epub-rs-3]].</li>
 						<li>It MUST NOT resolve [=path-absolute-URL strings=] [[url]].</li>
 						<li>As remote resources, forms, and scripting are not supported, it MUST NOT allow [=eBraille
-							publications=] to have <a data-cite="epub-rs-33#sec-epub-rs-network-access">network
-								access</a> [[epub-rs-33]]. (Note that barring network access should not prevent users
-							from following <a data-cite="epub-rs-33#sec-epub-rs-external-links">external hyperlinks</a>
-							[[epub-rs-33]] in a publication.)</li>
+							publications=] to have <a data-cite="epub-rs-3#sec-epub-rs-network-access">network
+								access</a> [[epub-rs-3]]. (Note that barring network access should not prevent users
+							from following <a data-cite="epub-rs-3#sec-epub-rs-external-links">external hyperlinks</a>
+							[[epub-rs-3]] in a publication.)</li>
 						<li>It MUST only support [=eBraille content documents=] in the <code>spine</code>. The reading
 							system MAY reject eBraille publications with other formats in the spine or ignore their
 							entries when rendering the publication.</li>
-						<li>It MUST NOT support <a data-cite="epub-rs-33#sec-xhtml-forms">form submission</a>
-							[[epub-rs-33]].</li>
-						<li>It MUST NOT support <a data-cite="epub-rs-33#sec-scripted-content">scripting</a>
-							[[epub-rs-33]].</li>
-						<li>It is only required to support <a data-cite="epub-rs-33#sec-ocf">OCF processing</a>
-							[[epub-33]] if it supports <a href="#ebrl-packaging">packaged eBraille
-							publications</a>.</li>
+						<li>It MUST NOT support <a data-cite="epub-rs-3#sec-xhtml-forms">form submission</a>
+							[[epub-rs-3]].</li>
+						<li>It MUST NOT support <a data-cite="epub-rs-3#sec-scripted-content">scripting</a>
+							[[epub-rs-3]].</li>
+						<li>It is only required to support <a data-cite="epub-rs-3#sec-ocf">OCF processing</a> [[epub3]]
+							if it supports <a href="#ebrl-packaging">packaged eBraille publications</a>.</li>
 					</ul>
 				</section>
 
 				<section id="rs-req-non-critical">
 					<h4>Other unsupported features</h4>
 
-					<p>The following EPUB reading system features [[epub-rs-33]] are not supported in the authoring of
+					<p>The following EPUB reading system features [[epub-rs-3]] are not supported in the authoring of
 						eBraille publications. Unlike the features restricted in <a href="#rs-req-epub"></a>, the
 						existence of these features will not affect the rendering of [=eBraille publications=] and does
 						not affect their privacy or security. Reading systems built on EPUB rendering engines MAY
@@ -2668,14 +2688,14 @@
 						eBraille creators:</p>
 
 					<ul>
-						<li><a data-cite="epub-rs-33#sec-pkg-doc-manifest">manifest fallbacks</a>.</li>
-						<li><a data-cite="epub-rs-33#sec-svg">SVG content documents</a>. (Note that this does not affect
-								<a data-cite="epub-rs-33#sec-xhtml-svg">embedded SVG</a>.)</li>
-						<li><a data-cite="epub-33#sec-css-prefixed">EPUB 3's prefixed CSS properties</a>.</li>
-						<li><a data-cite="epub-rs-33/#sec-rendering-control">fixed layouts</a>.</li>
-						<li><a data-cite="epub-rs-33#sec-epub-rs-conf-backward">backward compatibility</a> or <a
-								data-cite="epub-rs-33#sec-epub-rs-conf-forward">forward compatibility</a> with other
-							EPUB versions.</li>
+						<li><a data-cite="epub-rs-3#sec-pkg-doc-manifest">manifest fallbacks</a>.</li>
+						<li><a data-cite="epub-rs-3#sec-svg">SVG content documents</a>. (Note that this does not affect
+								<a data-cite="epub-rs-3#sec-xhtml-svg">embedded SVG</a>.)</li>
+						<li><a data-cite="epub3#sec-css-prefixed">EPUB 3's prefixed CSS properties</a>.</li>
+						<li><a data-cite="epub-rs-3/#sec-rendering-control">fixed layouts</a>.</li>
+						<li><a data-cite="epub-rs-3#sec-epub-rs-conf-backward">backward compatibility</a> or <a
+								data-cite="epub-rs-3#sec-epub-rs-conf-forward">forward compatibility</a> with other EPUB
+							versions.</li>
 					</ul>
 
 					<p>eBraille reading systems not built on EPUB rendering engines MUST NOT add support for these
@@ -2694,9 +2714,9 @@
 					<ul>
 						<li>SHOULD NOT fail to open a publication solely because the <code>mimetype</code> is missing or
 							not encoded or stored as required.</li>
-						<li>are not required to <a data-cite="epub-rs-33#sec-container-iri">assign a unique URL</a>
-							[[epub-rs-33]] to publications because scripting is not supported. It is still RECOMMENDED
-							to domain isolate publications in case scripting is introduced in a future version,
+						<li>are not required to <a data-cite="epub-rs-3#sec-container-iri">assign a unique URL</a>
+							[[epub-rs-3]] to publications because scripting is not supported. It is still RECOMMENDED to
+							domain isolate publications in case scripting is introduced in a future version,
 							however.</li>
 					</ul>
 
@@ -2707,29 +2727,29 @@
 				<section id="rs-req-fonts">
 					<h4>Font support</h4>
 
-					<p>In addition to the general requirements for CSS support in [[epub-rs-33]], Reading devices MUST
+					<p>In addition to the general requirements for CSS support in [[epub-rs-3]], Reading devices MUST
 						guarantee that <code>1ch</code> corresponds with the cell-to-cell distance (i.e., the distance
 						from center to center of corresponding dots in adjacent cells), while <code>1em</code> should
 						correspond with the line-to-line distance (i.e., the distance from center to center of
 						corresponding dots from one line to the next).</p>
 
 					<p>As the <a href="#css-req">use of CSS font properties</a> is not recommended, reading system
-						support for <a data-cite="epub-rs-33#sec-container-fobfus">font obfuscation</a> is OPTIONAL.</p>
+						support for <a data-cite="epub-rs-3#sec-container-fobfus">font obfuscation</a> is OPTIONAL.</p>
 				</section>
 
 				<section id="rs-mq">
 					<h4>Media queries</h4>
 
-					<p>[=eBraille reading systems=] of type braille display SHOULD
-						match <a data-cite="mediaqueries#valdef-media-screen" ><code>screen</code></a>, and SHOULD match
-						both <code>(grid)</code> and <code>not (grid)</code> [[mediaqueries]].</p>
+					<p>[=eBraille reading systems=] of type braille display SHOULD match <a
+							data-cite="mediaqueries#valdef-media-screen"><code>screen</code></a>, and SHOULD match both
+							<code>(grid)</code> and <code>not (grid)</code> [[mediaqueries]].</p>
 				</section>
 
 				<section id="rs-req-cmt">
 					<h4>Core media types</h4>
 
 					<p>eBraille reading systems MUST support PDF for tactile graphics in addition to the core media
-						types requirements in [[epub-rs-33]]. If an eBraille reading system is not capable of rendering
+						types requirements in [[epub-rs-3]]. If an eBraille reading system is not capable of rendering
 						PDFs embedded in [=eBraille content documents=], it MUST provide a mechanism that allows the
 						user to open the graphics in an application that supports PDF rendering.</p>
 				</section>
@@ -2749,8 +2769,8 @@
 				<p>Browser-based reading systems will be inherently less secure than dedicated eBraille reading systems,
 					as it will not likely be possible to disable features such as scripting, forms, and remote resource
 					access. Consequently, a browser-based reading system SHOULD follow all the <a
-						data-cite="epub-rs-33#sec-security-privacy">recommendations for securing publications</a>
-					defined in [[epub-rs-33]].</p>
+						data-cite="epub-rs-3#sec-security-privacy">recommendations for securing publications</a> defined
+					in [[epub-rs-3]].</p>
 			</section>
 		</section>
 		<section id="ebrl-meta-vocab" class="appendix">
@@ -2772,8 +2792,8 @@
 				<p>The base URL for referencing this vocabulary is
 						<code>http://idpf.org/epub/vocab/package/a11y/#</code></p>
 
-				<p>The <a data-cite="epub-33#sec-reserved-prefixes">reserved prefix</a>
-					<code>a11y:</code> [[epub-33]] MUST be used to reference these properties in EPUB 3-compatible <a
+				<p>The <a data-cite="epub3#sec-reserved-prefixes">reserved prefix</a>
+					<code>a11y:</code> [[epub3]] MUST be used to reference these properties in EPUB 3-compatible <a
 						href="#ebrl-package-doc">package documents</a>.</p>
 			</section>
 
@@ -3237,8 +3257,8 @@
 						Working Draft</a></summary>
 				<ul>
 					<li>21-Feb-2025: Restricted authoring of the <code>braille</code> and <code>screen</code> media
-						types and <code>grid</code> feature and removed the reading system requirements to
-						handle <code>braille</code> to resolve the open editor's note.</li>
+						types and <code>grid</code> feature and removed the reading system requirements to handle
+							<code>braille</code> to resolve the open editor's note.</li>
 					<li>18-Feb-2025: Renamed the <code>a11y:cellType</code> property to
 							<code>a11y:brailleCellType</code>. Refer to <a
 							href="https://github.com/daisy/ebraille/issues/194">issue 194</a>.</li>
