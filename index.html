@@ -166,7 +166,7 @@
 				<p>The primary difference between the eBraille format and EPUB 3 is [=eBraille publications=] do not
 					have to be packaged and distributed in an <a data-cite="epub3#dfn-epub-container">EPUB container</a>
 					[[epub3]] &#8212; they can be deployed on the web as an unpackaged set of files. An eBraille
-					publication is packagable in an EPUB container when that is the preferred distribution method, but
+					publication is packageable in an EPUB container when that is the preferred distribution method, but
 					eBraille uses the file extension <code>.ebrl</code> not <code>.epub</code>.</p>
 
 				<p>Compatibility with EPUB 3 also means that eBraille relies on the same <a
@@ -1081,7 +1081,7 @@
 
 						<aside class="example" title="Copyright date where only the year is known">
 							<pre>&lt;meta property="dcterms:dateCopyrighted">
-   2014
+   2004
 &lt;/meta></pre>
 						</aside>
 					</section>
@@ -1097,7 +1097,7 @@
 
 						<aside class="example" title="Indicates the last date the eBraille file was modified">
 							<pre>&lt;meta property="dcterms:modified">
-   2014-10-14T18:45:00Z
+   2025-02-14T18:45:00Z
 &lt;/meta></pre>
 						</aside>
 
@@ -1181,7 +1181,7 @@
 						<h5>a11y:completeTranscription</h5>
 
 						<p>The REQUIRED <code>a11y:completeTranscription</code> indicates whether the complete original
-							work has been transcribed of not.</p>
+							work has been transcribed or not.</p>
 
 						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
 								<code>property</code> attribute set to <code>a11y:completeTranscription</code>.</p>
@@ -1200,34 +1200,6 @@
 						<aside class="example" title="A complete transcription">
 							<pre>&lt;meta property="a11y:completeTranscription">
    true
-&lt;/meta></pre>
-						</aside>
-
-						<p>Only one instance of this property is allowed.</p>
-					</section>
-
-					<section id="a11y:dateTranscribed">
-						<h5>a11y:dateTranscribed</h5>
-
-						<p>The <code>a11y:dateTranscribed</code> property identifies the date the transcription was
-							created.</p>
-
-						<p>The property is defined in a <a href="#meta-elem"><code>meta</code> tag</a> with its
-								<code>property</code> attribute set to <code>a11y:dateTranscribed</code>.</p>
-
-						<aside class="example" title="Transcription date with full date">
-							<pre>&lt;meta property="a11y:dateTranscribed">
-   2024-10-18
-&lt;/meta></pre>
-						</aside>
-
-						<p>The [=value=] SHOULD be an [[iso8601-1]] conformant date of the form <code>YYYY-MM-DD</code>.
-							If the full date is unknown, the month and year (<code>YYYY-MM</code>) or year
-								(<code>YYYY</code>) MAY be specified instead.</p>
-
-						<aside class="example" title="Transcription date with only month and year">
-							<pre>&lt;meta property="a11y:dateTranscribed">
-   2025-09
 &lt;/meta></pre>
 						</aside>
 
@@ -1539,18 +1511,18 @@
          41f1328c-0571-4e71-8be8-e65bc148281a
       &lt;/dc:identifier>
       &lt;dc:language>en-Brai-US&lt;/dc:language>
+      &lt;dc:date>2025-02-14T12:00:00+00:00&lt;/dc:date>
       &lt;meta property="dcterms:dateCopyrighted">
-         2024
+         2004
       &lt;/meta>
       &lt;meta property="dcterms:modified">
-         2015-02-24T13:37:19Z
+         2025-02-14T12:00:00Z
       &lt;/meta>
       &lt;meta property="a11y:brailleCellType">6&lt;/meta>
       &lt;meta property="a11y:brailleSystem">UEB&lt;/meta>
       &lt;meta property="a11y:completeTranscription">
          false
       &lt;/meta>
-      &lt;meta property="a11y:dateTranscribed">2003&lt;/meta>
       &lt;meta property="a11y:producer">
          DAISY Consortium
       &lt;/meta>
@@ -1558,7 +1530,6 @@
 
       &lt;!-- recommended metadata -->
       &lt;dc:publisher>DAISY Consortium&lt;/dc:publisher>
-      &lt;dc:date>2014-12-11T09:12:52+00:00&lt;/dc:date>
       &lt;dc:description>
          This is a sample eBraille publication.
       &lt;/dc:description>
@@ -1576,7 +1547,7 @@
          06 and up
       &lt;/meta>
       
-      &lt;!-- other metadata -->
+      &lt;!-- additional metadata -->
       &lt;meta property="a11y:pageBreakSource">
          urn:isbn:9780618596645
       &lt;/meta>
@@ -1643,7 +1614,7 @@
    &lt;manifest>
       &lt;item id="c01"
             href="eBraille/chapter01.xhtml"
-            media-type="application/xhtml+xml"
+            media-type="application/xhtml+xml"/>
       &#8230;
    &lt;/manifest>
    &#8230;
@@ -1704,7 +1675,7 @@
    &lt;manifest>
       &lt;item id="c01"
             href="eBraille/chapter01.xhtml"
-            media-type="application/xhtml+xml"
+            media-type="application/xhtml+xml"/>
       &#8230;
    &lt;/manifest>
    &lt;spine>
@@ -2545,10 +2516,11 @@
 			<p>A packaged eBraille file set MUST use the extension <code>.ebrl</code>.</p>
 
 			<div class="note">
-				<p>If an eBraille file is packaged with the extension <code>.epub</code>, it will not be recognized by
-					eBraille reading system as an eBraille publication. In this case, the file would be recognized as an
-					EPUB publication and could be opened in EPUB reading systems (with some loss of braille-specific
-					functionality).</p>
+				<p>If an eBraille file is packaged with the extension <code>.epub</code>, it might not be recognized as
+					an eBraille publication (e.g., if it is also not served with the <a href="#app-media-type">eBraille
+						media type</a> or that media type is not recognized). In this case, the file would likely only
+					open as an EPUB publication in an EPUB reading system, resulting in some loss of braille-specific
+					functionality.</p>
 			</div>
 
 			<p>As the use of <a href="#css-req">CSS font properties</a> is not recommended, eBraille creators SHOULD NOT
@@ -2855,36 +2827,6 @@
 							<th>Example:</th>
 							<td>
 								<pre>&lt;meta property="a11y:completeTranscription">true&lt;/meta></pre>
-							</td>
-						</tr>
-					</table>
-				</section>
-
-				<section id="dateTranscribed">
-					<h4>dateTranscribed</h4>
-
-					<table class="tabledef">
-						<caption>Definition of the <code>dateTranscribed</code> property</caption>
-						<tr>
-							<th>Name:</th>
-							<td>
-								<code>dateTranscribed</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Description:</th>
-							<td>Identifies the date the transcription was created.</td>
-						</tr>
-						<tr>
-							<th>Allowed value(s):</th>
-							<td>
-								<code>xsd:string</code>
-							</td>
-						</tr>
-						<tr>
-							<th>Example:</th>
-							<td>
-								<pre>&lt;meta property="a11y:dateTranscribed">2024-03-15&lt;/meta></pre>
 							</td>
 						</tr>
 					</table>
@@ -3256,6 +3198,8 @@
 				<summary>Changes since the <a href="https://daisy.org/s/ebraille/1.0/WD-ebraille-20241017/">2024-10-17
 						Working Draft</a></summary>
 				<ul>
+					<li>25-Feb-2025: Removed the <code>dateTranscribed</code> property due to lack of distinction
+						between it and <code>dc:date</code>.</li>
 					<li>24-Feb-2025: Changed all references to EPUB 3 specifications to use undated references due to
 						the new revision.</li>
 					<li>21-Feb-2025: Restricted authoring of the <code>braille</code> and <code>screen</code> media
