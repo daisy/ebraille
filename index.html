@@ -447,8 +447,8 @@
 				<h3>Resource location</h3>
 
 				<p>[=eBraille publications=] do not support <a data-cite="epub3#dfn-remote-resource">remote
-						resources</a> [[epub3]]. All publication resources MUST be located in or below the [=publication
-					root=], as defined in <a href="#fileset-structure"></a>.</p>
+						resources</a> [[epub3]]. All publication resources have to be located in or below the
+					[=publication root=], as defined in <a href="#fileset-structure"></a>.</p>
 
 				<p>eBraille does not support the <code>file:</code> URL scheme [[rfc8089]] for referencing resources in
 					an eBraille publication. Accessing files on the user's local file system presents too great a
@@ -550,10 +550,8 @@
 				<h3>File and directory structure</h3>
 
 				<p>The [=eBraille file set=] MUST have a single common root directory &#8212; the [=publication root=]
-					&#8212; for all the contents of the [=eBraille publication=].</p>
-
-				<p>Unlike EPUB 3, the eBraille file set MUST NOT reference resources outside the publication root (i.e.,
-						<a data-cite="epub3#dfn-remote-resource">remote resources</a> [[epub3]] are not supported).</p>
+					&#8212; for all the contents of the [=eBraille publication=]. Publication resources MUST NOT be
+					located outside the publication root or its descendant directories.</p>
 
 				<p>The eBraille file set MUST contain the following files in the publication root:</p>
 
@@ -586,6 +584,10 @@
 
 			<section id="fileset-urls">
 				<h3>URLs in the file set</h3>
+
+				<p>Unlike EPUB 3, the eBraille file set MUST NOT reference publication resources outside the <a
+						href="#fileset-structure">publication root</a>. <a data-cite="epub3#dfn-remote-resource">Remote
+						resources</a> [[epub3]] are not supported, as defined in <a href="#res-location"></a>.</p>
 
 				<p>Although the [=publication root=] establishes a common directory for all files in an [=eBraille
 					publication=], depending on how the eBraille publication is deployed it could allow references to
@@ -686,9 +688,19 @@
 						data-cite="epub3#attrdef-xml-lang"><code>xml:lang</code> attribute</a> [[epub3]] so that
 					language information is available for every element that requires it.</p>
 
+				<div class="note">
+					<p>Setting the <code>xml:lang</code> attribute on the <code>package</code> element only identifies
+						the language of the metadata in the package document. This attribute does not set the language
+						of the content. Refer to <a href="#dc:language"></a> for more information about identifying the
+						language of the content.</p>
+				</div>
+
 				<aside class="example" title="Typical package element attributes">
-					<p>In this example, a <code>dc:identifier</code> element with the <code>id</code> attribute value
-							<code>uid</code> (not shown) is specified in the metadata.</p>
+					<p>In this example, the <code>unique-identifier</code> attribute refers to a
+							<code>dc:identifier</code> element with the <code>id</code> attribute value <code>uid</code>
+						(not shown). For more information about unique identifiers, refer to <a href="#dc:identifier"
+						></a>. The <code>xml:lang</code> attribute indicates that the metadata is written in
+						English.</p>
 					<pre>&lt;package xmlns="http://www.idpf.org/2007/opf"
          version="3.0"
          unique-identifier="uid"
@@ -909,7 +921,10 @@
 
 						<div class="note">
 							<p>The publication date is not the same as the <a href="#dcterms:modified">last modification
-									date</a>, which is the last time the publication was changed. </p>
+									date</a>, which is the last time the publication was changed.</p>
+							<p>The publication date expressed in the <code>dc:date</code> is also not the same as the
+								date of publication of the source work being transcribed. Refer to <a href="#dc:source"
+								></a> for more information on how to set the publication date of a source work.</p>
 						</div>
 					</section>
 
@@ -917,8 +932,8 @@
 						<h5>dc:format</h5>
 
 						<p>The REQUIRED <code>dc:format</code> element [[dcterms]] identifies version of the eBraille
-							standard an publication conforms to. The [=value=] MUST contain both the name "eBraille" and
-							the version number.</p>
+							standard an publication conforms to. The [=value=] MUST contain both the case-sensitive name
+							"eBraille" and the version number.</p>
 
 						<p>For example, for this version of the specification, the value would be "<code>eBraille
 								1.0</code>".</p>
@@ -1028,8 +1043,11 @@
 						</aside>
 
 						<div class="note">
-							<p>For more information, refer to the <a data-cite="epub3#sec-opf-dclanguage">definition of
-									the <code>dc:language</code> element</a> in [[epub3]].</p>
+							<p>Setting the language in the package document metadata is not a replacement for setting
+								the language of each [=eBraille content document=]. The <code>xml:lang</code> attribute
+								in a content document defines the language and encoding of its content. For more
+								information, refer to the <a data-cite="epub3#sec-opf-dclanguage">definition of the
+										<code>dc:language</code> element</a> in [[epub3]].</p>
 						</div>
 					</section>
 
@@ -1473,6 +1491,12 @@
 &lt;/meta></pre>
 						</aside>
 
+						<aside class="example" title="Education level in the UK education system">
+							<pre>&lt;meta property="dcterms:educationLevel">
+   Year 4
+&lt;/meta></pre>
+						</aside>
+
 						<p>Repeat the element if the publication is intended for more than one education level.</p>
 					</section>
 				</section>
@@ -1519,7 +1543,7 @@
          2025-02-14T12:00:00Z
       &lt;/meta>
       &lt;meta property="a11y:brailleCellType">6&lt;/meta>
-      &lt;meta property="a11y:brailleSystem">UEB&lt;/meta>
+      &lt;meta property="a11y:brailleSystem">UEB grade 2&lt;/meta>
       &lt;meta property="a11y:completeTranscription">
          false
       &lt;/meta>
@@ -1593,7 +1617,7 @@
 				<h3>Manifest</h3>
 
 				<p>The package document <a data-cite="epub3#sec-manifest-elem"><code>manifest</code> element</a>
-					[[epub3]] contains a list all of the resources in the [=eBraille publication=]. It is the second
+					[[epub3]] contains a list of all of the resources in the [=eBraille publication=]. It is the second
 					required child of the root <a href="#package-elem"><code>package</code> element</a>.</p>
 
 				<p>Each <a data-cite="epub3#sec-item-elem"><code>item</code> element</a> [[epub3]] child of the
@@ -1630,7 +1654,9 @@
 					<p>In this example, the <code>chapter02.html</code> file contains one or more SVG images. These
 						images could be embedded directly in the HTML document using the <code>svg</code> element or
 						they could be separate resources referenced from <code>img</code> or <code>object</code>
-						elements (in which case the images would also be listed in the manifest).</p>
+						elements (in which case the images would also be listed in the manifest). In this example, the
+						SVGs are referenced from an HTML element so their manifest entries are also shown. An example of
+						a PDF image is also included for variety; it does not require a property value to be set.</p>
 					<pre>&lt;package &#8230;>
    &#8230;
    &lt;manifest>
@@ -1638,7 +1664,16 @@
       &lt;item id="c02"
             href="eBraille/chapter02.html"
             media-type="application/xhtml+xml"
-            properties="svg"
+            properties="svg"/>
+      &lt;item id="c02-img01"
+            href="eBraille/img/chapter02-001.svg"
+            media-type="image/svg+xml"/>
+      &lt;item id="c02-img02"
+            href="eBraille/img/chapter02-002.svg"
+            media-type="image/svg+xml"/>
+      &lt;item id="c02-img03"
+            href="eBraille/img/chapter02-003.pdf"
+            media-type="application/pdf"/>
       &#8230;
    &lt;/manifest>
    &#8230;
@@ -1823,7 +1858,7 @@
 						characters.</p>
 
 					<p>eBraille creators SHOULD only use CSS for marking list items when the style sheet supplies the
-						braille characters to display (e.g., by setting <code>list-style-type: '⠿⠲ '</code> to insert
+						braille characters to display (e.g., by setting <code>list-style-type: '⠸⠲ '</code> to insert
 						braille bullets).</p>
 				</section>
 
@@ -2139,7 +2174,7 @@
 
 					<p>The table of contents provides users access to the major sections of the publications.</p>
 
-					<p>The EPUB 3 specification requires that the table of contents be defined in an [[html]] [^nav^]
+					<p>The EPUB 3 specification requires a table of contents. It is defined in an [[html]] [^nav^]
 						element whose <a data-cite="epub3#dfn-epub-type"><code>epub:type</code> attribute</a> specifies
 						the value "<a data-cite="epub3#sec-nav-toc"><code>toc</code></a>" [[epub3]].</p>
 
@@ -2232,11 +2267,14 @@
 
 					<p>The page list provides users to access to static page break locations in an [=eBraille
 						publication=]. These static page breaks typically correspond to the page breaks in the source
-						publication.</p>
+						publication, whether it is a print book, a PDF, an embossed braille work, or any other format
+						with static page breaks. Publishers may, however, opt to provide their own static page break
+						locations if the eBraille publication is not transcribed from another work.</p>
 
-					<p>The EPUB 3 specification requires that the page list be defined in an [[html]] [^nav^] element
-						whose <a data-cite="epub3#dfn-epub-type"><code>epub:type</code> attribute</a> specifies the
-						value "<a data-cite="epub3#sec-nav-pagelist"><code>page-list</code></a>" [[epub3]].</p>
+					<p>Providing a page list is optional per the EPUB 3 specification. When specified, the page list is
+						defined in an [[html]] [^nav^] element whose <a data-cite="epub3#dfn-epub-type"
+								><code>epub:type</code> attribute</a> specifies the value "<a
+							data-cite="epub3#sec-nav-pagelist"><code>page-list</code></a>" [[epub3]].</p>
 
 					<p>For compatibility with web-based rendering, the page list MUST also be identified by the
 						[^/role^] attribute [[html]] value "<a data-cite="dpub-aria#doc-pagelist"
@@ -2330,9 +2368,10 @@
 						when users open a publication. Other key landmarks include glossaries and indexes, as users
 						often need to access these reference sections for more information while reading.</p>
 
-					<p>The EPUB 3 specification requires that the landmarks be defined in an [[html]] [^nav^] element
-						whose <a data-cite="epub3#dfn-epub-type"><code>epub:type</code> attribute</a> specifies the
-						value "<a data-cite="epub3#sec-nav-pagelist"><code>landmarks</code></a>" [[epub3]].</p>
+					<p>Providing a landmarks navigation is optional per the EPUB 3 specification. When specified, the
+						landmarks are defined in an [[html]] [^nav^] element whose <a data-cite="epub3#dfn-epub-type"
+								><code>epub:type</code> attribute</a> specifies the value "<a
+							data-cite="epub3#sec-nav-pagelist"><code>landmarks</code></a>" [[epub3]].</p>
 
 					<aside class="example" title="Landmarks navigation element">
 						<pre>&lt;html xmlns="http://www.w3.org/1999/xhtml"
