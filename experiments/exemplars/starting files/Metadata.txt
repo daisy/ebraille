@@ -1,0 +1,26 @@
+Please include the following with your submission:
+
+Required-
+dc:creator- this is the primary author, repeat for each additional creator
+dc:date- leave blank as this is the date the eBraille is created
+dc:format- eBraille 1.0
+dc:identifier- supply either UUID, DOI, or ISBN, if unsure put unsure
+dc: language- write the language in English and we'll change to fit metadata requirement
+dc: dc:title- title of source material
+dcterms:dateCopyrighted- copyright date of work being transcribed (format as YYYY-MM-DD or YYYY-MM or YYYY)
+dcterms:modified- leave blank
+a11y:cellType- put an 8 or 6 based on whether it is 8-dot or 6-dot braille
+a11y:brailleSystem- select braille code from registry https://daisy.org/s/ebraille/registries/codes/
+a11y:completeTranscription- false if no, true if yes
+a11y:producer- name of organization that produced the braille
+a11y:sourcePublisher- textbox
+a11y:tactileGraphics- true or false
+a11y:graphicType- if tactileGraphic is true, include file format (PNG, PDF, SVG, or JPG)
+
+Recommended-
+dc:publisher- name of eBraille publisher
+dc:description- brief description of the work
+dc:rights- leave as "Further reproduction or distribution in other than an accessible format is prohibited." or include your company's preferred rights information statement
+dc:source- ISBN, DOI, ISSN
+dc: subject- the subject of the work transcribed
+dcterms: educationLevel- use local understanding of education level of the work
