@@ -1555,43 +1555,31 @@
 
 							<dt>Allowed value(s):</dt>
 							<dd>
-								<code>true</code> | <code>false</code>
+								<ul>
+									<li>If no tactile graphics are included, the value MUST be <code>none</code>.</li>
+									<li>Otherwise, the value MUST be a comma-separated list containing one or more of
+										the values: <code>JPG</code>, <code>PNG</code>, <code>SVG</code>, and
+											<code>PDF</code>. Formats are listed from most used to least used.</li>
+								</ul>
 							</dd>
 						</dl>
 
 						<p>The <code>a11y:tactileGraphics</code> property identifies whether an [=eBraille publication=]
-							contains tactile graphics. The element's [=value=] is <code>true</code> if tactile graphics
-							are present and <code>false</code> if not.</p>
+							contains tactile graphics.</p>
 
-						<aside class="example" title="An eBraille package with no tactile graphics">
-							<pre>&lt;meta property="a11y:tactileGraphics">
-   false
-&lt;/meta></pre>
+						<aside class="example" title="An eBraille publication with tactile graphics in SVG.">
+							<pre>&lt;meta property="a11y:tactileGraphics">SVG&lt;/meta></pre>
 						</aside>
-
-						<p>If tactile graphics are present, then the <a href="#a11y:graphicType"
-									><code>a11y:graphicType</code> property</a> MUST also be set to indicate their
-							format.</p>
-
-						<aside class="example" title="An eBraille package with tactile graphics in SVG format">
-							<pre>&lt;meta property="a11y:tactileGraphics">
-   true
-&lt;/meta>
-&lt;meta property="a11y:graphicType">
-   SVG
-&lt;/meta></pre>
-						</aside>
-
-						<p>If more than one tactile graphic format is used, list the formats in order of most used to
-							least used.</p>
 
 						<aside class="example"
 							title="An eBraille package with most tactile graphics in PNG format and a few in PDF">
 							<pre>&lt;meta property="a11y:tactileGraphics">
-   true
-&lt;/meta>
-&lt;meta property="a11y:graphicType">
    PNG, PDF
+&lt;/meta></pre>
+						</aside>
+						<aside class="example" title="An eBraille package with no tactile graphics">
+							<pre>&lt;meta property="a11y:tactileGraphics">
+   none
 &lt;/meta></pre>
 						</aside>
 					</section>
@@ -3451,7 +3439,6 @@
 					<li><a href="#a11y:completeTranscription">completeTranscription</a></li>
 					<li><a href="#a11y:producer">producer</a></li>
 					<li><a href="#a11y:tactileGraphics">tactileGraphics</a></li>
-					<li><a href="#a11y:graphicType">graphicType</a></li>
 					<li><a href="#a11y:minimumCells">minimumCells</a></li>
 					<li><a href="#a11y:minimumLines">minimumLines</a></li>
 				</ul>
@@ -3472,47 +3459,6 @@
 				<p>This section defines additional properties that [=eBraille creators=] can use in [=eBraille
 					publications=] that are not <a href="#meta-req" aria-label="required metadata">required</a> or <a
 						href="#meta-rec">recommended metadata</a>.</p>
-
-				<section id="a11y:graphicType">
-					<h4>Graphic type</h4>
-
-					<dl class="elemdef">
-						<dt>Name:</dt>
-						<dd>
-							<code>a11y:graphicType</code>
-						</dd>
-
-						<dt>Namespace:</dt>
-						<dd>
-							<code>http://idpf.org/epub/vocab/package/a11y/#</code>
-						</dd>
-
-						<dt>Usage:</dt>
-						<dd>
-							<p>Conditionally required. Zero or one.</p>
-							<p>MUST be set when the <a href="#a11y:tactileGraphics"
-									><code>a11y:tactileGraphics</code></a> property has the value <code>true</code>;
-								otherwise, MUST NOT be set.</p>
-							<p>Expressed in the <a data-cite="epub/#attrdef-meta-property"><code>property</code>
-									attribute</a> [[epub3]] of a <a href="#meta-elem"><code>meta</code> tag</a>.</p>
-						</dd>
-
-						<dt>Allowed value(s):</dt>
-						<dd>
-							<p>Comma-separated list containing one or more of the values: <code>JPG</code>,
-									<code>PNG</code>, <code>SVG</code>, and <code>PDF</code></p>
-						</dd>
-					</dl>
-
-					<p>The <code>a11y:graphicType</code> property identifies the format(s) of any tactile graphics
-						included in the work. When multiple formats are included, order them from most- to
-						least-used.</p>
-
-					<aside class="example" title="An eBraille publication with tactile graphics in SVG.">
-						<pre>&lt;meta property="a11y:tactileGraphics">true&lt;/meta>
-&lt;meta property="a11y:graphicType">SVG&lt;/meta></pre>
-					</aside>
-				</section>
 
 				<section id="a11y:minimumCells">
 					<h4>Minimum cells</h4>
@@ -3724,6 +3670,9 @@
 				<summary>Changes since the <a href="https://daisy.org/s/ebraille/1.0/CR-ebraille-20250303/">2025-03-03
 						Candidate Release</a></summary>
 				<ul>
+					<li>22-Apr-2025: Removed the <code>a11y:graphicType</code> property and updated the
+							<code>a11y:tactileGraphics</code> definition to list the formats when tactile graphics are
+						present. Refer to <a href="https://github.com/daisy/ebraille/issues/312">issue 312</a>.</li>
 					<li>21-Apr-2025: Reorganized the metadata sections to include condensed property definitions at the
 						beginning of each. Metadata is now arranged by descriptive title rather than element or property
 						name. Refer to <a href="https://github.com/daisy/ebraille/issues/311">issue 311</a>.</li>
