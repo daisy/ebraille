@@ -437,8 +437,9 @@
 			<section id="fallbacks">
 				<h3>Resource fallbacks</h3>
 
-				<p>eBraille does not support the use of <a data-cite="epub3#sec-manifest-fallbacks">manifest
-						fallbacks</a> [[epub3]].</p>
+				<p>eBraille publications MUST NOT use <a data-cite="epub3#sec-manifest-fallbacks">manifest fallbacks</a>
+					[[epub3]] to provide fallbacks for <a data-cite="epub3#dfn-foreign-resource">foreign
+					resources</a>.</p>
 
 				<p>The intrinsic fallback methods provided by [[html]] elements are supported.</p>
 			</section>
@@ -2366,16 +2367,13 @@
 			</section>
 
 			<section id="package-unsupported">
-				<h3>Unsupported features</h3>
+				<h3>Additional unsupported features</h3>
 
-				<p>The following features of the EPUB 3 package document are not supported in eBraille so MUST NOT be
-					used:</p>
+				<p>In addition to the restrictions already enumerated, [=eBraille publications=] MUST NOT include any of
+					the following in the package document:</p>
 
 				<ul>
 					<li>all features marked as <a data-cite="epub3#deprecated">deprecated</a> [[epub3]]</li>
-					<li>
-						<a href="#fallbacks">manifest fallbacks</a>
-					</li>
 					<li><a data-cite="epub3#sec-pkg-collections">collections</a> [[epub3]]</li>
 					<li><a data-cite="epub3#sec-pkg-legacy">legacy features</a> [[epub3]]</li>
 				</ul>
@@ -3677,6 +3675,8 @@
 					<li>05-May-2025: Removed the recommendation that identifiers be URNs and replaced with the advisory
 						note from the EPUB specification about using absolute-URL strings and URNs. Refer to <a
 							href="https://github.com/daisy/ebraille/issues/320">issue 320</a>.</li>
+					<li>05-May-2025: Moved the restriction on manifest fallbacks to the section on resource fallbacks.
+						Refer to <a href="https://github.com/daisy/ebraille/issues/317">issue 317</a>.</li>
 					<li>22-Apr-2025: Removed the <code>a11y:graphicType</code> property and updated the
 							<code>a11y:tactileGraphics</code> definition to list the formats when tactile graphics are
 						present. Refer to <a href="https://github.com/daisy/ebraille/issues/312">issue 312</a>.</li>
