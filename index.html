@@ -437,8 +437,9 @@
 			<section id="fallbacks">
 				<h3>Resource fallbacks</h3>
 
-				<p>eBraille does not support the use of <a data-cite="epub3#sec-manifest-fallbacks">manifest
-						fallbacks</a> [[epub3]].</p>
+				<p>eBraille publications MUST NOT use <a data-cite="epub3#sec-manifest-fallbacks">manifest fallbacks</a>
+					[[epub3]] to provide fallbacks for <a data-cite="epub3#dfn-foreign-resource">foreign
+					resources</a>.</p>
 
 				<p>The intrinsic fallback methods provided by [[html]] elements are supported.</p>
 			</section>
@@ -1231,7 +1232,12 @@
 
 							<dt>Content model:</dt>
 							<dd>
-								<p>Text. SHOULD be formatted using a Uniform Resource Name.</p>
+								<p>Text.</p>
+								<p>[=eBraille creators=] are advised to use [=absolute-URL strings=] [[url]] for
+									identifiers whenever possible. The inclusion of a domain owned by the eBraille
+									creator can improve the uniqueness of the identifier, for example, while the use of
+									a URN with a <a data-cite="rfc8141#section-2.1">namespace identifier</a> [[rfc8141]]
+									improves processing by reading systems.</p>
 							</dd>
 
 							<dt>Attributes:</dt>
@@ -1260,17 +1266,16 @@
 &lt;/dc:identifier>
 
 &lt;dc:identifier>
-   https://en.wikipedia.org/wiki/Braille
+   https://publisher.example.com/docs/braille/pub001
 &lt;/dc:identifier></pre>
 						</aside>
 
-						<p>One identifier MUST be identified as the unique identifier for the publication using the
-								<code>package</code> element's <a data-cite="epub3#attrdef-package-unique-identifier"
-									><code>unique-identifier</code> attribute</a> [[epub3]]. The
-								<code>unique-identifier</code> attribute MUST reference the <a
-								data-cite="epub/#attrdef-id"><code>id</code> attribute</a> [[epub3]] of the
-								<code>dc:identifier</code> containing the unique identifier. This identifier MUST be
-							unique to the publication.</p>
+						<p>eBraille creators have to specify one identifier as the unique identifier for the publication
+							using the <code>package</code> element's <a
+								data-cite="epub3#attrdef-package-unique-identifier"><code>unique-identifier</code>
+								attribute</a> [[epub3]]. This attribute references the <a data-cite="epub/#attrdef-id"
+									><code>id</code> attribute</a> [[epub3]] of the <code>dc:identifier</code>
+							containing the unique identifier.</p>
 
 						<aside class="example" title="Unique identifier as ISBN">
 							<pre>&lt;package &#8230; unique-identifier="uid">
@@ -2367,16 +2372,13 @@
 			</section>
 
 			<section id="package-unsupported">
-				<h3>Unsupported features</h3>
+				<h3>Additional unsupported features</h3>
 
-				<p>The following features of the EPUB 3 package document are not supported in eBraille so MUST NOT be
-					used:</p>
+				<p>In addition to the restrictions already enumerated, [=eBraille publications=] MUST NOT include any of
+					the following in the package document:</p>
 
 				<ul>
 					<li>all features marked as <a data-cite="epub3#deprecated">deprecated</a> [[epub3]]</li>
-					<li>
-						<a href="#fallbacks">manifest fallbacks</a>
-					</li>
 					<li><a data-cite="epub3#sec-pkg-collections">collections</a> [[epub3]]</li>
 					<li><a data-cite="epub3#sec-pkg-legacy">legacy features</a> [[epub3]]</li>
 				</ul>
@@ -3675,6 +3677,11 @@
 				<summary>Changes since the <a href="https://daisy.org/s/ebraille/1.0/CR-ebraille-20250303/">2025-03-03
 						Candidate Release</a></summary>
 				<ul>
+					<li>05-May-2025: Removed the recommendation that identifiers be URNs and replaced with the advisory
+						note from the EPUB specification about using absolute-URL strings and URNs. Refer to <a
+							href="https://github.com/daisy/ebraille/issues/320">issue 320</a>.</li>
+					<li>05-May-2025: Moved the restriction on manifest fallbacks to the section on resource fallbacks.
+						Refer to <a href="https://github.com/daisy/ebraille/issues/317">issue 317</a>.</li>
 					<li>22-Apr-2025: Removed the <code>a11y:graphicType</code> property and updated the
 							<code>a11y:tactileGraphics</code> definition to list the formats when tactile graphics are
 						present. Refer to <a href="https://github.com/daisy/ebraille/issues/312">issue 312</a>.</li>
