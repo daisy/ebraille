@@ -1322,8 +1322,8 @@
 							<dt>Content model:</dt>
 							<dd>
 								<p>MUST be a <a href="https://www.rfc-editor.org/rfc/rfc5646#section-2.2.9">well-formed
-										language tag</a> [[bcp47]]. The language code MUST include the script subtag
-										<code>Brai</code> to indicate the text is encoded in braille.</p>
+										language tag</a> [[bcp47]] that includes the script subtag <code>Brai</code> to
+									indicate the text is encoded in braille.</p>
 							</dd>
 
 							<dt>Attributes:</dt>
@@ -1344,8 +1344,7 @@
 &lt;/dc:language></pre>
 						</aside>
 
-						<p>When specified, a country code subtag MUST refer to the language of the work being
-							transcribed.</p>
+						<p>When specified, a region subtag indicates a specific variant of the language of the work.</p>
 
 						<aside class="example" title="Language identifier for American English braille">
 							<pre class="html">&lt;dc:language>
@@ -1353,8 +1352,14 @@
 &lt;/dc:language></pre>
 						</aside>
 
-						<p>If multiple languages are used, repeat the tag for each language. The first language listed
-							in document order MUST be the primary language of the publication.</p>
+						<div class="note">
+							<p>The country codes in the region subtag do not identify the braille code the transcription
+								follows. Refer to the <a href="a11y:brailleSystem">a11y:brailleSystem</a> for more
+								information.</p>
+						</div>
+
+						<p>If multiple languages are used, add a separate <code>dc:language</code> tag for each one. The
+							first language listed in document order is the primary language of the publication.</p>
 
 						<aside class="example" title="A French textbook that teaches German">
 							<pre class="html">&lt;dc:language>
@@ -1485,8 +1490,8 @@
 
 							<dt>Content model:</dt>
 							<dd>
-								<p>Text. RECOMMENDED that the date string conform to [[iso8601]], particularly the
-									subset expressed in W3C Date and Time Formats [[datetime]]</p>
+								<p>Text. [[epub3]] recommends that the date string conform to [[iso8601]], particularly
+									the subset expressed in W3C Date and Time Formats [[datetime]]</p>
 							</dd>
 
 							<dt>Attributes:</dt>
