@@ -334,8 +334,8 @@
 
 			<ul>
 				<li>MUST be a conforming <a data-cite="epub3#dfn-epub-publication">EPUB publication</a> [[epub3]],
-					except for the <a data-cite="infra#willful-violation">willful violations</a> [[infra]]
-					documented in this specification.</li>
+					except for the <a data-cite="infra#willful-violation">willful violations</a> [[infra]] documented in
+					this specification.</li>
 				<li>
 					<p>MUST define at least one rendering of its content as follows:</p>
 					<ul>
@@ -345,13 +345,12 @@
 					</ul>
 				</li>
 				<li>SHOULD conform to the accessibility requirements defined in <a href="#ebrl-a11y"></a>.</li>
-				<li>MUST be either an [=unpackaged eBraille file set=] or a [=packaged eBraille file set=] as defined
-					in <a href="#ebrl-fileset"></a>.
-					<div class="note">
-						<p>This is a <a data-cite="infra#willful-violation">willful violation</a> of
-							<a data-cite="epub3/#sec-container-file-and-dir-structure">EPUB publication conformance</a>
-							[[epub3]], which requires a publication to be packaged in an <a 
-							data-cite="epub3#dfn-epub-container">EPUB container</a>, to facilitate the deployment of
+				<li>MUST be either an [=unpackaged eBraille file set=] or a [=packaged eBraille file set=] as defined in
+						<a href="#ebrl-fileset"></a>. <div class="note">
+						<p>This is a <a data-cite="infra#willful-violation">willful violation</a> of <a
+								data-cite="epub3/#sec-container-file-and-dir-structure">EPUB publication conformance</a>
+							[[epub3]], which requires a publication to be packaged in an <a
+								data-cite="epub3#dfn-epub-container">EPUB container</a>, to facilitate the deployment of
 							eBraille publications from the web without users having to download a ZIP file.</p>
 					</div></li>
 			</ul>
@@ -457,13 +456,13 @@
 				<h3>Resource location</h3>
 
 				<p>Publication resources MUST NOT be located outside the [=publication root=] or its descendant
-					directories. In other words, [=eBraille publications=] do not support <a 
+					directories. In other words, [=eBraille publications=] do not support <a
 						data-cite="epub3#dfn-remote-resource">remote resources</a> [[epub3]].</p>
 
 				<div class="note">
-					<p>Like EPUB, eBraille does not support the <code>file:</code> URL scheme [[rfc8089]] for referencing
-						resources in an eBraille publication. Accessing files on the user's local file system presents
-						too great a security risk.</p>
+					<p>Like EPUB, eBraille does not support the <code>file:</code> URL scheme [[rfc8089]] for
+						referencing resources in an eBraille publication. Accessing files on the user's local file
+						system presents too great a security risk.</p>
 				</div>
 
 				<div class="note">
@@ -539,18 +538,16 @@
 			<section id="fileset-intro" class="informative">
 				<h3>Introduction</h3>
 
-				<p>The [=eBraille file set=] is essentially an <a
-						data-cite="epub3#sec-container-abstract">OCF abstract container</a> [[epub3]]. EPUB 3 only
-					defines its file set in the abstract because those files are expected to be zipped in the <a
-						data-cite="epub3#dfn-epub-container">EPUB container</a> [[epub3]]; the standard is not concerned
-					with the physical files before they are zipped or after they are unzipped. As a ZIP file does not
-					have a true file system within it, the rules for file naming and placement can only be defined
-					virtually.</p>
+				<p>The [=eBraille file set=] is essentially an <a data-cite="epub3#sec-container-abstract">OCF abstract
+						container</a> [[epub3]]. EPUB 3 only defines its file set in the abstract because those files
+					are expected to be zipped in the <a data-cite="epub3#dfn-epub-container">EPUB container</a>
+					[[epub3]]; the standard is not concerned with the physical files before they are zipped or after
+					they are unzipped. As a ZIP file does not have a true file system within it, the rules for file
+					naming and placement can only be defined virtually.</p>
 
 				<p>Unlike EPUB, eBraille allows manifestation of the OCF abstract container both as a physical file set
-					and as a packaged container. This allows an [=eBraille publication=] to be independent
-					of packaging, making it a format that can flexibly move between web deployment and end-user
-					distribution.</p>
+					and as a packaged container. This allows an [=eBraille publication=] to be independent of packaging,
+					making it a format that can flexibly move between web deployment and end-user distribution.</p>
 
 				<p>eBraille defines additional rules on the file structure in order to make it easier to read an
 					eBraille publication on the web or from a local file system. In particular, it requires the <a
@@ -564,18 +561,17 @@
 				<h3>File and directory structure</h3>
 
 				<p>The [=eBraille file set=] MUST be a conforming OCF abstract container, except for the <a
-					data-cite="infra#willful-violation">willful violations</a> [[infra]] documented in this
-					specification.
-					The <a data-cite="epub3#dfn-root-directory">root directory</a> [[epub3]] of the eBraille file set is
-					also known as the [=publication root=].</p>
+						data-cite="infra#willful-violation">willful violations</a> [[infra]] documented in this
+					specification. The <a data-cite="epub3#dfn-root-directory">root directory</a> [[epub3]] of the
+					eBraille file set is also known as the [=publication root=].</p>
 
 				<p>The eBraille file set MUST contain the following files in the [=publication root=]:</p>
 
 				<ul>
 					<li>The eBraille <a href="#ebrl-package-doc">package document</a>. This file MUST be named
-						<code>package.opf</code></li>
+							<code>package.opf</code></li>
 					<li>The eBraille <a href="#ebrl-nav">primary entry page</a>. This file MUST be named
-						<code>index.html</code></li>
+							<code>index.html</code></li>
 				</ul>
 
 				<p>There are no restrictions on where the rest of the eBraille publication content goes beyond the
@@ -594,8 +590,8 @@
 				<h3>File paths and file names</h3>
 
 				<p>To avoid potential naming issues when opening [=eBraille publications=] on common operating systems,
-					eBraille file paths and file names have to adhere to the EPUB 3 file naming restrictions specified in
-						<a data-cite="epub3#sec-container-filenames">File paths and file names</a> [[epub3]].</p>
+					eBraille file paths and file names have to adhere to the EPUB 3 file naming restrictions specified
+					in <a data-cite="epub3#sec-container-filenames">File paths and file names</a> [[epub3]].</p>
 			</section>
 
 			<section id="fileset-urls" class="informative">
@@ -611,8 +607,8 @@
 					strings=].</p>
 
 				<p>Also, as eBraille does not support <a data-cite="epub3#dfn-remote-resource">remote resources</a>
-					[[epub3]], as defined in <a href="#res-location"></a>, references to publication resources must
-					not be [=absolute-url-with-fragment strings=] [[URL]].</p>
+					[[epub3]], as defined in <a href="#res-location"></a>, references to publication resources must not
+					be [=absolute-url-with-fragment strings=] [[URL]].</p>
 			</section>
 
 			<section id="multiple-renditions">
@@ -653,65 +649,66 @@
 			<section id="ebrl-unpackaged-fileset">
 				<h3>Unpackaged eBraille file set</h3>
 
-				<p>An <dfn>unpackaged eBraille file set</dfn> is a multi-file manifestation of the
-					[=eBraille file set=] where:</p>
+				<p>An <dfn>unpackaged eBraille file set</dfn> is a multi-file manifestation of the [=eBraille file set=]
+					where:</p>
 
 				<ul>
 					<li>The [=publication root=] is a physical directory.</li>
-					<li>The <code>META-INF</code> directory is OPTIONAL.
-						<div class="note">
+					<li>The <code>META-INF</code> directory is OPTIONAL. <div class="note">
 							<p>This is a <a data-cite="infra#willful-violation">willful violation</a> of <a
-								data-cite="epub3/#sec-container-file-and-dir-structure">the OCF abstract container file
-								and directory structure</a> [[epub3]], to simplify the requirements of unpackaged
-								eBraille publications.
-								As the eBraille package document has a predicatable name and location, the <code
-								>META-INF</code> directory can safely be omitted when its only use is to identify that
-								package document in its <a data-cite="epub3/#sec-container-metainf-container.xml"><code
-								>container.xml</code></a> file.</p>
+									data-cite="epub3/#sec-container-file-and-dir-structure">the OCF abstract container
+									file and directory structure</a> [[epub3]], to simplify the requirements of
+								unpackaged eBraille publications. As the eBraille package document has a predicatable
+								name and location, the <code>META-INF</code> directory can safely be omitted when its
+								only use is to identify that package document in its <a
+									data-cite="epub3/#sec-container-metainf-container.xml"
+									><code>container.xml</code></a> file.</p>
 						</div></li>
 				</ul>
 
 
 				<div class="note">
-					<p>The OCF <code>mimetype</code> file being specifically designed for 
-						<a data-cite="epub3/#sec-zip-container-mime">OCF ZIP container media type identification</a>,
+					<p>The OCF <code>mimetype</code> file being specifically designed for <a
+							data-cite="epub3/#sec-zip-container-mime">OCF ZIP container media type identification</a>,
 						it does not have to be included in an unpackaged eBraille file set.</p>
 				</div>
 			</section>
 			<section id="ebrl-packaged-fileset">
 				<h3>Packaged eBraille file set</h3>
 
-				<p>A <dfn>packaged eBraille file set</dfn> is a single-file manifestation of the [=eBraille file set=] that:<p>
+				<p>A <dfn>packaged eBraille file set</dfn> is a single-file manifestation of the [=eBraille file set=]
+					that:</p>
 
 				<ul>
 					<li>MUST be a conforming <a data-cite="epub3/#sec-container-zip">OCF ZIP container</a>.</li>
-					<li>MUST use the extension <code>.ebrl</code>.</lli>
+					<li>MUST use the extension <code>.ebrl</code>.</li>
 				</ul>
 
 				<div class="note">
 					<p>If an eBraille file is packaged with the extension <code>.epub</code>, it might not be recognized
-						as an eBraille publication (e.g., if it is also not served with the
-						<a href="#app-media-type">eBraille media type</a> or that media type is not recognized). In this
-						case, the file would likely only open as an EPUB publication in an EPUB reading system,
-						resulting in some loss of braille-specific functionality.</p>
+						as an eBraille publication (e.g., if it is also not served with the <a href="#app-media-type"
+							>eBraille media type</a> or that media type is not recognized). In this case, the file would
+						likely only open as an EPUB publication in an EPUB reading system, resulting in some loss of
+						braille-specific functionality.</p>
 				</div>
 
 				<div class="note">
 					<p>Packaged eBraille publications use the same media type identifier as EPUB in the
-						<code>mimetype</code> file: <code>application/epub+zip</code> [[epub3]], as required by 
-						<a data-cite="epub3#sec-zip-container-mime">OCF ZIP container media type identification</a>
+							<code>mimetype</code> file: <code>application/epub+zip</code> [[epub3]], as required by <a
+							data-cite="epub3#sec-zip-container-mime">OCF ZIP container media type identification</a>
 						[[epub3]]</p>
-					<p>The EPUB media type identifier helps make eBraille files compatible with EPUB reading systems.</p>
-					<p>The actual media type for eBraille publications is <code>application/ebrl+zip</code>, as defined in
-							<a href="#app-media-type"></a>. This is the media type used, for example, in the Content-Type
+					<p>The EPUB media type identifier helps make eBraille files compatible with EPUB reading
+						systems.</p>
+					<p>The actual media type for eBraille publications is <code>application/ebrl+zip</code>, as defined
+						in <a href="#app-media-type"></a>. This is the media type used, for example, in the Content-Type
 						header [[rfc9110]] when serving packaged eBraille publications over the web.</p>
 				</div>
 
-				<p>As the use of <a href="#css-req">CSS font properties</a> is not recommended, eBraille creators SHOULD NOT
-					use EPUB's <a data-cite="epub3#sec-font-obfuscation">font obfuscation algorithm</a> [[epub3]] to embed
-					fonts.</p>
+				<p>As the use of <a href="#css-req">CSS font properties</a> is not recommended, eBraille creators SHOULD
+					NOT use EPUB's <a data-cite="epub3#sec-font-obfuscation">font obfuscation algorithm</a> [[epub3]] to
+					embed fonts.</p>
 
-				</section>
+			</section>
 		</section>
 		<section id="ebrl-package-doc">
 			<h2>Package Document</h2>
@@ -3294,15 +3291,15 @@
 			<section id="ebrl-web-hosted">
 				<h3>Web-hosted eBraille publication</h3>
 
-				<p>When making an [=eBraille publication=] available for reading over the web, [=eBraille creators=] MUST
-					ensure that resources are served with the correct MIME media type [[rfc2046]] in their <a
+				<p>When making an [=eBraille publication=] available for reading over the web, [=eBraille creators=]
+					MUST ensure that resources are served with the correct MIME media type [[rfc2046]] in their <a
 						href="https://www.rfc-editor.org/rfc/rfc9110#field.content-type">Content-Type headers</a>
 					[[rfc9110]]. File extensions cannot be relied on, as XHTML documents, for example, are only properly
 					processed as XML when the correct media type is set.</p>
 
-				<p>eBraille creators MUST also ensure that each directory containing an eBraille publication is configured
-					to serve the <a href="#ebrl-nav">primary entry page</a> (<code>index.html</code>) by default for users
-					that access the publications from a web browser.</p>
+				<p>eBraille creators MUST also ensure that each directory containing an eBraille publication is
+					configured to serve the <a href="#ebrl-nav">primary entry page</a> (<code>index.html</code>) by
+					default for users that access the publications from a web browser.</p>
 			</section>
 
 		</section>
@@ -3727,6 +3724,10 @@
 				<summary>Changes since the <a href="https://daisy.org/s/ebraille/1.0/CR-ebraille-20250303/">2025-03-03
 						Candidate Release</a></summary>
 				<ul>
+					<li>12-May-2025: Added additional clarifications and improved the requirements that explain how
+						eBraille publications are EPUB publications with a few willful violations. No new requirements
+						were added. Refer to <a href="https://github.com/daisy/ebraille/issues/316">issue 316</a> and <a
+							href="https://github.com/daisy/ebraille/issues/318">issue 318</a>.</li>
 					<li>05-May-2025: Removed normative requirements from the metadata section that were directly
 						repeating what is already required by EPUB. Refer to <a
 							href="https://github.com/daisy/ebraille/issues/319">issue 319</a>.</li>
