@@ -1,0 +1,23 @@
+dc:creator :: Johann Wolfgang von Goethe
+dc:date ::
+dc:format :: eBraille 1.0
+dc:identifier :: usure
+dc:language :: German
+dc:title :: Kleinere Novellen
+dcterms:dateCopyrighted ::
+dcterms:modified ::
+a11y:cellType :: 6
+a11y:brailleSystem :: German grade2
+a11y:completeTranscription :: true
+a11y:producer :: Swiss Library for the Blind, Visually Impaired and Print Disabled
+a11y:sourcePublisher :: Projekt Gutenberg
+a11y:tactileGraphics :: false
+a11y:graphicType ::
+
+Recommended-
+dc:publisher :: Swiss Library for the Blind, Visually Impaired and Print Disabled
+dc:description ::
+dc:rights :: public domain
+dc:source ::
+dc:subject ::
+dcterms:educationLevel ::
