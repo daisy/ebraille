@@ -1,7 +1,7 @@
 dc:creator :: Johann Wolfgang von Goethe
 dc:date ::
 dc:format :: eBraille 1.0
-dc:identifier :: usure
+dc:identifier :: b81bcae9-e1c3-4765-b125-fd6e3852d588
 dc:language :: German
 dc:title :: Kleinere Novellen
 dcterms:dateCopyrighted ::
