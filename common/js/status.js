@@ -41,7 +41,7 @@ function addDAISYStatus() {
 	var statusLabel = document.getElementsByClassName('daisy-status');
 	
 	for (var i = 0; i < statusLabel.length; i++) {
-		statusLabel[i].innerHTML = (daisyStatus === 'ed' ? 'an ' : 'a ') + status[daisyStatus];
+		statusLabel[i].innerHTML = (daisyStatus === 'ed' ? 'an ' : 'a ') + (daisyStatus === 'final' ? 'DAISY ' + status[daisyStatus] : status[daisyStatus]);
 	}
 	
 	/* add working group */
